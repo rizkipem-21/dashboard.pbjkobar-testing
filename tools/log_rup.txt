@@ -557,3 +557,18 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 GIT ADD 
+warning: in the working copy of 'tools/log_pengadaan.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tools/log_rup.txt', LF will be replaced by CRLF the next time Git touches it
+GIT COMMIT 
+[main 1add73d] Auto update RUP 18/05/2026 14:00:21,48
+ 8 files changed, 181613 insertions(+), 181534 deletions(-)
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+To https://github.com/rizkipem-21/rup-2026-inaproc.git
+   d54d70c..1add73d  main -> main
+PUSH STATUS: 0 
+SELESAI 18/05/2026 14:00:34,54 
+========================= 
