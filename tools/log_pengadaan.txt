@@ -2070,3 +2070,13 @@ To https://github.com/rizkipem-21/rup-2026-inaproc.git
 PUSH STATUS: 0 
 SELESAI 18/05/2026 12:09:19,34 
 ========================= 
+========================= 
+START 18/05/2026 13:00:00,70 
+DOWNLOAD DATA 
+The argument 'scripts\pengadaan\download_pengadaan.ps1' to the -File parameter does not exist. Provide the path to an existing '.ps1' file as an argument to the -File parameter.
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+GENERATE REKAP 

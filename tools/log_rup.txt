@@ -419,3 +419,72 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 GIT ADD 
+warning: in the working copy of 'tools/log_pengadaan.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tools/log_rup.txt', LF will be replaced by CRLF the next time Git touches it
+GIT COMMIT 
+[main 8a46dc1] Auto update RUP 18/05/2026 12:24:34,38
+ 8 files changed, 181708 insertions(+), 181643 deletions(-)
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+To https://github.com/rizkipem-21/rup-2026-inaproc.git
+   da4bea5..8a46dc1  main -> main
+PUSH STATUS: 0 
+SELESAI 18/05/2026 12:24:43,32 
+========================= 
+========================= 
+START 18/05/2026 13:00:00,67 
+RUN GENERATE RUP MULTI-TAHUN 
+==================================================
+ AUTO GENERATE RUP (DOWNLOAD RETRY & MULTI TAHUN) 
+==================================================
+
+
+--- MENGUNDUH DATA TAHUN 2026 ---
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+  Percobaan ke-1... SUKSES
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+  Percobaan ke-1... SUKSES
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+  Percobaan ke-1... SUKSES
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+  Percobaan ke-1... SUKSES
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+  Percobaan ke-1... SUKSES
+
+--- MEMPROSES DATA TAHUN 2026 ---
+DONE -> JSON: rekap_rup_2026.json
+DONE -> EXCEL: D:\rup-2026-inaproc\output\rup\2026\Rekap RUP Tahun 2026 (2026-05-18) Legacy.xlsx
+[SKIP] Tahun 2025 sudah ada (final).
+[SKIP] Tahun 2024 sudah ada (final).
+
+==================================================
+ PROSES SELESAI SELURUHNYA!
+==================================================
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/2026/Legacy_rup_master-satker_2026.json
+	modified:   data/2026/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/2026/Legacy_rup_paket-swakelola-terumumkan_2026.json
+	modified:   data/2026/Legacy_rup_program-master_2026.json
+	modified:   data/2026/Legacy_rup_struktur-anggaran-pd_2026.json
+	modified:   data/last-update-rup.txt
+	modified:   tools/log_pengadaan.txt
+	modified:   tools/log_rup.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
