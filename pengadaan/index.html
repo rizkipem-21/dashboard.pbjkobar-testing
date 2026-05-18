@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rekap Data Pengadaan</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<style>
+  :root {
+    --lpse-biru  : #1a3a6b;
+    --lpse-biru2 : #1e4d8c;
+    --lpse-merah : #e63329;
+    --lpse-kuning: #f5c800;
+    --lpse-hijau : #2d9e47;
+  }
+
+  body {
+    background: #f0f4f8;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  /* ===== HEADER ===== */
+  .page-header {
+    background: linear-gradient(135deg, var(--lpse-biru) 0%, var(--lpse-biru2) 100%);
+    border-bottom: 4px solid var(--lpse-kuning);
+    padding: 20px 28px 16px;
+    margin-bottom: 24px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 16px rgba(26,58,107,0.18);
+  }
+  .page-header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .page-header h1 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin: 0 0 2px 0;
+  }
+  .page-header .last-update {
+    color: rgba(255,255,255,0.72);
+    font-size: 0.75rem;
+  }
+
+  /* ===== YEAR SELECTOR ===== */
+  .year-selector-wrap {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .year-selector-wrap label {
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .year-select {
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .year-select:hover, .year-select:focus {
+    background: rgba(255,255,255,0.25);
+  }
+  .year-select option {
+    color: #1e293b;
+    background: #fff;
+  }
+
+  /* ===== BADGE STRIP ===== */
+  .color-strip {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  }
+  .color-strip span { flex: 1; }
+
+  /* ===== STAT CARDS ===== */
+  .stat-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .stat-card {
+    flex: 1;
+    min-width: 140px;
+    border-radius: 10px;
+    padding: 14px 18px;
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .stat-card .stat-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    opacity: 0.85;
+  }
+  .stat-card .stat-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  .stat-biru   { background: linear-gradient(135deg, #1a3a6b, #2563b0); }
+  .stat-merah  { background: linear-gradient(135deg, #c0392b, #e63329); }
+  .stat-kuning { background: linear-gradient(135deg, #d4a000, #f5c800); color: #1a1a1a; }
+  .stat-kuning .stat-label { opacity: 0.65; }
+  .stat-hijau  { background: linear-gradient(135deg, #1e7e34, #2d9e47); }
+
+  /* ===== FILTER CARD ===== */
+  .filter-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(26,58,107,0.09);
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    border-top: 3px solid var(--lpse-biru);
+  }
+  .filter-card .filter-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--lpse-biru);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .filter-card label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .filter-card input[type=text],
+  .filter-card select {
+    border: 1.5px solid #dde3ed;
+    border-radius: 7px;
+    padding: 7px 11px;
+    font-size: 0.83rem;
+    color: #1e293b;
+    background: #f8fafc;
+    transition: border-color 0.2s;
+    outline: none;
+    width: 100%;
+  }
+  .filter-card input[type=text]:focus,
+  .filter-card select:focus {
+    border-color: var(--lpse-biru);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(26,58,107,0.08);
+  }
+
+  /* ===== CHECKLIST DROPDOWN ===== */
+  .check-dropdown { position: relative; display: inline-block; width: 145px; }
+  .check-btn {
+    border: 1.5px solid #dde3ed;
+    border-radius: 7px;
+    padding: 7px 24px 7px 10px;
+    font-size: 0.83rem;
+    color: #1e293b;
+    background: #f8fafc;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .check-btn::after {
+    content: "▾";
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+  }
+  .check-panel {
+    display: none;
+    position: fixed;
+    background: #fff;
+    border: 1.5px solid #dde3ed;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(26,58,107,0.18);
+    z-index: 9999;
+    min-width: 200px;
+    max-height: 280px;
+    flex-direction: column;
+  }
+  .check-panel.open { display: flex; }
+  .check-list-container { overflow-y: auto; flex-grow: 1; padding: 6px 0; }
+  .check-item { display: flex; align-items: center; gap: 8px; padding: 6px 14px; font-size: 0.82rem; cursor: pointer; }
+  .check-item:hover { background: #f0f5fb; }
+  .check-item input[type=checkbox] { accent-color: var(--lpse-biru); }
+
+  /* ===== TOMBOL ===== */
+  .btn-reset {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 7px;
+    padding: 7px 16px;
+    font-size: 0.83rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .btn-reset:hover { background: #e2e8f0; }
+
+  .btn-excel {
+    background: var(--lpse-hijau);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 8px 18px;
+    font-size: 0.83rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 6px rgba(45,158,71,0.25);
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-excel:hover { background: #258a3d; }
+
+  .btn-master {
+    background: var(--lpse-biru);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 8px 18px;
+    font-size: 0.83rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 6px rgba(26,58,107,0.25);
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-master:hover { background: #142e56; }
+  
+  .btn-master.disabled {
+    background: #94a3b8;
+    cursor: not-allowed;
+    box-shadow: none;
+    pointer-events: none;
+  }
+
+  /* ===== KONTROL BAR ===== */
+  .control-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 12px 16px;
+    box-shadow: 0 1px 6px rgba(26,58,107,0.07);
+  }
+  .control-bar label { font-size: 0.83rem; color: #475569; font-weight: 500; }
+  .control-bar select {
+    border: 1.5px solid #dde3ed;
+    border-radius: 7px;
+    padding: 6px 10px;
+    font-size: 0.83rem;
+    color: #1e293b;
+    background: #f8fafc;
+    outline: none;
+  }
+  .control-bar select:focus { border-color: var(--lpse-biru); }
+  .control-bar span { font-size: 0.82rem; color: #94a3b8; }
+
+  /* ===== PAGINATION ===== */
+  .pagination {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+  }
+  .btn-page {
+    background: #fff;
+    border: 1.5px solid #dde3ed;
+    border-radius: 7px;
+    padding: 6px 16px;
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: var(--lpse-biru);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .btn-page:hover:not(:disabled) {
+    background: var(--lpse-biru);
+    color: #fff;
+    border-color: var(--lpse-biru);
+  }
+  .btn-page:disabled { opacity: 0.35; cursor: default; }
+  .page-info { font-size: 0.83rem; color: #475569; padding: 0 6px; }
+  .total-info { font-size: 0.78rem; color: #94a3b8; margin-left: 4px; }
+
+  /* ===== TABEL ===== */
+  .table-wrap {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(26,58,107,0.09);
+    overflow-x: auto;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    font-size: 0.8rem; 
+  }
+  thead tr {
+    background: var(--lpse-biru);
+    color: #fff;
+  }
+  thead th {
+    padding: 11px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.3px;
+    border-right: 1px solid rgba(255,255,255,0.12);
+    white-space: nowrap;
+  }
+  thead th:last-child { border-right: none; }
+
+  /* Element Sticky Header */
+  #stickyHeader {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 999;
+    background: var(--lpse-biru);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+  }
+  #stickyHeader table { width: 100%; border-collapse: collapse; }
+  #stickyHeader th {
+    padding: 11px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.78rem;
+    color: #fff;
+    border-right: 1px solid rgba(255,255,255,0.12);
+    white-space: nowrap;
+  }
+  #stickyHeader th:last-child { border-right: none; }
+
+  tbody tr { transition: background 0.12s; }
+  tbody tr:nth-child(even) { background: #f0f5fb; }
+  tbody tr:nth-child(odd)  { background: #fff; }
+  tbody tr:hover { background: #dbeafe !important; }
+
+  tbody td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #e8edf5;
+    border-right: 1px solid #e8edf5;
+    vertical-align: top;
+    color: #1e293b;
+  }
+  tbody td:last-child { border-right: none; }
+
+  .td-efisiensi { font-weight: 700; color: var(--lpse-hijau); }
+  .td-rupiah    { text-align: right; font-variant-numeric: tabular-nums; }
+  .td-center    { text-align: center; }
+
+  /* Status badge (Disesuaikan dengan kategori) */
+  .badge {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .badge-selesai  { background: #dcfce7; color: #166534; }
+  .badge-proses   { background: #fef9c3; color: #854d0e; }
+  .badge-belum    { background: #fee2e2; color: #991b1b; } 
+  
+  /* Loading Overlay */
+  #loadingOverlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    display: none;
+  }
+  .loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--lpse-biru);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 8px;
+  }
+  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="page-header-top">
+    <div>
+      <h1 id="pageTitle">📋 Rekap Data Pengadaan</h1>
+      <p id="lastUpdate" class="last-update">Memuat last update...</p>
+      <p class="last-update" style="margin-top:2px;">Sumber data dari Inaproc API Gateway</p>
+      
+      <div class="year-selector-wrap">
+        <label for="selectYear">Tahun Anggaran:</label>
+        <select id="selectYear" class="year-select">
+          <option value="2026" selected>2026</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+        </select>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div style="padding: 0 20px;">
+
+<div class="color-strip">
+  <span style="background:var(--lpse-biru)"></span>
+  <span style="background:var(--lpse-merah)"></span>
+  <span style="background:var(--lpse-kuning)"></span>
+  <span style="background:var(--lpse-hijau)"></span>
+</div>
+
+<div class="stat-cards">
+  <div class="stat-card stat-biru">
+    <span class="stat-label">Total Paket</span>
+    <span class="stat-value" id="statTotal">-</span>
+  </div>
+  <div class="stat-card stat-merah">
+    <span class="stat-label">Belum Proses</span>
+    <span class="stat-value" id="statFiltered">-</span>
+  </div>
+  <div class="stat-card stat-kuning">
+    <span class="stat-label">Sedang Proses</span>
+    <span class="stat-value" id="statProses">-</span>
+  </div>
+  <div class="stat-card stat-hijau">
+    <span class="stat-label">Sudah Selesai</span>
+    <span class="stat-value" id="statSelesai">-</span>
+  </div>
+</div>
+
+<div class="filter-card">
+  <div class="filter-title">
+    <span>🔍</span> Filter Data
+  </div>
+  <div style="display:flex; flex-wrap:nowrap; gap:10px; align-items:flex-end; overflow-x:auto; padding-bottom:4px;">
+
+    <div style="display:flex; flex-direction:column; gap:4px;">
+      <label>Satuan Kerja</label>
+      <input id="filterSatker" type="text" placeholder="Cari satuan kerja..." style="width:180px;" />
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:4px;">
+      <label>Nama Paket</label>
+      <input id="filterPaket" type="text" placeholder="Cari nama paket..." style="width:185px;" />
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:4px;">
+      <label>Jenis Pengadaan</label>
+      <div class="check-dropdown">
+        <button class="check-btn" id="btn_jenis" onclick="toggleFilterPanel('jenis', event)"><span id="label_jenis">-- Semua --</span></button>
+        <div class="check-panel" id="panel_jenis">
+          <div class="check-list-container">
+            <div class="check-item"><input type="checkbox" id="all_jenis" checked onchange="toggleAllFilter('jenis', this)"><label for="all_jenis" style="font-weight:600; cursor:pointer;">Pilih Semua</label></div>
+            <div style="border-top:1px solid #eee; margin:4px 0;"></div>
+            <div id="list_jenis"></div>
+          </div>
+          <div style="display:flex; gap:8px; padding:10px; background:#f8fafc; border-top:1px solid #eee;">
+            <button class="w-full bg-blue-900 text-white py-1.5 rounded text-xs font-bold" onclick="applyFilterPanel('jenis')">✓ OK</button>
+            <button class="w-full border py-1.5 rounded text-xs font-bold" onclick="cancelFilterPanel('jenis')">✕ Batal</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:4px;">
+      <label>Metode Pengadaan</label>
+      <div class="check-dropdown">
+        <button class="check-btn" id="btn_metode" onclick="toggleFilterPanel('metode', event)"><span id="label_metode">-- Semua --</span></button>
+        <div class="check-panel" id="panel_metode">
+          <div class="check-list-container">
+            <div class="check-item"><input type="checkbox" id="all_metode" checked onchange="toggleAllFilter('metode', this)"><label for="all_metode" style="font-weight:600; cursor:pointer;">Pilih Semua</label></div>
+            <div style="border-top:1px solid #eee; margin:4px 0;"></div>
+            <div id="list_metode"></div>
+          </div>
+          <div style="display:flex; gap:8px; padding:10px; background:#f8fafc; border-top:1px solid #eee;">
+            <button class="w-full bg-blue-900 text-white py-1.5 rounded text-xs font-bold" onclick="applyFilterPanel('metode')">✓ OK</button>
+            <button class="w-full border py-1.5 rounded text-xs font-bold" onclick="cancelFilterPanel('metode')">✕ Batal</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:4px;">
+      <label>Status</label>
+      <div class="check-dropdown">
+        <button class="check-btn" id="btn_status" onclick="toggleFilterPanel('status', event)"><span id="label_status">-- Semua --</span></button>
+        <div class="check-panel" id="panel_status">
+          <div class="check-list-container">
+            <div class="check-item"><input type="checkbox" id="all_status" checked onchange="toggleAllFilter('status', this)"><label for="all_status" style="font-weight:600; cursor:pointer;">Pilih Semua</label></div>
+            <div style="border-top:1px solid #eee; margin:4px 0;"></div>
+            <div id="list_status"></div>
+          </div>
+          <div style="display:flex; gap:8px; padding:10px; background:#f8fafc; border-top:1px solid #eee;">
+            <button class="w-full bg-blue-900 text-white py-1.5 rounded text-xs font-bold" onclick="applyFilterPanel('status')">✓ OK</button>
+            <button class="w-full border py-1.5 rounded text-xs font-bold" onclick="cancelFilterPanel('status')">✕ Batal</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:4px;">
+      <label>Cara Pengadaan</label>
+      <div class="check-dropdown">
+        <button class="check-btn" id="btn_cara" onclick="toggleFilterPanel('cara', event)"><span id="label_cara">-- Semua --</span></button>
+        <div class="check-panel" id="panel_cara">
+          <div class="check-list-container">
+            <div class="check-item"><input type="checkbox" id="all_cara" checked onchange="toggleAllFilter('cara', this)"><label for="all_cara" style="font-weight:600; cursor:pointer;">Pilih Semua</label></div>
+            <div style="border-top:1px solid #eee; margin:4px 0;"></div>
+            <div id="list_cara"></div>
+          </div>
+          <div style="display:flex; gap:8px; padding:10px; background:#f8fafc; border-top:1px solid #eee;">
+            <button class="w-full bg-blue-900 text-white py-1.5 rounded text-xs font-bold" onclick="applyFilterPanel('cara')">✓ OK</button>
+            <button class="w-full border py-1.5 rounded text-xs font-bold" onclick="cancelFilterPanel('cara')">✕ Batal</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <button id="resetFilter" class="btn-reset">✕ Reset</button>
+    </div>
+
+  </div>
+</div>
+
+<div class="control-bar">
+  <label>Tampilkan:</label>
+  <select id="perPage">
+    <option value="10" selected>10</option>
+    <option value="50">50</option>
+    <option value="100">100</option>
+  </select>
+  <span>baris per halaman</span>
+
+  <div style="margin-left:auto; display:flex; gap:8px;">
+    <button id="downloadCurrent" class="btn-excel">⬇ Download Excel</button>
+    <a href="#" id="downloadMaster" class="btn-master disabled">⬇ Download Master Excel</a>
+  </div>
+</div>
+
+<div class="pagination">
+  <button id="prevPage" class="btn-page">← Prev</button>
+  <span id="pageInfo" class="page-info"></span>
+  <button id="nextPage" class="btn-page">Next →</button>
+  <span id="totalInfo" class="total-info"></span>
+</div>
+
+<div id="stickyHeader">
+  <table>
+    <thead>
+      <tr>
+        <th style="width:50px; text-align:center;">No</th>
+        <th>Kode RUP / Kode Paket</th>
+        <th>Nama Paket / Satuan Kerja</th>
+        <th>Jenis / Metode</th>
+        <th>Status</th>
+        <th style="text-align:right;">Nilai Pagu / HPS</th>
+        <th style="text-align:right;">Hasil Pemilihan</th>
+        <th style="text-align:right;">Efisiensi</th>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<div class="table-wrap" id="tableWrap">
+  <div id="loadingOverlay">
+    <div class="loader"></div>
+    <span style="font-size:0.85rem; color:#1a3a6b; font-weight:600;">Memuat Data...</span>
+  </div>
+  <table id="mainTable">
+    <thead id="mainThead">
+      <tr>
+        <th style="width:50px; text-align:center;">No</th>
+        <th>Kode RUP / Kode Paket</th>
+        <th>Nama Paket / Satuan Kerja</th>
+        <th>Jenis / Metode</th>
+        <th>Status</th>
+        <th style="text-align:right;">Nilai Pagu / HPS</th>
+        <th style="text-align:right;">Hasil Pemilihan</th>
+        <th style="text-align:right;">Efisiensi</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+</div>
+
+<div class="pagination" style="margin-top:12px; margin-bottom:32px;">
+  <button id="prevPage2" class="btn-page">← Prev</button>
+  <span id="pageInfo2" class="page-info"></span>
+  <button id="nextPage2" class="btn-page">Next →</button>
+</div>
+
+</div>
+
+<script>
+let allData    = [];
+let filtered   = [];
+let currentPage = 1;
+let perPage     = 10;
+let currentYear = "2026";
+
+// === KONFIGURASI FILTER CHECKLIST ===
+const filterConfigs = {
+  "jenis": { key: "Jenis Pengadaan", isStatic: false },
+  "metode": { key: "Metode Pengadaan", isStatic: false },
+  "cara": { key: "Metode", isStatic: false }, // Menggunakan kolom 'Metode' pada JSON untuk Cara Pengadaan
+  "status": { key: "Status", isStatic: true, staticOptions: ["Belum Proses", "Sedang Proses", "Sudah Selesai"] }
+};
+let filterSnapshots = {};
+
+function rupiah(n) {
+  if (n === null || n === undefined || n === "" || n === " ") return "";
+  return "Rp " + Number(n).toLocaleString("id-ID");
+}
+function isAngka(val) {
+  if (val === null || val === undefined || val === "" || val === " " || val === "N/A") return false;
+  return !isNaN(Number(val));
+}
+
+function getKategoriStatus(row) {
+  const sumber = (row["Sumber"] || "").toLowerCase();
+  const s = (row["Status"] || "").toLowerCase();
+
+  if (sumber.includes("sumber 1")) return "Belum Proses";
+  if (sumber.includes("sumber 2") || sumber.includes("sumber 5")) {
+    const selesaiList = ["bapbast", "kontrak", "selesai", "spmkspp", "sppbj"];
+    if (selesaiList.some(kw => s.includes(kw))) return "Sudah Selesai";
+    return "Sedang Proses";
+  }
+  if (sumber.includes("sumber 3") || sumber.includes("sumber 4")) {
+    if (s.includes("paket selesai") || s.includes("selesai")) return "Sudah Selesai";
+    return "Sedang Proses";
+  }
+  if (sumber.includes("sumber 6")) {
+    if (s.includes("payment_outside") || s.includes("completed")) return "Sudah Selesai";
+    return "Sedang Proses";
+  }
+  if (sumber.includes("sumber 7")) {
+    if (s.includes("paket selesai") || s.includes("selesai")) return "Sudah Selesai";
+    return "Sedang Proses";
+  }
+
+  if (s.includes("bapbast") || s.includes("selesai") || s.includes("sppbj") || s.includes("kontrak") || s.includes("spmkspp") || s.includes("payment") || s.includes("completed")) return "Sudah Selesai";
+  if (s.includes("pengumuman rup") || s === "" || s === "-") return "Belum Proses";
+  return "Sedang Proses";
+}
+
+function badgeStatus(row) {
+  const rawStatus = row["Status"] || "-";
+  const kat = getKategoriStatus(row);
+  let cls = "badge-default";
+  if (kat === "Sudah Selesai") cls = "badge-selesai";
+  else if (kat === "Sedang Proses") cls = "badge-proses";
+  else if (kat === "Belum Proses") cls = "badge-belum";
+  return `<span class="badge ${cls}">${rawStatus}</span>`;
+}
+
+async function loadLastUpdate() {
+  try {
+    const res  = await fetch("../data/last-update-pengadaan.txt");
+    const text = await res.text();
+    document.getElementById("lastUpdate").innerText = "🕒 Terakhir diperbarui: " + text.trim();
+  } catch {
+    document.getElementById("lastUpdate").innerText = "";
+  }
+}
+
+async function loadDataByYear(year) {
+  document.getElementById("loadingOverlay").style.display = "flex";
+  document.getElementById("pageTitle").innerText = `📋 Rekap Data Pengadaan Tahun ${year}`;
+  
+  resetFilterInputs();
+  
+  try {
+    const url = `../data/${year}/rekap_pengadaan_${year}.json`;
+    const res = await fetch(url);
+    if(!res.ok) throw new Error("Data tidak ditemukan");
+    
+    allData = await res.json();
+    
+    const masterLink = document.getElementById("downloadMaster");
+    masterLink.href = `../data/${year}/master_pengadaan_${year}.xlsx`;
+    masterLink.classList.remove("disabled");
+  } catch (error) {
+    console.error(error);
+    allData = [];
+    alert(`Gagal memuat data untuk tahun ${year}. Pastikan data sudah di-generate.`);
+    const masterLink = document.getElementById("downloadMaster");
+    masterLink.href = "#";
+    masterLink.classList.add("disabled");
+  }
+
+  // Bangun ulang list filter checklist berdasarkan data tahun ini
+  buildAllChecklists();
+  applyFilter();
+  document.getElementById("loadingOverlay").style.display = "none";
+}
+
+// === LOGIKA CHECKLIST ===
+function buildAllChecklists() {
+  for (let f in filterConfigs) {
+    let conf = filterConfigs[f];
+    let items = [];
+    if (conf.isStatic) {
+      items = conf.staticOptions;
+    } else {
+      items = [...new Set(allData.map(r => r[conf.key] ?? "").filter(v => v !== ""))].sort();
+    }
+
+    const listContainer = document.getElementById(`list_${f}`);
+    listContainer.innerHTML = "";
+    items.forEach(val => {
+      const id = `chk_${f}_${val.replace(/[^a-zA-Z0-9]/g, '_')}`;
+      const div = document.createElement("div");
+      div.className = "check-item";
+      div.innerHTML = `<input type="checkbox" id="${id}" value="${val}" checked onchange="updateCheckAll('${f}')">
+                       <label for="${id}" style="cursor:pointer; flex:1;">${val}</label>`;
+      listContainer.appendChild(div);
+    });
+    updateFilterLabel(f);
+  }
+}
+
+function toggleFilterPanel(type, e) {
+  e.stopPropagation();
+  const panel = document.getElementById(`panel_${type}`);
+  const btn = document.getElementById(`btn_${type}`);
+  
+  // Tutup panel lain yang sedang terbuka
+  for(let f in filterConfigs) {
+    if(f !== type) closeFilterPanel(f);
+  }
+
+  if (!panel.classList.contains("open")) {
+    const rect = btn.getBoundingClientRect();
+    panel.style.top = (rect.bottom + 4) + "px";
+    panel.style.left = rect.left + "px";
+    panel.classList.add("open");
+    
+    // Simpan status checkbox saat panel dibuka (buat di-cancel nanti)
+    filterSnapshots[type] = Array.from(document.querySelectorAll(`#list_${type} input[type=checkbox]`)).map(cb => cb.checked);
+  } else {
+    closeFilterPanel(type);
+  }
+}
+
+function closeFilterPanel(type) {
+  document.getElementById(`panel_${type}`).classList.remove("open");
+}
+
+function toggleAllFilter(type, el) {
+  document.querySelectorAll(`#list_${type} input[type=checkbox]`).forEach(cb => cb.checked = el.checked);
+}
+
+function updateCheckAll(type) {
+  const all = document.querySelectorAll(`#list_${type} input[type=checkbox]`);
+  const chk = document.querySelectorAll(`#list_${type} input[type=checkbox]:checked`);
+  document.getElementById(`all_${type}`).checked = (all.length === chk.length);
+}
+
+function updateFilterLabel(type) {
+  const all = document.querySelectorAll(`#list_${type} input[type=checkbox]`);
+  const chk = document.querySelectorAll(`#list_${type} input[type=checkbox]:checked`);
+  const lbl = document.getElementById(`label_${type}`);
+  if (chk.length === 0) lbl.innerText = "Tidak ada";
+  else if (chk.length === all.length) lbl.innerText = "-- Semua --";
+  else lbl.innerText = `${chk.length} dipilih`;
+}
+
+function applyFilterPanel(type) {
+  updateFilterLabel(type);
+  applyFilter();
+  closeFilterPanel(type);
+}
+
+function cancelFilterPanel(type) {
+  const cbs = document.querySelectorAll(`#list_${type} input[type=checkbox]`);
+  cbs.forEach((cb, i) => cb.checked = filterSnapshots[type][i] ?? true);
+  updateCheckAll(type);
+  closeFilterPanel(type);
+}
+
+function getCheckedValues(type) {
+  const all = document.querySelectorAll(`#list_${type} input[type=checkbox]`);
+  const chk = Array.from(document.querySelectorAll(`#list_${type} input[type=checkbox]:checked`)).map(cb => cb.value);
+  if(chk.length === 0) return []; // Jika kosong, array kosong
+  if(chk.length === all.length) return null; // Jika semua tercentang, return null (artinya jangan di-filter)
+  return chk;
+}
+
+// === LOGIKA FILTER & TABEL ===
+function resetFilterInputs() {
+  document.getElementById("filterSatker").value = "";
+  document.getElementById("filterPaket").value = "";
+  for (let f in filterConfigs) {
+    document.querySelectorAll(`#list_${f} input[type=checkbox]`).forEach(cb => cb.checked = true);
+    const allCb = document.getElementById(`all_${f}`);
+    if(allCb) allCb.checked = true;
+    updateFilterLabel(f);
+  }
+}
+
+function applyFilter() {
+  const satker = document.getElementById("filterSatker").value.trim().toLowerCase();
+  const paket  = document.getElementById("filterPaket").value.trim().toLowerCase();
+  
+  const checkedJenis  = getCheckedValues("jenis");
+  const checkedMetode = getCheckedValues("metode");
+  const checkedCara   = getCheckedValues("cara");
+  const checkedStatus = getCheckedValues("status");
+
+  filtered = allData.filter(row => {
+    // 1. Text Search
+    if (satker && !(row["Satuan Kerja"] ?? "").toLowerCase().includes(satker)) return false;
+    if (paket  && !(row["Nama Paket"]   ?? "").toLowerCase().includes(paket))  return false;
+    
+    // 2. Checklist Check
+    if (checkedJenis  !== null && !checkedJenis.includes(row["Jenis Pengadaan"])) return false;
+    if (checkedMetode !== null && !checkedMetode.includes(row["Metode Pengadaan"])) return false;
+    if (checkedCara   !== null && !checkedCara.includes(row["Metode"])) return false; // Menggunakan kolom 'Metode' pada JSON
+    if (checkedStatus !== null && !checkedStatus.includes(getKategoriStatus(row))) return false;
+    
+    return true;
+  });
+
+  currentPage = 1;
+  updateStatCards();
+  renderTable();
+}
+
+function updateStatCards() {
+  const belumProses = filtered.filter(r => getKategoriStatus(r) === "Belum Proses").length;
+  const proses      = filtered.filter(r => getKategoriStatus(r) === "Sedang Proses").length;
+  const selesai     = filtered.filter(r => getKategoriStatus(r) === "Sudah Selesai").length;
+
+  document.getElementById("statTotal").innerText    = filtered.length.toLocaleString("id-ID");
+  document.getElementById("statFiltered").innerText = belumProses.toLocaleString("id-ID");
+  document.getElementById("statProses").innerText   = proses.toLocaleString("id-ID");
+  document.getElementById("statSelesai").innerText  = selesai.toLocaleString("id-ID");
+}
+
+function renderTable() {
+  const tbody     = document.getElementById("tableBody");
+  tbody.innerHTML = "";
+
+  const start     = (currentPage - 1) * perPage;
+  const end       = start + perPage;
+  const pageData  = filtered.slice(start, end);
+  const totalPage = Math.ceil(filtered.length / perPage);
+
+  if (pageData.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="8" class="td-center" style="padding:20px; color:#64748b;">Tidak ada data ditemukan.</td></tr>`;
+  }
+
+  pageData.forEach((row, index) => {
+    const pagu  = row["Nilai Pagu RUP"];
+    const hps   = row["Nilai HPS"];
+    const hasil = row["Nilai Hasil Pemilihan"];
+
+    let efisiensiStr = '<span style="color:#94a3b8;font-weight:400;">N/A</span>';
+    if (isAngka(pagu) && isAngka(hasil)) {
+      efisiensiStr = `<span class="td-efisiensi">${rupiah(Number(pagu) - Number(hasil))}</span>`;
+    }
+    
+    const idDisplay = `<div style="font-family:monospace; color:#1a3a6b; font-weight:600;">RUP: ${row["Kode RUP"] ?? "-"}</div>
+                       <div style="font-size:0.75rem; color:#64748b; margin-top:2px;">PKT: ${row["Kode Paket"] ?? "-"}</div>`;
+                       
+    const textInfo = `<div style="font-weight:600; font-size:0.8rem; margin-bottom:3px; line-height:1.3; color:#1e293b;">${row["Nama Paket"] ?? "-"}</div>
+                      <div style="font-size:0.72rem; color:#64748b;">${row["Satuan Kerja"] ?? "-"}</div>`;
+                      
+    const jenisInfo = `<div style="font-size:0.75rem; font-weight:600;">${row["Metode Pengadaan"] ?? "-"}</div>
+                       <div style="font-size:0.72rem; color:#64748b;">${row["Jenis Pengadaan"] ?? "-"}</div>
+                       <div style="font-size:0.72rem; color:#e63329; font-weight:600; margin-top:2px;">${row["Metode"] ?? "-"}</div>`;
+                       
+    const nilaiPagu = `<div style="font-weight:600; color:#1e293b;">${isAngka(pagu) ? rupiah(pagu) : (pagu ?? "-")}</div>
+                       <div style="font-size:0.72rem; color:#64748b;">HPS: ${isAngka(hps) ? rupiah(hps) : (hps ?? "-")}</div>`;
+
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td class="td-center" style="color:#94a3b8;font-size:0.75rem;">${start + index + 1}</td>
+      <td>${idDisplay}</td>
+      <td style="max-width:350px; white-space:normal;">${textInfo}</td>
+      <td>${jenisInfo}</td>
+      <td>${badgeStatus(row)}</td>
+      <td class="td-rupiah">${nilaiPagu}</td>
+      <td class="td-rupiah" style="font-weight:600; color:#1a3a6b;">${isAngka(hasil) ? rupiah(hasil) : (hasil ?? "-")}</td>
+      <td class="td-rupiah">${efisiensiStr}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  const infoText = `Halaman ${currentPage} / ${Math.max(totalPage, 1)}`;
+  document.getElementById("pageInfo").innerText  = infoText;
+  document.getElementById("pageInfo2").innerText = infoText;
+  document.getElementById("totalInfo").innerText =
+    `(Menampilkan ${filtered.length.toLocaleString("id-ID")} dari ${allData.length.toLocaleString("id-ID")} data)`;
+
+  const atFirst = currentPage <= 1;
+  const atLast  = currentPage >= totalPage;
+  document.getElementById("prevPage").disabled  = atFirst;
+  document.getElementById("prevPage2").disabled = atFirst;
+  document.getElementById("nextPage").disabled  = atLast;
+  document.getElementById("nextPage2").disabled = atLast;
+  
+  window.dispatchEvent(new Event('scroll'));
+}
+
+// === EVENT LISTENERS GLOBAL ===
+document.getElementById("selectYear").addEventListener("change", (e) => {
+  currentYear = e.target.value;
+  loadDataByYear(currentYear);
+});
+
+document.getElementById("perPage").addEventListener("change", (e) => {
+  perPage = Number(e.target.value); currentPage = 1; renderTable();
+});
+
+["prevPage","prevPage2"].forEach(id =>
+  document.getElementById(id).addEventListener("click", () => {
+    if (currentPage > 1) { currentPage--; renderTable(); }
+  })
+);
+
+["nextPage","nextPage2"].forEach(id =>
+  document.getElementById(id).addEventListener("click", () => {
+    const totalPage = Math.ceil(filtered.length / perPage);
+    if (currentPage < totalPage) { currentPage++; renderTable(); }
+  })
+);
+
+["filterSatker","filterPaket"].forEach(id =>
+  document.getElementById(id).addEventListener("keydown", (e) => {
+    if (e.key === "Enter") applyFilter();
+  })
+);
+
+document.getElementById("resetFilter").addEventListener("click", () => {
+  resetFilterInputs();
+  applyFilter();
+});
+
+// Menutup dropdown jika user klik di luar elemen filter
+document.addEventListener("click", (e) => {
+  for(let f in filterConfigs) {
+    const panel = document.getElementById(`panel_${f}`);
+    const btn = document.getElementById(`btn_${f}`);
+    if (panel.classList.contains("open") && !panel.contains(e.target) && !btn.contains(e.target)) {
+      cancelFilterPanel(f);
+    }
+  }
+});
+
+document.getElementById("downloadCurrent").addEventListener("click", () => {
+  const kolomRupiah = ["Nilai Pagu RUP","Nilai HPS","Nilai Hasil Pemilihan","Efisiensi"];
+  const exportData = filtered.map((row, index) => {
+    const pagu  = row["Nilai Pagu RUP"];
+    const hasil = row["Nilai Hasil Pemilihan"];
+    let efisiensi = "N/A";
+    if (pagu !== "" && pagu !== "N/A" && !isNaN(Number(pagu)) &&
+        hasil !== "" && hasil !== "N/A" && !isNaN(Number(hasil))) {
+      efisiensi = Number(pagu) - Number(hasil);
+    }
+    return {
+      "No"                    : index + 1,
+      "Kode RUP"              : row["Kode RUP"] ?? "",
+      "Kode Paket"            : row["Kode Paket"] ?? "",
+      "Satuan Kerja"          : row["Satuan Kerja"] ?? "",
+      "Nama Paket"            : row["Nama Paket"] ?? "",
+      "Cara Pengadaan"        : row["Metode"] ?? "", // As per logic mapping
+      "Jenis Pengadaan"       : row["Jenis Pengadaan"] ?? "",
+      "Metode Pengadaan"      : row["Metode Pengadaan"] ?? "",
+      "Status"                : row["Status"] ?? "",
+      "Nilai Pagu RUP"        : isNaN(Number(pagu)) ? (pagu ?? "") : Number(pagu),
+      "Nilai HPS"             : isNaN(Number(row["Nilai HPS"])) ? (row["Nilai HPS"] ?? "") : Number(row["Nilai HPS"]),
+      "Nilai Hasil Pemilihan" : hasil === "N/A" || hasil === "" ? (hasil ?? "") : Number(hasil),
+      "Efisiensi"             : efisiensi,
+    };
+  });
+
+  const ws = XLSX.utils.json_to_sheet(exportData);
+  const range = XLSX.utils.decode_range(ws['!ref']);
+  const headers = [];
+  for (let c = range.s.c; c <= range.e.c; c++) {
+    const cell = ws[XLSX.utils.encode_cell({r:0,c})];
+    headers[c] = cell ? cell.v : "";
+  }
+  for (let r = 1; r <= range.e.r; r++) {
+    for (let c = range.s.c; c <= range.e.c; c++) {
+      if (kolomRupiah.includes(headers[c])) {
+        const addr = XLSX.utils.encode_cell({r,c});
+        if (ws[addr] && typeof ws[addr].v === "number") ws[addr].z = '#,##0';
+      }
+    }
+  }
+  ws['!cols'] = [
+    {wch:6},{wch:16},{wch:16},{wch:35},{wch:50},
+    {wch:20},{wch:30},{wch:22},{wch:22},
+    {wch:20},{wch:20},{wch:20},{wch:20},
+  ];
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Pengadaan");
+  XLSX.writeFile(wb, `Rekap_Pengadaan_${currentYear}.xlsx`);
+});
+
+// LOGIKA STICKY HEADER (Window Scroll)
+window.addEventListener("scroll", () => {
+  const thead = document.getElementById("mainThead");
+  const sticky = document.getElementById("stickyHeader");
+  if (!thead) return;
+  const rect = thead.getBoundingClientRect();
+  
+  if (rect.height === 0) {
+    sticky.style.display = "none";
+    return;
+  }
+  
+  if (rect.bottom <= 0) {
+    sticky.style.display = "block";
+    const cols = thead.querySelectorAll("th");
+    const sCols = sticky.querySelectorAll("th");
+    cols.forEach((col, i) => { 
+      if (sCols[i]) sCols[i].style.width = col.offsetWidth + "px"; 
+    });
+  } else { 
+    sticky.style.display = "none"; 
+  }
+});
+
+// === INITIALIZATION ===
+loadLastUpdate();
+loadDataByYear(currentYear);
+
+</script>
+</body>
+</html>

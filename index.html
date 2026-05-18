@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Pengadaan - Kabupaten Kotawaringin Barat</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            lpse: {
+              biru: '#1a3a6b',
+              biru2: '#1e4d8c',
+              merah: '#e63329',
+              kuning: '#f5c800',
+              hijau: '#2d9e47'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --lpse-biru  : #1a3a6b;
+      --lpse-biru2 : #1e4d8c;
+      --lpse-merah : #e63329;
+      --lpse-kuning: #f5c800;
+      --lpse-hijau : #2d9e47;
+    }
+
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    
+    /* Scrollbar Kustom untuk Sidebar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    /* ===== DASHBOARD HEADER STYLES ===== */
+    .page-header {
+      background: linear-gradient(135deg, var(--lpse-biru) 0%, var(--lpse-biru2) 100%);
+      border-bottom: 4px solid var(--lpse-kuning);
+      padding: 20px 28px 16px;
+      margin-bottom: 24px;
+      border-radius: 0 0 12px 12px; 
+      box-shadow: 0 4px 16px rgba(26,58,107,0.18);
+    }
+    .page-header h1 { 
+      color: #fff; 
+      font-size: 1.5rem; 
+      font-weight: 700; 
+      letter-spacing: 0.3px; 
+      margin: 0 0 2px 0; 
+    }
+    .page-header .last-update { 
+      color: rgba(255,255,255,0.72); 
+      font-size: 0.75rem; 
+    }
+
+    .year-selector-wrap { margin-top: 15px; display: flex; align-items: center; gap: 10px; }
+    .year-selector-wrap label { color: #fff; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; }
+    .year-select {
+      padding: 6px 14px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.1); color: #fff; font-weight: 600; outline: none;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .year-select:hover { background: rgba(255,255,255,0.25); }
+    .year-select option { color: #1e293b; background: #fff; }
+
+    /* ===== SECTION DASHBOARD ===== */
+    .dashboard-section {
+      background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 24px;
+      box-shadow: 0 4px 15px rgba(26,58,107,0.08); position: relative; overflow: hidden;
+    }
+    .section-title-wrap {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+      border-bottom: 2px solid #f1f5f9; padding-bottom: 12px;
+    }
+    .section-title { font-size: 1.25rem; font-weight: 700; color: var(--lpse-biru); margin: 0 0 2px 0; }
+    .section-update { font-size: 0.75rem; color: #64748b; font-weight: 500; }
+    
+    .btn-detail {
+      background: #f1f5f9; color: var(--lpse-biru); padding: 8px 16px; border-radius: 6px;
+      font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: background 0.2s, color 0.2s; border:none;
+    }
+    .btn-detail:hover { background: var(--lpse-biru); color: #fff; }
+
+    .color-strip { position: absolute; top: 0; left: 0; right: 0; display: flex; height: 5px; }
+    .color-strip span { flex: 1; }
+
+    .stat-cards { display: flex; flex-wrap: wrap; gap: 16px; }
+    .stat-card {
+      flex: 1; min-width: 200px; border-radius: 10px; padding: 18px 20px; color: #fff;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15); display: flex; flex-direction: column; gap: 4px; transition: transform 0.2s;
+    }
+    .stat-card:hover { transform: translateY(-3px); }
+    .stat-card .stat-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; opacity: 0.9; margin-bottom: 2px;}
+    .stat-card .stat-value { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.3px; }
+
+    /* Warna Kartu RUP */
+    .card-r1 { background: linear-gradient(135deg, #1a3a6b, #2563b0); }
+    .card-r2 { background: linear-gradient(135deg, #c0392b, #e63329); }
+    .card-r3 { background: linear-gradient(135deg, #d4a000, #f5c800); color: #1a1a1a; }
+    .card-r4 { background: linear-gradient(135deg, #1e7e34, #2d9e47); }
+    .card-r3 .stat-label { color: #1a1a1a; opacity: 0.7; }
+
+    /* Warna Kartu Pengadaan */
+    .card-p1 { background: linear-gradient(135deg, #1a3a6b, #2563b0); }
+    .card-p2 { background: linear-gradient(135deg, #c0392b, #e63329); }
+    .card-p3 { background: linear-gradient(135deg, #d4a000, #f5c800); color: #1a1a1a; }
+    .card-p4 { background: linear-gradient(135deg, #1e7e34, #2d9e47); }
+    .card-p3 .stat-label { color: #1a1a1a; opacity: 0.7; }
+
+    #loadingOverlayDashboard {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.85);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10000; display: none;
+    }
+    .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--lpse-biru); border-radius: 50%; width: 35px; height: 35px; animation: spin 1s linear infinite; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-[#f0f4f8] text-gray-800">
+
+  <aside class="w-64 border-r border-gray-200 flex flex-col flex-shrink-0 z-10 bg-white shadow-[2px_0_8px_-4px_rgba(0,0,0,0.1)]">
+    
+    <div class="flex flex-col items-center py-6 px-4 border-b border-gray-100">
+      <img src="Images/logo-kobar.png" 
+           alt="Logo Kabupaten Kotawaringin Barat" 
+           class="w-16 h-16 mb-3 object-contain">
+      <h1 class="text-[15px] font-bold text-center text-lpse-biru leading-snug">
+        Dashboard<br>Pengadaan<br>Kobar
+      </h1>
+    </div>
+
+    <div class="flex-1 overflow-y-auto py-6 px-4">
+      
+      <div class="mb-6">
+        <p class="text-xs font-semibold text-gray-400 mb-2 px-2">Dashboard</p>
+        <button id="btn-dashboard" onclick="switchTab('view-dashboard', this, '')" class="menu-item w-full flex items-center px-4 py-2.5 bg-lpse-biru text-white rounded-lg font-medium text-sm transition-colors text-left shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          Dashboard
+        </button>
+      </div>
+
+      <div class="mb-6">
+        <p class="text-xs font-semibold text-gray-400 mb-2 px-2">Dashboard RUP</p>
+        <button id="btn-rup" onclick="switchTab('view-rup', this, 'rup')" class="menu-item w-full flex items-center px-4 py-2.5 text-gray-600 hover:bg-gray-100 hover:text-lpse-biru rounded-lg text-sm transition-colors text-left">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-3 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+          Data RUP
+        </button>
+      </div>
+
+      <div>
+        <p class="text-xs font-semibold text-gray-400 mb-2 px-2">Dashboard Pengadaan</p>
+        <button id="btn-pengadaan" onclick="switchTab('view-pengadaan', this, 'pengadaan')" class="menu-item w-full flex items-center px-4 py-2.5 text-gray-600 hover:bg-gray-100 hover:text-lpse-biru rounded-lg text-sm transition-colors text-left">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-3 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Data Pengadaan
+        </button>
+      </div>
+
+    </div>
+  </aside>
+
+  <main class="flex-1 relative bg-[#f0f4f8] flex flex-col">
+
+    <div class="flex h-1.5 w-full flex-shrink-0">
+      <div class="flex-1 bg-lpse-biru"></div>
+      <div class="flex-1 bg-lpse-merah"></div>
+      <div class="flex-1 bg-lpse-kuning"></div>
+      <div class="flex-1 bg-lpse-hijau"></div>
+    </div>
+
+    <div id="view-dashboard" class="view-panel flex-1 overflow-y-auto relative">
+      <div id="loadingOverlayDashboard"><div class="loader"></div><p class="mt-2 text-sm font-semibold text-blue-900">Mensinkronisasi Data...</p></div>
+
+      <div class="page-header">
+        <h1 id="pageTitle">📊 Dashboard Pengadaan Barang dan Jasa Kabupaten Kotawaringin Barat</h1>
+        <p class="last-update" style="margin-top:2px;">Sumber data dari Inaproc API Gateway</p>
+        
+        <div class="year-selector-wrap">
+          <label>Tahun Anggaran:</label>
+          <select id="selectYearGlobal" class="year-select" onchange="loadAllData(this.value)">
+            <option value="2026" selected>2026</option>
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="padding: 0 20px; max-width: 1400px; margin: 0 auto;">
+        <div class="dashboard-section">
+          <div class="color-strip">
+            <span style="background:var(--lpse-biru)"></span><span style="background:var(--lpse-merah)"></span>
+            <span style="background:var(--lpse-kuning)"></span><span style="background:var(--lpse-hijau)"></span>
+          </div>
+          
+          <div class="section-title-wrap">
+            <div>
+              <h2 class="section-title">Rencana Umum Pengadaan (RUP)</h2>
+              <div class="section-update">🕒 Terakhir diperbarui: <span class="updateRup">...</span></div>
+            </div>
+            <button onclick="document.getElementById('btn-rup').click()" class="btn-detail">Lihat Detail RUP ➔</button>
+          </div>
+
+          <div class="stat-cards">
+            <div class="stat-card card-r1">
+              <span class="stat-label">Total Pagu Program</span>
+              <span class="stat-value" id="rupStatProgram">-</span>
+            </div>
+            <div class="stat-card card-r2">
+              <span class="stat-label">Total Pagu Pengadaan</span>
+              <span class="stat-value" id="rupStatPengadaan">-</span>
+            </div>
+            <div class="stat-card card-r3">
+              <span class="stat-label">Total RUP Terumumkan</span>
+              <span class="stat-value" id="rupStatTerumumkan">-</span>
+            </div>
+            <div class="stat-card card-r4">
+              <span class="stat-label">Persentase Total</span>
+              <span class="stat-value" id="rupStatPersen">-</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-section">
+          <div class="color-strip">
+            <span style="background:var(--lpse-biru)"></span><span style="background:var(--lpse-merah)"></span>
+            <span style="background:var(--lpse-kuning)"></span><span style="background:var(--lpse-hijau)"></span>
+          </div>
+          
+          <div class="section-title-wrap">
+            <div>
+              <h2 class="section-title">Pelaksanaan Pengadaan (Paket)</h2>
+              <div class="section-update">🕒 Terakhir diperbarui: <span class="updatePengadaan">...</span></div>
+            </div>
+            <button onclick="document.getElementById('btn-pengadaan').click()" class="btn-detail">Lihat Detail Pengadaan ➔</button>
+          </div>
+
+          <div class="stat-cards">
+            <div class="stat-card card-p1">
+              <span class="stat-label">Total Paket</span>
+              <span class="stat-value" id="pengStatTotal">-</span>
+            </div>
+            <div class="stat-card card-p2">
+              <span class="stat-label">Belum Proses</span>
+              <span class="stat-value" id="pengStatBelum">-</span>
+            </div>
+            <div class="stat-card card-p3">
+              <span class="stat-label">Sedang Proses</span>
+              <span class="stat-value" id="pengStatProses">-</span>
+            </div>
+            <div class="stat-card card-p4">
+              <span class="stat-label">Sudah Selesai</span>
+              <span class="stat-value" id="pengStatSelesai">-</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="view-rup" class="view-panel hidden flex-1 relative bg-[#f0f4f8]">
+      <iframe src="rup/index.html" class="w-full h-full border-none absolute inset-0 bg-transparent"></iframe>
+    </div>
+
+    <div id="view-pengadaan" class="view-panel hidden flex-1 relative bg-[#f0f4f8]">
+      <iframe src="pengadaan/index.html" class="w-full h-full border-none absolute inset-0 bg-transparent"></iframe>
+    </div>
+
+  </main>
+
+  <script>
+    // === FUNGSI LOGIKA TAB (SIDEBAR) ===
+    function switchTab(panelId, element, hashName) {
+      document.querySelectorAll('.view-panel').forEach(panel => panel.classList.add('hidden'));
+      document.getElementById(panelId).classList.remove('hidden');
+
+      document.querySelectorAll('.menu-item').forEach(btn => {
+        btn.classList.remove('bg-lpse-biru', 'text-white', 'shadow-sm', 'font-medium');
+        btn.classList.add('text-gray-600', 'hover:bg-gray-100');
+        const svg = btn.querySelector('svg');
+        if (svg) svg.classList.add('opacity-70');
+      });
+
+      element.classList.remove('text-gray-600', 'hover:bg-gray-100');
+      element.classList.add('bg-lpse-biru', 'text-white', 'shadow-sm', 'font-medium');
+      const activeSvg = element.querySelector('svg');
+      if (activeSvg) activeSvg.classList.remove('opacity-70');
+
+      if (hashName) history.replaceState(null, null, '#' + hashName);
+      else history.replaceState(null, null, ' ');
+    }
+
+    function checkUrlHash() {
+      const hash = window.location.hash.substring(1);
+      if (hash === 'rup') switchTab('view-rup', document.getElementById('btn-rup'), 'rup');
+      else if (hash === 'pengadaan') switchTab('view-pengadaan', document.getElementById('btn-pengadaan'), 'pengadaan');
+      else switchTab('view-dashboard', document.getElementById('btn-dashboard'), '');
+      
+      // Load Data Eksekutif saat awal dibuka
+      loadAllData(document.getElementById("selectYearGlobal").value);
+    }
+    window.onload = checkUrlHash;
+
+    // === FUNGSI LOGIKA DASHBOARD EKSEKUTIF ===
+    function rupiah(n) { return "Rp " + Number(n || 0).toLocaleString("id-ID"); }
+
+    function getKategoriStatus(row) {
+      const sumber = (row["Sumber"] || "").toLowerCase();
+      const s = (row["Status"] || "").toLowerCase();
+      if (sumber.includes("sumber 1")) return "Belum Proses";
+      if (sumber.includes("sumber 2") || sumber.includes("sumber 5")) {
+        const selesaiList = ["bapbast", "kontrak", "selesai", "spmkspp", "sppbj"];
+        if (selesaiList.some(kw => s.includes(kw))) return "Sudah Selesai";
+        return "Sedang Proses";
+      }
+      if (sumber.includes("sumber 3") || sumber.includes("sumber 4")) {
+        if (s.includes("paket selesai") || s.includes("selesai")) return "Sudah Selesai";
+        return "Sedang Proses";
+      }
+      if (sumber.includes("sumber 6")) {
+        if (s.includes("payment_outside") || s.includes("completed")) return "Sudah Selesai";
+        return "Sedang Proses";
+      }
+      if (sumber.includes("sumber 7")) {
+        if (s.includes("paket selesai") || s.includes("selesai")) return "Sudah Selesai";
+        return "Sedang Proses";
+      }
+      if (s.includes("bapbast") || s.includes("selesai") || s.includes("sppbj") || s.includes("kontrak") || s.includes("spmkspp") || s.includes("payment") || s.includes("completed")) return "Sudah Selesai";
+      if (s.includes("pengumuman rup") || s === "" || s === "-") return "Belum Proses";
+      return "Sedang Proses";
+    }
+
+    async function fetchLastUpdateText(type) {
+      try {
+        const res = await fetch(`data/last-update-${type}.txt`);
+        if(res.ok) {
+          const text = await res.text();
+          const elements = document.querySelectorAll(type === "rup" ? ".updateRup" : ".updatePengadaan");
+          elements.forEach(el => el.innerText = text.trim());
+        }
+      } catch(e) { /* ignore */ }
+    }
+
+    async function processRUP(year) {
+      try {
+        const res = await fetch(`data/${year}/rekap_rup_${year}.json`);
+        if(!res.ok) throw new Error("No Data");
+        const data = await res.json();
+        
+        let tProgram = 0, tPengadaan = 0, tRup = 0;
+        data.forEach(d => {
+          tProgram += Number(d["Pagu Program"] || 0);
+          tPengadaan += Number(d["Pagu Pengadaan"] || 0);
+          tRup += Number(d["Total RUP Terumumkan"] || 0);
+        });
+        const persenTotal = tPengadaan === 0 ? 0 : (tRup / tPengadaan) * 100;
+        
+        document.getElementById("rupStatProgram").innerText = rupiah(tProgram);
+        document.getElementById("rupStatPengadaan").innerText = rupiah(tPengadaan);
+        document.getElementById("rupStatTerumumkan").innerText = rupiah(tRup);
+        document.getElementById("rupStatPersen").innerText = persenTotal.toFixed(2) + "%";
+      } catch(e) {
+        document.getElementById("rupStatProgram").innerText = "Rp 0";
+        document.getElementById("rupStatPengadaan").innerText = "Rp 0";
+        document.getElementById("rupStatTerumumkan").innerText = "Rp 0";
+        document.getElementById("rupStatPersen").innerText = "0.00%";
+      }
+    }
+
+    async function processPengadaan(year) {
+      try {
+        const res = await fetch(`data/${year}/rekap_pengadaan_${year}.json`);
+        if(!res.ok) throw new Error("No Data");
+        const data = await res.json();
+        
+        let belum = 0, proses = 0, selesai = 0;
+        data.forEach(row => {
+          const kat = getKategoriStatus(row);
+          if(kat === "Belum Proses") belum++;
+          else if(kat === "Sedang Proses") proses++;
+          else if(kat === "Sudah Selesai") selesai++;
+        });
+
+        document.getElementById("pengStatTotal").innerText = data.length.toLocaleString("id-ID");
+        document.getElementById("pengStatBelum").innerText = belum.toLocaleString("id-ID");
+        document.getElementById("pengStatProses").innerText = proses.toLocaleString("id-ID");
+        document.getElementById("pengStatSelesai").innerText = selesai.toLocaleString("id-ID");
+      } catch(e) {
+        document.getElementById("pengStatTotal").innerText = "0";
+        document.getElementById("pengStatBelum").innerText = "0";
+        document.getElementById("pengStatProses").innerText = "0";
+        document.getElementById("pengStatSelesai").innerText = "0";
+      }
+    }
+
+    async function loadAllData(year) {
+      document.getElementById("loadingOverlayDashboard").style.display = "flex";
+      
+      fetchLastUpdateText("rup");
+      fetchLastUpdateText("pengadaan");
+      
+      await processRUP(year);
+      await processPengadaan(year);
+      
+      document.getElementById("loadingOverlayDashboard").style.display = "none";
+    }
+
+  </script>
+</body>
+</html>
