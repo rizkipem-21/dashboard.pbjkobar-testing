@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rekapitulasi RUP Kabupaten Kotawaringin Barat</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<style>
+  :root {
+    --lpse-biru  : #1a3a6b;
+    --lpse-biru2 : #1e4d8c;
+    --lpse-merah : #e63329;
+    --lpse-kuning: #f5c800;
+    --lpse-hijau : #2d9e47;
+  }
+
+  body {
+    background: #f0f4f8;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  /* ===== HEADER ===== */
+  .page-header {
+    background: linear-gradient(135deg, var(--lpse-biru) 0%, var(--lpse-biru2) 100%);
+    border-bottom: 4px solid var(--lpse-kuning);
+    padding: 20px 28px 16px;
+    margin-bottom: 24px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 16px rgba(26,58,107,0.18);
+  }
+  .page-header h1 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin: 0 0 2px 0;
+  }
+  .page-header .last-update {
+    color: rgba(255,255,255,0.72);
+    font-size: 0.75rem;
+  }
+
+  /* ===== YEAR SELECTOR ===== */
+  .year-selector-wrap {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .year-selector-wrap label {
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .year-select {
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+  }
+  .year-select option { color: #1e293b; background: #fff; }
+
+  /* ===== COLOR STRIP ===== */
+  .color-strip {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  }
+  .color-strip span { flex: 1; }
+
+  /* ===== STAT CARDS ===== */
+  .stat-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .stat-card {
+    flex: 1;
+    min-width: 140px;
+    border-radius: 10px;
+    padding: 14px 18px;
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .stat-card .stat-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    opacity: 0.9;
+  }
+  .stat-card .stat-value {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+  }
+
+  /* Warna Kartu mengikuti Strip Atas */
+  .stat-card:nth-child(1) { background: linear-gradient(135deg, #1a3a6b, #2563b0); }
+  .stat-card:nth-child(2) { background: linear-gradient(135deg, #c0392b, #e63329); }
+  .stat-card:nth-child(3) { background: linear-gradient(135deg, #d4a000, #f5c800); color: #1a1a1a; }
+  .stat-card:nth-child(4) { background: linear-gradient(135deg, #1e7e34, #2d9e47); }
+  .stat-card:nth-child(3) .stat-label { color: #1a1a1a; opacity: 0.7; }
+
+  /* ===== FILTER CARD ===== */
+  .filter-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(26,58,107,0.09);
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    border-top: 3px solid var(--lpse-biru);
+  }
+  .filter-card label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .filter-card input {
+    border: 1.5px solid #dde3ed;
+    border-radius: 7px;
+    padding: 7px 11px;
+    font-size: 0.83rem;
+    background: #f8fafc;
+    outline: none;
+  }
+
+  /* ===== CHECKLIST DROPDOWN ===== */
+  .check-dropdown { position: relative; display: inline-block; }
+  .check-btn {
+    border: 1.5px solid #dde3ed;
+    border-radius: 7px;
+    padding: 7px 32px 7px 11px;
+    font-size: 0.83rem;
+    color: #1e293b;
+    background: #f8fafc;
+    cursor: pointer;
+    width: 180px;
+    text-align: left;
+    position: relative;
+  }
+  .check-btn::after {
+    content: "▾";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+  }
+  .check-panel {
+    display: none;
+    position: fixed;
+    background: #fff;
+    border: 1.5px solid #dde3ed;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(26,58,107,0.18);
+    z-index: 9999;
+    min-width: 220px;
+    max-height: 300px;
+    flex-direction: column;
+  }
+  .check-panel.open { display: flex; }
+  .check-list-container { overflow-y: auto; flex-grow: 1; padding: 6px 0; }
+  .check-item { display: flex; align-items: center; gap: 8px; padding: 6px 14px; font-size: 0.82rem; cursor: pointer; }
+  .check-item:hover { background: #f0f5fb; }
+
+  /* ===== BUTTONS ===== */
+  .btn-reset {
+    background: #f1f5f9; color: #475569; border: 1.5px solid #cbd5e1;
+    border-radius: 7px; padding: 7px 16px; font-size: 0.83rem; font-weight: 600; cursor: pointer;
+  }
+  .btn-excel {
+    background: var(--lpse-hijau); color: #fff; border: none;
+    border-radius: 7px; padding: 8px 18px; font-size: 0.83rem; font-weight: 600; cursor: pointer;
+    box-shadow: 0 2px 6px rgba(45,158,71,0.25);
+    margin-left: auto;
+  }
+  .btn-excel:hover { background: #258a3d; }
+
+  /* ===== TABEL ===== */
+  .table-wrap {
+    background: #fff; border-radius: 10px; box-shadow: 0 2px 12px rgba(26,58,107,0.09);
+    margin-bottom: 24px; overflow-x: auto;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  thead tr { background: var(--lpse-biru); color: #fff; }
+  thead th {
+    padding: 11px 14px; text-align: left; font-weight: 600; font-size: 0.78rem;
+    border-right: 1px solid rgba(255,255,255,0.12); white-space: nowrap;
+  }
+  
+  #stickyHeader {
+    display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: var(--lpse-biru); box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+  }
+  #stickyHeader table { width: 100%; border-collapse: collapse; }
+  #stickyHeader th {
+    padding: 11px 14px; text-align: left; font-weight: 600; font-size: 0.78rem;
+    color: #fff; border-right: 1px solid rgba(255,255,255,0.12);
+  }
+
+  tbody tr:nth-child(even) { background: #f0f5fb; }
+  tbody tr:hover { background: #dbeafe !important; }
+  tbody td { padding: 9px 14px; border-bottom: 1px solid #e8edf5; border-right: 1px solid #e8edf5; color: #1e293b; }
+  .td-rupiah  { text-align: right; font-variant-numeric: tabular-nums; }
+  .td-center  { text-align: center; }
+  .td-persen  { text-align: right; font-weight: 600; color: var(--lpse-biru); }
+
+  /* Loading Overlay */
+  #loadingOverlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.8); display: flex; flex-direction: column;
+    align-items: center; justify-content: center; z-index: 10000; display: none;
+  }
+  .loader {
+    border: 4px solid #f3f3f3; border-top: 4px solid var(--lpse-biru);
+    border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite;
+  }
+  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<div id="loadingOverlay"><div class="loader"></div><p class="mt-2 text-sm font-semibold text-blue-900">Memuat Data...</p></div>
+
+<div class="page-header">
+  <h1 id="pageTitle">📊 Rekapitulasi RUP Kabupaten Kotawaringin Barat</h1>
+  <p id="lastUpdate" class="last-update">Memuat last update...</p>
+  <p class="last-update" style="margin-top:2px;">Sumber data dari Inaproc API Gateway</p>
+  
+  <div class="year-selector-wrap">
+    <label>Tahun Anggaran:</label>
+    <select id="selectYear" class="year-select" onchange="loadDataByYear(this.value)">
+      <option value="2026" selected>2026</option>
+      <option value="2025">2025</option>
+      <option value="2024">2024</option>
+    </select>
+  </div>
+</div>
+
+<div style="padding: 0 20px;">
+
+  <div class="color-strip">
+    <span style="background:var(--lpse-biru)"></span>
+    <span style="background:var(--lpse-merah)"></span>
+    <span style="background:var(--lpse-kuning)"></span>
+    <span style="background:var(--lpse-hijau)"></span>
+  </div>
+
+  <div class="stat-cards">
+    <div class="stat-card">
+      <span class="stat-label">Total Pagu Program</span>
+      <span class="stat-value" id="statPaguProgram">-</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Total Pagu Pengadaan</span>
+      <span class="stat-value" id="statPaguPengadaan">-</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Total RUP Terumumkan</span>
+      <span class="stat-value" id="statRup">-</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Persentase Total</span>
+      <span class="stat-value" id="statPersen">-</span>
+    </div>
+  </div>
+
+  <div class="filter-card">
+    <div style="display:flex; flex-wrap:nowrap; gap:12px; align-items:flex-end;">
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        <label>Satuan Kerja</label>
+        <input id="filterSatker" type="text" placeholder="Cari satuan kerja..." style="width:250px;" />
+      </div>
+      
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        <label>Filter Persentase</label>
+        <div class="check-dropdown">
+          <button class="check-btn" id="persenBtn" onclick="togglePersenPanel(event)">
+            <span id="persenBtnLabel">-- Semua --</span>
+          </button>
+          <div class="check-panel" id="persenPanel">
+            <div class="check-list-container">
+              <div class="check-item">
+                <input type="checkbox" id="checkAll" checked onchange="toggleAllPersen(this)">
+                <label for="checkAll" style="cursor:pointer;font-weight:600;">Pilih Semua</label>
+              </div>
+              <div class="check-divider" style="border-top:1px solid #eee; margin:4px 0;"></div>
+              <div id="persenList"></div>
+            </div>
+            <div style="display:flex; gap:8px; padding:10px; background:#f8fafc; border-top:1px solid #eee;">
+              <button class="w-full bg-blue-900 text-white py-1.5 rounded text-xs font-bold" onclick="applyPersenFilter()">✓ OK</button>
+              <button class="w-full border py-1.5 rounded text-xs font-bold" onclick="closePersenPanel()">✕ Batal</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button id="resetFilter" class="btn-reset">✕ Reset Filter</button>
+      
+      <button onclick="downloadExcelFormatted()" class="btn-excel">⬇ Download Excel</button>
+    </div>
+  </div>
+
+  <div style="margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+    <span id="totalInfo" style="font-size:0.78rem; color:#94a3b8;"></span>
+  </div>
+
+  <div id="stickyHeader">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:50px; text-align:center;">No</th>
+          <th>Satuan Kerja</th>
+          <th style="text-align:right;">Pagu Program</th>
+          <th style="text-align:right;">Pagu Pengadaan</th>
+          <th style="text-align:right;">Total RUP Terumumkan</th>
+          <th style="text-align:right;">Selisih</th>
+          <th style="text-align:right;">Persentase</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+  <div class="table-wrap" id="tableWrap">
+    <table id="mainTable">
+      <thead id="mainThead">
+        <tr>
+          <th style="width:50px; text-align:center;">No</th>
+          <th>Satuan Kerja</th>
+          <th style="text-align:right;">Pagu Program</th>
+          <th style="text-align:right;">Pagu Pengadaan</th>
+          <th style="text-align:right;">Total RUP Terumumkan</th>
+          <th style="text-align:right;">Selisih</th>
+          <th style="text-align:right;">Persentase</th>
+        </tr>
+      </thead>
+      <tbody id="body"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+let rawData = [];
+let filteredData = [];
+let currentYear = "2026";
+
+function rupiah(n) {
+  const num = Number(n || 0);
+  const prefix = num < 0 ? "-Rp " : "Rp ";
+  return prefix + Math.abs(num).toLocaleString("id-ID");
+}
+
+async function loadLastUpdate() {
+  try {
+    const res = await fetch("../data/last-update-rup.txt");
+    const txt = await res.text();
+    document.getElementById("lastUpdate").innerText = "🕒 Terakhir diperbarui: " + txt.trim();
+  } catch { document.getElementById("lastUpdate").innerText = ""; }
+}
+
+async function loadDataByYear(year) {
+  currentYear = year;
+  document.getElementById("loadingOverlay").style.display = "flex";
+  document.getElementById("pageTitle").innerText = `📊 Rekapitulasi RUP Kabupaten Kotawaringin Barat Tahun ${year}`;
+  
+  try {
+    const res = await fetch(`../data/${year}/rekap_rup_${year}.json`);
+    if(!res.ok) throw new Error("File tidak ditemukan");
+    rawData = await res.json();
+    
+    // Filter data 0-0-0 agar tabel tidak penuh sampah
+    rawData = rawData.filter(row =>
+      !(Number(row["Pagu Program"] || 0) === 0 &&
+        Number(row["Pagu Pengadaan"] || 0) === 0 &&
+        Number(row["Total RUP Terumumkan"] || 0) === 0)
+    );
+    
+    filteredData = [...rawData];
+    buildPersenList();
+    applyFilter();
+  } catch (err) {
+    console.error(err);
+    alert(`Data RUP Tahun ${year} belum tersedia.`);
+    rawData = [];
+    filteredData = [];
+    renderTable();
+  }
+  document.getElementById("loadingOverlay").style.display = "none";
+}
+
+function applyFilter() {
+  const satker = document.getElementById("filterSatker").value.trim().toLowerCase();
+  const checked = getCheckedPersen();
+
+  filteredData = rawData.filter(row => {
+    if (satker && !(row["Satuan Kerja"] ?? "").toLowerCase().includes(satker)) return false;
+    if (checked !== null) {
+      const p = Number(row["Persentase"] || 0).toFixed(2) + "%";
+      if (!checked.includes(p)) return false;
+    }
+    return true;
+  });
+  renderTable();
+  renderSummary();
+}
+
+function renderTable() {
+  const body = document.getElementById("body");
+  body.innerHTML = "";
+  
+  if (filteredData.length === 0) {
+    body.innerHTML = `<tr><td colspan="7" class="td-center" style="padding:20px; color:#94a3b8;">Tidak ada data ditemukan.</td></tr>`;
+    return;
+  }
+
+  filteredData.forEach((row, index) => {
+    const paguPengadaan = Number(row["Pagu Pengadaan"] || 0);
+    const rupTerumumkan = Number(row["Total RUP Terumumkan"] || 0);
+    const selisih = rupTerumumkan - paguPengadaan;
+    const persen = Number(row["Persentase"] || 0).toFixed(2) + "%";
+
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td class="td-center" style="color:#94a3b8;font-size:0.75rem;">${index + 1}</td>
+      <td style="font-weight:500;">${row["Satuan Kerja"] ?? ""}</td>
+      <td class="td-rupiah">${rupiah(row["Pagu Program"])}</td>
+      <td class="td-rupiah">${rupiah(paguPengadaan)}</td>
+      <td class="td-rupiah">${rupiah(rupTerumumkan)}</td>
+      <td class="td-rupiah" style="color: ${selisih < 0 ? '#e63329' : '#1e293b'}">${rupiah(selisih)}</td>
+      <td class="td-persen">${persen}</td>
+    `;
+    body.appendChild(tr);
+  });
+  document.getElementById("totalInfo").innerText = `(Menampilkan ${filteredData.length.toLocaleString("id-ID")} dari ${rawData.length.toLocaleString("id-ID")} Satuan Kerja)`;
+}
+
+function renderSummary() {
+  let tProgram = 0, tPengadaan = 0, tRup = 0;
+  rawData.forEach(d => {
+    tProgram += Number(d["Pagu Program"] || 0);
+    tPengadaan += Number(d["Pagu Pengadaan"] || 0);
+    tRup += Number(d["Total RUP Terumumkan"] || 0);
+  });
+  const persenTotal = tPengadaan === 0 ? 0 : (tRup / tPengadaan) * 100;
+  document.getElementById("statPaguProgram").innerText = rupiah(tProgram);
+  document.getElementById("statPaguPengadaan").innerText = rupiah(tPengadaan);
+  document.getElementById("statRup").innerText = rupiah(tRup);
+  document.getElementById("statPersen").innerText = persenTotal.toFixed(2) + "%";
+}
+
+// === EXCEL DOWNLOAD BERWARNA + RUMUS TOTAL ===
+async function downloadExcelFormatted() {
+  if (filteredData.length === 0) return alert("Tidak ada data untuk didownload.");
+
+  const workbook = new ExcelJS.Workbook();
+  const worksheet = workbook.addWorksheet('Rekap RUP');
+
+  // Definisi Kolom
+  worksheet.columns = [
+    { header: 'No', key: 'no', width: 6 },
+    { header: 'Satuan Kerja', key: 'satker', width: 45 },
+    { header: 'Pagu Program', key: 'program', width: 22 },
+    { header: 'Pagu Pengadaan', key: 'pengadaan', width: 22 },
+    { header: 'Total RUP Terumumkan', key: 'rup', width: 25 },
+    { header: 'Selisih', key: 'selisih', width: 22 },
+    { header: 'Persentase', key: 'persen', width: 15 }
+  ];
+
+  // Styling Header
+  const headerRow = worksheet.getRow(1);
+  headerRow.height = 25;
+  headerRow.eachCell((cell) => {
+    cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1A3A6B' } };
+    cell.font = { color: { argb: 'FFFFFFFF' }, bold: true };
+    cell.alignment = { horizontal: 'center', vertical: 'middle' };
+    cell.border = { top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
+  });
+
+  // Memasukkan Data
+  filteredData.forEach((row, index) => {
+    const program = Number(row["Pagu Program"] || 0);
+    const pengadaan = Number(row["Pagu Pengadaan"] || 0);
+    const rup = Number(row["Total RUP Terumumkan"] || 0);
+    const selisih = rup - pengadaan;
+    const persen = Number(row["Persentase"] || 0) / 100;
+
+    const dataRow = worksheet.addRow({
+      no: index + 1,
+      satker: row["Satuan Kerja"],
+      program: program,
+      pengadaan: pengadaan,
+      rup: rup,
+      selisih: selisih,
+      persen: persen
+    });
+
+    dataRow.eachCell((cell, colNum) => {
+      cell.border = {
+        top: {style:'thin', color: {argb: 'FFE8EDF5'}},
+        left: {style:'thin', color: {argb: 'FFE8EDF5'}},
+        bottom: {style:'thin', color: {argb: 'FFE8EDF5'}},
+        right: {style:'thin', color: {argb: 'FFE8EDF5'}}
+      };
+      if ((index + 1) % 2 === 0) {
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF0F5FB' } };
+      }
+      
+      // Format Rupiah untuk kolom uang
+      if ([3, 4, 5, 6].includes(colNum)) {
+        cell.numFmt = '"Rp" #,##0';
+        cell.alignment = { horizontal: 'right', vertical: 'middle' };
+      }
+      
+      // Warna Merah untuk Selisih Minus
+      if (colNum === 6 && selisih < 0) {
+        cell.font = { color: { argb: 'FFE63329' } };
+      }
+
+      // Format Persen
+      if (colNum === 7) {
+        cell.numFmt = '0.00%';
+        cell.font = { bold: true, color: { argb: 'FF1A3A6B' } };
+        cell.alignment = { horizontal: 'right', vertical: 'middle' };
+      }
+    });
+  });
+
+  // === TAMBAHKAN BARIS TOTAL ===
+  const lastDataRow = filteredData.length + 1;
+  const totalRowIndex = lastDataRow + 1;
+  const totalRow = worksheet.addRow([]);
+  
+  totalRow.getCell(2).value = 'TOTAL';
+  // Rumus SUM
+  totalRow.getCell(3).value = { formula: `SUM(C2:C${lastDataRow})` };
+  totalRow.getCell(4).value = { formula: `SUM(D2:D${lastDataRow})` };
+  totalRow.getCell(5).value = { formula: `SUM(E2:E${lastDataRow})` };
+  // Rumus Selisih Total (Total RUP - Total Pagu)
+  totalRow.getCell(6).value = { formula: `E${totalRowIndex}-D${totalRowIndex}` };
+  // Rumus Persentase Total (Total RUP / Total Pagu)
+  totalRow.getCell(7).value = { formula: `IF(D${totalRowIndex}=0, 0, E${totalRowIndex}/D${totalRowIndex})` };
+
+  // Styling Baris Total
+  totalRow.height = 22;
+  totalRow.eachCell((cell, colNum) => {
+    cell.font = { bold: true, color: { argb: 'FF1A3A6B' } };
+    cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF5C800' } }; // Kuning LPSE
+    cell.border = { top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
+    
+    if ([3, 4, 5, 6].includes(colNum)) {
+      cell.numFmt = '"Rp" #,##0';
+      cell.alignment = { horizontal: 'right', vertical: 'middle' };
+    }
+    if (colNum === 7) {
+      cell.numFmt = '0.00%';
+      cell.alignment = { horizontal: 'right', vertical: 'middle' };
+    }
+  });
+
+  const buffer = await workbook.xlsx.writeBuffer();
+  saveAs(new Blob([buffer]), `Rekap_RUP_Kobar_${currentYear}.xlsx`);
+}
+
+// === LOGIKA DROPDOWN PERSEN ===
+function buildPersenList() {
+  const unik = [...new Set(rawData.map(r => (Number(r["Persentase"] || 0).toFixed(2) + "%")))].sort((a, b) => parseFloat(a) - parseFloat(b));
+  const list = document.getElementById("persenList");
+  list.innerHTML = "";
+  unik.forEach(val => {
+    const id = "pct_" + val.replace(".", "_").replace("%", "");
+    const div = document.createElement("div");
+    div.className = "check-item";
+    div.innerHTML = `<input type="checkbox" id="${id}" value="${val}" checked onchange="onPersenChange()"><label for="${id}" style="flex:1;">${val}</label>`;
+    list.appendChild(div);
+  });
+}
+function togglePersenPanel(e) {
+  e.stopPropagation();
+  const panel = document.getElementById("persenPanel");
+  const btn = document.getElementById("persenBtn");
+  if (!panel.classList.contains("open")) {
+    const rect = btn.getBoundingClientRect();
+    panel.style.top = (rect.bottom + 4) + "px";
+    panel.style.left = rect.left + "px";
+    panel.classList.add("open");
+  } else { closePersenPanel(); }
+}
+function closePersenPanel() { document.getElementById("persenPanel").classList.remove("open"); }
+function toggleAllPersen(el) { document.querySelectorAll("#persenList input[type=checkbox]").forEach(cb => cb.checked = el.checked); }
+function onPersenChange() {
+  const all = document.querySelectorAll("#persenList input[type=checkbox]");
+  const chk = document.querySelectorAll("#persenList input[type=checkbox]:checked");
+  document.getElementById("checkAll").checked = all.length === chk.length;
+}
+function applyPersenFilter() {
+  const all = document.querySelectorAll("#persenList input[type=checkbox]");
+  const chk = document.querySelectorAll("#persenList input[type=checkbox]:checked");
+  const lbl = document.getElementById("persenBtnLabel");
+  if (chk.length === 0) lbl.innerText = "Tidak ada";
+  else if (chk.length === all.length) lbl.innerText = "-- Semua --";
+  else lbl.innerText = chk.length + " dipilih";
+  applyFilter();
+  closePersenPanel();
+}
+function getCheckedPersen() {
+  const all = document.querySelectorAll("#persenList input[type=checkbox]");
+  const chk = [...document.querySelectorAll("#persenList input[type=checkbox]:checked")].map(cb => cb.value);
+  return chk.length === all.length ? null : chk;
+}
+
+// === EVENT LISTENERS ===
+document.getElementById("filterSatker").addEventListener("input", applyFilter);
+document.getElementById("resetFilter").addEventListener("click", () => {
+  document.getElementById("filterSatker").value = "";
+  document.querySelectorAll("#persenList input[type=checkbox]").forEach(cb => cb.checked = true);
+  document.getElementById("checkAll").checked = true;
+  document.getElementById("persenBtnLabel").innerText = "-- Semua --";
+  applyFilter();
+});
+
+window.addEventListener("scroll", () => {
+  const thead = document.getElementById("mainThead");
+  const sticky = document.getElementById("stickyHeader");
+  if (!thead) return;
+  const rect = thead.getBoundingClientRect();
+  if (rect.height === 0) { sticky.style.display = "none"; return; }
+  if (rect.bottom <= 0) {
+    sticky.style.display = "block";
+    const cols = thead.querySelectorAll("th"), sCols = sticky.querySelectorAll("th");
+    cols.forEach((col, i) => { if (sCols[i]) sCols[i].style.width = col.offsetWidth + "px"; });
+  } else { sticky.style.display = "none"; }
+});
+
+// INIT
+loadLastUpdate();
+loadDataByYear(currentYear);
+</script>
+</body>
+</html>
