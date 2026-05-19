@@ -280,9 +280,11 @@
   <script>
     // === FUNGSI LOGIKA TAB (SIDEBAR) ===
     function switchTab(panelId, element, hashName) {
+      // 1. Sembunyikan semua panel dan tampilkan yang dipilih
       document.querySelectorAll('.view-panel').forEach(panel => panel.classList.add('hidden'));
       document.getElementById(panelId).classList.remove('hidden');
 
+      // 2. Ubah warna tombol navigasi yang aktif
       document.querySelectorAll('.menu-item').forEach(btn => {
         btn.classList.remove('bg-lpse-biru', 'text-white', 'shadow-sm', 'font-medium');
         btn.classList.add('text-gray-600', 'hover:bg-gray-100');
@@ -295,6 +297,15 @@
       const activeSvg = element.querySelector('svg');
       if (activeSvg) activeSvg.classList.remove('opacity-70');
 
+      // 3. FITUR BARU: Refresh iframe agar filter kembali kosong
+      if (panelId === 'view-rup' || panelId === 'view-pengadaan') {
+        const iframe = document.getElementById(panelId).querySelector('iframe');
+        if (iframe) {
+          iframe.src = iframe.src; 
+        }
+      }
+
+      // 4. Update URL Hash
       if (hashName) history.replaceState(null, null, '#' + hashName);
       else history.replaceState(null, null, ' ');
     }
