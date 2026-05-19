@@ -3703,3 +3703,13 @@ DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_
 DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
 -> SUKSES
 DOWNLOAD: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-bapbast?kode_klpd=D228&tahun=2026
+-> Gagal error: HTTPSConnectionPool(host='data.inaproc.id', port=443): Read timed out. (read timeout=30)
+-> Gagal error: HTTPSConnectionPool(host='data.inaproc.id', port=443): Read timed out. (read timeout=30)
+-> Gagal error: HTTPSConnectionPool(host='data.inaproc.id', port=443): Read timed out. (read timeout=30)
+-> Gagal error: HTTPSConnectionPool(host='data.inaproc.id', port=443): Read timed out. (read timeout=30)
+-> Gagal error: HTTPSConnectionPool(host='data.inaproc.id', port=443): Read timed out. (read timeout=30)
+  -> GAGAL TOTAL -> Membuat file JSON kosong []
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-kontrak?kode_klpd=D228&tahun=2026
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2026
+-> Gagal error: HTTPSConnectionPool(host='data.inaproc.id', port=443): Read timed out. (read timeout=30)
