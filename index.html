@@ -157,13 +157,23 @@
         </button>
       </div>
 
-      <div>
+      <div class="mb-6">
         <p class="text-xs font-semibold text-gray-400 mb-2 px-2">Dashboard Pengadaan</p>
         <button id="btn-pengadaan" onclick="switchTab('view-pengadaan', this, 'pengadaan')" class="menu-item w-full flex items-center px-4 py-2.5 text-gray-600 hover:bg-gray-100 hover:text-lpse-biru rounded-lg text-sm transition-colors text-left">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-3 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
           Data Pengadaan
+        </button>
+      </div>
+
+      <div>
+        <p class="text-xs font-semibold text-gray-400 mb-2 px-2">Server Backup</p>
+        <button id="btn-arsip" onclick="switchTab('view-arsip', this, 'arsip')" class="menu-item w-full flex items-center px-4 py-2.5 text-gray-600 hover:bg-gray-100 hover:text-lpse-biru rounded-lg text-sm transition-colors text-left">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-3 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+          </svg>
+          Arsip File (History)
         </button>
       </div>
 
@@ -275,6 +285,51 @@
       <iframe src="pengadaan/index.html" class="w-full h-full border-none absolute inset-0 bg-transparent"></iframe>
     </div>
 
+    <div id="view-arsip" class="view-panel hidden flex-1 relative overflow-y-auto bg-[#f0f4f8]">
+      
+      <div class="page-header" style="margin: 20px 20px 0 20px; border-radius: 12px; box-shadow: 0 4px 16px rgba(26,58,107,0.18);">
+        <h1>📁 Arsip Data PBJ (Riwayat Master Excel)</h1>
+        <p class="last-update" style="margin-top:2px;">Akses arsip file Excel harian yang tersimpan aman di server</p>
+      </div>
+
+      <div style="padding: 20px; max-width: 1400px; margin: 0 auto; width: 100%;">
+        <div class="dashboard-section">
+          <div class="color-strip">
+            <span style="background:var(--lpse-biru)"></span><span style="background:var(--lpse-merah)"></span>
+            <span style="background:var(--lpse-kuning)"></span><span style="background:var(--lpse-hijau)"></span>
+          </div>
+          
+          <div class="section-title-wrap" style="border-bottom: none; margin-bottom: 0;">
+            <h2 class="section-title">Pilih Direktori Arsip</h2>
+          </div>
+
+          <div style="margin-bottom: 25px; display: flex; gap: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px;">
+            <button onclick="loadArsip('rup')" class="btn-detail" style="background: var(--lpse-biru); color: white;">📂 Buka Arsip RUP</button>
+            <button onclick="loadArsip('pengadaan')" class="btn-detail" style="background: var(--lpse-hijau); color: white;">📂 Buka Arsip Pengadaan</button>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table style="width: 100%; border-collapse: collapse; text-align: left;">
+              <thead style="background-color: #f1f5f9; border-bottom: 2px solid #cbd5e1;">
+                <tr>
+                  <th style="padding: 14px; color: #1e293b; font-weight: 600;">Nama File Arsip Excel</th>
+                  <th style="padding: 14px; width: 150px; text-align: center; color: #1e293b; font-weight: 600;">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="tabel-arsip">
+                <tr>
+                  <td colspan="2" style="padding: 40px 20px; text-align: center; color: #64748b;">
+                    Silakan klik salah satu tombol di atas untuk memuat daftar arsip dari server.<br>
+                    <span style="display:inline-block; margin-top:8px; font-size: 0.85rem; color:var(--lpse-merah);"><i>(Browser mungkin akan meminta Username dan Password)</i></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <script>
@@ -314,6 +369,7 @@
       const hash = window.location.hash.substring(1);
       if (hash === 'rup') switchTab('view-rup', document.getElementById('btn-rup'), 'rup');
       else if (hash === 'pengadaan') switchTab('view-pengadaan', document.getElementById('btn-pengadaan'), 'pengadaan');
+      else if (hash === 'arsip') switchTab('view-arsip', document.getElementById('btn-arsip'), 'arsip');
       else switchTab('view-dashboard', document.getElementById('btn-dashboard'), '');
       
       // Load Data Eksekutif saat awal dibuka
@@ -425,6 +481,62 @@
       document.getElementById("loadingOverlayDashboard").style.display = "none";
     }
 
+    // === FUNGSI LOGIKA TABEL ARSIP ===
+    function loadArsip(kategori) {
+      const tableBody = document.getElementById('tabel-arsip');
+      tableBody.innerHTML = '<tr><td colspan="2" style="padding: 30px; text-align: center;"><div class="loader" style="margin: 0 auto;"></div><p style="margin-top:10px;">Sedang memuat data dari server...</p></td></tr>';
+
+      // Mengambil tahun dari kotak dropdown yang ada di Dashboard
+      const tahunTerpilih = document.getElementById("selectYearGlobal").value || new Date().getFullYear();
+      const urlArsip = `/arsip/${kategori}/${tahunTerpilih}/`; 
+
+      fetch(urlArsip)
+        .then(response => {
+          if (response.status === 401) {
+            throw new Error("Akses Ditolak. Harap masukkan Username dan Password yang benar.");
+          }
+          if (response.status === 404 || !response.ok) {
+            throw new Error(`Belum ada file arsip yang digenerate untuk Tahun ${tahunTerpilih}.`);
+          }
+          return response.text();
+        })
+        .then(htmlString => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(htmlString, 'text/html');
+          const links = htmlDoc.querySelectorAll('a');
+          
+          tableBody.innerHTML = ''; 
+          let adaFile = false;
+
+          links.forEach(link => {
+            const fileName = decodeURIComponent(link.getAttribute('href'));
+            
+            // Abaikan navigasi "../" ke atas folder
+            if (fileName !== '../') {
+              adaFile = true;
+              const row = document.createElement('tr');
+              row.style.borderBottom = '1px solid #e2e8f0';
+              
+              row.innerHTML = `
+                <td style="padding: 16px 14px; color: #334155; font-size: 0.95rem;">📄 ${fileName}</td>
+                <td style="padding: 16px 14px; text-align: center;">
+                  <a href="${urlArsip}${encodeURIComponent(fileName)}" download style="display: inline-block; padding: 6px 16px; background: var(--lpse-kuning); color: #1a1a1a; text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: 700; transition: transform 0.1s; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    ⬇ Unduh
+                  </a>
+                </td>
+              `;
+              tableBody.appendChild(row);
+            }
+          });
+
+          if (!adaFile) {
+            tableBody.innerHTML = `<tr><td colspan="2" style="padding: 30px; text-align: center; color: #64748b;">Folder kosong. Belum ada arsip untuk Tahun ${tahunTerpilih}.</td></tr>`;
+          }
+        })
+        .catch(error => {
+          tableBody.innerHTML = `<tr><td colspan="2" style="padding: 30px; text-align: center; color: var(--lpse-merah);"><b>Error:</b> ${error.message}</td></tr>`;
+        });
+    }
   </script>
 </body>
 </html>
