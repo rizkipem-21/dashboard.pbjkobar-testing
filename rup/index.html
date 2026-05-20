@@ -331,6 +331,8 @@
           <th>Satuan Kerja</th>
           <th style="text-align:right;">Pagu Program</th>
           <th style="text-align:right;">Pagu Pengadaan</th>
+          <th style="text-align:right;">RUP Penyedia</th>
+          <th style="text-align:right;">RUP Swakelola</th>
           <th style="text-align:right;">Total RUP Terumumkan</th>
           <th style="text-align:right;">Selisih</th>
           <th style="text-align:right;">Persentase</th>
@@ -347,6 +349,8 @@
           <th>Satuan Kerja</th>
           <th style="text-align:right;">Pagu Program</th>
           <th style="text-align:right;">Pagu Pengadaan</th>
+          <th style="text-align:right;">RUP Penyedia</th>
+          <th style="text-align:right;">RUP Swakelola</th>
           <th style="text-align:right;">Total RUP Terumumkan</th>
           <th style="text-align:right;">Selisih</th>
           <th style="text-align:right;">Persentase</th>
@@ -427,12 +431,14 @@ function renderTable() {
   body.innerHTML = "";
   
   if (filteredData.length === 0) {
-    body.innerHTML = `<tr><td colspan="7" class="td-center" style="padding:20px; color:#94a3b8;">Tidak ada data ditemukan.</td></tr>`;
+    body.innerHTML = `<tr><td colspan="9" class="td-center" style="padding:20px; color:#94a3b8;">Tidak ada data ditemukan.</td></tr>`;
     return;
   }
 
   filteredData.forEach((row, index) => {
     const paguPengadaan = Number(row["Pagu Pengadaan"] || 0);
+    const rupPenyedia = Number(row["RUP Penyedia"] || 0);
+    const rupSwakelola = Number(row["RUP Swakelola"] || 0);
     const rupTerumumkan = Number(row["Total RUP Terumumkan"] || 0);
     const selisih = rupTerumumkan - paguPengadaan;
     const persen = Number(row["Persentase"] || 0).toFixed(2) + "%";
@@ -443,6 +449,8 @@ function renderTable() {
       <td style="font-weight:500;">${row["Satuan Kerja"] ?? ""}</td>
       <td class="td-rupiah">${rupiah(row["Pagu Program"])}</td>
       <td class="td-rupiah">${rupiah(paguPengadaan)}</td>
+      <td class="td-rupiah">${rupiah(rupPenyedia)}</td>
+      <td class="td-rupiah">${rupiah(rupSwakelola)}</td>
       <td class="td-rupiah">${rupiah(rupTerumumkan)}</td>
       <td class="td-rupiah" style="color: ${selisih < 0 ? '#e63329' : '#1e293b'}">${rupiah(selisih)}</td>
       <td class="td-persen">${persen}</td>
@@ -479,6 +487,8 @@ async function downloadExcelFormatted() {
     { header: 'Satuan Kerja', key: 'satker', width: 45 },
     { header: 'Pagu Program', key: 'program', width: 22 },
     { header: 'Pagu Pengadaan', key: 'pengadaan', width: 22 },
+    { header: 'RUP Penyedia', key: 'penyedia', width: 22 },
+    { header: 'RUP Swakelola', key: 'swakelola', width: 22 },
     { header: 'Total RUP Terumumkan', key: 'rup', width: 25 },
     { header: 'Selisih', key: 'selisih', width: 22 },
     { header: 'Persentase', key: 'persen', width: 15 }
@@ -498,6 +508,8 @@ async function downloadExcelFormatted() {
   filteredData.forEach((row, index) => {
     const program = Number(row["Pagu Program"] || 0);
     const pengadaan = Number(row["Pagu Pengadaan"] || 0);
+    const penyedia = Number(row["RUP Penyedia"] || 0);
+    const swakelola = Number(row["RUP Swakelola"] || 0);
     const rup = Number(row["Total RUP Terumumkan"] || 0);
     const selisih = rup - pengadaan;
     const persen = Number(row["Persentase"] || 0) / 100;
@@ -507,6 +519,8 @@ async function downloadExcelFormatted() {
       satker: row["Satuan Kerja"],
       program: program,
       pengadaan: pengadaan,
+      penyedia: penyedia,
+      swakelola: swakelola,
       rup: rup,
       selisih: selisih,
       persen: persen
@@ -523,19 +537,19 @@ async function downloadExcelFormatted() {
         cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF0F5FB' } };
       }
       
-      // Format Rupiah untuk kolom uang
-      if ([3, 4, 5, 6].includes(colNum)) {
+      // Format Rupiah untuk kolom uang (Kolom 3 s/d 8)
+      if ([3, 4, 5, 6, 7, 8].includes(colNum)) {
         cell.numFmt = '"Rp" #,##0';
         cell.alignment = { horizontal: 'right', vertical: 'middle' };
       }
       
-      // Warna Merah untuk Selisih Minus
-      if (colNum === 6 && selisih < 0) {
+      // Warna Merah untuk Selisih Minus (Kolom 8)
+      if (colNum === 8 && selisih < 0) {
         cell.font = { color: { argb: 'FFE63329' } };
       }
 
-      // Format Persen
-      if (colNum === 7) {
+      // Format Persen (Kolom 9)
+      if (colNum === 9) {
         cell.numFmt = '0.00%';
         cell.font = { bold: true, color: { argb: 'FF1A3A6B' } };
         cell.alignment = { horizontal: 'right', vertical: 'middle' };
@@ -553,10 +567,12 @@ async function downloadExcelFormatted() {
   totalRow.getCell(3).value = { formula: `SUM(C2:C${lastDataRow})` };
   totalRow.getCell(4).value = { formula: `SUM(D2:D${lastDataRow})` };
   totalRow.getCell(5).value = { formula: `SUM(E2:E${lastDataRow})` };
+  totalRow.getCell(6).value = { formula: `SUM(F2:F${lastDataRow})` };
+  totalRow.getCell(7).value = { formula: `SUM(G2:G${lastDataRow})` };
   // Rumus Selisih Total (Total RUP - Total Pagu)
-  totalRow.getCell(6).value = { formula: `E${totalRowIndex}-D${totalRowIndex}` };
+  totalRow.getCell(8).value = { formula: `G${totalRowIndex}-D${totalRowIndex}` };
   // Rumus Persentase Total (Total RUP / Total Pagu)
-  totalRow.getCell(7).value = { formula: `IF(D${totalRowIndex}=0, 0, E${totalRowIndex}/D${totalRowIndex})` };
+  totalRow.getCell(9).value = { formula: `IF(D${totalRowIndex}=0, 0, G${totalRowIndex}/D${totalRowIndex})` };
 
   // Styling Baris Total
   totalRow.height = 22;
@@ -565,11 +581,11 @@ async function downloadExcelFormatted() {
     cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF5C800' } }; // Kuning LPSE
     cell.border = { top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
     
-    if ([3, 4, 5, 6].includes(colNum)) {
+    if ([3, 4, 5, 6, 7, 8].includes(colNum)) {
       cell.numFmt = '"Rp" #,##0';
       cell.alignment = { horizontal: 'right', vertical: 'middle' };
     }
-    if (colNum === 7) {
+    if (colNum === 9) {
       cell.numFmt = '0.00%';
       cell.alignment = { horizontal: 'right', vertical: 'middle' };
     }
