@@ -488,9 +488,8 @@
 
       // Mengambil tahun dari kotak dropdown yang ada di Dashboard
       const tahunTerpilih = document.getElementById("selectYearGlobal").value || new Date().getFullYear();
-      const serverOrigin = window.location.hostname === 'localhost' ? 'http://localhost:8080' : 'http://[IP_PUBLIK_ATAU_DOMAIN_SERVER_ANDA]';
-      const urlArsip = `${serverOrigin}/arsip/${kategori}/${tahunTerpilih}/`;
-
+      const urlArsip = `http://localhost:8080/arsip/${kategori}/${tahunTerpilih}/`;
+      
       fetch(urlArsip)
         .then(response => {
           if (response.status === 401) {
