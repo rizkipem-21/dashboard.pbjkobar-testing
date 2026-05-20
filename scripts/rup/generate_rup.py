@@ -5,6 +5,7 @@
 import pandas as pd
 import json
 import os
+import re
 import requests
 import time
 from datetime import datetime, timedelta, timezone
@@ -111,7 +112,7 @@ def download_data_api_with_retry(tahun):
                 f.write("[]")
 
 # ======================================================
-# FUNGSI BANTUAN LOAD DATA
+# FUNGSI BANTUAN LOAD DATA & PEMBERSIHAN
 # ======================================================
 def load_json_local(path):
     try:
@@ -123,6 +124,32 @@ def load_json_local(path):
             return []
     except:
         return []
+
+def bersihkan_arsip_bulanan(folder_path):
+    """Fitur untuk menghapus riwayat Excel bulan lalu, sisakan hanya 1 file akhir bulan"""
+    if not os.path.exists(folder_path): return
+    
+    bulan_ini = datetime.now().strftime("%Y-%m")
+    file_excel = [f for f in os.listdir(folder_path) if f.endswith('.xlsx')]
+    
+    arsip_bulanan = {}
+    for f in file_excel:
+        match = re.search(r"\((\d{4}-\d{2}-\d{2})\)", f)
+        if match:
+            tanggal = match.group(1)
+            bulan = tanggal[:7]
+            if bulan not in arsip_bulanan:
+                arsip_bulanan[bulan] = []
+            arsip_bulanan[bulan].append((tanggal, f))
+            
+    for bulan, list_file in arsip_bulanan.items():
+        if bulan != bulan_ini:
+            # Urutkan dari tanggal awal ke akhir, hapus semua kecuali hari terakhir
+            list_file.sort(key=lambda x: x[0])
+            file_yang_dihapus = list_file[:-1]
+            for tgl, nama_file in file_yang_dihapus:
+                try: os.remove(os.path.join(folder_path, nama_file))
+                except Exception: pass
 
 # ======================================================
 # FUNGSI 2: PROSES DATA & GENERATE EXCEL
@@ -200,7 +227,7 @@ def process_tahun(tahun):
 
     # 7. Finalisasi Data
     df_final = df[['Satuan Kerja', 'Pagu Program', 'Pagu Pengadaan', 'RUP Penyedia', 
-                   'RUP Swakelola', 'Total RUP Terumumkan', 'Selisih RUP Terumumkan', 'Persentase']]
+                  'RUP Swakelola', 'Total RUP Terumumkan', 'Selisih RUP Terumumkan', 'Persentase']]
     df_final = df_final.sort_values('Satuan Kerja').reset_index(drop=True)
 
     # ======================================================
@@ -244,6 +271,15 @@ def process_tahun(tahun):
             if cell.column == 8: cell.number_format = '0.00"%"'
 
     wb.save(path_history)
+
+    # ----------------------------------------------------
+    # FITUR PEMBERSIHAN ARSIP BULANAN & BUKU DAFTAR (RUP)
+    # ----------------------------------------------------
+    bersihkan_arsip_bulanan(output_history_dir)
+    if os.path.exists(output_history_dir):
+        file_tersisa = [f for f in os.listdir(output_history_dir) if f.endswith('.xlsx')]
+        with open(os.path.join(output_history_dir, 'daftar_arsip.json'), 'w') as f:
+            json.dump(file_tersisa, f)
 
     log_print(f"DONE -> JSON: rekap_rup_{tahun}.json")
     log_print(f"DONE -> EXCEL: {path_history}")

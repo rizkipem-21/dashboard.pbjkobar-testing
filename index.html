@@ -301,6 +301,15 @@
           
           <div class="section-title-wrap" style="border-bottom: none; margin-bottom: 0;">
             <h2 class="section-title">Pilih Direktori Arsip</h2>
+            
+            <div style="background: var(--lpse-biru); padding: 8px 16px; border-radius: 8px; display: inline-flex; align-items: center; gap: 10px;">
+              <label style="color: white; font-size: 0.85rem; font-weight: bold;">Tahun Arsip:</label>
+              <select id="selectYearArsip" style="padding: 4px 10px; border-radius: 4px; border: none; outline: none; font-weight: bold; cursor: pointer;">
+                <option value="2026" selected>2026</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+              </select>
+            </div>
           </div>
 
           <div style="margin-bottom: 25px; display: flex; gap: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px;">
@@ -320,7 +329,7 @@
                 <tr>
                   <td colspan="2" style="padding: 40px 20px; text-align: center; color: #64748b;">
                     Silakan klik salah satu tombol di atas untuk memuat daftar arsip dari server.<br>
-                    <span style="display:inline-block; margin-top:8px; font-size: 0.85rem; color:var(--lpse-merah);"><i>(Browser mungkin akan meminta Username dan Password)</i></span>
+                    <span style="display:inline-block; margin-top:8px; font-size: 0.85rem; color:var(--lpse-merah);"><i>(Browser akan meminta Username dan Password)</i></span>
                   </td>
                 </tr>
               </tbody>
@@ -335,11 +344,9 @@
   <script>
     // === FUNGSI LOGIKA TAB (SIDEBAR) ===
     function switchTab(panelId, element, hashName) {
-      // 1. Sembunyikan semua panel dan tampilkan yang dipilih
       document.querySelectorAll('.view-panel').forEach(panel => panel.classList.add('hidden'));
       document.getElementById(panelId).classList.remove('hidden');
 
-      // 2. Ubah warna tombol navigasi yang aktif
       document.querySelectorAll('.menu-item').forEach(btn => {
         btn.classList.remove('bg-lpse-biru', 'text-white', 'shadow-sm', 'font-medium');
         btn.classList.add('text-gray-600', 'hover:bg-gray-100');
@@ -352,7 +359,6 @@
       const activeSvg = element.querySelector('svg');
       if (activeSvg) activeSvg.classList.remove('opacity-70');
 
-      // 3. FITUR BARU: Refresh iframe agar filter kembali kosong
       if (panelId === 'view-rup' || panelId === 'view-pengadaan') {
         const iframe = document.getElementById(panelId).querySelector('iframe');
         if (iframe) {
@@ -360,7 +366,6 @@
         }
       }
 
-      // 4. Update URL Hash
       if (hashName) history.replaceState(null, null, '#' + hashName);
       else history.replaceState(null, null, ' ');
     }
@@ -372,7 +377,6 @@
       else if (hash === 'arsip') switchTab('view-arsip', document.getElementById('btn-arsip'), 'arsip');
       else switchTab('view-dashboard', document.getElementById('btn-dashboard'), '');
       
-      // Load Data Eksekutif saat awal dibuka
       loadAllData(document.getElementById("selectYearGlobal").value);
     }
     window.onload = checkUrlHash;
@@ -471,67 +475,69 @@
 
     async function loadAllData(year) {
       document.getElementById("loadingOverlayDashboard").style.display = "flex";
-      
       fetchLastUpdateText("rup");
       fetchLastUpdateText("pengadaan");
-      
       await processRUP(year);
       await processPengadaan(year);
-      
       document.getElementById("loadingOverlayDashboard").style.display = "none";
     }
 
-    // === FUNGSI LOGIKA TABEL ARSIP ===
+    // === FUNGSI LOGIKA TABEL ARSIP (TERPISAH & BERGEMBOK) ===
+    let arsipSudahLogin = false; 
+
     function loadArsip(kategori) {
       const tableBody = document.getElementById('tabel-arsip');
-      tableBody.innerHTML = '<tr><td colspan="2" style="padding: 30px; text-align: center;"><div class="loader" style="margin: 0 auto;"></div><p style="margin-top:10px;">Sedang memuat data dari server...</p></td></tr>';
-
-      // Mengambil tahun dari kotak dropdown yang ada di Dashboard
-      const tahunTerpilih = document.getElementById("selectYearGlobal").value || new Date().getFullYear();
-      const urlArsip = `http://localhost:8080/arsip/${kategori}/${tahunTerpilih}/`;
       
-      fetch(urlArsip)
+      // 1. TANYAKAN PASSWORD (Hanya jika belum login di sesi ini)
+      if (!arsipSudahLogin) {
+        const passwordSistem = "RahasiaKobar123"; 
+        const inputUser = prompt("Masukkan Password Akses Arsip Tim PBJ:");
+        
+        if (inputUser === null) {
+          tableBody.innerHTML = '<tr><td colspan="2" style="padding: 30px; text-align: center; color: #64748b;">Akses dibatalkan.</td></tr>';
+          return;
+        }
+        if (inputUser !== passwordSistem) {
+          tableBody.innerHTML = '<tr><td colspan="2" style="padding: 30px; text-align: center; color: var(--lpse-merah);"><b>Akses Ditolak:</b> Password salah!</td></tr>';
+          return;
+        }
+        arsipSudahLogin = true; 
+      }
+
+      tableBody.innerHTML = '<tr><td colspan="2" style="padding: 30px; text-align: center;"><div class="loader" style="margin: 0 auto;"></div><p style="margin-top:10px;">Sedang memuat data arsip...</p></td></tr>';
+
+      // 2. MENGAMBIL DATA DARI TOMBOL TAHUN KHUSUS ARSIP (BUKAN DASHBOARD GLOBAL)
+      const tahunArsip = document.getElementById("selectYearArsip").value;
+      const urlJson = `output/${kategori}/${tahunArsip}/daftar_arsip.json`;
+      const urlFolder = `output/${kategori}/${tahunArsip}/`;
+
+      // 3. MEMBACA FILE BUKU DAFTAR (JSON)
+      fetch(urlJson)
         .then(response => {
-          if (response.status === 401) {
-            throw new Error("Akses Ditolak. Harap masukkan Username dan Password yang benar.");
-          }
-          if (response.status === 404 || !response.ok) {
-            throw new Error(`Belum ada file arsip yang digenerate untuk Tahun ${tahunTerpilih}.`);
-          }
-          return response.text();
+          if (!response.ok) throw new Error(`Belum ada file arsip yang digenerate untuk Tahun ${tahunArsip}.`);
+          return response.json();
         })
-        .then(htmlString => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(htmlString, 'text/html');
-          const links = htmlDoc.querySelectorAll('a');
-          
+        .then(dataFiles => {
           tableBody.innerHTML = ''; 
-          let adaFile = false;
-
-          links.forEach(link => {
-            const fileName = decodeURIComponent(link.getAttribute('href'));
-            
-            // Abaikan navigasi "../" ke atas folder
-            if (fileName !== '../') {
-              adaFile = true;
-              const row = document.createElement('tr');
-              row.style.borderBottom = '1px solid #e2e8f0';
-              
-              row.innerHTML = `
-                <td style="padding: 16px 14px; color: #334155; font-size: 0.95rem;">📄 ${fileName}</td>
-                <td style="padding: 16px 14px; text-align: center;">
-                  <a href="${urlArsip}${encodeURIComponent(fileName)}" download style="display: inline-block; padding: 6px 16px; background: var(--lpse-kuning); color: #1a1a1a; text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: 700; transition: transform 0.1s; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                    ⬇ Unduh
-                  </a>
-                </td>
-              `;
-              tableBody.appendChild(row);
-            }
-          });
-
-          if (!adaFile) {
-            tableBody.innerHTML = `<tr><td colspan="2" style="padding: 30px; text-align: center; color: #64748b;">Folder kosong. Belum ada arsip untuk Tahun ${tahunTerpilih}.</td></tr>`;
+          if (dataFiles.length === 0) {
+            tableBody.innerHTML = `<tr><td colspan="2" style="padding: 30px; text-align: center; color: #64748b;">Folder kosong. Belum ada arsip untuk Tahun ${tahunArsip}.</td></tr>`;
+            return;
           }
+
+          // Urutkan file terbaru ke posisi atas
+          dataFiles.sort().reverse().forEach(fileName => {
+            const row = document.createElement('tr');
+            row.style.borderBottom = '1px solid #e2e8f0';
+            row.innerHTML = `
+              <td style="padding: 16px 14px; color: #334155; font-size: 0.95rem;">📄 ${fileName}</td>
+              <td style="padding: 16px 14px; text-align: center;">
+                <a href="${urlFolder}${encodeURIComponent(fileName)}" download style="display: inline-block; padding: 6px 16px; background: var(--lpse-kuning); color: #1a1a1a; text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: 700; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                  ⬇ Unduh
+                </a>
+              </td>
+            `;
+            tableBody.appendChild(row);
+          });
         })
         .catch(error => {
           tableBody.innerHTML = `<tr><td colspan="2" style="padding: 30px; text-align: center; color: var(--lpse-merah);"><b>Error:</b> ${error.message}</td></tr>`;

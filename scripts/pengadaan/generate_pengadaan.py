@@ -145,6 +145,32 @@ def load_json(path):
     except:
         return pd.DataFrame()
 
+def bersihkan_arsip_bulanan(folder_path):
+    """Fitur untuk menghapus riwayat Excel bulan lalu, sisakan hanya 1 file akhir bulan"""
+    if not os.path.exists(folder_path): return
+    
+    bulan_ini = datetime.now().strftime("%Y-%m")
+    file_excel = [f for f in os.listdir(folder_path) if f.endswith('.xlsx')]
+    
+    arsip_bulanan = {}
+    for f in file_excel:
+        match = re.search(r"\((\d{4}-\d{2}-\d{2})\)", f)
+        if match:
+            tanggal = match.group(1)
+            bulan = tanggal[:7]
+            if bulan not in arsip_bulanan:
+                arsip_bulanan[bulan] = []
+            arsip_bulanan[bulan].append((tanggal, f))
+            
+    for bulan, list_file in arsip_bulanan.items():
+        if bulan != bulan_ini:
+            # Urutkan dari tanggal awal ke akhir, hapus semua kecuali hari terakhir
+            list_file.sort(key=lambda x: x[0])
+            file_yang_dihapus = list_file[:-1]
+            for tgl, nama_file in file_yang_dihapus:
+                try: os.remove(os.path.join(folder_path, nama_file))
+                except Exception: pass
+
 # ======================================================
 # FUNGSI UTAMA PROSES PER TAHUN
 # ======================================================
@@ -269,10 +295,10 @@ def process_tahun(tahun):
             with open(path_kamus, 'r', encoding='utf-8') as f:
                 kamus_list = json.load(f)
                 if isinstance(kamus_list, list):
-                    for item in kamus_list:
-                        nama = item.get('nama_penyedia', "")
-                        if item.get('kode_penyedia'): map_offline_penyedia[str(item['kode_penyedia'])] = nama
-                        if item.get('kd_penyedia'): map_offline_penyedia[str(item['kd_penyedia'])] = nama
+                   for item in kamus_list:
+                       nama = item.get('nama_penyedia', "")
+                       if item.get('kode_penyedia'): map_offline_penyedia[str(item['kode_penyedia'])] = nama
+                       if item.get('kd_penyedia'): map_offline_penyedia[str(item['kd_penyedia'])] = nama
         except: pass
 
     # Standardize RUP KD Function
@@ -480,7 +506,7 @@ def process_tahun(tahun):
 
     # Swakelola/Penyedia Murni (Sumber 1) yang sama sekali belum dieksekusi proses pengadaannya
     set_all_executed = get_set(df2, 'kd_rup_raw').union(get_set(df3, 'kd_rup_raw')).union(get_set(df4, 'kd_rup_raw'))\
-                      .union(get_set(df5, 'kd_rup_raw')).union(get_set(df6, 'rup_code_raw')).union(get_set(df7, 'kd_rup_raw'))
+                     .union(get_set(df5, 'kd_rup_raw')).union(get_set(df6, 'rup_code_raw')).union(get_set(df7, 'kd_rup_raw'))
     
     data_s1=[]
     for _, r in df1.iterrows():
@@ -554,7 +580,7 @@ def process_tahun(tahun):
     fill_putih = PatternFill('solid', start_color='FFFFFF')
     fill_biru_muda = PatternFill('solid', start_color='DCE6F1')
     border_thin = Border(left=Side(style='thin', color='BFBFBF'), right=Side(style='thin', color='BFBFBF'),
-                         top=Side(style='thin', color='BFBFBF'), bottom=Side(style='thin', color='BFBFBF'))
+                        top=Side(style='thin', color='BFBFBF'), bottom=Side(style='thin', color='BFBFBF'))
 
     lebar_kolom = {
         'Kode RUP': 18, 'Satuan Kerja': 38, 'Nama Paket': 50, 'Metode Pengadaan': 22, 'Jenis Pengadaan': 32,
@@ -591,6 +617,15 @@ def process_tahun(tahun):
     # Kopi Hasil ke folder web terintegrasi
     master_excel = os.path.join(data_dir, f'master_pengadaan_{tahun}.xlsx')
     shutil.copy2(output_excel_path, master_excel)
+    
+    # ----------------------------------------------------
+    # FITUR PEMBERSIHAN ARSIP BULANAN & BUKU DAFTAR (PENGADAAN)
+    # ----------------------------------------------------
+    bersihkan_arsip_bulanan(output_dir_excel)
+    if os.path.exists(output_dir_excel):
+        file_tersisa = [f for f in os.listdir(output_dir_excel) if f.endswith('.xlsx')]
+        with open(os.path.join(output_dir_excel, 'daftar_arsip.json'), 'w') as f:
+            json.dump(file_tersisa, f)
     
     log_print(f'SELESAI GENERATE TAHUN {tahun} | Total paket data: {len(final_df)}')
     return len(final_df)
