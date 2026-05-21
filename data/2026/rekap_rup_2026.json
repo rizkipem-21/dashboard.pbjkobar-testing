@@ -143,11 +143,11 @@
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Pagu Program": 105714344580.0,
     "Pagu Pengadaan": 105032048100.0,
-    "RUP Penyedia": 104973280434.0,
+    "RUP Penyedia": 99702184434.0,
     "RUP Swakelola": 35000000.0,
-    "Total RUP Terumumkan": 105008280434.0,
-    "Selisih RUP Terumumkan": -23767666.0,
-    "Persentase": 99.97737103443191
+    "Total RUP Terumumkan": 99737184434.0,
+    "Selisih RUP Terumumkan": -5294863666.0,
+    "Persentase": 94.95881137064107
   },
   {
     "Satuan Kerja": "Dinas Pemadam Kebakaran dan Penyelamatan",
@@ -782,12 +782,12 @@
   {
     "Satuan Kerja": "Sekretariat Daerah",
     "Pagu Program": 26241869559.0,
-    "Pagu Pengadaan": 12042200559.0,
-    "RUP Penyedia": 11974816209.0,
+    "Pagu Pengadaan": 11974816559.0,
+    "RUP Penyedia": 11974816559.0,
     "RUP Swakelola": 0.0,
-    "Total RUP Terumumkan": 11974816209.0,
-    "Selisih RUP Terumumkan": -67384350.0,
-    "Persentase": 99.44043159163598
+    "Total RUP Terumumkan": 11974816559.0,
+    "Selisih RUP Terumumkan": 0.0,
+    "Persentase": 100.0
   },
   {
     "Satuan Kerja": "Workshop dan Peralatan Konstruksi",
