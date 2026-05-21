@@ -338,58 +338,6 @@
         </div>
       </div>
     </div>
-      
-      <div class="page-header" style="margin: 20px 20px 0 20px; border-radius: 12px; box-shadow: 0 4px 16px rgba(26,58,107,0.18);">
-        <h1>📁 Arsip Data PBJ (Riwayat Master Excel)</h1>
-        <p class="last-update" style="margin-top:2px;">Akses arsip file Excel harian yang tersimpan aman di server</p>
-      </div>
-
-      <div style="padding: 20px; max-width: 1400px; margin: 0 auto; width: 100%;">
-        <div class="dashboard-section">
-          <div class="color-strip">
-            <span style="background:var(--lpse-biru)"></span><span style="background:var(--lpse-merah)"></span>
-            <span style="background:var(--lpse-kuning)"></span><span style="background:var(--lpse-hijau)"></span>
-          </div>
-          
-          <div class="section-title-wrap" style="border-bottom: none; margin-bottom: 0;">
-            <h2 class="section-title">Pilih Direktori Arsip</h2>
-            
-            <div style="background: var(--lpse-biru); padding: 8px 16px; border-radius: 8px; display: inline-flex; align-items: center; gap: 10px;">
-              <label style="color: white; font-size: 0.85rem; font-weight: bold;">Tahun Arsip:</label>
-              <select id="selectYearArsip" style="padding: 4px 10px; border-radius: 4px; border: none; outline: none; font-weight: bold; cursor: pointer;">
-                <option value="2026" selected>2026</option>
-                <option value="2025">2025</option>
-                <option value="2024">2024</option>
-              </select>
-            </div>
-          </div>
-
-          <div style="margin-bottom: 25px; display: flex; gap: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px;">
-            <button onclick="loadArsip('rup')" class="btn-detail" style="background: var(--lpse-biru); color: white;">📂 Buka Arsip RUP</button>
-            <button onclick="loadArsip('pengadaan')" class="btn-detail" style="background: var(--lpse-hijau); color: white;">📂 Buka Arsip Pengadaan</button>
-          </div>
-
-          <div class="overflow-x-auto">
-            <table style="width: 100%; border-collapse: collapse; text-align: left;">
-              <thead style="background-color: #f1f5f9; border-bottom: 2px solid #cbd5e1;">
-                <tr>
-                  <th style="padding: 14px; color: #1e293b; font-weight: 600;">Nama File Arsip Excel</th>
-                  <th style="padding: 14px; width: 150px; text-align: center; color: #1e293b; font-weight: 600;">Aksi</th>
-                </tr>
-              </thead>
-              <tbody id="tabel-arsip">
-                <tr>
-                  <td colspan="2" style="padding: 40px 20px; text-align: center; color: #64748b;">
-                    Silakan klik salah satu tombol di atas untuk memuat daftar arsip dari server.<br>
-                    <span style="display:inline-block; margin-top:8px; font-size: 0.85rem; color:var(--lpse-merah);"><i>(Browser akan meminta Username dan Password)</i></span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
 
   </main>
 
