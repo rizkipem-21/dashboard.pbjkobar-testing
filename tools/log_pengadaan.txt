@@ -6072,3 +6072,33 @@ SELESAI GENERATE TAHUN 2026 | Total paket data: 4936
 =======================================================
 SINKRONISASI PBJ ALL-TAHUN SELESAI PADA 21 Mei 2026 | 13.07 WIB | Total: 15448 Paket
 =======================================================
+
+=======================================================
+START 21 Mei 2026 | 14.00 WIB
+AUTOMATION SYSTEM PENGADAAN BARANG DAN JASA
+Target Sinkronisasi: [2024, 2025, 2026]
+=======================================================
+
+[SKIP] Tahun 2024 sudah final -> Lewati download & generate
+
+=======================================================
+   PROSES DATA TAHUN 2025
+=======================================================
+Memulai proses download API untuk Tahun 2025...
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2025
+-> Gagal error: HTTPSConnectionPool(host='data.inaproc.id', port=443): Read timed out. (read timeout=30)
+-> Gagal HTTP 500
+-> Gagal HTTP 500
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2025
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-bapbast?kode_klpd=D228&tahun=2025
+-> Gagal error: HTTPSConnectionPool(host='data.inaproc.id', port=443): Read timed out. (read timeout=30)
+-> Gagal error: HTTPSConnectionPool(host='data.inaproc.id', port=443): Read timed out. (read timeout=30)
+-> Gagal error: HTTPSConnectionPool(host='data.inaproc.id', port=443): Read timed out. (read timeout=30)
+-> Gagal error: HTTPSConnectionPool(host='data.inaproc.id', port=443): Read timed out. (read timeout=30)
+-> Gagal error: HTTPSConnectionPool(host='data.inaproc.id', port=443): Read timed out. (read timeout=30)
+  -> GAGAL TOTAL -> Membuat file JSON kosong []
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-kontrak?kode_klpd=D228&tahun=2025
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2025
