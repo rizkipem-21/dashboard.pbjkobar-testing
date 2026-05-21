@@ -34,7 +34,7 @@ tahun_n1     = tahun_n - 1               # Tahun lalu
 tahun_n2     = tahun_n - 2               # Dua tahun lalu
 daftar_tahun = [tahun_n2, tahun_n1, tahun_n] # Urutan pemrosesan dari terlama ke terbaru
 
-# 20 Daftar Endpoint API Inaproc (Sudah ditambahkan instansi-satker)
+# 20 Daftar Endpoint API Inaproc
 ENDPOINTS = [
     "rup/paket-penyedia-terumumkan",
     "rup/paket-swakelola-terumumkan",
@@ -426,7 +426,7 @@ def process_tahun(tahun):
         for k in kd_t_list:
             if k in set_t_bapbast: status='BAPBAST'; break
             elif k in set_t_spmkspp: status='SPMKSPP'; break
-            elif k in set_t_kontrak: status='Contracts'; status='Kontrak'; break
+            elif k in set_t_kontrak: status='Kontrak'; break
             elif k in set_t_sppbj: status='SPPBJ'; break
             elif k in set_t_selesai: status='Tender Selesai'; break
 
@@ -513,13 +513,24 @@ def process_tahun(tahun):
         except: key_id = str(sid).strip() if pd.notna(sid) else ""
         nama_satker_s7 = map_satker_v5.get(key_id, "")
 
+        # KODE BARU: Logika Status Sumber 7 yang dimodifikasi
+        paket_status_str = r.get('paket_status_str')
+        if paket_status_str == "Paket Proses":
+            status_s7 = r.get('status_paket')
+        elif paket_status_str == "Paket Selesai":
+            status_s7 = r.get('paket_status_str')
+        else:
+            status_s7 = paket_status_str
+
         data_s7.append({
             'Kode RUP': r.get('kd_rup_raw'), 
-            'Satuan Kerja': nama_satker_s7, # Diubah menggunakan hasil pencocokan baru
+            'Satuan Kerja': nama_satker_s7,
             'Nama Paket': r.get('nama_paket'), 'Metode Pengadaan': 'E-Purchasing', 'Jenis Pengadaan': get_s1(kd, 'jenis_pengadaan'), 'Sumber Dana': r.get('nama_sumber_dana'),
             'PDN': get_s1(kd, 'status_pdn'), 'UKM': get_s1(kd, 'status_ukm'), 'Nilai Pagu RUP': get_pagu_multi(r.get('kd_rup_list'), 's1'),
-            'Nilai Hasil Pemilihan': nilai_hasil, 'Tanggal Kontrak': "", 'Nama Penyedia': nama_p, 'Status': r.get('paket_status_str'),
-            'Kode Paket': r.get('kd_paket'), 'Nilai HPS': pd.NA, 'Nilai PDN': nilai_pdn_val, 'Nilai UMK': nilai_umk_val,
+            'Nilai Hasil Pemilihan': nilai_hasil, 'Tanggal Kontrak': "", 'Nama Penyedia': nama_p, 
+            'Status': status_s7, # Diubah sesuai instruksi
+            'Kode Paket': r.get('no_paket'), # Diubah dari kd_paket ke no_paket
+            'Nilai HPS': pd.NA, 'Nilai PDN': nilai_pdn_val, 'Nilai UMK': nilai_umk_val,
             'Metode': 'E-Purchasing V5', 'Sumber': 'Sumber 7'
         })
     df_s7 = pd.DataFrame(data_s7)
