@@ -7955,3 +7955,17 @@ SELESAI GENERATE TAHUN 2026 | Total paket data: 4934
 =======================================================
 SINKRONISASI PBJ ALL-TAHUN SELESAI PADA 25 Mei 2026 | 15.11 WIB | Total: 15289 Paket
 =======================================================
+
+=======================================================
+START 25 Mei 2026 | 16.00 WIB
+AUTOMATION SYSTEM PENGADAAN BARANG DAN JASA
+Target Sinkronisasi: [2024, 2025, 2026]
+=======================================================
+
+[SKIP] Tahun 2024 sudah final -> Lewati download & generate
+
+=======================================================
+   PROSES DATA TAHUN 2025
+=======================================================
+Memulai proses download API untuk Tahun 2025...
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2025
