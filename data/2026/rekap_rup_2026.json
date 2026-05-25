@@ -142,12 +142,12 @@
   {
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Pagu Program": 105714344580.0,
-    "Pagu Pengadaan": 105032048100.0,
-    "RUP Penyedia": 104973280434.0,
+    "Pagu Pengadaan": 105032048101.0,
+    "RUP Penyedia": 104997048100.0,
     "RUP Swakelola": 35000000.0,
-    "Total RUP Terumumkan": 105008280434.0,
-    "Selisih RUP Terumumkan": -23767666.0,
-    "Persentase": 99.97737103443191
+    "Total RUP Terumumkan": 105032048100.0,
+    "Selisih RUP Terumumkan": -1.0,
+    "Persentase": 99.9999999990479
   },
   {
     "Satuan Kerja": "Dinas Pemadam Kebakaran dan Penyelamatan",
@@ -193,11 +193,11 @@
     "Satuan Kerja": "Dinas Pendidikan dan Kebudayaan",
     "Pagu Program": 63843390000.0,
     "Pagu Pengadaan": 61655471600.0,
-    "RUP Penyedia": 9459393688.0,
+    "RUP Penyedia": 9453786212.0,
     "RUP Swakelola": 52187493800.0,
-    "Total RUP Terumumkan": 61646887488.0,
-    "Selisih RUP Terumumkan": -8584112.0,
-    "Persentase": 99.98607729082718
+    "Total RUP Terumumkan": 61641280012.0,
+    "Selisih RUP Terumumkan": -14191588.0,
+    "Persentase": 99.97698243540806
   },
   {
     "Satuan Kerja": "Dinas Perhubungan",
@@ -622,12 +622,12 @@
   {
     "Satuan Kerja": "Puskesmas Madurejo",
     "Pagu Program": 3134258300.0,
-    "Pagu Pengadaan": 415113730.0,
+    "Pagu Pengadaan": 3134258300.0,
     "RUP Penyedia": 373421530.0,
     "RUP Swakelola": 0.0,
     "Total RUP Terumumkan": 373421530.0,
-    "Selisih RUP Terumumkan": -41692200.0,
-    "Persentase": 89.95643916668331
+    "Selisih RUP Terumumkan": -2760836770.0,
+    "Persentase": 11.914191309631372
   },
   {
     "Satuan Kerja": "Puskesmas Mendawai",
@@ -722,12 +722,12 @@
   {
     "Satuan Kerja": "Puskesmas Teluk Bogam",
     "Pagu Program": 1291889268.0,
-    "Pagu Pengadaan": 1288698018.0,
+    "Pagu Pengadaan": 1291889268.0,
     "RUP Penyedia": 350390301.0,
     "RUP Swakelola": 0.0,
     "Total RUP Terumumkan": 350390301.0,
-    "Selisih RUP Terumumkan": -938307717.0,
-    "Persentase": 27.189480864088672
+    "Selisih RUP Terumumkan": -941498967.0,
+    "Persentase": 27.12231687956092
   },
   {
     "Satuan Kerja": "Rumah Potong Hewan Ruminansia",
