@@ -5737,3 +5737,61 @@ Data Master kosong. Melewati tahun 2026.
 ==================================================
 PROSES SELESAI SELURUHNYA PADA 4 Juni 2026 | 04.38 WIB
 ==================================================
+
+==================================================
+START 4 Juni 2026 | 05.02 WIB
+AUTO GENERATE RUP (DOWNLOAD RETRY & MULTI TAHUN)
+==================================================
+
+--- MENGUNDUH DATA TAHUN 2026 ---
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+GAGAL (Status 403)
+GAGAL (Status 403)
+GAGAL (Status 403)
+GAGAL (Status 403)
+GAGAL (Status 403)
+  GAGAL TOTAL -> buat file kosong
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+GAGAL (Status 403)
+GAGAL (Status 403)
+GAGAL (Status 403)
+GAGAL (Status 403)
+GAGAL (Status 403)
+  GAGAL TOTAL -> buat file kosong
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+GAGAL (Status 403)
+GAGAL (Status 403)
+GAGAL (Status 403)
+GAGAL (Status 403)
+GAGAL (Status 403)
+  GAGAL TOTAL -> buat file kosong
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+GAGAL (Status 403)
+GAGAL (Status 403)
+GAGAL (Status 403)
+GAGAL (Status 403)
+GAGAL (Status 403)
+  GAGAL TOTAL -> buat file kosong
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+GAGAL (Status 403)
+GAGAL (Status 403)
+GAGAL (Status 403)
+GAGAL (Status 403)
+GAGAL (Status 403)
+  GAGAL TOTAL -> buat file kosong
+
+--- MEMPROSES DATA TAHUN 2026 ---
+Data Master kosong. Melewati tahun 2026.
+
+[SKIP] Tahun 2025 sudah ada (final).
+
+[SKIP] Tahun 2024 sudah ada (final).
+
+==================================================
+PROSES SELESAI SELURUHNYA PADA 4 Juni 2026 | 05.03 WIB
+==================================================
