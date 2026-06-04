@@ -14,7 +14,7 @@ BASE_DIR = r'D:\rup-2026-inaproc'
 MASTER_DIR = os.path.join(BASE_DIR, 'data', 'master')
 KAMUS_FILE = os.path.join(MASTER_DIR, 'kamus_penyedia.json')
 
-TOKEN = 'inprc7642391c38774272bf57ca25ac1d4544'
+TOKEN = 'inprcf2fff15cacb3426890b78fe795cf7f59'
 HEADERS = {
     'Authorization': f'Bearer {TOKEN}',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',

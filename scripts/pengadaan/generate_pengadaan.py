@@ -21,7 +21,7 @@ warnings.filterwarnings('ignore')
 # KONFIGURASI UTAMA
 # ======================================================
 BASE_DIR = r'D:\dashboard-pbj-inaproc'
-TOKEN    = "inprc7642391c38774272bf57ca25ac1d4544"
+TOKEN    = "inprcf2fff15cacb3426890b78fe795cf7f59"
 HEADERS  = {
     "Authorization": f"Bearer {TOKEN}",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -228,7 +228,7 @@ def process_tahun(tahun):
     df5     = load_json(p('tender_pengumuman'))
     df5_1   = load_json(p('tender_tender-selesai'))
     df5_1_1 = load_json(p('tender_tender-selesai-nilai'))
-    df5_2   = load_json(p('tender_tender-ekontrak-sppbj'))
+``    df5_2   = load_json(p('tender_tender-ekontrak-sppbj'))
     df5_3   = load_json(p('tender_tender-ekontrak-kontrak'))
     df5_4   = load_json(p('tender_tender-ekontrak-spmkspp'))
     df5_5   = load_json(p('tender_tender-ekontrak-bapbast'))

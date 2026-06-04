@@ -25,7 +25,7 @@ tahun_n2 = tahun_n - 2               # Dua tahun lalu
 daftar_tahun = [tahun_n, tahun_n1, tahun_n2]
 
 # Konfigurasi API
-TOKEN = "inprc7642391c38774272bf57ca25ac1d4544"
+TOKEN = "inprcf2fff15cacb3426890b78fe795cf7f59"
 HEADERS = {
     "Authorization": f"Bearer {TOKEN}",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
