@@ -228,7 +228,7 @@ def process_tahun(tahun):
     df5     = load_json(p('tender_pengumuman'))
     df5_1   = load_json(p('tender_tender-selesai'))
     df5_1_1 = load_json(p('tender_tender-selesai-nilai'))
-``    df5_2   = load_json(p('tender_tender-ekontrak-sppbj'))
+    df5_2   = load_json(p('tender_tender-ekontrak-sppbj'))
     df5_3   = load_json(p('tender_tender-ekontrak-kontrak'))
     df5_4   = load_json(p('tender_tender-ekontrak-spmkspp'))
     df5_5   = load_json(p('tender_tender-ekontrak-bapbast'))
