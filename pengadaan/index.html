@@ -485,6 +485,11 @@
   <div style="display:flex; flex-wrap:nowrap; gap:10px; align-items:flex-end; overflow-x:auto; padding-bottom:4px;">
 
     <div style="display:flex; flex-direction:column; gap:4px;">
+      <label>Kode Paket</label>
+      <input id="filterKodePaket" type="text" placeholder="Cari kode paket..." style="width:140px;" />
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:4px;">
       <label>Satuan Kerja</label>
       <input id="filterSatker" type="text" placeholder="Cari satuan kerja..." style="width:180px;" />
     </div>
@@ -840,6 +845,7 @@ function getCheckedValues(type) {
 
 // === LOGIKA FILTER & TABEL ===
 function resetFilterInputs() {
+  document.getElementById("filterKodePaket").value = "";
   document.getElementById("filterSatker").value = "";
   document.getElementById("filterPaket").value = "";
   for (let f in filterConfigs) {
@@ -851,6 +857,7 @@ function resetFilterInputs() {
 }
 
 function applyFilter() {
+  const kodePaket = document.getElementById("filterKodePaket").value.trim().toLowerCase();
   const satker = document.getElementById("filterSatker").value.trim().toLowerCase();
   const paket  = document.getElementById("filterPaket").value.trim().toLowerCase();
   
@@ -861,6 +868,7 @@ function applyFilter() {
 
   filtered = allData.filter(row => {
     // 1. Text Search
+    if (kodePaket && !(String(row["Kode Paket"] ?? "")).toLowerCase().includes(kodePaket)) return false;
     if (satker && !(row["Satuan Kerja"] ?? "").toLowerCase().includes(satker)) return false;
     if (paket  && !(row["Nama Paket"]   ?? "").toLowerCase().includes(paket))  return false;
     
@@ -978,7 +986,7 @@ document.getElementById("perPage").addEventListener("change", (e) => {
   })
 );
 
-["filterSatker","filterPaket"].forEach(id =>
+["filterKodePaket","filterSatker","filterPaket"].forEach(id =>
   document.getElementById(id).addEventListener("keydown", (e) => {
     if (e.key === "Enter") applyFilter();
   })
