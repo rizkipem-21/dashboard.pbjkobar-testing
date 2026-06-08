@@ -876,11 +876,21 @@ function applyFilter() {
     if (checkedJenis  !== null && !checkedJenis.includes(row["Jenis Pengadaan"])) return false;
     if (checkedMetode !== null && !checkedMetode.includes(row["Metode Pengadaan"])) return false;
     
-    // Logika khusus untuk Cara Pengadaan (Metode) agar bisa membaca E-Purchasing asli
+    // Logika pemetaan khusus untuk Cara Pengadaan (kolom Metode)
     if (checkedCara !== null) {
-      let valCara = row["Metode"] ?? "";
-      if (valCara === "E-Purchasing" || valCara === "e-Purchasing") valCara = "E-Purchasing V5";
-      if (!checkedCara.includes(valCara)) return false;
+      let valCara = (row["Metode"] ?? "").trim().toLowerCase();
+      let matchFound = false;
+
+      for (let chk of checkedCara) {
+        if (chk === "Tender" && (valCara === "tender" || valCara === "seleksi" || valCara === "tender cepat")) matchFound = true;
+        if (chk === "Non Tender" && (valCara === "non tender" || valCara === "penunjukan langsung" || valCara === "pengadaan langsung")) matchFound = true;
+        if (chk === "Pencatatan Non Tender" && (valCara === "pencatatan non tender" || valCara === "dikecualikan")) matchFound = true;
+        if (chk === "E-Purchasing V5" && valCara === "e-purchasing v5") matchFound = true;
+        if (chk === "E-Purchasing V6" && (valCara === "e-purchasing v6" || valCara === "e-purchasing")) matchFound = true;
+        if (chk === "Swakelola" && (valCara === "pencatatan swakelola" || valCara === "swakelola")) matchFound = true;
+      }
+
+      if (!matchFound) return false;
     }
     
     if (checkedStatus !== null && !checkedStatus.includes(getKategoriStatus(row))) return false;
