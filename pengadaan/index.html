@@ -658,7 +658,7 @@ let currentYear = "2026";
 const filterConfigs = {
   "jenis": { key: "Jenis Pengadaan", isStatic: false },
   "metode": { key: "Metode Pengadaan", isStatic: false },
-  "cara": { key: "Metode", isStatic: false }, // Menggunakan kolom 'Metode' pada JSON untuk Cara Pengadaan
+  "cara": { key: "Metode", isStatic: true, staticOptions: ["Tender", "Non Tender", "Pencatatan Non Tender", "E-Purchasing V5", "E-Purchasing V6", "Swakelola"] },
   "status": { key: "Status", isStatic: true, staticOptions: ["Belum Proses", "Sedang Proses", "Sudah Selesai"] }
 };
 let filterSnapshots = {};
@@ -875,7 +875,14 @@ function applyFilter() {
     // 2. Checklist Check
     if (checkedJenis  !== null && !checkedJenis.includes(row["Jenis Pengadaan"])) return false;
     if (checkedMetode !== null && !checkedMetode.includes(row["Metode Pengadaan"])) return false;
-    if (checkedCara   !== null && !checkedCara.includes(row["Metode"])) return false; // Menggunakan kolom 'Metode' pada JSON
+    
+    // Logika khusus untuk Cara Pengadaan (Metode) agar bisa membaca E-Purchasing asli
+    if (checkedCara !== null) {
+      let valCara = row["Metode"] ?? "";
+      if (valCara === "E-Purchasing" || valCara === "e-Purchasing") valCara = "E-Purchasing V5";
+      if (!checkedCara.includes(valCara)) return false;
+    }
+    
     if (checkedStatus !== null && !checkedStatus.includes(getKategoriStatus(row))) return false;
     
     return true;
