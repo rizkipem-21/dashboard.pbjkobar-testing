@@ -10848,3 +10848,49 @@ DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_
 DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
 -> SUKSES
 DOWNLOAD: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-bapbast?kode_klpd=D228&tahun=2026
+-> Gagal HTTP 500
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-kontrak?kode_klpd=D228&tahun=2026
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2026
+-> Gagal HTTP 500
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-sppbj?kode_klpd=D228&tahun=2026
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/non-tender-pengumuman?kode_klpd=D228&tahun=2026
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/non-tender-selesai?kode_klpd=D228&tahun=2026
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/pengumuman?kode_klpd=D228&tahun=2026
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-bapbast?kode_klpd=D228&tahun=2026
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-kontrak?kode_klpd=D228&tahun=2026
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2026
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-sppbj?kode_klpd=D228&tahun=2026
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/tender-selesai?kode_klpd=D228&tahun=2026
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/tender-selesai-nilai?kode_klpd=D228&tahun=2026
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/pencatatan-non-tender?kode_klpd=D228&tahun=2026
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/tender/pencatatan-swakelola?kode_klpd=D228&tahun=2026
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/ekatalog-archive/paket-e-purchasing?kode_klpd=D228&tahun=2026
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/ekatalog/paket-e-purchasing?kode_klpd=D228&tahun=2026
+-> SUKSES
+DOWNLOAD: https://data.inaproc.id/api/legacy/ekatalog-archive/instansi-satker?kode_klpd=D228&tahun=2026
+-> SUKSES
+
+Loading semua file JSON hasil unduhan...
+JSON Rekap sukses dibuat: D:\dashboard-pbj-inaproc\data\2026\rekap_pengadaan_2026.json
+Excel Berwarna Berhasil Terformat: D:\dashboard-pbj-inaproc\output\pengadaan\2026\Paket Pengadaan Tahun 2026 (2026-06-08) (Api Gateway Legacy).xlsx
+SELESAI GENERATE TAHUN 2026 | Total paket data: 4948
+
+=======================================================
+SINKRONISASI PBJ ALL-TAHUN SELESAI PADA 8 Juni 2026 | 10.47 WIB | Total: 15458 Paket
+=======================================================
