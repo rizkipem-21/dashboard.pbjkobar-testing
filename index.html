@@ -519,12 +519,19 @@
 
     function cekPassword() {
       const pwd = document.getElementById("inputPassword").value;
+  
       if (pwd === MASTER_PASSWORD) {
+        // 1. Eksekusi pemuatan data / unduh file terlebih dahulu
+        if (pendingDownloadUrl) {
+          window.location.href = pendingDownloadUrl;
+        } else if (pendingArsipCategory) {
+          executeLoadArsip(pendingArsipCategory);
+        }
+    
+        // 2. Setelah berhasil dieksekusi, baru tutup modal dan bersihkan ingatan
         tutupModal();
-        if (pendingDownloadUrl) window.location.href = pendingDownloadUrl;
-        else if (pendingArsipCategory) executeLoadArsip(pendingArsipCategory);
       } else { 
-        alert("Password Salah!"); 
+        alert("Password Salah! Akses Ditolak."); 
       }
     }
 
