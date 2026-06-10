@@ -10,7 +10,10 @@ warnings.filterwarnings('ignore')
 # ======================================================
 # KONFIGURASI PATH DAN TAHUN OTOMATIS
 # ======================================================
-BASE_DIR = r'D:\dashboard.pbjkobar'
+
+# Otomatis mengambil jalur folder utama (naik 1 tingkat dari folder 'scripts')
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 MASTER_DIR = os.path.join(BASE_DIR, 'data', 'master')
 KAMUS_FILE = os.path.join(MASTER_DIR, 'kamus_penyedia.json')
 

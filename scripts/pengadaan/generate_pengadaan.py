@@ -20,7 +20,9 @@ warnings.filterwarnings('ignore')
 # ======================================================
 # KONFIGURASI UTAMA
 # ======================================================
-BASE_DIR = r'D:\dashboard.pbjkobar'
+
+# Otomatis mengambil jalur folder utama (naik 1 tingkat dari folder 'scripts')
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Membaca token murni HANYA dari file token.txt
 try:

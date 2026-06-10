@@ -18,7 +18,10 @@ warnings.filterwarnings("ignore")
 # ======================================================
 # KONFIGURASI TAHUN DINAMIS (AUTOPILOT)
 # ======================================================
-BASE_DIR = r'D:\dashboard.pbjkobar'
+
+# Otomatis mengambil jalur folder utama (naik 1 tingkat dari folder 'scripts')
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 tahun_n  = datetime.now().year       # Tahun berjalan
 tahun_n1 = tahun_n - 1               # Tahun lalu
 tahun_n2 = tahun_n - 2               # Dua tahun lalu

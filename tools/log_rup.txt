@@ -8360,3 +8360,37 @@ DONE -> EXCEL: D:\dashboard.pbjkobar\output\rup\2026\Rekap RUP Tahun 2026 (2026-
 ==================================================
 PROSES SELESAI SELURUHNYA PADA 10 Juni 2026 | 08.45 WIB
 ==================================================
+
+==================================================
+START 10 Juni 2026 | 09.00 WIB
+AUTO GENERATE RUP (DOWNLOAD RETRY & MULTI TAHUN)
+==================================================
+
+--- MENGUNDUH DATA TAHUN 2026 ---
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES
+
+--- MEMPROSES DATA TAHUN 2026 ---
+DONE -> JSON: rekap_rup_2026.json
+DONE -> EXCEL: D:\dashboard.pbjkobar\output\rup\2026\Rekap RUP Tahun 2026 (2026-06-10) Legacy.xlsx
+
+[SKIP] Tahun 2025 sudah ada (final).
+
+[SKIP] Tahun 2024 sudah ada (final).
+
+==================================================
+PROSES SELESAI SELURUHNYA PADA 10 Juni 2026 | 09.00 WIB
+==================================================

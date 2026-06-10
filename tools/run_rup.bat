@@ -1,16 +1,17 @@
 @echo off
-cd /d D:\dashboard.pbjkobar
+:: Otomatis mendeteksi lokasi file .bat, lalu naik 1 tingkat (..) ke folder utama project
+cd /d "%~dp0.."
 
 echo ==================================================
 echo MEMULAI PROSES UPDATE RUP...
 echo ==================================================
 
-:: Memanggil Python (Log dan Last-Update akan dikerjakan otomatis oleh Python)
+:: Memanggil Python
 python scripts\rup\generate_rup.py
 
 echo.
 echo ==================================================
-echo MENGIRIM DATA REKAP KE GITHUB (UNTUK CLOUDFLARE)...
+echo MENGIRIM DATA REKAP KE GITHUB...
 echo ==================================================
 
 :: Menghapus file lock Git jika sebelumnya sempat macet
@@ -21,7 +22,9 @@ git config user.name "rizkipem-21"
 git config user.email "rizki.pem@gmail.com"
 git add .
 git commit -m "Auto update data RUP"
-git push origin main
+
+:: Cukup gunakan 'git push' agar otomatis menyesuaikan reponya masing-masing
+git push
 
 echo.
 echo PROSES SELESAI!
