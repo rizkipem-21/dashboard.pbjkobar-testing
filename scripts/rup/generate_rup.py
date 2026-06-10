@@ -44,13 +44,6 @@ HEADERS = {
     "Authorization": f"Bearer {TOKEN}",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 }
-ENDPOINTS = [
-    "rup/paket-penyedia-terumumkan",
-    "rup/paket-swakelola-terumumkan",
-    "rup/master-satker",
-    "rup/program-master",
-    "rup/struktur-anggaran-pd"
-]
 
 # ======================================================
 # FUNGSI LOG & LAST-UPDATE (PENGGANTI .BAT)
@@ -82,48 +75,123 @@ def get_waktu_indonesia():
 
 
 # ======================================================
-# FUNGSI 1: DOWNLOAD DATA API DENGAN RETRY
+# FUNGSI 1: DOWNLOAD DATA API (DUA JALUR: V1 & LEGACY)
 # ======================================================
 def download_data_api_with_retry(tahun):
     log_print(f"\n--- MENGUNDUH DATA TAHUN {tahun} ---")
     data_dir = os.path.join(BASE_DIR, 'data', str(tahun))
     os.makedirs(data_dir, exist_ok=True)
 
-    for ep in ENDPOINTS:
-        url = f"https://data.inaproc.id/api/legacy/{ep}?kode_klpd=D228&tahun={tahun}"
-        base_name = ep.replace('/', '_')
-        filename = f"Legacy_{base_name}_{tahun}.json"
+    # 1. Baca file txt
+    txt_path = os.path.join(BASE_DIR, 'scripts', 'rup', 'url_rup.txt')
+    if not os.path.exists(txt_path):
+        log_print(f"ERROR: File sumber URL tidak ditemukan di {txt_path}")
+        return
+
+    with open(txt_path, 'r', encoding='utf-8') as f:
+        urls = [line.strip() for line in f if line.strip()]
+
+    # 2. Proses tiap URL
+    for raw_url in urls:
+        target_url = raw_url.replace('{tahun}', str(tahun))
+        is_v1 = '/v1/' in target_url
+        tipe = "v1" if is_v1 else "Legacy"
+
+        # Mengekstrak nama endpoint (contoh: rup/master-satker)
+        match = re.search(r'api/(?:v1|legacy)/(.*?)\?', target_url)
+        base_name = match.group(1).replace('/', '_') if match else "unknown"
+        
+        filename = f"{tipe}_{base_name}_{tahun}.json"
         output_path = os.path.join(data_dir, filename)
 
-        max_retry = 5
-        success = False
+        log_print(f"\nDOWNLOAD [{tipe.upper()}]: {target_url}")
 
-        log_print(f"\nDOWNLOAD: {url}")
-        
-        for i in range(1, max_retry + 1):
-            try:
-                log_print(f"  Percobaan ke-{i}...", end=" ")
-                response = requests.get(url, headers=HEADERS, timeout=60)
-                
-                if response.status_code == 200:
-                    data = response.json()
-                    with open(output_path, 'w', encoding='utf-8') as f:
-                        json.dump(data, f, ensure_ascii=False, indent=2)
-                    log_print("SUKSES")
-                    success = True
+        if is_v1:
+            # JALUR V1 (DENGAN CURSOR & HAS_MORE)
+            all_data = []
+            cursor = None
+            req_count = 1
+            first_response = None
+
+            while True:
+                url_cursor = target_url
+                if cursor:
+                    sep = "&" if "?" in target_url else "?"
+                    url_cursor = f"{target_url}{sep}cursor={cursor}"
+
+                max_retry = 5
+                success = False
+                resp_data = None
+
+                for i in range(1, max_retry + 1):
+                    try:
+                        log_print(f"  Request ke-{req_count} (Percobaan {i})...", end=" ")
+                        response = requests.get(url_cursor, headers=HEADERS, timeout=60)
+                        if response.status_code == 200:
+                            resp_data = response.json()
+                            log_print("SUKSES")
+                            success = True
+                            break
+                        else:
+                            log_print(f"GAGAL (Status {response.status_code})")
+                    except Exception as e:
+                        log_print(f"ERROR: {e}")
+                    
+                    if i < max_retry: time.sleep(2)
+
+                if not success:
+                    log_print("  GAGAL TOTAL pada request ini. Berhenti ditarik.")
                     break
-                else:
-                    log_print(f"GAGAL (Status {response.status_code})")
-            except Exception as e:
-                log_print(f"ERROR: {e}")
-            
-            if i < max_retry:
-                time.sleep(2) # Jeda 2 detik sebelum coba lagi
 
-        if not success:
-            log_print(f"  GAGAL TOTAL -> buat file kosong")
+                if req_count == 1: first_response = resp_data
+
+                # Gabungkan data
+                if resp_data and 'data' in resp_data:
+                    all_data.extend(resp_data['data'])
+                elif resp_data and isinstance(resp_data, list):
+                    all_data.extend(resp_data)
+
+                # Cek halaman selanjutnya
+                if resp_data and 'meta' in resp_data and resp_data['meta'].get('has_more'):
+                    cursor = resp_data['meta'].get('cursor')
+                    req_count += 1
+                else:
+                    break
+
+            # Simpan hasil V1
             with open(output_path, 'w', encoding='utf-8') as f:
-                f.write("[]")
+                if len(all_data) == 0 and first_response:
+                    json.dump(first_response, f, ensure_ascii=False, indent=2)
+                else:
+                    json.dump(all_data, f, ensure_ascii=False, indent=2)
+            log_print(f"  -> Disimpan ke {filename} (Total: {len(all_data)} baris)")
+
+        else:
+            # JALUR LEGACY (SEKALI TARIK)
+            max_retry = 5
+            success = False
+            for i in range(1, max_retry + 1):
+                try:
+                    log_print(f"  Percobaan ke-{i}...", end=" ")
+                    response = requests.get(target_url, headers=HEADERS, timeout=60)
+                    if response.status_code == 200:
+                        data = response.json()
+                        with open(output_path, 'w', encoding='utf-8') as f:
+                            json.dump(data, f, ensure_ascii=False, indent=2)
+                        log_print("SUKSES")
+                        success = True
+                        break
+                    else:
+                        log_print(f"GAGAL (Status {response.status_code})")
+                except Exception as e:
+                    log_print(f"ERROR: {e}")
+
+                if i < max_retry: time.sleep(2)
+
+            if not success:
+                log_print(f"  GAGAL TOTAL -> buat file kosong")
+                with open(output_path, 'w', encoding='utf-8') as f:
+                    f.write("[]")
 
 # ======================================================
 # FUNGSI BANTUAN LOAD DATA & PEMBERSIHAN
@@ -168,16 +236,25 @@ def bersihkan_arsip_bulanan(folder_path):
 # ======================================================
 # FUNGSI 2: PROSES DATA & GENERATE EXCEL
 # ======================================================
+def get_file_path(data_dir, base_name, tahun):
+    """Mencari file V1, jika tidak ada fallback ke Legacy"""
+    v1_path = os.path.join(data_dir, f"v1_{base_name}_{tahun}.json")
+    legacy_path = os.path.join(data_dir, f"Legacy_{base_name}_{tahun}.json")
+    
+    if os.path.exists(v1_path): return v1_path
+    if os.path.exists(legacy_path): return legacy_path
+    return legacy_path # default jika dua-duanya belum ditarik
+
 def process_tahun(tahun):
     log_print(f"\n--- MEMPROSES DATA TAHUN {tahun} ---")
     data_dir = os.path.join(BASE_DIR, 'data', str(tahun))
     
-    # Path Sumber
-    s_master    = os.path.join(data_dir, f"Legacy_rup_master-satker_{tahun}.json")
-    s_penyedia  = os.path.join(data_dir, f"Legacy_rup_paket-penyedia-terumumkan_{tahun}.json")
-    s_swakelola = os.path.join(data_dir, f"Legacy_rup_paket-swakelola-terumumkan_{tahun}.json")
-    s_program   = os.path.join(data_dir, f"Legacy_rup_program-master_{tahun}.json")
-    s_struktur  = os.path.join(data_dir, f"Legacy_rup_struktur-anggaran-pd_{tahun}.json")
+    # Path Sumber Cerdas (Mendeteksi V1 atau Legacy otomatis)
+    s_master    = get_file_path(data_dir, "rup_master-satker", tahun)
+    s_penyedia  = get_file_path(data_dir, "rup_paket-penyedia-terumumkan", tahun)
+    s_swakelola = get_file_path(data_dir, "rup_paket-swakelola-terumumkan", tahun)
+    s_program   = get_file_path(data_dir, "rup_program-master", tahun)
+    s_struktur  = get_file_path(data_dir, "rup_struktur-anggaran-pd", tahun)
 
     # Load ke DataFrame
     df_master    = pd.DataFrame(load_json_local(s_master))

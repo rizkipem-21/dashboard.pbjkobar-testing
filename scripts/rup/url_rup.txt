@@ -1,0 +1,5 @@
+https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/rup/master-satker?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/rup/program-master?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun={tahun}
