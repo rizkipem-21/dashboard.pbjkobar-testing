@@ -1,3 +1,4 @@
 arsip/
+data/**/v1_*.json
 data/**/Legacy_*.json
 data/master
