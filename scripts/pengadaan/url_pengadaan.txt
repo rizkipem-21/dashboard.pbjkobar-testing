@@ -9,7 +9,7 @@ https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-spmkspp?kode_klpd=
 https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-sppbj?kode_klpd=D228&tahun={tahun}
 https://data.inaproc.id/api/v1/tender/non-tender-pengumuman?kode_klpd=D228&tahun={tahun}&limit=1000
 https://data.inaproc.id/api/v1/tender/non-tender-selesai?kode_klpd=D228&tahun={tahun}&limit=1000
-https://data.inaproc.id/api/v1/tender/pencatatan-non-tender?kode_klpd=D228&tahun{tahun}&limit=1000
+https://data.inaproc.id/api/v1/tender/pencatatan-non-tender?kode_klpd=D228&tahun={tahun}&limit=1000
 https://data.inaproc.id/api/v1/tender/pencatatan-swakelola?kode_klpd=D228&tahun={tahun}&limit=1000
 https://data.inaproc.id/api/v1/tender/pengumuman?kode_klpd=D228&tahun={tahun}&limit=1000
 https://data.inaproc.id/api/legacy/tender/tender-ekontrak-bapbast?kode_klpd=D228&tahun={tahun}
