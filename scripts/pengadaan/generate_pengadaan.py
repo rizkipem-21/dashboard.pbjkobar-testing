@@ -20,7 +20,7 @@ warnings.filterwarnings('ignore')
 # ======================================================
 # KONFIGURASI UTAMA
 # ======================================================
-BASE_DIR = r'D:\dashboard-pbj-inaproc'
+BASE_DIR = r'D:\dashboard.pbjkobar'
 
 # Membaca token murni HANYA dari file token.txt
 try:

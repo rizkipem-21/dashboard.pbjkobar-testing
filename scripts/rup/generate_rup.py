@@ -18,7 +18,7 @@ warnings.filterwarnings("ignore")
 # ======================================================
 # KONFIGURASI TAHUN DINAMIS (AUTOPILOT)
 # ======================================================
-BASE_DIR = r'D:\dashboard-pbj-inaproc'
+BASE_DIR = r'D:\dashboard.pbjkobar'
 tahun_n  = datetime.now().year       # Tahun berjalan
 tahun_n1 = tahun_n - 1               # Tahun lalu
 tahun_n2 = tahun_n - 2               # Dua tahun lalu

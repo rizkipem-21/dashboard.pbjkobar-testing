@@ -10,7 +10,7 @@ warnings.filterwarnings('ignore')
 # ======================================================
 # KONFIGURASI PATH DAN TAHUN OTOMATIS
 # ======================================================
-BASE_DIR = r'D:\rup-2026-inaproc'
+BASE_DIR = r'D:\dashboard.pbjkobar'
 MASTER_DIR = os.path.join(BASE_DIR, 'data', 'master')
 KAMUS_FILE = os.path.join(MASTER_DIR, 'kamus_penyedia.json')
 

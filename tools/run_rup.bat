@@ -1,5 +1,5 @@
 @echo off
-cd /d D:\dashboard-pbj-inaproc
+cd /d D:\dashboard.pbjkobar
 
 echo ==================================================
 echo MEMULAI PROSES UPDATE RUP...
