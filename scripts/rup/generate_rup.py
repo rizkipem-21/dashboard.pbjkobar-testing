@@ -25,7 +25,17 @@ tahun_n2 = tahun_n - 2               # Dua tahun lalu
 daftar_tahun = [tahun_n, tahun_n1, tahun_n2]
 
 # Konfigurasi API
-TOKEN = "inprcf2fff15cacb3426890b78fe795cf7f59"
+# Membaca token murni HANYA dari file token.txt
+try:
+    with open(os.path.join(BASE_DIR, 'token.txt'), 'r', encoding='utf-8') as f:
+        TOKEN = f.read().strip()
+        if not TOKEN:
+            print("ERROR: File token.txt kosong! Silakan isi dengan token terbaru.")
+            sys.exit(1) # Menghentikan skrip
+except FileNotFoundError:
+    print("ERROR: File token.txt tidak ditemukan di folder project! Buat filenya dan isi dengan token terbaru.")
+    sys.exit(1) # Menghentikan skrip
+    
 HEADERS = {
     "Authorization": f"Bearer {TOKEN}",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
