@@ -2,6 +2,7 @@ import os
 import json
 import time
 import requests
+import sys
 from datetime import datetime
 import warnings
 
@@ -12,7 +13,7 @@ warnings.filterwarnings('ignore')
 # ======================================================
 
 # Otomatis mengambil jalur folder utama (naik 1 tingkat dari folder 'scripts')
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 MASTER_DIR = os.path.join(BASE_DIR, 'data', 'master')
 KAMUS_FILE = os.path.join(MASTER_DIR, 'kamus_penyedia.json')
@@ -23,10 +24,10 @@ try:
         TOKEN = f.read().strip()
         if not TOKEN:
             print("ERROR: File token.txt kosong! Silakan isi dengan token terbaru.")
-            sys.exit(1) # Menghentikan skrip
+            sys.exit(1)
 except FileNotFoundError:
-    print("ERROR: File token.txt tidak ditemukan di folder project! Buat filenya dan isi dengan token terbaru.")
-    sys.exit(1) # Menghentikan skrip
+    print("ERROR: File token.txt tidak ditemukan di folder project!")
+    sys.exit(1)
 
 HEADERS = {
     'Authorization': f'Bearer {TOKEN}',

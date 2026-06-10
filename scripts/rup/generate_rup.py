@@ -8,6 +8,7 @@ import os
 import re
 import requests
 import time
+import sys
 from datetime import datetime, timedelta, timezone
 import warnings
 from openpyxl import load_workbook
@@ -20,7 +21,7 @@ warnings.filterwarnings("ignore")
 # ======================================================
 
 # Otomatis mengambil jalur folder utama (naik 1 tingkat dari folder 'scripts')
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 tahun_n  = datetime.now().year       # Tahun berjalan
 tahun_n1 = tahun_n - 1               # Tahun lalu
@@ -34,10 +35,10 @@ try:
         TOKEN = f.read().strip()
         if not TOKEN:
             print("ERROR: File token.txt kosong! Silakan isi dengan token terbaru.")
-            sys.exit(1) # Menghentikan skrip
+            sys.exit(1)
 except FileNotFoundError:
-    print("ERROR: File token.txt tidak ditemukan di folder project! Buat filenya dan isi dengan token terbaru.")
-    sys.exit(1) # Menghentikan skrip
+    print("ERROR: File token.txt tidak ditemukan di folder project!")
+    sys.exit(1)
     
 HEADERS = {
     "Authorization": f"Bearer {TOKEN}",
