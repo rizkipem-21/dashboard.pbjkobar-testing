@@ -338,16 +338,19 @@ def process_tahun(tahun):
     for d, c in [(df1,'kd_rup'), (df1_2,'kd_rup'), (df2,'kd_rup'), (df3,'kd_rup'), (df4,'kd_rup'), (df5,'kd_rup'), (df6,'rup_code'), (df7,'kd_rup')]:
         standardize_kd_rup(d, c)
 
-    map_pagu_s1   = df1.set_index('kd_rup')['pagu'] if not df1.empty else {}
-    map_pagu_s1_2 = df1_2.set_index('kd_rup')['pagu'] if not df1_2.empty else {}
+    # Tambahkan drop_duplicates agar tidak ada kd_rup ganda yang membingungkan Pandas
+    map_pagu_s1   = df1.drop_duplicates(subset=['kd_rup']).set_index('kd_rup')['pagu'] if not df1.empty and 'kd_rup' in df1.columns else {}
+    map_pagu_s1_2 = df1_2.drop_duplicates(subset=['kd_rup']).set_index('kd_rup')['pagu'] if not df1_2.empty and 'kd_rup' in df1_2.columns else {}
 
     def get_pagu_multi(kd_list, tipe='s1'):
         if not isinstance(kd_list, list): return None
-        total = sum(map_pagu_s1.get(k, 0) if tipe=='s1' else map_pagu_s1_2.get(k, 0) for k in kd_list)
+        # Tambahkan float() untuk memastikan nilai yang dijumlahkan murni angka tunggal
+        total = sum(float(map_pagu_s1.get(k, 0)) if tipe=='s1' else float(map_pagu_s1_2.get(k, 0)) for k in kd_list)
         return total if total != 0 else None
 
     if not df1.empty:
-        df1_clean = df1.dropna(subset=['kd_rup']).copy()
+        # Tambahkan drop_duplicates di sini untuk pengamanan master data
+        df1_clean = df1.dropna(subset=['kd_rup']).drop_duplicates(subset=['kd_rup']).copy()
         df1_clean['kd_rup'] = df1_clean['kd_rup'].apply(lambda x: int(float(str(x).strip())))
         df1_map = df1_clean.set_index('kd_rup')
     else:
