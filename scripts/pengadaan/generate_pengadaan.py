@@ -276,6 +276,10 @@ def process_tahun(tahun):
     if not df3.empty and 'status_nontender_pct_ket' in df3.columns:
         df3 = df3[df3['status_nontender_pct_ket'].astype(str).str.strip() != 'Paket Dibatalkan']
 
+    if not df6.empty and 'status' in df6.columns:
+        status_batal_v6 = ['CANCELLED_ON_NEGOTIATION', 'CANCELLED_ON_REVIEW', 'CANCELLED']
+        df6 = df6[~df6['status'].isin(status_batal_v6)]
+
     def get_set(df, col):
         if df.empty or col not in df.columns: return set()
         return set(df[col].astype(str).str.split(';').explode().str.strip())
