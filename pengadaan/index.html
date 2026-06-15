@@ -677,9 +677,18 @@ function applyFilter() {
     // 3. Logika Penentu: Cek Status
     if (modeRealisasi) {
       let rawStatus = (row["Status"] || "").trim().toLowerCase();
+      let caraPengadaan = (row["Cara Pengadaan"] || "").trim().toLowerCase();
+
+      // Sembunyikan status yang masih awal/kosong
       if (rawStatus.includes("berlangsung") || rawStatus.includes("pengumuman rup") || rawStatus === "" || rawStatus === "-") {
         return false;
       }
+
+      // Sembunyikan E-Purchasing V6 dengan status ON_NEGOTIATION
+      if (caraPengadaan.includes("e-purchasing") && rawStatus.includes("on_negotiation")) {
+        return false;
+      }
+
     } else {
       if (checkedStatus !== null) {
         let kat = getKategoriStatus(row);
