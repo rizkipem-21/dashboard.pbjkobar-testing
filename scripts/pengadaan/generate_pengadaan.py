@@ -613,9 +613,14 @@ def process_tahun(tahun):
     for col in ['Nilai Hasil Pemilihan', 'Nilai PDN', 'Nilai UMK']:
         if col in excel_df.columns: excel_df[col] = excel_df[col].apply(safe_numeric)
 
-    excel_df.to_excel(output_excel_path, index=False, sheet_name='Pengadaan')
+    with pd.ExcelWriter(output_excel_path, engine='openpyxl') as writer:
+        excel_df.to_excel(writer, index=False, sheet_name='Pengadaan')
+
+    import time
+    time.sleep(2)
 
     wb = load_workbook(output_excel_path)
+    
     ws = wb['Pengadaan']
 
     header_fill = PatternFill('solid', start_color='1F4E79')
