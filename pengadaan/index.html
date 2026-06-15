@@ -820,147 +820,155 @@ document.getElementById("downloadCurrent").addEventListener("click", () => {
   btn.style.pointerEvents = "none";
 
   setTimeout(() => {
-    // FUNGSI HELPER
-    const getNum = (val) => {
-      if (val === "" || val === "N/A" || val === null || val === undefined) return 0;
-      const num = Number(val);
-      return isNaN(num) ? 0 : num;
-    };
-
-    const getUniqueString = (arr) => {
-      const valid = arr.filter(x => x !== "" && x !== "N/A" && x !== null && x !== undefined);
-      return [...new Set(valid)].join("; ");
-    };
-
-    const getAggregateStatus = (arrRows) => {
-      let cats = arrRows.map(r => getKategoriStatus(r));
-      let isAllBatal = arrRows.every(r => {
-        const s = (r["Status"] || "").toLowerCase();
-        return s.includes('batal') || s.includes('gagal');
-      });
-
-      if (isAllBatal) return "Gagal/Batal";
-      if (cats.includes("Sedang Berjalan")) return "Sedang Berjalan";
-      if (cats.includes("Belum Proses")) return "Belum Proses";
-      return "Sudah Selesai";
-    };
-
-    // 1. SIAPKAN DATA DETAIL (SHEET 2)
-    const exportDetail = filtered.map((row, index) => {
-      const pagu  = row["Nilai Pagu RUP"];
-      const hasil = row["Nilai Hasil Pemilihan"];
-      let efisiensi = "N/A";
-      if (pagu !== "" && pagu !== "N/A" && !isNaN(Number(pagu)) &&
-          hasil !== "" && hasil !== "N/A" && !isNaN(Number(hasil))) {
-        efisiensi = Number(pagu) - Number(hasil);
-      }
-      return {
-        "No"                   : index + 1,
-        "Kode Paket"           : row["Kode Paket"] ?? "",
-        "Kode RUP"             : row["Kode RUP"] ?? "",
-        "Satuan Kerja"         : row["Satuan Kerja"] ?? "",
-        "Nama Paket"           : row["Nama Paket"] ?? "",
-        "Metode Pemilihan"     : row["Metode Pemilihan"] ?? "",
-        "Jenis Pengadaan"      : row["Jenis Pengadaan"] ?? "",
-        "Cara Pengadaan"       : row["Cara Pengadaan"] ?? "",
-        "Status"               : row["Status"] ?? "",
-        "Nilai Pagu RUP"       : isNaN(Number(pagu)) ? (pagu ?? "") : Number(pagu),
-        "Nilai HPS"            : isNaN(Number(row["Nilai HPS"])) ? (row["Nilai HPS"] ?? "") : Number(row["Nilai HPS"]),
-        "Nilai Hasil Pemilihan": hasil === "N/A" || hasil === "" ? (hasil ?? "") : Number(hasil),
-        "Efisiensi"            : efisiensi,
-        "Tanggal Kontrak"      : row["Tanggal Kontrak"] ?? "",
-        "Nama Penyedia"        : row["Nama Penyedia"] ?? "",
-        "Nilai PDN"            : isNaN(Number(row["Nilai PDN"])) ? (row["Nilai PDN"] ?? "") : Number(row["Nilai PDN"]),
-        "Nilai UMK"            : isNaN(Number(row["Nilai UMK"])) ? (row["Nilai UMK"] ?? "") : Number(row["Nilai UMK"]),
-        "Sumber"               : row["Sumber"] ?? ""
+    try {
+      // FUNGSI HELPER
+      const getNum = (val) => {
+        if (val === "" || val === "N/A" || val === null || val === undefined) return 0;
+        const num = Number(val);
+        return isNaN(num) ? 0 : num;
       };
-    });
 
-    // 2. SIAPKAN DATA REKAP (SHEET 1) MENGGUNAKAN GROUP BY
-    const groupMap = {};
-    filtered.forEach(row => {
-      const rawRup = String(row["Kode RUP"] || "");
-      const keyRup = rawRup.split(';')[0].strip() || "UNKNOWN";
-      if (!groupMap[keyRup]) groupMap[keyRup] = [];
-      groupMap[keyRup].push(row);
-    });
+      const getUniqueString = (arr) => {
+        const valid = arr.map(x => String(x)).filter(x => x !== "" && x !== "N/A" && x !== "null" && x !== "undefined");
+        return [...new Set(valid)].join("; ");
+      };
 
-    const exportRekap = [];
-    let noRekap = 1;
-    for (const key in groupMap) {
-      const group = groupMap[key];
-      const first = group[0];
+      const getAggregateStatus = (arrRows) => {
+        let cats = arrRows.map(r => getKategoriStatus(r));
+        let isAllBatal = arrRows.every(r => {
+          const s = (r["Status"] || "").toLowerCase();
+          return s.includes('batal') || s.includes('gagal');
+        });
 
-      const sumHps = group.reduce((acc, r) => acc + getNum(r["Nilai HPS"]), 0);
-      const sumHasil = group.reduce((acc, r) => acc + getNum(r["Nilai Hasil Pemilihan"]), 0);
-      const sumPdn = group.reduce((acc, r) => acc + getNum(r["Nilai PDN"]), 0);
-      const sumUmk = group.reduce((acc, r) => acc + getNum(r["Nilai UMK"]), 0);
-      const pagu = getNum(first["Nilai Pagu RUP"]);
+        if (isAllBatal) return "Gagal/Batal";
+        if (cats.includes("Sedang Berjalan")) return "Sedang Berjalan";
+        if (cats.includes("Belum Proses")) return "Belum Proses";
+        return "Sudah Selesai";
+      };
 
-      exportRekap.push({
-        "No"                     : noRekap++,
-        "Kode RUP"               : first["Kode RUP"],
-        "Satuan Kerja"           : first["Satuan Kerja"],
-        "Nama Paket (Master)"    : first["Nama Paket"],
-        "Metode Pemilihan"       : first["Metode Pemilihan"],
-        "Jenis Pengadaan"        : first["Jenis Pengadaan"],
-        "Sumber Dana"            : first["Sumber Dana"],
-        "Cara Pengadaan"         : first["Cara Pengadaan"],
-        "Nilai Pagu RUP"         : pagu === 0 ? "" : pagu,
-        "Total Nilai HPS"        : sumHps === 0 ? "" : sumHps,
-        "Total Hasil Pemilihan"  : sumHasil === 0 ? "" : sumHasil,
-        "Efisiensi"              : (pagu !== 0 && sumHasil !== 0) ? (pagu - sumHasil) : "",
-        "Status Keseluruhan"     : getAggregateStatus(group),
-        "Daftar Kode Paket"      : getUniqueString(group.map(r => r["Kode Paket"])),
-        "Daftar Penyedia"        : getUniqueString(group.map(r => r["Nama Penyedia"])),
-        "Daftar Tanggal Kontrak" : getUniqueString(group.map(r => r["Tanggal Kontrak"])),
-        "Total Nilai PDN"        : sumPdn === 0 ? "" : sumPdn,
-        "Total Nilai UMK"        : sumUmk === 0 ? "" : sumUmk
+      // 1. SIAPKAN DATA DETAIL (SHEET 2)
+      const exportDetail = filtered.map((row, index) => {
+        const pagu  = row["Nilai Pagu RUP"];
+        const hasil = row["Nilai Hasil Pemilihan"];
+        let efisiensi = "N/A";
+        if (pagu !== "" && pagu !== "N/A" && !isNaN(Number(pagu)) &&
+            hasil !== "" && hasil !== "N/A" && !isNaN(Number(hasil))) {
+          efisiensi = Number(pagu) - Number(hasil);
+        }
+        return {
+          "No"                   : index + 1,
+          "Kode Paket"           : row["Kode Paket"] ?? "",
+          "Kode RUP"             : row["Kode RUP"] ?? "",
+          "Satuan Kerja"         : row["Satuan Kerja"] ?? "",
+          "Nama Paket"           : row["Nama Paket"] ?? "",
+          "Metode Pemilihan"     : row["Metode Pemilihan"] ?? "",
+          "Jenis Pengadaan"      : row["Jenis Pengadaan"] ?? "",
+          "Cara Pengadaan"       : row["Cara Pengadaan"] ?? "",
+          "Status"               : row["Status"] ?? "",
+          "Nilai Pagu RUP"       : isNaN(Number(pagu)) ? (pagu ?? "") : Number(pagu),
+          "Nilai HPS"            : isNaN(Number(row["Nilai HPS"])) ? (row["Nilai HPS"] ?? "") : Number(row["Nilai HPS"]),
+          "Nilai Hasil Pemilihan": hasil === "N/A" || hasil === "" ? (hasil ?? "") : Number(hasil),
+          "Efisiensi"            : efisiensi,
+          "Tanggal Kontrak"      : row["Tanggal Kontrak"] ?? "",
+          "Nama Penyedia"        : row["Nama Penyedia"] ?? "",
+          "Nilai PDN"            : isNaN(Number(row["Nilai PDN"])) ? (row["Nilai PDN"] ?? "") : Number(row["Nilai PDN"]),
+          "Nilai UMK"            : isNaN(Number(row["Nilai UMK"])) ? (row["Nilai UMK"] ?? "") : Number(row["Nilai UMK"]),
+          "Sumber"               : row["Sumber"] ?? ""
+        };
       });
-    }
 
-    // 3. BUAT WORKBOOK DAN FORMATTING
-    const wb = XLSX.utils.book_new();
+      // 2. SIAPKAN DATA REKAP (SHEET 1) MENGGUNAKAN GROUP BY
+      const groupMap = {};
+      filtered.forEach(row => {
+        const rawRup = String(row["Kode RUP"] || "");
+        // PERBAIKAN: Menggunakan .trim() bukan .strip()
+        const keyRup = rawRup.split(';')[0].trim() || "UNKNOWN"; 
+        if (!groupMap[keyRup]) groupMap[keyRup] = [];
+        groupMap[keyRup].push(row);
+      });
 
-    // Sheet 1: Rekap
-    const wsRekap = XLSX.utils.json_to_sheet(exportRekap);
-    const range1 = XLSX.utils.decode_range(wsRekap['!ref']);
-    const head1 = [];
-    for (let c = range1.s.c; c <= range1.e.c; c++) head1[c] = wsRekap[XLSX.utils.encode_cell({r:0,c})].v;
-    const colRupiah1 = ['Nilai Pagu RUP', 'Total Nilai HPS', 'Total Hasil Pemilihan', 'Efisiensi', 'Total Nilai PDN', 'Total Nilai UMK'];
-    for (let r = 1; r <= range1.e.r; r++) {
-      for (let c = range1.s.c; c <= range1.e.c; c++) {
-        if (colRupiah1.includes(head1[c])) {
-          const addr = XLSX.utils.encode_cell({r,c});
-          if (wsRekap[addr] && typeof wsRekap[addr].v === "number") wsRekap[addr].z = '#,##0';
+      const exportRekap = [];
+      let noRekap = 1;
+      for (const key in groupMap) {
+        const group = groupMap[key];
+        const first = group[0];
+
+        const sumHps = group.reduce((acc, r) => acc + getNum(r["Nilai HPS"]), 0);
+        const sumHasil = group.reduce((acc, r) => acc + getNum(r["Nilai Hasil Pemilihan"]), 0);
+        const sumPdn = group.reduce((acc, r) => acc + getNum(r["Nilai PDN"]), 0);
+        const sumUmk = group.reduce((acc, r) => acc + getNum(r["Nilai UMK"]), 0);
+        const pagu = getNum(first["Nilai Pagu RUP"]);
+
+        exportRekap.push({
+          "No"                     : noRekap++,
+          "Kode RUP"               : first["Kode RUP"] ?? "",
+          "Satuan Kerja"           : first["Satuan Kerja"] ?? "",
+          "Nama Paket (Master)"    : first["Nama Paket"] ?? "",
+          "Metode Pemilihan"       : first["Metode Pemilihan"] ?? "",
+          "Jenis Pengadaan"        : first["Jenis Pengadaan"] ?? "",
+          "Sumber Dana"            : first["Sumber Dana"] ?? "",
+          "Cara Pengadaan"         : first["Cara Pengadaan"] ?? "",
+          "Nilai Pagu RUP"         : pagu === 0 ? "" : pagu,
+          "Total Nilai HPS"        : sumHps === 0 ? "" : sumHps,
+          "Total Hasil Pemilihan"  : sumHasil === 0 ? "" : sumHasil,
+          "Efisiensi"              : (pagu !== 0 && sumHasil !== 0) ? (pagu - sumHasil) : "",
+          "Status Keseluruhan"     : getAggregateStatus(group),
+          "Daftar Kode Paket"      : getUniqueString(group.map(r => r["Kode Paket"])),
+          "Daftar Penyedia"        : getUniqueString(group.map(r => r["Nama Penyedia"])),
+          "Daftar Tanggal Kontrak" : getUniqueString(group.map(r => r["Tanggal Kontrak"])),
+          "Total Nilai PDN"        : sumPdn === 0 ? "" : sumPdn,
+          "Total Nilai UMK"        : sumUmk === 0 ? "" : sumUmk
+        });
+      }
+
+      // 3. BUAT WORKBOOK DAN FORMATTING
+      const wb = XLSX.utils.book_new();
+
+      // Sheet 1: Rekap
+      const wsRekap = XLSX.utils.json_to_sheet(exportRekap);
+      const range1 = XLSX.utils.decode_range(wsRekap['!ref']);
+      const head1 = [];
+      for (let c = range1.s.c; c <= range1.e.c; c++) head1[c] = wsRekap[XLSX.utils.encode_cell({r:0,c})].v;
+      const colRupiah1 = ['Nilai Pagu RUP', 'Total Nilai HPS', 'Total Hasil Pemilihan', 'Efisiensi', 'Total Nilai PDN', 'Total Nilai UMK'];
+      for (let r = 1; r <= range1.e.r; r++) {
+        for (let c = range1.s.c; c <= range1.e.c; c++) {
+          if (colRupiah1.includes(head1[c])) {
+            const addr = XLSX.utils.encode_cell({r,c});
+            if (wsRekap[addr] && typeof wsRekap[addr].v === "number") wsRekap[addr].z = '#,##0';
+          }
         }
       }
-    }
-    wsRekap['!cols'] = [{wch:6},{wch:18},{wch:38},{wch:50},{wch:22},{wch:28},{wch:14},{wch:22},{wch:20},{wch:20},{wch:20},{wch:20},{wch:22},{wch:30},{wch:40},{wch:25},{wch:18},{wch:18}];
-    XLSX.utils.book_append_sheet(wb, wsRekap, "1. Rekap per RUP");
+      wsRekap['!cols'] = [{wch:6},{wch:18},{wch:38},{wch:50},{wch:22},{wch:28},{wch:14},{wch:22},{wch:20},{wch:20},{wch:20},{wch:20},{wch:22},{wch:30},{wch:40},{wch:25},{wch:18},{wch:18}];
+      XLSX.utils.book_append_sheet(wb, wsRekap, "1. Rekap per RUP");
 
-    // Sheet 2: Detail
-    const wsDetail = XLSX.utils.json_to_sheet(exportDetail);
-    const range2 = XLSX.utils.decode_range(wsDetail['!ref']);
-    const head2 = [];
-    for (let c = range2.s.c; c <= range2.e.c; c++) head2[c] = wsDetail[XLSX.utils.encode_cell({r:0,c})].v;
-    const colRupiah2 = ["Nilai Pagu RUP", "Nilai HPS", "Nilai Hasil Pemilihan", "Efisiensi", "Nilai PDN", "Nilai UMK"];
-    for (let r = 1; r <= range2.e.r; r++) {
-      for (let c = range2.s.c; c <= range2.e.c; c++) {
-        if (colRupiah2.includes(head2[c])) {
-          const addr = XLSX.utils.encode_cell({r,c});
-          if (wsDetail[addr] && typeof wsDetail[addr].v === "number") wsDetail[addr].z = '#,##0';
+      // Sheet 2: Detail
+      const wsDetail = XLSX.utils.json_to_sheet(exportDetail);
+      const range2 = XLSX.utils.decode_range(wsDetail['!ref']);
+      const head2 = [];
+      for (let c = range2.s.c; c <= range2.e.c; c++) head2[c] = wsDetail[XLSX.utils.encode_cell({r:0,c})].v;
+      const colRupiah2 = ["Nilai Pagu RUP", "Nilai HPS", "Nilai Hasil Pemilihan", "Efisiensi", "Nilai PDN", "Nilai UMK"];
+      for (let r = 1; r <= range2.e.r; r++) {
+        for (let c = range2.s.c; c <= range2.e.c; c++) {
+          if (colRupiah2.includes(head2[c])) {
+            const addr = XLSX.utils.encode_cell({r,c});
+            if (wsDetail[addr] && typeof wsDetail[addr].v === "number") wsDetail[addr].z = '#,##0';
+          }
         }
       }
+      wsDetail['!cols'] = [{wch:6},{wch:20},{wch:18},{wch:38},{wch:50},{wch:22},{wch:32},{wch:22},{wch:22},{wch:20},{wch:20},{wch:20},{wch:20},{wch:18},{wch:35},{wch:18},{wch:18},{wch:12}];
+      XLSX.utils.book_append_sheet(wb, wsDetail, "2. Detail per Paket");
+
+      // 4. SIMPAN FILE
+      XLSX.writeFile(wb, `Laporan_Pengadaan_${currentYear}.xlsx`);
+
+    } catch (err) {
+      console.error(err);
+      alert("Terjadi kesalahan saat memproses Excel. Silakan periksa Console.");
+    } finally {
+      // Pastikan tombol selalu kembali normal meski ada error
+      btn.innerText = "⬇ Download Excel";
+      btn.style.pointerEvents = "auto";
     }
-    wsDetail['!cols'] = [{wch:6},{wch:20},{wch:18},{wch:38},{wch:50},{wch:22},{wch:32},{wch:22},{wch:22},{wch:20},{wch:20},{wch:20},{wch:20},{wch:18},{wch:35},{wch:18},{wch:18},{wch:12}];
-    XLSX.utils.book_append_sheet(wb, wsDetail, "2. Detail per Paket");
-
-    // 4. SIMPAN FILE
-    XLSX.writeFile(wb, `Laporan_Pengadaan_${currentYear}.xlsx`);
-
-    btn.innerText = "⬇ Download Excel";
-    btn.style.pointerEvents = "auto";
   }, 100);
 });
 
