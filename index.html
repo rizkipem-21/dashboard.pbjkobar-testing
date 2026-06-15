@@ -270,7 +270,7 @@
               <span class="stat-value" id="pengStatBelum">-</span>
             </div>
             <div class="stat-card card-p3">
-              <span class="stat-label">Sedang Proses</span>
+              <span class="stat-label">Sedang Berjalan</span>
               <span class="stat-value" id="pengStatProses">-</span>
             </div>
             <div class="stat-card card-p4">
@@ -418,23 +418,23 @@
       if (sumber.includes("sumber 2") || sumber.includes("sumber 5")) {
         const selesaiList = ["bapbast", "kontrak", "selesai", "spmkspp", "sppbj"];
         if (selesaiList.some(kw => s.includes(kw))) return "Sudah Selesai";
-        return "Sedang Proses";
+        return "Sedang Berjalan";
       }
       if (sumber.includes("sumber 3") || sumber.includes("sumber 4")) {
         if (s.includes("paket selesai") || s.includes("selesai")) return "Sudah Selesai";
-        return "Sedang Proses";
+        return "Sedang Berjalan";
       }
       if (sumber.includes("sumber 6")) {
         if (s.includes("payment_outside") || s.includes("completed")) return "Sudah Selesai";
-        return "Sedang Proses";
+        return "Sedang Berjalan";
       }
       if (sumber.includes("sumber 7")) {
         if (s.includes("paket selesai") || s.includes("selesai")) return "Sudah Selesai";
-        return "Sedang Proses";
+        return "Sedang Berjalan";
       }
       if (s.includes("bapbast") || s.includes("selesai") || s.includes("sppbj") || s.includes("kontrak") || s.includes("spmkspp") || s.includes("payment") || s.includes("completed")) return "Sudah Selesai";
       if (s.includes("pengumuman rup") || s === "" || s === "-") return "Belum Proses";
-      return "Sedang Proses";
+      return "Sedang Berjalan";
     }
 
     async function fetchLastUpdateText(type) {
@@ -484,7 +484,7 @@
         data.forEach(row => {
           const kat = getKategoriStatus(row);
           if (kat === "Belum Proses") belum++;
-          else if (kat === "Sedang Proses") proses++;
+          else if (kat === "Sedang Berjalan") proses++;
           else if (kat === "Sudah Selesai") selesai++;
         });
 

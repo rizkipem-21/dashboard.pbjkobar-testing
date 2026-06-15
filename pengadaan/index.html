@@ -182,7 +182,7 @@
     <span class="stat-value" id="statFiltered">-</span>
   </div>
   <div class="stat-card stat-kuning">
-    <span class="stat-label">Sedang Proses</span>
+    <span class="stat-label">Sedang Berjalan</span>
     <span class="stat-value" id="statProses">-</span>
   </div>
   <div class="stat-card stat-hijau">
@@ -414,7 +414,7 @@ const filterConfigs = {
   "jenis":  { key: "Jenis Pengadaan", isStatic:false },
   "metode": { key: "Metode Pemilihan", isStatic:false },
   "cara":   { key: "Cara Pengadaan", isStatic:true, staticOptions: ["Tender","Non Tender","Pencatatan Non Tender","E-Purchasing V5","E-Purchasing V6","Swakelola"] },
-  "status": { key: "Status", isStatic:true, staticOptions: ["Belum Proses","Sedang Proses","Sudah Selesai"] }
+  "status": { key: "Status", isStatic:true, staticOptions: ["Belum Proses","Sedang Berjalan","Sudah Selesai"] }
 };
 let filterSnapshots = {};
 
@@ -439,29 +439,29 @@ function getKategoriStatus(row) {
     // HANYA BAPBAST yang dianggap Sudah Selesai. 
     // Status "Non Tender Selesai", "Tender Selesai", "SPPBJ", "Kontrak", "SPMKSPP" akan masuk Sedang Proses
     if (s.includes("bapbast")) return "Sudah Selesai";
-    return "Sedang Proses"; 
+    return "Sedang Berjalan"; 
   }
   
   if (sumber.includes("sumber 3") || sumber.includes("sumber 4")) {
     if (s.includes("paket selesai") || s.includes("selesai")) return "Sudah Selesai";
-    return "Sedang Proses";
+    return "Sedang Berjalan";
   }
   
   if (sumber.includes("sumber 6")) {
     if (s.includes("payment_outside") || s.includes("completed")) return "Sudah Selesai";
-    return "Sedang Proses";
+    return "Sedang Berjalan";
   }
   
   if (sumber.includes("sumber 7")) {
     if (s.includes("paket selesai") || s.includes("selesai")) return "Sudah Selesai";
-    return "Sedang Proses";
+    return "Sedang Berjalan";
   }
 
   // Fallback pengaman untuk status secara umum
   if (s.includes("bapbast") || s.includes("payment") || s.includes("completed")) return "Sudah Selesai";
   if (s.includes("pengumuman rup") || s === "" || s === "-") return "Belum Proses";
   
-  return "Sedang Proses";
+  return "Sedang Berjalan";
 }
 
 function badgeStatus(row){
@@ -469,7 +469,7 @@ function badgeStatus(row){
   const kat = getKategoriStatus(row);
   let cls = "badge-default";
   if (kat === "Sudah Selesai") cls = "badge-selesai";
-  else if (kat === "Sedang Proses") cls = "badge-proses";
+  else if (kat === "Sedang Berjalan") cls = "badge-proses";
   else if (kat === "Belum Proses") cls = "badge-belum";
   return `<span class="badge ${cls}">${rawStatus}</span>`;
 }
@@ -714,7 +714,7 @@ function applyFilter() {
 
 function updateStatCards() {
   const belumProses = filtered.filter(r => getKategoriStatus(r) === "Belum Proses").length;
-  const proses      = filtered.filter(r => getKategoriStatus(r) === "Sedang Proses").length;
+  const proses      = filtered.filter(r => getKategoriStatus(r) === "Sedang Berjalan").length;
   const selesai     = filtered.filter(r => getKategoriStatus(r) === "Sudah Selesai").length;
 
   document.getElementById("statTotal").innerText    = filtered.length.toLocaleString("id-ID");
