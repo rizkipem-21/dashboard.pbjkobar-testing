@@ -436,10 +436,10 @@ function getKategoriStatus(row) {
   
   // LOGIKA BARU UNTUK SUMBER 2 (NON TENDER) & SUMBER 5 (TENDER)
   if (sumber.includes("sumber 2") || sumber.includes("sumber 5")) {
-    // Hanya bapbast dan selesai yang dianggap Sudah Selesai
-    const selesaiList = ["bapbast", "selesai"];
-    if (selesaiList.some(kw => s.includes(kw))) return "Sudah Selesai";
-    return "Sedang Proses"; // Selain itu (sppbj, kontrak, spmkspp) masuk Sedang Proses
+    // HANYA BAPBAST yang dianggap Sudah Selesai. 
+    // Status "Non Tender Selesai", "Tender Selesai", "SPPBJ", "Kontrak", "SPMKSPP" akan masuk Sedang Proses
+    if (s.includes("bapbast")) return "Sudah Selesai";
+    return "Sedang Proses"; 
   }
   
   if (sumber.includes("sumber 3") || sumber.includes("sumber 4")) {
@@ -458,7 +458,7 @@ function getKategoriStatus(row) {
   }
 
   // Fallback pengaman untuk status secara umum
-  if (s.includes("bapbast") || s.includes("selesai") || s.includes("payment") || s.includes("completed")) return "Sudah Selesai";
+  if (s.includes("bapbast") || s.includes("payment") || s.includes("completed")) return "Sudah Selesai";
   if (s.includes("pengumuman rup") || s === "" || s === "-") return "Belum Proses";
   
   return "Sedang Proses";
