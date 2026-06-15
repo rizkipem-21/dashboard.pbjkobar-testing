@@ -2,3 +2,16 @@ arsip/
 data/**/v1_*.json
 data/**/Legacy_*.json
 data/master
+
+# Mengabaikan Python Virtual Environment & Cache (INI YANG PALING PENTING)
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+
+# Mengabaikan script & tools
+scripts/
+tools/
+*.bat
+*.py
