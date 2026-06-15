@@ -428,31 +428,39 @@ function isAngka(val){
   return !isNaN(Number(val));
 }
 
-function getKategoriStatus(row){
+function getKategoriStatus(row) {
   const sumber = (row["Sumber"] || "").toLowerCase();
   const s = (row["Status"] || "").toLowerCase();
 
   if (sumber.includes("sumber 1")) return "Belum Proses";
+  
+  // LOGIKA BARU UNTUK SUMBER 2 (NON TENDER) & SUMBER 5 (TENDER)
   if (sumber.includes("sumber 2") || sumber.includes("sumber 5")) {
-    const selesaiList = ["bapbast","kontrak","selesai","spmkspp","sppbj"];
+    // Hanya bapbast dan selesai yang dianggap Sudah Selesai
+    const selesaiList = ["bapbast", "selesai"];
     if (selesaiList.some(kw => s.includes(kw))) return "Sudah Selesai";
-    return "Sedang Proses";
+    return "Sedang Proses"; // Selain itu (sppbj, kontrak, spmkspp) masuk Sedang Proses
   }
+  
   if (sumber.includes("sumber 3") || sumber.includes("sumber 4")) {
     if (s.includes("paket selesai") || s.includes("selesai")) return "Sudah Selesai";
     return "Sedang Proses";
   }
+  
   if (sumber.includes("sumber 6")) {
     if (s.includes("payment_outside") || s.includes("completed")) return "Sudah Selesai";
     return "Sedang Proses";
   }
+  
   if (sumber.includes("sumber 7")) {
     if (s.includes("paket selesai") || s.includes("selesai")) return "Sudah Selesai";
     return "Sedang Proses";
   }
 
-  if (s.includes("bapbast") || s.includes("selesai") || s.includes("sppbj") || s.includes("kontrak") || s.includes("spmkspp") || s.includes("payment") || s.includes("completed")) return "Sudah Selesai";
+  // Fallback pengaman untuk status secara umum
+  if (s.includes("bapbast") || s.includes("selesai") || s.includes("payment") || s.includes("completed")) return "Sudah Selesai";
   if (s.includes("pengumuman rup") || s === "" || s === "-") return "Belum Proses";
+  
   return "Sedang Proses";
 }
 
