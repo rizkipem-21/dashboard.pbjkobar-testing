@@ -6,6 +6,9 @@
 <title>Rekap Data Pengadaan</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+<script src="../js/status_logic.js"></script>
+
 <style>
   :root {
     --lpse-biru  : #1a3a6b;
@@ -110,7 +113,7 @@
   .btn-master { background:var(--lpse-biru); color:#fff; border:none; border-radius:7px; padding:8px 18px; font-size:0.83rem; font-weight:600; cursor:pointer; box-shadow:0 2px 6px rgba(26,58,107,0.25); }
   .btn-master.disabled { background:#94a3b8; cursor:not-allowed; box-shadow:none; pointer-events:none; }
 
-  /* ===== KONTROL BAR & PAGINATION & TABEL (Sama seperti sebelumnya) ===== */
+  /* ===== KONTROL BAR & PAGINATION & TABEL ===== */
   .control-bar { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:14px; background:#fff; border-radius:10px; padding:12px 16px; box-shadow:0 1px 6px rgba(26,58,107,0.07); }
   .control-bar label { font-size:0.83rem; color:#475569; font-weight:500; }
   .control-bar select { border:1.5px solid #dde3ed; border-radius:7px; padding:6px 10px; font-size:0.83rem; background:#f8fafc; outline:none; }
@@ -426,42 +429,6 @@ function rupiah(n){
 function isAngka(val){
   if (val === null || val === undefined || val === "" || val === " " || val === "N/A") return false;
   return !isNaN(Number(val));
-}
-
-function getKategoriStatus(row) {
-  const sumber = (row["Sumber"] || "").toLowerCase();
-  const s = (row["Status"] || "").toLowerCase();
-
-  if (sumber.includes("sumber 1")) return "Belum Proses";
-  
-  // LOGIKA BARU UNTUK SUMBER 2 (NON TENDER) & SUMBER 5 (TENDER)
-  if (sumber.includes("sumber 2") || sumber.includes("sumber 5")) {
-    // HANYA BAPBAST yang dianggap Sudah Selesai. 
-    // Status "Non Tender Selesai", "Tender Selesai", "SPPBJ", "Kontrak", "SPMKSPP" akan masuk Sedang Proses
-    if (s.includes("bapbast")) return "Sudah Selesai";
-    return "Sedang Berjalan"; 
-  }
-  
-  if (sumber.includes("sumber 3") || sumber.includes("sumber 4")) {
-    if (s.includes("paket selesai") || s.includes("selesai")) return "Sudah Selesai";
-    return "Sedang Berjalan";
-  }
-  
-  if (sumber.includes("sumber 6")) {
-    if (s.includes("payment_outside") || s.includes("completed")) return "Sudah Selesai";
-    return "Sedang Berjalan";
-  }
-  
-  if (sumber.includes("sumber 7")) {
-    if (s.includes("paket selesai") || s.includes("selesai")) return "Sudah Selesai";
-    return "Sedang Berjalan";
-  }
-
-  // Fallback pengaman untuk status secara umum
-  if (s.includes("bapbast") || s.includes("payment") || s.includes("completed")) return "Sudah Selesai";
-  if (s.includes("pengumuman rup") || s === "" || s === "-") return "Belum Proses";
-  
-  return "Sedang Berjalan";
 }
 
 function badgeStatus(row){
@@ -965,4 +932,4 @@ loadDataByYear(currentYear);
 
 </script>
 </body>
-</html>
+</html> )
