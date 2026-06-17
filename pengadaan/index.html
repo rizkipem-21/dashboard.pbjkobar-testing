@@ -887,9 +887,9 @@ document.getElementById("downloadCurrent").addEventListener("click", () => {
         const dominantRaws = validScored.filter(x => x.score === maxScore).map(x => x.raw);
         const hasilStatus = [...new Set(dominantRaws)].join("; ");
 
-        // CEK SISA PAGU (Jika semua paket sudah payment, tapi totalnya masih < 80% Pagu)
+        // CEK SISA PAGU (Hanya berlaku jika LEBIH DARI 1 TRANSAKSI dalam 1 RUP)
         const persentase = paguRup > 0 ? (sumHasil / paguRup) * 100 : 100;
-        if (maxScore === 100 && persentase < 80) {
+        if (arrRows.length > 1 && maxScore === 100 && persentase < 80) {
            return "Sedang Berjalan (Sisa Pagu)";
         }
 
