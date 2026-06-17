@@ -552,7 +552,7 @@
   {
     "Kode Paket": 10772856000,
     "Kode RUP": "64278735;64278766;65419880;65419960",
-    "Kode RUP Baru": 65419880,
+    "Kode RUP Baru": "65419880;65419960;65419880;65419960",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Jalan Udan Said Arut Selatan, Perencanaan Teknis Jalan Bendahara Kumai",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -618,7 +618,7 @@
   {
     "Kode Paket": 10887727000,
     "Kode RUP": "67203505;67233192",
-    "Kode RUP Baru": 67233192,
+    "Kode RUP Baru": "67233192;67233192",
     "Satuan Kerja": "Dinas Pendidikan dan Kebudayaan",
     "Nama Paket": ",Perencanaan Rehabilitasi Sedang/Berat Ruang Kelas Madrasah Diniyah Miftahul Ulum I Kelurahan Candi",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -816,7 +816,7 @@
   {
     "Kode Paket": 10612334000,
     "Kode RUP": "61734597",
-    "Kode RUP Baru": 61908191,
+    "Kode RUP Baru": "61908191",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Pembuatan Sirkuit Motor Croos",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -904,7 +904,7 @@
   {
     "Kode Paket": 10885122000,
     "Kode RUP": "67203239;67233181",
-    "Kode RUP Baru": 67233181,
+    "Kode RUP Baru": "67233181;67233181",
     "Satuan Kerja": "Dinas Pendidikan dan Kebudayaan",
     "Nama Paket": ",Perencanaan Pembangunan Pagar SDN 3 CANDI, dan Perencanaan Pembangunan Pagar Sekolah SDN 1 SEBUAI",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -970,7 +970,7 @@
   {
     "Kode Paket": 10786538000,
     "Kode RUP": "65418098;67021726",
-    "Kode RUP Baru": 67021726,
+    "Kode RUP Baru": "67021726;67021726",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Pemeliharaan Rutin Jalan di Kecamatan Arut Selatan",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -992,7 +992,7 @@
   {
     "Kode Paket": 10786523000,
     "Kode RUP": "65418319;67021269",
-    "Kode RUP Baru": 67021269,
+    "Kode RUP Baru": "67021269;67021269",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Jalan Kubu - Sungai Bakau - Teluk Bogam - Keraya Kecamatan Kumai",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -1344,7 +1344,7 @@
   {
     "Kode Paket": 10614461000,
     "Kode RUP": "61733660",
-    "Kode RUP Baru": 61908243,
+    "Kode RUP Baru": "61908243",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Menara Panjat Tebing (Speed Wall)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -1586,7 +1586,7 @@
   {
     "Kode Paket": 10887775000,
     "Kode RUP": "67011322;67233175",
-    "Kode RUP Baru": 67233175,
+    "Kode RUP Baru": "67233175;67233175",
     "Satuan Kerja": "Dinas Pendidikan dan Kebudayaan",
     "Nama Paket": ",Perencanaan Rehabilitasi Sedang/Berat Ruang Kelas SDN 1 MEDANG SARI",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -1630,7 +1630,7 @@
   {
     "Kode Paket": 10786551000,
     "Kode RUP": "65417216;65417305;65417366;67016312;67016367;67021384",
-    "Kode RUP Baru": 67016312,
+    "Kode RUP Baru": "67016312;67021384;67016367;67016312;67016367;67021384",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Jalan Desa Sungai Tendang RT 1 Kecamatan Kumai, Pengawasan Teknis Jalan Pangkalan Bun - Kotawaringin Lama (Kec. Kotawaringin Lama), Pengawasan Teknis Jalan Desa Kondang Kotawaringin Lama (Kec. Kotawaringin Lama)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -1674,7 +1674,7 @@
   {
     "Kode Paket": 10786545000,
     "Kode RUP": "65417445;65417634;67021566;67021604",
-    "Kode RUP Baru": 67021604,
+    "Kode RUP Baru": "67021604;67021566;67021566;67021604",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Pembangunan Jembatan Type Box Culvert di Kecamatan Kumai, Pengawasan Teknis Pembangunan Jembatan Type Box Culvert Desa Pandu Sanjaya RT 21 RW 07 Pangkalan Lada",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -2290,7 +2290,7 @@
   {
     "Kode Paket": 10770495000,
     "Kode RUP": "64276764;65419625",
-    "Kode RUP Baru": 65419625,
+    "Kode RUP Baru": "65419625;65419625",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Pemeliharaan Rutin Jalan di Kecamatan Arut Selatan",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -2510,7 +2510,7 @@
   {
     "Kode Paket": 10786526000,
     "Kode RUP": "65418126;65418533;67016131;67022004",
-    "Kode RUP Baru": 67022004,
+    "Kode RUP Baru": "67022004;67016131;67016131;67022004",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Rekonstruksi Jalan Desa Ipuh Bangun Jaya Tembusan Batu Kotam (Kecamatan Kotawaringin Lama), Pengawasan Teknis Jalan Ahmad Wongso, Jalan Samari Arut Selatan",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -2642,7 +2642,7 @@
   {
     "Kode Paket": 10772868000,
     "Kode RUP": "64278753;65419726",
-    "Kode RUP Baru": 65419726,
+    "Kode RUP Baru": "65419726;65419726",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Jalan Desa Sumber Agung - Pangkalan Durin",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -2774,7 +2774,7 @@
   {
     "Kode Paket": 10637964000,
     "Kode RUP": "61734170",
-    "Kode RUP Baru": 61908219,
+    "Kode RUP Baru": "61908219",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Pembangunan Gelanggang Panahan",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -3236,7 +3236,7 @@
   {
     "Kode Paket": 10770490000,
     "Kode RUP": "64271125;64271127;64271130;65418982;65419032;65419151",
-    "Kode RUP Baru": 65418982,
+    "Kode RUP Baru": "65418982;65419151;65419032;65418982;65419032;65419151",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Jalan Desa Sungai Tendang RT 1 Kecamatan Kumai, Perencanaan Teknis Jalan Desa Kondang Kotawaringin Lama (Kec. Kotawaringin Lama), Perencanaan Teknis Jalan Pangkalan Bun - Kotawaringin Lama (Kec. Kotawaringin Lama)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -3346,7 +3346,7 @@
   {
     "Kode Paket": 10786531000,
     "Kode RUP": "65418445;67016142",
-    "Kode RUP Baru": 67016142,
+    "Kode RUP Baru": "67016142;67016142",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Jalan A. Yani (Bundaran Kecubung)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -3434,7 +3434,7 @@
   {
     "Kode Paket": 10637965000,
     "Kode RUP": "61734433",
-    "Kode RUP Baru": 61908172,
+    "Kode RUP Baru": "61908172",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Pembangunan Gor Sepak Takraw Indoor",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -3654,7 +3654,7 @@
   {
     "Kode Paket": 10615514000,
     "Kode RUP": "61734827",
-    "Kode RUP Baru": 61908037,
+    "Kode RUP Baru": "61908037",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Rehab Finishing Gedung Koni",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -3698,7 +3698,7 @@
   {
     "Kode Paket": 10770509000,
     "Kode RUP": "64276131;64276135;64276136;64276139;64276140;64276142;65419308;65419344;65419399;65419458;65419488;65419560",
-    "Kode RUP Baru": 65419488,
+    "Kode RUP Baru": "65419488;65419458;65419308;65419344;65419399;65419560;65419308;65419344;65419399;65419458;65419488;65419560",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Pemeliharaan Rutin Jembatan kecamatan Kumai,Perencanaan Teknis Pemeliharaan Rutin Jembatan kecamatan Arut Utara,Perencanaan Teknis Pemeliharaan Rutin Jembatan kecamatan Arut Selatan,Perencanaan Teknis Pemeliharaan Rutin Jembatan kecamatan Kotawaringin Lama,Perencanaan Teknis Pemeliharaan Rutin Jembatan kecamatan Pangkalan Lada,Perencanaan Teknis Pemeliharaan Rutin Jembatan kecamatan Pangkalan Banteng",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -3764,7 +3764,7 @@
   {
     "Kode Paket": 10811677000,
     "Kode RUP": "63990272;67052364",
-    "Kode RUP Baru": 67052364,
+    "Kode RUP Baru": "67052364;67052364",
     "Satuan Kerja": "Dinas Komunikasi, Informatika, Statistik dan Persandian",
     "Nama Paket": "Belanja Penambahan Daya (Pengadaan Gedung Kantor atau Bangunan Lainnya)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -3852,7 +3852,7 @@
   {
     "Kode Paket": 10772859000,
     "Kode RUP": "64278734;65420201",
-    "Kode RUP Baru": 65420201,
+    "Kode RUP Baru": "65420201;65420201",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Jalan Nurhidayah Pangkalan Satu Kec. Kumai",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -4380,7 +4380,7 @@
   {
     "Kode Paket": 10615521000,
     "Kode RUP": "61734662",
-    "Kode RUP Baru": 61908122,
+    "Kode RUP Baru": "61908122",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Penataan Lingkungan Lapangan Tenis",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -4446,7 +4446,7 @@
   {
     "Kode Paket": 10786521000,
     "Kode RUP": "65418386;67021355",
-    "Kode RUP Baru": 67021355,
+    "Kode RUP Baru": "67021355;67021355",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Jalan Nurhidayah Pangkalan Satu Kec. Kumai",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -4842,7 +4842,7 @@
   {
     "Kode Paket": 10787029000,
     "Kode RUP": "65389740;65998698",
-    "Kode RUP Baru": 65998698,
+    "Kode RUP Baru": "65998698;65998698",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": ",Pengadaan Plang",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -4908,7 +4908,7 @@
   {
     "Kode Paket": 10787009000,
     "Kode RUP": "64278728;65419891",
-    "Kode RUP Baru": 65419891,
+    "Kode RUP Baru": "65419891;65419891",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Jalan A. Yani (Bundaran Kecubung)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -4930,7 +4930,7 @@
   {
     "Kode Paket": 10615530000,
     "Kode RUP": "61734049",
-    "Kode RUP Baru": 61908231,
+    "Kode RUP Baru": "61908231",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Pembangunan Arena Sket Board dan Sepatu Roda",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -4996,7 +4996,7 @@
   {
     "Kode Paket": 10767283000,
     "Kode RUP": "64024252;64108149;65466672",
-    "Kode RUP Baru": 65466672,
+    "Kode RUP Baru": "65466672;65466672;65466672",
     "Satuan Kerja": "Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah",
     "Nama Paket": ",Perencanaan Rehabilitasi Lahan Parkir Pasar Indra Sari Blok D dan Pembangunan Akses Jalan",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -5282,7 +5282,7 @@
   {
     "Kode Paket": 10772853000,
     "Kode RUP": "64278727;65420006",
-    "Kode RUP Baru": 65420006,
+    "Kode RUP Baru": "65420006;65420006",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Jalan Melati, Jalan Paleleng Desa Batu Belaman Kecamatan Kumai",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -5414,7 +5414,7 @@
   {
     "Kode Paket": 10770507000,
     "Kode RUP": "64275768;64275769;65419204;65419236",
-    "Kode RUP Baru": 65419204,
+    "Kode RUP Baru": "65419204;65419236;65419204;65419236",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Pembangunan Jembatan Type Box Culvert Desa Pandu Sanjaya RT 21 RW 07 Pangkalan Lada, Perencanaan Teknis Pembangunan Jembatan Type Box Culvert di Kecamatan Kumai",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -5436,7 +5436,7 @@
   {
     "Kode Paket": 10809161000,
     "Kode RUP": "64024246;66823044",
-    "Kode RUP Baru": 66823044,
+    "Kode RUP Baru": "66823044;66823044",
     "Satuan Kerja": "Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah",
     "Nama Paket": "Penataan Lingkungan Jalan / Halaman Pasar Plagan Sari",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -5546,7 +5546,7 @@
   {
     "Kode Paket": 10637960000,
     "Kode RUP": "61734479",
-    "Kode RUP Baru": 61908160,
+    "Kode RUP Baru": "61908160",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Pembangunan Lapangan Volly Pasir / Volly Pantai",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -5568,7 +5568,7 @@
   {
     "Kode Paket": 10767278000,
     "Kode RUP": "64024250;65466505",
-    "Kode RUP Baru": 65466505,
+    "Kode RUP Baru": "65466505;65466505",
     "Satuan Kerja": "Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah",
     "Nama Paket": "Perencanaan Pemavingan Halaman di Pasar Plagan Sari",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -8032,7 +8032,7 @@
   {
     "Kode Paket": 10137394000,
     "Kode RUP": "66840718",
-    "Kode RUP Baru": 67015286,
+    "Kode RUP Baru": "67015286",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Jalan Sp. Kadipi Atas - Batas Natai Baru Kecamatan Pangkalan Lada",
     "Metode Pemilihan": "Tender",
@@ -8054,7 +8054,7 @@
   {
     "Kode Paket": 10137406000,
     "Kode RUP": "66840438;66840453",
-    "Kode RUP Baru": "-",
+    "Kode RUP Baru": "66840438;67045364",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Jalan Bendahara Kumai",
     "Metode Pemilihan": "Tender",
@@ -8076,7 +8076,7 @@
   {
     "Kode Paket": 10125217000,
     "Kode RUP": "64278751;67045301",
-    "Kode RUP Baru": 66840706,
+    "Kode RUP Baru": "66840706;67045301",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Jalan Ahmad Wongso, Jalan Samari Arut Selatan",
     "Metode Pemilihan": "Tender",
@@ -8098,7 +8098,7 @@
   {
     "Kode Paket": 10118297000,
     "Kode RUP": "65418160;66158510",
-    "Kode RUP Baru": 66158510,
+    "Kode RUP Baru": "66158510;66158510",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Jalan TMMD Desa Natai Raya",
     "Metode Pemilihan": "Seleksi",
@@ -8120,7 +8120,7 @@
   {
     "Kode Paket": 10125048000,
     "Kode RUP": "64278745",
-    "Kode RUP Baru": 67011469,
+    "Kode RUP Baru": "67011469",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Jalan Nurhidayah Pangkalan Satu Kec. Kumai",
     "Metode Pemilihan": "Tender",
@@ -8142,7 +8142,7 @@
   {
     "Kode Paket": 10112292000,
     "Kode RUP": "64512351;65469978",
-    "Kode RUP Baru": 65469978,
+    "Kode RUP Baru": "65469978;65469978",
     "Satuan Kerja": "Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah",
     "Nama Paket": "Revitalisasi Kios di Pasar Mini",
     "Metode Pemilihan": "Tender",
@@ -8164,7 +8164,7 @@
   {
     "Kode Paket": 10112657000,
     "Kode RUP": "64278747",
-    "Kode RUP Baru": 65419806,
+    "Kode RUP Baru": "65419806",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Jalan Natai Raya 3",
     "Metode Pemilihan": "Seleksi",
@@ -8252,7 +8252,7 @@
   {
     "Kode Paket": 10137402000,
     "Kode RUP": "66840628;67011398",
-    "Kode RUP Baru": 67011398,
+    "Kode RUP Baru": "67011398;67011398",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Jalan Natai Raya 3",
     "Metode Pemilihan": "Tender",
@@ -8340,7 +8340,7 @@
   {
     "Kode Paket": 10118299000,
     "Kode RUP": "65418477;66158629",
-    "Kode RUP Baru": 66158629,
+    "Kode RUP Baru": "66158629;66158629",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Jalan Sp. Kadipi Atas - Batas Natai Baru Kecamatan Pangkalan Lada",
     "Metode Pemilihan": "Seleksi",
@@ -8362,7 +8362,7 @@
   {
     "Kode Paket": 10119337000,
     "Kode RUP": "64278749",
-    "Kode RUP Baru": 65419753,
+    "Kode RUP Baru": "65419753",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Jalan Trans LIK Arut Selatan",
     "Metode Pemilihan": "Seleksi",
@@ -8384,7 +8384,7 @@
   {
     "Kode Paket": 10137403000,
     "Kode RUP": "66840520",
-    "Kode RUP Baru": 67010886,
+    "Kode RUP Baru": "67010886",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Jalan Desa Sumber Agung - Pangkalan Durin",
     "Metode Pemilihan": "Tender",
@@ -8450,7 +8450,7 @@
   {
     "Kode Paket": 10112648000,
     "Kode RUP": "64278748",
-    "Kode RUP Baru": 65419841,
+    "Kode RUP Baru": "65419841",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Jalan Sp. Kadipi Atas - Batas Natai Baru Kecamatan Pangkalan Lada",
     "Metode Pemilihan": "Seleksi",
@@ -8494,7 +8494,7 @@
   {
     "Kode Paket": 10115455000,
     "Kode RUP": "65278517;65831315",
-    "Kode RUP Baru": 65831315,
+    "Kode RUP Baru": "65831315;65831315",
     "Satuan Kerja": "Dinas Perhubungan",
     "Nama Paket": "Pengadaan dan Pemasangan Penerangan Jalan Umum di Jalan Samari",
     "Metode Pemilihan": "Tender",
@@ -8516,7 +8516,7 @@
   {
     "Kode Paket": 10136712000,
     "Kode RUP": "66840421;67185988",
-    "Kode RUP Baru": 67185988,
+    "Kode RUP Baru": "67185988;67185988",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Jalan A. Yani Karang Mulya",
     "Metode Pemilihan": "Tender",
@@ -8538,7 +8538,7 @@
   {
     "Kode Paket": 10112636000,
     "Kode RUP": "64278724",
-    "Kode RUP Baru": 65420288,
+    "Kode RUP Baru": "65420288",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Jalan TMMD Desa Natai Raya",
     "Metode Pemilihan": "Seleksi",
@@ -8626,7 +8626,7 @@
   {
     "Kode Paket": 10112632000,
     "Kode RUP": "64278756",
-    "Kode RUP Baru": 65419698,
+    "Kode RUP Baru": "65419698",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Jalan A. Yani Karang Mulya",
     "Metode Pemilihan": "Seleksi",
@@ -8648,7 +8648,7 @@
   {
     "Kode Paket": 10099810000,
     "Kode RUP": "61734740",
-    "Kode RUP Baru": 61908115,
+    "Kode RUP Baru": "61908115",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Penataan Lingkungan Spot Center",
     "Metode Pemilihan": "Seleksi",
@@ -8692,7 +8692,7 @@
   {
     "Kode Paket": 10118300000,
     "Kode RUP": "65418354;66158715",
-    "Kode RUP Baru": 66158715,
+    "Kode RUP Baru": "66158715;66158715",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Jalan Natai Raya 3",
     "Metode Pemilihan": "Seleksi",
@@ -8736,7 +8736,7 @@
   {
     "Kode Paket": 10137405000,
     "Kode RUP": "66840770",
-    "Kode RUP Baru": 67015370,
+    "Kode RUP Baru": "67015370",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Jalan Udan Said Arut Selatan",
     "Metode Pemilihan": "Tender",
@@ -8780,7 +8780,7 @@
   {
     "Kode Paket": 10118301000,
     "Kode RUP": "65418736;66159176",
-    "Kode RUP Baru": 66159176,
+    "Kode RUP Baru": "66159176;66159176",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": ",Pengawasan Teknis Jalan Melati, Jalan Paleleng Desa Batu Belaman Kecamatan Kumai",
     "Metode Pemilihan": "Seleksi",
@@ -8802,7 +8802,7 @@
   {
     "Kode Paket": 10125060000,
     "Kode RUP": "64278763;66840545",
-    "Kode RUP Baru": 67011033,
+    "Kode RUP Baru": "67011033;67011033",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Jalan Kubu - Sungai Bakau - Teluk Bogam - Keraya Kecamatan Kumai",
     "Metode Pemilihan": "Tender",
@@ -8824,7 +8824,7 @@
   {
     "Kode Paket": 10115769000,
     "Kode RUP": "65465567;67002393",
-    "Kode RUP Baru": 67002393,
+    "Kode RUP Baru": "67002393;67002393",
     "Satuan Kerja": "Dinas Perhubungan",
     "Nama Paket": "Pengawasan Pengadaan dan Pemasangan Penerangan Jalan Umum di Jalan Samari",
     "Metode Pemilihan": "Seleksi",
@@ -8868,7 +8868,7 @@
   {
     "Kode Paket": 10137408000,
     "Kode RUP": "66840144",
-    "Kode RUP Baru": 67010812,
+    "Kode RUP Baru": "67010812",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Jalan A. Yani (Bundaran Kecubung)",
     "Metode Pemilihan": "Tender",
@@ -8890,7 +8890,7 @@
   {
     "Kode Paket": 10099814000,
     "Kode RUP": "61734258",
-    "Kode RUP Baru": 61908207,
+    "Kode RUP Baru": "61908207",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Pembangunan GOR Basket Indoor",
     "Metode Pemilihan": "Seleksi",
@@ -8912,7 +8912,7 @@
   {
     "Kode Paket": 10126301000,
     "Kode RUP": "65359280;66402843",
-    "Kode RUP Baru": 66402843,
+    "Kode RUP Baru": "66402843;66402843",
     "Satuan Kerja": "Badan Penanggulangan Bencana Daerah",
     "Nama Paket": "Penyusunan Rencana Kontijensi Tanah Longsor dan Cuaca Ekstrim",
     "Metode Pemilihan": "Seleksi",
@@ -8956,7 +8956,7 @@
   {
     "Kode Paket": 10118298000,
     "Kode RUP": "65418200;66158565",
-    "Kode RUP Baru": 66158565,
+    "Kode RUP Baru": "66158565;66158565",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Jalan Trans LIK Arut Selatan",
     "Metode Pemilihan": "Seleksi",
@@ -8978,7 +8978,7 @@
   {
     "Kode Paket": 10116753000,
     "Kode RUP": "64917031",
-    "Kode RUP Baru": 66019981,
+    "Kode RUP Baru": "66019981",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Pembangunan GOR Basket Indoor",
     "Metode Pemilihan": "Seleksi",
@@ -9000,7 +9000,7 @@
   {
     "Kode Paket": 10137407000,
     "Kode RUP": "66840744",
-    "Kode RUP Baru": 67015306,
+    "Kode RUP Baru": "67015306",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Jalan TMMD Desa Natai Raya",
     "Metode Pemilihan": "Tender",
@@ -9022,7 +9022,7 @@
   {
     "Kode Paket": 10118296000,
     "Kode RUP": "65418244;66158041",
-    "Kode RUP Baru": 66158041,
+    "Kode RUP Baru": "66158041;66158041",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": ",Pengawasan Teknis Jalan A. Yani Karang Mulya",
     "Metode Pemilihan": "Seleksi",
@@ -9066,7 +9066,7 @@
   {
     "Kode Paket": 10112376000,
     "Kode RUP": "64512237;65314241;65466376",
-    "Kode RUP Baru": 65466376,
+    "Kode RUP Baru": "65466376;65466376;65466376",
     "Satuan Kerja": "Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah",
     "Nama Paket": "Pengawasan Revitalisasi Kios di Pasar Mini",
     "Metode Pemilihan": "Seleksi",
@@ -9484,7 +9484,7 @@
   {
     "Kode Paket": "01KJ4A5TYA3NVVFP9WJ0T7D2JC",
     "Kode RUP": "65299696",
-    "Kode RUP Baru": 67023272,
+    "Kode RUP Baru": "67023272",
     "Satuan Kerja": "Dinas Kesehatan",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -10474,7 +10474,7 @@
   {
     "Kode Paket": "01KH8AAXPEZG602D8FEZXCFMRX",
     "Kode RUP": "65299693",
-    "Kode RUP Baru": 67023305,
+    "Kode RUP Baru": "67023305",
     "Satuan Kerja": "Dinas Kesehatan",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -10782,7 +10782,7 @@
   {
     "Kode Paket": "01KP0Z53YJPMCP72YCZQ0A9YQH",
     "Kode RUP": "65299696",
-    "Kode RUP Baru": 67023272,
+    "Kode RUP Baru": "67023272",
     "Satuan Kerja": "Dinas Kesehatan",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -10870,7 +10870,7 @@
   {
     "Kode Paket": "01KJ4BSY9PHQNXPPBD2ECWV02R",
     "Kode RUP": "65299696",
-    "Kode RUP Baru": 67023272,
+    "Kode RUP Baru": "67023272",
     "Satuan Kerja": "Dinas Kesehatan",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -11596,7 +11596,7 @@
   {
     "Kode Paket": "01KKWJCJT4B1J3HB6DYZZ40JKT",
     "Kode RUP": "65299696",
-    "Kode RUP Baru": 67023272,
+    "Kode RUP Baru": "67023272",
     "Satuan Kerja": "Dinas Kesehatan",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -12234,7 +12234,7 @@
   {
     "Kode Paket": "01KJ7C5PE92H50W4WZ2F85YNET",
     "Kode RUP": "65299696",
-    "Kode RUP Baru": 67023272,
+    "Kode RUP Baru": "67023272",
     "Satuan Kerja": "Dinas Kesehatan",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -12718,7 +12718,7 @@
   {
     "Kode Paket": "01KPM9ST921D2KYBMKN39KM98S",
     "Kode RUP": "64822762",
-    "Kode RUP Baru": 67153971,
+    "Kode RUP Baru": "67153971",
     "Satuan Kerja": "Dinas Pertanian",
     "Nama Paket": "Pengadaan Kaos Sosialisasi Sertifikasi ISPO",
     "Metode Pemilihan": "E-Purchasing",
@@ -13532,7 +13532,7 @@
   {
     "Kode Paket": "01KPG8YETDCQAV9T11NDF4X9SP",
     "Kode RUP": "66849772",
-    "Kode RUP Baru": 66994132,
+    "Kode RUP Baru": "66994132",
     "Satuan Kerja": "Dinas Kesehatan",
     "Nama Paket": "Belanja Bahan-Bahan Kimia",
     "Metode Pemilihan": "E-Purchasing",

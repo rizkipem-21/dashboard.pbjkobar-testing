@@ -24,7 +24,7 @@
   {
     "Kode Paket": 10178138000,
     "Kode RUP": "57044540;57044742;59804903;59804946",
-    "Kode RUP Baru": 59804946,
+    "Kode RUP Baru": "59804946;59804903;59804903;59804946",
     "Satuan Kerja": "Dinas Sosial",
     "Nama Paket": "Pengawasan Rehab Gedung Sistem Layanan dan Rujukan Terpadu (SLRT),Pengawasan Rehab Bangunan Panti Singgah",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -200,7 +200,7 @@
   {
     "Kode Paket": 10159780000,
     "Kode RUP": "55441849",
-    "Kode RUP Baru": 59588392,
+    "Kode RUP Baru": "59588392",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pembangunan Drainase Lingkungan RT. 03 Kel. Sidorejo Kec. Arsel",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -574,7 +574,7 @@
   {
     "Kode Paket": 10133756000,
     "Kode RUP": "56605085;59499515",
-    "Kode RUP Baru": 59499515,
+    "Kode RUP Baru": "59499515;59499515",
     "Satuan Kerja": "Dinas Pendidikan dan Kebudayaan",
     "Nama Paket": "Konstruksi Pembangunan Ruang Guru TK Anggrek Desa Sungai Rangit Jaya Kecamatan Pangkalan Lada",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -1344,7 +1344,7 @@
   {
     "Kode Paket": 10227638000,
     "Kode RUP": "58224390",
-    "Kode RUP Baru": 59876418,
+    "Kode RUP Baru": "59876418",
     "Satuan Kerja": "Badan Pendapatan Daerah",
     "Nama Paket": "Pengawasanan Teknis Pembangunan Kanopi",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -2312,7 +2312,7 @@
   {
     "Kode Paket": 10174123000,
     "Kode RUP": "59350335;59351954",
-    "Kode RUP Baru": 59949158,
+    "Kode RUP Baru": "59949158;59351954",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Rekonstruksi Jalan Tahun Anggaran 2025 Paket 11",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -3214,7 +3214,7 @@
   {
     "Kode Paket": 10024609000,
     "Kode RUP": "53569738",
-    "Kode RUP Baru": 53827894,
+    "Kode RUP Baru": "53827894",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Rekonstruksi Jalan Tahun Anggaran 2025 Paket 4",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -3390,7 +3390,7 @@
   {
     "Kode Paket": 10078248000,
     "Kode RUP": "56409403;59086226",
-    "Kode RUP Baru": 59099463,
+    "Kode RUP Baru": "59099463;59099463",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Perencanaan Pemeliharaan Toilet/Kamar Kecil",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -3522,7 +3522,7 @@
   {
     "Kode Paket": 10162411000,
     "Kode RUP": "59573156;59804849",
-    "Kode RUP Baru": 59804849,
+    "Kode RUP Baru": "59804849;59804849",
     "Satuan Kerja": "Dinas Sosial",
     "Nama Paket": "Pengawasan Rehab Gedung Kantor Dinas Sosial",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -3786,7 +3786,7 @@
   {
     "Kode Paket": 10268014000,
     "Kode RUP": "59665437",
-    "Kode RUP Baru": 60001324,
+    "Kode RUP Baru": "60001324",
     "Satuan Kerja": "Dinas Pendidikan dan Kebudayaan",
     "Nama Paket": "PENGADAAN MEUBELER RUANG KELAS SD/SMP SATU ATAP NEGERI SATU ARUT SELATAN",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -3984,7 +3984,7 @@
   {
     "Kode Paket": 10192400000,
     "Kode RUP": "57299129",
-    "Kode RUP Baru": 59771184,
+    "Kode RUP Baru": "59771184",
     "Satuan Kerja": "Badan Pendapatan Daerah",
     "Nama Paket": "Pengadaan Bahan cetak/blanko Pajak Daerah",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -4160,7 +4160,7 @@
   {
     "Kode Paket": 10525541000,
     "Kode RUP": "60925901;61420911",
-    "Kode RUP Baru": 61420911,
+    "Kode RUP Baru": "61420911;61420911",
     "Satuan Kerja": "Dinas Perpustakaan dan Kearsipan",
     "Nama Paket": ",Pengawasan Teknis Rehabilitasi/Perbaikan Siring Taman",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -4204,7 +4204,7 @@
   {
     "Kode Paket": 10024602000,
     "Kode RUP": "53569734",
-    "Kode RUP Baru": 59355264,
+    "Kode RUP Baru": "59355264",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Rekonstruksi Jalan Tahun Anggaran 2025 Paket 3",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -4468,7 +4468,7 @@
   {
     "Kode Paket": 10343476000,
     "Kode RUP": "57281257;60429513",
-    "Kode RUP Baru": 60429513,
+    "Kode RUP Baru": "60429513;60429513",
     "Satuan Kerja": "Dinas Perhubungan",
     "Nama Paket": "Pengawasan Pembangunan Pos Pengamanan Dermaga Indrasari",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -5238,7 +5238,7 @@
   {
     "Kode Paket": 10321305000,
     "Kode RUP": "60249535;60323700",
-    "Kode RUP Baru": 60323700,
+    "Kode RUP Baru": "60323700;60323700",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengadaan Plang",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -5436,7 +5436,7 @@
   {
     "Kode Paket": 10034135000,
     "Kode RUP": "53574322;54136698",
-    "Kode RUP Baru": 54136698,
+    "Kode RUP Baru": "54136698;54136698",
     "Satuan Kerja": "Dinas Perhubungan",
     "Nama Paket": "Perencanaan Pembangunan Pagar Keliling Rencana Bandara Baru",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -6426,7 +6426,7 @@
   {
     "Kode Paket": 10379864000,
     "Kode RUP": "60543810;60567447",
-    "Kode RUP Baru": 60567447,
+    "Kode RUP Baru": "60567447;60567447",
     "Satuan Kerja": "Dinas Perhubungan",
     "Nama Paket": "Belanja Pemeliharaan Rambu-Rambu Lalu Lintas Darat Bersuar",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -6448,7 +6448,7 @@
   {
     "Kode Paket": 10024617000,
     "Kode RUP": "53590184",
-    "Kode RUP Baru": 53827815,
+    "Kode RUP Baru": "53827815",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Rekonstruksi Jalan Tahun Anggaran 2025 Paket 5",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -6954,7 +6954,7 @@
   {
     "Kode Paket": 10024664000,
     "Kode RUP": "53569775",
-    "Kode RUP Baru": 53827908,
+    "Kode RUP Baru": "53827908",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Rehabilitasi Jembatan Tahun Anggaran 2025",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -7680,7 +7680,7 @@
   {
     "Kode Paket": 10183887000,
     "Kode RUP": "59099091",
-    "Kode RUP Baru": 59702901,
+    "Kode RUP Baru": "59702901",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": ",Pengawasan Pemeliharaan Plafon Gedung Kantor",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -8076,7 +8076,7 @@
   {
     "Kode Paket": 10577669000,
     "Kode RUP": "60991444",
-    "Kode RUP Baru": 61166721,
+    "Kode RUP Baru": "61166721",
     "Satuan Kerja": "Badan Kepegawaian dan Pengembangan Sumber Daya Manusia",
     "Nama Paket": "Pengadaan Mebel (Meja Rapat Panjang)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -9044,7 +9044,7 @@
   {
     "Kode Paket": 10182875000,
     "Kode RUP": "57666426;57666436;57666444;57666452;57666467;57666525;57666591;57666592",
-    "Kode RUP Baru": "-",
+    "Kode RUP Baru": "57666426;57666436;59683768;57666452;57666467;57666525;57666591;57666592",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Rekonstruksi Jalan Tahun Anggaran 2025 Paket 6",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -9484,7 +9484,7 @@
   {
     "Kode Paket": 10267838000,
     "Kode RUP": "59664849",
-    "Kode RUP Baru": 59957884,
+    "Kode RUP Baru": "59957884",
     "Satuan Kerja": "Dinas Pendidikan dan Kebudayaan",
     "Nama Paket": "PENGADAAN  MEBELER YAYASAN DARUL HIKAM DESA KARANG MULYA KECAMATAN PANGKALAN BANTENG",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -10166,7 +10166,7 @@
   {
     "Kode Paket": 10215235000,
     "Kode RUP": "59641327;60232474",
-    "Kode RUP Baru": 60232474,
+    "Kode RUP Baru": "60232474;60232474",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Perencanaan Teknis Peningkatan Jalan Lingkungan Kawasan Permukiman di Kec. Arut Selatan Paket VII",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -10496,7 +10496,7 @@
   {
     "Kode Paket": 10370981000,
     "Kode RUP": "60165249",
-    "Kode RUP Baru": 60240338,
+    "Kode RUP Baru": "60240338",
     "Satuan Kerja": "Dinas Tenaga Kerja dan Transmigrasi",
     "Nama Paket": "Biaya Pengawasan Pembuatan Terase Jalan Desa Rangda - Transmigrasi",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -12124,7 +12124,7 @@
   {
     "Kode Paket": 10183881000,
     "Kode RUP": "59099178",
-    "Kode RUP Baru": 59702919,
+    "Kode RUP Baru": "59702919",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Pengawasan Pemeliharaan Toilet/Kamar Kecil",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -12234,7 +12234,7 @@
   {
     "Kode Paket": 10121555000,
     "Kode RUP": "57151028",
-    "Kode RUP Baru": 60837449,
+    "Kode RUP Baru": "60837449",
     "Satuan Kerja": "Dinas Pertanian",
     "Nama Paket": "Perencanaan Teknis Rehabilitasi Dan Pemeliharaan Jaringan Irigasi Usaha Tani Poktan Tunas Harapan Jaya Ds. Ipuh Bangun Jaya Kec. Ktw. Lama",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -12476,7 +12476,7 @@
   {
     "Kode Paket": 10201225000,
     "Kode RUP": "57100997",
-    "Kode RUP Baru": 59931335,
+    "Kode RUP Baru": "59931335",
     "Satuan Kerja": "Badan Penanggulangan Bencana Daerah",
     "Nama Paket": "Pengadaan Pengawasan Rehabilitasi Gedung Gudang Logistik Bencana",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -12674,7 +12674,7 @@
   {
     "Kode Paket": 10480185000,
     "Kode RUP": "61070429",
-    "Kode RUP Baru": 62116338,
+    "Kode RUP Baru": "62116338",
     "Satuan Kerja": "Kecamatan Kumai",
     "Nama Paket": "Pemasangan plafond Kumai Hulu",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -12762,7 +12762,7 @@
   {
     "Kode Paket": 10117430000,
     "Kode RUP": "58375815",
-    "Kode RUP Baru": 60699847,
+    "Kode RUP Baru": "60699847",
     "Satuan Kerja": "Dinas Komunikasi, Informatika, Statistik dan Persandian",
     "Nama Paket": "Pengawasan Teknis Pembangunan Gedung Kantor (Pengadaan Gedung Kantor atau Bangunan Lainnya)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -12784,7 +12784,7 @@
   {
     "Kode Paket": 10079298000,
     "Kode RUP": "55895135",
-    "Kode RUP Baru": 60739211,
+    "Kode RUP Baru": "60739211",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Satuan Biaya Jasa Konsultansi Penyusunan Data Base Badan Usaha Jasa Konstruksi di Kabupaten Kotawaringin Barat",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -13312,7 +13312,7 @@
   {
     "Kode Paket": 10457183000,
     "Kode RUP": "60838648;61079462",
-    "Kode RUP Baru": 61079462,
+    "Kode RUP Baru": "61079462;61079462",
     "Satuan Kerja": "Dinas Perhubungan",
     "Nama Paket": "Pengawasan Pembangunan Perbaikan Pagar Belakang Dinas Perhubungan",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -13400,7 +13400,7 @@
   {
     "Kode Paket": 10024638000,
     "Kode RUP": "53569758",
-    "Kode RUP Baru": 53827993,
+    "Kode RUP Baru": "53827993",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Rekonstruksi Jalan Tahun Anggaran 2025 Paket 7",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -13598,7 +13598,7 @@
   {
     "Kode Paket": 10420347000,
     "Kode RUP": "60694254;60837733",
-    "Kode RUP Baru": 60837733,
+    "Kode RUP Baru": "60837733;60837733",
     "Satuan Kerja": "Dinas Perhubungan",
     "Nama Paket": "Pengadaan dan Pemasangan Patok dan Papan Informasi Bandara Baru",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -14412,7 +14412,7 @@
   {
     "Kode Paket": 10114159000,
     "Kode RUP": "59086362",
-    "Kode RUP Baru": 59313978,
+    "Kode RUP Baru": "59313978",
     "Satuan Kerja": "Dinas Perikanan dan Ketahanan Pangan",
     "Nama Paket": "Belanja Jasa Tenaga Kebersihan",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -14434,7 +14434,7 @@
   {
     "Kode Paket": 10094140000,
     "Kode RUP": "57044586;57044789;58922042;58922094",
-    "Kode RUP Baru": 58922094,
+    "Kode RUP Baru": "58922094;58922042;58922042;58922094",
     "Satuan Kerja": "Dinas Sosial",
     "Nama Paket": "Perencanaan Rehab Gedung Sistem Layanan dan Rujukan Terpadu (SLRT),Perencanaan Rehab Bangunan Panti Singgah",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -14522,7 +14522,7 @@
   {
     "Kode Paket": 10525145000,
     "Kode RUP": "60925745;61420945",
-    "Kode RUP Baru": 61420945,
+    "Kode RUP Baru": "61420945;61420945",
     "Satuan Kerja": "Dinas Perpustakaan dan Kearsipan",
     "Nama Paket": ",Pengawasan Teknis Rehabilitasi /Perbaikan Pintu Pagar",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -14742,7 +14742,7 @@
   {
     "Kode Paket": 10075480000,
     "Kode RUP": "57946733",
-    "Kode RUP Baru": 60974592,
+    "Kode RUP Baru": "60974592",
     "Satuan Kerja": "Dinas Perpustakaan dan Kearsipan",
     "Nama Paket": "Pengadaa Bahan pustaka",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -14786,7 +14786,7 @@
   {
     "Kode Paket": 10084248000,
     "Kode RUP": "58298874",
-    "Kode RUP Baru": 62311594,
+    "Kode RUP Baru": "62311594",
     "Satuan Kerja": "Sekretariat Daerah",
     "Nama Paket": "Belanja Sewa Kapal Terbang",
     "Metode Pemilihan": "Penunjukan Langsung",
@@ -15248,7 +15248,7 @@
   {
     "Kode Paket": 10171106000,
     "Kode RUP": "57892268",
-    "Kode RUP Baru": 59786003,
+    "Kode RUP Baru": "59786003",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengembangan Aplikasi SIRELA UPT Laboratorium Bahan Konstruksi",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -16326,7 +16326,7 @@
   {
     "Kode Paket": 10519365000,
     "Kode RUP": "60858327;61566338",
-    "Kode RUP Baru": 61566338,
+    "Kode RUP Baru": "61566338;61566338",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Pengawasan Teknis Peningkatan Jalan Lingkungan Kawasan Permukiman di Kec. Arut Selatan, Kec. Kumai dan Kec. Pangkalan Lada ABT",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -16744,7 +16744,7 @@
   {
     "Kode Paket": 10024633000,
     "Kode RUP": "53569751",
-    "Kode RUP Baru": 59355389,
+    "Kode RUP Baru": "59355389",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Rekonstruksi Jalan Tahun Anggaran 2025 Paket 6",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -17052,7 +17052,7 @@
   {
     "Kode Paket": 10094903000,
     "Kode RUP": "56991550;56991554;58922121;58922173",
-    "Kode RUP Baru": 58922173,
+    "Kode RUP Baru": "58922173;58922121;58922121;58922173",
     "Satuan Kerja": "Dinas Sosial",
     "Nama Paket": "Perencanaan Rehab Halaman Taman Makam Pahlawan Indra Pura,Perencanaan Pemasangan Paving Taman Makam Pahlawan Indra Pura",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -17668,7 +17668,7 @@
   {
     "Kode Paket": 10419373000,
     "Kode RUP": "60759417;60818759",
-    "Kode RUP Baru": 60818759,
+    "Kode RUP Baru": "60818759;60818759",
     "Satuan Kerja": "Badan Perencanaan Pembangunan, Riset dan Inovasi Daerah",
     "Nama Paket": "Perencanaan Rehabilitasi Gedung dan Paving",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -17690,7 +17690,7 @@
   {
     "Kode Paket": 10234081000,
     "Kode RUP": "59910424",
-    "Kode RUP Baru": 60987382,
+    "Kode RUP Baru": "60987382",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Penyusunan Studi Identifikasi Zona Nilai Tanah di Kecamatan Pangkalan Lada",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -17866,7 +17866,7 @@
   {
     "Kode Paket": 10088285000,
     "Kode RUP": "58440236",
-    "Kode RUP Baru": 62398397,
+    "Kode RUP Baru": "62398397",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(BARJAS) IPSRS - Pemeliharaan Incenerator",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -18130,7 +18130,7 @@
   {
     "Kode Paket": 10525245000,
     "Kode RUP": "60925621;61420998",
-    "Kode RUP Baru": 61420998,
+    "Kode RUP Baru": "61420998;61420998",
     "Satuan Kerja": "Dinas Perpustakaan dan Kearsipan",
     "Nama Paket": ",Pengawasan Teknis Pembuatan sarana/prasarana untuk layanan difable dan area bermain ramah anak",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -18152,7 +18152,7 @@
   {
     "Kode Paket": 10116459000,
     "Kode RUP": "57299123",
-    "Kode RUP Baru": 59002820,
+    "Kode RUP Baru": "59002820",
     "Satuan Kerja": "Badan Pendapatan Daerah",
     "Nama Paket": "Pemeliharaan papan reklame/baliho",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -19054,7 +19054,7 @@
   {
     "Kode Paket": 10095170000,
     "Kode RUP": "57044372;58922068",
-    "Kode RUP Baru": 59174754,
+    "Kode RUP Baru": "59174754;59174754",
     "Satuan Kerja": "Dinas Sosial",
     "Nama Paket": "Perencanaan Rehab Gedung Kantor Dinas Sosial",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -19252,7 +19252,7 @@
   {
     "Kode Paket": 10476094000,
     "Kode RUP": "60923578",
-    "Kode RUP Baru": 61420881,
+    "Kode RUP Baru": "61420881",
     "Satuan Kerja": "Dinas Perpustakaan dan Kearsipan",
     "Nama Paket": "Perencanaan Teknis Rehabilitasi/Perbaikan Siring Taman",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -20352,7 +20352,7 @@
   {
     "Kode Paket": 10024649000,
     "Kode RUP": "53584833",
-    "Kode RUP Baru": 53827862,
+    "Kode RUP Baru": "53827862",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Pembangunan Jalan Tahun Anggaran 2025 Paket 2",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -20858,7 +20858,7 @@
   {
     "Kode Paket": 10462619000,
     "Kode RUP": "60759419;61092891",
-    "Kode RUP Baru": 61093954,
+    "Kode RUP Baru": "61093954;61093954",
     "Satuan Kerja": "Badan Perencanaan Pembangunan, Riset dan Inovasi Daerah",
     "Nama Paket": "Pengawasan Rehabilitasi Gedung dan Paving",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -21188,7 +21188,7 @@
   {
     "Kode Paket": 10272264000,
     "Kode RUP": "59904002",
-    "Kode RUP Baru": 60974065,
+    "Kode RUP Baru": "60974065",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Pendataan dan Pembuatan Peta Perumahan Komersil dan Non Komersial di Wilayah Kab. Kotawaringin Barat",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -21320,7 +21320,7 @@
   {
     "Kode Paket": 10310417000,
     "Kode RUP": "59369901",
-    "Kode RUP Baru": 60964895,
+    "Kode RUP Baru": "60964895",
     "Satuan Kerja": "Badan Penanggulangan Bencana Daerah",
     "Nama Paket": "Pengadaan Bahan Penyebaran Informasi",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -21342,7 +21342,7 @@
   {
     "Kode Paket": 10370556000,
     "Kode RUP": "57291321;60490002",
-    "Kode RUP Baru": 60490002,
+    "Kode RUP Baru": "60490002;60490002",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": ",Pengadaan Tanah Penutup Blok Sampah",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -21628,7 +21628,7 @@
   {
     "Kode Paket": 10352130000,
     "Kode RUP": "57874012",
-    "Kode RUP Baru": 60288039,
+    "Kode RUP Baru": "60288039",
     "Satuan Kerja": "Kecamatan Kumai",
     "Nama Paket": "Perencanaan Rehab Aula Kecamatan",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -21804,7 +21804,7 @@
   {
     "Kode Paket": 10142054000,
     "Kode RUP": "56411854",
-    "Kode RUP Baru": 59379175,
+    "Kode RUP Baru": "59379175",
     "Satuan Kerja": "Dinas Pendidikan dan Kebudayaan",
     "Nama Paket": "Pengawasan  Pemasangan Paving Halaman SDN 1 KADIPI ATAS,  Pengawasan Pembangunan  pagar depan SDN 1 PANGKALAN SATU dan Pengawasan Pembangunan Pagar SD NEGERI 1 PANGKALAN DURIN",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -22574,7 +22574,7 @@
   {
     "Kode Paket": 10075824000,
     "Kode RUP": "57971312",
-    "Kode RUP Baru": 59306542,
+    "Kode RUP Baru": "59306542",
     "Satuan Kerja": "Sekretariat DPRD",
     "Nama Paket": "Penyediaan Peralatan dan Perlengkapan Kantor",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -23300,7 +23300,7 @@
   {
     "Kode Paket": 10186085000,
     "Kode RUP": "57101178",
-    "Kode RUP Baru": 59931313,
+    "Kode RUP Baru": "59931313",
     "Satuan Kerja": "Badan Penanggulangan Bencana Daerah",
     "Nama Paket": "Pengadaan Rehabilitasi Gedung Gudang Logistik Bencana",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -23410,7 +23410,7 @@
   {
     "Kode Paket": 10219884000,
     "Kode RUP": "57298017",
-    "Kode RUP Baru": 59876453,
+    "Kode RUP Baru": "59876453",
     "Satuan Kerja": "Badan Pendapatan Daerah",
     "Nama Paket": "Pembangunan Kanopi",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -23520,7 +23520,7 @@
   {
     "Kode Paket": 10024644000,
     "Kode RUP": "53584831",
-    "Kode RUP Baru": 59439874,
+    "Kode RUP Baru": "59439874",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Pembangunan Jalan Tahun Anggaran 2025 Paket 1",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -24004,7 +24004,7 @@
   {
     "Kode Paket": 10024592000,
     "Kode RUP": "53569728",
-    "Kode RUP Baru": 53828054,
+    "Kode RUP Baru": "53828054",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Rekonstruksi Jalan Tahun Anggaran 2025 Paket 2",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -24224,7 +24224,7 @@
   {
     "Kode Paket": 10180963000,
     "Kode RUP": "57044086;59795725",
-    "Kode RUP Baru": 59795725,
+    "Kode RUP Baru": "59795725;59795725",
     "Satuan Kerja": "Dinas Sosial",
     "Nama Paket": ",Pengawasan Pembangunan Pagar panti Singgah",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -24686,7 +24686,7 @@
   {
     "Kode Paket": 10525002000,
     "Kode RUP": "60925401;61420969",
-    "Kode RUP Baru": 61420969,
+    "Kode RUP Baru": "61420969;61420969",
     "Satuan Kerja": "Dinas Perpustakaan dan Kearsipan",
     "Nama Paket": ",Pengawasan Teknis Pembangunan atap/kanopi",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -25016,7 +25016,7 @@
   {
     "Kode Paket": 10546402000,
     "Kode RUP": "61386186",
-    "Kode RUP Baru": 61442660,
+    "Kode RUP Baru": "61442660",
     "Satuan Kerja": "Dinas Pemberdayaan Masyarakat dan Desa",
     "Nama Paket": "Perencanaan Rehabilitasi Gedung Kantor",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -25148,7 +25148,7 @@
   {
     "Kode Paket": 10461768000,
     "Kode RUP": "60759418",
-    "Kode RUP Baru": 61093969,
+    "Kode RUP Baru": "61093969",
     "Satuan Kerja": "Badan Perencanaan Pembangunan, Riset dan Inovasi Daerah",
     "Nama Paket": "Rehabilitasi gedung dan Paving",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -25192,7 +25192,7 @@
   {
     "Kode Paket": 10197699000,
     "Kode RUP": "59764784",
-    "Kode RUP Baru": 61762817,
+    "Kode RUP Baru": "61762817",
     "Satuan Kerja": "Dinas Pendidikan dan Kebudayaan",
     "Nama Paket": "Pengawasan pemasangan paving halaman KB Insan Mandala Kasih Desa Lada Mandala Jaya Kecamatan Pangkalan Lada, Pengawasan Penataan Halaman TK Tunas Bangsa Desa Lada Mandala Jaya, dan Pengawasan Pembangunan Area Bermain TK Melati Desa Riam Durian Kecamatan Kotawaringin Lama",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -25478,7 +25478,7 @@
   {
     "Kode Paket": 10024580000,
     "Kode RUP": "53569722",
-    "Kode RUP Baru": 59355136,
+    "Kode RUP Baru": "59355136",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Rekonstruksi Jalan Tahun Anggaran 2025 Paket 1",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -25786,7 +25786,7 @@
   {
     "Kode Paket": 10197245000,
     "Kode RUP": "57077852;59792603",
-    "Kode RUP Baru": 59792603,
+    "Kode RUP Baru": "59792603;59792603",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Penyusunan Deliniasi Kawasan Kumuh di Kel. Mendawai, Kel. Raja dan Kel. Baru Kecamatan Arut Selatan, Kab. Kotawaringin Barat",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -26116,7 +26116,7 @@
   {
     "Kode Paket": 10040698000,
     "Kode RUP": "53592658;54136667;54402735",
-    "Kode RUP Baru": 54402735,
+    "Kode RUP Baru": "54402735;54402735;54402735",
     "Satuan Kerja": "Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah",
     "Nama Paket": "Perencanaan Pembangunan Pasar Despot Kotawaringin Lama",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -26666,7 +26666,7 @@
   {
     "Kode Paket": 10197067000,
     "Kode RUP": "57077854;59792614",
-    "Kode RUP Baru": 59792614,
+    "Kode RUP Baru": "59792614;59792614",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Penyusunan Deliniasi Kawasan Kumuh di Kel. Mendawai Seberang, Kel. Raja Seberang dan Desa Pasir Panjang Kecamatan Arut Selatan, Kab. Kotawaringin Barat",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -27392,7 +27392,7 @@
   {
     "Kode Paket": 10100728000,
     "Kode RUP": "58936629;59073676",
-    "Kode RUP Baru": 59073676,
+    "Kode RUP Baru": "59073676;59073676",
     "Satuan Kerja": "Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah",
     "Nama Paket": "Belanja Pemeliharaan Bangunan Gedung-Bangunan Gedung Tempat Kerja-Bangunan Gedung Kantor",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -27480,7 +27480,7 @@
   {
     "Kode Paket": 10426047000,
     "Kode RUP": "60702539",
-    "Kode RUP Baru": 61218859,
+    "Kode RUP Baru": "61218859",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Pembangunan MCK Septer (Septiktank Terapung) Kel. Mendawai Kec. Arsel",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -27832,7 +27832,7 @@
   {
     "Kode Paket": 10024659000,
     "Kode RUP": "53569789",
-    "Kode RUP Baru": 53828074,
+    "Kode RUP Baru": "53828074",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Pembangunan Jembatan Tahun Anggaran 2025 Paket 2",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -28404,7 +28404,7 @@
   {
     "Kode Paket": 10112432000,
     "Kode RUP": "56409276",
-    "Kode RUP Baru": 59098469,
+    "Kode RUP Baru": "59098469",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Perencanaan Pemeliharaan Plafon Gedung Kantor",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -28778,7 +28778,7 @@
   {
     "Kode Paket": 10122895000,
     "Kode RUP": "57044045;59258518",
-    "Kode RUP Baru": 59258518,
+    "Kode RUP Baru": "59258518;59258518",
     "Satuan Kerja": "Dinas Sosial",
     "Nama Paket": "Perencanaan Pembangunan Pagar Panti Singgah",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -29636,7 +29636,7 @@
   {
     "Kode Paket": 10159741000,
     "Kode RUP": "55441834",
-    "Kode RUP Baru": 59583648,
+    "Kode RUP Baru": "59583648",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pembangunan Drainase Lingkungan Gg. Gajah Serumpun RT.26 Kel. Sidorejo Kec. Arsel",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -30076,7 +30076,7 @@
   {
     "Kode Paket": 10227809000,
     "Kode RUP": "57178737;60092476",
-    "Kode RUP Baru": 60092476,
+    "Kode RUP Baru": "60092476;60092476",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Pengawasan Teknis Peningkatan/Pembangunan Jalan Lingkungan Kawasan Permukiman di Jalan Naga RT 18 Kelurahan Kumai Hulu, Kec. Kumai Kab. Kotawaringin Barat",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -30098,7 +30098,7 @@
   {
     "Kode Paket": 10267986000,
     "Kode RUP": "59665562",
-    "Kode RUP Baru": 60001308,
+    "Kode RUP Baru": "60001308",
     "Satuan Kerja": "Dinas Pendidikan dan Kebudayaan",
     "Nama Paket": "PENGADAAN MEBELER SD SMP SATAP 1 ARUT UTARA",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -30142,7 +30142,7 @@
   {
     "Kode Paket": 10024654000,
     "Kode RUP": "53569781",
-    "Kode RUP Baru": 53827965,
+    "Kode RUP Baru": "53827965",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Pembangunan Jembatan Tahun Anggaran 2025 Paket 1",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -30362,7 +30362,7 @@
   {
     "Kode Paket": 10152917000,
     "Kode RUP": "59360673;59360846",
-    "Kode RUP Baru": 59949152,
+    "Kode RUP Baru": "59949152;59360846",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Perencanaan Teknis Rekonstruksi Jalan Tahun Anggaran 2025 Paket 9",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -30626,7 +30626,7 @@
   {
     "Kode Paket": 10457174000,
     "Kode RUP": "60693800;61079462;61079471",
-    "Kode RUP Baru": 61079471,
+    "Kode RUP Baru": "61079471;61079462;61079471",
     "Satuan Kerja": "Dinas Perhubungan",
     "Nama Paket": "Pengawasan Pembangunan Pagar Keliling Rencana Bandara Baru",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -30648,7 +30648,7 @@
   {
     "Kode Paket": 10182860000,
     "Kode RUP": "57666422;57666447;57666576",
-    "Kode RUP Baru": "-",
+    "Kode RUP Baru": "57666422;59683731;57666576",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Rekonstruksi Jalan Tahun Anggaran 2025 Paket 9",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -32474,7 +32474,7 @@
   {
     "Kode Paket": 10036950000,
     "Kode RUP": "54077534",
-    "Kode RUP Baru": 59144751,
+    "Kode RUP Baru": "59144751",
     "Satuan Kerja": "Sekretariat DPRD",
     "Nama Paket": "Pemeliharaan Taman",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -32584,7 +32584,7 @@
   {
     "Kode Paket": 10426707000,
     "Kode RUP": "60741885",
-    "Kode RUP Baru": 61198602,
+    "Kode RUP Baru": "61198602",
     "Satuan Kerja": "Inspektorat Daerah",
     "Nama Paket": "Pengadaan Gedung Kantor atau Bangunan Lainnya (Biaya Tambah Daya dari 23000 menjadi 41500 + SLO )",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -33310,7 +33310,7 @@
   {
     "Kode Paket": 10168789000,
     "Kode RUP": "56991551;56991557;59804600;59804621",
-    "Kode RUP Baru": 59804600,
+    "Kode RUP Baru": "59804600;59804621;59804600;59804621",
     "Satuan Kerja": "Dinas Sosial",
     "Nama Paket": ",Pengawasan Pemasangan Paving Taman Makam Pahlawan Indra Pura,Pengawasan Rehab Halaman Taman Makam Pahlawan Indra Pura",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -33882,7 +33882,7 @@
   {
     "Kode Paket": 10396989000,
     "Kode RUP": "58167198",
-    "Kode RUP Baru": 60483335,
+    "Kode RUP Baru": "60483335",
     "Satuan Kerja": "Badan Pendapatan Daerah",
     "Nama Paket": "Pengadaan Mebel",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -34388,7 +34388,7 @@
   {
     "Kode Paket": 10084611000,
     "Kode RUP": "58188798",
-    "Kode RUP Baru": 61066817,
+    "Kode RUP Baru": "61066817",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Penambahan Daya Listrik",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -34564,7 +34564,7 @@
   {
     "Kode Paket": 10356932000,
     "Kode RUP": "59641378;60530643",
-    "Kode RUP Baru": 62511756,
+    "Kode RUP Baru": "62511756;62511756",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Pengawasan Teknis Peningkatan Jalan Lingkungan Kawasan Permukiman di Kec. Arut Selatan Paket VII",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -34674,7 +34674,7 @@
   {
     "Kode Paket": 10314547000,
     "Kode RUP": "59106161;60239479",
-    "Kode RUP Baru": 60239479,
+    "Kode RUP Baru": "60239479;60239479",
     "Satuan Kerja": "Dinas Perhubungan",
     "Nama Paket": ",Pengecatan Gedung Kantor UPT PKB Dinas Perhubungan",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -35114,7 +35114,7 @@
   {
     "Kode Paket": 10182019000,
     "Kode RUP": "56991549;59795987",
-    "Kode RUP Baru": 59795987,
+    "Kode RUP Baru": "59795987;59795987",
     "Satuan Kerja": "Dinas Sosial",
     "Nama Paket": "Pengawasan Pengecatan Taman Makam Pahlawan Indra Pura",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -38128,7 +38128,7 @@
   {
     "Kode Paket": 10574976000,
     "Kode RUP": "59697774",
-    "Kode RUP Baru": 61071048,
+    "Kode RUP Baru": "61071048",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Alat Listrik Sub Kegiatan Penyediaan Komponen Instalasi Listrik/Penerangan Bangunan Kantor tahap 2",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -38898,7 +38898,7 @@
   {
     "Kode Paket": 10324651000,
     "Kode RUP": "59693211",
-    "Kode RUP Baru": 61010109,
+    "Kode RUP Baru": "61010109",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -39118,7 +39118,7 @@
   {
     "Kode Paket": 10286808000,
     "Kode RUP": "57100721;60668658",
-    "Kode RUP Baru": 60668658,
+    "Kode RUP Baru": "60668658;60668658",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": ",Belanja Pemeliharaan Alat Angkutan-Alat Angkutan Darat Bermotor-Kendaraan Bermotor Penumpang (Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan, Pajak dan Perizinan Kendaraan Dinas Operasional atau Lapangan)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -39228,7 +39228,7 @@
   {
     "Kode Paket": 10399641000,
     "Kode RUP": "59071361",
-    "Kode RUP Baru": 60753693,
+    "Kode RUP Baru": "60753693",
     "Satuan Kerja": "Badan Kesatuan Bangsa dan Politik",
     "Nama Paket": "Belanja Perjalanan Dinas Biasa (Transportasi dan Penginapan Kegiatan Sekretariat)",
     "Metode Pemilihan": "Dikecualikan",
@@ -39250,7 +39250,7 @@
   {
     "Kode Paket": 10579673000,
     "Kode RUP": "60149499",
-    "Kode RUP Baru": 62128300,
+    "Kode RUP Baru": "62128300",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak tahap 2",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -39954,7 +39954,7 @@
   {
     "Kode Paket": 10269415000,
     "Kode RUP": "58449259",
-    "Kode RUP Baru": 59073754,
+    "Kode RUP Baru": "59073754",
     "Satuan Kerja": "Badan Kesatuan Bangsa dan Politik",
     "Nama Paket": "Belanja Makanan dan Minuman Rapat (Kegiatan Rekruitmen dan Seleksi Calon Paskibraka)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -43892,7 +43892,7 @@
   {
     "Kode Paket": 10574625000,
     "Kode RUP": "57410764",
-    "Kode RUP Baru": 61066705,
+    "Kode RUP Baru": "61066705",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "CCTV tahap 2",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -45058,7 +45058,7 @@
   {
     "Kode Paket": 10286095000,
     "Kode RUP": "59106881",
-    "Kode RUP Baru": 60668447,
+    "Kode RUP Baru": "60668447",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Satuan Biaya Transportasi Darat Perjalanan Dinas Dalam Daerah - Sewa Kendaraan Kec. Pangkalan Lada (Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD)",
     "Metode Pemilihan": "Dikecualikan",
@@ -46818,7 +46818,7 @@
   {
     "Kode Paket": 10566550000,
     "Kode RUP": "58006130;61779463",
-    "Kode RUP Baru": 61779463,
+    "Kode RUP Baru": "61779463;61779463",
     "Satuan Kerja": "Rumah Sakit Kutaringin",
     "Nama Paket": ",Belanja Bahan-Bahan Bakar dan Pelumas",
     "Metode Pemilihan": "Dikecualikan",
@@ -46862,7 +46862,7 @@
   {
     "Kode Paket": 10359317000,
     "Kode RUP": "59697428;59693324",
-    "Kode RUP Baru": "-",
+    "Kode RUP Baru": "59697428;61010276",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak,Fotocopy dan Penjilidan",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -48820,7 +48820,7 @@
   {
     "Kode Paket": 10279426000,
     "Kode RUP": "57291992",
-    "Kode RUP Baru": 59263393,
+    "Kode RUP Baru": "59263393",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Belanja Bahan Bakar Pertamax (Penanganan sampah melalui pemrosesan akhir sampah di TPA/TPST kabupaten/kota atau TPA/TPST Regional)",
     "Metode Pemilihan": "Dikecualikan",
@@ -49084,7 +49084,7 @@
   {
     "Kode Paket": 10399748000,
     "Kode RUP": "58507112",
-    "Kode RUP Baru": 60754079,
+    "Kode RUP Baru": "60754079",
     "Satuan Kerja": "Badan Kesatuan Bangsa dan Politik",
     "Nama Paket": "Belanja Iuran Jaminan Kecelakaan Kerja bagi Non ASN",
     "Metode Pemilihan": "Dikecualikan",
@@ -49788,7 +49788,7 @@
   {
     "Kode Paket": 10568511000,
     "Kode RUP": "57060036;61766749",
-    "Kode RUP Baru": 61766749,
+    "Kode RUP Baru": "61766749;61766749",
     "Satuan Kerja": "Rumah Sakit Kutaringin",
     "Nama Paket": ",Belanja Pembayaran Pajak, Bea, dan Perizinan",
     "Metode Pemilihan": "Dikecualikan",
@@ -49964,7 +49964,7 @@
   {
     "Kode Paket": 10269640000,
     "Kode RUP": "58507111",
-    "Kode RUP Baru": 60754058,
+    "Kode RUP Baru": "60754058",
     "Satuan Kerja": "Badan Kesatuan Bangsa dan Politik",
     "Nama Paket": "Belanja Iuran Jaminan Kesehatan bagi Non ASN",
     "Metode Pemilihan": "Dikecualikan",
@@ -50646,7 +50646,7 @@
   {
     "Kode Paket": 10394544000,
     "Kode RUP": "59686190",
-    "Kode RUP Baru": 61092702,
+    "Kode RUP Baru": "61092702",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -51614,7 +51614,7 @@
   {
     "Kode Paket": 10299852000,
     "Kode RUP": "59072858",
-    "Kode RUP Baru": 60665731,
+    "Kode RUP Baru": "60665731",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak (Penyusunan Dokumen Perencanaan Perangkat Daerah)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -51658,7 +51658,7 @@
   {
     "Kode Paket": 10386498000,
     "Kode RUP": "59175618",
-    "Kode RUP Baru": 60696810,
+    "Kode RUP Baru": "60696810",
     "Satuan Kerja": "Dinas Komunikasi, Informatika, Statistik dan Persandian",
     "Nama Paket": "Satuan Biaya Taksi Perjalanan Dinas Dalam Negeri (Kemitraan Komunikasi dengan Komunitas Informasi Masyarakat)",
     "Metode Pemilihan": "Dikecualikan",
@@ -52098,7 +52098,7 @@
   {
     "Kode Paket": 10482445000,
     "Kode RUP": "59169052",
-    "Kode RUP Baru": 60765364,
+    "Kode RUP Baru": "60765364",
     "Satuan Kerja": "Sekretariat Daerah",
     "Nama Paket": "Belanja Makanan dan Minuman Rapat (Sub Keg Peningkatan Kinerja dan Reformasi Birokrasi)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -52516,7 +52516,7 @@
   {
     "Kode Paket": 10395240000,
     "Kode RUP": "59693211",
-    "Kode RUP Baru": 61010109,
+    "Kode RUP Baru": "61010109",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -53594,7 +53594,7 @@
   {
     "Kode Paket": 10394270000,
     "Kode RUP": "57359288",
-    "Kode RUP Baru": 61012999,
+    "Kode RUP Baru": "61012999",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Satuan Biaya Foto Copy",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -53748,7 +53748,7 @@
   {
     "Kode Paket": 10391105000,
     "Kode RUP": "59688353",
-    "Kode RUP Baru": 61068804,
+    "Kode RUP Baru": "61068804",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -53814,7 +53814,7 @@
   {
     "Kode Paket": 10391232000,
     "Kode RUP": "59693211",
-    "Kode RUP Baru": 61010109,
+    "Kode RUP Baru": "61010109",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -54364,7 +54364,7 @@
   {
     "Kode Paket": 10286433000,
     "Kode RUP": "60668276;59105330",
-    "Kode RUP Baru": "-",
+    "Kode RUP Baru": "60668276;60668276",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": ",Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak (Penyediaan Barang Cetakan dan Penggandaan)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -54892,7 +54892,7 @@
   {
     "Kode Paket": 10279314000,
     "Kode RUP": "58270692",
-    "Kode RUP Baru": 60754966,
+    "Kode RUP Baru": "60754966",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Belanja Pemeliharaan Alat Besar-Alat Besar Darat-Excavator Komatsu PC 200 (Penanganan sampah melalui pemrosesan akhir sampah di TPA/TPST kabupaten/kota atau TPA/TPST Regional)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -55002,7 +55002,7 @@
   {
     "Kode Paket": 10568738000,
     "Kode RUP": "59396766;59389347",
-    "Kode RUP Baru": "-",
+    "Kode RUP Baru": "59396766;61832745",
     "Satuan Kerja": "Dinas Kesehatan",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak - UMOT,Perjalanan dinas Pemeriksaan sarana apotek dan toko obat serta pendampingan pemenuhan CAPA",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -55508,7 +55508,7 @@
   {
     "Kode Paket": 10279454000,
     "Kode RUP": "57291328",
-    "Kode RUP Baru": 60754544,
+    "Kode RUP Baru": "60754544",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Belanja Iuran Jaminan Kesehatan bagi Non ASN (Penanganan sampah melalui pemrosesan akhir sampah di TPA/TPST kabupaten/kota atau TPA/TPST Regional)",
     "Metode Pemilihan": "Dikecualikan",
@@ -55728,7 +55728,7 @@
   {
     "Kode Paket": 10562819000,
     "Kode RUP": "61763663;57060165",
-    "Kode RUP Baru": "-",
+    "Kode RUP Baru": "61763663;61763663",
     "Satuan Kerja": "Rumah Sakit Kutaringin",
     "Nama Paket": ",Belanja Tagihan Listrik",
     "Metode Pemilihan": "Dikecualikan",
@@ -57092,7 +57092,7 @@
   {
     "Kode Paket": 10395090000,
     "Kode RUP": "59686128",
-    "Kode RUP Baru": 61092615,
+    "Kode RUP Baru": "61092615",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -57378,7 +57378,7 @@
   {
     "Kode Paket": 10568747000,
     "Kode RUP": "59396766;59389347",
-    "Kode RUP Baru": "-",
+    "Kode RUP Baru": "59396766;61832745",
     "Satuan Kerja": "Dinas Kesehatan",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak - UMOT,Perjalanan dinas Pemeriksaan sarana apotek dan toko obat serta pendampingan pemenuhan CAPA",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -57972,7 +57972,7 @@
   {
     "Kode Paket": 10497044000,
     "Kode RUP": "61007765",
-    "Kode RUP Baru": 61148089,
+    "Kode RUP Baru": "61148089",
     "Satuan Kerja": "Badan Kepegawaian dan Pengembangan Sumber Daya Manusia",
     "Nama Paket": "Belanja Modal Dispenser",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -58610,7 +58610,7 @@
   {
     "Kode Paket": 10382005000,
     "Kode RUP": "59093887",
-    "Kode RUP Baru": 60845042,
+    "Kode RUP Baru": "60845042",
     "Satuan Kerja": "Badan Pendapatan Daerah",
     "Nama Paket": "Belanja Pemeliharaan Printer",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -58808,7 +58808,7 @@
   {
     "Kode Paket": 10299722000,
     "Kode RUP": "59096693",
-    "Kode RUP Baru": 60666345,
+    "Kode RUP Baru": "60666345",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak (Evaluasi Kinerja Perangkat Daerah)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -59160,7 +59160,7 @@
   {
     "Kode Paket": 10569624000,
     "Kode RUP": "61766280;58006098",
-    "Kode RUP Baru": "-",
+    "Kode RUP Baru": "61766280;61766280",
     "Satuan Kerja": "Rumah Sakit Kutaringin",
     "Nama Paket": ",Belanja Bahan-Isi Tabung Gas",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -59754,7 +59754,7 @@
   {
     "Kode Paket": 10341439000,
     "Kode RUP": "59697774",
-    "Kode RUP Baru": 61071048,
+    "Kode RUP Baru": "61071048",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Alat Listrik Sub Kegiatan Penyediaan Komponen Instalasi Listrik/Penerangan Bangunan Kantor",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -60260,7 +60260,7 @@
   {
     "Kode Paket": 10288389000,
     "Kode RUP": "60668601;57047545",
-    "Kode RUP Baru": "-",
+    "Kode RUP Baru": "60668601;60668601",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": ",Belanja Iuran Jaminan Kecelakaan Kerja bagi Non ASN (Penyediaan Jasa Pelayanan Umum Kantor)",
     "Metode Pemilihan": "Dikecualikan",
@@ -61668,7 +61668,7 @@
   {
     "Kode Paket": 10401339000,
     "Kode RUP": "57059019",
-    "Kode RUP Baru": 61146167,
+    "Kode RUP Baru": "61146167",
     "Satuan Kerja": "Badan Kepegawaian dan Pengembangan Sumber Daya Manusia",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor-Benda Pos",
     "Metode Pemilihan": "Dikecualikan",
@@ -62086,7 +62086,7 @@
   {
     "Kode Paket": 10340943000,
     "Kode RUP": "57410765",
-    "Kode RUP Baru": 61065540,
+    "Kode RUP Baru": "61065540",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "AC",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -62108,7 +62108,7 @@
   {
     "Kode Paket": 10400346000,
     "Kode RUP": "59069995",
-    "Kode RUP Baru": 60751034,
+    "Kode RUP Baru": "60751034",
     "Satuan Kerja": "Badan Kesatuan Bangsa dan Politik",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak (Evaluasi Kinerja Perangkat Daerah)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -62284,7 +62284,7 @@
   {
     "Kode Paket": 10395118000,
     "Kode RUP": "59686570",
-    "Kode RUP Baru": 61071747,
+    "Kode RUP Baru": "61071747",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -62636,7 +62636,7 @@
   {
     "Kode Paket": 10288108000,
     "Kode RUP": "56151788;60668533",
-    "Kode RUP Baru": 60668533,
+    "Kode RUP Baru": "60668533;60668533",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": ",Belanja Kawat/Faksimili/Internet/TV Berlangganan (Penyediaan Jasa Komunikasi, Sumber Daya Air dan Listrik)",
     "Metode Pemilihan": "Dikecualikan",
@@ -62724,7 +62724,7 @@
   {
     "Kode Paket": 10386392000,
     "Kode RUP": "57470272",
-    "Kode RUP Baru": 61016583,
+    "Kode RUP Baru": "61016583",
     "Satuan Kerja": "Dinas Komunikasi, Informatika, Statistik dan Persandian",
     "Nama Paket": "Belanja Pembayaran Pajak, Bea dan Perizinan (Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan, Pajak dan Perizinan Kendaraan Dinas Operasional atau Lapangan)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -63186,7 +63186,7 @@
   {
     "Kode Paket": 10394485000,
     "Kode RUP": "59686263",
-    "Kode RUP Baru": 61092729,
+    "Kode RUP Baru": "61092729",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -63340,7 +63340,7 @@
   {
     "Kode Paket": 10382179000,
     "Kode RUP": "57780047",
-    "Kode RUP Baru": 61098566,
+    "Kode RUP Baru": "61098566",
     "Satuan Kerja": "Dinas Perikanan dan Ketahanan Pangan",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -64572,7 +64572,7 @@
   {
     "Kode Paket": 10332826000,
     "Kode RUP": "59694221",
-    "Kode RUP Baru": 61066660,
+    "Kode RUP Baru": "61066660",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Komputer/laptop, Komputer/Notebook, Komputer/PC",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -64770,7 +64770,7 @@
   {
     "Kode Paket": 10386695000,
     "Kode RUP": "57035759",
-    "Kode RUP Baru": 61016839,
+    "Kode RUP Baru": "61016839",
     "Satuan Kerja": "Dinas Komunikasi, Informatika, Statistik dan Persandian",
     "Nama Paket": "Satuan Biaya Transportasi Darat Perjalanan Dinas Dalam Daerah - Sewa Kendaraan  (Pelaksanaan Proses Bisnis Statistik Sektoral Sesuai Standar)",
     "Metode Pemilihan": "Dikecualikan",
@@ -65232,7 +65232,7 @@
   {
     "Kode Paket": 10500864000,
     "Kode RUP": "61108242",
-    "Kode RUP Baru": 61714242,
+    "Kode RUP Baru": "61714242",
     "Satuan Kerja": "Puskesmas Riam Durian",
     "Nama Paket": "Belanja Barang dan Jasa BOK - Perjalanan Dinas Dalam Kota",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -65364,7 +65364,7 @@
   {
     "Kode Paket": 10402153000,
     "Kode RUP": "59069936",
-    "Kode RUP Baru": 60751415,
+    "Kode RUP Baru": "60751415",
     "Satuan Kerja": "Badan Kesatuan Bangsa dan Politik",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak (Kegiatan Monitoring Cipta Kondisi dan Potensi Konflik)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -66398,7 +66398,7 @@
   {
     "Kode Paket": 10715664000,
     "Kode RUP": "61219326",
-    "Kode RUP Baru": 62555336,
+    "Kode RUP Baru": "62555336",
     "Satuan Kerja": "Puskesmas Ipuh Bangun Jaya",
     "Nama Paket": "Belanja Kawat/Faksimili/Internet/TV Berlangganan",
     "Metode Pemilihan": "Dikecualikan",
@@ -66838,7 +66838,7 @@
   {
     "Kode Paket": 10579722000,
     "Kode RUP": "59685893",
-    "Kode RUP Baru": 61092472,
+    "Kode RUP Baru": "61092472",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Penggandaan/Fotocopy Sub Kegiatan Evaluasi Kinerja Perangkat Daerah tahap 2",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -67168,7 +67168,7 @@
   {
     "Kode Paket": 10286597000,
     "Kode RUP": "59104817",
-    "Kode RUP Baru": 60791585,
+    "Kode RUP Baru": "60791585",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor-Alat Listrik (Penyediaan Komponen Instalasi Listrik/Penerangan Bangunan Kantor)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -67696,7 +67696,7 @@
   {
     "Kode Paket": 10569068000,
     "Kode RUP": "61096373;61763460",
-    "Kode RUP Baru": 61763460,
+    "Kode RUP Baru": "61763460;61763460",
     "Satuan Kerja": "Rumah Sakit Kutaringin",
     "Nama Paket": "Belanja Bahan-Bahan Kimia",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -67872,7 +67872,7 @@
   {
     "Kode Paket": 10429426000,
     "Kode RUP": "59075471",
-    "Kode RUP Baru": 60666112,
+    "Kode RUP Baru": "60666112",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak (Koordinasi dan Penyusunan Dokumen Perubahan RKA-SKPD)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -68312,7 +68312,7 @@
   {
     "Kode Paket": 10380908000,
     "Kode RUP": "59314166",
-    "Kode RUP Baru": 61346386,
+    "Kode RUP Baru": "61346386",
     "Satuan Kerja": "Dinas Perikanan dan Ketahanan Pangan",
     "Nama Paket": "Belanja Iuran Jaminan Kesehatan bagi Non ASN",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -68554,7 +68554,7 @@
   {
     "Kode Paket": 10386454000,
     "Kode RUP": "57016104",
-    "Kode RUP Baru": 60696759,
+    "Kode RUP Baru": "60696759",
     "Satuan Kerja": "Dinas Komunikasi, Informatika, Statistik dan Persandian",
     "Nama Paket": "Satuan Biaya Penginapan Perjalanan Dinas Dalam Negeri - Anggota DPRD/ Pejabat Eselon II (Kemitraan Komunikasi dengan Komunitas Informasi Masyarakat)",
     "Metode Pemilihan": "Dikecualikan",
@@ -68862,7 +68862,7 @@
   {
     "Kode Paket": 10341045000,
     "Kode RUP": "57410764",
-    "Kode RUP Baru": 61066705,
+    "Kode RUP Baru": "61066705",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "CCTV",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -69236,7 +69236,7 @@
   {
     "Kode Paket": 10460474000,
     "Kode RUP": "57359298",
-    "Kode RUP Baru": 62129014,
+    "Kode RUP Baru": "62129014",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Transportasi Udara Dari Ibukota Kabupaten Ke Luar Wilayah Kabupaten Kotawaringin Barat (PP) - Narasumber Kegiatan Forum Konsultasi Publik (FKP)",
     "Metode Pemilihan": "Dikecualikan",
@@ -69412,7 +69412,7 @@
   {
     "Kode Paket": 10286194000,
     "Kode RUP": "59106679",
-    "Kode RUP Baru": 60668421,
+    "Kode RUP Baru": "60668421",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Satuan Biaya Transportasi Darat Perjalanan Dinas Dalam Daerah - Sewa Kendaraan Kec. Arut Utara (Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD)",
     "Metode Pemilihan": "Dikecualikan",
@@ -69566,7 +69566,7 @@
   {
     "Kode Paket": 10399770000,
     "Kode RUP": "58507110",
-    "Kode RUP Baru": 60754115,
+    "Kode RUP Baru": "60754115",
     "Satuan Kerja": "Badan Kesatuan Bangsa dan Politik",
     "Nama Paket": "Belanja Iuran Jaminan Kematian bagi Non ASN",
     "Metode Pemilihan": "Dikecualikan",
@@ -70248,7 +70248,7 @@
   {
     "Kode Paket": 10286881000,
     "Kode RUP": "57100566;60668651",
-    "Kode RUP Baru": 60668651,
+    "Kode RUP Baru": "60668651;60668651",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": ",Belanja Pemeliharaan Alat Angkutan-Alat Angkutan Darat Bermotor-Kendaraan Dinas Bermotor Perorangan (Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan, dan Pajak Kendaraan Perorangan Dinas atau Kendaraan Dinas Jabatan)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -70556,7 +70556,7 @@
   {
     "Kode Paket": 10401226000,
     "Kode RUP": "59269084",
-    "Kode RUP Baru": 61145746,
+    "Kode RUP Baru": "61145746",
     "Satuan Kerja": "Badan Kepegawaian dan Pengembangan Sumber Daya Manusia",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -71326,7 +71326,7 @@
   {
     "Kode Paket": 10395207000,
     "Kode RUP": "59692479",
-    "Kode RUP Baru": 61093138,
+    "Kode RUP Baru": "61093138",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -74120,7 +74120,7 @@
   {
     "Kode Paket": 10386686000,
     "Kode RUP": "57035760",
-    "Kode RUP Baru": 61016830,
+    "Kode RUP Baru": "61016830",
     "Satuan Kerja": "Dinas Komunikasi, Informatika, Statistik dan Persandian",
     "Nama Paket": "Satuan Biaya Transportasi Darat Perjalanan Dinas Dalam Daerah - Sewa Kendaraan  (Pelaksanaan Proses Bisnis Statistik Sektoral Sesuai Standar)",
     "Metode Pemilihan": "Dikecualikan",
@@ -74362,7 +74362,7 @@
   {
     "Kode Paket": 10277793000,
     "Kode RUP": "56565926",
-    "Kode RUP Baru": 59461141,
+    "Kode RUP Baru": "59461141",
     "Satuan Kerja": "Dinas Kependudukan dan Pencatatan Sipil",
     "Nama Paket": "Penyediaan Komponen InstalasiListrik/Penerangan Bangunan Kantor",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -74494,7 +74494,7 @@
   {
     "Kode Paket": 10380828000,
     "Kode RUP": "59686082",
-    "Kode RUP Baru": 61092571,
+    "Kode RUP Baru": "61092571",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -74560,7 +74560,7 @@
   {
     "Kode Paket": 10376448000,
     "Kode RUP": "57410767",
-    "Kode RUP Baru": 61066691,
+    "Kode RUP Baru": "61066691",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Mainframe Server",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -74934,7 +74934,7 @@
   {
     "Kode Paket": 10482459000,
     "Kode RUP": "59369142;60765453",
-    "Kode RUP Baru": 60765453,
+    "Kode RUP Baru": "60765453;60765453",
     "Satuan Kerja": "Sekretariat Daerah",
     "Nama Paket": ",Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -76232,7 +76232,7 @@
   {
     "Kode Paket": 10287141000,
     "Kode RUP": "60668522;56151784",
-    "Kode RUP Baru": "-",
+    "Kode RUP Baru": "60668522;60668522",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": ",Belanja Tagihan Listrik (Penyediaan Jasa Komunikasi, Sumber Daya Air dan Listrik)",
     "Metode Pemilihan": "Dikecualikan",
@@ -76254,7 +76254,7 @@
   {
     "Kode Paket": 10340981000,
     "Kode RUP": "57411550",
-    "Kode RUP Baru": 61066325,
+    "Kode RUP Baru": "61066325",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Belanja Pemeliharaan Alat Angkutan-Alat Angkutan Darat Bermotor-Kendaraan Bermotor Penumpang",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -76914,7 +76914,7 @@
   {
     "Kode Paket": 10377327000,
     "Kode RUP": "59219852",
-    "Kode RUP Baru": 61213486,
+    "Kode RUP Baru": "61213486",
     "Satuan Kerja": "Dinas Perikanan dan Ketahanan Pangan",
     "Nama Paket": "Satuan Biaya Transportasi Darat - Sub Kegiatan  Pemberdayaan Masyarakat dalam Penganekaragaman Konsumsi Pangan Berbasis Sumber Daya Lokal Pekerjaan Pembinaan Kegiatan Sosialisasi Penanaman Hidroponik Teras Pangan B2SA Berbasis Sumber Daya Lokal Kecamatan Arut Selatan, Kecamatan Kumai, Kecamatan Pangkalan Lada, Kecamatan Pangkalan Banteng",
     "Metode Pemilihan": "Dikecualikan",
@@ -77596,7 +77596,7 @@
   {
     "Kode Paket": 10341494000,
     "Kode RUP": "57410768",
-    "Kode RUP Baru": 61066625,
+    "Kode RUP Baru": "61066625",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Peralatan Komputer",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -77640,7 +77640,7 @@
   {
     "Kode Paket": 10402072000,
     "Kode RUP": "59071182",
-    "Kode RUP Baru": 60753092,
+    "Kode RUP Baru": "60753092",
     "Satuan Kerja": "Badan Kesatuan Bangsa dan Politik",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Kertas dan Cover (Sekretariat)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -77706,7 +77706,7 @@
   {
     "Kode Paket": 10569479000,
     "Kode RUP": "57060164;61763727",
-    "Kode RUP Baru": 61763727,
+    "Kode RUP Baru": "61763727;61763727",
     "Satuan Kerja": "Rumah Sakit Kutaringin",
     "Nama Paket": ",Belanja Kawat/Faksimili/Internet/TV Berlangganan",
     "Metode Pemilihan": "Dikecualikan",
@@ -79114,7 +79114,7 @@
   {
     "Kode Paket": 10286185000,
     "Kode RUP": "59106781",
-    "Kode RUP Baru": 60668438,
+    "Kode RUP Baru": "60668438",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Satuan Biaya Transportasi Darat Perjalanan Dinas Dalam Daerah - Sewa Kendaraan Kec. Kumai (Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD)",
     "Metode Pemilihan": "Dikecualikan",
@@ -80588,7 +80588,7 @@
   {
     "Kode Paket": 10286166000,
     "Kode RUP": "59106846",
-    "Kode RUP Baru": 60668444,
+    "Kode RUP Baru": "60668444",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Satuan Biaya Transportasi Darat Perjalanan Dinas Dalam Daerah - Sewa Kendaraan Kec. Pangkalan Banteng (Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD)",
     "Metode Pemilihan": "Dikecualikan",
@@ -81160,7 +81160,7 @@
   {
     "Kode Paket": 10513291000,
     "Kode RUP": "58507111",
-    "Kode RUP Baru": 60754058,
+    "Kode RUP Baru": "60754058",
     "Satuan Kerja": "Badan Kesatuan Bangsa dan Politik",
     "Nama Paket": "Belanja Iuran Jaminan Kesehatan bagi Non ASN",
     "Metode Pemilihan": "Dikecualikan",
@@ -82920,7 +82920,7 @@
   {
     "Kode Paket": 10286249000,
     "Kode RUP": "59106743",
-    "Kode RUP Baru": 60668430,
+    "Kode RUP Baru": "60668430",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Satuan Biaya Transportasi Darat Perjalanan Dinas Dalam Daerah - Sewa Kendaraan Kec. Kotawaringin Lama (Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD)",
     "Metode Pemilihan": "Dikecualikan",
@@ -83910,7 +83910,7 @@
   {
     "Kode Paket": 10405470000,
     "Kode RUP": "59288167",
-    "Kode RUP Baru": 61197029,
+    "Kode RUP Baru": "61197029",
     "Satuan Kerja": "Badan Kepegawaian dan Pengembangan Sumber Daya Manusia",
     "Nama Paket": "Pelayanan Proses Izin Perceraian Pegawai",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -86154,7 +86154,7 @@
   {
     "Kode Paket": 10612901000,
     "Kode RUP": "59241841",
-    "Kode RUP Baru": 60766063,
+    "Kode RUP Baru": "60766063",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Satuan Biaya Transportasi Darat Perjalanan Dinas Dalam Daerah - Sewa Kendaraan - Dalam Rangka Pembinaan/Pendampingan Gerakan PBLH Ke Kec. Kumai (Pendampingan Gerakan Peduli Lingkungan Hidup)",
     "Metode Pemilihan": "Dikecualikan",
@@ -86660,7 +86660,7 @@
   {
     "Kode Paket": 10288425000,
     "Kode RUP": "57047548;60668628",
-    "Kode RUP Baru": 60668628,
+    "Kode RUP Baru": "60668628;60668628",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": ",Belanja Iuran Jaminan Kematian bagi Non ASN (Penyediaan Jasa Pelayanan Umum Kantor)",
     "Metode Pemilihan": "Dikecualikan",
@@ -88178,7 +88178,7 @@
   {
     "Kode Paket": 10386529000,
     "Kode RUP": "59175645",
-    "Kode RUP Baru": 60696872,
+    "Kode RUP Baru": "60696872",
     "Satuan Kerja": "Dinas Komunikasi, Informatika, Statistik dan Persandian",
     "Nama Paket": "Transportasi Udara Dari Ibukota Kabupaten Ke Luar Wilayah Kabupaten Kotawaringin Barat (PP) (Kemitraan Komunikasi dengan Komunitas Informasi Masyarakat)",
     "Metode Pemilihan": "Dikecualikan",
@@ -88442,7 +88442,7 @@
   {
     "Kode Paket": 10341072000,
     "Kode RUP": "57410766",
-    "Kode RUP Baru": 61066539,
+    "Kode RUP Baru": "61066539",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Kamera",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -88772,7 +88772,7 @@
   {
     "Kode Paket": 10330587000,
     "Kode RUP": "57359291;57359267;57359268;58044348;57359295;57358159;57359269;57359266;57359292",
-    "Kode RUP Baru": "-",
+    "Kode RUP Baru": "57359291;57359267;57359268;58044348;57359295;57358159;57359269;60142892;57359292",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Spanduk, Baliho , Backdrop,Baliho/Backdrop/Spanduk,Buku Tulis,Ballpoint,Map",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -88838,7 +88838,7 @@
   {
     "Kode Paket": 10711595000,
     "Kode RUP": "61239497",
-    "Kode RUP Baru": 62553871,
+    "Kode RUP Baru": "62553871",
     "Satuan Kerja": "Puskesmas Ipuh Bangun Jaya",
     "Nama Paket": "Belanja Barang dan Jasa BOK Puskesmas ( Dukungan internet dalam implementasi dashboard ILP dan ASIK_Sewa Langganan atau Pembelian Pulsa)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -88860,7 +88860,7 @@
   {
     "Kode Paket": 10341124000,
     "Kode RUP": "57411553",
-    "Kode RUP Baru": 61066299,
+    "Kode RUP Baru": "61066299",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Belanja Pemeliharaan Alat Angkutan-Alat Angkutan Darat Bermotor-Kendaraan Bermotor Beroda Dua",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -88992,7 +88992,7 @@
   {
     "Kode Paket": 10266958000,
     "Kode RUP": "57802024;59241793;58325655;57801967;57801925;59241798",
-    "Kode RUP Baru": 58323575,
+    "Kode RUP Baru": "58323575;59241793;58325655;58323189;58323487;59241798",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Belanja Perjalanan Dinas Biasa -  Penyusunan Dokumen Perencanaan Perangkat Daerah Penyelarasan Renstra Kab/Kota dan Provinsi di Palangka Raya (Penyusunan Dokumen Perencanaan Perangkat Daerah)",
     "Metode Pemilihan": "Dikecualikan",
@@ -89124,7 +89124,7 @@
   {
     "Kode Paket": 10288438000,
     "Kode RUP": "60674008;57047546",
-    "Kode RUP Baru": "-",
+    "Kode RUP Baru": "60674008;60668564",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": ",Belanja Iuran Jaminan Kesehatan bagi Non ASN (Penyediaan Jasa Pelayanan Umum Kantor)",
     "Metode Pemilihan": "Dikecualikan",
@@ -89718,7 +89718,7 @@
   {
     "Kode Paket": 10377975000,
     "Kode RUP": "59097104",
-    "Kode RUP Baru": 60666793,
+    "Kode RUP Baru": "60666793",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak (Koordinasi dan Penyusunan Laporan Keuangan Bulanan/ Triwulanan/ Semesteran SKPD)",
     "Metode Pemilihan": "Pengadaan Langsung",
@@ -94404,7 +94404,7 @@
   {
     "Kode Paket": 10014772000,
     "Kode RUP": "55594412",
-    "Kode RUP Baru": 57852309,
+    "Kode RUP Baru": "57852309",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Perencanaan Teknis Peningkatan PSU Jalan Lingkungan Paket II",
     "Metode Pemilihan": "Seleksi",
@@ -94448,7 +94448,7 @@
   {
     "Kode Paket": 10054997000,
     "Kode RUP": "59925699;59940156",
-    "Kode RUP Baru": 59986657,
+    "Kode RUP Baru": "59986657;59986657",
     "Satuan Kerja": "Dinas Perhubungan",
     "Nama Paket": "Penyusunan Studi Rencana Induk Pelabuhan (Pelabuhan Indrasari)",
     "Metode Pemilihan": "Seleksi",
@@ -94602,7 +94602,7 @@
   {
     "Kode Paket": 10036227000,
     "Kode RUP": "57666481",
-    "Kode RUP Baru": 59731575,
+    "Kode RUP Baru": "59731575",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Jalan simpang kadipi atas batas natai baru",
     "Metode Pemilihan": "Tender",
@@ -94624,7 +94624,7 @@
   {
     "Kode Paket": 10044468000,
     "Kode RUP": "57154179",
-    "Kode RUP Baru": 60100298,
+    "Kode RUP Baru": "60100298",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Peningkatan PSU Jalan Lingkungan Jl. P3 IDT RT. 04, Desa Sungai Bakau Kec. Kumai",
     "Metode Pemilihan": "Tender",
@@ -94646,7 +94646,7 @@
   {
     "Kode Paket": 10002327000,
     "Kode RUP": "53569829",
-    "Kode RUP Baru": 53932669,
+    "Kode RUP Baru": "53932669",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Jl. Simpang Natai Baru - Batas Kadipi Atas (DAK)",
     "Metode Pemilihan": "Seleksi",
@@ -94734,7 +94734,7 @@
   {
     "Kode Paket": 10047764000,
     "Kode RUP": "59380435",
-    "Kode RUP Baru": 59944397,
+    "Kode RUP Baru": "59944397",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Data Base Jaringan Drainase",
     "Metode Pemilihan": "Seleksi",
@@ -94756,7 +94756,7 @@
   {
     "Kode Paket": 10038038000,
     "Kode RUP": "53932584",
-    "Kode RUP Baru": 59755577,
+    "Kode RUP Baru": "59755577",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Jalan Desa Sagu Sukamulya - Pangkalan Muntai",
     "Metode Pemilihan": "Tender",
@@ -94778,7 +94778,7 @@
   {
     "Kode Paket": 10084542000,
     "Kode RUP": "60533828;60721629",
-    "Kode RUP Baru": 60721629,
+    "Kode RUP Baru": "60721629;60721629",
     "Satuan Kerja": "Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah",
     "Nama Paket": "Perencanaan dan Kajian Akademis Pembangunan Kios",
     "Metode Pemilihan": "Seleksi",
@@ -94800,7 +94800,7 @@
   {
     "Kode Paket": 10074008000,
     "Kode RUP": "59373404",
-    "Kode RUP Baru": 60479096,
+    "Kode RUP Baru": "60479096",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Peningkatan PSU Jalan Lingkungan Jl. Samari II Gang Merpati RT. 25 Kelurahan Madurejo Kecamatan Arut Selatan",
     "Metode Pemilihan": "Tender",
@@ -94822,7 +94822,7 @@
   {
     "Kode Paket": 10071339000,
     "Kode RUP": "59374833",
-    "Kode RUP Baru": 60479128,
+    "Kode RUP Baru": "60479128",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Peningkatan PSU Jalan Lingkungan Jl. Jenderal Sudirman Gang Olibri RT. 13 Kelurahan Sidorejo Kecamatan Arut Selatan",
     "Metode Pemilihan": "Tender",
@@ -94888,7 +94888,7 @@
   {
     "Kode Paket": 10002495000,
     "Kode RUP": "53569659",
-    "Kode RUP Baru": 53932685,
+    "Kode RUP Baru": "53932685",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Jl. Sp. Kadipi Atas - Batas Natai Baru (DAK)",
     "Metode Pemilihan": "Tender",
@@ -94910,7 +94910,7 @@
   {
     "Kode Paket": 10002488000,
     "Kode RUP": "53569691",
-    "Kode RUP Baru": 53932700,
+    "Kode RUP Baru": "53932700",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Jalan merdeka RT 03 desa kenambui",
     "Metode Pemilihan": "Tender",
@@ -94954,7 +94954,7 @@
   {
     "Kode Paket": 10002342000,
     "Kode RUP": "53569843",
-    "Kode RUP Baru": 53932438,
+    "Kode RUP Baru": "53932438",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Jalan Sungai Tendang – Pangkalan Satu",
     "Metode Pemilihan": "Seleksi",
@@ -94998,7 +94998,7 @@
   {
     "Kode Paket": 10002493000,
     "Kode RUP": "53569655",
-    "Kode RUP Baru": 53932331,
+    "Kode RUP Baru": "53932331",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Jl. Sungai Tendang - Batas Natai Raya (DAK)",
     "Metode Pemilihan": "Tender",
@@ -95042,7 +95042,7 @@
   {
     "Kode Paket": 10002352000,
     "Kode RUP": "53569707;53932564",
-    "Kode RUP Baru": 53932564,
+    "Kode RUP Baru": "53932564;53932564",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Jalan Logging menuju Batas Desa Sungai Bengkuang",
     "Metode Pemilihan": "Tender",
@@ -95086,7 +95086,7 @@
   {
     "Kode Paket": 10071664000,
     "Kode RUP": "59375099",
-    "Kode RUP Baru": 60478969,
+    "Kode RUP Baru": "60478969",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Peningkatan PSU Jalan Lingkungan Jl. Utama Pasir Panjang Perumahan Griya Dara Indah RT. 11 Desa Batu Belaman Kecamatan Kumai",
     "Metode Pemilihan": "Tender",
@@ -95108,7 +95108,7 @@
   {
     "Kode Paket": 10071678000,
     "Kode RUP": "59375491",
-    "Kode RUP Baru": 60478935,
+    "Kode RUP Baru": "60478935",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Peningkatan PSU Jalan Lingkungan Jl. Cempedak RT. 09 Desa Batu Belaman Kec. Kumai",
     "Metode Pemilihan": "Tender",
@@ -95152,7 +95152,7 @@
   {
     "Kode Paket": 10067103000,
     "Kode RUP": "60165128",
-    "Kode RUP Baru": 60240319,
+    "Kode RUP Baru": "60240319",
     "Satuan Kerja": "Dinas Tenaga Kerja dan Transmigrasi",
     "Nama Paket": "Belanja Modal Jalan Lainnya - Desa Rangda  - Transmigrasi",
     "Metode Pemilihan": "Tender",
@@ -95174,7 +95174,7 @@
   {
     "Kode Paket": 10054999000,
     "Kode RUP": "59925693;59940153",
-    "Kode RUP Baru": 59986651,
+    "Kode RUP Baru": "59986651;59986651",
     "Satuan Kerja": "Dinas Perhubungan",
     "Nama Paket": "Penyusunan Studi Rencana Induk Pelabuhan (Pariwisata TNTP)",
     "Metode Pemilihan": "Seleksi",
@@ -95218,7 +95218,7 @@
   {
     "Kode Paket": 10034678000,
     "Kode RUP": "57666482",
-    "Kode RUP Baru": 59580771,
+    "Kode RUP Baru": "59580771",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Jalan Sintang Sejahtera Mendawai",
     "Metode Pemilihan": "Tender",
@@ -95240,7 +95240,7 @@
   {
     "Kode Paket": 10083036000,
     "Kode RUP": "57562839",
-    "Kode RUP Baru": 60941235,
+    "Kode RUP Baru": "60941235",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "DED Sungai Bamban Kec. Arut Selatan",
     "Metode Pemilihan": "Seleksi",
@@ -95262,7 +95262,7 @@
   {
     "Kode Paket": 10019758000,
     "Kode RUP": "58375766",
-    "Kode RUP Baru": 60699737,
+    "Kode RUP Baru": "60699737",
     "Satuan Kerja": "Dinas Komunikasi, Informatika, Statistik dan Persandian",
     "Nama Paket": "Bangunan Gedung Kantor  (Pengadaan Gedung Kantor atau Bangunan Lainnya)",
     "Metode Pemilihan": "Tender",
@@ -95284,7 +95284,7 @@
   {
     "Kode Paket": 10002345000,
     "Kode RUP": "53590284",
-    "Kode RUP Baru": 53932155,
+    "Kode RUP Baru": "53932155",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Pembangunan Jembatan Tahun Anggaran 2025",
     "Metode Pemilihan": "Seleksi",
@@ -95306,7 +95306,7 @@
   {
     "Kode Paket": 10034648000,
     "Kode RUP": "57666514",
-    "Kode RUP Baru": 59580964,
+    "Kode RUP Baru": "59580964",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Akses jalan Sakabulin- Sukaraja",
     "Metode Pemilihan": "Tender",
@@ -95416,7 +95416,7 @@
   {
     "Kode Paket": 10048050000,
     "Kode RUP": "55415095",
-    "Kode RUP Baru": 61546263,
+    "Kode RUP Baru": "61546263",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pembangunan TPS-3R Kelurahan Raja Seberang Kecamatan Arut Selatan",
     "Metode Pemilihan": "Tender",
@@ -95438,7 +95438,7 @@
   {
     "Kode Paket": 10014778000,
     "Kode RUP": "56527676",
-    "Kode RUP Baru": 57852599,
+    "Kode RUP Baru": "57852599",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Perencanaan Teknis Peningkatan PSU Jalan Lingkungan Kel. Madurejo Kec. Arut Selatan",
     "Metode Pemilihan": "Seleksi",
@@ -95460,7 +95460,7 @@
   {
     "Kode Paket": 10034721000,
     "Kode RUP": "57666416",
-    "Kode RUP Baru": 59580885,
+    "Kode RUP Baru": "59580885",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Jalan Desa Natai Raya RT 04",
     "Metode Pemilihan": "Tender",
@@ -95482,7 +95482,7 @@
   {
     "Kode Paket": 10059690000,
     "Kode RUP": "57154071",
-    "Kode RUP Baru": 60100270,
+    "Kode RUP Baru": "60100270",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Peningkatan PSU Jalan Lingkungan RT. 06 dan RT. 10 Desa Marga Mulya Kec. Pangkalan Banteng",
     "Metode Pemilihan": "Tender",
@@ -95526,7 +95526,7 @@
   {
     "Kode Paket": 10029601000,
     "Kode RUP": "55299516",
-    "Kode RUP Baru": 59238751,
+    "Kode RUP Baru": "59238751",
     "Satuan Kerja": "Badan Penanggulangan Bencana Daerah",
     "Nama Paket": "Penyusunan Rencana Penanggulangan Kedaruratan Bencana (RPKB) Kabupaten Kotawaringin Barat",
     "Metode Pemilihan": "Seleksi",
@@ -95570,7 +95570,7 @@
   {
     "Kode Paket": 10036272000,
     "Kode RUP": "57666567",
-    "Kode RUP Baru": 59755652,
+    "Kode RUP Baru": "59755652",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Jalan Maspatih RT 01 Kecamatan Kotawaringin Lama",
     "Metode Pemilihan": "Tender",
@@ -95636,7 +95636,7 @@
   {
     "Kode Paket": 10076295000,
     "Kode RUP": "59627347;60566968",
-    "Kode RUP Baru": 60566968,
+    "Kode RUP Baru": "60566968;60566968",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Peningkatan Jalan Lingkungan Kawasan Permukiman di Jl. Gravalo RT. 34 Kel. Baru Kec. Arut Selatan",
     "Metode Pemilihan": "Tender",
@@ -95658,7 +95658,7 @@
   {
     "Kode Paket": 10064823000,
     "Kode RUP": "60112172",
-    "Kode RUP Baru": 60231653,
+    "Kode RUP Baru": "60231653",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Penyusunan Kajian Peninjauan Kembali RDTR Kawasan Perkotaan Pangkalan Bun Tahun 2022-2042",
     "Metode Pemilihan": "Seleksi",
@@ -95746,7 +95746,7 @@
   {
     "Kode Paket": 10029427000,
     "Kode RUP": "59134784",
-    "Kode RUP Baru": 61079044,
+    "Kode RUP Baru": "61079044",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengembangan Kawasan Perkotaan Pangkalan Bun",
     "Metode Pemilihan": "Seleksi",
@@ -95790,7 +95790,7 @@
   {
     "Kode Paket": 10014761000,
     "Kode RUP": "55594308",
-    "Kode RUP Baru": 57852210,
+    "Kode RUP Baru": "57852210",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Perencanaan Teknis Peningkatan PSU Jalan Lingkungan Paket I",
     "Metode Pemilihan": "Seleksi",
@@ -95878,7 +95878,7 @@
   {
     "Kode Paket": 10044441000,
     "Kode RUP": "57154329",
-    "Kode RUP Baru": 60100423,
+    "Kode RUP Baru": "60100423",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Peningkatan PSU Jalan Lingkungan Jl. Graha Mas Raya RT. 23, 24,25 Kab. Kotawaringin Barat",
     "Metode Pemilihan": "Tender",
@@ -95900,7 +95900,7 @@
   {
     "Kode Paket": 10036261000,
     "Kode RUP": "57666528",
-    "Kode RUP Baru": 59755539,
+    "Kode RUP Baru": "59755539",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Jalan Meden",
     "Metode Pemilihan": "Tender",
@@ -95966,7 +95966,7 @@
   {
     "Kode Paket": 10048115000,
     "Kode RUP": "55415086",
-    "Kode RUP Baru": 61546866,
+    "Kode RUP Baru": "61546866",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pembangunan TPS-3R Desa Bumiharjo Kecamatan Kumai",
     "Metode Pemilihan": "Tender",
@@ -95988,7 +95988,7 @@
   {
     "Kode Paket": 10002332000,
     "Kode RUP": "53569837",
-    "Kode RUP Baru": 53932296,
+    "Kode RUP Baru": "53932296",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Jl. Sp. Kadipi Atas - Batas Natai Baru (DAK)",
     "Metode Pemilihan": "Seleksi",
@@ -96010,7 +96010,7 @@
   {
     "Kode Paket": 10036449000,
     "Kode RUP": "57666553",
-    "Kode RUP Baru": 59755507,
+    "Kode RUP Baru": "59755507",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Jalan Jambu RT. 08  Desa Sungai Kapitan",
     "Metode Pemilihan": "Tender",
@@ -96032,7 +96032,7 @@
   {
     "Kode Paket": 10002496000,
     "Kode RUP": "53569672",
-    "Kode RUP Baru": 53932484,
+    "Kode RUP Baru": "53932484",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Jalan Sungai Tendang – Pangkalan Satu",
     "Metode Pemilihan": "Tender",
@@ -96054,7 +96054,7 @@
   {
     "Kode Paket": 10036244000,
     "Kode RUP": "57666529",
-    "Kode RUP Baru": 59731559,
+    "Kode RUP Baru": "59731559",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Jalan HM. Idris",
     "Metode Pemilihan": "Tender",
@@ -96076,7 +96076,7 @@
   {
     "Kode Paket": 10029596000,
     "Kode RUP": "57201401",
-    "Kode RUP Baru": 59238731,
+    "Kode RUP Baru": "59238731",
     "Satuan Kerja": "Badan Penanggulangan Bencana Daerah",
     "Nama Paket": "Penyusunan Rencana Kontijensi Bencana Kekeringan dan Bencana Gelombang Ekstrim Kabupaten Kotawaringin Barat",
     "Metode Pemilihan": "Seleksi",
@@ -96208,7 +96208,7 @@
   {
     "Kode Paket": 10002377000,
     "Kode RUP": "53569667;53932614",
-    "Kode RUP Baru": 53932614,
+    "Kode RUP Baru": "53932614;53932614",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Jalan Stadion – Cilik Riwut 2",
     "Metode Pemilihan": "Tender",
@@ -96230,7 +96230,7 @@
   {
     "Kode Paket": 10044699000,
     "Kode RUP": "57154137",
-    "Kode RUP Baru": 60100181,
+    "Kode RUP Baru": "60100181",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Peningkatan PSU Jalan Lingkungan RT. 08 RW. 02 Desa Sungai Pakit Kec. Pangkalan Banteng",
     "Metode Pemilihan": "Tender",
@@ -96274,7 +96274,7 @@
   {
     "Kode Paket": 10036458000,
     "Kode RUP": "57666475",
-    "Kode RUP Baru": 59755473,
+    "Kode RUP Baru": "59755473",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Jalan Asmuni Amir RT.5",
     "Metode Pemilihan": "Tender",
@@ -96296,7 +96296,7 @@
   {
     "Kode Paket": 10014780000,
     "Kode RUP": "56560071",
-    "Kode RUP Baru": 57852425,
+    "Kode RUP Baru": "57852425",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Perencanaan Teknis Peningkatan PSU Jalan Lingkungan Desa Pasir Panjang Kec. Arut Selatan",
     "Metode Pemilihan": "Seleksi",
@@ -96318,7 +96318,7 @@
   {
     "Kode Paket": 10002337000,
     "Kode RUP": "53569833",
-    "Kode RUP Baru": 53932269,
+    "Kode RUP Baru": "53932269",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Jl. Sungai Tendang - Batas Natai Raya (DAK)",
     "Metode Pemilihan": "Seleksi",
@@ -96340,7 +96340,7 @@
   {
     "Kode Paket": 10072824000,
     "Kode RUP": "59647650;60444008",
-    "Kode RUP Baru": 60444008,
+    "Kode RUP Baru": "60444008;60444008",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Lanjutan Pembangunan Lapangan Tembak",
     "Metode Pemilihan": "Tender",
@@ -96362,7 +96362,7 @@
   {
     "Kode Paket": 10032732000,
     "Kode RUP": "57673329",
-    "Kode RUP Baru": 59343026,
+    "Kode RUP Baru": "59343026",
     "Satuan Kerja": "Dinas Pendidikan dan Kebudayaan",
     "Nama Paket": "Konstruksi Penataan halaman SDN 1 TELUK PULAI(Rabat beton + Titian di halaman   )",
     "Metode Pemilihan": "Tender",
@@ -96428,7 +96428,7 @@
   {
     "Kode Paket": 10044472000,
     "Kode RUP": "57154220",
-    "Kode RUP Baru": 60100319,
+    "Kode RUP Baru": "60100319",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Peningkatan PSU Jalan Lingkungan Jl. Beringin RT. 01 Desa Sungai Sekonyer Kec. Kumai",
     "Metode Pemilihan": "Tender",
@@ -96450,7 +96450,7 @@
   {
     "Kode Paket": 10004656000,
     "Kode RUP": "53725273",
-    "Kode RUP Baru": 60745876,
+    "Kode RUP Baru": "60745876",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Lanjutan Rehab Gedung Lama Pangkalan Bun Park",
     "Metode Pemilihan": "Tender",
@@ -96472,7 +96472,7 @@
   {
     "Kode Paket": 10044463000,
     "Kode RUP": "57154491",
-    "Kode RUP Baru": 60100410,
+    "Kode RUP Baru": "60100410",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Peningkatan PSU Jalan Lingkungan Jl. Suka Baru RT. 01 Sampai Jalan M. Sopyan RT. 02 Desa Umpang Kec. Arut Selatan",
     "Metode Pemilihan": "Tender",
@@ -96494,7 +96494,7 @@
   {
     "Kode Paket": 10048553000,
     "Kode RUP": "55442352;59805254",
-    "Kode RUP Baru": 59805254,
+    "Kode RUP Baru": "59805254;59805254",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Lanjutan Penataan Taman Kota Manis",
     "Metode Pemilihan": "Tender",
@@ -96516,7 +96516,7 @@
   {
     "Kode Paket": 10034878000,
     "Kode RUP": "59047714;59438825",
-    "Kode RUP Baru": 59580845,
+    "Kode RUP Baru": "59580845;59580845",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": ",Rekonstruksi Jalan P3DT lintas Desa Rungun, Rekonstruksi Jalan Dawak-Sukajaya",
     "Metode Pemilihan": "Tender",
@@ -96560,7 +96560,7 @@
   {
     "Kode Paket": 10044685000,
     "Kode RUP": "57154343",
-    "Kode RUP Baru": 60100140,
+    "Kode RUP Baru": "60100140",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Peningkatan PSU Jalan Lingkar Sekolah di Desa Pandu Sanjaya, Kab. Kotawaringin Barat",
     "Metode Pemilihan": "Tender",
@@ -96670,7 +96670,7 @@
   {
     "Kode Paket": 10036467000,
     "Kode RUP": "59476913",
-    "Kode RUP Baru": 60755208,
+    "Kode RUP Baru": "60755208",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Penyusunan Peta Dasar dan Laporan Fakta Analisa RDTR KSK Lanskap Sekonyer",
     "Metode Pemilihan": "Seleksi",
@@ -96692,7 +96692,7 @@
   {
     "Kode Paket": 10014512000,
     "Kode RUP": "57279830",
-    "Kode RUP Baru": 57490602,
+    "Kode RUP Baru": "57490602",
     "Satuan Kerja": "Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah",
     "Nama Paket": "Pengawasan Pasar Seni",
     "Metode Pemilihan": "Seleksi",
@@ -96758,7 +96758,7 @@
   {
     "Kode Paket": 10036790000,
     "Kode RUP": "57666570",
-    "Kode RUP Baru": 59764577,
+    "Kode RUP Baru": "59764577",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Jalan Sp. Arga Mulya - Sp. Kebun Agung",
     "Metode Pemilihan": "Tender",
@@ -96802,7 +96802,7 @@
   {
     "Kode Paket": 10048147000,
     "Kode RUP": "57154255",
-    "Kode RUP Baru": 60100289,
+    "Kode RUP Baru": "60100289",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Peningkatan PSU Jalan Lingkungan Jl. Anggrek Ungu, RT. 09/RW.04 Desa Amin Jaya Kec. Pangkalan Banteng",
     "Metode Pemilihan": "Tender",
@@ -96824,7 +96824,7 @@
   {
     "Kode Paket": 10034713000,
     "Kode RUP": "57666602",
-    "Kode RUP Baru": 59580940,
+    "Kode RUP Baru": "59580940",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Jalan P3DT Simpang Sukarami-Gandis",
     "Metode Pemilihan": "Tender",
@@ -96934,7 +96934,7 @@
   {
     "Kode Paket": 10059603000,
     "Kode RUP": "59949145",
-    "Kode RUP Baru": 60098187,
+    "Kode RUP Baru": "60098187",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Jalan Pangkalan Durin",
     "Metode Pemilihan": "Tender",
@@ -96978,7 +96978,7 @@
   {
     "Kode Paket": 10002349000,
     "Kode RUP": "53590253",
-    "Kode RUP Baru": 53932207,
+    "Kode RUP Baru": "53932207",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Rekonstruksi Jalan Tahun Anggaran 2025 Paket 1",
     "Metode Pemilihan": "Seleksi",
@@ -97044,7 +97044,7 @@
   {
     "Kode Paket": 10044721000,
     "Kode RUP": "57154192",
-    "Kode RUP Baru": 60100210,
+    "Kode RUP Baru": "60100210",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Peningkatan PSU Jalan Lingkungan Jalan Kenari RT. 07 dan RT. 08 Desa Kebun Agung Kec. Pangkalan Banteng",
     "Metode Pemilihan": "Tender",
@@ -97110,7 +97110,7 @@
   {
     "Kode Paket": 10036234000,
     "Kode RUP": "57666560",
-    "Kode RUP Baru": 59731526,
+    "Kode RUP Baru": "59731526",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Jalan sultan agung RT 17 RW 06 Desa Sumber Agung",
     "Metode Pemilihan": "Tender",
@@ -97154,7 +97154,7 @@
   {
     "Kode Paket": 10034630000,
     "Kode RUP": "57666461",
-    "Kode RUP Baru": 59731542,
+    "Kode RUP Baru": "59731542",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Jalan M. Sofyan Desa Umpang (Kec. Arut Selatan)",
     "Metode Pemilihan": "Tender",
@@ -97176,7 +97176,7 @@
   {
     "Kode Paket": 10002492000,
     "Kode RUP": "53569613",
-    "Kode RUP Baru": 53932652,
+    "Kode RUP Baru": "53932652",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Jl. Simpang Natai Baru - Batas Kadipi Atas (DAK)",
     "Metode Pemilihan": "Tender",
@@ -97198,7 +97198,7 @@
   {
     "Kode Paket": 10005549000,
     "Kode RUP": "53592616",
-    "Kode RUP Baru": 60728353,
+    "Kode RUP Baru": "60728353",
     "Satuan Kerja": "Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah",
     "Nama Paket": "Pembangunan Pasar Seni Di Kecamatan Arut Selatan",
     "Metode Pemilihan": "Tender",
@@ -97220,7 +97220,7 @@
   {
     "Kode Paket": 10014774000,
     "Kode RUP": "54005391",
-    "Kode RUP Baru": 57852546,
+    "Kode RUP Baru": "57852546",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Perencanaan Teknis Peningkatan PSU Jalan Lingkungan di Kecamatan Kumai",
     "Metode Pemilihan": "Seleksi",
@@ -97242,7 +97242,7 @@
   {
     "Kode Paket": 10036252000,
     "Kode RUP": "57666427",
-    "Kode RUP Baru": 59731504,
+    "Kode RUP Baru": "59731504",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Jalan bumi harjo - pangkalan satu",
     "Metode Pemilihan": "Tender",
@@ -97264,7 +97264,7 @@
   {
     "Kode Paket": 10044668000,
     "Kode RUP": "57154043",
-    "Kode RUP Baru": 60100127,
+    "Kode RUP Baru": "60100127",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Peningkatan PSU Jalan Lingkungan Desa Purbasari Jalan Ke SMA, SMP SD Ke Desa Bumi Harjo (Jln Hasanudin Desa Purbasari), Kab. Kotawaringin Barat",
     "Metode Pemilihan": "Tender",
@@ -97308,7 +97308,7 @@
   {
     "Kode Paket": 10034927000,
     "Kode RUP": "59047478;59438785",
-    "Kode RUP Baru": 59438785,
+    "Kode RUP Baru": "59438785;59438785",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Rekonstruksi Jalan Patimura Kumpai Batu Atas, Rekonstruksi Jalan Sepakat RT 24 Karang Anyar Kelurahan Mendawai",
     "Metode Pemilihan": "Tender",
@@ -97330,7 +97330,7 @@
   {
     "Kode Paket": 10044430000,
     "Kode RUP": "57154027",
-    "Kode RUP Baru": 60100438,
+    "Kode RUP Baru": "60100438",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Peningkatan PSU Jalan Menuju Makam KM. 12 Pangkalan Bun",
     "Metode Pemilihan": "Tender",
@@ -97440,7 +97440,7 @@
   {
     "Kode Paket": 10074025000,
     "Kode RUP": "59373655",
-    "Kode RUP Baru": 60479104,
+    "Kode RUP Baru": "60479104",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Peningkatan PSU Jalan Lingkungan Jl. Samari II Gang Apel RT. 25 Kelurahan Madurejo Kecamatan Arut Selatan",
     "Metode Pemilihan": "Tender",
@@ -97484,7 +97484,7 @@
   {
     "Kode Paket": 10003813000,
     "Kode RUP": "53725343;56680557",
-    "Kode RUP Baru": 60745721,
+    "Kode RUP Baru": "60745721;60745721",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Lanjutan Pembangunan Water Front City Sungai Arut Pangkalan Bun",
     "Metode Pemilihan": "Tender",
@@ -97594,7 +97594,7 @@
   {
     "Kode Paket": 10089569000,
     "Kode RUP": "60693483;61041244;61143452",
-    "Kode RUP Baru": 61143452,
+    "Kode RUP Baru": "61143452;61143452;61143452",
     "Satuan Kerja": "Dinas Perhubungan",
     "Nama Paket": "Penyusunan Studi Rencana Induk Pelabuhan (Kumai Hulu)",
     "Metode Pemilihan": "Seleksi",
@@ -97660,7 +97660,7 @@
   {
     "Kode Paket": 10040846000,
     "Kode RUP": "53725370;59452840",
-    "Kode RUP Baru": 60745603,
+    "Kode RUP Baru": "60745603;60745603",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Lanjutan Penataan Lingkungan Sport Center",
     "Metode Pemilihan": "Tender",
@@ -97682,7 +97682,7 @@
   {
     "Kode Paket": 10089454000,
     "Kode RUP": "60702903;61219040",
-    "Kode RUP Baru": 61219040,
+    "Kode RUP Baru": "61219040;61219040",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": ",Pembangunan MCK Septer (Septiktank Terapung) Kel. Mendawai Kec. Arsel",
     "Metode Pemilihan": "Tender",
@@ -97748,7 +97748,7 @@
   {
     "Kode Paket": 10071312000,
     "Kode RUP": "59374561",
-    "Kode RUP Baru": 60479138,
+    "Kode RUP Baru": "60479138",
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Nama Paket": "Peningkatan PSU Jalan Lingkungan Jl. Kasan Rejo Gang Itik II RT. 19 Kelurahan Sidorejo Kecamatan Arut Selatan",
     "Metode Pemilihan": "Tender",
@@ -97836,7 +97836,7 @@
   {
     "Kode Paket": 10002341000,
     "Kode RUP": "53569839",
-    "Kode RUP Baru": 53932518,
+    "Kode RUP Baru": "53932518",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Jalan Stadion – Cilik Riwut 2",
     "Metode Pemilihan": "Seleksi",
@@ -97858,7 +97858,7 @@
   {
     "Kode Paket": 10075501000,
     "Kode RUP": "60279236",
-    "Kode RUP Baru": 60530650,
+    "Kode RUP Baru": "60530650",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Rekonstruksi Jalan Tahun Anggaran 2025 Paket 19",
     "Metode Pemilihan": "Seleksi",
@@ -97968,7 +97968,7 @@
   {
     "Kode Paket": 10041737000,
     "Kode RUP": "59372656",
-    "Kode RUP Baru": 59978208,
+    "Kode RUP Baru": "59978208",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pembangunan Jalan di TPA Translik",
     "Metode Pemilihan": "Tender",
@@ -98056,7 +98056,7 @@
   {
     "Kode Paket": 10078596000,
     "Kode RUP": "60365654",
-    "Kode RUP Baru": 60601563,
+    "Kode RUP Baru": "60601563",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Pengawasan Teknis Rekonstruksi Jalan Tahun Anggaran 2025 Paket 20",
     "Metode Pemilihan": "Seleksi",
@@ -98100,7 +98100,7 @@
   {
     "Kode Paket": 10075905000,
     "Kode RUP": "56998017",
-    "Kode RUP Baru": 60463578,
+    "Kode RUP Baru": "60463578",
     "Satuan Kerja": "Sekretariat DPRD",
     "Nama Paket": "Rehab Plafon Kantor (Pemeliharaan/Rehabilitasi Gedung Kantor dan Bangunan Lainnya)",
     "Metode Pemilihan": "Tender",
@@ -98210,7 +98210,7 @@
   {
     "Kode Paket": "01JSGCE8JZCMRQD3VPMJXJADXX",
     "Kode RUP": "56057846",
-    "Kode RUP Baru": 60012832,
+    "Kode RUP Baru": "60012832",
     "Satuan Kerja": "Dinas Perikanan dan Ketahanan Pangan",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor-Alat Tulis Kantor",
     "Metode Pemilihan": "E-Purchasing",
@@ -98518,7 +98518,7 @@
   {
     "Kode Paket": "01JTFQ6CRZ1DH16342MWQ0EC1N",
     "Kode RUP": "59160756",
-    "Kode RUP Baru": 59479627,
+    "Kode RUP Baru": "59479627",
     "Satuan Kerja": "Dinas Kesehatan",
     "Nama Paket": "Belanja Jasa Tenaga Kebersihan",
     "Metode Pemilihan": "E-Purchasing",
@@ -98650,7 +98650,7 @@
   {
     "Kode Paket": "01K4M8DADSEA0AF8XNM8DXQJMR",
     "Kode RUP": "59263148",
-    "Kode RUP Baru": 61935402,
+    "Kode RUP Baru": "61935402",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Belanja Makanan dan Minuman Rapat (Peningkatan Peran Serta Masyarakat dalam Pengelolaan Persampahan)",
     "Metode Pemilihan": "E-Purchasing",
@@ -98804,7 +98804,7 @@
   {
     "Kode Paket": "01K58V1S7AHRB1PCPFKJVABWDK",
     "Kode RUP": "58584519",
-    "Kode RUP Baru": 61053600,
+    "Kode RUP Baru": "61053600",
     "Satuan Kerja": "Dinas Perikanan dan Ketahanan Pangan",
     "Nama Paket": "Belanja Pakaian Adat Daerah",
     "Metode Pemilihan": "E-Purchasing",
@@ -98826,7 +98826,7 @@
   {
     "Kode Paket": "01JSN6CAT995TMZJGRSFH2DTNY",
     "Kode RUP": "57419859",
-    "Kode RUP Baru": 61071918,
+    "Kode RUP Baru": "61071918",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Belanja Modal Mebel",
     "Metode Pemilihan": "E-Purchasing",
@@ -98892,7 +98892,7 @@
   {
     "Kode Paket": "01K8HQZHSPR7M6YHK9PBJP5XTE",
     "Kode RUP": "60675331",
-    "Kode RUP Baru": 62618051,
+    "Kode RUP Baru": "62618051",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Belanja Makanan dan Minuman Rapat (Pelaksanaan inventarisasi GRK dan penyusunan profil emisi GRK)",
     "Metode Pemilihan": "E-Purchasing",
@@ -99376,7 +99376,7 @@
   {
     "Kode Paket": "01K15ZK9M46J6N1RRF15FYE1F0",
     "Kode RUP": "58665798",
-    "Kode RUP Baru": 60376317,
+    "Kode RUP Baru": "60376317",
     "Satuan Kerja": "Dinas Pertanian",
     "Nama Paket": "Belanja Makanan dan Minuman Rapat Kegiatan PEDA XIV",
     "Metode Pemilihan": "E-Purchasing",
@@ -99794,7 +99794,7 @@
   {
     "Kode Paket": "01K6EZ1EE0XDHBWQN4HQQE7J3F",
     "Kode RUP": "61077671",
-    "Kode RUP Baru": 61564610,
+    "Kode RUP Baru": "61564610",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Roller Blind MPP",
     "Metode Pemilihan": "E-Purchasing",
@@ -99860,7 +99860,7 @@
   {
     "Kode Paket": "01JVC0GD8424SVCH5DBGGQ869M",
     "Kode RUP": "59104653",
-    "Kode RUP Baru": 60860754,
+    "Kode RUP Baru": "60860754",
     "Satuan Kerja": "Dinas Pemadam Kebakaran dan Penyelamatan",
     "Nama Paket": "Belanja Modal Personal Computer",
     "Metode Pemilihan": "E-Purchasing",
@@ -99926,7 +99926,7 @@
   {
     "Kode Paket": "01K5DY0CT4AEPAWW4X99N3EVQX",
     "Kode RUP": "60738699",
-    "Kode RUP Baru": 61017154,
+    "Kode RUP Baru": "61017154",
     "Satuan Kerja": "Dinas Tenaga Kerja dan Transmigrasi",
     "Nama Paket": "Belanja Modal Alat Rumah Tangga Lainnya (Home Use) - SOUND WIRELES",
     "Metode Pemilihan": "E-Purchasing",
@@ -100278,7 +100278,7 @@
   {
     "Kode Paket": "01JYZX267RC706DBNG377QF4RD",
     "Kode RUP": "59816045",
-    "Kode RUP Baru": 60807408,
+    "Kode RUP Baru": "60807408",
     "Satuan Kerja": "Badan Penanggulangan Bencana Daerah",
     "Nama Paket": "Pengadaan Alat/bahan Listrik Kantor",
     "Metode Pemilihan": "E-Purchasing",
@@ -100586,7 +100586,7 @@
   {
     "Kode Paket": "01JSXNHWESJWQZ9HCC533CK2FY",
     "Kode RUP": "59112051",
-    "Kode RUP Baru": 61159363,
+    "Kode RUP Baru": "61159363",
     "Satuan Kerja": "Dinas Kependudukan dan Pencatatan Sipil",
     "Nama Paket": "Belanja Pengadaan Ribbon, film dan Cleaning Kit",
     "Metode Pemilihan": "E-Purchasing",
@@ -100762,7 +100762,7 @@
   {
     "Kode Paket": "01JSX3B35YNPK5VY2R4Z62W0TH",
     "Kode RUP": "57204893",
-    "Kode RUP Baru": 61071343,
+    "Kode RUP Baru": "61071343",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Kertas dan Cover Sub Kegiatan Penyediaan Peralatan dan Perlengkapan Kantor",
     "Metode Pemilihan": "E-Purchasing",
@@ -100894,7 +100894,7 @@
   {
     "Kode Paket": "01JV9183YDRJ9ZPP69T05T1SKB",
     "Kode RUP": "59281433",
-    "Kode RUP Baru": 60680084,
+    "Kode RUP Baru": "60680084",
     "Satuan Kerja": "Dinas Perhubungan",
     "Nama Paket": "Belanja Komponen-Komponen Rambu-Rambu (Belanja Lampu Penerangan Jalan Umum )",
     "Metode Pemilihan": "E-Purchasing",
@@ -100938,7 +100938,7 @@
   {
     "Kode Paket": "01JS0Z5YGD59FBFS1YE7ZBE28K",
     "Kode RUP": "56150505",
-    "Kode RUP Baru": 59105218,
+    "Kode RUP Baru": "59105218",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Kertas dan Cover (Penyediaan Peralatan dan Perlengkapan Kantor)",
     "Metode Pemilihan": "E-Purchasing",
@@ -101686,7 +101686,7 @@
   {
     "Kode Paket": "01K564WB8XZRV8RZ58DM90WCHC",
     "Kode RUP": "60504367",
-    "Kode RUP Baru": 60753702,
+    "Kode RUP Baru": "60753702",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Belanja Suku Cadang-Suku Cadang Alat Besar (Penanganan sampah melalui pemrosesan akhir sampah di TPA/TPST kabupaten/kota atau TPA/TPST Regional)",
     "Metode Pemilihan": "E-Purchasing",
@@ -102060,7 +102060,7 @@
   {
     "Kode Paket": "01JZHTY3QMSCPQY23YT55RDBS8",
     "Kode RUP": "57415036",
-    "Kode RUP Baru": 60666200,
+    "Kode RUP Baru": "60666200",
     "Satuan Kerja": "Dinas Sosial",
     "Nama Paket": "Belanja Modal Alat Kantor Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -102192,7 +102192,7 @@
   {
     "Kode Paket": "01K4W0JEYDC27SVPGRFW0ZTY6S",
     "Kode RUP": "60738713",
-    "Kode RUP Baru": 61017394,
+    "Kode RUP Baru": "61017394",
     "Satuan Kerja": "Dinas Tenaga Kerja dan Transmigrasi",
     "Nama Paket": "Belanja Modal Peralatan Studio Audio - Mixer Wireless Bluetooth",
     "Metode Pemilihan": "E-Purchasing",
@@ -102214,7 +102214,7 @@
   {
     "Kode Paket": "01K03H1JRQDAJQ2MG96SP5R42S",
     "Kode RUP": "59426113",
-    "Kode RUP Baru": 60738678,
+    "Kode RUP Baru": "60738678",
     "Satuan Kerja": "Dinas Tenaga Kerja dan Transmigrasi",
     "Nama Paket": "Belanja Modal Mesin Absensi",
     "Metode Pemilihan": "E-Purchasing",
@@ -102434,7 +102434,7 @@
   {
     "Kode Paket": "01JXYB9SPPNPR5YPK68FVVMKZE",
     "Kode RUP": "59714602",
-    "Kode RUP Baru": 60837883,
+    "Kode RUP Baru": "60837883",
     "Satuan Kerja": "Dinas Pariwisata",
     "Nama Paket": "Belanja Modal Alat Pendingin (3.26.01.2.07.0006)",
     "Metode Pemilihan": "E-Purchasing",
@@ -102764,7 +102764,7 @@
   {
     "Kode Paket": "01JVKD9YE4ZGZP6KA55SF3W8MG",
     "Kode RUP": "59122052",
-    "Kode RUP Baru": 60705995,
+    "Kode RUP Baru": "60705995",
     "Satuan Kerja": "Dinas Pertanian",
     "Nama Paket": "Air Conditioner/AC Pengadaan Peralatan Mesin Lainnya (PIC-TU)",
     "Metode Pemilihan": "E-Purchasing",
@@ -102896,7 +102896,7 @@
   {
     "Kode Paket": "01JTEZHVBD9XYNKQJJ8SXN3BTY",
     "Kode RUP": "57204891",
-    "Kode RUP Baru": 61071261,
+    "Kode RUP Baru": "61071261",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Alat Tulis Kantor Sub Kegiatan Penyediaan Peralatan dan Perlengkapan Kantor",
     "Metode Pemilihan": "E-Purchasing",
@@ -102962,7 +102962,7 @@
   {
     "Kode Paket": "01JVC1BQRHBSXKSPNGHBPF8K3J",
     "Kode RUP": "59104725",
-    "Kode RUP Baru": 60860733,
+    "Kode RUP Baru": "60860733",
     "Satuan Kerja": "Dinas Pemadam Kebakaran dan Penyelamatan",
     "Nama Paket": "Belanja Modal Peralatan Komputer Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -103600,7 +103600,7 @@
   {
     "Kode Paket": "01K61N4QZKD9AYZBWPG3AHG2Q0",
     "Kode RUP": "60299547",
-    "Kode RUP Baru": 61572619,
+    "Kode RUP Baru": "61572619",
     "Satuan Kerja": "Dinas Pendidikan dan Kebudayaan",
     "Nama Paket": "Belanja Jasa Tenaga Kebersihan",
     "Metode Pemilihan": "E-Purchasing",
@@ -103776,7 +103776,7 @@
   {
     "Kode Paket": "01K0VTT1AJF2DMJKH0KZTQDXS1",
     "Kode RUP": "58665798",
-    "Kode RUP Baru": 60376317,
+    "Kode RUP Baru": "60376317",
     "Satuan Kerja": "Dinas Pertanian",
     "Nama Paket": "Belanja Makanan dan Minuman Rapat Kegiatan PEDA XIV",
     "Metode Pemilihan": "E-Purchasing",
@@ -104282,7 +104282,7 @@
   {
     "Kode Paket": "01K4MRS732789YY6BEBW8VHHEB",
     "Kode RUP": "59714593",
-    "Kode RUP Baru": 60837945,
+    "Kode RUP Baru": "60837945",
     "Satuan Kerja": "Dinas Pariwisata",
     "Nama Paket": "Belanja Modal Peralatan Personal Computer ( 3.26.01.2.07.0006)",
     "Metode Pemilihan": "E-Purchasing",
@@ -104546,7 +104546,7 @@
   {
     "Kode Paket": "01JZ0RC33ATH717PY8PCQJJJNX",
     "Kode RUP": "56855192",
-    "Kode RUP Baru": 60895880,
+    "Kode RUP Baru": "60895880",
     "Satuan Kerja": "Dinas Pertanian",
     "Nama Paket": "Belanja Peralatan dan Bahan Inseminasi Buatan Nitrogen Cair Sub Kegiatan Pengendalian Penyediaan Benih/Bibit Ternak dan Hijauan Pakan Ternak",
     "Metode Pemilihan": "E-Purchasing",
@@ -105976,7 +105976,7 @@
   {
     "Kode Paket": "01JWYTKZMARCQVCM25XA185S4B",
     "Kode RUP": "59422880",
-    "Kode RUP Baru": 60709687,
+    "Kode RUP Baru": "60709687",
     "Satuan Kerja": "Dinas Komunikasi, Informatika, Statistik dan Persandian",
     "Nama Paket": "Belanja Modal Alat Rumah Tangga Lainnya (Home Use) (Pengadaan Peralatan dan Mesin Lainnya)",
     "Metode Pemilihan": "E-Purchasing",
@@ -105998,7 +105998,7 @@
   {
     "Kode Paket": "01JSXRKZX8HVK8KVR2Z0REAZ91",
     "Kode RUP": "59270038",
-    "Kode RUP Baru": 61226483,
+    "Kode RUP Baru": "61226483",
     "Satuan Kerja": "Dinas Kesehatan",
     "Nama Paket": "PC Komputer",
     "Metode Pemilihan": "E-Purchasing",
@@ -106064,7 +106064,7 @@
   {
     "Kode Paket": "01JXEKVVC7HX4YF9VWN2WDS340",
     "Kode RUP": "59488363",
-    "Kode RUP Baru": 60798176,
+    "Kode RUP Baru": "60798176",
     "Satuan Kerja": "Dinas Perikanan dan Ketahanan Pangan",
     "Nama Paket": "Belanja Modal Laptop",
     "Metode Pemilihan": "E-Purchasing",
@@ -106218,7 +106218,7 @@
   {
     "Kode Paket": "01JSZM2P3BSPAE8KZAKJQBT5Y0",
     "Kode RUP": "59056405",
-    "Kode RUP Baru": 60680854,
+    "Kode RUP Baru": "60680854",
     "Satuan Kerja": "Badan Pendapatan Daerah",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor-Alat Tulis Kantor ",
     "Metode Pemilihan": "E-Purchasing",
@@ -106262,7 +106262,7 @@
   {
     "Kode Paket": "01JVPFD4PH0FWJ52NGSTC2Q4PG",
     "Kode RUP": "56734052",
-    "Kode RUP Baru": 60860783,
+    "Kode RUP Baru": "60860783",
     "Satuan Kerja": "Dinas Pemadam Kebakaran dan Penyelamatan",
     "Nama Paket": "Belanja Modal Peralatan Jaringan",
     "Metode Pemilihan": "E-Purchasing",
@@ -106768,7 +106768,7 @@
   {
     "Kode Paket": "01JSKDP192BC8T7BB4Z4SM4FW1",
     "Kode RUP": "59105415",
-    "Kode RUP Baru": 59269651,
+    "Kode RUP Baru": "59269651",
     "Satuan Kerja": "Dinas Kesehatan",
     "Nama Paket": "Belanja Modal Peralatan Jaringan",
     "Metode Pemilihan": "E-Purchasing",
@@ -106922,7 +106922,7 @@
   {
     "Kode Paket": "01JSXRN8W5XZCE3FRZXYJ36FDG",
     "Kode RUP": "59056544",
-    "Kode RUP Baru": 60680889,
+    "Kode RUP Baru": "60680889",
     "Satuan Kerja": "Badan Pendapatan Daerah",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Kertas dan Cover",
     "Metode Pemilihan": "E-Purchasing",
@@ -107318,7 +107318,7 @@
   {
     "Kode Paket": "01K1ZAGC8DAEQ79WTBKB04E7PX",
     "Kode RUP": "60159596",
-    "Kode RUP Baru": 61236490,
+    "Kode RUP Baru": "61236490",
     "Satuan Kerja": "Dinas Pemberdayaan Perempuan dan Perlindungan Anak, Pengendalian Penduduk dan Keluarga Berencana",
     "Nama Paket": "Belanja Barang untuk Dijual/Diserahkan kepada Masyarakat Sub Kegiatan Penyediaan Biaya Operasional bagi Pengelola dan Pelaksana (Kader) Ketahanan dan Kesejaheraan Keluarga (BKB, BKR, BKL, PPKS, PIK-R dan Usaha Peningkatan Pendapatan Keluarga Akseptor (UPPKA)",
     "Metode Pemilihan": "E-Purchasing",
@@ -107340,7 +107340,7 @@
   {
     "Kode Paket": "01JTF0Z4FZAW5XEX13SA28KJ8H",
     "Kode RUP": "57204892",
-    "Kode RUP Baru": 60783016,
+    "Kode RUP Baru": "60783016",
     "Satuan Kerja": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",
     "Nama Paket": "Alat Tulis Kantor Sub Kegiatan Penyediaan Peralatan dan Perlengkapan Kantor",
     "Metode Pemilihan": "E-Purchasing",
@@ -107384,7 +107384,7 @@
   {
     "Kode Paket": "01JS0X7W5QTVW3N7YM6ZXKQ25K",
     "Kode RUP": "58419449",
-    "Kode RUP Baru": 60776184,
+    "Kode RUP Baru": "60776184",
     "Satuan Kerja": "Dinas Pariwisata",
     "Nama Paket": "Belanja Jasa Tenaga Kebersihan (3.26.02.2.03.0007)",
     "Metode Pemilihan": "E-Purchasing",
@@ -107582,7 +107582,7 @@
   {
     "Kode Paket": "01JYFX1PWHJSCVR8CVAM15VK8G",
     "Kode RUP": "59575675",
-    "Kode RUP Baru": 60723896,
+    "Kode RUP Baru": "60723896",
     "Satuan Kerja": "Dinas Komunikasi, Informatika, Statistik dan Persandian",
     "Nama Paket": "Belanja Modal Peralatan Studio Video dan Film 1 (Pengadaan Peralatan dan Mesin Lainnya)",
     "Metode Pemilihan": "E-Purchasing",
@@ -107780,7 +107780,7 @@
   {
     "Kode Paket": "01JZ4VEJKCS5YWVET4WSCXTAXV",
     "Kode RUP": "59697724",
-    "Kode RUP Baru": 60808470,
+    "Kode RUP Baru": "60808470",
     "Satuan Kerja": "Badan Penanggulangan Bencana Daerah",
     "Nama Paket": "Pengadaan Alat Tulis Kantor, Kertas dan Bahan Komputer",
     "Metode Pemilihan": "E-Purchasing",
@@ -108440,7 +108440,7 @@
   {
     "Kode Paket": "01JXGFXY9G5766ZEZWXRPS2EH6",
     "Kode RUP": "59707846",
-    "Kode RUP Baru": 60738722,
+    "Kode RUP Baru": "60738722",
     "Satuan Kerja": "Dinas Tenaga Kerja dan Transmigrasi",
     "Nama Paket": "Belanja Modal Personal Computer",
     "Metode Pemilihan": "E-Purchasing",
@@ -108484,7 +108484,7 @@
   {
     "Kode Paket": "01K359E7JQY31SBY8TACBEYBA9",
     "Kode RUP": "59574761",
-    "Kode RUP Baru": 61739474,
+    "Kode RUP Baru": "61739474",
     "Satuan Kerja": "Dinas Kesehatan",
     "Nama Paket": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
     "Metode Pemilihan": "E-Purchasing",
@@ -109056,7 +109056,7 @@
   {
     "Kode Paket": "01K0TP9QQ3XAF6JRCH61E0E9FA",
     "Kode RUP": "59173462",
-    "Kode RUP Baru": 60675863,
+    "Kode RUP Baru": "60675863",
     "Satuan Kerja": "Dinas Sosial",
     "Nama Paket": "Belanja Modal Peralatan Komputer Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -109870,7 +109870,7 @@
   {
     "Kode Paket": "01K0QTXPH9CKEPABDTVN5ND3MA",
     "Kode RUP": "59575630",
-    "Kode RUP Baru": 60723933,
+    "Kode RUP Baru": "60723933",
     "Satuan Kerja": "Dinas Komunikasi, Informatika, Statistik dan Persandian",
     "Nama Paket": "Belanja Modal Peralatan Studio Video dan Film 2 (Pengadaan Peralatan dan Mesin Lainnya)",
     "Metode Pemilihan": "E-Purchasing",
@@ -110002,7 +110002,7 @@
   {
     "Kode Paket": "01JVC02T446A9W9DZES0ZKBXYF",
     "Kode RUP": "56734053",
-    "Kode RUP Baru": 60860767,
+    "Kode RUP Baru": "60860767",
     "Satuan Kerja": "Dinas Pemadam Kebakaran dan Penyelamatan",
     "Nama Paket": "Belanja Modal Audio Visual",
     "Metode Pemilihan": "E-Purchasing",
@@ -110046,7 +110046,7 @@
   {
     "Kode Paket": "01JVRGJNN3XQXR30NWH77JJRDQ",
     "Kode RUP": "56792346",
-    "Kode RUP Baru": 60739159,
+    "Kode RUP Baru": "60739159",
     "Satuan Kerja": "Dinas Tenaga Kerja dan Transmigrasi",
     "Nama Paket": "Belanja Pakaian Dinas Harian (PDH)",
     "Metode Pemilihan": "E-Purchasing",
@@ -110310,7 +110310,7 @@
   {
     "Kode Paket": "01JTJ96HV2TRSM9MFZJK21QHP2",
     "Kode RUP": "59034101",
-    "Kode RUP Baru": 61079849,
+    "Kode RUP Baru": "61079849",
     "Satuan Kerja": "Dinas Pertanian",
     "Nama Paket": "Belanja Jasa Outsourcing (Tenaga Non ASN) Spesifikasi : Tenaga Keamanan/Kebersihan/Sopir ",
     "Metode Pemilihan": "E-Purchasing",
@@ -110508,7 +110508,7 @@
   {
     "Kode Paket": "01JZ26KZ3MMGZAA99DS8R8G401",
     "Kode RUP": "55298827",
-    "Kode RUP Baru": 60812645,
+    "Kode RUP Baru": "60812645",
     "Satuan Kerja": "Badan Penanggulangan Bencana Daerah",
     "Nama Paket": "Pengadaan Unit Laptop",
     "Metode Pemilihan": "E-Purchasing",
@@ -110992,7 +110992,7 @@
   {
     "Kode Paket": "01JXVYFN7NHBV80QJ1R1D5QKG3",
     "Kode RUP": "59213265",
-    "Kode RUP Baru": 61709302,
+    "Kode RUP Baru": "61709302",
     "Satuan Kerja": "Dinas Kesehatan",
     "Nama Paket": "Belanja Modal Personal Computer",
     "Metode Pemilihan": "E-Purchasing",
@@ -111058,7 +111058,7 @@
   {
     "Kode Paket": "01JWWHT28HVDNYNGQQCSJKM675",
     "Kode RUP": "59635277",
-    "Kode RUP Baru": 60934696,
+    "Kode RUP Baru": "60934696",
     "Satuan Kerja": "Badan Perencanaan Pembangunan, Riset dan Inovasi Daerah",
     "Nama Paket": "Penyediaan Peralatan dan Perlengkapan Kantor",
     "Metode Pemilihan": "E-Purchasing",
@@ -111256,7 +111256,7 @@
   {
     "Kode Paket": "OPA-P2506-11850898",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -111278,7 +111278,7 @@
   {
     "Kode Paket": "OPA-P2509-12124867",
     "Kode RUP": 60692729,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -111300,7 +111300,7 @@
   {
     "Kode Paket": "FKS-P2509-12072536",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -111344,7 +111344,7 @@
   {
     "Kode Paket": "FKS-P2503-11667161",
     "Kode RUP": 56604230,
-    "Kode RUP Baru": 60700499,
+    "Kode RUP Baru": "60700499",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Kimia",
     "Metode Pemilihan": "E-Purchasing",
@@ -111366,7 +111366,7 @@
   {
     "Kode Paket": "SSU-P2503-11704287",
     "Kode RUP": 57888617,
-    "Kode RUP Baru": 60747129,
+    "Kode RUP Baru": "60747129",
     "Satuan Kerja": "Dinas Perikanan dan Ketahanan Pangan",
     "Nama Paket": "Belanja Natura dan Pakan-Natura dan Pakan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -111388,7 +111388,7 @@
   {
     "Kode Paket": "OPA-P2505-11823073",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -111542,7 +111542,7 @@
   {
     "Kode Paket": "FKS-P2509-12115808",
     "Kode RUP": 60732011,
-    "Kode RUP Baru": 61176058,
+    "Kode RUP Baru": "61176058",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Umum",
     "Metode Pemilihan": "E-Purchasing",
@@ -111564,7 +111564,7 @@
   {
     "Kode Paket": "SSU-P2503-11704287",
     "Kode RUP": 57888617,
-    "Kode RUP Baru": 60747129,
+    "Kode RUP Baru": "60747129",
     "Satuan Kerja": "Dinas Perikanan dan Ketahanan Pangan",
     "Nama Paket": "Belanja Natura dan Pakan-Natura dan Pakan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -111608,7 +111608,7 @@
   {
     "Kode Paket": "OPA-P2506-11850953",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -111630,7 +111630,7 @@
   {
     "Kode Paket": "OO1-P2506-11850933",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -111696,7 +111696,7 @@
   {
     "Kode Paket": "FKS-P2505-11783918",
     "Kode RUP": 58651804,
-    "Kode RUP Baru": 59667685,
+    "Kode RUP Baru": "59667685",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Ruang Rawat Inap dan Rawat Jalan",
     "Metode Pemilihan": "E-Purchasing",
@@ -111828,7 +111828,7 @@
   {
     "Kode Paket": "AK1-P2508-12026176",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -111850,7 +111850,7 @@
   {
     "Kode Paket": "FKS-P2505-11822179",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -111894,7 +111894,7 @@
   {
     "Kode Paket": "FKS-P2503-11641743",
     "Kode RUP": 56604231,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -111916,7 +111916,7 @@
   {
     "Kode Paket": "FKS-P2505-11783918",
     "Kode RUP": 58651804,
-    "Kode RUP Baru": 59667685,
+    "Kode RUP Baru": "59667685",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Ruang Rawat Inap dan Rawat Jalan",
     "Metode Pemilihan": "E-Purchasing",
@@ -111938,7 +111938,7 @@
   {
     "Kode Paket": "FKS-P2509-12083064",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -111960,7 +111960,7 @@
   {
     "Kode Paket": "OPA-P2505-11836639",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -112048,7 +112048,7 @@
   {
     "Kode Paket": "B,L-P2502-11485271",
     "Kode RUP": 56874078,
-    "Kode RUP Baru": 57835671,
+    "Kode RUP Baru": "57835671",
     "Satuan Kerja": "Laboratorium Kesehatan Daerah",
     "Nama Paket": "Pengadaan Bahan Habis Pakai Alat Laboratorium 1",
     "Metode Pemilihan": "E-Purchasing",
@@ -112070,7 +112070,7 @@
   {
     "Kode Paket": "FKS-P2505-11783918",
     "Kode RUP": 58651804,
-    "Kode RUP Baru": 59667685,
+    "Kode RUP Baru": "59667685",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Ruang Rawat Inap dan Rawat Jalan",
     "Metode Pemilihan": "E-Purchasing",
@@ -112136,7 +112136,7 @@
   {
     "Kode Paket": "S27-P2503-11648263",
     "Kode RUP": 56610585,
-    "Kode RUP Baru": 58068449,
+    "Kode RUP Baru": "58068449",
     "Satuan Kerja": "Dinas Perikanan dan Ketahanan Pangan",
     "Nama Paket": "Pengadaan Benih Ikan Nila, Ikan Patin dan Pakan Ikan  untuk Pokdakan Nila Berkah Kel. Baru, Pokdakan Karang Anyar Kel. Mendawai, Pokdakan Barokah Desa Tanjung Terantang  Kec. Arut Selatan",
     "Metode Pemilihan": "E-Purchasing",
@@ -112158,7 +112158,7 @@
   {
     "Kode Paket": "FKS-P2508-12026368",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -112180,7 +112180,7 @@
   {
     "Kode Paket": "OPA-P2506-11850953",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -112202,7 +112202,7 @@
   {
     "Kode Paket": "FKS-P2505-11840605",
     "Kode RUP": 59338600,
-    "Kode RUP Baru": 60700499,
+    "Kode RUP Baru": "60700499",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Kimia",
     "Metode Pemilihan": "E-Purchasing",
@@ -112224,7 +112224,7 @@
   {
     "Kode Paket": "FKS-P2505-11783918",
     "Kode RUP": 58651804,
-    "Kode RUP Baru": 59667685,
+    "Kode RUP Baru": "59667685",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Ruang Rawat Inap dan Rawat Jalan",
     "Metode Pemilihan": "E-Purchasing",
@@ -112246,7 +112246,7 @@
   {
     "Kode Paket": "FKS-P2505-11783918",
     "Kode RUP": 58651804,
-    "Kode RUP Baru": 59667685,
+    "Kode RUP Baru": "59667685",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Ruang Rawat Inap dan Rawat Jalan",
     "Metode Pemilihan": "E-Purchasing",
@@ -112268,7 +112268,7 @@
   {
     "Kode Paket": "OPA-P2505-11844306",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -112312,7 +112312,7 @@
   {
     "Kode Paket": "FKS-P2505-11838552",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -112356,7 +112356,7 @@
   {
     "Kode Paket": "4U7-P2501-11341706",
     "Kode RUP": 53665430,
-    "Kode RUP Baru": 62379222,
+    "Kode RUP Baru": "62379222",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "Penyediaan Jasa Kebersihan Dalam Gedung Kantor (CS)",
     "Metode Pemilihan": "E-Purchasing",
@@ -112378,7 +112378,7 @@
   {
     "Kode Paket": "OPA-P2505-11836465",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -112400,7 +112400,7 @@
   {
     "Kode Paket": "FKS-P2508-12026368",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -112444,7 +112444,7 @@
   {
     "Kode Paket": "FKS-P2507-11933760",
     "Kode RUP": 59338600,
-    "Kode RUP Baru": 60700499,
+    "Kode RUP Baru": "60700499",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Kimia",
     "Metode Pemilihan": "E-Purchasing",
@@ -112488,7 +112488,7 @@
   {
     "Kode Paket": "OO1-P2505-11837314",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -112554,7 +112554,7 @@
   {
     "Kode Paket": "FKS-P2509-12130860",
     "Kode RUP": 60692729,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -112598,7 +112598,7 @@
   {
     "Kode Paket": "4U7-P2501-11341706",
     "Kode RUP": 53665430,
-    "Kode RUP Baru": 62379222,
+    "Kode RUP Baru": "62379222",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "Penyediaan Jasa Kebersihan Dalam Gedung Kantor (CS)",
     "Metode Pemilihan": "E-Purchasing",
@@ -112708,7 +112708,7 @@
   {
     "Kode Paket": "FKS-P2507-11924064",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -112730,7 +112730,7 @@
   {
     "Kode Paket": "FKS-P2508-12026368",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -112752,7 +112752,7 @@
   {
     "Kode Paket": "FKS-P2505-11821890",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -112774,7 +112774,7 @@
   {
     "Kode Paket": "FKS-P2507-11924064",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -112818,7 +112818,7 @@
   {
     "Kode Paket": "OPA-P2505-11844551",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -112840,7 +112840,7 @@
   {
     "Kode Paket": "AK1-P2505-11821830",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -112862,7 +112862,7 @@
   {
     "Kode Paket": "OPA-P2503-11610113",
     "Kode RUP": 56604232,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -112928,7 +112928,7 @@
   {
     "Kode Paket": "FKS-P2505-11822179",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -112972,7 +112972,7 @@
   {
     "Kode Paket": "ABO-P2501-11410847",
     "Kode RUP": 56027316,
-    "Kode RUP Baru": 60678597,
+    "Kode RUP Baru": "60678597",
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Nama Paket": "Belanja Modal Asphalt Equipment",
     "Metode Pemilihan": "E-Purchasing",
@@ -112994,7 +112994,7 @@
   {
     "Kode Paket": "OPA-P2505-11822492",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -113016,7 +113016,7 @@
   {
     "Kode Paket": "OPA-P2503-11610006",
     "Kode RUP": 56604232,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -113038,7 +113038,7 @@
   {
     "Kode Paket": "FKS-P2508-12026368",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -113060,7 +113060,7 @@
   {
     "Kode Paket": "FKS-P2508-12026368",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -113104,7 +113104,7 @@
   {
     "Kode Paket": "FKS-P2502-11563138",
     "Kode RUP": 54858188,
-    "Kode RUP Baru": 59667685,
+    "Kode RUP Baru": "59667685",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Ruang Rawat Inap dan Rawat Jalan",
     "Metode Pemilihan": "E-Purchasing",
@@ -113126,7 +113126,7 @@
   {
     "Kode Paket": "AK1-P2508-12026176",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -113192,7 +113192,7 @@
   {
     "Kode Paket": "FKS-P2505-11822179",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -113236,7 +113236,7 @@
   {
     "Kode Paket": "SSU-P2503-11704287",
     "Kode RUP": 57888617,
-    "Kode RUP Baru": 60747129,
+    "Kode RUP Baru": "60747129",
     "Satuan Kerja": "Dinas Perikanan dan Ketahanan Pangan",
     "Nama Paket": "Belanja Natura dan Pakan-Natura dan Pakan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -113302,7 +113302,7 @@
   {
     "Kode Paket": "OO1-P2505-11837314",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -113346,7 +113346,7 @@
   {
     "Kode Paket": "OPA-P2501-11417083",
     "Kode RUP": 56513899,
-    "Kode RUP Baru": 57416042,
+    "Kode RUP Baru": "57416042",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(BARJAS) Penyediaan Serum Anti Bisa Ular",
     "Metode Pemilihan": "E-Purchasing",
@@ -113368,7 +113368,7 @@
   {
     "Kode Paket": "TU6-P2503-11603561",
     "Kode RUP": 57552194,
-    "Kode RUP Baru": 60697338,
+    "Kode RUP Baru": "60697338",
     "Satuan Kerja": "Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah",
     "Nama Paket": "Belanja Natura dan Pakan-Natura",
     "Metode Pemilihan": "E-Purchasing",
@@ -113390,7 +113390,7 @@
   {
     "Kode Paket": "S27-P2503-11648263",
     "Kode RUP": 56610585,
-    "Kode RUP Baru": 58068449,
+    "Kode RUP Baru": "58068449",
     "Satuan Kerja": "Dinas Perikanan dan Ketahanan Pangan",
     "Nama Paket": "Pengadaan Benih Ikan Nila, Ikan Patin dan Pakan Ikan  untuk Pokdakan Nila Berkah Kel. Baru, Pokdakan Karang Anyar Kel. Mendawai, Pokdakan Barokah Desa Tanjung Terantang  Kec. Arut Selatan",
     "Metode Pemilihan": "E-Purchasing",
@@ -113478,7 +113478,7 @@
   {
     "Kode Paket": "AK1-P2505-11821612",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -113544,7 +113544,7 @@
   {
     "Kode Paket": "OPA-P2505-11839233",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -113566,7 +113566,7 @@
   {
     "Kode Paket": "OPA-P2505-11840292",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -113610,7 +113610,7 @@
   {
     "Kode Paket": "OPA-P2505-11844551",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -113632,7 +113632,7 @@
   {
     "Kode Paket": "OO1-P2507-11961276",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -113654,7 +113654,7 @@
   {
     "Kode Paket": "FKS-P2509-12129814",
     "Kode RUP": 60732011,
-    "Kode RUP Baru": 61176058,
+    "Kode RUP Baru": "61176058",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Umum",
     "Metode Pemilihan": "E-Purchasing",
@@ -113676,7 +113676,7 @@
   {
     "Kode Paket": "FKS-P2505-11783918",
     "Kode RUP": 58651804,
-    "Kode RUP Baru": 59667685,
+    "Kode RUP Baru": "59667685",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Ruang Rawat Inap dan Rawat Jalan",
     "Metode Pemilihan": "E-Purchasing",
@@ -113698,7 +113698,7 @@
   {
     "Kode Paket": "TU6-P2503-11603561",
     "Kode RUP": 57552194,
-    "Kode RUP Baru": 60697338,
+    "Kode RUP Baru": "60697338",
     "Satuan Kerja": "Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah",
     "Nama Paket": "Belanja Natura dan Pakan-Natura",
     "Metode Pemilihan": "E-Purchasing",
@@ -113720,7 +113720,7 @@
   {
     "Kode Paket": "OO1-P2506-11850933",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -113764,7 +113764,7 @@
   {
     "Kode Paket": "OPA-P2506-11860268",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -113786,7 +113786,7 @@
   {
     "Kode Paket": "OO1-P2505-11836393",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -113808,7 +113808,7 @@
   {
     "Kode Paket": "OPA-P2507-11961218",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -113830,7 +113830,7 @@
   {
     "Kode Paket": "FKS-P2503-11641406",
     "Kode RUP": 56604231,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -113874,7 +113874,7 @@
   {
     "Kode Paket": "FKS-P2504-11729094",
     "Kode RUP": 56604231,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -113896,7 +113896,7 @@
   {
     "Kode Paket": "AK1-P2509-12115935",
     "Kode RUP": 60732011,
-    "Kode RUP Baru": 61176058,
+    "Kode RUP Baru": "61176058",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Umum",
     "Metode Pemilihan": "E-Purchasing",
@@ -113918,7 +113918,7 @@
   {
     "Kode Paket": "B,L-P2502-11485271",
     "Kode RUP": 56874078,
-    "Kode RUP Baru": 57835671,
+    "Kode RUP Baru": "57835671",
     "Satuan Kerja": "Laboratorium Kesehatan Daerah",
     "Nama Paket": "Pengadaan Bahan Habis Pakai Alat Laboratorium 1",
     "Metode Pemilihan": "E-Purchasing",
@@ -113984,7 +113984,7 @@
   {
     "Kode Paket": "OO1-P2505-11837314",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -114050,7 +114050,7 @@
   {
     "Kode Paket": "OO1-P2506-11850933",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -114094,7 +114094,7 @@
   {
     "Kode Paket": "FKS-P2505-11783918",
     "Kode RUP": 58651804,
-    "Kode RUP Baru": 59667685,
+    "Kode RUP Baru": "59667685",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Ruang Rawat Inap dan Rawat Jalan",
     "Metode Pemilihan": "E-Purchasing",
@@ -114160,7 +114160,7 @@
   {
     "Kode Paket": "OPA-P2505-11839222",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -114248,7 +114248,7 @@
   {
     "Kode Paket": "OPA-P2503-11624115",
     "Kode RUP": 56604232,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -114270,7 +114270,7 @@
   {
     "Kode Paket": "4U7-P2501-11342723",
     "Kode RUP": 54384691,
-    "Kode RUP Baru": 60728768,
+    "Kode RUP Baru": "60728768",
     "Satuan Kerja": "Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah",
     "Nama Paket": "Jasa Kebersihan Pasar",
     "Metode Pemilihan": "E-Purchasing",
@@ -114292,7 +114292,7 @@
   {
     "Kode Paket": "OPA-P2503-11609874",
     "Kode RUP": 56604232,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -114314,7 +114314,7 @@
   {
     "Kode Paket": "AK1-P2509-12115935",
     "Kode RUP": 60732011,
-    "Kode RUP Baru": 61176058,
+    "Kode RUP Baru": "61176058",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Umum",
     "Metode Pemilihan": "E-Purchasing",
@@ -114336,7 +114336,7 @@
   {
     "Kode Paket": "S27-P2503-11648263",
     "Kode RUP": 56610585,
-    "Kode RUP Baru": 58068449,
+    "Kode RUP Baru": "58068449",
     "Satuan Kerja": "Dinas Perikanan dan Ketahanan Pangan",
     "Nama Paket": "Pengadaan Benih Ikan Nila, Ikan Patin dan Pakan Ikan  untuk Pokdakan Nila Berkah Kel. Baru, Pokdakan Karang Anyar Kel. Mendawai, Pokdakan Barokah Desa Tanjung Terantang  Kec. Arut Selatan",
     "Metode Pemilihan": "E-Purchasing",
@@ -114402,7 +114402,7 @@
   {
     "Kode Paket": "FKS-P2508-12026368",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -114490,7 +114490,7 @@
   {
     "Kode Paket": "OPA-P2507-11927097",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -114512,7 +114512,7 @@
   {
     "Kode Paket": "OPA-P2505-11840147",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -114556,7 +114556,7 @@
   {
     "Kode Paket": "OPA-P2506-11852059",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -114578,7 +114578,7 @@
   {
     "Kode Paket": "OPA-P2505-11836907",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -114710,7 +114710,7 @@
   {
     "Kode Paket": "FKS-P2505-11820669",
     "Kode RUP": 56604083,
-    "Kode RUP Baru": 59527525,
+    "Kode RUP Baru": "59527525",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -114754,7 +114754,7 @@
   {
     "Kode Paket": "FKS-P2505-11783918",
     "Kode RUP": 58651804,
-    "Kode RUP Baru": 59667685,
+    "Kode RUP Baru": "59667685",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Ruang Rawat Inap dan Rawat Jalan",
     "Metode Pemilihan": "E-Purchasing",
@@ -114820,7 +114820,7 @@
   {
     "Kode Paket": "4U7-P2501-11341686",
     "Kode RUP": 53665435,
-    "Kode RUP Baru": 62398360,
+    "Kode RUP Baru": "62398360",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "Penyediaan Jasa Kebersihan Luar Gedung Kantor (CS Luar)",
     "Metode Pemilihan": "E-Purchasing",
@@ -114842,7 +114842,7 @@
   {
     "Kode Paket": "OO1-P2505-11822484",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -114886,7 +114886,7 @@
   {
     "Kode Paket": "OPA-P2505-11823070",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -114908,7 +114908,7 @@
   {
     "Kode Paket": "FKS-P2503-11656029",
     "Kode RUP": 56604232,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -114952,7 +114952,7 @@
   {
     "Kode Paket": "S27-P2503-11648263",
     "Kode RUP": 56610585,
-    "Kode RUP Baru": 58068449,
+    "Kode RUP Baru": "58068449",
     "Satuan Kerja": "Dinas Perikanan dan Ketahanan Pangan",
     "Nama Paket": "Pengadaan Benih Ikan Nila, Ikan Patin dan Pakan Ikan  untuk Pokdakan Nila Berkah Kel. Baru, Pokdakan Karang Anyar Kel. Mendawai, Pokdakan Barokah Desa Tanjung Terantang  Kec. Arut Selatan",
     "Metode Pemilihan": "E-Purchasing",
@@ -114974,7 +114974,7 @@
   {
     "Kode Paket": "OPA-P2505-11840028",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -115018,7 +115018,7 @@
   {
     "Kode Paket": "B,L-P2502-11485271",
     "Kode RUP": 56874078,
-    "Kode RUP Baru": 57835671,
+    "Kode RUP Baru": "57835671",
     "Satuan Kerja": "Laboratorium Kesehatan Daerah",
     "Nama Paket": "Pengadaan Bahan Habis Pakai Alat Laboratorium 1",
     "Metode Pemilihan": "E-Purchasing",
@@ -115040,7 +115040,7 @@
   {
     "Kode Paket": "FKS-P2508-12026368",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -115084,7 +115084,7 @@
   {
     "Kode Paket": "OPA-P2507-11961218",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -115150,7 +115150,7 @@
   {
     "Kode Paket": "BKR-P2502-11542096",
     "Kode RUP": 56875121,
-    "Kode RUP Baru": 57835667,
+    "Kode RUP Baru": "57835667",
     "Satuan Kerja": "Laboratorium Kesehatan Daerah",
     "Nama Paket": "Pengadaan Bahan Habis Pakai Alat Laboratorium 3",
     "Metode Pemilihan": "E-Purchasing",
@@ -115260,7 +115260,7 @@
   {
     "Kode Paket": "AL2-P2502-11485181",
     "Kode RUP": 56874078,
-    "Kode RUP Baru": 57835671,
+    "Kode RUP Baru": "57835671",
     "Satuan Kerja": "Laboratorium Kesehatan Daerah",
     "Nama Paket": "Pengadaan Bahan Habis Pakai Alat Laboratorium 1",
     "Metode Pemilihan": "E-Purchasing",
@@ -115348,7 +115348,7 @@
   {
     "Kode Paket": "OPA-P2505-11836755",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -115370,7 +115370,7 @@
   {
     "Kode Paket": "FKS-P2505-11840605",
     "Kode RUP": 59338600,
-    "Kode RUP Baru": 60700499,
+    "Kode RUP Baru": "60700499",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Kimia",
     "Metode Pemilihan": "E-Purchasing",
@@ -115392,7 +115392,7 @@
   {
     "Kode Paket": "DH--P2503-11633304",
     "Kode RUP": 57037704,
-    "Kode RUP Baru": 60806775,
+    "Kode RUP Baru": "60806775",
     "Satuan Kerja": "Dinas Komunikasi, Informatika, Statistik dan Persandian",
     "Nama Paket": "Publikasi Program dan Kegiatan Peemrintah Kabupaten Kotawaringin Barat di Media Cetak Kalteng Pos (Pengelolaan MEdia ",
     "Metode Pemilihan": "E-Purchasing",
@@ -115436,7 +115436,7 @@
   {
     "Kode Paket": "AK1-P2508-12026176",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -115458,7 +115458,7 @@
   {
     "Kode Paket": "AK1-P2508-12026176",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -115502,7 +115502,7 @@
   {
     "Kode Paket": "FKS-P2505-11821890",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -115524,7 +115524,7 @@
   {
     "Kode Paket": "OPA-P2505-11836951",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -115568,7 +115568,7 @@
   {
     "Kode Paket": "OPA-P2507-11961322",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -115612,7 +115612,7 @@
   {
     "Kode Paket": "OO1-P2505-11837314",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -115634,7 +115634,7 @@
   {
     "Kode Paket": "FKS-P2506-11855553",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -115722,7 +115722,7 @@
   {
     "Kode Paket": "OPA-P2505-11823070",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -115766,7 +115766,7 @@
   {
     "Kode Paket": "OPA-P2505-11839412",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -115810,7 +115810,7 @@
   {
     "Kode Paket": "OPA-P2509-12124852",
     "Kode RUP": 60692729,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -115832,7 +115832,7 @@
   {
     "Kode Paket": "FKS-P2508-12026368",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -115920,7 +115920,7 @@
   {
     "Kode Paket": "OPA-P2504-11737790",
     "Kode RUP": 56604133,
-    "Kode RUP Baru": 59527540,
+    "Kode RUP Baru": "59527540",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -115942,7 +115942,7 @@
   {
     "Kode Paket": "FKS-P2508-12026368",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -115964,7 +115964,7 @@
   {
     "Kode Paket": "FKS-P2508-12026368",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -116008,7 +116008,7 @@
   {
     "Kode Paket": "FKS-P2508-12026368",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -116052,7 +116052,7 @@
   {
     "Kode Paket": "FKS-P2502-11563138",
     "Kode RUP": 54858188,
-    "Kode RUP Baru": 59667685,
+    "Kode RUP Baru": "59667685",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Ruang Rawat Inap dan Rawat Jalan",
     "Metode Pemilihan": "E-Purchasing",
@@ -116096,7 +116096,7 @@
   {
     "Kode Paket": "OPA-P2505-11823073",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -116140,7 +116140,7 @@
   {
     "Kode Paket": "OPA-P2505-11836496",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -116228,7 +116228,7 @@
   {
     "Kode Paket": "FKS-P2507-11930913",
     "Kode RUP": 59338600,
-    "Kode RUP Baru": 60700499,
+    "Kode RUP Baru": "60700499",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Kimia",
     "Metode Pemilihan": "E-Purchasing",
@@ -116250,7 +116250,7 @@
   {
     "Kode Paket": "FKS-P2508-12026368",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -116272,7 +116272,7 @@
   {
     "Kode Paket": "OPA-P2505-11823073",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -116294,7 +116294,7 @@
   {
     "Kode Paket": "OPA-P2505-11840240",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -116316,7 +116316,7 @@
   {
     "Kode Paket": "OO1-P2505-11836812",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -116338,7 +116338,7 @@
   {
     "Kode Paket": "SSU-P2503-11704287",
     "Kode RUP": 57888617,
-    "Kode RUP Baru": 60747129,
+    "Kode RUP Baru": "60747129",
     "Satuan Kerja": "Dinas Perikanan dan Ketahanan Pangan",
     "Nama Paket": "Belanja Natura dan Pakan-Natura dan Pakan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -116360,7 +116360,7 @@
   {
     "Kode Paket": "FKS-P2509-12115897",
     "Kode RUP": 60732011,
-    "Kode RUP Baru": 61176058,
+    "Kode RUP Baru": "61176058",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Umum",
     "Metode Pemilihan": "E-Purchasing",
@@ -116382,7 +116382,7 @@
   {
     "Kode Paket": "OO1-P2507-11961303",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -116536,7 +116536,7 @@
   {
     "Kode Paket": "OPA-P2507-11961435",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -116558,7 +116558,7 @@
   {
     "Kode Paket": "FKS-P2507-11924064",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -116580,7 +116580,7 @@
   {
     "Kode Paket": "FKS-P2503-11656029",
     "Kode RUP": 56604232,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -116624,7 +116624,7 @@
   {
     "Kode Paket": "FKS-P2505-11821890",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -116668,7 +116668,7 @@
   {
     "Kode Paket": "FKS-P2505-11821890",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -116712,7 +116712,7 @@
   {
     "Kode Paket": "FKS-P2505-11839434",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -116734,7 +116734,7 @@
   {
     "Kode Paket": "AAV-P2503-11662450",
     "Kode RUP": 58271307,
-    "Kode RUP Baru": 60754919,
+    "Kode RUP Baru": "60754919",
     "Satuan Kerja": "Dinas Lingkungan Hidup",
     "Nama Paket": "Belanja Pemeliharaan Alat Besar-Alat Besar Darat-Excavator (Penanganan sampah melalui pemrosesan akhir sampah di TPA/TPST kabupaten/kota atau TPA/TPST Regional)",
     "Metode Pemilihan": "E-Purchasing",
@@ -116756,7 +116756,7 @@
   {
     "Kode Paket": "4U7-P2501-11342723",
     "Kode RUP": 54384691,
-    "Kode RUP Baru": 60728768,
+    "Kode RUP Baru": "60728768",
     "Satuan Kerja": "Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah",
     "Nama Paket": "Jasa Kebersihan Pasar",
     "Metode Pemilihan": "E-Purchasing",
@@ -116778,7 +116778,7 @@
   {
     "Kode Paket": "AK1-P2505-11821830",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -116866,7 +116866,7 @@
   {
     "Kode Paket": "OPA-P2503-11610006",
     "Kode RUP": 56604232,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -117020,7 +117020,7 @@
   {
     "Kode Paket": "OPA-P2505-11836988",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -117152,7 +117152,7 @@
   {
     "Kode Paket": "OO1-P2505-11844372",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -117174,7 +117174,7 @@
   {
     "Kode Paket": "OPA-P2505-11840028",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -117240,7 +117240,7 @@
   {
     "Kode Paket": "AK1-P2504-11762694",
     "Kode RUP": 58651804,
-    "Kode RUP Baru": 59667685,
+    "Kode RUP Baru": "59667685",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Ruang Rawat Inap dan Rawat Jalan",
     "Metode Pemilihan": "E-Purchasing",
@@ -117262,7 +117262,7 @@
   {
     "Kode Paket": "FKS-P2508-12052701",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -117306,7 +117306,7 @@
   {
     "Kode Paket": "FKS-P2508-12010313",
     "Kode RUP": 58005630,
-    "Kode RUP Baru": 61483139,
+    "Kode RUP Baru": "61483139",
     "Satuan Kerja": "Rumah Sakit Kutaringin",
     "Nama Paket": "Belanja Modal Alat Kedokteran Radiodiagnostic",
     "Metode Pemilihan": "E-Purchasing",
@@ -117350,7 +117350,7 @@
   {
     "Kode Paket": "OPA-P2503-11691901",
     "Kode RUP": 56604133,
-    "Kode RUP Baru": 59527540,
+    "Kode RUP Baru": "59527540",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -117416,7 +117416,7 @@
   {
     "Kode Paket": "OO1-P2505-11837314",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -117460,7 +117460,7 @@
   {
     "Kode Paket": "TPP-P2503-11697191",
     "Kode RUP": 58474325,
-    "Kode RUP Baru": 60855155,
+    "Kode RUP Baru": "60855155",
     "Satuan Kerja": "Dinas Perhubungan",
     "Nama Paket": "Belanja Jasa Outsourcing Tenaga Keamanan, Tenaga Kebersihan dan Tenaga Sopir (M)",
     "Metode Pemilihan": "E-Purchasing",
@@ -117570,7 +117570,7 @@
   {
     "Kode Paket": "ONJ-P2505-11836871",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -117592,7 +117592,7 @@
   {
     "Kode Paket": "FKS-P2505-11783918",
     "Kode RUP": 58651804,
-    "Kode RUP Baru": 59667685,
+    "Kode RUP Baru": "59667685",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Ruang Rawat Inap dan Rawat Jalan",
     "Metode Pemilihan": "E-Purchasing",
@@ -117636,7 +117636,7 @@
   {
     "Kode Paket": "OPA-P2505-11822492",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -117680,7 +117680,7 @@
   {
     "Kode Paket": "OPA-P2505-11839233",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -117702,7 +117702,7 @@
   {
     "Kode Paket": "OO1-P2505-11840217",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -117724,7 +117724,7 @@
   {
     "Kode Paket": "OPA-P2506-11850980",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -117746,7 +117746,7 @@
   {
     "Kode Paket": "FKS-P2509-12067891",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -117768,7 +117768,7 @@
   {
     "Kode Paket": "FKS-P2505-11783918",
     "Kode RUP": 58651804,
-    "Kode RUP Baru": 59667685,
+    "Kode RUP Baru": "59667685",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Ruang Rawat Inap dan Rawat Jalan",
     "Metode Pemilihan": "E-Purchasing",
@@ -117856,7 +117856,7 @@
   {
     "Kode Paket": "FKS-P2503-11641625",
     "Kode RUP": 56604231,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -117878,7 +117878,7 @@
   {
     "Kode Paket": "OO1-P2509-12124823",
     "Kode RUP": 60692729,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -117966,7 +117966,7 @@
   {
     "Kode Paket": "FKS-P2505-11783918",
     "Kode RUP": 58651804,
-    "Kode RUP Baru": 59667685,
+    "Kode RUP Baru": "59667685",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Ruang Rawat Inap dan Rawat Jalan",
     "Metode Pemilihan": "E-Purchasing",
@@ -118010,7 +118010,7 @@
   {
     "Kode Paket": "4U7-P2501-11341706",
     "Kode RUP": 53665430,
-    "Kode RUP Baru": 62379222,
+    "Kode RUP Baru": "62379222",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "Penyediaan Jasa Kebersihan Dalam Gedung Kantor (CS)",
     "Metode Pemilihan": "E-Purchasing",
@@ -118054,7 +118054,7 @@
   {
     "Kode Paket": "OPA-P2506-11860268",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -118098,7 +118098,7 @@
   {
     "Kode Paket": "OPA-P2505-11836465",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -118142,7 +118142,7 @@
   {
     "Kode Paket": "OO1-P2505-11844372",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -118164,7 +118164,7 @@
   {
     "Kode Paket": "OPA-P2503-11606552",
     "Kode RUP": 56604231,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -118186,7 +118186,7 @@
   {
     "Kode Paket": "FKS-P2505-11783918",
     "Kode RUP": 58651804,
-    "Kode RUP Baru": 59667685,
+    "Kode RUP Baru": "59667685",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Ruang Rawat Inap dan Rawat Jalan",
     "Metode Pemilihan": "E-Purchasing",
@@ -118252,7 +118252,7 @@
   {
     "Kode Paket": "FKS-P2509-12099951",
     "Kode RUP": 56604231,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -118340,7 +118340,7 @@
   {
     "Kode Paket": "AK1-P2505-11821612",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -118384,7 +118384,7 @@
   {
     "Kode Paket": "FKS-P2502-11563138",
     "Kode RUP": 54858188,
-    "Kode RUP Baru": 59667685,
+    "Kode RUP Baru": "59667685",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Ruang Rawat Inap dan Rawat Jalan",
     "Metode Pemilihan": "E-Purchasing",
@@ -118428,7 +118428,7 @@
   {
     "Kode Paket": "AK1-P2502-11489351",
     "Kode RUP": 54858188,
-    "Kode RUP Baru": 59667685,
+    "Kode RUP Baru": "59667685",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Ruang Rawat Inap dan Rawat Jalan",
     "Metode Pemilihan": "E-Purchasing",
@@ -118494,7 +118494,7 @@
   {
     "Kode Paket": "OPA-P2505-11844306",
     "Kode RUP": 59337214,
-    "Kode RUP Baru": 60863336,
+    "Kode RUP Baru": "60863336",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Obat-Obatan-Obat",
     "Metode Pemilihan": "E-Purchasing",
@@ -118538,7 +118538,7 @@
   {
     "Kode Paket": "FKS-P2508-12026368",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -118560,7 +118560,7 @@
   {
     "Kode Paket": "FKS-P2505-11783918",
     "Kode RUP": 58651804,
-    "Kode RUP Baru": 59667685,
+    "Kode RUP Baru": "59667685",
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Nama Paket": "(MODAL) BIDANG PELAYANAN - Pengadaan Alat Kedokteran Ruang Rawat Inap dan Rawat Jalan",
     "Metode Pemilihan": "E-Purchasing",
@@ -118582,7 +118582,7 @@
   {
     "Kode Paket": "TPP-P2503-11697191",
     "Kode RUP": 58474325,
-    "Kode RUP Baru": 60855155,
+    "Kode RUP Baru": "60855155",
     "Satuan Kerja": "Dinas Perhubungan",
     "Nama Paket": "Belanja Jasa Outsourcing Tenaga Keamanan, Tenaga Kebersihan dan Tenaga Sopir (M)",
     "Metode Pemilihan": "E-Purchasing",
@@ -118692,7 +118692,7 @@
   {
     "Kode Paket": "AL0-P2507-11933771",
     "Kode RUP": 59338600,
-    "Kode RUP Baru": 60700499,
+    "Kode RUP Baru": "60700499",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Kimia",
     "Metode Pemilihan": "E-Purchasing",
@@ -118736,7 +118736,7 @@
   {
     "Kode Paket": "FKS-P2505-11821890",
     "Kode RUP": 59338568,
-    "Kode RUP Baru": 60863411,
+    "Kode RUP Baru": "60863411",
     "Satuan Kerja": "Instalasi Farmasi",
     "Nama Paket": "Belanja Bahan-Bahan Lainnya",
     "Metode Pemilihan": "E-Purchasing",
@@ -118758,7 +118758,7 @@
   {
     "Kode Paket": "TU6-P2503-11603561",
     "Kode RUP": 57552194,
-    "Kode RUP Baru": 60697338,
+    "Kode RUP Baru": "60697338",
     "Satuan Kerja": "Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah",
     "Nama Paket": "Belanja Natura dan Pakan-Natura",
     "Metode Pemilihan": "E-Purchasing",
@@ -118802,7 +118802,7 @@
   {
     "Kode Paket": "B,L-P2502-11485271",
     "Kode RUP": 56874078,
-    "Kode RUP Baru": 57835671,
+    "Kode RUP Baru": "57835671",
     "Satuan Kerja": "Laboratorium Kesehatan Daerah",
     "Nama Paket": "Pengadaan Bahan Habis Pakai Alat Laboratorium 1",
     "Metode Pemilihan": "E-Purchasing",
