@@ -14,136 +14,136 @@
     --lpse-biru  : #1a3a6b;
     --lpse-biru2 : #1e4d8c;
     --lpse-merah : #e63329;
-    --lpse-kuning:#f5c800;
+    --lpse-kuning: #f5c800;
     --lpse-hijau : #2d9e47;
   }
 
-  body { background:#f0f4f8; font-family:'Segoe UI', sans-serif; }
+  body { background: #f0f4f8; font-family: 'Segoe UI', sans-serif; }
 
   /* ===== HEADER ===== */
   .page-header {
-    background:linear-gradient(135deg,var(--lpse-biru)0%, var(--lpse-biru2)100%);
-    border-bottom:4px solid var(--lpse-kuning);
-    padding:20px 28px 16px; margin-bottom:24px;
-    border-radius:0 0 12px 12px;
-    box-shadow:0 4px 16px rgba(26,58,107,0.18);
+    background: linear-gradient(135deg, var(--lpse-biru) 0%, var(--lpse-biru2) 100%);
+    border-bottom: 4px solid var(--lpse-kuning);
+    padding: 20px 28px 16px; margin-bottom: 24px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 16px rgba(26,58,107,0.18);
   }
-  .page-header-top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
-  .page-header h1 { color:#fff; font-size:1.5rem; font-weight:700; letter-spacing:0.3px; margin:0 0 2px 0; }
-  .page-header .last-update { color:rgba(255,255,255,0.72); font-size:0.75rem; }
+  .page-header-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .page-header h1 { color: #fff; font-size: 1.5rem; font-weight: 700; letter-spacing: 0.3px; margin: 0 0 2px 0; }
+  .page-header .last-update { color: rgba(255,255,255,0.72); font-size: 0.75rem; }
 
   /* ===== YEAR SELECTOR ===== */
-  .year-selector-wrap { margin-top:15px; display:flex; align-items:center; gap:10px; }
-  .year-selector-wrap label { color:#fff; font-size:0.85rem; font-weight:600; letter-spacing:0.5px; }
+  .year-selector-wrap { margin-top: 15px; display: flex; align-items: center; gap: 10px; }
+  .year-selector-wrap label { color: #fff; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; }
   .year-select {
-    padding:6px 14px; border-radius:6px; border:1px solid rgba(255,255,255,0.3);
-    background:rgba(255,255,255,0.1); color:#fff; font-weight:600; outline:none;
-    cursor:pointer; transition:background 0.2s;
+    padding: 6px 14px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1); color: #fff; font-weight: 600; outline: none;
+    cursor: pointer; transition: background 0.2s;
   }
-  .year-select:hover, .year-select:focus { background:rgba(255,255,255,0.25); }
-  .year-select option { color:#1e293b; background:#fff; }
+  .year-select:hover, .year-select:focus { background: rgba(255,255,255,0.25); }
+  .year-select option { color: #1e293b; background: #fff; }
 
   /* ===== STRIP & STAT CARDS ===== */
-  .color-strip { display:flex; height:8px; border-radius:4px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 6px rgba(0,0,0,0.12); }
-  .color-strip span { flex:1; }
-  .stat-cards { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:18px; }
-  .stat-card { flex:1; min-width:140px; border-radius:10px; padding:14px 18px; color:#fff; box-shadow:0 3px 10px rgba(0,0,0,0.15); display:flex; flex-direction:column; gap:4px; }
-  .stat-card .stat-label { font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.6px; opacity:0.85; }
-  .stat-card .stat-value { font-size:1.5rem; font-weight:800; letter-spacing:-0.5px; }
-  .stat-biru { background: linear-gradient(135deg,#1a3a6b, #2563b0); }
-  .stat-merah{ background: linear-gradient(135deg,#c0392b, #e63329); }
-  .stat-kuning { background: linear-gradient(135deg,#d4a000, #f5c800);color: #1a1a1a; }
-  .stat-kuning .stat-label { opacity:0.65; }
-  .stat-hijau{ background: linear-gradient(135deg,#1e7e34, #2d9e47); }
+  .color-strip { display: flex; height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
+  .color-strip span { flex: 1; }
+  .stat-cards { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+  .stat-card { flex: 1; min-width: 140px; border-radius: 10px; padding: 14px 18px; color: #fff; box-shadow: 0 3px 10px rgba(0,0,0,0.15); display: flex; flex-direction: column; gap: 4px; }
+  .stat-card .stat-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; opacity: 0.85; }
+  .stat-card .stat-value { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; }
+  .stat-biru { background: linear-gradient(135deg, #1a3a6b, #2563b0); }
+  .stat-merah { background: linear-gradient(135deg, #c0392b, #e63329); }
+  .stat-kuning { background: linear-gradient(135deg, #d4a000, #f5c800); color: #1a1a1a; }
+  .stat-kuning .stat-label { opacity: 0.65; }
+  .stat-hijau { background: linear-gradient(135deg, #1e7e34, #2d9e47); }
 
   /* ===== FILTER AREA BARU ===== */
   .filter-main-card {
-    background:#fff; border-radius:10px; box-shadow:0 2px 10px rgba(26,58,107,0.09);
-    padding:16px 20px; margin-bottom:16px; border-top:3px solid var(--lpse-biru);
+    background: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgba(26,58,107,0.09);
+    padding: 16px 20px; margin-bottom: 16px; border-top: 3px solid var(--lpse-biru);
   }
-  .filter-quick-row { display:flex; flex-wrap:wrap; align-items:flex-end; gap:12px; }
-  .filter-group { display:flex; flex-direction:column; gap:4px; }
-  .filter-group label { font-size:0.72rem; font-weight:600; color:#64748b; text-transform:uppercase; letter-spacing:0.5px; }
+  .filter-quick-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; }
+  .filter-group { display: flex; flex-direction: column; gap: 4px; }
+  .filter-group label { font-size: 0.72rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
   
   /* Filter Lanjutan Toggle */
   .filter-more-btn {
-    background:#f1f5f9; color:var(--lpse-biru); border:1.5px solid #cbd5e1; border-radius:7px;
-    padding:7px 14px; font-size:0.83rem; font-weight:600; cursor:pointer; transition:all 0.2s;
-    display:flex; align-items:center; gap:6px; margin-left:auto;
+    background: #f1f5f9; color: var(--lpse-biru); border: 1.5px solid #cbd5e1; border-radius: 7px;
+    padding: 7px 14px; font-size: 0.83rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    display: flex; align-items: center; gap: 6px; margin-left: auto;
   }
-  .filter-more-btn:hover { background:#e2e8f0; }
+  .filter-more-btn:hover { background: #e2e8f0; }
   .filter-advanced-panel {
-    display:none; padding-top:16px; margin-top:16px; border-top:1px dashed #cbd5e1;
+    display: none; padding-top: 16px; margin-top: 16px; border-top: 1px dashed #cbd5e1;
     animation: fadeIn 0.3s ease-in-out;
   }
-  .filter-advanced-panel.show { display:block; }
-  @keyframes fadeIn { from { opacity:0; transform:translateY(-5px); } to { opacity:1; transform:translateY(0); } }
+  .filter-advanced-panel.show { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
 
   .filter-card input[type=text], .filter-card select {
-    border:1.5px solid #dde3ed; border-radius:7px; padding:7px 11px; font-size:0.83rem;
-    color:#1e293b; background:#f8fafc; transition: border-color 0.2s; outline:none; width:100%;
+    border: 1.5px solid #dde3ed; border-radius: 7px; padding: 7px 11px; font-size: 0.83rem;
+    color: #1e293b; background: #f8fafc; transition: border-color 0.2s; outline: none; width: 100%;
   }
-  .filter-card input[type=text]:focus, .filter-card select:focus { border-color:var(--lpse-biru); background:#fff; }
+  .filter-card input[type=text]:focus, .filter-card select:focus { border-color: var(--lpse-biru); background: #fff; }
 
   /* ===== CHECKLIST DROPDOWN ===== */
-  .check-dropdown { position: relative;display: inline-block;width: 160px; }
+  .check-dropdown { position: relative; display: inline-block; width: 160px; }
   .check-btn {
-    border:1.5px solid #dde3ed; border-radius:7px; padding:7px 24px 7px 10px; font-size:0.83rem;
-    color:#1e293b; background:#f8fafc; cursor:pointer; width:100%; text-align:left; position:relative;
-    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    border: 1.5px solid #dde3ed; border-radius: 7px; padding: 7px 24px 7px 10px; font-size: 0.83rem;
+    color: #1e293b; background: #f8fafc; cursor: pointer; width: 100%; text-align: left; position: relative;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
-  .check-btn::after { content:"▾"; position:absolute; right:8px; top:50%; transform:translateY(-50%); color:#64748b; }
+  .check-btn::after { content: "▾"; position: absolute; right: 8px; top: 50%; transform: translateY(-50%); color: #64748b; }
   .check-panel {
-    display:none; position:fixed; background:#fff; border:1.5px solid #dde3ed; border-radius:8px;
-    box-shadow:0 4px 20px rgba(26,58,107,0.18); z-index:9999; min-width:200px; max-height:280px; flex-direction:column;
+    display: none; position: fixed; background: #fff; border: 1.5px solid #dde3ed; border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(26,58,107,0.18); z-index: 9999; min-width: 200px; max-height: 280px; flex-direction: column;
   }
   .check-panel.open { display: flex; }
-  .check-list-container { overflow-y: auto;flex-grow: 1;padding: 6px 0; }
-  .check-item { display: flex;align-items: center;gap: 8px;padding: 6px 14px; font-size:0.82rem; cursor:pointer; }
+  .check-list-container { overflow-y: auto; flex-grow: 1; padding: 6px 0; }
+  .check-item { display: flex; align-items: center; gap: 8px; padding: 6px 14px; font-size: 0.82rem; cursor: pointer; }
   .check-item:hover { background: #f0f5fb; }
   .check-item input[type=checkbox] { accent-color: var(--lpse-biru); }
 
   /* ===== TOMBOL ===== */
   .btn-reset {
-    background:#f1f5f9; color:#e63329; border:1.5px solid #cbd5e1; border-radius:7px;
-    padding:7px 16px; font-size:0.83rem; font-weight:600; cursor:pointer; transition:all 0.2s; white-space:nowrap;
+    background: #f1f5f9; color: #e63329; border: 1.5px solid #cbd5e1; border-radius: 7px;
+    padding: 7px 16px; font-size: 0.83rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap;
   }
-  .btn-reset:hover { background: #fee2e2; border-color:#fca5a5; }
-  .btn-excel { background:var(--lpse-hijau); color:#fff; border:none; border-radius:7px; padding:8px 18px; font-size:0.83rem; font-weight:600; cursor:pointer; box-shadow:0 2px 6px rgba(45,158,71,0.25); }
-  .btn-master { background:var(--lpse-biru); color:#fff; border:none; border-radius:7px; padding:8px 18px; font-size:0.83rem; font-weight:600; cursor:pointer; box-shadow:0 2px 6px rgba(26,58,107,0.25); }
-  .btn-master.disabled { background:#94a3b8; cursor:not-allowed; box-shadow:none; pointer-events:none; }
+  .btn-reset:hover { background: #fee2e2; border-color: #fca5a5; }
+  .btn-excel { background: var(--lpse-hijau); color: #fff; border: none; border-radius: 7px; padding: 8px 18px; font-size: 0.83rem; font-weight: 600; cursor: pointer; box-shadow: 0 2px 6px rgba(45,158,71,0.25); }
+  .btn-master { background: var(--lpse-biru); color: #fff; border: none; border-radius: 7px; padding: 8px 18px; font-size: 0.83rem; font-weight: 600; cursor: pointer; box-shadow: 0 2px 6px rgba(26,58,107,0.25); }
+  .btn-master.disabled { background: #94a3b8; cursor: not-allowed; box-shadow: none; pointer-events: none; }
 
   /* ===== KONTROL BAR & PAGINATION & TABEL ===== */
-  .control-bar { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:14px; background:#fff; border-radius:10px; padding:12px 16px; box-shadow:0 1px 6px rgba(26,58,107,0.07); }
-  .control-bar label { font-size:0.83rem; color:#475569; font-weight:500; }
-  .control-bar select { border:1.5px solid #dde3ed; border-radius:7px; padding:6px 10px; font-size:0.83rem; background:#f8fafc; outline:none; }
-  .control-bar span { font-size:0.82rem; color:#94a3b8; }
-  .pagination { display:flex; align-items:center; gap:8px; margin:10px 0; }
-  .btn-page { background:#fff; border:1.5px solid #dde3ed; border-radius:7px; padding:6px 16px; font-size:0.83rem; font-weight:600; color:var(--lpse-biru); cursor:pointer; }
-  .btn-page:hover:not(:disabled) { background:var(--lpse-biru); color:#fff; border-color:var(--lpse-biru); }
-  .btn-page:disabled { opacity: 0.35;cursor: default; }
-  .page-info { font-size: 0.83rem;color: #475569;padding: 0 6px; }
-  .total-info { font-size: 0.78rem;color: #94a3b8;margin-left: 4px; }
-  .table-wrap { background:#fff; border-radius:10px; box-shadow:0 2px 12px rgba(26,58,107,0.09); overflow-x:auto; margin-bottom:24px; position:relative; }
-  table { width:100%; border-collapse:collapse; font-size:0.8rem; }
-  thead tr { background:var(--lpse-biru); color:#fff; }
-  thead th { padding:11px 14px; text-align:left; font-weight:600; font-size:0.78rem; border-right:1px solid rgba(255,255,255,0.12); white-space:nowrap; }
-  #stickyHeader { display:none; position:fixed; top:0; left:0; right:0; z-index:999; background:var(--lpse-biru); box-shadow:0 3px 8px rgba(0,0,0,0.25); }
-  #stickyHeader table { width:100%; border-collapse:collapse; }
-  #stickyHeader th { padding:11px 14px; text-align:left; font-weight:600; font-size:0.78rem; color:#fff; border-right:1px solid rgba(255,255,255,0.12); white-space:nowrap; }
+  .control-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 14px; background: #fff; border-radius: 10px; padding: 12px 16px; box-shadow: 0 1px 6px rgba(26,58,107,0.07); }
+  .control-bar label { font-size: 0.83rem; color: #475569; font-weight: 500; }
+  .control-bar select { border: 1.5px solid #dde3ed; border-radius: 7px; padding: 6px 10px; font-size: 0.83rem; background: #f8fafc; outline: none; }
+  .control-bar span { font-size: 0.82rem; color: #94a3b8; }
+  .pagination { display: flex; align-items: center; gap: 8px; margin: 10px 0; }
+  .btn-page { background: #fff; border: 1.5px solid #dde3ed; border-radius: 7px; padding: 6px 16px; font-size: 0.83rem; font-weight: 600; color: var(--lpse-biru); cursor: pointer; }
+  .btn-page:hover:not(:disabled) { background: var(--lpse-biru); color: #fff; border-color: var(--lpse-biru); }
+  .btn-page:disabled { opacity: 0.35; cursor: default; }
+  .page-info { font-size: 0.83rem; color: #475569; padding: 0 6px; }
+  .total-info { font-size: 0.78rem; color: #94a3b8; margin-left: 4px; }
+  .table-wrap { background: #fff; border-radius: 10px; box-shadow: 0 2px 12px rgba(26,58,107,0.09); overflow-x: auto; margin-bottom: 24px; position: relative; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  thead tr { background: var(--lpse-biru); color: #fff; }
+  thead th { padding: 11px 14px; text-align: left; font-weight: 600; font-size: 0.78rem; border-right: 1px solid rgba(255,255,255,0.12); white-space: nowrap; }
+  #stickyHeader { display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 999; background: var(--lpse-biru); box-shadow: 0 3px 8px rgba(0,0,0,0.25); }
+  #stickyHeader table { width: 100%; border-collapse: collapse; }
+  #stickyHeader th { padding: 11px 14px; text-align: left; font-weight: 600; font-size: 0.78rem; color: #fff; border-right: 1px solid rgba(255,255,255,0.12); white-space: nowrap; }
   tbody tr:nth-child(even) { background: #f0f5fb; }
-  tbody tr:hover { background:#dbeafe !important; }
-  tbody td { padding:9px 14px; border-bottom:1px solid #e8edf5; border-right:1px solid #e8edf5; vertical-align:top; color:#1e293b; }
-  .td-efisiensi { font-weight: 700;color: var(--lpse-hijau); }
-  .td-rupiah { text-align:right; font-variant-numeric:tabular-nums; }
-  .td-center { text-align:center; }
-  .badge { display:inline-block; padding:2px 9px; border-radius:20px; font-size:0.72rem; font-weight:600; white-space:nowrap; }
-  .badge-selesai { background: #dcfce7;color: #166534; }
-  .badge-proses { background: #fef9c3;color: #854d0e; }
-  .badge-belum { background:#fee2e2; color:#991b1b; } 
-  #loadingOverlay { position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(255,255,255,0.8); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:20; display:none; }
-  .loader { border:4px solid #f3f3f3; border-top:4px solid var(--lpse-biru); border-radius:50%; width:30px; height:30px; animation: spin 1s linear infinite; margin-bottom:8px; }
-  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform:rotate(360deg); } }
+  tbody tr:hover { background: #dbeafe !important; }
+  tbody td { padding: 9px 14px; border-bottom: 1px solid #e8edf5; border-right: 1px solid #e8edf5; vertical-align: top; color: #1e293b; }
+  .td-efisiensi { font-weight: 700; color: var(--lpse-hijau); }
+  .td-rupiah { text-align: right; font-variant-numeric: tabular-nums; }
+  .td-center { text-align: center; }
+  .badge { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; white-space: nowrap; }
+  .badge-selesai { background: #dcfce7; color: #166534; }
+  .badge-proses { background: #fef9c3; color: #854d0e; }
+  .badge-belum { background: #fee2e2; color: #991b1b; } 
+  #loadingOverlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.8); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 20; display: none; }
+  .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--lpse-biru); border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin-bottom: 8px; }
+  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 </style>
 </head>
 <body>
@@ -400,15 +400,15 @@ let currentYear = "2026";
 let modeRealisasi = false;
 
 // === FUNGSI TOGGLE FILTER LANJUTAN ===
-function toggleAdvancedFilter() {
+function toggleAdvancedFilter(){
   const panel = document.getElementById("advancedFilterPanel");
   const btn = document.getElementById("btnToggleMore");
   if(panel.classList.contains("show")) {
     panel.classList.remove("show");
-    btn.innerHTML = "🔍 Filter Lanjutan (Pencarian Teks) ▾";
+    btn.innerHTML= "🔍 Filter Lanjutan (Pencarian Teks) ▾";
   } else {
     panel.classList.add("show");
-    btn.innerHTML = "🔍 Sembunyikan Filter Lanjutan ▴";
+    btn.innerHTML= "🔍 Sembunyikan Filter Lanjutan ▴";
   }
 }
 
@@ -497,7 +497,7 @@ function buildAllChecklists(){
     const listContainer = document.getElementById(`list_${f}`);
     listContainer.innerHTML = "";
     items.forEach(val => {
-      const id = `chk_${f}_${val.replace(/[^a-zA-Z0-9]/g, '_')}`;
+      const id = `chk_${f}_${val.replace(/[^a-zA-Z0-9]/g,'_')}`;
       const div = document.createElement("div");
       div.className = "check-item";
       div.innerHTML = `<input type="checkbox" id="${id}" value="${val}" checked onchange="updateCheckAll('${f}')">
@@ -508,7 +508,7 @@ function buildAllChecklists(){
   }
 }
 
-function toggleFilterPanel(type,e) {
+function toggleFilterPanel(type,e){
   e.stopPropagation();
   const panel = document.getElementById(`panel_${type}`);
   const btn = document.getElementById(`btn_${type}`);
@@ -533,7 +533,7 @@ function closeFilterPanel(type){
   document.getElementById(`panel_${type}`).classList.remove("open");
 }
 
-function toggleAllFilter(type,el) {
+function toggleAllFilter(type,el){
   document.querySelectorAll(`#list_${type} input[type=checkbox]`).forEach(cb => cb.checked = el.checked);
 }
 
@@ -569,7 +569,7 @@ function getCheckedValues(type){
   const all = document.querySelectorAll(`#list_${type} input[type=checkbox]`);
   const chk = Array.from(document.querySelectorAll(`#list_${type} input[type=checkbox]:checked`)).map(cb => cb.value);
   if (chk.length === 0) return []; 
-  if (chk.length === all.length) return null; 
+  if (chk.length === all.length) return null;
   return chk;
 }
 
@@ -629,7 +629,7 @@ function applyFilter() {
     if (kodePaket && !(String(row["Kode Paket"] ?? "")).toLowerCase().includes(kodePaket)) return false;
     if (kodeRUP && !(String(row["Kode RUP"] ?? "")).toLowerCase().includes(kodeRUP)) return false;
     if (satker && !(row["Satuan Kerja"] ?? "").toLowerCase().includes(satker)) return false;
-    if (paket  && !(row["Nama Paket"]   ?? "").toLowerCase().includes(paket))  return false;
+    if (paket  && !(row["Nama Paket"]   ?? "").toLowerCase().includes(paket)) return false;
     
     // 2. Filter Checklist
     if (checkedJenis  !== null && !checkedJenis.includes(row["Jenis Pengadaan"])) return false;
@@ -730,7 +730,7 @@ function renderTable() {
              
     const textInfo = `<div style="font-weight:600; font-size:0.8rem; margin-bottom:3px; line-height:1.3; color:#1e293b;">${row["Nama Paket"] ?? "-"}</div>
                       <div style="font-size:0.72rem; color:#64748b;">${row["Satuan Kerja"] ?? "-"}</div>`;
-            
+             
     const jenisInfo = `<div style="font-size:0.75rem; font-weight:600;">${row["Metode Pemilihan"] ?? "-"}</div>
                        <div style="font-size:0.72rem; color:#64748b;">${row["Jenis Pengadaan"] ?? "-"}</div>
                        <div style="font-size:0.72rem; color:#e63329; font-weight:600; margin-top:2px;">${row["Cara Pengadaan"] ?? "-"}</div>`;
@@ -778,20 +778,20 @@ document.getElementById("perPage").addEventListener("change", (e) => {
   perPage = Number(e.target.value); currentPage = 1; renderTable();
 });
 
-["prevPage", "prevPage2"].forEach(id => 
+["prevPage","prevPage2"].forEach(id => 
   document.getElementById(id).addEventListener("click", () => {
     if (currentPage > 1) { currentPage--; renderTable(); }
   })
 );
 
-["nextPage", "nextPage2"].forEach(id => 
+["nextPage","nextPage2"].forEach(id => 
   document.getElementById(id).addEventListener("click", () => {
     const totalPage = Math.ceil(filtered.length / perPage);
     if (currentPage < totalPage) { currentPage++; renderTable(); }
   })
 );
 
-["filterKodePaket", "filterKodeRUP", "filterSatker", "filterPaket"].forEach(id => 
+["filterKodePaket","filterKodeRUP","filterSatker","filterPaket"].forEach(id => 
   document.getElementById(id).addEventListener("keydown", (e) => {
     if (e.key === "Enter") applyFilter();
   })
@@ -833,17 +833,46 @@ document.getElementById("downloadCurrent").addEventListener("click", () => {
         return [...new Set(valid)].join("; ");
       };
 
-      const getAggregateStatus = (arrRows) => {
-        let cats = arrRows.map(r => getKategoriStatus(r));
-        let isAllBatal = arrRows.every(r => {
-          const s = (r["Status"] || "").toLowerCase();
-          return s.includes('batal') || s.includes('gagal');
+      // FUNGSI KAMUS BOBOT STATUS (SKOR)
+      const getAggregateRawStatus = (arrRows) => {
+        const getScore = (s) => {
+          const sLow = (s || "").trim().toLowerCase();
+          if (sLow.includes('batal') || sLow.includes('gagal') || sLow.includes('cancel')) return -1;
+          if (sLow.includes('bapbast') || sLow.includes('payment') || sLow.includes('completed') || sLow.includes('paket selesai')) return 100;
+          if (sLow.includes('spmkspp')) return 60;
+          if (sLow.includes('kontrak')) return 50;
+          if (sLow.includes('sppbj')) return 40;
+          if (sLow.includes('selesai')) return 30; // Tender/Non Tender Selesai
+          if (sLow.includes('pengumuman') && !sLow.includes('rup')) return 20;
+          if (sLow.includes('pengumuman rup')) return 10;
+          if (sLow === '' || sLow === '-') return 0;
+          return 5; // Status proses lainnya
+        };
+
+        let scored = [];
+        let allBatal = true;
+
+        arrRows.forEach(r => {
+          const raw = (r["Status"] || "").trim();
+          const score = getScore(raw);
+          if (score !== -1) {
+            allBatal = false;
+          }
+          if (raw) scored.push({ score, raw });
         });
 
-        if (isAllBatal) return "Gagal/Batal";
-        if (cats.includes("Sedang Berjalan")) return "Sedang Berjalan";
-        if (cats.includes("Belum Proses")) return "Belum Proses";
-        return "Sudah Selesai";
+        if (allBatal || scored.length === 0) {
+          return [...new Set(scored.map(x => x.raw))].join("; ");
+        }
+
+        const validScored = scored.filter(x => x.score !== -1);
+        if (validScored.length === 0) {
+          return [...new Set(scored.map(x => x.raw))].join("; ");
+        }
+
+        const maxScore = Math.max(...validScored.map(x => x.score));
+        const dominantRaws = validScored.filter(x => x.score === maxScore).map(x => x.raw);
+        return [...new Set(dominantRaws)].join("; ");
       };
 
       // 1. SIAPKAN DATA DETAIL (SHEET 2)
@@ -881,8 +910,7 @@ document.getElementById("downloadCurrent").addEventListener("click", () => {
       const groupMap = {};
       filtered.forEach(row => {
         const rawRup = String(row["Kode RUP"] || "");
-        // PERBAIKAN: Menggunakan .trim() bukan .strip()
-        const keyRup = rawRup.split(';')[0].trim() || "UNKNOWN"; 
+        const keyRup = rawRup.split(';')[0].trim() || "UNKNOWN";
         if (!groupMap[keyRup]) groupMap[keyRup] = [];
         groupMap[keyRup].push(row);
       });
@@ -912,7 +940,7 @@ document.getElementById("downloadCurrent").addEventListener("click", () => {
           "Total Nilai HPS"        : sumHps === 0 ? "" : sumHps,
           "Total Hasil Pemilihan"  : sumHasil === 0 ? "" : sumHasil,
           "Efisiensi"              : (pagu !== 0 && sumHasil !== 0) ? (pagu - sumHasil) : "",
-          "Status Keseluruhan"     : getAggregateStatus(group),
+          "Status"                 : getAggregateRawStatus(group),
           "Daftar Kode Paket"      : getUniqueString(group.map(r => r["Kode Paket"])),
           "Daftar Penyedia"        : getUniqueString(group.map(r => r["Nama Penyedia"])),
           "Daftar Tanggal Kontrak" : getUniqueString(group.map(r => r["Tanggal Kontrak"])),
@@ -938,7 +966,7 @@ document.getElementById("downloadCurrent").addEventListener("click", () => {
           }
         }
       }
-      wsRekap['!cols'] = [{wch:6},{wch:18},{wch:38},{wch:50},{wch:22},{wch:28},{wch:14},{wch:22},{wch:20},{wch:20},{wch:20},{wch:20},{wch:22},{wch:30},{wch:40},{wch:25},{wch:18},{wch:18}];
+      wsRekap['!cols'] = [{wch:6},{wch:18},{wch:38},{wch:50},{wch:22},{wch:28},{wch:14},{wch:22},{wch:20},{wch:20},{wch:20},{wch:20},{wch:28},{wch:30},{wch:40},{wch:25},{wch:18},{wch:18}];
       XLSX.utils.book_append_sheet(wb, wsRekap, "1. Rekap per RUP");
 
       // Sheet 2: Detail
