@@ -833,8 +833,8 @@ document.getElementById("downloadCurrent").addEventListener("click", () => {
         return [...new Set(valid)].join("; ");
       };
 
-      // FUNGSI KAMUS BOBOT STATUS (SKOR)
-      const getAggregateRawStatus = (arrRows) => {
+      // FUNGSI KAMUS BOBOT STATUS (SKOR) & CEK SISA PAGU
+      const getAggregateRawStatus = (arrRows, paguRup, sumHasil) => {
         const getScore = (s) => {
           const sLow = (s || "").trim().toLowerCase();
           if (sLow.includes('batal') || sLow.includes('gagal') || sLow.includes('cancel')) return -1;
@@ -851,12 +851,14 @@ document.getElementById("downloadCurrent").addEventListener("click", () => {
 
         let scored = [];
         let allBatal = true;
+        let hasProsesBerjalan = false;
 
         arrRows.forEach(r => {
           const raw = (r["Status"] || "").trim();
           const score = getScore(raw);
-          if (score !== -1) {
-            allBatal = false;
+          if (score !== -1) allBatal = false;
+          if (score > 0 && score < 100 && score !== 10) {
+            hasProsesBerjalan = true;
           }
           if (raw) scored.push({ score, raw });
         });
@@ -870,12 +872,31 @@ document.getElementById("downloadCurrent").addEventListener("click", () => {
           return [...new Set(scored.map(x => x.raw))].join("; ");
         }
 
+        // LOGIKA PENCEGATAN
+        if (hasProsesBerjalan) {
+          const filteredBerjalan = validScored.filter(x => x.score < 100);
+          if (filteredBerjalan.length > 0) {
+            const maxScore = Math.max(...filteredBerjalan.map(x => x.score));
+            const dominantRaws = filteredBerjalan.filter(x => x.score === maxScore).map(x => x.raw);
+            return [...new Set(dominantRaws)].join("; ");
+          }
+        }
+
+        // JALUR NORMAL (Tuntas / Selesai)
         const maxScore = Math.max(...validScored.map(x => x.score));
         const dominantRaws = validScored.filter(x => x.score === maxScore).map(x => x.raw);
-        return [...new Set(dominantRaws)].join("; ");
+        const hasilStatus = [...new Set(dominantRaws)].join("; ");
+
+        // CEK SISA PAGU (Jika semua paket sudah payment, tapi totalnya masih < 80% Pagu)
+        const persentase = paguRup > 0 ? (sumHasil / paguRup) * 100 : 100;
+        if (maxScore === 100 && persentase < 80) {
+           return "Sedang Berjalan (Sisa Pagu)";
+        }
+
+        return hasilStatus;
       };
 
-      // 1. SIAPKAN DATA DETAIL (SHEET 2)
+      // 1. SIAPKAN DATA DETAIL (SHEET 2 - HANYA 13 KOLOM)
       const exportDetail = filtered.map((row, index) => {
         const pagu  = row["Nilai Pagu RUP"];
         const hasil = row["Nilai Hasil Pemilihan"];
@@ -897,16 +918,11 @@ document.getElementById("downloadCurrent").addEventListener("click", () => {
           "Nilai Pagu RUP"       : isNaN(Number(pagu)) ? (pagu ?? "") : Number(pagu),
           "Nilai HPS"            : isNaN(Number(row["Nilai HPS"])) ? (row["Nilai HPS"] ?? "") : Number(row["Nilai HPS"]),
           "Nilai Hasil Pemilihan": hasil === "N/A" || hasil === "" ? (hasil ?? "") : Number(hasil),
-          "Efisiensi"            : efisiensi,
-          "Tanggal Kontrak"      : row["Tanggal Kontrak"] ?? "",
-          "Nama Penyedia"        : row["Nama Penyedia"] ?? "",
-          "Nilai PDN"            : isNaN(Number(row["Nilai PDN"])) ? (row["Nilai PDN"] ?? "") : Number(row["Nilai PDN"]),
-          "Nilai UMK"            : isNaN(Number(row["Nilai UMK"])) ? (row["Nilai UMK"] ?? "") : Number(row["Nilai UMK"]),
-          "Sumber"               : row["Sumber"] ?? ""
+          "Efisiensi"            : efisiensi
         };
       });
 
-      // 2. SIAPKAN DATA REKAP (SHEET 1) MENGGUNAKAN GROUP BY
+      // 2. SIAPKAN DATA REKAP (SHEET 1 - HANYA 13 KOLOM) MENGGUNAKAN GROUP BY
       const groupMap = {};
       filtered.forEach(row => {
         const rawRup = String(row["Kode RUP"] || "");
@@ -923,68 +939,62 @@ document.getElementById("downloadCurrent").addEventListener("click", () => {
 
         const sumHps = group.reduce((acc, r) => acc + getNum(r["Nilai HPS"]), 0);
         const sumHasil = group.reduce((acc, r) => acc + getNum(r["Nilai Hasil Pemilihan"]), 0);
-        const sumPdn = group.reduce((acc, r) => acc + getNum(r["Nilai PDN"]), 0);
-        const sumUmk = group.reduce((acc, r) => acc + getNum(r["Nilai UMK"]), 0);
         const pagu = getNum(first["Nilai Pagu RUP"]);
 
         exportRekap.push({
           "No"                     : noRekap++,
+          "Daftar Kode Paket"      : getUniqueString(group.map(r => r["Kode Paket"])),
           "Kode RUP"               : first["Kode RUP"] ?? "",
           "Satuan Kerja"           : first["Satuan Kerja"] ?? "",
-          "Nama Paket (Master)"    : first["Nama Paket"] ?? "",
+          "Nama Paket"             : first["Nama Paket"] ?? "",
           "Metode Pemilihan"       : first["Metode Pemilihan"] ?? "",
           "Jenis Pengadaan"        : first["Jenis Pengadaan"] ?? "",
-          "Sumber Dana"            : first["Sumber Dana"] ?? "",
           "Cara Pengadaan"         : first["Cara Pengadaan"] ?? "",
+          "Status"                 : getAggregateRawStatus(group, pagu, sumHasil),
           "Nilai Pagu RUP"         : pagu === 0 ? "" : pagu,
           "Total Nilai HPS"        : sumHps === 0 ? "" : sumHps,
           "Total Hasil Pemilihan"  : sumHasil === 0 ? "" : sumHasil,
-          "Efisiensi"              : (pagu !== 0 && sumHasil !== 0) ? (pagu - sumHasil) : "",
-          "Status"                 : getAggregateRawStatus(group),
-          "Daftar Kode Paket"      : getUniqueString(group.map(r => r["Kode Paket"])),
-          "Daftar Penyedia"        : getUniqueString(group.map(r => r["Nama Penyedia"])),
-          "Daftar Tanggal Kontrak" : getUniqueString(group.map(r => r["Tanggal Kontrak"])),
-          "Total Nilai PDN"        : sumPdn === 0 ? "" : sumPdn,
-          "Total Nilai UMK"        : sumUmk === 0 ? "" : sumUmk
+          "Efisiensi"              : (pagu !== 0 && sumHasil !== 0) ? (pagu - sumHasil) : ""
         });
       }
 
       // 3. BUAT WORKBOOK DAN FORMATTING
       const wb = XLSX.utils.book_new();
 
-      // Sheet 1: Rekap
-      const wsRekap = XLSX.utils.json_to_sheet(exportRekap);
-      const range1 = XLSX.utils.decode_range(wsRekap['!ref']);
-      const head1 = [];
-      for (let c = range1.s.c; c <= range1.e.c; c++) head1[c] = wsRekap[XLSX.utils.encode_cell({r:0,c})].v;
-      const colRupiah1 = ['Nilai Pagu RUP', 'Total Nilai HPS', 'Total Hasil Pemilihan', 'Efisiensi', 'Total Nilai PDN', 'Total Nilai UMK'];
-      for (let r = 1; r <= range1.e.r; r++) {
-        for (let c = range1.s.c; c <= range1.e.c; c++) {
-          if (colRupiah1.includes(head1[c])) {
-            const addr = XLSX.utils.encode_cell({r,c});
-            if (wsRekap[addr] && typeof wsRekap[addr].v === "number") wsRekap[addr].z = '#,##0';
+      // Helper Format & Tambah Sheet
+      const addSheet = (dataObj, sheetName, colRupiahNames, widths) => {
+        const ws = XLSX.utils.json_to_sheet(dataObj);
+        const range = XLSX.utils.decode_range(ws['!ref']);
+        const head = [];
+        for (let c = range.s.c; c <= range.e.c; c++) head[c] = ws[XLSX.utils.encode_cell({r:0,c})].v;
+        
+        for (let r = 1; r <= range.e.r; r++) {
+          for (let c = range.s.c; c <= range.e.c; c++) {
+            if (colRupiahNames.includes(head[c])) {
+              const addr = XLSX.utils.encode_cell({r,c});
+              if (ws[addr] && typeof ws[addr].v === "number") ws[addr].z = '#,##0';
+            }
           }
         }
-      }
-      wsRekap['!cols'] = [{wch:6},{wch:18},{wch:38},{wch:50},{wch:22},{wch:28},{wch:14},{wch:22},{wch:20},{wch:20},{wch:20},{wch:20},{wch:28},{wch:30},{wch:40},{wch:25},{wch:18},{wch:18}];
-      XLSX.utils.book_append_sheet(wb, wsRekap, "1. Rekap per RUP");
+        ws['!cols'] = widths;
+        XLSX.utils.book_append_sheet(wb, ws, sheetName);
+      };
+
+      // Sheet 1: Rekap
+      addSheet(
+        exportRekap, 
+        "1. Rekap per RUP", 
+        ['Nilai Pagu RUP', 'Total Nilai HPS', 'Total Hasil Pemilihan', 'Efisiensi'],
+        [{wch:6},{wch:30},{wch:18},{wch:38},{wch:50},{wch:22},{wch:28},{wch:22},{wch:28},{wch:20},{wch:20},{wch:20},{wch:20}]
+      );
 
       // Sheet 2: Detail
-      const wsDetail = XLSX.utils.json_to_sheet(exportDetail);
-      const range2 = XLSX.utils.decode_range(wsDetail['!ref']);
-      const head2 = [];
-      for (let c = range2.s.c; c <= range2.e.c; c++) head2[c] = wsDetail[XLSX.utils.encode_cell({r:0,c})].v;
-      const colRupiah2 = ["Nilai Pagu RUP", "Nilai HPS", "Nilai Hasil Pemilihan", "Efisiensi", "Nilai PDN", "Nilai UMK"];
-      for (let r = 1; r <= range2.e.r; r++) {
-        for (let c = range2.s.c; c <= range2.e.c; c++) {
-          if (colRupiah2.includes(head2[c])) {
-            const addr = XLSX.utils.encode_cell({r,c});
-            if (wsDetail[addr] && typeof wsDetail[addr].v === "number") wsDetail[addr].z = '#,##0';
-          }
-        }
-      }
-      wsDetail['!cols'] = [{wch:6},{wch:20},{wch:18},{wch:38},{wch:50},{wch:22},{wch:32},{wch:22},{wch:22},{wch:20},{wch:20},{wch:20},{wch:20},{wch:18},{wch:35},{wch:18},{wch:18},{wch:12}];
-      XLSX.utils.book_append_sheet(wb, wsDetail, "2. Detail per Paket");
+      addSheet(
+        exportDetail, 
+        "2. Detail per Paket", 
+        ["Nilai Pagu RUP", "Nilai HPS", "Nilai Hasil Pemilihan", "Efisiensi"],
+        [{wch:6},{wch:20},{wch:18},{wch:38},{wch:50},{wch:22},{wch:32},{wch:22},{wch:28},{wch:20},{wch:20},{wch:20},{wch:20}]
+      );
 
       // 4. SIMPAN FILE
       XLSX.writeFile(wb, `Laporan_Pengadaan_${currentYear}.xlsx`);
