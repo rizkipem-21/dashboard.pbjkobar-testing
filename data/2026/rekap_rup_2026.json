@@ -41,13 +41,13 @@
   },
   {
     "Satuan Kerja": "Badan Pendapatan Daerah",
-    "Pagu Program": 3303046861.0,
-    "Pagu Pengadaan": 2856470351.0,
-    "RUP Penyedia": 2012875221.0,
-    "RUP Swakelola": 624062040.0,
-    "Total RUP Terumumkan": 2636937261.0,
-    "Selisih RUP Terumumkan": -219533090.0,
-    "Persentase": 92.31453286664973
+    "Pagu Program": 4303046861.0,
+    "Pagu Pengadaan": 4303046861.0,
+    "RUP Penyedia": 2417247421.0,
+    "RUP Swakelola": 1219689840.0,
+    "Total RUP Terumumkan": 3636937261.0,
+    "Selisih RUP Terumumkan": -666109600.0,
+    "Persentase": 84.52004773554336
   },
   {
     "Satuan Kerja": "Badan Perencanaan Pembangunan, Riset dan Inovasi Daerah",
@@ -163,11 +163,11 @@
     "Satuan Kerja": "Dinas Pemberdayaan Masyarakat dan Desa",
     "Pagu Program": 4714718047.0,
     "Pagu Pengadaan": 1662695697.0,
-    "RUP Penyedia": 1626495497.0,
+    "RUP Penyedia": 1662695697.0,
     "RUP Swakelola": 0.0,
-    "Total RUP Terumumkan": 1626495497.0,
-    "Selisih RUP Terumumkan": -36200200.0,
-    "Persentase": 97.82280064444048
+    "Total RUP Terumumkan": 1662695697.0,
+    "Selisih RUP Terumumkan": 0.0,
+    "Persentase": 100.0
   },
   {
     "Satuan Kerja": "Dinas Pemberdayaan Perempuan dan Perlindungan Anak, Pengendalian Penduduk dan Keluarga Berencana",
