@@ -42,12 +42,12 @@
   {
     "Satuan Kerja": "Badan Pendapatan Daerah",
     "Pagu Program": 4303046861.0,
-    "Pagu Pengadaan": 4303046861.0,
+    "Pagu Pengadaan": 3636937261.0,
     "RUP Penyedia": 2417247421.0,
     "RUP Swakelola": 1219689840.0,
     "Total RUP Terumumkan": 3636937261.0,
-    "Selisih RUP Terumumkan": -666109600.0,
-    "Persentase": 84.52004773554336
+    "Selisih RUP Terumumkan": 0.0,
+    "Persentase": 100.0
   },
   {
     "Satuan Kerja": "Badan Perencanaan Pembangunan, Riset dan Inovasi Daerah",
@@ -143,11 +143,11 @@
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Pagu Program": 105714344580.0,
     "Pagu Pengadaan": 105032048100.0,
-    "RUP Penyedia": 104658066643.0,
+    "RUP Penyedia": 104997048100.0,
     "RUP Swakelola": 35000000.0,
-    "Total RUP Terumumkan": 104693066643.0,
-    "Selisih RUP Terumumkan": -338981457.0,
-    "Persentase": 99.67725902414351
+    "Total RUP Terumumkan": 105032048100.0,
+    "Selisih RUP Terumumkan": 0.0,
+    "Persentase": 100.0
   },
   {
     "Satuan Kerja": "Dinas Pemadam Kebakaran dan Penyelamatan",
