@@ -4,7 +4,7 @@
         "kode_konsol_baru": "67231748",
         "nama_paket_keterangan": "Pengawasan Teknis Peningkatan Drainase Lingkungan Kawasan Permukiman Di Kec. Arut Selatan, Kec. Pangkalan Lada dan Kec. Pangkalan Banteng",
         "nama_satker": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
-        "alasan_revisi": "Uji Coba (kode paket 10862909000\n) Belum dikonfirmasi",
+        "alasan_revisi": "kode paket 10862909000 (input manual Rizki)",
         "tanggal_input": "2026-06-22",
         "waktu_input": "14:42:06",
         "status_aktif": true
@@ -17,6 +17,6 @@
         "alasan_revisi": "Uji Coba ( kode paket 10777713000 )",
         "tanggal_input": "2026-06-22",
         "waktu_input": "14:48:14",
-        "status_aktif": false
+        "status_aktif": true
     }
 ]
