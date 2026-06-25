@@ -651,17 +651,23 @@ function applyFilter() {
     
     // 3. Logika Penentu: Cek Status
     if (modeRealisasi) {
-      let rawStatus = (row["Status"] || "").trim().toLowerCase();
-      let caraPengadaan = (row["Cara Pengadaan"] || "").trim().toLowerCase();
+      let rawStatus = (row["Status"] || "").trim().toUpperCase(); // Jadikan huruf besar agar cocok
+      let sumber = (row["Sumber"] || "").toLowerCase();
 
-      // Sembunyikan status yang masih awal/kosong
-      if (rawStatus.includes("berlangsung") || rawStatus.includes("pengumuman rup") || rawStatus === "" || rawStatus === "-") {
-        return false;
-      }
-
-      // Sembunyikan E-Purchasing V6 dengan status ON_NEGOTIATION
-      if (caraPengadaan.includes("e-purchasing") && rawStatus.includes("on_negotiation")) {
-        return false;
+      // ATURAN KHUSUS SUMBER 6 (E-Purchasing V6 Baru)
+      if (sumber.includes("sumber 6")) {
+        const statusValid = ["ON_PROCESS", "PAYMENT_OUTSIDE_SYSTEM", "ON_ADDENDUM", "COMPLETED"];
+        if (!statusValid.includes(rawStatus)) {
+          return false; // Jika status TIDAK ADA di daftar atas, sembunyikan baris ini!
+        }
+      } 
+      // ATURAN UNTUK SUMBER LAINNYA (1, 2, 3, 4, 5, 7)
+      else {
+        let sLow = rawStatus.toLowerCase();
+        // Tetap sembunyikan status yang masih kosong atau di tahap awal pengumuman
+        if (sLow.includes("berlangsung") || sLow.includes("pengumuman rup") || sLow === "" || sLow === "-") {
+          return false;
+        }
       }
 
     } else {
