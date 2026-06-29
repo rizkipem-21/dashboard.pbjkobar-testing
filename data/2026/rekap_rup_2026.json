@@ -33,11 +33,11 @@
     "Satuan Kerja": "Badan Penanggulangan Bencana Daerah",
     "Pagu Program": 2459882000.0,
     "Pagu Pengadaan": 1363592000.0,
-    "RUP Penyedia": 1363592000.0,
+    "RUP Penyedia": 1363719500.0,
     "RUP Swakelola": 0.0,
-    "Total RUP Terumumkan": 1363592000.0,
-    "Selisih RUP Terumumkan": 0.0,
-    "Persentase": 100.0
+    "Total RUP Terumumkan": 1363719500.0,
+    "Selisih RUP Terumumkan": 127500.0,
+    "Persentase": 100.00935030419656
   },
   {
     "Satuan Kerja": "Badan Pendapatan Daerah",
@@ -583,11 +583,11 @@
     "Satuan Kerja": "Puskesmas Karang Mulya",
     "Pagu Program": 2329517398.0,
     "Pagu Pengadaan": 887410440.0,
-    "RUP Penyedia": 887410440.0,
+    "RUP Penyedia": 892410440.0,
     "RUP Swakelola": 0.0,
-    "Total RUP Terumumkan": 887410440.0,
-    "Selisih RUP Terumumkan": 0.0,
-    "Persentase": 100.0
+    "Total RUP Terumumkan": 892410440.0,
+    "Selisih RUP Terumumkan": 5000000.0,
+    "Persentase": 100.56343713963969
   },
   {
     "Satuan Kerja": "Puskesmas Kotawaringin Lama",
@@ -602,12 +602,12 @@
   {
     "Satuan Kerja": "Puskesmas Kumai",
     "Pagu Program": 4403647000.0,
-    "Pagu Pengadaan": 1117262329.0,
+    "Pagu Pengadaan": 1117262389.0,
     "RUP Penyedia": 1116362329.0,
     "RUP Swakelola": 0.0,
     "Total RUP Terumumkan": 1116362329.0,
-    "Selisih RUP Terumumkan": -900000.0,
-    "Persentase": 99.91944595493473
+    "Selisih RUP Terumumkan": -900060.0,
+    "Persentase": 99.91944058899132
   },
   {
     "Satuan Kerja": "Puskesmas Kumpai Batu Atas",
