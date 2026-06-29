@@ -2,6 +2,7 @@ arsip/
 data/**/v1_*.json
 data/**/Legacy_*.json
 data/master
+bot_telegram
 
 # Mengabaikan Python Virtual Environment & Cache (INI YANG PALING PENTING)
 venv/
