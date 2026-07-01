@@ -1,0 +1,32 @@
+=== DUMP DATA MENTAH JSON (TAHUN 2026) ===
+Folder Sumber: D:\dashboard.pbjkobar-testing\data\2026
+================================================================================
+
+📁 FILE: tender_pencatatan-swakelola
+--------------------------------------------------------------------------------
+Path: D:\dashboard.pbjkobar-testing\data\2026\v1_tender_pencatatan-swakelola_2026.json
+Total Record di JSON: 1
+
+--- RECORD KE-1 (RAW JSON) ---
+{
+    "success": true,
+    "data": null,
+    "meta": {
+        "limit": 1000
+    }
+}
+
+📁 FILE: ekatalog-archive_paket-e-purchasing
+--------------------------------------------------------------------------------
+Path: D:\dashboard.pbjkobar-testing\data\2026\v1_ekatalog-archive_paket-e-purchasing_2026.json
+Total Record di JSON: 1
+
+--- RECORD KE-1 (RAW JSON) ---
+{
+    "success": true,
+    "data": null,
+    "meta": {
+        "limit": 1000
+    }
+}
+
