@@ -5,6 +5,7 @@ data/master
 bot_telegram
 cek_duplikat.py
 tes.py
+__pycache__
 
 # Mengabaikan Python Virtual Environment & Cache (INI YANG PALING PENTING)
 venv/
