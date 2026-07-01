@@ -4,6 +4,7 @@ data/**/Legacy_*.json
 data/master
 bot_telegram
 cek_duplikat.py
+tes.py
 
 # Mengabaikan Python Virtual Environment & Cache (INI YANG PALING PENTING)
 venv/
