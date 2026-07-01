@@ -664,8 +664,13 @@ function applyFilter() {
       // ATURAN UNTUK SUMBER LAINNYA (1, 2, 3, 4, 5, 7)
       else {
         let sLow = rawStatus.toLowerCase();
-        // Tetap sembunyikan status yang masih kosong atau di tahap awal pengumuman
-        if (sLow.includes("Pemilihan Penyedia") || sLow.includes("pengumuman rup") || sLow === "" || sLow === "-") {
+        
+        // KATA "berlangsung" DIHAPUS DARI SINI AGAR TETAP MUNCUL
+        // Hanya menyembunyikan "pemilihan penyedia", "pengumuman rup", dan yang kosong
+        if (sLow.includes("pemilihan penyedia") || 
+            sLow.includes("pengumuman rup") || 
+            sLow === "" || 
+            sLow === "-") {
           return false;
         }
       }
