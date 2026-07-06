@@ -110,11 +110,13 @@
   }
 
   /* Warna Kartu mengikuti Strip Atas */
-  .stat-card:nth-child(1) { background: linear-gradient(135deg, #1a3a6b, #2563b0); }
-  .stat-card:nth-child(2) { background: linear-gradient(135deg, #c0392b, #e63329); }
-  .stat-card:nth-child(3) { background: linear-gradient(135deg, #d4a000, #f5c800); color: #1a1a1a; }
-  .stat-card:nth-child(4) { background: linear-gradient(135deg, #1e7e34, #2d9e47); }
-  .stat-card:nth-child(3) .stat-label { color: #1a1a1a; opacity: 0.7; }
+  .stat-card:nth-child(1) { background: linear-gradient(135deg, #1a3a6b, #2563b0); } /* Biru */
+  .stat-card:nth-child(2) { background: linear-gradient(135deg, #c0392b, #e63329); } /* Merah */
+  .stat-card:nth-child(3) { background: linear-gradient(135deg, #005f73, #0a9396); } /* Cyan Gelap (Penyedia) */
+  .stat-card:nth-child(4) { background: linear-gradient(135deg, #d35400, #e67e22); } /* Oranye (Swakelola) */
+  .stat-card:nth-child(5) { background: linear-gradient(135deg, #d4a000, #f5c800); color: #1a1a1a; } /* Kuning (Total) */
+  .stat-card:nth-child(6) { background: linear-gradient(135deg, #1e7e34, #2d9e47); } /* Hijau (Persen) */
+  .stat-card:nth-child(5) .stat-label { color: #1a1a1a; opacity: 0.7; }
 
   /* ===== FILTER CARD ===== */
   .filter-card {
@@ -272,6 +274,16 @@
     <div class="stat-card">
       <span class="stat-label">Total Pagu Pengadaan</span>
       <span class="stat-value" id="statPaguPengadaan">-</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Total RUP Penyedia</span>
+      <span class="stat-value" id="statRupPenyedia">-</span>
+      <span id="statPktPenyedia" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Total RUP Swakelola</span>
+      <span class="stat-value" id="statRupSwakelola">-</span>
+      <span id="statPktSwakelola" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span>
     </div>
     <div class="stat-card">
       <span class="stat-label">Total RUP Terumumkan</span>
@@ -474,15 +486,26 @@ function renderTable() {
 
 function renderSummary() {
   let tProgram = 0, tPengadaan = 0, tRup = 0, tPkt = 0;
+  let tPenyedia = 0, tPktPenyedia = 0, tSwakelola = 0, tPktSwakelola = 0;
   rawData.forEach(d => {
     tProgram += Number(d["Pagu Program"] || 0);
     tPengadaan += Number(d["Pagu Pengadaan"] || 0);
     tRup += Number(d["Total RUP Terumumkan"] || 0);
     tPkt += Number(d["Total Paket Terumumkan"] || 0);
+        tPenyedia += Number(d["RUP Penyedia"] || 0);
+    tPktPenyedia += Number(d["Paket Penyedia"] || 0);
+        tSwakelola += Number(d["RUP Swakelola"] || 0);
+    tPktSwakelola += Number(d["Paket Swakelola"] || 0);
   });
+  
   const persenTotal = tPengadaan === 0 ? 0 : (tRup / tPengadaan) * 100;
+  
   document.getElementById("statPaguProgram").innerText = rupiah(tProgram);
   document.getElementById("statPaguPengadaan").innerText = rupiah(tPengadaan);
+  document.getElementById("statRupPenyedia").innerText = rupiah(tPenyedia);
+  document.getElementById("statPktPenyedia").innerText = tPktPenyedia.toLocaleString("id-ID") + " Paket";
+  document.getElementById("statRupSwakelola").innerText = rupiah(tSwakelola);
+  document.getElementById("statPktSwakelola").innerText = tPktSwakelola.toLocaleString("id-ID") + " Paket";
   document.getElementById("statRup").innerText = rupiah(tRup);
   document.getElementById("statTotalPkt").innerText = tPkt.toLocaleString("id-ID") + " Paket";
   document.getElementById("statPersen").innerText = persenTotal.toFixed(2) + "%";
