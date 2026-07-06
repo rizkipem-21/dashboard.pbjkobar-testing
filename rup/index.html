@@ -219,7 +219,7 @@
   tbody tr:nth-child(even) { background: #f0f5fb; }
   tbody tr:hover { background: #dbeafe !important; }
   tbody td { padding: 9px 14px; border-bottom: 1px solid #e8edf5; border-right: 1px solid #e8edf5; color: #1e293b; }
-  .td-rupiah  { text-align: right; font-variant-numeric: tabular-nums; }
+  .td-rupiah  { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
   .td-center  { text-align: center; }
   .td-persen  { text-align: right; font-weight: 600; color: var(--lpse-biru); }
 
@@ -276,6 +276,7 @@
     <div class="stat-card">
       <span class="stat-label">Total RUP Terumumkan</span>
       <span class="stat-value" id="statRup">-</span>
+      <span id="statTotalPkt" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span>
     </div>
     <div class="stat-card">
       <span class="stat-label">Persentase Total</span>
@@ -331,11 +332,11 @@
           <th>Satuan Kerja</th>
           <th style="text-align:right;">Pagu Program</th>
           <th style="text-align:right;">Pagu Pengadaan</th>
-          <th style="text-align:center;">Pkt Penyedia</th>
+          <th style="text-align:center;">Pkt</th>
           <th style="text-align:right;">RUP Penyedia</th>
-          <th style="text-align:center;">Pkt Swakelola</th>
+          <th style="text-align:center;">Pkt</th>
           <th style="text-align:right;">RUP Swakelola</th>
-          <th style="text-align:center;">Total Pkt</th>
+          <th style="text-align:center;">Total<br>Pkt</th>
           <th style="text-align:right;">Total RUP</th>
           <th style="text-align:right;">Selisih</th>
           <th style="text-align:right;">Persentase</th>
@@ -472,16 +473,18 @@ function renderTable() {
 }
 
 function renderSummary() {
-  let tProgram = 0, tPengadaan = 0, tRup = 0;
+  let tProgram = 0, tPengadaan = 0, tRup = 0, tPkt = 0;
   rawData.forEach(d => {
     tProgram += Number(d["Pagu Program"] || 0);
     tPengadaan += Number(d["Pagu Pengadaan"] || 0);
     tRup += Number(d["Total RUP Terumumkan"] || 0);
+    tPkt += Number(d["Total Paket Terumumkan"] || 0);
   });
   const persenTotal = tPengadaan === 0 ? 0 : (tRup / tPengadaan) * 100;
   document.getElementById("statPaguProgram").innerText = rupiah(tProgram);
   document.getElementById("statPaguPengadaan").innerText = rupiah(tPengadaan);
   document.getElementById("statRup").innerText = rupiah(tRup);
+  document.getElementById("statTotalPkt").innerText = tPkt.toLocaleString("id-ID") + " Paket";
   document.getElementById("statPersen").innerText = persenTotal.toFixed(2) + "%";
 }
 
