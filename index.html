@@ -94,21 +94,23 @@
     .color-strip { position: absolute; top: 0; left: 0; right: 0; display: flex; height: 5px; }
     .color-strip span { flex: 1; }
 
-    .stat-cards { display: flex; flex-wrap: wrap; gap: 16px; }
+    .stat-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
     .stat-card {
-      flex: 1; min-width: 200px; border-radius: 10px; padding: 18px 20px; color: #fff;
+      border-radius: 10px; padding: 18px 20px; color: #fff;
       box-shadow: 0 3px 10px rgba(0,0,0,0.15); display: flex; flex-direction: column; gap: 4px; transition: transform 0.2s;
     }
     .stat-card:hover { transform: translateY(-3px); }
     .stat-card .stat-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; opacity: 0.9; margin-bottom: 2px;}
     .stat-card .stat-value { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.3px; }
 
-    /* Warna Kartu RUP */
+    /* Warna Kartu RUP (Baru 6 Kartu) */
     .card-r1 { background: linear-gradient(135deg, #1a3a6b, #2563b0); }
     .card-r2 { background: linear-gradient(135deg, #c0392b, #e63329); }
-    .card-r3 { background: linear-gradient(135deg, #d4a000, #f5c800); color: #1a1a1a; }
-    .card-r4 { background: linear-gradient(135deg, #1e7e34, #2d9e47); }
-    .card-r3 .stat-label { color: #1a1a1a; opacity: 0.7; }
+    .card-r3 { background: linear-gradient(135deg, #d35400, #e67e22); }
+    .card-r4 { background: linear-gradient(135deg, #0f766e, #14b8a6); }
+    .card-r5 { background: linear-gradient(135deg, #d4a000, #f5c800); color: #1a1a1a; }
+    .card-r6 { background: linear-gradient(135deg, #1e7e34, #2d9e47); }
+    .card-r5 .stat-label { color: #1a1a1a; opacity: 0.7; }
 
     /* Warna Kartu Pengadaan */
     .card-p1 { background: linear-gradient(135deg, #1a3a6b, #2563b0); }
@@ -239,15 +241,25 @@
               <span class="stat-value" id="rupStatPengadaan">-</span>
             </div>
             <div class="stat-card card-r3">
-              <span class="stat-label">Total RUP Terumumkan</span>
-              <span class="stat-value" id="rupStatTerumumkan">-</span>
+              <span class="stat-label">Total RUP Penyedia</span>
+              <span class="stat-value" id="rupStatPenyedia">-</span>
+              <span id="rupPktPenyedia" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span>
             </div>
             <div class="stat-card card-r4">
+              <span class="stat-label">Total RUP Swakelola</span>
+              <span class="stat-value" id="rupStatSwakelola">-</span>
+              <span id="rupPktSwakelola" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span>
+            </div>
+            <div class="stat-card card-r5">
+              <span class="stat-label">Total RUP Terumumkan</span>
+              <span class="stat-value" id="rupStatTerumumkan">-</span>
+              <span id="rupPktTotal" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span>
+            </div>
+            <div class="stat-card card-r6">
               <span class="stat-label">Persentase Total</span>
               <span class="stat-value" id="rupStatPersen">-</span>
             </div>
           </div>
-        </div>
 
         <div class="dashboard-section">
           <div class="color-strip">
@@ -431,22 +443,44 @@
         if (!res.ok) throw new Error("No Data");
         const data = await res.json();
         
-        let tProgram = 0, tPengadaan = 0, tRup = 0;
+        let tProgram = 0, tPengadaan = 0, tRup = 0, tPkt = 0;
+        let tPenyedia = 0, tPktPenyedia = 0, tSwakelola = 0, tPktSwakelola = 0;
+
         data.forEach(d => {
           tProgram += Number(d["Pagu Program"] || 0);
           tPengadaan += Number(d["Pagu Pengadaan"] || 0);
           tRup += Number(d["Total RUP Terumumkan"] || 0);
+          tPkt += Number(d["Total Paket Terumumkan"] || 0);
+          tPenyedia += Number(d["RUP Penyedia"] || 0);
+          tPktPenyedia += Number(d["Paket Penyedia"] || 0);
+          tSwakelola += Number(d["RUP Swakelola"] || 0);
+          tPktSwakelola += Number(d["Paket Swakelola"] || 0);
         });
+        
         const persenTotal = tPengadaan === 0 ? 0 : (tRup / tPengadaan) * 100;
         
         document.getElementById("rupStatProgram").innerText = rupiah(tProgram);
         document.getElementById("rupStatPengadaan").innerText = rupiah(tPengadaan);
+        
+        document.getElementById("rupStatPenyedia").innerText = rupiah(tPenyedia);
+        document.getElementById("rupPktPenyedia").innerText = tPktPenyedia.toLocaleString("id-ID") + " Paket";
+        
+        document.getElementById("rupStatSwakelola").innerText = rupiah(tSwakelola);
+        document.getElementById("rupPktSwakelola").innerText = tPktSwakelola.toLocaleString("id-ID") + " Paket";
+        
         document.getElementById("rupStatTerumumkan").innerText = rupiah(tRup);
+        document.getElementById("rupPktTotal").innerText = tPkt.toLocaleString("id-ID") + " Paket";
+        
         document.getElementById("rupStatPersen").innerText = persenTotal.toFixed(2) + "%";
       } catch (e) {
         document.getElementById("rupStatProgram").innerText = "Rp 0";
         document.getElementById("rupStatPengadaan").innerText = "Rp 0";
+        document.getElementById("rupStatPenyedia").innerText = "Rp 0";
+        document.getElementById("rupPktPenyedia").innerText = "0 Paket";
+        document.getElementById("rupStatSwakelola").innerText = "Rp 0";
+        document.getElementById("rupPktSwakelola").innerText = "0 Paket";
         document.getElementById("rupStatTerumumkan").innerText = "Rp 0";
+        document.getElementById("rupPktTotal").innerText = "0 Paket";
         document.getElementById("rupStatPersen").innerText = "0.00%";
       }
     }
