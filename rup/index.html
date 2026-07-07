@@ -342,16 +342,16 @@
         <tr>
           <th style="width:50px; text-align:center;">No</th>
           <th>Satuan Kerja</th>
-          <th style="text-align:right;">Pagu Program</th>
-          <th style="text-align:right;">Pagu Pengadaan</th>
+          <th style="text-align:center;">Pagu Program</th>
+          <th style="text-align:center;">Pagu Pengadaan</th>
           <th style="text-align:center;">Pkt</th>
-          <th style="text-align:right;">RUP Penyedia</th>
+          <th style="text-align:center;">RUP Penyedia</th>
           <th style="text-align:center;">Pkt</th>
-          <th style="text-align:right;">RUP Swakelola</th>
+          <th style="text-align:center;">RUP Swakelola</th>
           <th style="text-align:center;">Total<br>Pkt</th>
-          <th style="text-align:right;">Total RUP</th>
-          <th style="text-align:right;">Selisih</th>
-          <th style="text-align:right;">Persentase</th>
+          <th style="text-align:center;">Total RUP<br>Terumumkan</th>
+          <th style="text-align:center;">Selisih</th>
+          <th style="text-align:center;">Persentase</th>
         </tr>
       </thead>
     </table>
@@ -363,16 +363,16 @@
         <tr>
           <th style="width:50px; text-align:center;">No</th>
           <th>Satuan Kerja</th>
-          <th style="text-align:right;">Pagu Program</th>
-          <th style="text-align:right;">Pagu Pengadaan</th>
+          <th style="text-align:center;">Pagu Program</th>
+          <th style="text-align:center;">Pagu Pengadaan</th>
           <th style="text-align:center;">Pkt</th>
-          <th style="text-align:right;">RUP Penyedia</th>
+          <th style="text-align:center;">RUP Penyedia</th>
           <th style="text-align:center;">Pkt</th>
-          <th style="text-align:right;">RUP Swakelola</th>
+          <th style="text-align:center;">RUP Swakelola</th>
           <th style="text-align:center;">Total<br>Pkt</th>
-          <th style="text-align:right;">Total RUP</th>
-          <th style="text-align:right;">Selisih</th>
-          <th style="text-align:right;">Persentase</th>
+          <th style="text-align:center;">Total RUP<br>Terumumkan</th>
+          <th style="text-align:center;">Selisih</th>
+          <th style="text-align:center;">Persentase</th>
         </tr>
       </thead>
       <tbody id="body"></tbody>
@@ -474,8 +474,8 @@ function renderTable() {
       <td class="td-rupiah">${rupiah(rupPenyedia)}</td>
       <td class="td-center" style="font-weight:600; color:#1e4d8c;">${pktSwakelola}</td>
       <td class="td-rupiah">${rupiah(rupSwakelola)}</td>
-      <td class="td-center" style="font-weight:600; background:#f0f5fb;">${pktTotal}</td>
-      <td class="td-rupiah" style="font-weight:600; background:#f0f5fb;">${rupiah(rupTerumumkan)}</td>
+      <td class="td-center" style="font-weight:600;">${pktTotal}</td>
+      <td class="td-rupiah" style="font-weight:600;">${rupiah(rupTerumumkan)}</td>
       <td class="td-rupiah" style="color: ${selisih < 0 ? '#e63329' : '#1e293b'}">${rupiah(selisih)}</td>
       <td class="td-persen">${persen}</td>
     `;
