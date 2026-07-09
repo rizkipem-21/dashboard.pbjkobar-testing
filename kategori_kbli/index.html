@@ -191,7 +191,7 @@ async function loadDataMaster() {
   document.getElementById("loadingOverlay").style.display = "flex";
   try {
     // Memanggil file JSON yang berada di folder data_master
-    const response = await fetch('data_master/data_kategori_inaproc.json');
+    const response = await fetch('/data_master/data_kategori_inaproc.json');
     if (!response.ok) throw new Error("Gagal memuat file JSON");
     
     rawData = await response.json();
