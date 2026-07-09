@@ -1,0 +1,112 @@
+<div class="header-container" style="margin-bottom: 20px;">
+    <h2>Kategori – KBLI Inaproc</h2>
+    <p>Database panduan Kategori Produk dan Izin Bidang Usaha (KBLI 2020 & 2025)</p>
+    
+    <div class="search-box" style="display: flex; gap: 10px; margin-top: 15px;">
+        <input type="text" id="inputCariKbli" placeholder="Ketik kata kunci pencarian (misal: konstruksi, 47529)..." style="flex: 1; padding: 10px; font-size: 16px;">
+        <button id="btnCariKbli" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">🔍 Cari</button>
+    </div>
+</div>
+
+<div class="table-container" style="overflow-x: auto;">
+    <table border="1" style="width: 100%; border-collapse: collapse; text-align: left;">
+        <thead style="background-color: #f2f2f2;">
+            <tr>
+                <th style="padding: 10px;">Kategori Tingkat I</th>
+                <th style="padding: 10px;">Kategori Tingkat II</th>
+                <th style="padding: 10px;">Kategori Tingkat III</th>
+                <th style="padding: 10px;">Kode KBLI 2020</th>
+                <th style="padding: 10px;">Deskripsi KBLI 2020</th>
+                <th style="padding: 10px;">Kode KBLI 2025</th>
+                <th style="padding: 10px;">Deskripsi KBLI 2025</th>
+            </tr>
+        </thead>
+        <tbody id="bodyTabelKbli">
+            <tr>
+                <td colspan="7" style="text-align: center; padding: 20px;">Memuat data...</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // Variabel global untuk menyimpan data JSON
+    let dataKbliMaster = [];
+
+    // 1. Fungsi untuk mengambil data JSON saat halaman dimuat
+    async function muatDataKbli() {
+        try {
+            // Sesuaikan path ini jika posisi folder berbeda. 
+            // Titik dua (../) digunakan untuk mundur 1 folder keluar dari folder 'kbli'
+            const response = await fetch('../data_master/data_kategori_inaproc.json');
+            if (!response.ok) throw new Error('Gagal memuat file JSON');
+            
+            dataKbliMaster = await response.json();
+            renderTabelKbli(dataKbliMaster); // Tampilkan semua data di awal
+        } catch (error) {
+            console.error("Error:", error);
+            document.getElementById('bodyTabelKbli').innerHTML = `<tr><td colspan="7" style="text-align:center; color:red;">Gagal memuat data. Pastikan file JSON tersedia.</td></tr>`;
+        }
+    }
+
+    // 2. Fungsi untuk mencetak data ke dalam tabel
+    function renderTabelKbli(data) {
+        const tbody = document.getElementById('bodyTabelKbli');
+        tbody.innerHTML = ""; // Bersihkan tabel
+
+        if (data.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 20px;">Data tidak ditemukan.</td></tr>`;
+            return;
+        }
+
+        // Looping untuk membuat baris tabel
+        let barisHTML = "";
+        data.forEach(item => {
+            barisHTML += `
+                <tr>
+                    <td style="padding: 8px;">${item.Kategori_Tingkat_I || '-'}</td>
+                    <td style="padding: 8px;">${item.Kategori_Tingkat_II || '-'}</td>
+                    <td style="padding: 8px;">${item.Kategori_Tingkat_III || '-'}</td>
+                    <td style="padding: 8px; font-weight: bold;">${item.KBLI_2020_Kode || '-'}</td>
+                    <td style="padding: 8px;">${item.KBLI_2020_Deskripsi || '-'}</td>
+                    <td style="padding: 8px; font-weight: bold;">${item.KBLI_2025_Kode || '-'}</td>
+                    <td style="padding: 8px;">${item.KBLI_2025_Deskripsi || '-'}</td>
+                </tr>
+            `;
+        });
+        tbody.innerHTML = barisHTML;
+    }
+
+    // 3. Fungsi Logika Pencarian Universal
+    function eksekusiPencarian() {
+        const kataKunci = document.getElementById('inputCariKbli').value.toLowerCase().trim();
+        
+        if (kataKunci === "") {
+            // Jika kosong, kembalikan ke tampilan semua data
+            renderTabelKbli(dataKbliMaster);
+            return;
+        }
+
+        // Filter data universal (mengecek semua kolom/nilai (Object.values) dalam satu baris)
+        const dataHasilFilter = dataKbliMaster.filter(item => {
+            return Object.values(item).some(nilai => 
+                String(nilai).toLowerCase().includes(kataKunci)
+            );
+        });
+
+        renderTabelKbli(dataHasilFilter);
+    }
+
+    // 4. Mendaftarkan Event Listener (Klik Tombol & Tekan Enter)
+    document.getElementById('btnCariKbli').addEventListener('click', eksekusiPencarian);
+    
+    document.getElementById('inputCariKbli').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Mencegah *reload* halaman jika input berada di dalam <form>
+            eksekusiPencarian();
+        }
+    });
+
+    // Jalankan fungsi muat data pertama kali
+    muatDataKbli();
+</script>
