@@ -1,112 +1,280 @@
-<div class="header-container" style="margin-bottom: 20px;">
-    <h2>Kategori – KBLI Inaproc</h2>
-    <p>Database panduan Kategori Produk dan Izin Bidang Usaha (KBLI 2020 & 2025)</p>
-    
-    <div class="search-box" style="display: flex; gap: 10px; margin-top: 15px;">
-        <input type="text" id="inputCariKbli" placeholder="Ketik kata kunci pencarian (misal: konstruksi, 47529)..." style="flex: 1; padding: 10px; font-size: 16px;">
-        <button id="btnCariKbli" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">🔍 Cari</button>
-    </div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kategori KBLI Inaproc</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --lpse-biru  : #1a3a6b;
+    --lpse-biru2 : #1e4d8c;
+    --lpse-merah : #e63329;
+    --lpse-kuning: #f5c800;
+    --lpse-hijau : #2d9e47;
+  }
+
+  body {
+    background: #f0f4f8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ===== HEADER ===== */
+  .page-header {
+    background: linear-gradient(135deg, var(--lpse-biru) 0%, var(--lpse-biru2) 100%);
+    border-bottom: 4px solid var(--lpse-kuning);
+    padding: 20px 28px 16px;
+    margin-bottom: 24px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 16px rgba(26,58,107,0.18);
+  }
+  .page-header h1 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin: 0 0 4px 0;
+  }
+  .page-header .subtitle {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.85rem;
+  }
+
+  /* ===== COLOR STRIP ===== */
+  .color-strip {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  }
+  .color-strip span { flex: 1; }
+
+  /* ===== FILTER CARD ===== */
+  .filter-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(26,58,107,0.09);
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    border-top: 3px solid var(--lpse-biru);
+  }
+  .filter-card label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .filter-card input {
+    border: 1.5px solid #dde3ed;
+    border-radius: 7px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    background: #f8fafc;
+    outline: none;
+    width: 350px;
+    transition: border-color 0.2s;
+  }
+  .filter-card input:focus { border-color: var(--lpse-biru); }
+
+  /* ===== BUTTONS ===== */
+  .btn-search {
+    background: var(--lpse-biru); color: #fff; border: none;
+    border-radius: 7px; padding: 8.5px 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+    box-shadow: 0 2px 6px rgba(26,58,107,0.25);
+    transition: background 0.2s;
+  }
+  .btn-search:hover { background: var(--lpse-biru2); }
+  
+  .btn-reset {
+    background: #f1f5f9; color: #475569; border: 1.5px solid #cbd5e1;
+    border-radius: 7px; padding: 7.5px 16px; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-reset:hover { background: #e2e8f0; }
+
+  /* ===== TABEL ===== */
+  .table-wrap {
+    background: #fff; border-radius: 10px; box-shadow: 0 2px 12px rgba(26,58,107,0.09);
+    margin-bottom: 24px; overflow-x: auto;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  thead tr { background: var(--lpse-biru); color: #fff; }
+  thead th {
+    padding: 12px 14px; text-align: left; font-weight: 600; font-size: 0.8rem;
+    border-right: 1px solid rgba(255,255,255,0.12);
+  }
+  tbody tr:nth-child(even) { background: #f0f5fb; }
+  tbody tr:hover { background: #dbeafe !important; }
+  tbody td { padding: 10px 14px; border-bottom: 1px solid #e8edf5; border-right: 1px solid #e8edf5; color: #1e293b; vertical-align: top; }
+  
+  .td-center { text-align: center; }
+
+  /* Loading Overlay */
+  #loadingOverlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.85); display: flex; flex-direction: column;
+    align-items: center; justify-content: center; z-index: 10000; display: none;
+  }
+  .loader {
+    border: 4px solid #f3f3f3; border-top: 4px solid var(--lpse-biru);
+    border-radius: 50%; width: 35px; height: 35px; animation: spin 1s linear infinite;
+  }
+  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<div id="loadingOverlay"><div class="loader"></div><p class="mt-2 text-sm font-semibold text-blue-900">Menyisir Database KBLI...</p></div>
+
+<div class="page-header">
+  <h1>📖 Kategori & KBLI Inaproc</h1>
+  <p class="subtitle">Database panduan referensi Kategori Produk dan Izin Bidang Usaha (KBLI 2020 & 2025)</p>
 </div>
 
-<div class="table-container" style="overflow-x: auto;">
-    <table border="1" style="width: 100%; border-collapse: collapse; text-align: left;">
-        <thead style="background-color: #f2f2f2;">
-            <tr>
-                <th style="padding: 10px;">Kategori Tingkat I</th>
-                <th style="padding: 10px;">Kategori Tingkat II</th>
-                <th style="padding: 10px;">Kategori Tingkat III</th>
-                <th style="padding: 10px;">Kode KBLI 2020</th>
-                <th style="padding: 10px;">Deskripsi KBLI 2020</th>
-                <th style="padding: 10px;">Kode KBLI 2025</th>
-                <th style="padding: 10px;">Deskripsi KBLI 2025</th>
-            </tr>
-        </thead>
-        <tbody id="bodyTabelKbli">
-            <tr>
-                <td colspan="7" style="text-align: center; padding: 20px;">Memuat data...</td>
-            </tr>
-        </tbody>
+<div style="padding: 0 20px;">
+
+  <div class="color-strip">
+    <span style="background:var(--lpse-biru)"></span>
+    <span style="background:var(--lpse-merah)"></span>
+    <span style="background:var(--lpse-kuning)"></span>
+    <span style="background:var(--lpse-hijau)"></span>
+  </div>
+
+  <div class="filter-card">
+    <div style="display:flex; flex-wrap:nowrap; gap:12px; align-items:flex-end;">
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        <label>Pencarian Universal</label>
+        <input id="inputSearch" type="text" placeholder="Ketik kata kunci (misal: konstruksi, 47529)..." />
+      </div>
+      <button id="btnSearch" class="btn-search">🔍 Cari Data</button>
+      <button id="btnReset" class="btn-reset">✕ Reset</button>
+    </div>
+  </div>
+
+  <div style="margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+    <span id="totalInfo" style="font-size:0.8rem; color:#64748b; font-weight: 600;"></span>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 15%;">Kategori Tingkat I</th>
+          <th style="width: 15%;">Kategori Tingkat II</th>
+          <th style="width: 15%;">Kategori Tingkat III</th>
+          <th style="width: 10%;">Kode KBLI 2020</th>
+          <th style="width: 17%;">Deskripsi KBLI 2020</th>
+          <th style="width: 10%;">Kode KBLI 2025</th>
+          <th style="width: 18%;">Deskripsi KBLI 2025</th>
+        </tr>
+      </thead>
+      <tbody id="bodyTable">
+        <tr>
+          <td colspan="7" class="td-center" style="padding: 30px; color: #64748b;">Memuat data...</td>
+        </tr>
+      </tbody>
     </table>
+  </div>
 </div>
 
 <script>
-    // Variabel global untuk menyimpan data JSON
-    let dataKbliMaster = [];
+let rawData = [];
+let filteredData = [];
 
-    // 1. Fungsi untuk mengambil data JSON saat halaman dimuat
-    async function muatDataKbli() {
-        try {
-            // Sesuaikan path ini jika posisi folder berbeda. 
-            // Titik dua (../) digunakan untuk mundur 1 folder keluar dari folder 'kbli'
-            const response = await fetch('../data_master/data_kategori_inaproc.json');
-            if (!response.ok) throw new Error('Gagal memuat file JSON');
-            
-            dataKbliMaster = await response.json();
-            renderTabelKbli(dataKbliMaster); // Tampilkan semua data di awal
-        } catch (error) {
-            console.error("Error:", error);
-            document.getElementById('bodyTabelKbli').innerHTML = `<tr><td colspan="7" style="text-align:center; color:red;">Gagal memuat data. Pastikan file JSON tersedia.</td></tr>`;
-        }
-    }
-
-    // 2. Fungsi untuk mencetak data ke dalam tabel
-    function renderTabelKbli(data) {
-        const tbody = document.getElementById('bodyTabelKbli');
-        tbody.innerHTML = ""; // Bersihkan tabel
-
-        if (data.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 20px;">Data tidak ditemukan.</td></tr>`;
-            return;
-        }
-
-        // Looping untuk membuat baris tabel
-        let barisHTML = "";
-        data.forEach(item => {
-            barisHTML += `
-                <tr>
-                    <td style="padding: 8px;">${item.Kategori_Tingkat_I || '-'}</td>
-                    <td style="padding: 8px;">${item.Kategori_Tingkat_II || '-'}</td>
-                    <td style="padding: 8px;">${item.Kategori_Tingkat_III || '-'}</td>
-                    <td style="padding: 8px; font-weight: bold;">${item.KBLI_2020_Kode || '-'}</td>
-                    <td style="padding: 8px;">${item.KBLI_2020_Deskripsi || '-'}</td>
-                    <td style="padding: 8px; font-weight: bold;">${item.KBLI_2025_Kode || '-'}</td>
-                    <td style="padding: 8px;">${item.KBLI_2025_Deskripsi || '-'}</td>
-                </tr>
-            `;
-        });
-        tbody.innerHTML = barisHTML;
-    }
-
-    // 3. Fungsi Logika Pencarian Universal
-    function eksekusiPencarian() {
-        const kataKunci = document.getElementById('inputCariKbli').value.toLowerCase().trim();
-        
-        if (kataKunci === "") {
-            // Jika kosong, kembalikan ke tampilan semua data
-            renderTabelKbli(dataKbliMaster);
-            return;
-        }
-
-        // Filter data universal (mengecek semua kolom/nilai (Object.values) dalam satu baris)
-        const dataHasilFilter = dataKbliMaster.filter(item => {
-            return Object.values(item).some(nilai => 
-                String(nilai).toLowerCase().includes(kataKunci)
-            );
-        });
-
-        renderTabelKbli(dataHasilFilter);
-    }
-
-    // 4. Mendaftarkan Event Listener (Klik Tombol & Tekan Enter)
-    document.getElementById('btnCariKbli').addEventListener('click', eksekusiPencarian);
+async function loadDataMaster() {
+  document.getElementById("loadingOverlay").style.display = "flex";
+  try {
+    // Memanggil file JSON yang berada di folder data_master
+    const response = await fetch('../data_master/data_kategori_inaproc.json');
+    if (!response.ok) throw new Error("Gagal memuat file JSON");
     
-    document.getElementById('inputCariKbli').addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') {
-            event.preventDefault(); // Mencegah *reload* halaman jika input berada di dalam <form>
-            eksekusiPencarian();
-        }
-    });
+    rawData = await response.json();
+    filteredData = [...rawData];
+    renderTable();
+  } catch (error) {
+    console.error("Error Fetch:", error);
+    document.getElementById("bodyTable").innerHTML = `
+      <tr>
+        <td colspan="7" class="td-center" style="padding:30px; color:var(--lpse-merah); font-weight:bold;">
+          ⚠️ Gagal memuat database.<br>
+          <span style="font-size:0.8rem; font-weight:normal; color:#64748b;">Pastikan file <b>data_kategori_inaproc.json</b> sudah ter-upload di folder <b>data_master</b>.</span>
+        </td>
+      </tr>`;
+  }
+  document.getElementById("loadingOverlay").style.display = "none";
+}
 
-    // Jalankan fungsi muat data pertama kali
-    muatDataKbli();
+function renderTable() {
+  const body = document.getElementById("bodyTable");
+  body.innerHTML = "";
+
+  if (filteredData.length === 0) {
+    body.innerHTML = `<tr><td colspan="7" class="td-center" style="padding:30px; color:#94a3b8; font-weight:600;">Pencarian tidak menemukan hasil.</td></tr>`;
+    document.getElementById("totalInfo").innerText = "Menampilkan 0 Data";
+    return;
+  }
+
+  let barisHTML = "";
+  filteredData.forEach((row) => {
+    barisHTML += `
+      <tr>
+        <td style="font-weight:600; color:var(--lpse-biru);">${row["Kategori_Tingkat_I"] || '-'}</td>
+        <td>${row["Kategori_Tingkat_II"] || '-'}</td>
+        <td>${row["Kategori_Tingkat_III"] || '-'}</td>
+        <td class="td-center" style="font-weight:bold; color:#1e293b;">${row["KBLI_2020_Kode"] || '-'}</td>
+        <td>${row["KBLI_2020_Deskripsi"] || '-'}</td>
+        <td class="td-center" style="font-weight:bold; color:var(--lpse-hijau);">${row["KBLI_2025_Kode"] || '-'}</td>
+        <td>${row["KBLI_2025_Deskripsi"] || '-'}</td>
+      </tr>
+    `;
+  });
+  
+  body.innerHTML = barisHTML;
+  document.getElementById("totalInfo").innerText = `(Menampilkan ${filteredData.length.toLocaleString("id-ID")} dari ${rawData.length.toLocaleString("id-ID")} Referensi Kategori KBLI)`;
+}
+
+function eksekusiPencarian() {
+  const kataKunci = document.getElementById("inputSearch").value.toLowerCase().trim();
+  
+  document.getElementById("loadingOverlay").style.display = "flex";
+  
+  // Menggunakan setTimeout agar UI sempat memunculkan layar loading sebelum browser terkunci oleh proses filtering yang berat
+  setTimeout(() => {
+    if (kataKunci === "") {
+      filteredData = [...rawData];
+    } else {
+      filteredData = rawData.filter(item => {
+        return Object.values(item).some(nilai => 
+          String(nilai).toLowerCase().includes(kataKunci)
+        );
+      });
+    }
+    renderTable();
+    document.getElementById("loadingOverlay").style.display = "none";
+  }, 100);
+}
+
+// Event Listener Tombol & Keyboard
+document.getElementById("btnSearch").addEventListener("click", eksekusiPencarian);
+document.getElementById("inputSearch").addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    eksekusiPencarian();
+  }
+});
+document.getElementById("btnReset").addEventListener("click", () => {
+  document.getElementById("inputSearch").value = "";
+  eksekusiPencarian();
+});
+
+// Load data saat halaman pertama dibuka
+window.onload = loadDataMaster;
 </script>
+</body>
+</html>
