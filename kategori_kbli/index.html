@@ -80,7 +80,16 @@
     width: 350px;
     transition: border-color 0.2s;
   }
-  .filter-card input:focus { border-color: var(--lpse-biru); }
+  .filter-card select {
+    border: 1.5px solid #dde3ed; border-radius: 7px; padding: 8px 12px;
+    font-size: 0.9rem; background: #f8fafc; outline: none; width: 100%; cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .filter-card select:focus { border-color: var(--lpse-biru); }
+  .filter-grid { 
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+    gap: 12px; margin-bottom: 15px; 
+  }
 
   /* ===== BUTTONS ===== */
   .btn-search {
@@ -147,12 +156,30 @@
   </div>
 
   <div class="filter-card">
-    <div style="display:flex; flex-wrap:nowrap; gap:12px; align-items:flex-end;">
+    <div class="filter-grid">
       <div style="display:flex; flex-direction:column; gap:4px;">
-        <label>Pencarian Universal</label>
-        <input id="inputSearch" type="text" placeholder="Ketik kata kunci (misal: konstruksi, 47529)..." />
+        <label>Tingkat I</label>
+        <select id="selTingkat1"><option value="">-- Semua --</option></select>
       </div>
-      <button id="btnSearch" class="btn-search">🔍 Cari Data</button>
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        <label>Tingkat II</label>
+        <select id="selTingkat2"><option value="">-- Semua --</option></select>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        <label>Tingkat III</label>
+        <select id="selTingkat3"><option value="">-- Semua --</option></select>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        <label>Cari Nama Kategori</label>
+        <input id="inputCariKategori" type="text" placeholder="Cari di Tk I, II, III..." style="width:100%;" />
+      </div>
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        <label>Cari KBLI</label>
+        <input id="inputCariKbli" type="text" placeholder="Kode / Deskripsi..." style="width:100%;" />
+      </div>
+    </div>
+    <div style="display:flex; gap:12px; justify-content:flex-end;">
+      <button id="btnSearch" class="btn-search">🔍 Terapkan Filter</button>
       <button id="btnReset" class="btn-reset">✕ Reset</button>
     </div>
   </div>
@@ -196,6 +223,7 @@ async function loadDataMaster() {
     
     rawData = await response.json();
     filteredData = [...rawData];
+    isiDropdownKategori();
     renderTable();
   } catch (error) {
     console.error("Error Fetch:", error);
@@ -208,6 +236,16 @@ async function loadDataMaster() {
       </tr>`;
   }
   document.getElementById("loadingOverlay").style.display = "none";
+}
+
+function isiDropdownKategori() {
+  const t1 = [...new Set(rawData.map(item => item.Kategori_Tingkat_I).filter(Boolean))].sort();
+  const t2 = [...new Set(rawData.map(item => item.Kategori_Tingkat_II).filter(Boolean))].sort();
+  const t3 = [...new Set(rawData.map(item => item.Kategori_Tingkat_III).filter(Boolean))].sort();
+
+  document.getElementById("selTingkat1").innerHTML = '<option value="">-- Semua --</option>' + t1.map(v => `<option value="${v}">${v}</option>`).join('');
+  document.getElementById("selTingkat2").innerHTML = '<option value="">-- Semua --</option>' + t2.map(v => `<option value="${v}">${v}</option>`).join('');
+  document.getElementById("selTingkat3").innerHTML = '<option value="">-- Semua --</option>' + t3.map(v => `<option value="${v}">${v}</option>`).join('');
 }
 
 function renderTable() {
@@ -240,36 +278,68 @@ function renderTable() {
 }
 
 function eksekusiPencarian() {
-  const kataKunci = document.getElementById("inputSearch").value.toLowerCase().trim();
+  const valT1 = document.getElementById("selTingkat1").value;
+  const valT2 = document.getElementById("selTingkat2").value;
+  const valT3 = document.getElementById("selTingkat3").value;
+  const cariKategori = document.getElementById("inputCariKategori").value.toLowerCase().trim();
+  const cariKbli = document.getElementById("inputCariKbli").value.toLowerCase().trim();
   
   document.getElementById("loadingOverlay").style.display = "flex";
   
-  // Menggunakan setTimeout agar UI sempat memunculkan layar loading sebelum browser terkunci oleh proses filtering yang berat
   setTimeout(() => {
-    if (kataKunci === "") {
-      filteredData = [...rawData];
-    } else {
-      filteredData = rawData.filter(item => {
-        return Object.values(item).some(nilai => 
-          String(nilai).toLowerCase().includes(kataKunci)
-        );
-      });
-    }
+    filteredData = rawData.filter(item => {
+      const t1 = item.Kategori_Tingkat_I || "";
+      const t2 = item.Kategori_Tingkat_II || "";
+      const t3 = item.Kategori_Tingkat_III || "";
+      const kbli20 = String(item.KBLI_2020_Kode || "") + " " + String(item.KBLI_2020_Deskripsi || "");
+      const kbli25 = String(item.KBLI_2025_Kode || "") + " " + String(item.KBLI_2025_Deskripsi || "");
+      
+      const textKategori = (t1 + " " + t2 + " " + t3).toLowerCase();
+      const textKbli = (kbli20 + " " + kbli25).toLowerCase();
+
+      // Pengecekan Dropdown (Harus Persis)
+      if (valT1 && t1 !== valT1) return false;
+      if (valT2 && t2 !== valT2) return false;
+      if (valT3 && t3 !== valT3) return false;
+
+      // Pengecekan Teks Kategori (Universal Tk 1, 2, 3)
+      if (cariKategori && !textKategori.includes(cariKategori)) return false;
+
+      // Pengecekan Teks KBLI (Universal Kode & Deskripsi 2020/2025)
+      if (cariKbli && !textKbli.includes(cariKbli)) return false;
+
+      return true;
+    });
+    
     renderTable();
     document.getElementById("loadingOverlay").style.display = "none";
   }, 100);
 }
 
-// Event Listener Tombol & Keyboard
+// Event Listener Tombol & Input
 document.getElementById("btnSearch").addEventListener("click", eksekusiPencarian);
-document.getElementById("inputSearch").addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    eksekusiPencarian();
-  }
+
+// Memicu pencarian jika dropdown diubah
+document.querySelectorAll(".filter-card select").forEach(sel => {
+  sel.addEventListener("change", eksekusiPencarian);
 });
+
+// Memicu pencarian saat tekan Enter di text box
+document.querySelectorAll(".filter-card input").forEach(input => {
+  input.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      eksekusiPencarian();
+    }
+  });
+});
+
 document.getElementById("btnReset").addEventListener("click", () => {
-  document.getElementById("inputSearch").value = "";
+  document.getElementById("selTingkat1").value = "";
+  document.getElementById("selTingkat2").value = "";
+  document.getElementById("selTingkat3").value = "";
+  document.getElementById("inputCariKategori").value = "";
+  document.getElementById("inputCariKbli").value = "";
   eksekusiPencarian();
 });
 
