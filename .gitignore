@@ -6,7 +6,6 @@ bot_telegram
 cek_duplikat.py
 tes.py
 __pycache__
-token.txt
 
 # Mengabaikan Python Virtual Environment & Cache (INI YANG PALING PENTING)
 venv/
@@ -15,3 +14,8 @@ env/
 __pycache__/
 *.pyc
 
+# Mengabaikan script & tools
+scripts/
+tools/
+*.bat
+*.py
