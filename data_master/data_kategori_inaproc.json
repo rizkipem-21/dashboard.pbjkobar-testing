@@ -38,6 +38,24 @@
     {
         "Kategori_Tingkat_I": "Bidang Bina Marga 2025",
         "Kategori_Tingkat_II": "Divisi 1 Umum dan Penerapan SMKK",
+        "Kategori_Tingkat_III": "1.13 Building Information Modelling (BIM)",
+        "KBLI_2020_Kode": "42101",
+        "KBLI_2020_Deskripsi": "Konstruksi Bangunan Sipil Jalan",
+        "KBLI_2025_Kode": "42101",
+        "KBLI_2025_Deskripsi": "Konstruksi Jalan pada Permukaan Tanah"
+    },
+    {
+        "Kategori_Tingkat_I": "Bidang Bina Marga 2025",
+        "Kategori_Tingkat_II": "Divisi 1 Umum dan Penerapan SMKK",
+        "Kategori_Tingkat_III": "1.13 Building Information Modelling (BIM)",
+        "KBLI_2020_Kode": "42102",
+        "KBLI_2020_Deskripsi": "Konstruksi Bangunan Sipil Jembatan, Jalan Layang, Fly Over, dan Underpass",
+        "KBLI_2025_Kode": "42102",
+        "KBLI_2025_Deskripsi": "Konstruksi Bangunan Sipil Jembatan, Jalan Layang, Fly Over, dan Underpass"
+    },
+    {
+        "Kategori_Tingkat_I": "Bidang Bina Marga 2025",
+        "Kategori_Tingkat_II": "Divisi 1 Umum dan Penerapan SMKK",
         "Kategori_Tingkat_III": "1.20 Pengujian Tanah",
         "KBLI_2020_Kode": "42101",
         "KBLI_2020_Deskripsi": "Konstruksi Bangunan Sipil Jalan",
@@ -596,7 +614,7 @@
     {
         "Kategori_Tingkat_I": "Bidang Bina Marga 2025",
         "Kategori_Tingkat_II": "Divisi 6 Perkerasan Aspal",
-        "Kategori_Tingkat_III": "6.2 Laburan Aspal Satu Lapis (Burtu) dan Laburan Aspal Dua Lapis (Burda), dan Stress",
+        "Kategori_Tingkat_III": "6.2 Laburan Aspal Satu Lapis (Burtu) dan Laburan Aspal Dua Lapis (Burda), dan Stress Absorbing Membrane Interlayer (SAMI)",
         "KBLI_2020_Kode": "42101",
         "KBLI_2020_Deskripsi": "Konstruksi Bangunan Sipil Jalan",
         "KBLI_2025_Kode": "42101",
@@ -605,20 +623,11 @@
     {
         "Kategori_Tingkat_I": "Bidang Bina Marga 2025",
         "Kategori_Tingkat_II": "Divisi 6 Perkerasan Aspal",
-        "Kategori_Tingkat_III": "6.2 Laburan Aspal Satu Lapis (Burtu) dan Laburan Aspal Dua Lapis (Burda), dan Stress",
+        "Kategori_Tingkat_III": "6.2 Laburan Aspal Satu Lapis (Burtu) dan Laburan Aspal Dua Lapis (Burda), dan Stress Absorbing Membrane Interlayer (SAMI)",
         "KBLI_2020_Kode": "42102",
         "KBLI_2020_Deskripsi": "Konstruksi Bangunan Sipil Jembatan, Jalan Layang, Fly Over, dan Underpass",
         "KBLI_2025_Kode": "42102",
         "KBLI_2025_Deskripsi": "Konstruksi Bangunan Sipil Jembatan, Jalan Layang, Fly Over, dan Underpass"
-    },
-    {
-        "Kategori_Tingkat_I": "Bidang Bina Marga 2025",
-        "Kategori_Tingkat_II": "Divisi 6 Perkerasan Aspal",
-        "Kategori_Tingkat_III": "Absorbing Membrane Interlayer (SAMI)",
-        "KBLI_2020_Kode": null,
-        "KBLI_2020_Deskripsi": null,
-        "KBLI_2025_Kode": null,
-        "KBLI_2025_Deskripsi": null
     },
     {
         "Kategori_Tingkat_I": "Bidang Bina Marga 2025",
@@ -1195,6 +1204,15 @@
         "KBLI_2020_Deskripsi": "Konstruksi Bangunan Sipil Jembatan, Jalan Layang, Fly Over, dan Underpass",
         "KBLI_2025_Kode": "42102",
         "KBLI_2025_Deskripsi": "Konstruksi Bangunan Sipil Jembatan, Jalan Layang, Fly Over, dan Underpass"
+    },
+    {
+        "Kategori_Tingkat_I": "Bidang Bina Marga 2025",
+        "Kategori_Tingkat_II": "Divisi 9 Pekerjaan Harian dan Pekerjaan Lain-lain",
+        "Kategori_Tingkat_III": "9.4 Pekerjaan Penerangan Jalan Umum, Penerangan Pedestrian, Alat Pemberi Isyarat Lalu Lintas, dan Pekerjaan Listrik Lainnya",
+        "KBLI_2020_Kode": "43211",
+        "KBLI_2020_Deskripsi": "Instalasi Listrik",
+        "KBLI_2025_Kode": "43211",
+        "KBLI_2025_Deskripsi": "Pemasangan Jaringan Listrik"
     },
     {
         "Kategori_Tingkat_I": "Bidang Bina Marga 2025",
@@ -45361,7 +45379,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Cat Kayu",
         "KBLI_2020_Kode": "46637",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Cat",
@@ -45370,7 +45388,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Cat Kayu",
         "KBLI_2020_Kode": "46638",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Berbagai Macam Material Bangunan",
@@ -45379,7 +45397,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Cat Kayu",
         "KBLI_2020_Kode": "47527",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Cat, Pernis, dan Lak",
@@ -45388,7 +45406,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Cat Kayu",
         "KBLI_2020_Kode": "47528",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Berbagai Macam Material Bangunan",
@@ -45397,7 +45415,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Cat Pelapis",
         "KBLI_2020_Kode": "46637",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Cat",
@@ -45406,7 +45424,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Cat Pelapis",
         "KBLI_2020_Kode": "46638",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Berbagai Macam Material Bangunan",
@@ -45415,7 +45433,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Cat Pelapis",
         "KBLI_2020_Kode": "47527",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Cat, Pernis, dan Lak",
@@ -45424,7 +45442,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Cat Pelapis",
         "KBLI_2020_Kode": "47528",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Berbagai Macam Material Bangunan",
@@ -45433,7 +45451,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Cat Semprot",
         "KBLI_2020_Kode": "46637",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Cat",
@@ -45442,7 +45460,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Cat Semprot",
         "KBLI_2020_Kode": "46638",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Berbagai Macam Material Bangunan",
@@ -45451,7 +45469,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Cat Semprot",
         "KBLI_2020_Kode": "47527",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Cat, Pernis, dan Lak",
@@ -45460,7 +45478,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Cat Semprot",
         "KBLI_2020_Kode": "47528",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Berbagai Macam Material Bangunan",
@@ -45469,7 +45487,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Cat Tembok",
         "KBLI_2020_Kode": "46637",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Cat",
@@ -45478,7 +45496,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Cat Tembok",
         "KBLI_2020_Kode": "46638",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Berbagai Macam Material Bangunan",
@@ -45487,7 +45505,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Cat Tembok",
         "KBLI_2020_Kode": "47527",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Cat, Pernis, dan Lak",
@@ -45496,7 +45514,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Cat Tembok",
         "KBLI_2020_Kode": "47528",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Berbagai Macam Material Bangunan",
@@ -45505,7 +45523,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Kuas dan Roller Cat",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan dan Perlengkapan Lainnya",
@@ -45514,7 +45532,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Kuas dan Roller Cat",
         "KBLI_2020_Kode": "46637",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Cat",
@@ -45523,7 +45541,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Kuas dan Roller Cat",
         "KBLI_2020_Kode": "47527",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Cat, Pernis, dan Lak",
@@ -45532,7 +45550,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Kuas dan Roller Cat",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya dan Perlengkapannya",
@@ -45541,7 +45559,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Plamir Tembok",
         "KBLI_2020_Kode": "46637",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Cat",
@@ -45550,7 +45568,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Plamir Tembok",
         "KBLI_2020_Kode": "46638",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Berbagai Macam Material Bangunan",
@@ -45559,7 +45577,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Plamir Tembok",
         "KBLI_2020_Kode": "47527",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Cat, Pernis, dan Lak",
@@ -45568,7 +45586,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Plamir Tembok",
         "KBLI_2020_Kode": "47528",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Berbagai Macam Material Bangunan",
@@ -45577,7 +45595,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Thinner",
         "KBLI_2020_Kode": "46637",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Cat",
@@ -45586,7 +45604,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Thinner",
         "KBLI_2020_Kode": "46638",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Berbagai Macam Material Bangunan",
@@ -45595,7 +45613,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Thinner",
         "KBLI_2020_Kode": "47527",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Cat, Pernis, dan Lak",
@@ -45604,7 +45622,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Thinner",
         "KBLI_2020_Kode": "47528",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Berbagai Macam Material Bangunan",
@@ -45613,7 +45631,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Wallpaper",
         "KBLI_2020_Kode": "46639",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Bahan Konstruksi Lainnya",
@@ -45622,7 +45640,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Wallpaper",
         "KBLI_2020_Kode": "47529",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Bahan dan Barang Konstruksi Lainnya",
@@ -45631,7 +45649,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Perlengkapan Cat Lainnya",
         "KBLI_2020_Kode": "46637",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Cat",
@@ -45640,7 +45658,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Perlengkapan Cat Lainnya",
         "KBLI_2020_Kode": "46638",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Berbagai Macam Material Bangunan",
@@ -45649,7 +45667,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Perlengkapan Cat Lainnya",
         "KBLI_2020_Kode": "47527",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Cat, Pernis, dan Lak",
@@ -45658,7 +45676,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Cat",
+        "Kategori_Tingkat_II": "Perlengkapan Cat",
         "Kategori_Tingkat_III": "Perlengkapan Cat Lainnya",
         "KBLI_2020_Kode": "47528",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Berbagai Macam Material Bangunan",
@@ -46000,7 +46018,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Bath Tub",
         "KBLI_2020_Kode": "46633",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Genteng, Batu Bata, Ubin Dan Sejenisnya Dari Tanah Liat, Kapur, Semen Atau Kaca",
@@ -46009,7 +46027,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Bath Tub",
         "KBLI_2020_Kode": "46635",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Bahan Konstruksi Dari Porselen",
@@ -46018,7 +46036,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Bath Tub",
         "KBLI_2020_Kode": "47523",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Genteng, Batu Bata, Ubin Dan Sejenisnya Dari Tanah Liat, Kapur, Semen Atau Kaca",
@@ -46027,7 +46045,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Bath Tub",
         "KBLI_2020_Kode": "47525",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Bahan Konstruksi Dari Porselen",
@@ -46036,7 +46054,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Filter Keran Air",
         "KBLI_2020_Kode": "46631",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Barang Logam Untuk Bahan Konstruksi",
@@ -46045,7 +46063,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Filter Keran Air",
         "KBLI_2020_Kode": "46639",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Bahan Konstruksi Lainnya",
@@ -46054,7 +46072,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Filter Keran Air",
         "KBLI_2020_Kode": "47521",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Barang Logam Untuk Bahan Konstruksi",
@@ -46063,7 +46081,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Filter Keran Air",
         "KBLI_2020_Kode": "47529",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Bahan dan Barang Konstruksi Lainnya",
@@ -46072,7 +46090,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Fitting Pipa Elbow",
         "KBLI_2020_Kode": "46631",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Barang Logam Untuk Bahan Konstruksi",
@@ -46081,7 +46099,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Fitting Pipa Elbow",
         "KBLI_2020_Kode": "46639",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Bahan Konstruksi Lainnya",
@@ -46090,7 +46108,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Fitting Pipa Elbow",
         "KBLI_2020_Kode": "47521",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Barang Logam Untuk Bahan Konstruksi",
@@ -46099,7 +46117,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Fitting Pipa Elbow",
         "KBLI_2020_Kode": "47529",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Bahan dan Barang Konstruksi Lainnya",
@@ -46108,7 +46126,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Foot Klep",
         "KBLI_2020_Kode": "46631",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Barang Logam Untuk Bahan Konstruksi",
@@ -46117,7 +46135,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Foot Klep",
         "KBLI_2020_Kode": "46639",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Bahan Konstruksi Lainnya",
@@ -46126,7 +46144,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Foot Klep",
         "KBLI_2020_Kode": "47521",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Barang Logam Untuk Bahan Konstruksi",
@@ -46135,7 +46153,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Foot Klep",
         "KBLI_2020_Kode": "47529",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Bahan dan Barang Konstruksi Lainnya",
@@ -46144,7 +46162,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Jet Shower Toilet",
         "KBLI_2020_Kode": "46631",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Barang Logam Untuk Bahan Konstruksi",
@@ -46153,7 +46171,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Jet Shower Toilet",
         "KBLI_2020_Kode": "46639",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Bahan Konstruksi Lainnya",
@@ -46162,7 +46180,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Jet Shower Toilet",
         "KBLI_2020_Kode": "47521",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Barang Logam Untuk Bahan Konstruksi",
@@ -46171,7 +46189,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Jet Shower Toilet",
         "KBLI_2020_Kode": "47529",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Bahan dan Barang Konstruksi Lainnya",
@@ -46180,7 +46198,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Shower Mandi",
         "KBLI_2020_Kode": "46631",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Barang Logam Untuk Bahan Konstruksi",
@@ -46189,7 +46207,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Shower Mandi",
         "KBLI_2020_Kode": "46639",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Bahan Konstruksi Lainnya",
@@ -46198,7 +46216,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Shower Mandi",
         "KBLI_2020_Kode": "47521",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Barang Logam Untuk Bahan Konstruksi",
@@ -46207,7 +46225,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Shower Mandi",
         "KBLI_2020_Kode": "47529",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Bahan dan Barang Konstruksi Lainnya",
@@ -46216,7 +46234,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Keran Air",
         "KBLI_2020_Kode": "46631",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Barang Logam Untuk Bahan Konstruksi",
@@ -46225,7 +46243,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Keran Air",
         "KBLI_2020_Kode": "46639",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Bahan Konstruksi Lainnya",
@@ -46234,7 +46252,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Keran Air",
         "KBLI_2020_Kode": "47521",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Barang Logam Untuk Bahan Konstruksi",
@@ -46243,7 +46261,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Keran Air",
         "KBLI_2020_Kode": "47529",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Bahan dan Barang Konstruksi Lainnya",
@@ -46252,7 +46270,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Kloset",
         "KBLI_2020_Kode": "46635",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Bahan Konstruksi Dari Porselen",
@@ -46261,7 +46279,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Kloset",
         "KBLI_2020_Kode": "47525",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Bahan Konstruksi Dari Porselen",
@@ -46270,7 +46288,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Pipa",
         "KBLI_2020_Kode": "46639",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Bahan Konstruksi Lainnya",
@@ -46279,7 +46297,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Pipa",
         "KBLI_2020_Kode": "47529",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Bahan dan Barang Konstruksi Lainnya",
@@ -46288,7 +46306,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Pompa Air",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -46297,7 +46315,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Pompa Air",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -46306,7 +46324,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Floor Drain",
         "KBLI_2020_Kode": "46631",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Barang Logam Untuk Bahan Konstruksi",
@@ -46315,7 +46333,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Floor Drain",
         "KBLI_2020_Kode": "46639",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Bahan Konstruksi Lainnya",
@@ -46324,7 +46342,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Floor Drain",
         "KBLI_2020_Kode": "47521",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Barang Logam Untuk Bahan Konstruksi",
@@ -46333,7 +46351,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Floor Drain",
         "KBLI_2020_Kode": "47529",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Bahan dan Barang Konstruksi Lainnya",
@@ -46342,7 +46360,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Selang",
         "KBLI_2020_Kode": "46639",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Bahan Konstruksi Lainnya",
@@ -46351,7 +46369,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Selang",
         "KBLI_2020_Kode": "47529",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Bahan dan Barang Konstruksi Lainnya",
@@ -46360,7 +46378,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Septic Tank",
         "KBLI_2020_Kode": "46631",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Barang Logam Untuk Bahan Konstruksi",
@@ -46369,7 +46387,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Septic Tank",
         "KBLI_2020_Kode": "46639",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Bahan Konstruksi Lainnya",
@@ -46378,7 +46396,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Septic Tank",
         "KBLI_2020_Kode": "47521",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Barang Logam Untuk Bahan Konstruksi",
@@ -46387,7 +46405,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Septic Tank",
         "KBLI_2020_Kode": "47529",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Bahan dan Barang Konstruksi Lainnya",
@@ -46396,7 +46414,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Toren Air",
         "KBLI_2020_Kode": "46631",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Barang Logam Untuk Bahan Konstruksi",
@@ -46405,7 +46423,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Toren Air",
         "KBLI_2020_Kode": "46639",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Bahan Konstruksi Lainnya",
@@ -46414,7 +46432,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Toren Air",
         "KBLI_2020_Kode": "47521",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Barang Logam Untuk Bahan Konstruksi",
@@ -46423,7 +46441,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Toren Air",
         "KBLI_2020_Kode": "47529",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Bahan dan Barang Konstruksi Lainnya",
@@ -46432,7 +46450,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Washtafel",
         "KBLI_2020_Kode": "46631",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Barang Logam Untuk Bahan Konstruksi",
@@ -46441,7 +46459,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Washtafel",
         "KBLI_2020_Kode": "46635",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Bahan Konstruksi Dari Porselen",
@@ -46450,7 +46468,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Washtafel",
         "KBLI_2020_Kode": "47521",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Barang Logam Untuk Bahan Konstruksi",
@@ -46459,7 +46477,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Washtafel",
         "KBLI_2020_Kode": "47525",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Bahan Konstruksi Dari Porselen",
@@ -46468,7 +46486,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Water Heater",
         "KBLI_2020_Kode": "46639",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Bahan Konstruksi Lainnya",
@@ -46477,7 +46495,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Water Heater",
         "KBLI_2020_Kode": "47529",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Bahan dan Barang Konstruksi Lainnya",
@@ -46486,7 +46504,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Perlengkapan Ledeng Lainnya",
         "KBLI_2020_Kode": "46631",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Barang Logam Untuk Bahan Konstruksi",
@@ -46495,7 +46513,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Perlengkapan Ledeng Lainnya",
         "KBLI_2020_Kode": "46633",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Genteng, Batu Bata, Ubin Dan Sejenisnya Dari Tanah Liat, Kapur, Semen Atau Kaca",
@@ -46504,7 +46522,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Perlengkapan Ledeng Lainnya",
         "KBLI_2020_Kode": "46635",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Bahan Konstruksi Dari Porselen",
@@ -46513,7 +46531,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Perlengkapan Ledeng Lainnya",
         "KBLI_2020_Kode": "46639",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Bahan Konstruksi Lainnya",
@@ -46522,7 +46540,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Perlengkapan Ledeng Lainnya",
         "KBLI_2020_Kode": "47521",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Barang Logam Untuk Bahan Konstruksi",
@@ -46531,7 +46549,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Perlengkapan Ledeng Lainnya",
         "KBLI_2020_Kode": "47523",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Genteng, Batu Bata, Ubin Dan Sejenisnya Dari Tanah Liat, Kapur, Semen Atau Kaca",
@@ -46540,7 +46558,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Perlengkapan Ledeng Lainnya",
         "KBLI_2020_Kode": "47525",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Bahan Konstruksi Dari Porselen",
@@ -46549,7 +46567,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Ledeng",
+        "Kategori_Tingkat_II": "Perlengkapan Ledeng",
         "Kategori_Tingkat_III": "Perlengkapan Ledeng Lainnya",
         "KBLI_2020_Kode": "47529",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Bahan dan Barang Konstruksi Lainnya",
@@ -47008,7 +47026,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Jalan",
+        "Kategori_Tingkat_II": "Perlengkapan Jalan",
         "Kategori_Tingkat_III": "Alat Pemberi Isyarat Lalu Lintas (APILL)",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan dan Perlengkapan Lainnya",
@@ -47017,7 +47035,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Jalan",
+        "Kategori_Tingkat_II": "Perlengkapan Jalan",
         "Kategori_Tingkat_III": "Alat Pemberi Isyarat Lalu Lintas (APILL)",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47026,7 +47044,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Jalan",
+        "Kategori_Tingkat_II": "Perlengkapan Jalan",
         "Kategori_Tingkat_III": "Alat Penerangan Jalan (APJ)",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan dan Perlengkapan Lainnya",
@@ -47035,7 +47053,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Jalan",
+        "Kategori_Tingkat_II": "Perlengkapan Jalan",
         "Kategori_Tingkat_III": "Alat Penerangan Jalan (APJ)",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47044,7 +47062,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Jalan",
+        "Kategori_Tingkat_II": "Perlengkapan Jalan",
         "Kategori_Tingkat_III": "Alat Pengendali dan Pengaman Pengguna Jalan (APPPJ)",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan dan Perlengkapan Lainnya",
@@ -47053,7 +47071,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Jalan",
+        "Kategori_Tingkat_II": "Perlengkapan Jalan",
         "Kategori_Tingkat_III": "Alat Pengendali dan Pengaman Pengguna Jalan (APPPJ)",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47062,7 +47080,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Jalan",
+        "Kategori_Tingkat_II": "Perlengkapan Jalan",
         "Kategori_Tingkat_III": "Alat Uji Perlengkapan Jalan",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan dan Perlengkapan Lainnya",
@@ -47071,7 +47089,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Jalan",
+        "Kategori_Tingkat_II": "Perlengkapan Jalan",
         "Kategori_Tingkat_III": "Alat Uji Perlengkapan Jalan",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47080,7 +47098,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Jalan",
+        "Kategori_Tingkat_II": "Perlengkapan Jalan",
         "Kategori_Tingkat_III": "Marka Jalan",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan dan Perlengkapan Lainnya",
@@ -47089,7 +47107,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Jalan",
+        "Kategori_Tingkat_II": "Perlengkapan Jalan",
         "Kategori_Tingkat_III": "Marka Jalan",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47098,7 +47116,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Jalan",
+        "Kategori_Tingkat_II": "Perlengkapan Jalan",
         "Kategori_Tingkat_III": "Rambu Lalu Lintas Konvensional",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan dan Perlengkapan Lainnya",
@@ -47107,7 +47125,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Jalan",
+        "Kategori_Tingkat_II": "Perlengkapan Jalan",
         "Kategori_Tingkat_III": "Rambu Lalu Lintas Konvensional",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47116,7 +47134,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Jalan",
+        "Kategori_Tingkat_II": "Perlengkapan Jalan",
         "Kategori_Tingkat_III": "Spare Part Perlengkapan Jalan",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan dan Perlengkapan Lainnya",
@@ -47125,7 +47143,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Jalan",
+        "Kategori_Tingkat_II": "Perlengkapan Jalan",
         "Kategori_Tingkat_III": "Spare Part Perlengkapan Jalan",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47134,7 +47152,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Jalan",
+        "Kategori_Tingkat_II": "Perlengkapan Jalan",
         "Kategori_Tingkat_III": "Perlengkapan Jalan Lainnya",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan dan Perlengkapan Lainnya",
@@ -47143,7 +47161,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Jalan",
+        "Kategori_Tingkat_II": "Perlengkapan Jalan",
         "Kategori_Tingkat_III": "Perlengkapan Jalan Lainnya",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47152,7 +47170,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Las dan Solder",
+        "Kategori_Tingkat_II": "Perlengkapan Las dan Solder",
         "Kategori_Tingkat_III": "Mesin Las",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47161,7 +47179,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Las dan Solder",
+        "Kategori_Tingkat_II": "Perlengkapan Las dan Solder",
         "Kategori_Tingkat_III": "Mesin Las",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47170,7 +47188,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Las dan Solder",
+        "Kategori_Tingkat_II": "Perlengkapan Las dan Solder",
         "Kategori_Tingkat_III": "Kawat Las",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47179,7 +47197,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Las dan Solder",
+        "Kategori_Tingkat_II": "Perlengkapan Las dan Solder",
         "Kategori_Tingkat_III": "Kawat Las",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47188,7 +47206,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Las dan Solder",
+        "Kategori_Tingkat_II": "Perlengkapan Las dan Solder",
         "Kategori_Tingkat_III": "Solder dan/atau Aksesoris",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47197,7 +47215,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Las dan Solder",
+        "Kategori_Tingkat_II": "Perlengkapan Las dan Solder",
         "Kategori_Tingkat_III": "Solder dan/atau Aksesoris",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47206,7 +47224,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Las dan Solder",
+        "Kategori_Tingkat_II": "Perlengkapan Las dan Solder",
         "Kategori_Tingkat_III": "Perlengkapan Las dan Solder Lainnya",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47215,7 +47233,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Las dan Solder",
+        "Kategori_Tingkat_II": "Perlengkapan Las dan Solder",
         "Kategori_Tingkat_III": "Perlengkapan Las dan Solder Lainnya",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47224,7 +47242,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Adaptor",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47233,7 +47251,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Adaptor",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47242,7 +47260,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Adaptor",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47251,7 +47269,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Anti Petir",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47260,7 +47278,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Anti Petir",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47269,7 +47287,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Anti Petir",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47278,7 +47296,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Bel",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47287,7 +47305,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Bel",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47296,7 +47314,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Bel",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47305,7 +47323,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Batu Baterai",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47314,7 +47332,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Batu Baterai",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47323,7 +47341,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Batu Baterai",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47332,7 +47350,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Fitting Lampu",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47341,7 +47359,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Fitting Lampu",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47350,7 +47368,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Fitting Lampu",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47359,7 +47377,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Insulator Listrik",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47368,7 +47386,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Insulator Listrik",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47377,7 +47395,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Insulator Listrik",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47386,7 +47404,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Isolasi Listrik",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47395,7 +47413,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Isolasi Listrik",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47404,7 +47422,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Isolasi Listrik",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47413,7 +47431,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Kabel Roll",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47422,7 +47440,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Kabel Roll",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47431,7 +47449,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Kabel Roll",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47440,7 +47458,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Kabel Listrik",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47449,7 +47467,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Kabel Listrik",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47458,7 +47476,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Kabel Listrik",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47467,7 +47485,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Komponen Listrik",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47476,7 +47494,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Komponen Listrik",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47485,7 +47503,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Komponen Listrik",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47494,7 +47512,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Lampu",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47503,7 +47521,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Lampu",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47512,7 +47530,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Lampu",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47521,7 +47539,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Panel Box Listrik",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47530,7 +47548,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Panel Box Listrik",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47539,7 +47557,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Panel Box Listrik",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47548,7 +47566,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Pelindung Kabel Spiral",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47557,7 +47575,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Pelindung Kabel Spiral",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47566,7 +47584,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Pelindung Kabel Spiral",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47575,7 +47593,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Penghemat Listrik",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47584,7 +47602,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Penghemat Listrik",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47593,7 +47611,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Penghemat Listrik",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47602,7 +47620,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Power Supply",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47611,7 +47629,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Power Supply",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47620,7 +47638,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Power Supply",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47629,7 +47647,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Sakelar",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47638,7 +47656,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Sakelar",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47647,7 +47665,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Sakelar",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47656,7 +47674,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Senter",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47665,7 +47683,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Senter",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47674,7 +47692,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Senter",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47683,7 +47701,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Steker",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47692,7 +47710,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Steker",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47701,7 +47719,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Steker",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47710,7 +47728,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Stop Kontak",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47719,7 +47737,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Stop Kontak",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47728,7 +47746,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Stop Kontak",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47737,7 +47755,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Kabel Ties",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47746,7 +47764,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Kabel Ties",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47755,7 +47773,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Kabel Ties",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
@@ -47764,7 +47782,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Perlengkapan Listrik Lainnya",
         "KBLI_2020_Kode": "46599",
         "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya",
@@ -47773,7 +47791,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Perlengkapan Listrik Lainnya",
         "KBLI_2020_Kode": "47592",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Peralatan Listrik Rumah Tangga Dan Peralatan Penerangan Dan Perlengkapannya",
@@ -47782,7 +47800,7 @@
     },
     {
         "Kategori_Tingkat_I": "Perkakas",
-        "Kategori_Tingkat_II": "Perlengkapa n Listrik",
+        "Kategori_Tingkat_II": "Perlengkapan Listrik",
         "Kategori_Tingkat_III": "Perlengkapan Listrik Lainnya",
         "KBLI_2020_Kode": "47793",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Mesin Lainnya Dan Perlengkapannya",
