@@ -31,55 +31,36 @@
     box-shadow: 0 4px 16px rgba(26,58,107,0.18);
   }
   .page-header h1 {
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    margin: 0 0 4px 0;
+    color: #fff; font-size: 1.5rem; font-weight: 700;
+    letter-spacing: 0.3px; margin: 0 0 4px 0;
   }
   .page-header .subtitle {
-    color: rgba(255,255,255,0.85);
-    font-size: 0.85rem;
+    color: rgba(255,255,255,0.85); font-size: 0.85rem;
   }
 
   /* ===== COLOR STRIP ===== */
   .color-strip {
-    display: flex;
-    height: 8px;
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 20px;
+    display: flex; height: 8px; border-radius: 4px;
+    overflow: hidden; margin-bottom: 20px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.12);
   }
   .color-strip span { flex: 1; }
 
   /* ===== FILTER CARD ===== */
   .filter-card {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(26,58,107,0.09);
-    padding: 18px 20px;
-    margin-bottom: 16px;
-    border-top: 3px solid var(--lpse-biru);
+    background: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgba(26,58,107,0.09);
+    padding: 18px 20px; margin-bottom: 16px; border-top: 3px solid var(--lpse-biru);
   }
   .filter-card label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #64748b;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-    display: block;
+    font-size: 0.75rem; font-weight: 600; color: #64748b;
+    text-transform: uppercase; margin-bottom: 6px; display: block;
   }
   .filter-card input {
-    border: 1.5px solid #dde3ed;
-    border-radius: 7px;
-    padding: 8px 12px;
-    font-size: 0.9rem;
-    background: #f8fafc;
-    outline: none;
-    width: 350px;
+    border: 1.5px solid #dde3ed; border-radius: 7px; padding: 8px 12px;
+    font-size: 0.9rem; background: #f8fafc; outline: none; width: 100%;
     transition: border-color 0.2s;
   }
+  .filter-card input:focus { border-color: var(--lpse-biru); }
   .filter-card select {
     border: 1.5px solid #dde3ed; border-radius: 7px; padding: 8px 12px;
     font-size: 0.9rem; background: #f8fafc; outline: none; width: 100%; cursor: pointer;
@@ -87,10 +68,8 @@
   }
   .filter-card select:focus { border-color: var(--lpse-biru); }
   .filter-card select:disabled {
-    background-color: #e2e8f0;
-    color: #94a3b8;
-    cursor: not-allowed;
-    border-color: #cbd5e1;
+    background-color: #e2e8f0; color: #94a3b8;
+    cursor: not-allowed; border-color: #cbd5e1;
   }
   .filter-grid { 
     display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
@@ -101,8 +80,7 @@
   .btn-search {
     background: var(--lpse-biru); color: #fff; border: none;
     border-radius: 7px; padding: 8.5px 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer;
-    box-shadow: 0 2px 6px rgba(26,58,107,0.25);
-    transition: background 0.2s;
+    box-shadow: 0 2px 6px rgba(26,58,107,0.25); transition: background 0.2s;
   }
   .btn-search:hover { background: var(--lpse-biru2); }
   
@@ -112,6 +90,15 @@
     transition: background 0.2s;
   }
   .btn-reset:hover { background: #e2e8f0; }
+
+  /* ===== PAGINATION BUTTONS ===== */
+  .btn-page {
+    background: #fff; border: 1.5px solid #dde3ed; border-radius: 6px;
+    padding: 6px 14px; font-size: 0.8rem; font-weight: 600; color: #475569;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .btn-page:hover:not(:disabled) { border-color: var(--lpse-biru); color: var(--lpse-biru); }
+  .btn-page:disabled { background: #f8fafc; color: #cbd5e1; cursor: not-allowed; border-color: #e2e8f0; }
 
   /* ===== TABEL ===== */
   .table-wrap {
@@ -127,7 +114,6 @@
   tbody tr:nth-child(even) { background: #f0f5fb; }
   tbody tr:hover { background: #dbeafe !important; }
   tbody td { padding: 10px 14px; border-bottom: 1px solid #e8edf5; border-right: 1px solid #e8edf5; color: #1e293b; vertical-align: top; }
-  
   .td-center { text-align: center; }
 
   /* Loading Overlay */
@@ -145,7 +131,7 @@
 </head>
 <body>
 
-<div id="loadingOverlay"><div class="loader"></div><p class="mt-2 text-sm font-semibold text-blue-900">Menyisir Database KBLI...</p></div>
+<div id="loadingOverlay"><div class="loader"></div><p class="mt-2 text-sm font-semibold text-blue-900">Memproses Data...</p></div>
 
 <div class="page-header">
   <h1>📖 Kategori & KBLI Inaproc</h1>
@@ -153,7 +139,6 @@
 </div>
 
 <div style="padding: 0 20px;">
-
   <div class="color-strip">
     <span style="background:var(--lpse-biru)"></span>
     <span style="background:var(--lpse-merah)"></span>
@@ -177,11 +162,11 @@
       </div>
       <div style="display:flex; flex-direction:column; gap:4px;">
         <label>Cari Nama Kategori</label>
-        <input id="inputCariKategori" type="text" placeholder="Cari di Tk I, II, III..." style="width:100%;" />
+        <input id="inputCariKategori" type="text" placeholder="Cari di Tk I, II, III..." />
       </div>
       <div style="display:flex; flex-direction:column; gap:4px;">
         <label>Cari KBLI</label>
-        <input id="inputCariKbli" type="text" placeholder="Kode / Deskripsi..." style="width:100%;" />
+        <input id="inputCariKbli" type="text" placeholder="Kode / Deskripsi..." />
       </div>
     </div>
     <div style="display:flex; gap:12px; justify-content:flex-end;">
@@ -201,8 +186,16 @@
         <option value="semua">Semua</option>
       </select>
       <span>data</span>
+      <span id="totalInfo" style="margin-left: 10px; font-size:0.8rem; color:#64748b; font-weight: 600;"></span>
     </div>
-    <span id="totalInfo" style="font-size:0.8rem; color:#64748b; font-weight: 600;"></span>
+    
+    <div style="display:flex; align-items:center; gap:12px;">
+      <span id="pageInfoTop" style="font-size:0.8rem; color:#64748b; font-weight: 600;"></span>
+      <div style="display:flex; gap:6px;">
+        <button id="btnPrevTop" class="btn-page" onclick="changePage(-1)">&#8592; Sebelumnya</button>
+        <button id="btnNextTop" class="btn-page" onclick="changePage(1)">Selanjutnya &#8594;</button>
+      </div>
+    </div>
   </div>
 
   <div class="table-wrap">
@@ -225,11 +218,26 @@
       </tbody>
     </table>
   </div>
+
+  <div style="margin-bottom:24px; display:flex; justify-content:flex-end; align-items:center;">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <span id="pageInfoBottom" style="font-size:0.8rem; color:#64748b; font-weight: 600;"></span>
+      <div style="display:flex; gap:6px;">
+        <button id="btnPrevBottom" class="btn-page" onclick="changePage(-1)">&#8592; Sebelumnya</button>
+        <button id="btnNextBottom" class="btn-page" onclick="changePage(1)">Selanjutnya &#8594;</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
 let rawData = [];
 let filteredData = [];
+let currentPage = 1;
+
+// Variabel untuk menyimpan ingatan teks pencarian terakhir
+let lastCariKategori = "";
+let lastCariKbli = "";
 
 async function loadDataMaster() {
   document.getElementById("loadingOverlay").style.display = "flex";
@@ -238,10 +246,7 @@ async function loadDataMaster() {
     if (!response.ok) throw new Error("Gagal memuat file JSON");
     
     rawData = await response.json();
-    filteredData = [...rawData];
-    
-    isiDropdownKategori();
-    renderTable();
+    eksekusiPencarian(true); // Proses pencarian awal
   } catch (error) {
     console.error("Error Fetch:", error);
     document.getElementById("bodyTable").innerHTML = `
@@ -251,69 +256,151 @@ async function loadDataMaster() {
           <span style="font-size:0.8rem; font-weight:normal; color:#64748b;">Pastikan file <b>data_kategori_inaproc.json</b> sudah ter-upload di folder <b>data_master</b>.</span>
         </td>
       </tr>`;
+    document.getElementById("loadingOverlay").style.display = "none";
   }
-  document.getElementById("loadingOverlay").style.display = "none";
 }
 
-function isiDropdownKategori() {
-  const valT1 = document.getElementById("selTingkat1").value;
-  const valT2 = document.getElementById("selTingkat2").value;
-
+// Fungsi Khusus Membangun Dropdown Berdasarkan Data Teks yang Tersaring
+function updateDropdowns(baseData) {
   const elT1 = document.getElementById("selTingkat1");
   const elT2 = document.getElementById("selTingkat2");
   const elT3 = document.getElementById("selTingkat3");
 
-  const dataTerfilterT1 = valT1 ? rawData.filter(item => item.Kategori_Tingkat_I === valT1) : rawData;
-  const dataTerfilterT2 = valT2 ? dataTerfilterT1.filter(item => item.Kategori_Tingkat_II === valT2) : dataTerfilterT1;
+  let valT1 = elT1.value;
+  let valT2 = elT2.value;
+  let valT3 = elT3.value;
 
-  const t1List = [...new Set(rawData.map(item => item.Kategori_Tingkat_I).filter(Boolean))].sort();
-  const t2List = [...new Set(dataTerfilterT1.map(item => item.Kategori_Tingkat_II).filter(Boolean))].sort();
-  const t3List = [...new Set(dataTerfilterT2.map(item => item.Kategori_Tingkat_III).filter(Boolean))].sort();
+  const t1List = [...new Set(baseData.map(item => item.Kategori_Tingkat_I).filter(Boolean))].sort();
+  if (!t1List.includes(valT1)) valT1 = "";
 
-  if (elT1.options.length <= 1) {
-    elT1.innerHTML = '<option value="">-- Semua --</option>' + t1List.map(v => `<option value="${v}">${v}</option>`).join('');
-  }
-  
-  if (!valT1) {
-    elT2.innerHTML = '<option value="">-- Pilih Tingkat I --</option>';
-    elT2.disabled = true;
-    elT2.value = "";
-  } else {
-    elT2.disabled = false;
+  const dataForT2 = valT1 ? baseData.filter(item => item.Kategori_Tingkat_I === valT1) : baseData;
+  const t2List = [...new Set(dataForT2.map(item => item.Kategori_Tingkat_II).filter(Boolean))].sort();
+  if (!t2List.includes(valT2)) valT2 = "";
+
+  const dataForT3 = valT2 ? dataForT2.filter(item => item.Kategori_Tingkat_II === valT2) : dataForT2;
+  const t3List = [...new Set(dataForT3.map(item => item.Kategori_Tingkat_III).filter(Boolean))].sort();
+  if (!t3List.includes(valT3)) valT3 = "";
+
+  elT1.innerHTML = '<option value="">-- Semua --</option>' + t1List.map(v => `<option value="${v}">${v}</option>`).join('');
+  elT1.value = valT1;
+
+  elT2.innerHTML = '<option value="">-- Pilih Tingkat I --</option>';
+  if (valT1) {
     elT2.innerHTML = '<option value="">-- Semua --</option>' + t2List.map(v => `<option value="${v}">${v}</option>`).join('');
-    elT2.value = t2List.includes(valT2) ? valT2 : "";
+    elT2.disabled = false;
+    elT2.value = valT2;
+  } else {
+    elT2.disabled = true;
   }
 
-  if (!valT1 || !valT2) {
-    elT3.innerHTML = '<option value="">-- Pilih Tingkat II --</option>';
-    elT3.disabled = true;
-    elT3.value = "";
-  } else {
-    elT3.disabled = false;
+  elT3.innerHTML = '<option value="">-- Pilih Tingkat II --</option>';
+  if (valT1 && valT2) {
     elT3.innerHTML = '<option value="">-- Semua --</option>' + t3List.map(v => `<option value="${v}">${v}</option>`).join('');
+    elT3.disabled = false;
+    elT3.value = valT3;
+  } else {
+    elT3.disabled = true;
   }
+}
+
+function eksekusiPencarian(isInitialLoad = false) {
+  if (!isInitialLoad) document.getElementById("loadingOverlay").style.display = "flex";
+  
+  setTimeout(() => {
+    // 1. Ambil nilai input teks KBLI dan Kategori
+    const cariKategori = document.getElementById("inputCariKategori").value.toLowerCase().trim();
+    const cariKbli = document.getElementById("inputCariKbli").value.toLowerCase().trim();
+    
+    // === BLOK BARU: RESET DROPDOWN JIKA TEKS BERUBAH ===
+    if (!isInitialLoad && (cariKategori !== lastCariKategori || cariKbli !== lastCariKbli)) {
+      document.getElementById("selTingkat1").value = "";
+      document.getElementById("selTingkat2").value = "";
+      document.getElementById("selTingkat3").value = "";
+      
+      // Perbarui ingatan sistem dengan teks yang baru
+      lastCariKategori = cariKategori;
+      lastCariKbli = cariKbli;
+    }
+    
+    // 2. Saring data RAW menggunakan Teks Saja
+    let textFilteredData = rawData.filter(item => {
+      const t1 = (item.Kategori_Tingkat_I || "").toLowerCase();
+      const t2 = (item.Kategori_Tingkat_II || "").toLowerCase();
+      const t3 = (item.Kategori_Tingkat_III || "").toLowerCase();
+      const kbli20 = (String(item.KBLI_2020_Kode || "") + " " + String(item.KBLI_2020_Deskripsi || "")).toLowerCase();
+      const kbli25 = (String(item.KBLI_2025_Kode || "") + " " + String(item.KBLI_2025_Deskripsi || "")).toLowerCase();
+
+      if (cariKategori && !t3.includes(cariKategori) && !t2.includes(cariKategori) && !t1.includes(cariKategori)) return false;
+      if (cariKbli && !kbli20.includes(cariKbli) && !kbli25.includes(cariKbli)) return false;
+      
+      return true;
+    });
+
+    // 3. Perbarui Opsi Dropdown HANYA dari data yang lolos saringan teks
+    updateDropdowns(textFilteredData);
+
+    // 4. Ambil Pilihan Dropdown Terkini
+    const valT1 = document.getElementById("selTingkat1").value;
+    const valT2 = document.getElementById("selTingkat2").value;
+    const valT3 = document.getElementById("selTingkat3").value;
+
+    // 5. Saring lagi menggunakan Dropdown
+    filteredData = textFilteredData.filter(item => {
+      if (valT1 && item.Kategori_Tingkat_I !== valT1) return false;
+      if (valT2 && item.Kategori_Tingkat_II !== valT2) return false;
+      if (valT3 && item.Kategori_Tingkat_III !== valT3) return false;
+      return true;
+    });
+    
+    // 6. Reset Halaman dan Cetak
+    currentPage = 1;
+    renderTable();
+    
+    document.getElementById("loadingOverlay").style.display = "none";
+  }, 80);
+}
+
+function changePage(direction) {
+  currentPage += direction;
+  renderTable();
 }
 
 function renderTable() {
   const body = document.getElementById("bodyTable");
   body.innerHTML = "";
-
+  
   const infoTotalData = filteredData.length;
 
+  // Jika Data Kosong
   if (infoTotalData === 0) {
     body.innerHTML = `<tr><td colspan="7" class="td-center" style="padding:30px; color:#94a3b8; font-weight:600;">Pencarian tidak menemukan hasil.</td></tr>`;
     document.getElementById("totalInfo").innerText = "Menampilkan 0 Data";
+    updatePaginationUI(0, 0);
     return;
   }
 
+  // Logika Matematika Paginasi
   const limitOpsi = document.getElementById("selJumlahData").value;
-  let dataYangDicetak = [...filteredData];
-  
-  if (limitOpsi !== "semua") {
+  let dataYangDicetak = [];
+  let totalPages = 1;
+
+  if (limitOpsi === "semua") {
+    dataYangDicetak = [...filteredData];
+    currentPage = 1;
+  } else {
     const limitNum = parseInt(limitOpsi);
-    dataYangDicetak = filteredData.slice(0, limitNum);
+    totalPages = Math.ceil(infoTotalData / limitNum);
+    
+    // Pastikan halaman tidak meleset
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+    
+    const startIndex = (currentPage - 1) * limitNum;
+    const endIndex = startIndex + limitNum;
+    dataYangDicetak = filteredData.slice(startIndex, endIndex);
   }
 
+  // Cetak Baris HTML
   let barisHTML = "";
   dataYangDicetak.forEach((row) => {
     barisHTML += `
@@ -330,96 +417,72 @@ function renderTable() {
   });
   
   body.innerHTML = barisHTML;
-  
-  const teksTampil = limitOpsi === "semua" || infoTotalData < parseInt(limitOpsi) ? infoTotalData : limitOpsi;
-  document.getElementById("totalInfo").innerText = `(Menampilkan ${teksTampil.toLocaleString("id-ID")} dari ${infoTotalData.toLocaleString("id-ID")} hasil filter | Total basis data: ${rawData.length.toLocaleString("id-ID")})`;
+  document.getElementById("totalInfo").innerText = `(Total basis data: ${rawData.length.toLocaleString("id-ID")})`;
+  updatePaginationUI(totalPages, infoTotalData);
 }
 
-function eksekusiPencarian() {
-  const valT1 = document.getElementById("selTingkat1").value;
-  const valT2 = document.getElementById("selTingkat2").value;
-  const valT3 = document.getElementById("selTingkat3").value;
-  const cariKategori = document.getElementById("inputCariKategori").value.toLowerCase().trim();
-  const cariKbli = document.getElementById("inputCariKbli").value.toLowerCase().trim();
+function updatePaginationUI(totalPages, totalItems) {
+  const isSemua = document.getElementById("selJumlahData").value === "semua";
+  const limit = isSemua ? totalItems : parseInt(document.getElementById("selJumlahData").value);
   
-  document.getElementById("loadingOverlay").style.display = "flex";
+  const startItem = totalItems === 0 ? 0 : ((currentPage - 1) * limit) + 1;
+  const endItem = isSemua ? totalItems : Math.min(currentPage * limit, totalItems);
   
-  setTimeout(() => {
-    filteredData = rawData.filter(item => {
-      const t1 = (item.Kategori_Tingkat_I || "").toLowerCase();
-      const t2 = (item.Kategori_Tingkat_II || "").toLowerCase();
-      const t3 = (item.Kategori_Tingkat_III || "").toLowerCase();
-      
-      const kbli20 = (String(item.KBLI_2020_Kode || "") + " " + String(item.KBLI_2020_Deskripsi || "")).toLowerCase();
-      const kbli25 = (String(item.KBLI_2025_Kode || "") + " " + String(item.KBLI_2025_Deskripsi || "")).toLowerCase();
+  const textInfo = totalItems === 0 ? "" : `Menampilkan ${startItem}-${endItem} dari ${totalItems.toLocaleString("id-ID")}`;
+  
+  // Update Teks Halaman
+  document.getElementById("pageInfoTop").innerText = textInfo;
+  document.getElementById("pageInfoBottom").innerText = textInfo;
 
-      if (valT1 && item.Kategori_Tingkat_I !== valT1) return false;
-      if (valT2 && item.Kategori_Tingkat_II !== valT2) return false;
-      if (valT3 && item.Kategori_Tingkat_III !== valT3) return false;
+  // Update Status Tombol Disable/Enable
+  const btnPrevT = document.getElementById("btnPrevTop");
+  const btnNextT = document.getElementById("btnNextTop");
+  const btnPrevB = document.getElementById("btnPrevBottom");
+  const btnNextB = document.getElementById("btnNextBottom");
 
-      if (cariKategori) {
-        if (t3.includes(cariKategori)) {
-        } else if (t2.includes(cariKategori)) {
-        } else if (t1.includes(cariKategori)) {
-        } else {
-          return false; 
-        }
-      }
-
-      if (cariKbli) {
-        if (kbli20.includes(cariKbli)) {
-        } else if (kbli25.includes(cariKbli)) {
-        } else {
-          return false; 
-        }
-      }
-
-      return true;
-    });
-    
-    renderTable();
-    document.getElementById("loadingOverlay").style.display = "none";
-  }, 80);
+  if (isSemua || totalPages <= 1) {
+    btnPrevT.disabled = true; btnNextT.disabled = true;
+    btnPrevB.disabled = true; btnNextB.disabled = true;
+  } else {
+    btnPrevT.disabled = (currentPage === 1);
+    btnNextT.disabled = (currentPage === totalPages);
+    btnPrevB.disabled = (currentPage === 1);
+    btnNextB.disabled = (currentPage === totalPages);
+  }
 }
 
-document.getElementById("btnSearch").addEventListener("click", eksekusiPencarian);
-document.getElementById("selJumlahData").addEventListener("change", renderTable);
+// Event Listeners Utama
+document.getElementById("btnSearch").addEventListener("click", () => eksekusiPencarian(false));
 
-document.getElementById("selTingkat1").addEventListener("change", () => {
-  document.getElementById("selTingkat2").value = "";
-  document.getElementById("selTingkat3").value = "";
-  isiDropdownKategori();
-  eksekusiPencarian();
+document.getElementById("selJumlahData").addEventListener("change", () => {
+  currentPage = 1;
+  renderTable();
 });
 
-document.getElementById("selTingkat2").addEventListener("change", () => {
-  document.getElementById("selTingkat3").value = "";
-  isiDropdownKategori();
-  eksekusiPencarian();
-});
+// Otomatis Panggil Filter Saat Dropdown Berubah
+document.getElementById("selTingkat1").addEventListener("change", () => eksekusiPencarian(false));
+document.getElementById("selTingkat2").addEventListener("change", () => eksekusiPencarian(false));
+document.getElementById("selTingkat3").addEventListener("change", () => eksekusiPencarian(false));
 
-document.getElementById("selTingkat3").addEventListener("change", eksekusiPencarian);
-
+// Enter di Input Text
 document.querySelectorAll(".filter-card input").forEach(input => {
   input.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      eksekusiPencarian();
+      eksekusiPencarian(false);
     }
   });
 });
 
+// Tombol Reset
 document.getElementById("btnReset").addEventListener("click", () => {
   document.getElementById("selTingkat1").value = "";
   document.getElementById("selTingkat2").value = "";
   document.getElementById("selTingkat3").value = "";
-  document.getElementById("selTingkat2").disabled = true; 
-  document.getElementById("selTingkat3").disabled = true; 
   document.getElementById("inputCariKategori").value = "";
   document.getElementById("inputCariKbli").value = "";
-  document.getElementById("selJumlahData").value = "10"; // Default reset ke 10
-  isiDropdownKategori();
-  eksekusiPencarian();
+  document.getElementById("selJumlahData").value = "10"; 
+  eksekusiPencarian(false);
 });
 
 window.onload = loadDataMaster;
