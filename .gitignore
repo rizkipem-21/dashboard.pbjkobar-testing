@@ -1,21 +1,22 @@
-arsip/
-data/**/v1_*.json
-data/**/Legacy_*.json
-data/master
-bot_telegram
-cek_duplikat.py
-tes.py
-__pycache__
-
 # Mengabaikan Python Virtual Environment & Cache (INI YANG PALING PENTING)
 venv/
 .venv/
 env/
 __pycache__/
+__pycache__
 *.pyc
 
-# Mengabaikan script & tools
+# mengabaikan Folder
+arsip/
+bot_telegram
 scripts/
 tools/
+arsip_lokal/
+
+# mengabaikan File
+data/**/v1_*.json
+data/**/Legacy_*.json
+cek_duplikat.py
+tes.py
 *.bat
 *.py
