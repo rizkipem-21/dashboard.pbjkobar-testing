@@ -263,14 +263,14 @@
     "Satuan Kerja": "Dinas Perhubungan",
     "Pagu Program": 11089866000.0,
     "Pagu Pengadaan": 10654182000.0,
-    "Paket Penyedia": 75.0,
-    "RUP Penyedia": 10500724500.0,
+    "Paket Penyedia": 76.0,
+    "RUP Penyedia": 10654182000.0,
     "Paket Swakelola": 0.0,
     "RUP Swakelola": 0.0,
-    "Total Paket Terumumkan": 75.0,
-    "Total RUP Terumumkan": 10500724500.0,
-    "Selisih RUP Terumumkan": -153457500.0,
-    "Persentase": 98.55965009796154
+    "Total Paket Terumumkan": 76.0,
+    "Total RUP Terumumkan": 10654182000.0,
+    "Selisih RUP Terumumkan": 0.0,
+    "Persentase": 100.0
   },
   {
     "Satuan Kerja": "Dinas Perikanan dan Ketahanan Pangan",
@@ -380,14 +380,14 @@
     "Satuan Kerja": "Instalasi Farmasi",
     "Pagu Program": 5257374241.0,
     "Pagu Pengadaan": 5257374241.0,
-    "Paket Penyedia": 34.0,
-    "RUP Penyedia": 5051110241.0,
+    "Paket Penyedia": 31.0,
+    "RUP Penyedia": 2831098273.0,
     "Paket Swakelola": 0.0,
     "RUP Swakelola": 0.0,
-    "Total Paket Terumumkan": 34.0,
-    "Total RUP Terumumkan": 5051110241.0,
-    "Selisih RUP Terumumkan": -206264000.0,
-    "Persentase": 96.07667267832227
+    "Total Paket Terumumkan": 31.0,
+    "Total RUP Terumumkan": 2831098273.0,
+    "Selisih RUP Terumumkan": -2426275968.0,
+    "Persentase": 53.850042687117124
   },
   {
     "Satuan Kerja": "Kecamatan Arut Selatan",
