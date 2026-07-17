@@ -18,5 +18,5 @@ data/**/Legacy_*.json
 data_master/kamus_pembersihan.csv
 data_master/kamus_penyedia.json
 data_master/manual_konsolidasi.json
-tools/config_rahasia.py
+config_rahasia.py
 token.txt
