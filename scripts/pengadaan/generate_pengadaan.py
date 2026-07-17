@@ -133,6 +133,26 @@ def kelola_arsip_bulanan(folder_path, tahun):
             except Exception as e: 
                 log_print(f"⚠️ Gagal memindah arsip {nama_file} (Mungkin file terbuka di Excel): {str(e)}")
 
+def update_daftar_arsip_json(folder_path):
+    """Membaca sisa file Excel di folder output dan memperbarui daftar_arsip.json"""
+    if not os.path.exists(folder_path): return
+    
+    # Ambil semua file excel, urutkan dari yang terbaru (Z-A)
+    file_excel = [f for f in os.listdir(folder_path) if f.endswith('.xlsx')]
+    file_excel.sort(reverse=True) 
+    
+    # Buat format JSON (sesuaikan dengan format yang dibaca website Anda)
+    arsip_list = [{"nama_file": f} for f in file_excel]
+    
+    # Simpan ke daftar_arsip.json
+    path_json = os.path.join(folder_path, 'daftar_arsip.json')
+    try:
+        with open(path_json, 'w', encoding='utf-8') as f:
+            json.dump(arsip_list, f, indent=4)
+        log_print(f"📝 Daftar arsip JSON diperbarui: {path_json}")
+    except Exception as e:
+        log_print(f"⚠️ Gagal memperbarui daftar_arsip.json: {str(e)}")                
+
 def get_kategori_status(sumber, s):
     sumber, s = str(sumber).lower(), str(s).lower()
     if "sumber 1" in sumber: return "Belum Proses"
@@ -935,6 +955,7 @@ def process_tahun(tahun):
     
     shutil.copy2(output_excel_path, os.path.join(data_dir, f'master_pengadaan_{tahun}.xlsx'))
     kelola_arsip_bulanan(output_dir_excel, tahun)
+    update_daftar_arsip_json(output_dir_excel)
     
     log_print(f'SELESAI GENERATE TAHUN {tahun} | Total data: {len(final_df)}')
     return len(final_df)
