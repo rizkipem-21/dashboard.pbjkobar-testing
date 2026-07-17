@@ -6,17 +6,11 @@ __pycache__/
 __pycache__
 *.pyc
 
-# mengabaikan Folder
+# Abaikan Folder
 arsip/
-bot_telegram
-scripts/
-tools/
-arsip_lokal/
+bot_telegram/
 
-# mengabaikan File
+# Abaikan File
 data/**/v1_*.json
 data/**/Legacy_*.json
-cek_duplikat.py
-tes.py
-*.bat
-*.py
+
