@@ -602,6 +602,7 @@
           }
 
           dataFiles.sort().reverse().forEach(fileName => {
+            const fileName = item.nama_file;
             const row = document.createElement('tr');
             row.style.borderBottom = '1px solid #e2e8f0';
             row.innerHTML = `
