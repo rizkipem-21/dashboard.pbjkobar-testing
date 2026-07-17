@@ -172,6 +172,16 @@
         </button>
       </div>
 
+      <div class="mb-6">
+        <p class="text-xs font-semibold text-gray-400 mb-2 px-2">Kategori - KBLI Inaproc</p>
+        <button id="btn-kbli" onclick="switchTab('view-kbli', this, 'kbli')" class="menu-item w-full flex items-center px-4 py-2.5 text-gray-600 hover:bg-gray-100 hover:text-lpse-biru rounded-lg text-sm transition-colors text-left">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-3 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+          Data KBLI
+        </button>
+      </div>
+
       <div>
         <p class="text-xs font-semibold text-gray-400 mb-2 px-2">Server Backup</p>
         <button id="btn-arsip" onclick="switchTab('view-arsip', this, 'arsip')" class="menu-item w-full flex items-center px-4 py-2.5 text-gray-600 hover:bg-gray-100 hover:text-lpse-biru rounded-lg text-sm transition-colors text-left">
@@ -298,11 +308,15 @@
     </div>
 
     <div id="view-rup" class="view-panel hidden flex-1 relative bg-[#f0f4f8]">
-      <iframe src="rup/index.html" class="w-full h-full border-none absolute inset-0 bg-transparent"></iframe>
+      <iframe src="rup/data_rup.html" class="w-full h-full border-none absolute inset-0 bg-transparent"></iframe>
     </div>
 
     <div id="view-pengadaan" class="view-panel hidden flex-1 relative bg-[#f0f4f8]">
-      <iframe src="pengadaan/index.html" class="w-full h-full border-none absolute inset-0 bg-transparent"></iframe>
+      <iframe src="pengadaan/data_pengadaan.html" class="w-full h-full border-none absolute inset-0 bg-transparent"></iframe>
+    </div>
+
+    <div id="view-kbli" class="view-panel hidden flex-1 relative bg-[#f0f4f8]">
+      <iframe src="kategori_kbli/kbli.html" class="w-full h-full border-none absolute inset-0 bg-transparent"></iframe>
     </div>
 
     <div id="view-arsip" class="view-panel hidden w-full h-full relative overflow-y-auto bg-[#f0f4f8]">
@@ -417,6 +431,7 @@
       if (hash === 'rup') switchTab('view-rup', document.getElementById('btn-rup'), 'rup');
       else if (hash === 'pengadaan') switchTab('view-pengadaan', document.getElementById('btn-pengadaan'), 'pengadaan');
       else if (hash === 'arsip') switchTab('view-arsip', document.getElementById('btn-arsip'), 'arsip');
+      else if (hash === 'kbli') switchTab('view-kbli', document.getElementById('btn-kbli'), 'kbli'); // <--- INI BARIS BARU
       else switchTab('view-dashboard', document.getElementById('btn-dashboard'), '');
       
       loadAllData(document.getElementById("selectYearGlobal").value);
