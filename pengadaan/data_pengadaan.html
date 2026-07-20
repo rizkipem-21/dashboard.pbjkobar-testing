@@ -177,20 +177,24 @@
 
 <div class="stat-cards">
   <div class="stat-card stat-biru">
-    <span class="stat-label">Total Paket</span>
-    <span class="stat-value" id="statTotal">-</span>
+    <span class="stat-label">Total Pengadaan</span>
+    <span class="stat-value" id="statRpTotal">-</span>
+    <span id="statTotal" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span>
   </div>
   <div class="stat-card stat-merah">
     <span class="stat-label">Belum Proses</span>
-    <span class="stat-value" id="statFiltered">-</span>
+    <span class="stat-value" id="statRpBelum">-</span>
+    <span id="statFiltered" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span>
   </div>
   <div class="stat-card stat-kuning">
     <span class="stat-label">Sedang Berjalan</span>
-    <span class="stat-value" id="statProses">-</span>
+    <span class="stat-value" id="statRpProses">-</span>
+    <span id="statProses" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span>
   </div>
   <div class="stat-card stat-hijau">
     <span class="stat-label">Sudah Selesai</span>
-    <span class="stat-value" id="statSelesai">-</span>
+    <span class="stat-value" id="statRpSelesai">-</span>
+    <span id="statSelesai" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span>
   </div>
 </div>
 
@@ -691,14 +695,41 @@ function applyFilter() {
 }
 
 function updateStatCards() {
-  const belumProses = filtered.filter(r => getKategoriStatus(r) === "Belum Proses").length;
-  const proses      = filtered.filter(r => getKategoriStatus(r) === "Sedang Berjalan").length;
-  const selesai     = filtered.filter(r => getKategoriStatus(r) === "Sudah Selesai").length;
+  let rpTotal = 0, rpBelum = 0, rpProses = 0, rpSelesai = 0;
+  let pktBelum = 0, pktProses = 0, pktSelesai = 0;
 
-  document.getElementById("statTotal").innerText    = filtered.length.toLocaleString("id-ID");
-  document.getElementById("statFiltered").innerText = belumProses.toLocaleString("id-ID");
-  document.getElementById("statProses").innerText   = proses.toLocaleString("id-ID");
-  document.getElementById("statSelesai").innerText  = selesai.toLocaleString("id-ID");
+  filtered.forEach(r => {
+    // 1. Tentukan nominal berdasarkan teks status asli
+    const rawStatus = (r["Status"] || "").trim().toLowerCase();
+    let nominal = 0;
+    
+    if (rawStatus === "pengumuman rup" || rawStatus === "pemilihan penyedia") {
+      nominal = Number(r["Nilai Pagu RUP"] || 0);
+    } else {
+      // Mengambil hasil pemilihan (ditambah fallback aman ke Pagu jika hasil pemilihan kebetulan kosong)
+      nominal = Number(r["Nilai Hasil Pemilihan"] || 0) || Number(r["Nilai Pagu RUP"] || 0);
+    }
+
+    rpTotal += nominal;
+
+    // 2. Masukkan ke kartu berdasarkan kategori status
+    const kat = getKategoriStatus(r);
+    if (kat === "Belum Proses") { pktBelum++; rpBelum += nominal; }
+    else if (kat === "Sedang Berjalan") { pktProses++; rpProses += nominal; }
+    else if (kat === "Sudah Selesai") { pktSelesai++; rpSelesai += nominal; }
+  });
+
+  document.getElementById("statRpTotal").innerText = rupiah(rpTotal);
+  document.getElementById("statTotal").innerText = filtered.length.toLocaleString("id-ID") + " Paket";
+
+  document.getElementById("statRpBelum").innerText = rupiah(rpBelum);
+  document.getElementById("statFiltered").innerText = pktBelum.toLocaleString("id-ID") + " Paket";
+
+  document.getElementById("statRpProses").innerText = rupiah(rpProses);
+  document.getElementById("statProses").innerText = pktProses.toLocaleString("id-ID") + " Paket";
+
+  document.getElementById("statRpSelesai").innerText = rupiah(rpSelesai);
+  document.getElementById("statSelesai").innerText = pktSelesai.toLocaleString("id-ID") + " Paket";
 }
 
 function renderTable() {
