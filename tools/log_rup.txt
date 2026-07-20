@@ -11308,3 +11308,47 @@ PUSH GITHUB SUKSES!
 ==================================================
 PROSES SELESAI SELURUHNYA PADA 17 Juli 2026 | 15.00 WIB
 ==================================================
+
+==================================================
+START GENERATE RUP 20 Juli 2026 | 13.00 WIB
+==================================================
+
+--- MEMPROSES DATA TAHUN 2026 ---
+DONE -> JSON: rekap_rup_2026.json
+DONE -> EXCEL: D:\dashboard.pbjkobar-testing\output\rup\2026\Rekap RUP Tahun 2026 (2026-07-20).xlsx
+
+[SKIP] Tahun 2025 sudah ada (final).
+
+[SKIP] Tahun 2024 sudah ada (final).
+
+==================================================
+MENGIRIM DATA RUP KE GITHUB DARI PYTHON...
+==================================================
+
+==================================================
+ PROSES SELESAI SELURUHNYA!
+==================================================
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/last-update-rup.txt
+	deleted:    output/rup/2026/Rekap RUP Tahun 2026 (2026-07-03).xlsx
+	deleted:    output/rup/2026/Rekap RUP Tahun 2026 (2026-07-06).xlsx
+	deleted:    output/rup/2026/Rekap RUP Tahun 2026 (2026-07-07).xlsx
+	deleted:    output/rup/2026/Rekap RUP Tahun 2026 (2026-07-08).xlsx
+	deleted:    output/rup/2026/Rekap RUP Tahun 2026 (2026-07-15).xlsx
+	deleted:    output/rup/2026/Rekap RUP Tahun 2026 (2026-07-16).xlsx
+	deleted:    output/rup/2026/Rekap RUP Tahun 2026 (2026-07-17).xlsx
+	modified:   output/rup/2026/daftar_arsip.json
+	modified:   scripts/rup/generate_rup.py
+	modified:   tools/log_rup.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	output/rup/2026/Rekap RUP Tahun 2026 (2026-07-20).xlsx
+
+no changes added to commit (use "git add" and/or "git commit -a")
+

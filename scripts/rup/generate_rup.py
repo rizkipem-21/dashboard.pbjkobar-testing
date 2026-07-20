@@ -7,6 +7,7 @@ import os
 import re
 import sys
 import subprocess
+import shutil
 from datetime import datetime, timedelta, timezone
 import warnings
 from openpyxl import load_workbook
@@ -118,26 +119,34 @@ def load_json_local(path):
     except:
         return []
 
-def bersihkan_arsip_bulanan(folder_path):
+def kelola_arsip_bulanan(folder_path, tahun):
     if not os.path.exists(folder_path): return
-    bulan_ini = datetime.now().strftime("%Y-%m")
+    folder_arsip_lokal = os.path.join(BASE_DIR, 'arsip_lokal', 'rup', str(tahun))
+    os.makedirs(folder_arsip_lokal, exist_ok=True)
     file_excel = [f for f in os.listdir(folder_path) if f.endswith('.xlsx')]
-    
     arsip_bulanan = {}
     for f in file_excel:
         match = re.search(r"\((\d{4}-\d{2}-\d{2})\)", f)
         if match:
-            tanggal = match.group(1)
-            bulan = tanggal[:7]
+            bulan = match.group(1)[:7]
             if bulan not in arsip_bulanan: arsip_bulanan[bulan] = []
-            arsip_bulanan[bulan].append((tanggal, f))
+            arsip_bulanan[bulan].append((match.group(1), f))
             
     for bulan, list_file in arsip_bulanan.items():
-        if bulan != bulan_ini:
-            list_file.sort(key=lambda x: x[0])
-            for tgl, nama_file in list_file[:-1]:
-                try: os.remove(os.path.join(folder_path, nama_file))
-                except Exception: pass
+        list_file.sort(key=lambda x: x[0])
+        for tgl, nama_file in list_file[:-1]:
+            try: shutil.move(os.path.join(folder_path, nama_file), os.path.join(folder_arsip_lokal, nama_file))
+            except: pass
+
+def update_daftar_arsip_json(folder_path):
+    if not os.path.exists(folder_path): return
+    file_excel = [f for f in os.listdir(folder_path) if f.endswith('.xlsx')]
+    file_excel.sort(reverse=True) 
+    arsip_list = [{"nama_file": f} for f in file_excel]
+    try:
+        with open(os.path.join(folder_path, 'daftar_arsip.json'), 'w', encoding='utf-8') as f:
+            json.dump(arsip_list, f, indent=4)
+    except: pass
 
 def get_file_path(data_dir, base_name, tahun):
     v1_path = os.path.join(data_dir, f"v1_{base_name}_{tahun}.json")
@@ -250,12 +259,8 @@ def process_tahun(tahun):
                 cell.number_format = '0.00"%"'
 
     wb.save(path_history)
-    bersihkan_arsip_bulanan(output_history_dir)
-    
-    if os.path.exists(output_history_dir):
-        file_tersisa = [f for f in os.listdir(output_history_dir) if f.endswith('.xlsx')]
-        with open(os.path.join(output_history_dir, 'daftar_arsip.json'), 'w') as f:
-            json.dump(file_tersisa, f)
+    kelola_arsip_bulanan(output_history_dir, tahun)
+    update_daftar_arsip_json(output_history_dir)
 
     log_print(f"DONE -> JSON: rekap_rup_{tahun}.json")
     log_print(f"DONE -> EXCEL: {path_history}")
