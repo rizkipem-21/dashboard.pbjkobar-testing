@@ -8,7 +8,7 @@ __pycache__
 
 # Abaikan Folder
 app/
-arsip/
+arsip_file/
 arsip_lokal/
 bot_telegram/
 
