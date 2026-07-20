@@ -11291,3 +11291,20 @@ Untracked files:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 
+
+[main 616f1d3] Auto update RUP 2026-07-17 15:00:36
+ 6 files changed, 95 insertions(+), 15 deletions(-)
+ create mode 100644 output/rup/2026/Rekap RUP Tahun 2026 (2026-07-17).xlsx
+ delete mode 100644 scripts/rup/error_api_rup.json
+
+
+To https://github.com/rizkipem-21/dashboard.pbjkobar-testing.git
+   594ea64..616f1d3  main -> main
+
+PUSH STATUS: 0  
+SELESAI 17/07/2026 15:00:42  
+PUSH GITHUB SUKSES!
+
+==================================================
+PROSES SELESAI SELURUHNYA PADA 17 Juli 2026 | 15.00 WIB
+==================================================
