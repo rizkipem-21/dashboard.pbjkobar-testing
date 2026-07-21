@@ -109,7 +109,7 @@
 
     <div class="py-4 px-4 border-t border-gray-100 bg-gray-50 text-center flex-shrink-0">
       <p class="text-[0.7rem] font-medium text-gray-500">&copy; Tim LPSE Kab. Kotawaringin Barat 2025</p>
-      <p class="text-[0.7rem] font-bold text-lpse-biru mt-1">dashboard.pbjkobar v1.7</p>
+      <p id="teks-versi" class="text-[0.7rem] font-bold text-lpse-biru mt-1">dashboard.pbjkobar ...</p>
     </div>
   </aside>
 
@@ -166,10 +166,10 @@
             <button onclick="document.getElementById('btn-pengadaan').click()" class="btn-detail">Lihat Detail Pengadaan ➔</button>
           </div>
           <div class="stat-cards">
-            <div class="stat-card card-p1"><span class="stat-label">Total Paket</span><span class="stat-value" id="pengStatTotal">-</span></div>
-            <div class="stat-card card-p2"><span class="stat-label">Belum Proses</span><span class="stat-value" id="pengStatBelum">-</span></div>
-            <div class="stat-card card-p3"><span class="stat-label">Sedang Berjalan</span><span class="stat-value" id="pengStatProses">-</span></div>
-            <div class="stat-card card-p4"><span class="stat-label">Sudah Selesai</span><span class="stat-value" id="pengStatSelesai">-</span></div>
+            <div class="stat-card card-p1"><span class="stat-label">Total Pengadaan</span><span class="stat-value" id="pengRpTotal">-</span><span id="pengPktTotal" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span></div>
+            <div class="stat-card card-p2"><span class="stat-label">Belum Proses</span><span class="stat-value" id="pengRpBelum">-</span><span id="pengPktBelum" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span></div>
+            <div class="stat-card card-p3"><span class="stat-label">Sedang Berjalan</span><span class="stat-value" id="pengRpProses">-</span><span id="pengPktProses" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span></div>
+            <div class="stat-card card-p4"><span class="stat-label">Sudah Selesai</span><span class="stat-value" id="pengRpSelesai">-</span><span id="pengPktSelesai" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span></div>
           </div>
         </div>
       </div>
@@ -228,7 +228,21 @@
       
       loadAllData(document.getElementById("selectYearGlobal").value);
     }
-    window.onload = checkUrlHash;
+    
+    async function fetchVersiApp() {
+      try {
+        const res = await fetch('versi.txt');
+        if (res.ok) {
+          const versi = await res.text();
+          document.getElementById('teks-versi').innerText = "dashboard.pbjkobar " + versi.trim();
+        }
+      } catch (e) {}
+    }
+
+    window.onload = () => {
+      checkUrlHash();
+      fetchVersiApp();
+    };
 
     function rupiah(n) { return "Rp " + Number(n || 0).toLocaleString("id-ID"); }
 
@@ -293,23 +307,42 @@
         if (!res.ok) throw new Error("No Data");
         const data = await res.json();
         
-        let belum = 0, proses = 0, selesai = 0;
-        data.forEach(row => {
-          const kat = getKategoriStatus(row);
-          if (kat === "Belum Proses") belum++;
-          else if (kat === "Sedang Berjalan") proses++;
-          else if (kat === "Sudah Selesai") selesai++;
+        let rpTotal = 0, rpBelum = 0, rpProses = 0, rpSelesai = 0;
+        let pktBelum = 0, pktProses = 0, pktSelesai = 0;
+
+        data.forEach(r => {
+          const rawStatus = (r["Status"] || "").trim().toLowerCase();
+          let nominal = 0;
+          if (rawStatus === "pengumuman rup" || rawStatus === "pemilihan penyedia") {
+            nominal = Number(r["Nilai Pagu RUP"] || 0);
+          } else {
+            nominal = Number(r["Nilai Hasil Pemilihan"] || 0) || Number(r["Nilai Pagu RUP"] || 0);
+          }
+          rpTotal += nominal;
+
+          const kat = getKategoriStatus(r);
+          if (kat === "Belum Proses") { pktBelum++; rpBelum += nominal; }
+          else if (kat === "Sedang Berjalan") { pktProses++; rpProses += nominal; }
+          else if (kat === "Sudah Selesai") { pktSelesai++; rpSelesai += nominal; }
         });
 
-        document.getElementById("pengStatTotal").innerText = data.length.toLocaleString("id-ID");
-        document.getElementById("pengStatBelum").innerText = belum.toLocaleString("id-ID");
-        document.getElementById("pengStatProses").innerText = proses.toLocaleString("id-ID");
-        document.getElementById("pengStatSelesai").innerText = selesai.toLocaleString("id-ID");
+        document.getElementById("pengRpTotal").innerText = rupiah(rpTotal);
+        document.getElementById("pengPktTotal").innerText = data.length.toLocaleString("id-ID") + " Paket";
+        document.getElementById("pengRpBelum").innerText = rupiah(rpBelum);
+        document.getElementById("pengPktBelum").innerText = pktBelum.toLocaleString("id-ID") + " Paket";
+        document.getElementById("pengRpProses").innerText = rupiah(rpProses);
+        document.getElementById("pengPktProses").innerText = pktProses.toLocaleString("id-ID") + " Paket";
+        document.getElementById("pengRpSelesai").innerText = rupiah(rpSelesai);
+        document.getElementById("pengPktSelesai").innerText = pktSelesai.toLocaleString("id-ID") + " Paket";
       } catch (e) {
-        document.getElementById("pengStatTotal").innerText = "0";
-        document.getElementById("pengStatBelum").innerText = "0";
-        document.getElementById("pengStatProses").innerText = "0";
-        document.getElementById("pengStatSelesai").innerText = "0";
+        document.getElementById("pengRpTotal").innerText = "Rp 0";
+        document.getElementById("pengPktTotal").innerText = "0 Paket";
+        document.getElementById("pengRpBelum").innerText = "Rp 0";
+        document.getElementById("pengPktBelum").innerText = "0 Paket";
+        document.getElementById("pengRpProses").innerText = "Rp 0";
+        document.getElementById("pengPktProses").innerText = "0 Paket";
+        document.getElementById("pengRpSelesai").innerText = "Rp 0";
+        document.getElementById("pengPktSelesai").innerText = "0 Paket";
       }
     }
 

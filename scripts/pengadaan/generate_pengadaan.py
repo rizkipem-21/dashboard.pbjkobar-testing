@@ -487,6 +487,9 @@ def process_tahun(tahun):
         return pd.DataFrame()
 
     df1_map, df1_2_map, df1_3_map, df1_4_map = build_df_map(df1), build_df_map(df1_2), build_df_map(df1_3), build_df_map(df1_4)
+    map_status_konsol = {}
+    if not df1_3.empty and 'kd_rup' in df1_3.columns and 'status_konsolidasi' in df1_3.columns:
+        map_status_konsol = {int(float(str(k).strip())): v for k, v in zip(df1_3['kd_rup'], df1_3['status_konsolidasi']) if pd.notna(k) and str(k).strip().isdigit()}
 
     def get_s1(kd, col, tipe='s1'):
         try:
@@ -820,7 +823,15 @@ def process_tahun(tahun):
     final_df = final_df.drop_duplicates(ignore_index=True)
     final_df = final_df.map(lambda x: re.sub(r'[\x00-\x1F]', '', str(x)) if isinstance(x, str) else x)
 
-    cols = ['Kode Paket', 'Kode RUP', 'Kode RUP Baru', 'Satuan Kerja', 'Nama Paket', 'Metode Pemilihan', 'Jenis Pengadaan', 'Sumber Dana', 'PDN', 'UKM', 'Nilai Pagu RUP', 'Nilai Hasil Pemilihan', 'Tanggal Kontrak', 'Nama Penyedia', 'Status', 'Nilai HPS', 'Nilai PDN', 'Nilai UMK', 'Cara Pengadaan', 'Sumber']
+    def get_status_konsolidasi(rup_val):
+        if pd.isna(rup_val) or not str(rup_val).strip(): return ""
+        valid_rups = [k for k in str(rup_val).split(';') if k.strip().isdigit()]
+        if len(valid_rups) > 1: return "Konsolidasi"
+        elif len(valid_rups) == 1: return map_status_konsol.get(int(valid_rups[0]), "")
+        return ""
+    final_df['Status Konsolidasi'] = final_df['Kode RUP'].apply(get_status_konsolidasi)
+
+    cols = ['Kode Paket', 'Kode RUP', 'Kode RUP Baru', 'Satuan Kerja', 'Nama Paket', 'Metode Pemilihan', 'Jenis Pengadaan', 'Sumber Dana', 'PDN', 'UKM', 'Status Konsolidasi', 'Nilai Pagu RUP', 'Nilai Hasil Pemilihan', 'Tanggal Kontrak', 'Nama Penyedia', 'Status', 'Nilai HPS', 'Nilai PDN', 'Nilai UMK', 'Cara Pengadaan', 'Sumber']
     final_df = final_df[cols].fillna("")
     final_df['PDN'] = final_df['PDN'].replace("", "N/A")
     final_df['UKM'] = final_df['UKM'].replace("", "N/A")
@@ -893,7 +904,7 @@ def process_tahun(tahun):
         rekap_data.append({
             'Kode Paket': aggregate_text(group['Kode Paket']), 'Kode RUP': first_row['Kode RUP'], 'Kode RUP Baru': first_row['Kode RUP Baru'],
             'Satuan Kerja': first_row['Satuan Kerja'], 'Nama Paket': first_row['Nama Paket'], 'Metode Pemilihan': first_row['Metode Pemilihan'],
-            'Jenis Pengadaan': first_row['Jenis Pengadaan'], 'Sumber Dana': first_row['Sumber Dana'], 'PDN': first_row['PDN'], 'UKM': first_row['UKM'],
+            'Jenis Pengadaan': first_row['Jenis Pengadaan'], 'Sumber Dana': first_row['Sumber Dana'], 'PDN': first_row['PDN'], 'UKM': first_row['UKM'], 'Status Konsolidasi': first_row['Status Konsolidasi'],
             'Nilai Pagu RUP': pagu_rup if pagu_rup != 0 else "", 'Nilai Hasil Pemilihan': sum_hasil if sum_hasil != 0 else "",
             'Tanggal Kontrak': aggregate_text(group['Tanggal Kontrak']), 'Nama Penyedia': aggregate_text(group['Nama Penyedia']),
             'Status': aggregate_raw_status(group, pagu_rup, sum_hasil), 'Nilai HPS': sum_hps if sum_hps != 0 else "",
@@ -948,7 +959,7 @@ def process_tahun(tahun):
         ws.freeze_panes = 'A2'
         ws.auto_filter.ref = ws.dimensions
 
-    lebar_baku = {'Kode Paket': 25, 'Kode RUP': 18, 'Kode RUP Baru': 18, 'Satuan Kerja': 38, 'Nama Paket': 50, 'Metode Pemilihan': 22, 'Jenis Pengadaan': 32, 'Sumber Dana': 14, 'PDN': 10, 'UKM': 10, 'Nilai Pagu RUP': 20, 'Nilai Hasil Pemilihan': 20, 'Tanggal Kontrak': 25, 'Nama Penyedia': 40, 'Status': 28, 'Nilai HPS': 20, 'Nilai PDN': 18, 'Nilai UMK': 18, 'Cara Pengadaan': 25, 'Sumber': 15}
+    lebar_baku = {'Kode Paket': 25, 'Kode RUP': 18, 'Kode RUP Baru': 18, 'Satuan Kerja': 38, 'Nama Paket': 50, 'Metode Pemilihan': 22, 'Jenis Pengadaan': 32, 'Sumber Dana': 14, 'PDN': 10, 'UKM': 10, 'Status Konsolidasi': 18, 'Nilai Pagu RUP': 20, 'Nilai Hasil Pemilihan': 20, 'Tanggal Kontrak': 25, 'Nama Penyedia': 40, 'Status': 28, 'Nilai HPS': 20, 'Nilai PDN': 18, 'Nilai UMK': 18, 'Cara Pengadaan': 25, 'Sumber': 15}
     style_sheet('1. Rekap per RUP', df_rekap, lebar_baku, kolom_angka_baku)
     style_sheet('2. Detail per Paket', excel_df_detail, lebar_baku, kolom_angka_baku)
     wb.save(output_excel_path)
