@@ -72,6 +72,17 @@ def download_data_api_with_retry(tahun):
         filename = f"{tipe}_{base_name}_{tahun}.json"
         output_path = os.path.join(data_dir, filename)
 
+        # -- TAMBAHAN LOGIKA BACKUP HARIAN --
+        if os.path.exists(output_path):
+            tgl_file = datetime.fromtimestamp(os.path.getmtime(output_path)).date()
+            if tgl_file < datetime.now().date():
+                import shutil
+                f_arsip = os.path.join(BASE_DIR, 'arsip_json', str(tgl_file.year), f"{tgl_file.month:02d}", f"{tgl_file.day:02d}")
+                os.makedirs(f_arsip, exist_ok=True)
+                shutil.move(output_path, os.path.join(f_arsip, filename))
+                log_print(f"  -> [Backup] {filename} dipindah ke arsip {tgl_file}")
+        # -----------------------------------
+
         log_print(f"\nDOWNLOAD [{tipe.upper()}]: {target_url}")
 
         if is_v1:

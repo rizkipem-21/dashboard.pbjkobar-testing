@@ -782,15 +782,15 @@
   {
     "Satuan Kerja": "Puskesmas Kumai",
     "Pagu Program": 4403647000.0,
-    "Pagu Pengadaan": 1117262389.0,
+    "Pagu Pengadaan": 1116362329.0,
     "Paket Penyedia": 42.0,
     "RUP Penyedia": 1116362329.0,
     "Paket Swakelola": 0.0,
     "RUP Swakelola": 0.0,
     "Total Paket Terumumkan": 42.0,
     "Total RUP Terumumkan": 1116362329.0,
-    "Selisih RUP Terumumkan": -900060.0,
-    "Persentase": 99.91944058899132
+    "Selisih RUP Terumumkan": 0.0,
+    "Persentase": 100.0
   },
   {
     "Satuan Kerja": "Puskesmas Kumpai Batu Atas",
