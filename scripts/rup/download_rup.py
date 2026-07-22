@@ -50,7 +50,9 @@ def get_waktu_indonesia():
 
 def download_data_api_with_retry(tahun):
     global daftar_error_api
-    log_print(f"\n--- MENGUNDUH DATA TAHUN {tahun} ---")
+    log_print("\n==================================================")
+    log_print(f"--- MENGUNDUH DATA TAHUN {tahun} ---")
+    log_print("==================================================")
     data_dir = os.path.join(BASE_DIR, 'data', str(tahun))
     os.makedirs(data_dir, exist_ok=True)
 
@@ -70,20 +72,21 @@ def download_data_api_with_retry(tahun):
         match = re.search(r'api/(?:v1|legacy)/(.*?)\?', target_url)
         base_name = match.group(1).replace('/', '_') if match else "unknown"
         filename = f"{tipe}_{base_name}_{tahun}.json"
+        log_print("")
         output_path = os.path.join(data_dir, filename)
 
-        # -- TAMBAHAN LOGIKA BACKUP HARIAN --
+        # -- TAMBAHAN LOGIKA BACKUP HARIAN (COPY) --
         if os.path.exists(output_path):
             tgl_file = datetime.fromtimestamp(os.path.getmtime(output_path)).date()
             if tgl_file < datetime.now().date():
                 import shutil
                 f_arsip = os.path.join(BASE_DIR, 'arsip_json', str(tgl_file.year), f"{tgl_file.month:02d}", f"{tgl_file.day:02d}")
                 os.makedirs(f_arsip, exist_ok=True)
-                shutil.move(output_path, os.path.join(f_arsip, filename))
-                log_print(f"  -> [Backup] {filename} dipindah ke arsip {tgl_file}")
+                shutil.copy2(output_path, os.path.join(f_arsip, filename))
+                log_print(f"[Backup] {filename} di-copy ke arsip {tgl_file}")
         # -----------------------------------
 
-        log_print(f"\nDOWNLOAD [{tipe.upper()}]: {target_url}")
+        log_print(f"DOWNLOAD [{tipe.upper()}]: {target_url}")
 
         if is_v1:
             all_data = []

@@ -9,6 +9,7 @@ __pycache__
 # Abaikan Folder
 app/
 arsip_file/
+arsip_json/
 arsip_lokal/
 bot_telegram/
 
