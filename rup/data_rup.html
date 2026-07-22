@@ -22,205 +22,66 @@
   }
 
   /* ===== HEADER ===== */
-  .page-header {
-    background: linear-gradient(135deg, var(--lpse-biru) 0%, var(--lpse-biru2) 100%);
-    border-bottom: 4px solid var(--lpse-kuning);
-    padding: 20px 28px 16px;
-    margin-bottom: 24px;
-    border-radius: 0 0 12px 12px;
-    box-shadow: 0 4px 16px rgba(26,58,107,0.18);
-  }
-  .page-header h1 {
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    margin: 0 0 2px 0;
-  }
-  .page-header .last-update {
-    color: rgba(255,255,255,0.72);
-    font-size: 0.75rem;
-  }
+  .page-header { background: linear-gradient(135deg, var(--lpse-biru) 0%, var(--lpse-biru2) 100%); border-bottom: 3px solid var(--lpse-kuning); padding: 14px 20px 10px; margin-bottom: 16px; border-radius: 0 0 10px 10px; box-shadow: 0 3px 12px rgba(26,58,107,0.15); }
+  .page-header h1 { color: #fff; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.2px; margin: 0 0 2px 0; }
+  .page-header .last-update { color: rgba(255,255,255,0.72); font-size: 0.65rem; }
 
   /* ===== YEAR SELECTOR ===== */
-  .year-selector-wrap {
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .year-selector-wrap label {
-    color: #fff;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
-  .year-select {
-    padding: 6px 14px;
-    border-radius: 6px;
-    border: 1px solid rgba(255,255,255,0.3);
-    background: rgba(255,255,255,0.1);
-    color: #fff;
-    font-weight: 600;
-    outline: none;
-    cursor: pointer;
-  }
+  .year-selector-wrap { margin-top: 10px; display: flex; align-items: center; gap: 8px; }
+  .year-selector-wrap label { color: #fff; font-size: 0.75rem; font-weight: 600; }
+  .year-select { padding: 4px 10px; border-radius: 5px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff; font-weight: 600; outline: none; cursor: pointer; }
   .year-select option { color: #1e293b; background: #fff; }
 
   /* ===== COLOR STRIP ===== */
-  .color-strip {
-    display: flex;
-    height: 8px;
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-  }
+  .color-strip { display: flex; height: 4px; border-radius: 2px; overflow: hidden; margin-bottom: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
   .color-strip span { flex: 1; }
 
   /* ===== STAT CARDS ===== */
-  .stat-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 18px;
-  }
-  .stat-card {
-    flex: 1;
-    min-width: 140px;
-    border-radius: 10px;
-    padding: 14px 18px;
-    color: #fff;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .stat-card .stat-label {
-    font-size: 0.72rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    opacity: 0.9;
-  }
-  .stat-card .stat-value {
-    font-size: 1.3rem;
-    font-weight: 800;
-    letter-spacing: -0.3px;
-  }
+  .stat-cards { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+  .stat-card { flex: 1; min-width: 130px; border-radius: 8px; padding: 10px 12px; color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.15); display: flex; flex-direction: column; gap: 2px; }
+  .stat-card .stat-label { font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2px; opacity: 0.9; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .stat-card .stat-value { font-size: 0.95rem; font-weight: 800; letter-spacing: -0.3px; white-space: nowrap; }
 
-  /* Warna Kartu mengikuti Strip Atas */
-  .stat-card:nth-child(1) { background: linear-gradient(135deg, #1a3a6b, #2563b0); } /* Biru */
-  .stat-card:nth-child(2) { background: linear-gradient(135deg, #c0392b, #e63329); } /* Merah */
-  .stat-card:nth-child(3) { background: linear-gradient(135deg, #d35400, #e67e22); } /* Cyan Gelap (Penyedia) */
-  .stat-card:nth-child(4) { background: linear-gradient(135deg, #005f73, #0a9396); } /* Oranye (Swakelola) */
-  .stat-card:nth-child(5) { background: linear-gradient(135deg, #d4a000, #f5c800); color: #1a1a1a; } /* Kuning (Total) */
-  .stat-card:nth-child(6) { background: linear-gradient(135deg, #1e7e34, #2d9e47); } /* Hijau (Persen) */
-  .stat-card:nth-child(5) .stat-label { color: #1a1a1a; opacity: 0.7; }
-
+  .stat-card:nth-child(1) { background: linear-gradient(135deg, #1a3a6b, #2563b0); }
+  .stat-card:nth-child(2) { background: linear-gradient(135deg, #c0392b, #e63329); }
+  .stat-card:nth-child(3) { background: linear-gradient(135deg, #d35400, #e67e22); }
+  .stat-card:nth-child(4) { background: linear-gradient(135deg, #005f73, #0a9396); }
+  .stat-card:nth-child(5) { background: linear-gradient(135deg, #d4a000, #f5c800); }
+  .stat-card:nth-child(6) { background: linear-gradient(135deg, #1e7e34, #2d9e47); }
+  
   /* ===== FILTER CARD ===== */
-  .filter-card {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(26,58,107,0.09);
-    padding: 18px 20px;
-    margin-bottom: 16px;
-    border-top: 3px solid var(--lpse-biru);
-  }
-  .filter-card label {
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: #64748b;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-    display: block;
-  }
-  .filter-card input {
-    border: 1.5px solid #dde3ed;
-    border-radius: 7px;
-    padding: 7px 11px;
-    font-size: 0.83rem;
-    background: #f8fafc;
-    outline: none;
-  }
+  .filter-card { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(26,58,107,0.09); padding: 10px 12px; margin-bottom: 12px; border-top: 3px solid var(--lpse-biru); }
+  .filter-card label { font-size: 0.6rem; font-weight: 600; color: #64748b; text-transform: uppercase; margin-bottom: 2px; display: block; }
+  .filter-card input { border: 1.5px solid #dde3ed; border-radius: 4px; padding: 4px 6px; font-size: 0.7rem; background: #f8fafc; outline: none; }
 
   /* ===== CHECKLIST DROPDOWN ===== */
   .check-dropdown { position: relative; display: inline-block; }
-  .check-btn {
-    border: 1.5px solid #dde3ed;
-    border-radius: 7px;
-    padding: 7px 32px 7px 11px;
-    font-size: 0.83rem;
-    color: #1e293b;
-    background: #f8fafc;
-    cursor: pointer;
-    width: 180px;
-    text-align: left;
-    position: relative;
-  }
-  .check-btn::after {
-    content: "▾";
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #64748b;
-  }
-  .check-panel {
-    display: none;
-    position: fixed;
-    background: #fff;
-    border: 1.5px solid #dde3ed;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(26,58,107,0.18);
-    z-index: 9999;
-    min-width: 220px;
-    max-height: 300px;
-    flex-direction: column;
-  }
+  .check-btn { border: 1.5px solid #dde3ed; border-radius: 4px; padding: 4px 20px 4px 6px; font-size: 0.7rem; color: #1e293b; background: #f8fafc; cursor: pointer; width: 110px; text-align: left; position: relative; }
+  .check-btn::after { content: "▾"; position: absolute; right: 6px; top: 50%; transform: translateY(-50%); color: #64748b; }
+  .check-panel { display: none; position: fixed; background: #fff; border: 1.5px solid #dde3ed; border-radius: 6px; box-shadow: 0 4px 15px rgba(26,58,107,0.18); z-index: 9999; min-width: 150px; max-height: 250px; flex-direction: column; }
   .check-panel.open { display: flex; }
-  .check-list-container { overflow-y: auto; flex-grow: 1; padding: 6px 0; }
-  .check-item { display: flex; align-items: center; gap: 8px; padding: 6px 14px; font-size: 0.82rem; cursor: pointer; }
+  .check-list-container { overflow-y: auto; flex-grow: 1; padding: 4px 0; }
+  .check-item { display: flex; align-items: center; gap: 6px; padding: 4px 10px; font-size: 0.7rem; cursor: pointer; }
   .check-item:hover { background: #f0f5fb; }
 
   /* ===== BUTTONS ===== */
-  .btn-reset {
-    background: #f1f5f9; color: #475569; border: 1.5px solid #cbd5e1;
-    border-radius: 7px; padding: 7px 16px; font-size: 0.83rem; font-weight: 600; cursor: pointer;
-  }
-  .btn-excel {
-    background: var(--lpse-hijau); color: #fff; border: none;
-    border-radius: 7px; padding: 8px 18px; font-size: 0.83rem; font-weight: 600; cursor: pointer;
-    box-shadow: 0 2px 6px rgba(45,158,71,0.25);
-    margin-left: auto;
-  }
+  .btn-reset { background: #f1f5f9; color: #475569; border: 1.5px solid #cbd5e1; border-radius: 4px; padding: 4px 10px; font-size: 0.7rem; font-weight: 600; cursor: pointer; }
+  .btn-excel { background: var(--lpse-hijau); color: #fff; border: none; border-radius: 4px; padding: 5px 12px; font-size: 0.7rem; font-weight: 600; cursor: pointer; box-shadow: 0 2px 4px rgba(45,158,71,0.25); margin-left: auto; }
   .btn-excel:hover { background: #258a3d; }
 
   /* ===== TABEL ===== */
-  .table-wrap {
-    background: #fff; border-radius: 10px; box-shadow: 0 2px 12px rgba(26,58,107,0.09);
-    margin-bottom: 24px; overflow-x: auto;
-  }
-  table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  .table-wrap { background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(26,58,107,0.09); margin-bottom: 20px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.65rem; }
   thead tr { background: var(--lpse-biru); color: #fff; }
-  thead th {
-    padding: 11px 14px; text-align: left; font-weight: 600; font-size: 0.78rem;
-    border-right: 1px solid rgba(255,255,255,0.12); white-space: nowrap;
-  }
+  thead th { padding: 6px 4px; text-align: center; font-weight: 600; font-size: 0.65rem; border-right: 1px solid rgba(255,255,255,0.12); white-space: nowrap; }
   
-  #stickyHeader {
-    display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-    background: var(--lpse-biru); box-shadow: 0 3px 8px rgba(0,0,0,0.25);
-  }
+  #stickyHeader { display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 999; background: var(--lpse-biru); box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
   #stickyHeader table { width: 100%; border-collapse: collapse; }
-  #stickyHeader th {
-    padding: 11px 14px; text-align: left; font-weight: 600; font-size: 0.78rem;
-    color: #fff; border-right: 1px solid rgba(255,255,255,0.12);
-  }
+  #stickyHeader th { padding: 6px 4px; text-align: left; font-weight: 600; font-size: 0.65rem; color: #fff; border-right: 1px solid rgba(255,255,255,0.12); }
 
   tbody tr:nth-child(even) { background: #f0f5fb; }
   tbody tr:hover { background: #dbeafe !important; }
-  tbody td { padding: 9px 14px; border-bottom: 1px solid #e8edf5; border-right: 1px solid #e8edf5; color: #1e293b; }
+  tbody td { padding: 4px 4px; border-bottom: 1px solid #e8edf5; border-right: 1px solid #e8edf5; color: #1e293b; }
   .td-rupiah  { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
   .td-center  { text-align: center; }
   .td-persen  { text-align: right; font-weight: 600; color: var(--lpse-biru); }
@@ -242,12 +103,13 @@
 
 <div id="loadingOverlay"><div class="loader"></div><p class="mt-2 text-sm font-semibold text-blue-900">Memuat Data...</p></div>
 
-<div class="page-header">
-  <h1 id="pageTitle">📊 Rekapitulasi RUP Kabupaten Kotawaringin Barat</h1>
-  <p id="lastUpdate" class="last-update">Memuat last update...</p>
-  <p class="last-update" style="margin-top:2px;">Sumber data dari Inaproc API Gateway</p>
-  
-  <div class="year-selector-wrap">
+<div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
+  <div>
+    <h1 id="pageTitle">📊 Rekapitulasi RUP Kabupaten Kotawaringin Barat</h1>
+    <p id="lastUpdate" class="last-update">Memuat last update...</p>
+    <p class="last-update" style="margin-top:2px;">Sumber data dari Inaproc API Gateway</p>
+  </div>
+  <div class="year-selector-wrap" style="margin-top:0;">
     <label>Tahun Anggaran:</label>
     <select id="selectYear" class="year-select" onchange="loadDataByYear(this.value)">
       <option value="2026" selected>2026</option>
@@ -278,17 +140,17 @@
     <div class="stat-card">
       <span class="stat-label">Total RUP Penyedia</span>
       <span class="stat-value" id="statRupPenyedia">-</span>
-      <span id="statPktPenyedia" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span>
+      <span id="statPktPenyedia" style="font-size: 0.65rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span>
     </div>
     <div class="stat-card">
       <span class="stat-label">Total RUP Swakelola</span>
       <span class="stat-value" id="statRupSwakelola">-</span>
-      <span id="statPktSwakelola" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span>
+      <span id="statPktSwakelola" style="font-size: 0.65rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span>
     </div>
     <div class="stat-card">
       <span class="stat-label">Total RUP Terumumkan</span>
       <span class="stat-value" id="statRup">-</span>
-      <span id="statTotalPkt" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span>
+      <span id="statTotalPkt" style="font-size: 0.65rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span>
     </div>
     <div class="stat-card">
       <span class="stat-label">Persentase Total</span>
@@ -300,7 +162,7 @@
     <div style="display:flex; flex-wrap:nowrap; gap:12px; align-items:flex-end;">
       <div style="display:flex; flex-direction:column; gap:4px;">
         <label>Satuan Kerja</label>
-        <input id="filterSatker" type="text" placeholder="Cari satuan kerja..." style="width:250px;" />
+        <input id="filterSatker" type="text" placeholder="Cari satuan kerja..." style="width:160px;" />
       </div>
       
       <div style="display:flex; flex-direction:column; gap:4px;">
@@ -318,9 +180,9 @@
               <div class="check-divider" style="border-top:1px solid #eee; margin:4px 0;"></div>
               <div id="persenList"></div>
             </div>
-            <div style="display:flex; gap:8px; padding:10px; background:#f8fafc; border-top:1px solid #eee;">
-              <button class="w-full bg-blue-900 text-white py-1.5 rounded text-xs font-bold" onclick="applyPersenFilter()">✓ OK</button>
-              <button class="w-full border py-1.5 rounded text-xs font-bold" onclick="closePersenPanel()">✕ Batal</button>
+            <div style="display:flex; gap:4px; padding:6px; background:#f8fafc; border-top:1px solid #eee;">
+              <button class="w-full bg-blue-900 text-white py-0.5 rounded text-[0.55rem] font-bold" onclick="applyPersenFilter()">✓ OK</button>
+              <button class="w-full border py-0.5 rounded text-[0.55rem] font-bold" onclick="closePersenPanel()">✕ Batal</button>
             </div>
           </div>
         </div>
@@ -333,25 +195,25 @@
   </div>
 
   <div style="margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
-    <span id="totalInfo" style="font-size:0.78rem; color:#94a3b8;"></span>
+    <span id="totalInfo" style="font-size:0.6rem; color:#94a3b8;"></span>
   </div>
 
 <div id="stickyHeader">
     <table>
       <thead>
         <tr>
-          <th style="width:40px; min-width:40px; text-align:center;">No</th>
-          <th style="width:280px; min-width:280px; text-align:center;">Satuan Kerja</th>
-          <th style="width:140px; min-width:140px; text-align:center;">Pagu Program</th>
-          <th style="width:140px; min-width:140px; text-align:center;">Pagu Pengadaan</th>
-          <th style="width:50px; min-width:50px; text-align:center;">Pkt</th>
-          <th style="width:140px; min-width:140px; text-align:center;">RUP Penyedia</th>
-          <th style="width:50px; min-width:50px; text-align:center;">Pkt</th>
-          <th style="width:140px; min-width:140px; text-align:center;">RUP Swakelola</th>
-          <th style="width:60px; min-width:60px; text-align:center;">Total<br>Pkt</th>
-          <th style="width:150px; min-width:150px; text-align:center;">Total RUP<br>Terumumkan</th>
-          <th style="width:130px; min-width:130px; text-align:center;">Selisih</th>
-          <th style="width:100px; min-width:100px; text-align:center;">Persentase</th>
+          <th style="width:25px; min-width:25px; text-align:center;">No</th>
+          <th style="width:160px; min-width:160px; text-align:center;">Satuan Kerja</th>
+          <th style="width:85px; min-width:85px; text-align:center;">Pagu Program</th>
+          <th style="width:85px; min-width:85px; text-align:center;">Pagu Pengadaan</th>
+          <th style="width:30px; min-width:30px; text-align:center;">Pkt</th>
+          <th style="width:85px; min-width:85px; text-align:center;">RUP Penyedia</th>
+          <th style="width:30px; min-width:30px; text-align:center;">Pkt</th>
+          <th style="width:85px; min-width:85px; text-align:center;">RUP Swakelola</th>
+          <th style="width:40px; min-width:40px; text-align:center;">Total<br>Pkt</th>
+          <th style="width:95px; min-width:95px; text-align:center;">Total RUP<br>Terumumkan</th>
+          <th style="width:80px; min-width:80px; text-align:center;">Selisih</th>
+          <th style="width:60px; min-width:60px; text-align:center;">Persen</th>
         </tr>
       </thead>
     </table>
@@ -361,18 +223,18 @@
     <table id="mainTable">
       <thead id="mainThead">
         <tr>
-          <th style="width:40px; min-width:40px; text-align:center;">No</th>
-          <th style="width:280px; min-width:280px; text-align:center;">Satuan Kerja</th>
-          <th style="width:140px; min-width:140px; text-align:center;">Pagu Program</th>
-          <th style="width:140px; min-width:140px; text-align:center;">Pagu Pengadaan</th>
-          <th style="width:50px; min-width:50px; text-align:center;">Pkt</th>
-          <th style="width:140px; min-width:140px; text-align:center;">RUP Penyedia</th>
-          <th style="width:50px; min-width:50px; text-align:center;">Pkt</th>
-          <th style="width:140px; min-width:140px; text-align:center;">RUP Swakelola</th>
-          <th style="width:60px; min-width:60px; text-align:center;">Total<br>Pkt</th>
-          <th style="width:150px; min-width:150px; text-align:center;">Total RUP<br>Terumumkan</th>
-          <th style="width:130px; min-width:130px; text-align:center;">Selisih</th>
-          <th style="width:100px; min-width:100px; text-align:center;">Persentase</th>
+          <th style="width:25px; min-width:25px; text-align:center;">No</th>
+          <th style="width:160px; min-width:160px; text-align:center;">Satuan Kerja</th>
+          <th style="width:85px; min-width:85px; text-align:center;">Pagu Program</th>
+          <th style="width:85px; min-width:85px; text-align:center;">Pagu Pengadaan</th>
+          <th style="width:30px; min-width:30px; text-align:center;">Pkt</th>
+          <th style="width:85px; min-width:85px; text-align:center;">RUP Penyedia</th>
+          <th style="width:30px; min-width:30px; text-align:center;">Pkt</th>
+          <th style="width:85px; min-width:85px; text-align:center;">RUP Swakelola</th>
+          <th style="width:40px; min-width:40px; text-align:center;">Total<br>Pkt</th>
+          <th style="width:95px; min-width:95px; text-align:center;">Total RUP<br>Terumumkan</th>
+          <th style="width:80px; min-width:80px; text-align:center;">Selisih</th>
+          <th style="width:60px; min-width:60px; text-align:center;">Persen</th>
         </tr>
       </thead>
       <tbody id="body"></tbody>
@@ -466,7 +328,7 @@ function renderTable() {
 
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td class="td-center" style="color:#94a3b8;font-size:0.75rem;">${index + 1}</td>
+      <td class="td-center" style="color:#94a3b8;font-size:0.65rem;">${index + 1}</td>
       <td style="font-weight:500;">${row["Satuan Kerja"] ?? ""}</td>
       <td class="td-rupiah">${rupiah(row["Pagu Program"])}</td>
       <td class="td-rupiah">${rupiah(paguPengadaan)}</td>
