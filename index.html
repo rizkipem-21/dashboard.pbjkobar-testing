@@ -37,8 +37,8 @@
     .color-strip { position: absolute; top: 0; left: 0; right: 0; display: flex; height: 4px; }
     .color-strip span { flex: 1; }
 
-    .stat-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 10px; }
-    .stat-card { border-radius: 8px; padding: 12px 14px; color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.15); display: flex; flex-direction: column; gap: 2px; transition: transform 0.2s; }
+    .stat-cards { display: flex; flex-wrap: wrap; gap: 10px; }
+    .stat-card { flex: 1; min-width: 120px; border-radius: 8px; padding: 10px 12px; color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.15); display: flex; flex-direction: column; gap: 2px; transition: transform 0.2s; }
     .stat-card:hover { transform: translateY(-2px); }
     .stat-card .stat-label { font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2px; opacity: 0.9; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .stat-card .stat-value { font-size: 0.95rem; font-weight: 800; letter-spacing: -0.3px; white-space: nowrap; }
@@ -141,7 +141,7 @@
           <div class="color-strip"><span style="background:var(--lpse-biru)"></span><span style="background:var(--lpse-merah)"></span><span style="background:var(--lpse-kuning)"></span><span style="background:var(--lpse-hijau)"></span></div>
           <div class="section-title-wrap">
             <div>
-              <h2 class="section-title">Rencana Umum Pengadaan (RUP)</h2>
+              <h2 class="section-title">Rencana Umum Pengadaan (RUP) Tahun <span class="labelTahunAktif">2026</span></span></h2>
               <div class="section-update">🕒 Terakhir diperbarui: <span class="updateRup">...</span></div>
             </div>
             <button onclick="document.getElementById('btn-rup').click()" class="btn-detail">Lihat Detail RUP ➔</button>
@@ -149,9 +149,9 @@
           <div class="stat-cards">
             <div class="stat-card card-r1"><span class="stat-label">Total Pagu Program</span><span class="stat-value" id="rupStatProgram">-</span></div>
             <div class="stat-card card-r2"><span class="stat-label">Total Pagu Pengadaan</span><span class="stat-value" id="rupStatPengadaan">-</span></div>
-            <div class="stat-card card-r3"><span class="stat-label">Total RUP Penyedia</span><span class="stat-value" id="rupStatPenyedia">-</span><span id="rupPktPenyedia" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span></div>
-            <div class="stat-card card-r4"><span class="stat-label">Total RUP Swakelola</span><span class="stat-value" id="rupStatSwakelola">-</span><span id="rupPktSwakelola" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span></div>
-            <div class="stat-card card-r5"><span class="stat-label">Total RUP Terumumkan</span><span class="stat-value" id="rupStatTerumumkan">-</span><span id="rupPktTotal" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span></div>
+            <div class="stat-card card-r3"><span class="stat-label">Total RUP Penyedia</span><span class="stat-value" id="rupStatPenyedia">-</span><span id="rupPktPenyedia" style="font-size: 0.65rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span></div>
+            <div class="stat-card card-r4"><span class="stat-label">Total RUP Swakelola</span><span class="stat-value" id="rupStatSwakelola">-</span><span id="rupPktSwakelola" style="font-size: 0.65rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span></div>
+            <div class="stat-card card-r5"><span class="stat-label">Total RUP Terumumkan</span><span class="stat-value" id="rupStatTerumumkan">-</span><span id="rupPktTotal" style="font-size: 0.65rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span></div>
             <div class="stat-card card-r6"><span class="stat-label">Persentase Total</span><span class="stat-value" id="rupStatPersen">-</span></div>
           </div>
         </div> 
@@ -160,16 +160,16 @@
           <div class="color-strip"><span style="background:var(--lpse-biru)"></span><span style="background:var(--lpse-merah)"></span><span style="background:var(--lpse-kuning)"></span><span style="background:var(--lpse-hijau)"></span></div>
           <div class="section-title-wrap">
             <div>
-              <h2 class="section-title">Pelaksanaan Pengadaan (Paket)</h2>
+              <h2 class="section-title">Pelaksanaan Pengadaan (Paket) Tahun <span class="labelTahunAktif">2026</span></span></h2>
               <div class="section-update">🕒 Terakhir diperbarui: <span class="updatePengadaan">...</span></div>
             </div>
             <button onclick="document.getElementById('btn-pengadaan').click()" class="btn-detail">Lihat Detail Pengadaan ➔</button>
           </div>
           <div class="stat-cards">
-            <div class="stat-card card-p1"><span class="stat-label">Total Pengadaan</span><span class="stat-value" id="pengRpTotal">-</span><span id="pengPktTotal" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span></div>
-            <div class="stat-card card-p2"><span class="stat-label">Belum Proses</span><span class="stat-value" id="pengRpBelum">-</span><span id="pengPktBelum" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span></div>
-            <div class="stat-card card-p3"><span class="stat-label">Sedang Berjalan</span><span class="stat-value" id="pengRpProses">-</span><span id="pengPktProses" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span></div>
-            <div class="stat-card card-p4"><span class="stat-label">Sudah Selesai</span><span class="stat-value" id="pengRpSelesai">-</span><span id="pengPktSelesai" style="font-size: 0.85rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span></div>
+            <div class="stat-card card-p1"><span class="stat-label">Total Pengadaan</span><span class="stat-value" id="pengRpTotal">-</span><span id="pengPktTotal" style="font-size: 0.65rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span></div>
+            <div class="stat-card card-p2"><span class="stat-label">Belum Proses</span><span class="stat-value" id="pengRpBelum">-</span><span id="pengPktBelum" style="font-size: 0.65rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span></div>
+            <div class="stat-card card-p3"><span class="stat-label">Sedang Berjalan</span><span class="stat-value" id="pengRpProses">-</span><span id="pengPktProses" style="font-size: 0.65rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span></div>
+            <div class="stat-card card-p4"><span class="stat-label">Sudah Selesai</span><span class="stat-value" id="pengRpSelesai">-</span><span id="pengPktSelesai" style="font-size: 0.65rem; font-weight: 700; opacity: 0.85; margin-top: -3px;">- Paket</span></div>
           </div>
         </div>
       </div>
@@ -348,6 +348,7 @@
 
     async function loadAllData(year) {
       document.getElementById("loadingOverlayDashboard").style.display = "flex";
+      document.querySelectorAll(".labelTahunAktif").forEach(el => el.innerText = year);
       fetchLastUpdateText("rup");
       fetchLastUpdateText("pengadaan");
       await processRUP(year);

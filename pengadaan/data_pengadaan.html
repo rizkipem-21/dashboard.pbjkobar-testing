@@ -6,7 +6,7 @@
 <title>Rekap Data Pengadaan</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-
+<script src="../js/config.js"></script>
 <script src="../js/status_logic.js"></script>
 
 <style>
@@ -239,12 +239,12 @@
         <label>Satuan Kerja</label>
         <input id="filterSatker" type="text" placeholder="Ketik instansi/satker..."/>
       </div>
-      <div class="filter-group" style="flex:3; min-width:250px;">
+      <div class="filter-group" style="flex:1.5; min-width:180px;">
         <label>Nama Paket</label>
         <input id="filterPaket" type="text" placeholder="Ketik nama paket..."/>
       </div>
 
-      <div class="filter-group" style="width:160px;">
+      <div class="filter-group" style="flex:1; min-width:130px;">
         <label>Jenis Pengadaan</label>
         <div class="check-dropdown" style="width:100%;">
           <button class="check-btn" id="btn_jenis" onclick="toggleFilterPanel('jenis',event)"><span id="label_jenis">-- Semua --</span></button>
@@ -261,7 +261,7 @@
           </div>
         </div>
       </div>
-      <div class="filter-group" style="width:160px;">
+      <div class="filter-group" style="flex:1; min-width:130px;">
         <label>Metode Pemilihan</label>
         <div class="check-dropdown" style="width:100%;">
           <button class="check-btn" id="btn_metode" onclick="toggleFilterPanel('metode',event)"><span id="label_metode">-- Semua --</span></button>
@@ -353,17 +353,26 @@
 </div>
 
 <div id="modalPassword" class="fixed inset-0 bg-black/50 z-[9999] hidden items-center justify-center backdrop-blur-sm transition-opacity">
-  <div class="bg-white p-6 rounded-xl shadow-2xl w-80 transform transition-all">
-    <div class="flex items-center gap-3 mb-4">
-      <span class="text-2xl">🔒</span>
-      <h3 class="text-lg font-bold text-gray-800">Akses Terkunci</h3>
+  <div class="bg-white p-4 rounded-lg shadow-2xl w-64 transform transition-all">
+    <div class="flex items-center gap-2 mb-3">
+      <span class="text-xl">🔒</span>
+      <h3 class="text-[0.85rem] font-bold text-gray-800">Akses Terkunci</h3>
     </div>
-    <p class="text-xs text-gray-500 mb-4">Masukkan password untuk mengunduh Master Excel.</p>
-    <input type="password" id="inputPassword" placeholder="Masukkan Password..." style="height:20px; font-size:9px;" class="w-full border-2 border-gray-200 rounded-lg p-2.5 mb-5 focus:outline-none focus:border-[#1a3a6b] text-sm" />
+    <p class="text-[0.6rem] text-gray-500 mb-3 leading-tight">Masukkan password untuk mengunduh Master Excel.</p>
+    <input type="password" id="inputPassword" autocomplete="new-password" placeholder="Masukkan Password..." class="w-full border-2 border-gray-200 rounded p-1.5 mb-4 focus:outline-none focus:border-[#1a3a6b] text-[0.65rem]" />
     <div class="flex justify-end gap-2">
-      <button onclick="tutupModal()" class="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 font-semibold text-sm transition-colors">Batal</button>
-      <button onclick="cekPassword()" class="px-4 py-2 text-white rounded-lg font-semibold text-sm transition-colors" style="background-color: var(--lpse-biru);">Download</button>
+      <button onclick="tutupModal()" class="px-3 py-1.5 bg-gray-100 text-gray-600 rounded hover:bg-gray-200 font-semibold text-[0.65rem] transition-colors">Batal</button>
+      <button onclick="cekPassword()" class="px-3 py-1.5 text-white rounded font-semibold text-[0.65rem] transition-colors" style="background-color: var(--lpse-biru);">Download</button>
     </div>
+  </div>
+</div>
+
+<div id="modalAlert" class="fixed inset-0 bg-black/50 z-[10000] hidden items-center justify-center backdrop-blur-sm transition-opacity">
+  <div class="bg-white p-4 rounded-lg shadow-2xl w-64 transform transition-all text-center">
+    <div class="text-3xl mb-2" id="alertIcon">⚠️</div>
+    <h3 class="text-[0.85rem] font-bold text-gray-800 mb-1" id="alertTitle">Perhatian</h3>
+    <p class="text-[0.65rem] text-gray-600 mb-4 leading-relaxed" id="alertMessage">Pesan error di sini.</p>
+    <button onclick="tutupAlert()" class="px-4 py-1.5 text-white rounded font-semibold text-[0.65rem] w-full transition-colors" style="background-color: var(--lpse-biru);">OK, Mengerti</button>
   </div>
 </div>
 
@@ -371,7 +380,15 @@
 // ========================================================
 // PASSWORD MASTER
 // ========================================================
-const MASTER_PASSWORD = "RahasiaKobar123";
+function tampilkanAlert(pesan, ikon = '⚠️', judul = 'Perhatian') {
+  document.getElementById("alertIcon").innerText = ikon;
+  document.getElementById("alertTitle").innerText = judul;
+  document.getElementById("alertMessage").innerText = pesan;
+  document.getElementById("modalAlert").classList.replace("hidden", "flex");
+}
+function tutupAlert() {
+  document.getElementById("modalAlert").classList.replace("flex", "hidden");
+}
 
 let allData     = [];
 let filtered    = [];
@@ -453,7 +470,7 @@ async function loadDataByYear(year){
   } catch (error) {
     console.error(error);
     allData = [];
-    alert(`Gagal memuat data untuk tahun ${year}. Pastikan data sudah di-generate.`);
+    tampilkanAlert(`Gagal memuat data untuk tahun ${year}. Pastikan data sudah di-generate.`);
     const masterLink = document.getElementById("downloadMaster");
     masterLink.dataset.fileurl = "";
     masterLink.href = "#";
@@ -1034,7 +1051,7 @@ document.getElementById("downloadCurrent").addEventListener("click", () => {
 
     } catch (err) {
       console.error(err);
-      alert("Terjadi kesalahan saat memproses Excel. Silakan periksa Console.");
+      tampilkanAlert("Terjadi kesalahan saat memproses Excel. Silakan periksa Console.");
     } finally {
       // Pastikan tombol selalu kembali normal meski ada error
       btn.innerText = "⬇ Download Excel";
@@ -1071,7 +1088,7 @@ function cekPassword() {
     const link = document.getElementById("downloadMaster").dataset.fileurl;
     if (link) window.location.href = link;
   } else {
-    alert("Password Salah! Akses Ditolak.");
+    tampilkanAlert("Password Salah! Akses Ditolak.");
   }
 }
 

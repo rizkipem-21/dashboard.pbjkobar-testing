@@ -241,7 +241,26 @@
     </table>
   </div>
 
+  <div id="modalAlert" class="fixed inset-0 bg-black/50 z-[10000] hidden items-center justify-center backdrop-blur-sm transition-opacity">
+    <div class="bg-white p-4 rounded-lg shadow-2xl w-64 transform transition-all text-center">
+      <div class="text-3xl mb-2" id="alertIcon">⚠️</div>
+      <h3 class="text-[0.85rem] font-bold text-gray-800 mb-1" id="alertTitle">Perhatian</h3>
+      <p class="text-[0.65rem] text-gray-600 mb-4 leading-relaxed" id="alertMessage">Pesan error di sini.</p>
+      <button onclick="tutupAlert()" class="px-4 py-1.5 text-white rounded font-semibold text-[0.65rem] w-full transition-colors" style="background-color: var(--lpse-biru);">OK, Mengerti</button>
+    </div>
+  </div>
+
 <script>
+function tampilkanAlert(pesan, ikon = '⚠️', judul = 'Perhatian') {
+  document.getElementById("alertIcon").innerText = ikon;
+  document.getElementById("alertTitle").innerText = judul;
+  document.getElementById("alertMessage").innerText = pesan;
+  document.getElementById("modalAlert").classList.replace("hidden", "flex");
+}
+function tutupAlert() {
+  document.getElementById("modalAlert").classList.replace("flex", "hidden");
+}
+
 let rawData = [];
 let filteredData = [];
 let currentYear = "2026";
@@ -282,7 +301,7 @@ async function loadDataByYear(year) {
     applyFilter();
   } catch (err) {
     console.error(err);
-    alert(`Data RUP Tahun ${year} belum tersedia.`);
+    tampilkanAlert(`Data RUP Tahun ${year} belum tersedia.`);
     rawData = [];
     filteredData = [];
     renderTable();
@@ -375,7 +394,7 @@ function renderSummary() {
 
 // === EXCEL DOWNLOAD BERWARNA + RUMUS TOTAL ===
 async function downloadExcelFormatted() {
-  if (filteredData.length === 0) return alert("Tidak ada data untuk didownload.");
+  if (filteredData.length === 0) return tampilkanAlert("Tidak ada data untuk didownload.", "⚠️", "Gagal Download");
 
   const workbook = new ExcelJS.Workbook();
   const worksheet = workbook.addWorksheet('Rekap RUP');

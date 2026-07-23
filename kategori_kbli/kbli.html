@@ -17,115 +17,50 @@
   body {
     background: #f0f4f8;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0; overflow-x: hidden;
   }
 
   /* ===== HEADER ===== */
-  .page-header {
-    background: linear-gradient(135deg, var(--lpse-biru) 0%, var(--lpse-biru2) 100%);
-    border-bottom: 4px solid var(--lpse-kuning);
-    padding: 20px 28px 16px;
-    margin-bottom: 24px;
-    border-radius: 0 0 12px 12px;
-    box-shadow: 0 4px 16px rgba(26,58,107,0.18);
-  }
-  .page-header h1 {
-    color: #fff; font-size: 1.5rem; font-weight: 700;
-    letter-spacing: 0.3px; margin: 0 0 4px 0;
-  }
-  .page-header .subtitle {
-    color: rgba(255,255,255,0.85); font-size: 0.85rem;
-  }
+  .page-header { background: linear-gradient(135deg, var(--lpse-biru) 0%, var(--lpse-biru2) 100%); border-bottom: 3px solid var(--lpse-kuning); padding: 14px 20px 10px; margin-bottom: 16px; border-radius: 0 0 10px 10px; box-shadow: 0 3px 12px rgba(26,58,107,0.15); }
+  .page-header h1 { color: #fff; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.2px; margin: 0 0 2px 0; }
+  .page-header .subtitle { color: rgba(255,255,255,0.72); font-size: 0.65rem; }
 
   /* ===== COLOR STRIP ===== */
-  .color-strip {
-    display: flex; height: 8px; border-radius: 4px;
-    overflow: hidden; margin-bottom: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-  }
+  .color-strip { display: flex; height: 4px; border-radius: 2px; overflow: hidden; margin-bottom: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
   .color-strip span { flex: 1; }
 
   /* ===== FILTER CARD ===== */
-  .filter-card {
-    background: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgba(26,58,107,0.09);
-    padding: 18px 20px; margin-bottom: 16px; border-top: 3px solid var(--lpse-biru);
-  }
-  .filter-card label {
-    font-size: 0.75rem; font-weight: 600; color: #64748b;
-    text-transform: uppercase; margin-bottom: 6px; display: block;
-  }
-  .filter-card input {
-    border: 1.5px solid #dde3ed; border-radius: 7px; padding: 8px 12px;
-    font-size: 0.9rem; background: #f8fafc; outline: none; width: 100%;
-    transition: border-color 0.2s;
-  }
-  .filter-card input:focus { border-color: var(--lpse-biru); }
-  .filter-card select {
-    border: 1.5px solid #dde3ed; border-radius: 7px; padding: 8px 12px;
-    font-size: 0.9rem; background: #f8fafc; outline: none; width: 100%; cursor: pointer;
-    transition: border-color 0.2s;
-  }
-  .filter-card select:focus { border-color: var(--lpse-biru); }
-  .filter-card select:disabled {
-    background-color: #e2e8f0; color: #94a3b8;
-    cursor: not-allowed; border-color: #cbd5e1;
-  }
-  .filter-grid { 
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
-    gap: 12px; margin-bottom: 15px; 
-  }
+  .filter-card { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(26,58,107,0.09); padding: 12px; margin-bottom: 12px; border-top: 3px solid var(--lpse-biru); }
+  .filter-card label { font-size: 0.6rem; font-weight: 600; color: #64748b; text-transform: uppercase; margin-bottom: 4px; display: block; }
+  .filter-card input, .filter-card select { border: 1.5px solid #dde3ed; border-radius: 4px; padding: 4px 8px; height: 26px; font-size: 0.65rem; background: #f8fafc; outline: none; width: 100%; transition: border-color 0.2s; }
+  .filter-card input:focus, .filter-card select:focus { border-color: var(--lpse-biru); }
+  .filter-card select:disabled { background-color: #e2e8f0; color: #94a3b8; cursor: not-allowed; border-color: #cbd5e1; }
+  .filter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin-bottom: 10px; }
 
   /* ===== BUTTONS ===== */
-  .btn-search {
-    background: var(--lpse-biru); color: #fff; border: none;
-    border-radius: 7px; padding: 8.5px 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer;
-    box-shadow: 0 2px 6px rgba(26,58,107,0.25); transition: background 0.2s;
-  }
+  .btn-search { background: var(--lpse-biru); color: #fff; border: none; border-radius: 4px; padding: 0 12px; height: 26px; font-size: 0.65rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; box-shadow: 0 2px 4px rgba(26,58,107,0.25); transition: background 0.2s; }
   .btn-search:hover { background: var(--lpse-biru2); }
-  
-  .btn-reset {
-    background: #f1f5f9; color: #475569; border: 1.5px solid #cbd5e1;
-    border-radius: 7px; padding: 7.5px 16px; font-size: 0.85rem; font-weight: 600; cursor: pointer;
-    transition: background 0.2s;
-  }
+  .btn-reset { background: #f1f5f9; color: #475569; border: 1.5px solid #cbd5e1; border-radius: 4px; padding: 0 10px; height: 26px; font-size: 0.65rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; transition: background 0.2s; }
   .btn-reset:hover { background: #e2e8f0; }
 
   /* ===== PAGINATION BUTTONS ===== */
-  .btn-page {
-    background: #fff; border: 1.5px solid #dde3ed; border-radius: 6px;
-    padding: 6px 14px; font-size: 0.8rem; font-weight: 600; color: #475569;
-    cursor: pointer; transition: all 0.2s;
-  }
-  .btn-page:hover:not(:disabled) { border-color: var(--lpse-biru); color: var(--lpse-biru); }
+  .btn-page { background: #fff; border: 1.5px solid #dde3ed; border-radius: 4px; padding: 0 10px; height: 26px; font-size: 0.65rem; font-weight: 600; color: var(--lpse-biru); cursor: pointer; display: inline-flex; align-items: center; transition: all 0.2s; }
+  .btn-page:hover:not(:disabled) { border-color: var(--lpse-biru); color: #fff; background: var(--lpse-biru); }
   .btn-page:disabled { background: #f8fafc; color: #cbd5e1; cursor: not-allowed; border-color: #e2e8f0; }
 
   /* ===== TABEL ===== */
-  .table-wrap {
-    background: #fff; border-radius: 10px; box-shadow: 0 2px 12px rgba(26,58,107,0.09);
-    margin-bottom: 24px; overflow-x: auto;
-  }
-  table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  .table-wrap { background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(26,58,107,0.09); margin-bottom: 20px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.6rem; table-layout: fixed; word-wrap: break-word; }
   thead tr { background: var(--lpse-biru); color: #fff; }
-  thead th {
-    padding: 12px 14px; text-align: left; font-weight: 600; font-size: 0.8rem;
-    border-right: 1px solid rgba(255,255,255,0.12);
-  }
+  thead th { padding: 8px 6px; text-align: center; font-weight: 600; font-size: 0.65rem; border-right: 1px solid rgba(255,255,255,0.12); }
   tbody tr:nth-child(even) { background: #f0f5fb; }
   tbody tr:hover { background: #dbeafe !important; }
-  tbody td { padding: 10px 14px; border-bottom: 1px solid #e8edf5; border-right: 1px solid #e8edf5; color: #1e293b; vertical-align: top; }
+  tbody td { padding: 6px 6px; border-bottom: 1px solid #e8edf5; border-right: 1px solid #e8edf5; color: #1e293b; vertical-align: top; }
   .td-center { text-align: center; }
 
   /* Loading Overlay */
-  #loadingOverlay {
-    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(255,255,255,0.85); display: flex; flex-direction: column;
-    align-items: center; justify-content: center; z-index: 10000; display: none;
-  }
-  .loader {
-    border: 4px solid #f3f3f3; border-top: 4px solid var(--lpse-biru);
-    border-radius: 50%; width: 35px; height: 35px; animation: spin 1s linear infinite;
-  }
+  #loadingOverlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.85); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10000; display: none; }
+  .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--lpse-biru); border-radius: 50%; width: 25px; height: 25px; animation: spin 1s linear infinite; }
   @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 </style>
 </head>
@@ -175,10 +110,10 @@
     </div>
   </div>
 
-  <div style="margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 10px;">
-    <div style="display:flex; align-items:center; gap:8px; font-size:0.85rem; color:#64748b; font-weight:600;">
+  <div style="margin-bottom:10px; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 8px;">
+    <div style="display:flex; align-items:center; gap:6px; font-size:0.7rem; color:#64748b; font-weight:600;">
       <span>Tampilkan</span>
-      <select id="selJumlahData" style="padding:4px 8px; border:1.5px solid #dde3ed; border-radius:6px; background:#fff; color:#1e293b; outline:none; cursor:pointer;">
+      <select id="selJumlahData" style="padding:0 8px; height:24px; font-size:0.65rem; border:1.5px solid #dde3ed; border-radius:4px; background:#fff; color:#1e293b; outline:none; cursor:pointer;">
         <option value="10" selected>10</option>
         <option value="25">25</option>
         <option value="50">50</option>
@@ -186,12 +121,12 @@
         <option value="semua">Semua</option>
       </select>
       <span>data</span>
-      <span id="totalInfo" style="margin-left: 10px; font-size:0.8rem; color:#64748b; font-weight: 600;"></span>
+      <span id="totalInfo" style="margin-left: 6px; font-size:0.6rem; color:#64748b; font-weight: 600;"></span>
     </div>
     
-    <div style="display:flex; align-items:center; gap:12px;">
-      <span id="pageInfoTop" style="font-size:0.8rem; color:#64748b; font-weight: 600;"></span>
-      <div style="display:flex; gap:6px;">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <span id="pageInfoTop" style="font-size:0.65rem; color:#64748b; font-weight: 600;"></span>
+      <div style="display:flex; gap:4px;">
         <button id="btnPrevTop" class="btn-page" onclick="changePage(-1)">&#8592; Sebelumnya</button>
         <button id="btnNextTop" class="btn-page" onclick="changePage(1)">Selanjutnya &#8594;</button>
       </div>
@@ -221,7 +156,7 @@
 
   <div style="margin-bottom:24px; display:flex; justify-content:flex-end; align-items:center;">
     <div style="display:flex; align-items:center; gap:12px;">
-      <span id="pageInfoBottom" style="font-size:0.8rem; color:#64748b; font-weight: 600;"></span>
+      <span id="pageInfoBottom" style="font-size:0.65rem; color:#64748b; font-weight: 600;"></span>
       <div style="display:flex; gap:6px;">
         <button id="btnPrevBottom" class="btn-page" onclick="changePage(-1)">&#8592; Sebelumnya</button>
         <button id="btnNextBottom" class="btn-page" onclick="changePage(1)">Selanjutnya &#8594;</button>
@@ -230,7 +165,26 @@
   </div>
 </div>
 
+<div id="modalAlert" class="fixed inset-0 bg-black/50 z-[10000] hidden items-center justify-center backdrop-blur-sm transition-opacity">
+  <div class="bg-white p-4 rounded-lg shadow-2xl w-64 transform transition-all text-center">
+    <div class="text-3xl mb-2" id="alertIcon">⚠️</div>
+    <h3 class="text-[0.85rem] font-bold text-gray-800 mb-1" id="alertTitle">Perhatian</h3>
+    <p class="text-[0.65rem] text-gray-600 mb-4 leading-relaxed" id="alertMessage">Pesan error di sini.</p>
+    <button onclick="tutupAlert()" class="px-4 py-1.5 text-white rounded font-semibold text-[0.65rem] w-full transition-colors" style="background-color: var(--lpse-biru);">OK, Mengerti</button>
+  </div>
+</div>
+
 <script>
+function tampilkanAlert(pesan, ikon = '⚠️', judul = 'Perhatian') {
+  document.getElementById("alertIcon").innerText = ikon;
+  document.getElementById("alertTitle").innerText = judul;
+  document.getElementById("alertMessage").innerText = pesan;
+  document.getElementById("modalAlert").classList.replace("hidden", "flex");
+}
+function tutupAlert() {
+  document.getElementById("modalAlert").classList.replace("flex", "hidden");
+}
+
 let rawData = [];
 let filteredData = [];
 let currentPage = 1;
