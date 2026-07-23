@@ -20,7 +20,7 @@ function getKategoriStatus(row) {
   }
   
   if (sumber.includes("sumber 6")) {
-    if (s.includes("payment_outside") || s.includes("completed")) return "Sudah Selesai";
+    if (s.includes("payment outside") || s.includes("completed")) return "Sudah Selesai";
     return "Sedang Berjalan";
   }
   

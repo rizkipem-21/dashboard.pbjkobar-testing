@@ -18,7 +18,7 @@
     --lpse-hijau : #2d9e47;
   }
 
-  body { background: #f0f4f8; font-family: 'Segoe UI', sans-serif; min-width: 1200px; }
+  body { background: #f0f4f8; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
 
   /* ===== HEADER ===== */
   .page-header { background: linear-gradient(135deg, var(--lpse-biru) 0%, var(--lpse-biru2) 100%); border-bottom: 3px solid var(--lpse-kuning); padding: 14px 20px 10px; margin-bottom: 16px; border-radius: 0 0 10px 10px; box-shadow: 0 3px 12px rgba(26,58,107,0.15); }
@@ -57,7 +57,7 @@
 
   /* ===== CHECKLIST DROPDOWN ===== */
   .check-dropdown { position: relative; display: inline-block; width: 140px; }
-  .check-btn { border: 1.5px solid #dde3ed; border-radius: 4px; padding: 4px 20px 4px 6px; font-size: 0.7rem; color: #1e293b; background: #f8fafc; cursor: pointer; width: 100%; text-align: left; position: relative; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .check-btn { border: 1.5px solid #dde3ed; border-radius: 4px; padding: 0 20px 0 6px; height: 24px; font-size: 0.6rem; color: #1e293b; background: #f8fafc; cursor: pointer; width: 100%; text-align: left; position: relative; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .check-btn::after { content: "▾"; position: absolute; right: 6px; top: 50%; transform: translateY(-50%); color: #64748b; }
   .check-panel { display: none; position: fixed; background: #fff; border: 1.5px solid #dde3ed; border-radius: 6px; box-shadow: 0 4px 15px rgba(26,58,107,0.18); z-index: 9999; min-width: 150px; max-height: 250px; flex-direction: column; }
   .check-panel.open { display: flex; }
@@ -66,25 +66,25 @@
   .check-item:hover { background: #f0f5fb; }
 
   /* ===== TOMBOL ===== */
-  .btn-reset { background: #f1f5f9; color: #e63329; border: 1.5px solid #cbd5e1; border-radius: 5px; padding: 5px 12px; font-size: 0.7rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
-  .btn-excel { background: var(--lpse-hijau); color: #fff; border: none; border-radius: 5px; padding: 5px 12px; font-size: 0.7rem; font-weight: 600; cursor: pointer; box-shadow: 0 2px 4px rgba(45,158,71,0.25); }
-  .btn-master { background: var(--lpse-biru); color: #fff; border: none; border-radius: 5px; padding: 5px 12px; font-size: 0.7rem; font-weight: 600; cursor: pointer; box-shadow: 0 2px 4px rgba(26,58,107,0.25); }
+  .btn-reset { background: #f1f5f9; color: #e63329; border: 1.5px solid #cbd5e1; border-radius: 4px; padding: 0 10px; height: 26px; font-size: 0.65rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; white-space: nowrap; }
+  .btn-excel { background: var(--lpse-hijau); color: #fff; border: none; border-radius: 4px; padding: 0 12px; height: 26px; font-size: 0.65rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.15); }
+  .btn-master { background: var(--lpse-biru); color: #fff; border: none; border-radius: 4px; padding: 0 12px; height: 26px; font-size: 0.65rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.15); }
   .btn-master.disabled { background: #94a3b8; cursor: not-allowed; box-shadow: none; pointer-events: none; }
 
   /* ===== KONTROL BAR & PAGINATION & TABEL ===== */
-  .control-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 12px; background: #fff; border-radius: 8px; padding: 10px 12px; box-shadow: 0 1px 6px rgba(26,58,107,0.07); }
-  .control-bar label { font-size: 0.75rem; color: #475569; font-weight: 500; }
-  .control-bar select { border: 1.5px solid #dde3ed; border-radius: 5px; padding: 4px 8px; font-size: 0.75rem; background: #f8fafc; outline: none; }
-  .control-bar span { font-size: 0.75rem; color: #94a3b8; }
+  .control-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 12px; background: #fff; border-radius: 8px; padding: 8px 12px; box-shadow: 0 1px 6px rgba(26,58,107,0.07); }
+  .control-bar label { font-size: 0.7rem; color: #475569; font-weight: 500; }
+  .control-bar select { border: 1.5px solid #dde3ed; border-radius: 4px; padding: 0 8px; height: 26px; font-size: 0.65rem; background: #f8fafc; outline: none; }
+  .control-bar span { font-size: 0.7rem; color: #94a3b8; }
   .pagination { display: flex; align-items: center; gap: 6px; margin: 8px 0; }
-  .btn-page { background: #fff; border: 1.5px solid #dde3ed; border-radius: 5px; padding: 4px 12px; font-size: 0.75rem; font-weight: 600; color: var(--lpse-biru); cursor: pointer; }
+  .btn-page { background: #fff; border: 1.5px solid #dde3ed; border-radius: 4px; padding: 0 10px; height: 26px; font-size: 0.65rem; font-weight: 600; color: var(--lpse-biru); cursor: pointer; display: inline-flex; align-items: center; }
   .btn-page:hover:not(:disabled) { background: var(--lpse-biru); color: #fff; border-color: var(--lpse-biru); }
   .btn-page:disabled { opacity: 0.35; cursor: default; }
-  .page-info { font-size: 0.75rem; color: #475569; padding: 0 4px; }
-  .total-info { font-size: 0.6rem; color: #94a3b8; margin-left: 4px; }
+  .page-info { font-size: 0.7rem; color: #475569; padding: 0 4px; }
+  .total-info { font-size: 0.65rem; color: #94a3b8; margin-left: 4px; }
   
-  .table-wrap { background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(26,58,107,0.09); overflow-x: auto; margin-bottom: 20px; position: relative; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.65rem; }
+  .table-wrap { background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(26,58,107,0.09); overflow-x: auto; margin-bottom: 20px; position: relative; width: 100%; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.65rem; table-layout: fixed; word-wrap: break-word; }
   thead tr { background: var(--lpse-biru); color: #fff; }
   thead th { padding: 6px 4px; text-align: center; font-weight: 600; font-size: 0.65rem; border-right: 1px solid rgba(255,255,255,0.12); white-space: nowrap; }
   #stickyHeader { display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 999; background: var(--lpse-biru); box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
@@ -96,7 +96,7 @@
   .td-efisiensi { font-weight: 700; color: var(--lpse-hijau); }
   .td-rupiah { text-align: right; font-variant-numeric: tabular-nums; }
   .td-center { text-align: center; }
-  .badge { display: inline-block; padding: 2px 6px; border-radius: 12px; font-size: 0.6rem; font-weight: 600; white-space: nowrap; }
+  .badge { display: inline-block; padding: 4px 6px; border-radius: 6px; font-size: 0.65rem; font-weight: 600; white-space: normal; word-wrap: break-word; line-height: 1.2; width: 100%; text-align: center; }
   .badge-selesai { background: #dcfce7; color: #166534; }
   .badge-proses { background: #fef9c3; color: #854d0e; }
   .badge-belum { background: #fee2e2; color: #991b1b; }
@@ -171,8 +171,26 @@
             <div id="list_status"></div>
           </div>
           <div style="display:flex; gap:8px; padding:10px; background:#f8fafc; border-top:1px solid #eee;">
-            <button class="w-full bg-blue-900 text-white py-1.5 rounded text-xs font-bold" onclick="applyFilterPanel('status')">✓ OK</button>
-            <button class="w-full border py-1.5 rounded text-xs font-bold" onclick="cancelFilterPanel('status')">✕ Batal</button>
+            <button style="height:20px; font-size:9px;" class="w-full bg-blue-900 text-white rounded font-bold font-bold" onclick="applyFilterPanel('status')">✓ OK</button>
+            <button style="height:20px; font-size:9px;" class="w-full border rounded font-bold font-bold" onclick="cancelFilterPanel('status')">✕ Batal</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label>Status Rinci</label>
+      <div class="check-dropdown">
+        <button class="check-btn" id="btn_status_rinci" onclick="toggleFilterPanel('status_rinci',event)"><span id="label_status_rinci">-- Semua --</span></button>
+        <div class="check-panel" id="panel_status_rinci">
+          <div class="check-list-container">
+            <div class="check-item"><input type="checkbox" id="all_status_rinci" checked onchange="toggleAllFilter('status_rinci',this)"><label for="all_status_rinci" style="font-weight:600; cursor:pointer;">Pilih Semua</label></div>
+            <div style="border-top:1px solid #eee; margin:4px 0;"></div>
+            <div id="list_status_rinci"></div>
+          </div>
+          <div style="display:flex; gap:8px; padding:6px; background:#f8fafc; border-top:1px solid #eee;">
+            <button style="height:20px; font-size:9px;" class="w-full bg-blue-900 text-white rounded font-bold" onclick="applyFilterPanel('status_rinci')">✓ OK</button>
+            <button style="height:20px; font-size:9px;" class="w-full border rounded font-bold" onclick="cancelFilterPanel('status_rinci')">✕ Batal</button>
           </div>
         </div>
       </div>
@@ -189,8 +207,8 @@
             <div id="list_cara"></div>
           </div>
           <div style="display:flex; gap:8px; padding:10px; background:#f8fafc; border-top:1px solid #eee;">
-            <button class="w-full bg-blue-900 text-white py-1.5 rounded text-xs font-bold" onclick="applyFilterPanel('cara')">✓ OK</button>
-            <button class="w-full border py-1.5 rounded text-xs font-bold" onclick="cancelFilterPanel('cara')">✕ Batal</button>
+            <button style="height:20px; font-size:9px;" class="w-full bg-blue-900 text-white rounded font-bold font-bold" onclick="applyFilterPanel('cara')">✓ OK</button>
+            <button style="height:20px; font-size:9px;" class="w-full border rounded font-bold font-bold" onclick="cancelFilterPanel('cara')">✕ Batal</button>
           </div>
         </div>
       </div>
@@ -237,8 +255,8 @@
               <div id="list_jenis"></div>
             </div>
             <div style="display:flex; gap:8px; padding:10px; background:#f8fafc; border-top:1px solid #eee;">
-              <button class="w-full bg-blue-900 text-white py-1.5 rounded text-xs font-bold" onclick="applyFilterPanel('jenis')">✓ OK</button>
-              <button class="w-full border py-1.5 rounded text-xs font-bold" onclick="cancelFilterPanel('jenis')">✕ Batal</button>
+              <button style="height:20px; font-size:9px;" class="w-full bg-blue-900 text-white rounded font-bold font-bold" onclick="applyFilterPanel('jenis')">✓ OK</button>
+              <button style="height:20px; font-size:9px;" class="w-full border rounded font-bold font-bold" onclick="cancelFilterPanel('jenis')">✕ Batal</button>
             </div>
           </div>
         </div>
@@ -254,8 +272,8 @@
               <div id="list_metode"></div>
             </div>
             <div style="display:flex; gap:8px; padding:10px; background:#f8fafc; border-top:1px solid #eee;">
-              <button class="w-full bg-blue-900 text-white py-1.5 rounded text-xs font-bold" onclick="applyFilterPanel('metode')">✓ OK</button>
-              <button class="w-full border py-1.5 rounded text-xs font-bold" onclick="cancelFilterPanel('metode')">✕ Batal</button>
+              <button style="height:20px; font-size:9px;" class="w-full bg-blue-900 text-white rounded font-bold font-bold" onclick="applyFilterPanel('metode')">✓ OK</button>
+              <button style="height:20px; font-size:9px;" class="w-full border rounded font-bold font-bold" onclick="cancelFilterPanel('metode')">✕ Batal</button>
             </div>
           </div>
         </div>
@@ -291,14 +309,14 @@
   <table>
     <thead>
       <tr>
-        <th style="width:30px; text-align:center;">No</th>
-        <th style="width:140px; text-align:center;">Kode Paket / Kode RUP</th>
-        <th style="width:250px; text-align:center;">Nama Paket / Satuan Kerja</th>
-        <th style="width:150px; text-align:center;">Jenis / Metode Pemilihan</th>
-        <th style="width:100px; text-align:center;">Status</th>
-        <th style="width:120px; text-align:center;">Nilai Pagu / HPS</th>
-        <th style="width:120px; text-align:center;">Hasil Pemilihan</th>
-        <th style="width:110px; text-align:center;">Efisiensi</th>
+        <th style="width:4%; text-align:center;">No</th>
+        <th style="width:14%; text-align:center;">Kode Paket / RUP</th>
+        <th style="width:26%; text-align:center;">Nama Paket / Satuan Kerja</th>
+        <th style="width:14%; text-align:center;">Jenis / Metode</th>
+        <th style="width:10%; text-align:center;">Status</th>
+        <th style="width:11%; text-align:center;">Nilai Pagu / HPS</th>
+        <th style="width:11%; text-align:center;">Hasil Pemilihan</th>
+        <th style="width:10%; text-align:center;">Efisiensi</th>
       </tr>
     </thead>
   </table>
@@ -312,14 +330,14 @@
   <table id="mainTable">
     <thead id="mainThead">
       <tr>
-        <th style="width:30px; text-align:center;">No</th>
-        <th style="width:140px; text-align:center;">Kode Paket / Kode RUP</th>
-        <th style="width:250px; text-align:center;">Nama Paket / Satuan Kerja</th>
-        <th style="width:150px; text-align:center;">Jenis / Metode Pemilihan</th>
-        <th style="width:100px; text-align:center;">Status</th>
-        <th style="width:120px; text-align:center;">Nilai Pagu / HPS</th>
-        <th style="width:120px; text-align:center;">Hasil Pemilihan</th>
-        <th style="width:110px; text-align:center;">Efisiensi</th>
+        <th style="width:4%; text-align:center;">No</th>
+        <th style="width:14%; text-align:center;">Kode Paket / RUP</th>
+        <th style="width:26%; text-align:center;">Nama Paket / Satuan Kerja</th>
+        <th style="width:14%; text-align:center;">Jenis / Metode</th>
+        <th style="width:10%; text-align:center;">Status</th>
+        <th style="width:11%; text-align:center;">Nilai Pagu / HPS</th>
+        <th style="width:11%; text-align:center;">Hasil Pemilihan</th>
+        <th style="width:10%; text-align:center;">Efisiensi</th>
       </tr>
     </thead>
     <tbody id="tableBody"></tbody>
@@ -341,7 +359,7 @@
       <h3 class="text-lg font-bold text-gray-800">Akses Terkunci</h3>
     </div>
     <p class="text-xs text-gray-500 mb-4">Masukkan password untuk mengunduh Master Excel.</p>
-    <input type="password" id="inputPassword" placeholder="Masukkan Password..." class="w-full border-2 border-gray-200 rounded-lg p-2.5 mb-5 focus:outline-none focus:border-[#1a3a6b] text-sm" />
+    <input type="password" id="inputPassword" placeholder="Masukkan Password..." style="height:20px; font-size:9px;" class="w-full border-2 border-gray-200 rounded-lg p-2.5 mb-5 focus:outline-none focus:border-[#1a3a6b] text-sm" />
     <div class="flex justify-end gap-2">
       <button onclick="tutupModal()" class="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 font-semibold text-sm transition-colors">Batal</button>
       <button onclick="cekPassword()" class="px-4 py-2 text-white rounded-lg font-semibold text-sm transition-colors" style="background-color: var(--lpse-biru);">Download</button>
@@ -380,7 +398,8 @@ const filterConfigs = {
   "jenis":  { key: "Jenis Pengadaan", isStatic:false },
   "metode": { key: "Metode Pemilihan", isStatic:false },
   "cara":   { key: "Cara Pengadaan", isStatic:true, staticOptions: ["Tender","Non Tender","Pencatatan Non Tender","E-Purchasing V5","E-Purchasing V6","Swakelola"] },
-  "status": { key: "Status", isStatic:true, staticOptions: ["Belum Proses","Sedang Berjalan","Sudah Selesai"] }
+  "status": { key: "Status", isStatic:true, staticOptions: ["Belum Proses","Sedang Berjalan","Sudah Selesai"] },
+  "status_rinci": { key: "Status", isStatic:false }
 };
 let filterSnapshots = {};
 
@@ -586,8 +605,9 @@ function applyFilter() {
   const checkedMetode = getCheckedValues("metode");
   const checkedCara   = getCheckedValues("cara");
   const checkedStatus = getCheckedValues("status");
+  const checkedStatusRinci = getCheckedValues("status_rinci");
 
-  filtered = allData.filter(row => {
+  let tempFiltered = allData.filter(row => {
     // 1. Text Search
     if (kodePaket && !(String(row["Kode Paket"] ?? "")).toLowerCase().includes(kodePaket)) return false;
     if (kodeRUP && !(String(row["Kode RUP"] ?? "")).toLowerCase().includes(kodeRUP)) return false;
@@ -619,7 +639,7 @@ function applyFilter() {
 
       // ATURAN KHUSUS SUMBER 6 (E-Purchasing V6 Baru)
       if (sumber.includes("sumber 6")) {
-        const statusValid = ["ON_PROCESS", "PAYMENT_OUTSIDE_SYSTEM", "ON_ADDENDUM", "COMPLETED"];
+        const statusValid = ["ON PROCESS", "PAYMENT OUTSIDE SYSTEM", "ON ADDENDUM", "COMPLETED"];
         if (!statusValid.includes(rawStatus)) {
           return false; // Jika status TIDAK ADA di daftar atas, sembunyikan baris ini!
         }
@@ -645,6 +665,18 @@ function applyFilter() {
       }
     }
     
+    return true;
+  });
+
+  // Update tampilan opsi di dropdown Status Rinci
+  const statusTersedia = new Set(tempFiltered.map(r => r["Status"] ?? "").filter(v => v !== ""));
+  document.querySelectorAll("#list_status_rinci .check-item").forEach(item => {
+    item.style.display = statusTersedia.has(item.querySelector("input").value) ? "flex" : "none";
+  });
+
+  // Terapkan filter Status Rinci ke data tabel
+  filtered = tempFiltered.filter(row => {
+    if (checkedStatusRinci !== null && !checkedStatusRinci.includes(row["Status"])) return false;
     return true;
   });
 
@@ -726,29 +758,29 @@ function renderTable() {
       formattedRup = chunks.join(";<br>");
     }
 
-    const idDisplay = `<div style="font-family:monospace; color:#1a3a6b; font-weight:600;">PKT: ${row["Kode Paket"] ?? "-"}</div>
-                       <div style="font-size:0.65rem; color:#64748b; margin-top:2px; white-space: normal; line-height: 1.4;">RUP: ${formattedRup}</div>`;
+    const idDisplay = `<div style="font-size:0.65rem; font-family:monospace; color:#1a3a6b;">PKT: ${row["Kode Paket"] ?? "-"}</div>
+                       <div style="font-size:0.55rem; color:#64748b; margin-top:2px; line-height:1.3;">RUP: ${formattedRup}</div>`;
              
-    const textInfo = `<div style="font-weight:600; font-size:0.7rem; margin-bottom:3px; line-height:1.3; color:#1e293b;">${row["Nama Paket"] ?? "-"}</div>
-                      <div style="font-size:0.6rem; color:#64748b;">${row["Satuan Kerja"] ?? "-"}</div>`;
+    const textInfo = `<div style="font-size:0.65rem; margin-bottom:3px; line-height:1.2; color:#1a3a6b;">${row["Nama Paket"] ?? "-"}</div>
+                      <div style="font-size:0.55rem; color:#64748b;">${row["Satuan Kerja"] ?? "-"}</div>`;
              
-    const jenisInfo = `<div style="font-size:0.65rem; font-weight:600;">${row["Metode Pemilihan"] ?? "-"}</div>
-                       <div style="font-size:0.6rem; color:#64748b;">${row["Jenis Pengadaan"] ?? "-"}</div>
-                       <div style="font-size:0.6rem; color:#e63329; font-weight:600; margin-top:2px;">${row["Cara Pengadaan"] ?? "-"}</div>`;
+    const jenisInfo = `<div style="font-size:0.65rem; margin-bottom:2px; color:#1a3a6b;">${row["Metode Pemilihan"] ?? "-"}</div>
+                       <div style="font-size:0.55rem; color:#64748b;">${row["Jenis Pengadaan"] ?? "-"}</div>
+                       <div style="font-size:0.55rem; color:#e63329;">${row["Cara Pengadaan"] ?? "-"}</div>`;
              
-    const nilaiPagu = `<div style="font-weight:600; color:#1e293b;">${isAngka(pagu) ? rupiah(pagu) : (pagu ?? "-")}</div>
-                       <div style="font-size:0.6rem; color:#64748b;">HPS: ${isAngka(hps) ? rupiah(hps) : (hps ?? "-")}</div>`;
+    const nilaiPagu = `<div style="font-size:0.65rem; color:#1a3a6b;">${isAngka(pagu) ? rupiah(pagu) : (pagu ?? "-")}</div>
+                       <div style="font-size:0.55rem; color:#64748b; margin-top:2px;">HPS: ${isAngka(hps) ? rupiah(hps) : (hps ?? "-")}</div>`;
 
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td class="td-center" style="color:#94a3b8;font-size:0.65rem;">${start + index + 1}</td>
+      <td class="td-center" style="color:#94a3b8; font-size:0.65rem;">${start + index + 1}</td>
       <td>${idDisplay}</td>
       <td style="max-width:350px; white-space:normal;">${textInfo}</td>
       <td>${jenisInfo}</td>
       <td>${badgeStatus(row)}</td>
       <td class="td-rupiah">${nilaiPagu}</td>
-      <td class="td-rupiah" style="font-weight:600; color:#1a3a6b;">${isAngka(hasil) ? rupiah(hasil) : (hasil ?? "-")}</td>
-      <td class="td-rupiah">${efisiensiStr}</td>
+      <td class="td-rupiah" style="color:#1a3a6b; font-size:0.65rem;">${isAngka(hasil) ? rupiah(hasil) : (hasil ?? "-")}</td>
+      <td class="td-rupiah" style="font-size:0.65rem;">${efisiensiStr}</td>
     `;
     tbody.appendChild(tr);
   });

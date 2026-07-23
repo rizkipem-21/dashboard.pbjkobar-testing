@@ -835,6 +835,7 @@ def process_tahun(tahun):
     final_df = final_df[cols].fillna("")
     final_df['PDN'] = final_df['PDN'].replace("", "N/A")
     final_df['UKM'] = final_df['UKM'].replace("", "N/A")
+    final_df['Status'] = final_df['Status'].apply(lambda x: str(x).replace('_', ' ') if pd.notna(x) else x)
 
     def safe_numeric(val):
         if val in ("N/A", "", None) or pd.isna(val): return 0.0
