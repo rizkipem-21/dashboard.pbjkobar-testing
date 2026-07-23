@@ -271,6 +271,30 @@ if __name__ == "__main__":
     log_print(f"START GENERATE RUP {get_waktu_indonesia()}")
     log_print("==================================================")
 
+    # 1. BACA ERROR DI AWAL
+    daftar_error_api = []
+    path_error = os.path.join(BASE_DIR, 'scripts', 'rup', 'error_api_rup.json')
+    if os.path.exists(path_error):
+        try:
+            with open(path_error, 'r', encoding='utf-8') as f: daftar_error_api = json.load(f)
+            os.remove(path_error)
+        except: pass
+
+    # 2. CEK TOTAL URL
+    total_target = 0
+    path_url = os.path.join(BASE_DIR, 'scripts', 'rup', 'url_rup.txt')
+    if os.path.exists(path_url):
+        with open(path_url, 'r', encoding='utf-8') as f:
+            total_target = len([line for line in f if line.strip()]) * len(daftar_tahun)
+
+    # 3. LOGIKA BERHENTI JIKA GAGAL TOTAL
+    if total_target > 0 and len(daftar_error_api) >= total_target:
+        pesan_gagal = f"🚨 LAPORAN UPDATE (RUP) 🚨\n\n⚠️ GAGAL TOTAL DOWNLOAD API!\nTidak ada data baru. Skrip Generate dihentikan.\n\nWaktu: {get_waktu_indonesia()}"
+        kirim_telegram_aman(pesan_gagal)
+        log_print("GAGAL TOTAL. Skrip berhenti.")
+        sys.exit(0)
+
+    # ... (lanjutkan ke kode for t in daftar_tahun: dst) ...
     total_all = 0
     for t in daftar_tahun:
         output_json_cek = os.path.join(BASE_DIR, 'data', str(t), f'rekap_rup_{t}.json')
@@ -282,16 +306,6 @@ if __name__ == "__main__":
     with open(os.path.join(BASE_DIR, "data", "last-update-rup.txt"), "w", encoding='utf-8') as f:
         f.write(get_waktu_indonesia())
 
-    # BACA ERROR DARI DOWNLOAD SCRIPT
-    daftar_error_api = []
-    path_error = os.path.join(BASE_DIR, 'scripts', 'rup', 'error_api_rup.json')
-    if os.path.exists(path_error):
-        try:
-            with open(path_error, 'r', encoding='utf-8') as f:
-                daftar_error_api = json.load(f)
-            os.remove(path_error)
-        except: pass
-    
     git_sukses, pesan_git = sync_to_github()
 
     log_print("\n" + "="*50)
