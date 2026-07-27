@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rekap Data TEPRA</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  :root {
+    --lpse-biru  : #1a3a6b;
+    --lpse-biru2 : #1e4d8c;
+    --lpse-merah : #e63329;
+    --lpse-kuning: #f5c800;
+    --lpse-hijau : #2d9e47;
+  }
+
+  body { background: transparent; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; margin: 0; }
+
+  /* ===== HEADER ===== */
+  .page-header { background: linear-gradient(135deg, var(--lpse-biru) 0%, var(--lpse-biru2) 100%); border-bottom: 3px solid var(--lpse-kuning); padding: 14px 20px 10px; margin-bottom: 16px; border-radius: 0 0 10px 10px; box-shadow: 0 3px 12px rgba(26,58,107,0.15); }
+  .page-header-top { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+  .page-header h1 { color: #fff; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.2px; margin: 0 0 2px 0; }
+  .page-header .last-update { color: rgba(255,255,255,0.72); font-size: 0.65rem; }
+  
+  .year-selector-wrap { display: flex; align-items: center; gap: 8px; }
+  .year-selector-wrap label { color: #fff; font-size: 0.75rem; font-weight: 600; }
+  .year-select { padding: 4px 10px; border-radius: 5px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff; font-weight: 600; outline: none; cursor: pointer; }
+  .year-select option { color: #1e293b; background: #fff; }
+
+  /* ===== TABS NAVIGATION ===== */
+  .tabs-container { display: flex; gap: 6px; padding: 0 20px; margin-bottom: 12px; overflow-x: auto; scrollbar-width: none; }
+  .tabs-container::-webkit-scrollbar { display: none; }
+  .tab-btn { background: #fff; color: var(--lpse-biru); border: 2px solid #dde3ed; border-radius: 6px; padding: 6px 14px; font-size: 0.7rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+  .tab-btn:hover { border-color: var(--lpse-biru); background: #f8fafc; }
+  .tab-btn.active { background: var(--lpse-biru); color: #fff; border-color: var(--lpse-biru); box-shadow: 0 4px 8px rgba(26,58,107,0.2); }
+
+  /* ===== KONTROL BAR & FILTER ===== */
+  .control-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin: 0 20px 12px; background: #fff; border-radius: 8px; padding: 8px 12px; box-shadow: 0 1px 6px rgba(26,58,107,0.07); }
+  .filter-group { display: flex; align-items: center; gap: 6px; }
+  .filter-input { border: 1.5px solid #dde3ed; border-radius: 4px; padding: 4px 8px; font-size: 0.65rem; color: #1e293b; background: #f8fafc; outline: none; width: 180px; }
+  .filter-select { border: 1.5px solid #dde3ed; border-radius: 4px; padding: 4px 8px; font-size: 0.65rem; color: #1e293b; background: #f8fafc; outline: none; cursor: pointer; }
+  
+  .btn-filter-toggle { background: #fff; color: var(--lpse-biru); border: 1.5px solid #cbd5e1; border-radius: 4px; padding: 4px 10px; font-size: 0.65rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
+  .btn-filter-toggle.active { background: var(--lpse-biru); color: #fff; border-color: var(--lpse-biru); }
+  
+  .btn-reset { background: #f1f5f9; color: var(--lpse-merah); border: 1.5px solid #cbd5e1; border-radius: 4px; padding: 4px 10px; font-size: 0.65rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
+  .btn-reset:hover { background: #e2e8f0; }
+  
+  .btn-excel { background: var(--lpse-hijau); color: #fff; border: none; border-radius: 4px; padding: 4px 12px; font-size: 0.65rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.15); transition: 0.2s; }
+  .btn-excel:hover { opacity: 0.9; }
+
+  /* ===== TABEL UTAMA (LEBAR OTOMATIS) ===== */
+  .table-wrap { background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(26,58,107,0.09); margin: 0 20px 20px; overflow: auto; height: calc(100vh - 225px); }
+  /* table-layout: auto agar lebar menyesuaikan konten */
+  table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.6rem; table-layout: auto; }
+  
+  thead { position: sticky; top: 0; z-index: 10; }
+  thead th { background: var(--lpse-biru); color: #fff; padding: 6px 4px; text-align: center; font-weight: 600; border: 1px solid rgba(255,255,255,0.2); border-top: none; vertical-align: middle; white-space: nowrap; }
+  
+  tbody tr:nth-child(even) { background: #f8fafc; }
+  tbody tr:hover { background: #dbeafe; }
+  
+  tbody td { padding: 4px 6px; border: 1px solid #e2e8f0; border-top: none; vertical-align: middle; }
+  
+  /* STICKY TOTAL BAWAH */
+  tbody tr.total-row td { background: var(--lpse-biru); color: #fff; font-weight: 700; border-color: rgba(255,255,255,0.2); position: sticky; bottom: 0; z-index: 9; }
+  tbody tr.total-row:hover td { background: var(--lpse-biru2); }
+  
+  /* white-space: nowrap memastikan angka/kata tidak turun ke baris baru */
+  .td-center { text-align: center; white-space: nowrap; }
+  .td-right { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  
+  /* Kolom NO 3 digit mepet */
+  .td-no { text-align: center; width: 35px; min-width: 35px; max-width: 35px; white-space: nowrap; padding: 4px 2px; }
+  
+  /* Kolom Satker dikunci dan teks diizinkan turun (wrap) ditambah padding kanan (jarak) */
+  .td-left { text-align: left; width: 260px; min-width: 260px; max-width: 260px; white-space: normal; padding-right: 15px; line-height: 1.3; }
+
+  /* LOADING */
+  #loadingOverlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.8); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 20; display: none; }
+  .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--lpse-biru); border-radius: 50%; width: 25px; height: 25px; animation: spin 1s linear infinite; margin-bottom: 8px; }
+  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<!-- HEADER DIKEMBALIKAN -->
+<div class="page-header">
+  <div class="page-header-top">
+    <div>
+      <h1 id="pageTitle">📊 Laporan Progres Pengadaan Barang dan Jasa Terintegrasi</h1>
+      <p class="last-update" style="margin-top:2px; margin-bottom:3px; font-weight:600; opacity:1;">Laporan Tim Evaluasi dan Pengawasan Realisasi Anggaran (TEPRA) Kab. Kotawaringin Barat</p>
+      <p id="lastUpdate" class="last-update">Memuat last update...</p>
+    </div>
+    <div class="year-selector-wrap">
+      <label for="selectYear">Tahun Anggaran:</label>
+      <select id="selectYear" class="year-select">
+        <option value="2026" selected>2026</option>
+        <option value="2025">2025</option>
+        <option value="2024">2024</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-container" id="tabsContainer">
+  <button class="tab-btn active" onclick="switchTab(0, this)">Non Strategis (0 s.d 50 Juta)</button>
+  <button class="tab-btn" onclick="switchTab(1, this)">Non Strategis (>50 Juta - ≤200 Juta)</button>
+  <button class="tab-btn" onclick="switchTab(2, this)">Strategis (>200 Juta s.d 2,5 Miliar)</button>
+  <button class="tab-btn" onclick="switchTab(3, this)">Strategis (≥2,5 Miliar s.d 50 Miliar)</button>
+</div>
+
+<!-- KONTROL & FILTER -->
+<div class="control-bar">
+  <div class="filter-group">
+    <input type="text" id="filterSatker" class="filter-input" placeholder="Cari Satuan Kerja..." oninput="applyFilters()">
+    
+    <select id="sortData" class="filter-select" onchange="applyFilters()">
+      <option value="">-- Urutkan PKT Berprogres --</option>
+      <option value="desc">Paling Banyak (Tertinggi)</option>
+      <option value="asc">Paling Sedikit (Terendah)</option>
+    </select>
+    
+    <button id="btnHasData" class="btn-filter-toggle" onclick="toggleHasData()">Tampilkan Yang Punya Data</button>
+    <button class="btn-reset" onclick="resetFilters()">✕ Reset Filter</button>
+  </div>
+  
+  <div>
+    <button onclick="downloadExcelHarian()" class="btn-excel">⬇ Download Excel</button>
+  </div>
+</div>
+
+<!-- TABEL UTAMA -->
+<div class="table-wrap" id="tableWrap">
+  <div id="loadingOverlay">
+    <div class="loader"></div>
+    <span style="font-size:0.75rem; color:#1a3a6b; font-weight:600;">Memuat Data TEPRA...</span>
+  </div>
+  
+  <table id="mainTable">
+    <thead id="mainThead"></thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+</div>
+
+<script>
+let currentYear = "2026";
+let activeTabIndex = 0;
+let rawData = [];
+let filteredData = [];
+let isFilterHasData = false;
+
+// Coba sinkronisasi tahun dengan index.html (opsional)
+try {
+  if(parent && parent.document.getElementById("selectYearGlobal")) {
+    currentYear = parent.document.getElementById("selectYearGlobal").value;
+    document.getElementById("selectYear").value = currentYear;
+  }
+} catch(e) {}
+
+const tabConfigs = [
+  { id: 0, filePrefix: "rekap_tepra_0_50m" },
+  { id: 1, filePrefix: "rekap_tepra_50_200m" },
+  { id: 2, filePrefix: "rekap_tepra_200m_2v5m" },
+  { id: 3, filePrefix: "rekap_tepra_2v5m_50m" }
+];
+
+function formatRp(angka) {
+  if (angka === 0 || angka === "0" || !angka) return "-";
+  return new Intl.NumberFormat('id-ID').format(angka);
+}
+
+function formatPkt(angka) {
+  if (angka === 0 || angka === "0" || !angka) return "-";
+  return new Intl.NumberFormat('id-ID').format(angka);
+}
+
+async function loadLastUpdate(){
+  try {
+    const res  = await fetch("../data/last-update-pengadaan.txt");
+    const text = await res.text();
+    document.getElementById("lastUpdate").innerText = "🕒 Terakhir diperbarui: " + text.trim();
+  } catch {
+    document.getElementById("lastUpdate").innerText = "";
+  }
+}
+
+// ==========================================
+// RENDER HEADER
+// ==========================================
+function buildTableHeader() {
+  const thead = document.getElementById("mainThead");
+  if (activeTabIndex === 0) {
+    thead.innerHTML = `
+      <tr>
+        <th rowspan="2" style="width:35px; min-width:35px; max-width:35px;">NO</th>
+        <th rowspan="2" style="width:260px; min-width:260px; max-width:260px; padding-right:15px;">SATUAN KERJA</th>
+        <th colspan="2">DATA LAPORAN</th>
+        <th colspan="2">DATA REALISASI (RUP)</th>
+        <th colspan="2">DATA REALISASI</th>
+        <th colspan="2">BELUM PENGADAAN</th>
+      </tr>
+      <tr>
+        <th>PKT</th><th>Rp</th>
+        <th>PKT</th><th>Rp</th>
+        <th>PKT</th><th>Rp</th>
+        <th>PKT</th><th>Rp</th>
+      </tr>
+    `;
+  } else {
+    thead.innerHTML = `
+      <tr>
+        <th rowspan="3" style="width:35px; min-width:35px; max-width:35px;">NO</th>
+        <th rowspan="3" style="width:260px; min-width:260px; max-width:260px; padding-right:15px;">SATUAN KERJA</th>
+        <th colspan="2" rowspan="2">DATA LAPORAN</th>
+        <th colspan="8">PROSES PENGADAAN (SUDAH PENGADAAN)</th>
+        <th colspan="2" rowspan="2">BELUM PENGADAAN</th>
+      </tr>
+      <tr>
+        <th colspan="2">PEMILIHAN/PELAKS.</th>
+        <th colspan="2">HASIL PEMILIHAN</th>
+        <th colspan="2">KONTRAK</th>
+        <th colspan="2">SERAH TERIMA</th>
+      </tr>
+      <tr>
+        <th>PKT</th><th>Rp</th>
+        <th>PKT</th><th>Rp</th>
+        <th>PKT</th><th>Rp</th>
+        <th>PKT</th><th>Rp</th>
+        <th>PKT</th><th>Rp</th>
+        <th>PKT</th><th>Rp</th>
+      </tr>
+    `;
+  }
+}
+
+// ==========================================
+// FETCH & FILTER DATA
+// ==========================================
+async function fetchTabData() {
+  document.getElementById("loadingOverlay").style.display = "flex";
+  buildTableHeader();
+  
+  const config = tabConfigs[activeTabIndex];
+  try {
+    const url = `../data/${currentYear}/${config.filePrefix}_${currentYear}.json`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("No Data");
+    
+    rawData = await res.json();
+  } catch (error) {
+    rawData = [];
+  }
+  
+  applyFilters();
+  document.getElementById("loadingOverlay").style.display = "none";
+}
+
+function toggleHasData() {
+  isFilterHasData = !isFilterHasData;
+  const btn = document.getElementById("btnHasData");
+  if(isFilterHasData) {
+    btn.classList.add("active");
+    btn.innerText = "✓ Hanya Yang Punya Data";
+  } else {
+    btn.classList.remove("active");
+    btn.innerText = "Tampilkan Yang Punya Data";
+  }
+  applyFilters();
+}
+
+function resetFilters() {
+  document.getElementById("filterSatker").value = "";
+  document.getElementById("sortData").value = "";
+  
+  isFilterHasData = false;
+  const btn = document.getElementById("btnHasData");
+  btn.classList.remove("active");
+  btn.innerText = "Tampilkan Yang Punya Data";
+  
+  applyFilters();
+}
+
+function applyFilters() {
+  const textSearch = document.getElementById("filterSatker").value.toLowerCase();
+  const sortMode = document.getElementById("sortData").value;
+  
+  // 1. FILTERING
+  filteredData = rawData.filter(row => {
+    if (row["Satuan Kerja"] === "TOTAL KESELURUHAN" && textSearch === "" && !isFilterHasData) return true;
+    if (textSearch && !row["Satuan Kerja"].toLowerCase().includes(textSearch)) return false;
+    
+    if (isFilterHasData && row["Satuan Kerja"] !== "TOTAL KESELURUHAN") {
+      let totalPaket = row["Data Laporan_Paket"];
+      if (!totalPaket || totalPaket === "-" || totalPaket === 0) return false;
+    }
+    return true;
+  });
+
+  // 2. SORTING
+  if (sortMode) {
+    filteredData.sort((a, b) => {
+      if (a["Satuan Kerja"] === "TOTAL KESELURUHAN") return 1;
+      if (b["Satuan Kerja"] === "TOTAL KESELURUHAN") return -1;
+      
+      let valA, valB;
+      if (activeTabIndex === 0) {
+        valA = a["Hasil_Paket"] || 0;
+        valB = b["Hasil_Paket"] || 0;
+      } else {
+        valA = (a["SerahTerima_Paket"] || 0) * 1000000 + (a["Kontrak_Paket"] || 0) * 1000 + (a["Hasil_Paket"] || 0);
+        valB = (b["SerahTerima_Paket"] || 0) * 1000000 + (b["Kontrak_Paket"] || 0) * 1000 + (b["Hasil_Paket"] || 0);
+      }
+      return sortMode === 'desc' ? valB - valA : valA - valB;
+    });
+  }
+
+  renderTable();
+}
+
+function renderTable() {
+  const tbody = document.getElementById("tableBody");
+  tbody.innerHTML = "";
+  
+  if (filteredData.length === 0) {
+    const colSpan = activeTabIndex === 0 ? 10 : 14;
+    tbody.innerHTML = `<tr><td colspan="${colSpan}" class="td-center" style="padding:20px; color:#64748b;">Tidak ada data ditemukan.</td></tr>`;
+    return;
+  }
+
+  let nomor = 1;
+  filteredData.forEach((row) => {
+    const isTotal = row["Satuan Kerja"] === "TOTAL KESELURUHAN";
+    const tr = document.createElement("tr");
+    if (isTotal) tr.className = "total-row";
+
+    if (activeTabIndex === 0) {
+      tr.innerHTML = `
+        <td class="td-no">${isTotal ? "" : nomor++}</td>
+        <td class="td-left" style="font-weight:${isTotal?'700':'500'}">${row["Satuan Kerja"]}</td>
+        <td class="td-center">${formatPkt(row["Data Laporan_Paket"])}</td>
+        <td class="td-right">${formatRp(row["Data Laporan_Pagu"])}</td>
+        <td class="td-center">${formatPkt(row["Pemilihan_Paket"])}</td>
+        <td class="td-right">${formatRp(row["Pemilihan_Pagu"])}</td>
+        <td class="td-center">${formatPkt(row["Hasil_Paket"])}</td>
+        <td class="td-right">${formatRp(row["Hasil_Pagu"])}</td>
+        <td class="td-center">${formatPkt(row["Belum_Paket"])}</td>
+        <td class="td-right">${formatRp(row["Belum_Pagu"])}</td>
+      `;
+    } else {
+      tr.innerHTML = `
+        <td class="td-no">${isTotal ? "" : nomor++}</td>
+        <td class="td-left" style="font-weight:${isTotal?'700':'500'}">${row["Satuan Kerja"]}</td>
+        <td class="td-center">${formatPkt(row["Data Laporan_Paket"])}</td>
+        <td class="td-right">${formatRp(row["Data Laporan_Pagu"])}</td>
+        <td class="td-center">${formatPkt(row["Pemilihan_Paket"])}</td>
+        <td class="td-right">${formatRp(row["Pemilihan_Pagu"])}</td>
+        <td class="td-center">${formatPkt(row["Hasil_Paket"])}</td>
+        <td class="td-right">${formatRp(row["Hasil_Pagu"])}</td>
+        <td class="td-center">${formatPkt(row["Kontrak_Paket"])}</td>
+        <td class="td-right">${formatRp(row["Kontrak_Pagu"])}</td>
+        <td class="td-center">${formatPkt(row["SerahTerima_Paket"])}</td>
+        <td class="td-right">${formatRp(row["SerahTerima_Pagu"])}</td>
+        <td class="td-center">${formatPkt(row["Belum_Paket"])}</td>
+        <td class="td-right">${formatRp(row["Belum_Pagu"])}</td>
+      `;
+    }
+    tbody.appendChild(tr);
+  });
+}
+
+// ==========================================
+// INTERAKSI
+// ==========================================
+function switchTab(index, btnElement) {
+  activeTabIndex = index;
+  document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+  btnElement.classList.add("active");
+  fetchTabData();
+}
+
+document.getElementById("selectYear").addEventListener("change", (e) => {
+  currentYear = e.target.value;
+  // Berusaha update ke global parent juga kalau ada
+  try { if (parent && parent.document.getElementById("selectYearGlobal")) parent.document.getElementById("selectYearGlobal").value = currentYear; } catch(e){}
+  fetchTabData();
+});
+
+function downloadExcelHarian() {
+  const btn = document.querySelector(".btn-excel");
+  const originalText = btn.innerText;
+  
+  btn.innerText = "⏳ Mengunduh...";
+  btn.style.opacity = "0.7";
+  btn.style.pointerEvents = "none";
+  
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  const dateStr = `${yyyy}-${mm}-${dd}`;
+  
+  const fileName = `Tepra Kobar_Progres PBJ tahun ${currentYear} (${dateStr}).xlsx`;
+  const fileUrl = `../output/tepra/${currentYear}/${fileName}`;
+  
+  window.location.href = fileUrl;
+  
+  setTimeout(() => {
+    btn.innerText = originalText;
+    btn.style.opacity = "1";
+    btn.style.pointerEvents = "auto";
+  }, 1500);
+}
+
+// INISIALISASI
+loadLastUpdate();
+fetchTabData();
+
+</script>
+</body>
+</html>

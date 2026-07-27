@@ -83,10 +83,13 @@
         </button>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-3 space-y-1">
         <p class="text-[10px] font-semibold text-gray-400 mb-1 px-2">Dashboard Pengadaan</p>
         <button id="btn-pengadaan" onclick="switchTab('view-pengadaan', this, 'pengadaan')" class="menu-item w-full flex items-center px-3 py-1.5 text-gray-600 hover:bg-gray-100 hover:text-lpse-biru rounded-md text-xs transition-colors text-left">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-2 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg> Data Pengadaan
+        </button>
+        <button id="btn-tepra" onclick="switchTab('view-tepra', this, 'tepra')" class="menu-item w-full flex items-center px-3 py-1.5 text-gray-600 hover:bg-gray-100 hover:text-lpse-biru rounded-md text-xs transition-colors text-left">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-2 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg> Laporan TEPRA
         </button>
       </div>
 
@@ -181,6 +184,9 @@
     <div id="view-pengadaan" class="view-panel hidden flex-1 relative bg-[#f0f4f8]">
       <iframe src="pengadaan/data_pengadaan.html" class="w-full h-full border-none absolute inset-0 bg-transparent"></iframe>
     </div>
+    <div id="view-tepra" class="view-panel hidden flex-1 relative bg-[#f0f4f8]">
+      <iframe src="pengadaan/data_tepra.html" class="w-full h-full border-none absolute inset-0 bg-transparent"></iframe>
+    </div>
     <div id="view-kbli" class="view-panel hidden flex-1 relative bg-[#f0f4f8]">
       <iframe src="kategori_kbli/kbli.html" class="w-full h-full border-none absolute inset-0 bg-transparent"></iframe>
     </div>
@@ -222,6 +228,7 @@
       const hash = window.location.hash.substring(1);
       if (hash === 'rup') switchTab('view-rup', document.getElementById('btn-rup'), 'rup');
       else if (hash === 'pengadaan') switchTab('view-pengadaan', document.getElementById('btn-pengadaan'), 'pengadaan');
+      else if (hash === 'tepra') switchTab('view-tepra', document.getElementById('btn-tepra'), 'tepra');
       else if (hash === 'arsip') switchTab('view-arsip', document.getElementById('btn-arsip'), 'arsip');
       else if (hash === 'kbli') switchTab('view-kbli', document.getElementById('btn-kbli'), 'kbli');
       else switchTab('view-dashboard', document.getElementById('btn-dashboard'), '');
