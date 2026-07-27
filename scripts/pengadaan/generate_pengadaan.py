@@ -1023,6 +1023,23 @@ if __name__ == '__main__':
     with open(os.path.join(BASE_DIR, "data", "last-update-pengadaan.txt"), "w", encoding='utf-8') as f:
         f.write(get_waktu_indonesia())
 
+    # --- EKSEKUSI TEPRA ---
+    log_print("\n" + "="*50)
+    log_print("START GENERATE TEPRA")
+    status_tepra = "✅ Data TEPRA berhasil dibuat."
+    try:
+        path_tepra = os.path.join(BASE_DIR, 'scripts', 'pengadaan', 'generate_tepra.py')
+        res_tepra = subprocess.run([sys.executable, path_tepra], capture_output=True, text=True)
+        if res_tepra.returncode == 0:
+            log_print("PROSES TEPRA SUKSES\n" + res_tepra.stdout.strip())
+        else:
+            log_print(f"GAGAL PROSES TEPRA:\n{res_tepra.stderr}")
+            status_tepra = "⚠️ Gagal membuat data TEPRA (Cek Log)."
+    except Exception as e:
+        log_print(f"ERROR TEPRA: {str(e)}")
+        status_tepra = "⚠️ Error sistem saat eksekusi TEPRA."
+    # ----------------------
+
     # 1. PUSH KE GITHUB
     git_sukses, pesan_git = sync_to_github()
 
@@ -1033,9 +1050,10 @@ if __name__ == '__main__':
             teks_error = "⚠️ GAGAL DOWNLOAD API:\n" + "".join([f"{err.replace('_', ' ')}\n" for err in daftar_error_api])
             if len(teks_error) > 3500: teks_error = teks_error[:3500] + "\n... [DAFTAR ERROR DIPOTONG] ...\n"
             pesan_ringkasan += teks_error + "\n"
-        pesan_ringkasan += f"🌐 STATUS GITHUB:\n{pesan_git}\n\nWaktu: {get_waktu_indonesia()}"
+        pesan_ringkasan += f"📊 STATUS TEPRA: {status_tepra}\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\nWaktu: {get_waktu_indonesia()}"
         kirim_telegram_aman(pesan_ringkasan)
     else:
-        kirim_telegram_aman(f"✅ UPDATE PENGADAAN BERHASIL ✅\n\nSeluruh data berhasil diolah dan sinkronisasi selesai.\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\nWaktu: {get_waktu_indonesia()}")
+        pesan_sukses = f"✅ UPDATE PENGADAAN BERHASIL ✅\n\nSeluruh data berhasil diolah.\n📊 STATUS TEPRA: {status_tepra}\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\nWaktu: {get_waktu_indonesia()}"
+        kirim_telegram_aman(pesan_sukses)
         
     log_print(f"\nPROSES SELESAI SELURUHNYA PADA {get_waktu_indonesia()}")
