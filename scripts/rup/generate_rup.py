@@ -280,12 +280,21 @@ if __name__ == "__main__":
             os.remove(path_error)
         except: pass
 
-    # 2. CEK TOTAL URL
+    # 2. CEK TOTAL URL (Disesuaikan dengan tahun yang tidak di-skip)
     total_target = 0
     path_url = os.path.join(BASE_DIR, 'scripts', 'rup', 'url_rup.txt')
     if os.path.exists(path_url):
         with open(path_url, 'r', encoding='utf-8') as f:
-            total_target = len([line for line in f if line.strip()]) * len(daftar_tahun)
+            jumlah_url = len([line for line in f if line.strip()])
+            
+        tahun_diproses = 0
+        for t in daftar_tahun:
+            output_json_cek = os.path.join(BASE_DIR, 'data', str(t), f'rekap_rup_{t}.json')
+            if t != tahun_n and os.path.exists(output_json_cek):
+                continue
+            tahun_diproses += 1
+            
+        total_target = jumlah_url * tahun_diproses
 
     # 3. LOGIKA BERHENTI JIKA GAGAL TOTAL
     if total_target > 0 and len(daftar_error_api) >= total_target:

@@ -11846,3 +11846,35 @@ DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode
 SUKSES
 SUKSES
 SUKSES
+
+==================================================
+START DOWNLOAD RUP 27 Juli 2026 | 09.57 WIB
+==================================================
+
+==================================================
+--- MENGUNDUH DATA TAHUN 2026 ---
+==================================================
+
+DOWNLOAD [V1]: [https://google.com/api/v1/pasti_error_test](https://google.com/api/v1/pasti_error_test)?
+ERROR: Koneksi Terputus / No connection adapters were found for '[https://google.com/api/v1/pasti_error_test](https://google.com/api/v1/pasti_error_test)?'
+    -> [!] Menunggu 5 detik agar server Inaproc stabil...
+ERROR: Koneksi Terputus / No connection adapters were found for '[https://google.com/api/v1/pasti_error_test](https://google.com/api/v1/pasti_error_test)?'
+    -> [!] Menunggu 10 detik agar server Inaproc stabil...
+ERROR: Koneksi Terputus / No connection adapters were found for '[https://google.com/api/v1/pasti_error_test](https://google.com/api/v1/pasti_error_test)?'
+    -> [!] Menunggu 15 detik agar server Inaproc stabil...
+ERROR: Koneksi Terputus / No connection adapters were found for '[https://google.com/api/v1/pasti_error_test](https://google.com/api/v1/pasti_error_test)?'
+    -> [!] Menunggu 20 detik agar server Inaproc stabil...
+ERROR: Koneksi Terputus / No connection adapters were found for '[https://google.com/api/v1/pasti_error_test](https://google.com/api/v1/pasti_error_test)?'
+  GAGAL TOTAL pada request ini. Berhenti ditarik.
+  -> [Aman] Proses terputus, mempertahankan file v1_pasti_error_test](https:__google.com_api_v1_pasti_error_test)_2026.json lama yang utuh.
+
+[SKIP] Tahun 2025 sudah ada (final).
+
+[SKIP] Tahun 2024 sudah ada (final).
+
+PROSES DOWNLOAD SELESAI PADA 27 Juli 2026 | 09.58 WIB
+
+==================================================
+START GENERATE RUP 27 Juli 2026 | 09.58 WIB
+==================================================
+GAGAL TOTAL. Skrip berhenti.
