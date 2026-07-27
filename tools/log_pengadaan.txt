@@ -31756,3 +31756,71 @@ MENGIRIM DATA PENGADAAN KE GITHUB DARI PYTHON...
 ✅ Push ke GitHub BERHASIL
 
 PROSES SELESAI SELURUHNYA PADA 23 Juli 2026 | 08.35 WIB
+
+=======================================================
+START DOWNLOAD PENGADAAN 27 Juli 2026 | 09.34 WIB
+=======================================================
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2026
+=======================================================
+
+DOWNLOAD [V1]: [https://google.com/api/v1/pasti_error_test](https://google.com/api/v1/pasti_error_test)?
+ERROR: Koneksi Terputus / No connection adapters were found for '[https://google.com/api/v1/pasti_error_test](https://google.com/api/v1/pasti_error_test)?'
+    -> [!] Menunggu 5 detik agar server Inaproc stabil...
+ERROR: Koneksi Terputus / No connection adapters were found for '[https://google.com/api/v1/pasti_error_test](https://google.com/api/v1/pasti_error_test)?'
+    -> [!] Menunggu 10 detik agar server Inaproc stabil...
+ERROR: Koneksi Terputus / No connection adapters were found for '[https://google.com/api/v1/pasti_error_test](https://google.com/api/v1/pasti_error_test)?'
+    -> [!] Menunggu 15 detik agar server Inaproc stabil...
+ERROR: Koneksi Terputus / No connection adapters were found for '[https://google.com/api/v1/pasti_error_test](https://google.com/api/v1/pasti_error_test)?'
+    -> [!] Menunggu 20 detik agar server Inaproc stabil...
+ERROR: Koneksi Terputus / No connection adapters were found for '[https://google.com/api/v1/pasti_error_test](https://google.com/api/v1/pasti_error_test)?'
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2025
+=======================================================
+
+DOWNLOAD [V1]: [https://google.com/api/v1/pasti_error_test](https://google.com/api/v1/pasti_error_test)?
+ERROR: Koneksi Terputus / No connection adapters were found for '[https://google.com/api/v1/pasti_error_test](https://google.com/api/v1/pasti_error_test)?'
+    -> [!] Menunggu 5 detik agar server Inaproc stabil...
+ERROR: Koneksi Terputus / No connection adapters were found for '[https://google.com/api/v1/pasti_error_test](https://google.com/api/v1/pasti_error_test)?'
+    -> [!] Menunggu 10 detik agar server Inaproc stabil...
+ERROR: Koneksi Terputus / No connection adapters were found for '[https://google.com/api/v1/pasti_error_test](https://google.com/api/v1/pasti_error_test)?'
+    -> [!] Menunggu 15 detik agar server Inaproc stabil...
+ERROR: Koneksi Terputus / No connection adapters were found for '[https://google.com/api/v1/pasti_error_test](https://google.com/api/v1/pasti_error_test)?'
+    -> [!] Menunggu 20 detik agar server Inaproc stabil...
+ERROR: Koneksi Terputus / No connection adapters were found for '[https://google.com/api/v1/pasti_error_test](https://google.com/api/v1/pasti_error_test)?'
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2024
+=======================================================
+
+[SKIP] Tahun 2024 sudah final -> Lewati download
+
+PROSES DOWNLOAD SELESAI!
+
+=======================================================
+START GENERATE PENGADAAN 27 Juli 2026 | 09.36 WIB
+=======================================================
+
+=======================================================
+   GENERATE DATA TAHUN 2026
+=======================================================
+JSON Rekap sukses dibuat: D:\dashboard.pbjkobar-testing\data\2026\rekap_pengadaan_2026.json
+📦 Arsip harian diamankan ke lokal: Paket Pengadaan Tahun 2026 (2026-07-23).xlsx
+📝 Daftar arsip JSON diperbarui: D:\dashboard.pbjkobar-testing\output\pengadaan\2026\daftar_arsip.json
+SELESAI GENERATE TAHUN 2026 | Total data: 4931
+
+=======================================================
+   GENERATE DATA TAHUN 2025
+=======================================================
+JSON Rekap sukses dibuat: D:\dashboard.pbjkobar-testing\data\2025\rekap_pengadaan_2025.json
+📦 Arsip harian diamankan ke lokal: Paket Pengadaan Tahun 2025 (2026-07-23).xlsx
+📝 Daftar arsip JSON diperbarui: D:\dashboard.pbjkobar-testing\output\pengadaan\2025\daftar_arsip.json
+SELESAI GENERATE TAHUN 2025 | Total data: 10257
+
+[SKIP] Tahun 2024 sudah final -> Lewati generate
+
+==================================================
+MENGIRIM DATA PENGADAAN KE GITHUB DARI PYTHON...
+==================================================

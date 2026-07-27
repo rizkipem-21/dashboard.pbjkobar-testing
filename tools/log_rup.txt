@@ -11832,3 +11832,17 @@ SUKSES
 [SKIP] Tahun 2024 sudah ada (final).
 
 PROSES DOWNLOAD SELESAI PADA 22 Juli 2026 | 08.22 WIB
+
+==================================================
+START DOWNLOAD RUP 27 Juli 2026 | 09.33 WIB
+==================================================
+
+==================================================
+--- MENGUNDUH DATA TAHUN 2026 ---
+==================================================
+
+[Backup] v1_rup_paket-penyedia-terumumkan_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+SUKSES
+SUKSES
