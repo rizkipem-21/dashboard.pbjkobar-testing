@@ -41211,6 +41211,1320 @@
         "KBLI_2025_Deskripsi": "Perdagangan Eceran Perkakas dan Peralatan Pertukangan"
     },
     {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Ayam",
+        "KBLI_2020_Kode": "01461",
+        "KBLI_2020_Deskripsi": "Budidaya Ayam Ras Pedaging",
+        "KBLI_2025_Kode": "01461",
+        "KBLI_2025_Deskripsi": "Budidaya Ayam Ras Pedaging"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Ayam",
+        "KBLI_2020_Kode": "01462",
+        "KBLI_2020_Deskripsi": "Budidaya Ayam Ras Petelur",
+        "KBLI_2025_Kode": "01462",
+        "KBLI_2025_Deskripsi": "Budidaya Ayam Ras Petelur"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Ayam",
+        "KBLI_2020_Kode": "01463",
+        "KBLI_2020_Deskripsi": "Pembibitan Ayam Lokal dan Persilangannya",
+        "KBLI_2025_Kode": "01463",
+        "KBLI_2025_Deskripsi": "Pembibitan Ayam Lokal dan Persilangannya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Ayam",
+        "KBLI_2020_Kode": "01464",
+        "KBLI_2020_Deskripsi": "Budidaya Ayam Lokal dan Persilangannya",
+        "KBLI_2025_Kode": "01464",
+        "KBLI_2025_Deskripsi": "Budidaya Ayam Lokal dan Persilangannya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Ayam",
+        "KBLI_2020_Kode": "01468",
+        "KBLI_2020_Deskripsi": "Pembibitan Ayam Ras",
+        "KBLI_2025_Kode": "01468",
+        "KBLI_2025_Deskripsi": "Pembibitan Ayam Ras"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Ayam",
+        "KBLI_2020_Kode": "01469",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Ternak Unggas Lainnya",
+        "KBLI_2025_Kode": "01469",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Unggas Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Ayam",
+        "KBLI_2020_Kode": "46205",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Binatang Hidup",
+        "KBLI_2025_Kode": "46205",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Binatang Hidup"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Ayam",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Ayam",
+        "KBLI_2020_Kode": "47752",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Hewan Ternak",
+        "KBLI_2025_Kode": "47752",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Hewan Ternak"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Itik",
+        "KBLI_2020_Kode": "01465",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Itik dan/atau Bebek",
+        "KBLI_2025_Kode": "01465",
+        "KBLI_2025_Deskripsi": "Pembibitan Dan Budidaya Itik dan/atau Bebek"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Itik",
+        "KBLI_2020_Kode": "01469",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Ternak Unggas Lainnya",
+        "KBLI_2025_Kode": "01469",
+        "KBLI_2025_Deskripsi": "Pembibitan Dan Budidaya Ternak Unggas Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Itik",
+        "KBLI_2020_Kode": "46205",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Binatang Hidup",
+        "KBLI_2025_Kode": "46205",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Binatang Hidup"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Itik",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Itik",
+        "KBLI_2020_Kode": "47752",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Hewan Ternak",
+        "KBLI_2025_Kode": "47752",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Hewan Ternak"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Burung",
+        "KBLI_2020_Kode": "01466",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Burung Puyuh",
+        "KBLI_2025_Kode": "01466",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Burung Puyuh"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Burung",
+        "KBLI_2020_Kode": "01467",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Burung Merpati",
+        "KBLI_2025_Kode": "01467",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Burung Merpati"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Burung",
+        "KBLI_2020_Kode": "01469",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Ternak Unggas Lainnya",
+        "KBLI_2025_Kode": "01469",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Unggas Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Burung",
+        "KBLI_2020_Kode": "46205",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Binatang Hidup",
+        "KBLI_2025_Kode": "46205",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Binatang Hidup"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Burung",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Burung",
+        "KBLI_2020_Kode": "47752",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Hewan Ternak",
+        "KBLI_2025_Kode": "47752",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Hewan Ternak Dan Bibit Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Unggas Lainnya",
+        "KBLI_2020_Kode": "01469",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Ternak Unggas Lainnya",
+        "KBLI_2025_Kode": "01469",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Unggas Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Unggas Lainnya",
+        "KBLI_2020_Kode": "46205",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Binatang Hidup",
+        "KBLI_2025_Kode": "46205",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Binatang Hidup"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Unggas Lainnya",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Unggas",
+        "Kategori_Tingkat_III": "Ternak Unggas Lainnya",
+        "KBLI_2020_Kode": "47752",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Hewan Ternak",
+        "KBLI_2025_Kode": "47752",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Hewan Ternak Dan Bibit Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Besar",
+        "Kategori_Tingkat_III": "Ternak Sapi",
+        "KBLI_2020_Kode": "01411",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Sapi Potong",
+        "KBLI_2025_Kode": "01411",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Sapi Potong"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Besar",
+        "Kategori_Tingkat_III": "Ternak Sapi",
+        "KBLI_2020_Kode": "01412",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Sapi Perah",
+        "KBLI_2025_Kode": "01412",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Sapi Perah"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Besar",
+        "Kategori_Tingkat_III": "Ternak Sapi",
+        "KBLI_2020_Kode": "01499",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Aneka Ternak Lainnya",
+        "KBLI_2025_Kode": "01499",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Hewan Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Besar",
+        "Kategori_Tingkat_III": "Ternak Sapi",
+        "KBLI_2020_Kode": "46205",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Binatang Hidup",
+        "KBLI_2025_Kode": "46205",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Binatang Hidup"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Besar",
+        "Kategori_Tingkat_III": "Ternak Sapi",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Besar",
+        "Kategori_Tingkat_III": "Ternak Sapi",
+        "KBLI_2020_Kode": "47752",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Hewan Ternak",
+        "KBLI_2025_Kode": "47752",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Hewan Ternak Dan Bibit Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Besar",
+        "Kategori_Tingkat_III": "Ternak Kerbau",
+        "KBLI_2020_Kode": "01413",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Kerbau Potong",
+        "KBLI_2025_Kode": "01413",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Kerbau Potong"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Besar",
+        "Kategori_Tingkat_III": "Ternak Kerbau",
+        "KBLI_2020_Kode": "01414",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Kerbau Perah",
+        "KBLI_2025_Kode": "01414",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Kerbau Perah"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Besar",
+        "Kategori_Tingkat_III": "Ternak Kerbau",
+        "KBLI_2020_Kode": "01499",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Aneka Ternak Lainnya",
+        "KBLI_2025_Kode": "01499",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Hewan Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Besar",
+        "Kategori_Tingkat_III": "Ternak Kerbau",
+        "KBLI_2020_Kode": "46205",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Binatang Hidup",
+        "KBLI_2025_Kode": "46205",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Binatang Hidup"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Besar",
+        "Kategori_Tingkat_III": "Ternak Kerbau",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Besar",
+        "Kategori_Tingkat_III": "Ternak Kerbau",
+        "KBLI_2020_Kode": "47752",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Hewan Ternak",
+        "KBLI_2025_Kode": "47752",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Hewan Ternak Dan Bibit Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Besar",
+        "Kategori_Tingkat_III": "Ternak Ruminansia Besar Lainnya",
+        "KBLI_2020_Kode": "01499",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Aneka Ternak Lainnya",
+        "KBLI_2025_Kode": "01499",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Hewan Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Besar",
+        "Kategori_Tingkat_III": "Ternak Ruminansia Besar Lainnya",
+        "KBLI_2020_Kode": "46205",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Binatang Hidup",
+        "KBLI_2025_Kode": "46205",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Binatang Hidup"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Besar",
+        "Kategori_Tingkat_III": "Ternak Ruminansia Besar Lainnya",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Besar",
+        "Kategori_Tingkat_III": "Ternak Ruminansia Besar Lainnya",
+        "KBLI_2020_Kode": "47752",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Hewan Ternak",
+        "KBLI_2025_Kode": "47752",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Hewan Ternak Dan Bibit Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Kambing",
+        "KBLI_2020_Kode": "01442",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Kambing Potong",
+        "KBLI_2025_Kode": "01442",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Kambing Potong"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Kambing",
+        "KBLI_2020_Kode": "01443",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Kambing Perah",
+        "KBLI_2025_Kode": "01443",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Kambing Perah"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Kambing",
+        "KBLI_2020_Kode": "01499",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Aneka Ternak Lainnya",
+        "KBLI_2025_Kode": "01499",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Hewan Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Kambing",
+        "KBLI_2020_Kode": "46205",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Binatang Hidup",
+        "KBLI_2025_Kode": "46205",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Binatang Hidup"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Kambing",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Kambing",
+        "KBLI_2020_Kode": "47752",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Hewan Ternak",
+        "KBLI_2025_Kode": "47752",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Hewan Ternak Dan Bibit Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Domba",
+        "KBLI_2020_Kode": "01441",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Domba Potong",
+        "KBLI_2025_Kode": "01441",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Domba Potong"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Domba",
+        "KBLI_2020_Kode": "01444",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Domba Perah",
+        "KBLI_2025_Kode": "01444",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Domba Perah"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Domba",
+        "KBLI_2020_Kode": "01445",
+        "KBLI_2020_Deskripsi": "Produksi Bulu Domba Mentah/Raw Wool",
+        "KBLI_2025_Kode": "01445",
+        "KBLI_2025_Deskripsi": "Produksi Bulu Domba Mentah/Raw Wool"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Domba",
+        "KBLI_2020_Kode": "01499",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Aneka Ternak Lainnya",
+        "KBLI_2025_Kode": "01499",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Hewan Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Domba",
+        "KBLI_2020_Kode": "46205",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Binatang Hidup",
+        "KBLI_2025_Kode": "46205",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Binatang Hidup"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Domba",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Domba",
+        "KBLI_2020_Kode": "47752",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Hewan Ternak",
+        "KBLI_2025_Kode": "47752",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Hewan Ternak Dan Bibit Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Rusa",
+        "KBLI_2020_Kode": "01494",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Rusa",
+        "KBLI_2025_Kode": "01494",
+        "KBLI_2025_Deskripsi": "Pembibitan Dan Budidaya Rusa"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Rusa",
+        "KBLI_2020_Kode": "01499",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Aneka Ternak Lainnya",
+        "KBLI_2025_Kode": "01499",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Hewan Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Rusa",
+        "KBLI_2020_Kode": "46205",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Binatang Hidup",
+        "KBLI_2025_Kode": "46205",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Binatang Hidup"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Rusa",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Rusa",
+        "KBLI_2020_Kode": "47752",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Hewan Ternak",
+        "KBLI_2025_Kode": "47752",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Hewan Ternak Dan Bibit Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Ruminansia Kecil Lainnya",
+        "KBLI_2020_Kode": "01499",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Aneka Ternak Lainnya",
+        "KBLI_2025_Kode": "01499",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Hewan Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Ruminansia Kecil Lainnya",
+        "KBLI_2020_Kode": "46205",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Binatang Hidup",
+        "KBLI_2025_Kode": "46205",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Binatang Hidup"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Ruminansia Kecil Lainnya",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Ruminansia Kecil",
+        "Kategori_Tingkat_III": "Ternak Ruminansia Kecil Lainnya",
+        "KBLI_2020_Kode": "47752",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Hewan Ternak",
+        "KBLI_2025_Kode": "47752",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Hewan Ternak Dan Bibit Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Non Ruminansia",
+        "Kategori_Tingkat_III": "Ternak Babi",
+        "KBLI_2020_Kode": "01450",
+        "KBLI_2020_Deskripsi": "Peternakan Babi",
+        "KBLI_2025_Kode": "01450",
+        "KBLI_2025_Deskripsi": "Peternakan Babi"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Non Ruminansia",
+        "Kategori_Tingkat_III": "Ternak Babi",
+        "KBLI_2020_Kode": "01499",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Aneka Ternak Lainnya",
+        "KBLI_2025_Kode": "01499",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Hewan Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Non Ruminansia",
+        "Kategori_Tingkat_III": "Ternak Babi",
+        "KBLI_2020_Kode": "46205",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Binatang Hidup",
+        "KBLI_2025_Kode": "46205",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Binatang Hidup"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Non Ruminansia",
+        "Kategori_Tingkat_III": "Ternak Babi",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Ternak Non Ruminansia",
+        "Kategori_Tingkat_III": "Ternak Babi",
+        "KBLI_2020_Kode": "47752",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Hewan Ternak",
+        "KBLI_2025_Kode": "47752",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Hewan Ternak Dan Bibit Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Hewan Lainnya",
+        "Kategori_Tingkat_III": "Hewan Anjing",
+        "KBLI_2020_Kode": "01499",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Aneka Ternak Lainnya",
+        "KBLI_2025_Kode": "01499",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Hewan Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Hewan Lainnya",
+        "Kategori_Tingkat_III": "Hewan Anjing",
+        "KBLI_2020_Kode": "46205",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Binatang Hidup",
+        "KBLI_2025_Kode": "46205",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Binatang Hidup"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Hewan Lainnya",
+        "Kategori_Tingkat_III": "Hewan Anjing",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Hewan Lainnya",
+        "Kategori_Tingkat_III": "Hewan Anjing",
+        "KBLI_2020_Kode": "47752",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Hewan Ternak",
+        "KBLI_2025_Kode": "47752",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Hewan Kesayangan (Per Animals)"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Benih Ternak",
+        "Kategori_Tingkat_III": "Embrio Impor",
+        "KBLI_2020_Kode": "01441",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Domba Potong",
+        "KBLI_2025_Kode": "01441",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Domba Potong"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Benih Ternak",
+        "Kategori_Tingkat_III": "Embrio Impor",
+        "KBLI_2020_Kode": "01442",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Kambing Potong",
+        "KBLI_2025_Kode": "01442",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Kambing Potong"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Benih Ternak",
+        "Kategori_Tingkat_III": "Embrio Impor",
+        "KBLI_2020_Kode": "01499",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Aneka Ternak Lainnya",
+        "KBLI_2025_Kode": "01499",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Hewan Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Benih Ternak",
+        "Kategori_Tingkat_III": "Embrio Impor",
+        "KBLI_2020_Kode": "46205",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Binatang Hidup",
+        "KBLI_2025_Kode": "46205",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Binatang Hidup"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Benih Ternak",
+        "Kategori_Tingkat_III": "Embrio Impor",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Benih Ternak",
+        "Kategori_Tingkat_III": "Embrio Impor",
+        "KBLI_2020_Kode": "47752",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Hewan Ternak",
+        "KBLI_2025_Kode": "47752",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Hewan Ternak Dan Bibit Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Benih Ternak",
+        "Kategori_Tingkat_III": "Semen Beku Impor",
+        "KBLI_2020_Kode": "01411",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Sapi Potong",
+        "KBLI_2025_Kode": "01411",
+        "KBLI_2025_Deskripsi": "Budidaya Pembibitan Sapi Potong"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Benih Ternak",
+        "Kategori_Tingkat_III": "Semen Beku Impor",
+        "KBLI_2020_Kode": "01412",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Sapi Perah",
+        "KBLI_2025_Kode": "01412",
+        "KBLI_2025_Deskripsi": "Budidaya Pembibitan Sapi Perah"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Benih Ternak",
+        "Kategori_Tingkat_III": "Semen Beku Impor",
+        "KBLI_2020_Kode": "01499",
+        "KBLI_2020_Deskripsi": "Pembibitan Dan Budidaya Aneka Ternak Lainnya",
+        "KBLI_2025_Kode": "01499",
+        "KBLI_2025_Deskripsi": "Budidaya Dan Pembibitan Hewan Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Benih Ternak",
+        "Kategori_Tingkat_III": "Semen Beku Impor",
+        "KBLI_2020_Kode": "46205",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Binatang Hidup",
+        "KBLI_2025_Kode": "46205",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Binatang Hidup"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Benih Ternak",
+        "Kategori_Tingkat_III": "Semen Beku Impor",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Benih Ternak",
+        "Kategori_Tingkat_III": "Semen Beku Impor",
+        "KBLI_2020_Kode": "47752",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Hewan Ternak",
+        "KBLI_2025_Kode": "47752",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Hewan Ternak Dan Bibit Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Babi",
+        "KBLI_2020_Kode": "10801",
+        "KBLI_2020_Deskripsi": "Industri Ransum Makanan Hewan",
+        "KBLI_2025_Kode": "10801",
+        "KBLI_2025_Deskripsi": "Industri Ransum Pakan Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Babi",
+        "KBLI_2020_Kode": "10802",
+        "KBLI_2020_Deskripsi": "Industri Konsentrat Makanan Hewan",
+        "KBLI_2025_Kode": "10802",
+        "KBLI_2025_Deskripsi": "Industri Konsentrat Pakan Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Babi",
+        "KBLI_2020_Kode": "01191",
+        "KBLI_2020_Deskripsi": "Pertanian Tanaman Pakan Ternak",
+        "KBLI_2025_Kode": "01191",
+        "KBLI_2025_Deskripsi": "Pertanian Tanaman Pakan Ternak"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Babi",
+        "KBLI_2020_Kode": "01192",
+        "KBLI_2020_Deskripsi": "Perbenihan Tanaman Pakan Ternak dan Pembibitan Bit (Bukan Bit Gula)",
+        "KBLI_2025_Kode": "01192",
+        "KBLI_2025_Deskripsi": "Perbenihan Tanaman Pakan Ternak dan Pembibitan Bit (Bukan Bit Gula)"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Babi",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Babi",
+        "KBLI_2020_Kode": "46339",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Makanan Dan Minuman Lainnya",
+        "KBLI_2025_Kode": "46339",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Makanan Dan Minuman Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Babi",
+        "KBLI_2020_Kode": "47754",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Pakan Ternak/Unggas/Ikan dan Hewan Piaraan",
+        "KBLI_2025_Kode": "47754",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Pakan Ternak/Unggas/Ikan dan Hewan Kesayangan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Kambing",
+        "KBLI_2020_Kode": "10801",
+        "KBLI_2020_Deskripsi": "Industri Ransum Makanan Hewan",
+        "KBLI_2025_Kode": "10801",
+        "KBLI_2025_Deskripsi": "Industri Ransum Pakan Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Kambing",
+        "KBLI_2020_Kode": "10802",
+        "KBLI_2020_Deskripsi": "Industri Konsentrat Makanan Hewan",
+        "KBLI_2025_Kode": "10802",
+        "KBLI_2025_Deskripsi": "Industri Konsentrat Pakan Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Kambing",
+        "KBLI_2020_Kode": "01191",
+        "KBLI_2020_Deskripsi": "Pertanian Tanaman Pakan Ternak",
+        "KBLI_2025_Kode": "01191",
+        "KBLI_2025_Deskripsi": "Pertanian Tanaman Pakan Ternak"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Kambing",
+        "KBLI_2020_Kode": "01192",
+        "KBLI_2020_Deskripsi": "Perbenihan Tanaman Pakan Ternak dan Pembibitan Bit (Bukan Bit Gula)",
+        "KBLI_2025_Kode": "01192",
+        "KBLI_2025_Deskripsi": "Perbenihan Tanaman Pakan Ternak dan Pembibitan Bit (Bukan Bit Gula)"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Kambing",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Kambing",
+        "KBLI_2020_Kode": "46339",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Makanan Dan Minuman Lainnya",
+        "KBLI_2025_Kode": "46339",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Makanan Dan Minuman Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Kambing",
+        "KBLI_2020_Kode": "47754",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Pakan Ternak/Unggas/Ikan dan Hewan Piaraan",
+        "KBLI_2025_Kode": "47754",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Pakan Ternak/Unggas/Ikan dan Hewan Kesayangan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Sapi",
+        "KBLI_2020_Kode": "10801",
+        "KBLI_2020_Deskripsi": "Industri Ransum Makanan Hewan",
+        "KBLI_2025_Kode": "10801",
+        "KBLI_2025_Deskripsi": "Industri Ransum Pakan Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Sapi",
+        "KBLI_2020_Kode": "10802",
+        "KBLI_2020_Deskripsi": "Industri Konsentrat Makanan Hewan",
+        "KBLI_2025_Kode": "10802",
+        "KBLI_2025_Deskripsi": "Industri Konsentrat Pakan Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Sapi",
+        "KBLI_2020_Kode": "01191",
+        "KBLI_2020_Deskripsi": "Pertanian Tanaman Pakan Ternak",
+        "KBLI_2025_Kode": "01191",
+        "KBLI_2025_Deskripsi": "Pertanian Tanaman Pakan Ternak"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Sapi",
+        "KBLI_2020_Kode": "01192",
+        "KBLI_2020_Deskripsi": "Perbenihan Tanaman Pakan Ternak dan Pembibitan Bit (Bukan Bit Gula)",
+        "KBLI_2025_Kode": "01192",
+        "KBLI_2025_Deskripsi": "Perbenihan Tanaman Pakan Ternak dan Pembibitan Bit (Bukan Bit Gula)"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Sapi",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Sapi",
+        "KBLI_2020_Kode": "46339",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Makanan Dan Minuman Lainnya",
+        "KBLI_2025_Kode": "46339",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Makanan Dan Minuman Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Sapi",
+        "KBLI_2020_Kode": "47754",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Pakan Ternak/Unggas/Ikan dan Hewan Piaraan",
+        "KBLI_2025_Kode": "47754",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Pakan Ternak/Unggas/Ikan dan Hewan Kesayangan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Unggas",
+        "KBLI_2020_Kode": "10801",
+        "KBLI_2020_Deskripsi": "Industri Ransum Makanan Hewan",
+        "KBLI_2025_Kode": "10801",
+        "KBLI_2025_Deskripsi": "Industri Ransum Pakan Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Unggas",
+        "KBLI_2020_Kode": "10802",
+        "KBLI_2020_Deskripsi": "Industri Konsentrat Makanan Hewan",
+        "KBLI_2025_Kode": "10802",
+        "KBLI_2025_Deskripsi": "Industri Konsentrat Pakan Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Unggas",
+        "KBLI_2020_Kode": "01191",
+        "KBLI_2020_Deskripsi": "Pertanian Tanaman Pakan Ternak",
+        "KBLI_2025_Kode": "01191",
+        "KBLI_2025_Deskripsi": "Pertanian Tanaman Pakan Ternak"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Unggas",
+        "KBLI_2020_Kode": "01192",
+        "KBLI_2020_Deskripsi": "Perbenihan Tanaman Pakan Ternak dan Pembibitan Bit (Bukan Bit Gula)",
+        "KBLI_2025_Kode": "01192",
+        "KBLI_2025_Deskripsi": "Perbenihan Tanaman Pakan Ternak dan Pembibitan Bit (Bukan Bit Gula)"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Unggas",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Unggas",
+        "KBLI_2020_Kode": "46339",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Makanan Dan Minuman Lainnya",
+        "KBLI_2025_Kode": "46339",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Makanan Dan Minuman Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Unggas",
+        "KBLI_2020_Kode": "47754",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Pakan Ternak/Unggas/Ikan dan Hewan Piaraan",
+        "KBLI_2025_Kode": "47754",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Pakan Ternak/Unggas/Ikan dan Hewan Kesayangan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Lainnya",
+        "KBLI_2020_Kode": "10801",
+        "KBLI_2020_Deskripsi": "Industri Ransum Makanan Hewan",
+        "KBLI_2025_Kode": "10801",
+        "KBLI_2025_Deskripsi": "Industri Ransum Pakan Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Lainnya",
+        "KBLI_2020_Kode": "10802",
+        "KBLI_2020_Deskripsi": "Industri Konsentrat Makanan Hewan",
+        "KBLI_2025_Kode": "10802",
+        "KBLI_2025_Deskripsi": "Industri Konsentrat Pakan Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Lainnya",
+        "KBLI_2020_Kode": "01191",
+        "KBLI_2020_Deskripsi": "Pertanian Tanaman Pakan Ternak",
+        "KBLI_2025_Kode": "01191",
+        "KBLI_2025_Deskripsi": "Pertanian Tanaman Pakan Ternak"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Lainnya",
+        "KBLI_2020_Kode": "01192",
+        "KBLI_2020_Deskripsi": "Perbenihan Tanaman Pakan Ternak dan Pembibitan Bit (Bukan Bit Gula)",
+        "KBLI_2025_Kode": "01192",
+        "KBLI_2025_Deskripsi": "Perbenihan Tanaman Pakan Ternak dan Pembibitan Bit (Bukan Bit Gula)"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Lainnya",
+        "KBLI_2020_Kode": "46209",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya",
+        "KBLI_2025_Kode": "46209",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Lainnya",
+        "KBLI_2020_Kode": "46339",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Makanan Dan Minuman Lainnya",
+        "KBLI_2025_Kode": "46339",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Makanan Dan Minuman Lainnya"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Pakan Ternak",
+        "Kategori_Tingkat_III": "Pakan Ternak Lainnya",
+        "KBLI_2020_Kode": "47754",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Pakan Ternak/Unggas/Ikan dan Hewan Piaraan",
+        "KBLI_2025_Kode": "47754",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Pakan Ternak/Unggas/Ikan dan Hewan Kesayangan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Obat Hewan dan Ternak Produk Jadi",
+        "KBLI_2020_Kode": "46444",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Obat Farmasi Untuk Hewan",
+        "KBLI_2025_Kode": "46442",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Sediaan Farmasi untuk Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Obat Hewan dan Ternak Produk Jadi",
+        "KBLI_2020_Kode": "46445",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Obat Tradisional Untuk Hewan",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Obat Hewan dan Ternak Produk Jadi",
+        "KBLI_2020_Kode": "47726",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Barang Dan Obat Farmasi Untuk Hewan Di Apotik Dan Bukan Di Apotik",
+        "KBLI_2025_Kode": "47726",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Obat Farmasi Untuk Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Obat Hewan dan Ternak Produk Jadi",
+        "KBLI_2020_Kode": "47727",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Obat Tradisional Untuk Hewan",
+        "KBLI_2025_Kode": "47727",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Obat Tradisional Untuk Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Obat Hewan dan Ternak Bahan Baku",
+        "KBLI_2020_Kode": "46444",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Obat Farmasi Untuk Hewan",
+        "KBLI_2025_Kode": "46442",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Sediaan Farmasi untuk Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Obat Hewan dan Ternak Bahan Baku",
+        "KBLI_2020_Kode": "46445",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Obat Tradisional Untuk Hewan",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Obat Hewan dan Ternak Bahan Baku",
+        "KBLI_2020_Kode": "47726",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Barang Dan Obat Farmasi Untuk Hewan Di Apotik Dan Bukan Di Apotik",
+        "KBLI_2025_Kode": "47726",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Obat Farmasi Untuk Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Obat Hewan dan Ternak Bahan Baku",
+        "KBLI_2020_Kode": "47727",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Obat Tradisional Untuk Hewan",
+        "KBLI_2025_Kode": "47727",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Obat Tradisional Untuk Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Vaksin Hewan dan Ternak",
+        "KBLI_2020_Kode": "46444",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Obat Farmasi Untuk Hewan",
+        "KBLI_2025_Kode": "46442",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Sediaan Farmasi untuk Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Vaksin Hewan dan Ternak",
+        "KBLI_2020_Kode": "46445",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Obat Tradisional Untuk Hewan",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Vaksin Hewan dan Ternak",
+        "KBLI_2020_Kode": "47726",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Barang Dan Obat Farmasi Untuk Hewan Di Apotik Dan Bukan Di Apotik",
+        "KBLI_2025_Kode": "47726",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Obat Farmasi Untuk Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Vaksin Hewan dan Ternak",
+        "KBLI_2020_Kode": "47727",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Obat Tradisional Untuk Hewan",
+        "KBLI_2025_Kode": "47727",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Obat Tradisional Untuk Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Vitamin Hewan dan Ternak",
+        "KBLI_2020_Kode": "46444",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Obat Farmasi Untuk Hewan",
+        "KBLI_2025_Kode": "46442",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Sediaan Farmasi untuk Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Vitamin Hewan dan Ternak",
+        "KBLI_2020_Kode": "46445",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Obat Tradisional Untuk Hewan",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Vitamin Hewan dan Ternak",
+        "KBLI_2020_Kode": "47726",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Barang Dan Obat Farmasi Untuk Hewan Di Apotik Dan Bukan Di Apotik",
+        "KBLI_2025_Kode": "47726",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Obat Farmasi Untuk Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Vitamin Hewan dan Ternak",
+        "KBLI_2020_Kode": "47727",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Obat Tradisional Untuk Hewan Perdagangan Besar Obat Tradisional Untuk Hewan",
+        "KBLI_2025_Kode": "47727",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Obat Tradisional Untuk Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Obat Hewan dan Ternak Lainnya",
+        "KBLI_2020_Kode": "46444",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Obat Farmasi Untuk Hewan",
+        "KBLI_2025_Kode": "46442",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Sediaan Farmasi untuk Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Obat Hewan dan Ternak Lainnya",
+        "KBLI_2020_Kode": "46445",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Obat Tradisional Untuk Hewan",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Obat Hewan dan Ternak Lainnya",
+        "KBLI_2020_Kode": "47726",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Barang Dan Obat Farmasi Untuk Hewan Di Apotik Dan Bukan Di Apotik",
+        "KBLI_2025_Kode": "47726",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Obat Farmasi Untuk Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Obat Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Obat Hewan dan Ternak Lainnya",
+        "KBLI_2020_Kode": "47727",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Obat Tradisional Untuk Hewan",
+        "KBLI_2025_Kode": "47727",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Obat Tradisional Untuk Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Peralatan Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Peralatan Kandang Hewan dan Ternak",
+        "KBLI_2020_Kode": "46530",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Pertanian",
+        "KBLI_2025_Kode": "46530",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Pertanian"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Peralatan Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Peralatan Kandang Hewan dan Ternak",
+        "KBLI_2020_Kode": "47796",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Alat-alat Pertanian",
+        "KBLI_2025_Kode": "47796",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Pembungkus Dari Plastik"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Peralatan Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Peralatan Makan Minum Hewan dan Ternak",
+        "KBLI_2020_Kode": "46530",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Pertanian",
+        "KBLI_2025_Kode": "46530",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Pertanian"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Peralatan Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Peralatan Makan Minum Hewan dan Ternak",
+        "KBLI_2020_Kode": "47796",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Alat-alat Pertanian",
+        "KBLI_2025_Kode": "47794",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Alat-alat Pertanian"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Peralatan Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Peralatan Hewan dan Ternak Lainnya",
+        "KBLI_2020_Kode": "46446",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Kosmetik Untuk Hewan",
+        "KBLI_2025_Kode": "46442",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Sediaan Farmasi untuk Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Peralatan Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Peralatan Hewan dan Ternak Lainnya",
+        "KBLI_2020_Kode": "46530",
+        "KBLI_2020_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Pertanian",
+        "KBLI_2025_Kode": "46530",
+        "KBLI_2025_Deskripsi": "Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Pertanian"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Peralatan Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Peralatan Hewan dan Ternak Lainnya",
+        "KBLI_2020_Kode": "47728",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Kosmetik Untuk Hewan",
+        "KBLI_2025_Kode": "47728",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Kosmetik Untuk Hewan"
+    },
+    {
+        "Kategori_Tingkat_I": "Hewan dan Ternak",
+        "Kategori_Tingkat_II": "Peralatan Hewan dan Ternak",
+        "Kategori_Tingkat_III": "Peralatan Hewan dan Ternak Lainnya",
+        "KBLI_2020_Kode": "47796",
+        "KBLI_2020_Deskripsi": "Perdagangan Eceran Alat-alat Pertanian",
+        "KBLI_2025_Kode": "47796",
+        "KBLI_2025_Deskripsi": "Perdagangan Eceran Pembungkus Dari Plastik"
+    },
+    {
         "Kategori_Tingkat_I": "Alat Laboratorium",
         "Kategori_Tingkat_II": "Alat Laboratorium Pengujian",
         "Kategori_Tingkat_III": "Alat Laboratorium Pengujian Kimia",
