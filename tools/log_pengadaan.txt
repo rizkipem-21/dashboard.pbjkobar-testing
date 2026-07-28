@@ -31908,3 +31908,130 @@ MENGIRIM DATA PENGADAAN KE GITHUB DARI PYTHON...
 ✅ Push ke GitHub BERHASIL
 
 PROSES SELESAI SELURUHNYA PADA 27 Juli 2026 | 13.21 WIB
+
+=======================================================
+START GENERATE PENGADAAN 28 Juli 2026 | 08.10 WIB
+=======================================================
+
+=======================================================
+   GENERATE DATA TAHUN 2026
+=======================================================
+JSON Rekap sukses dibuat: D:\dashboard.pbjkobar-testing\data\2026\rekap_pengadaan_2026.json
+
+=======================================================
+START DOWNLOAD PENGADAAN 28 Juli 2026 | 08.10 WIB
+=======================================================
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2026
+=======================================================
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2025
+=======================================================
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2024
+=======================================================
+
+[SKIP] Tahun 2024 sudah final -> Lewati download
+
+PROSES DOWNLOAD SELESAI!
+
+=======================================================
+START GENERATE PENGADAAN 28 Juli 2026 | 08.10 WIB
+=======================================================
+
+=======================================================
+   GENERATE DATA TAHUN 2026
+=======================================================
+JSON Rekap sukses dibuat: D:\dashboard.pbjkobar-testing\data\2026\rekap_pengadaan_2026.json
+📦 Arsip harian diamankan ke lokal: Paket Pengadaan Tahun 2026 (2026-07-27).xlsx
+📝 Daftar arsip JSON diperbarui: D:\dashboard.pbjkobar-testing\output\pengadaan\2026\daftar_arsip.json
+SELESAI GENERATE TAHUN 2026 | Total data: 4931
+
+=======================================================
+   GENERATE DATA TAHUN 2025
+=======================================================
+
+=======================================================
+START DOWNLOAD PENGADAAN 28 Juli 2026 | 08.12 WIB
+=======================================================
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2026
+=======================================================
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2025
+=======================================================
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2024
+=======================================================
+
+[SKIP] Tahun 2024 sudah final -> Lewati download
+
+PROSES DOWNLOAD SELESAI!
+
+=======================================================
+START GENERATE PENGADAAN 28 Juli 2026 | 08.12 WIB
+=======================================================
+
+=======================================================
+   GENERATE DATA TAHUN 2026
+=======================================================
+JSON Rekap sukses dibuat: D:\dashboard.pbjkobar-testing\data\2026\rekap_pengadaan_2026.json
+📝 Daftar arsip JSON diperbarui: D:\dashboard.pbjkobar-testing\output\pengadaan\2026\daftar_arsip.json
+SELESAI GENERATE TAHUN 2026 | Total data: 4931
+
+=======================================================
+   GENERATE DATA TAHUN 2025
+=======================================================
+
+=======================================================
+START DOWNLOAD PENGADAAN 28 Juli 2026 | 08.14 WIB
+=======================================================
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2026
+=======================================================
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/sengaja-error-tes?kode_klpd=D228&tahun=2026&limit=1000
+GAGAL (Status 403)
+    -> [!] Menunggu 5 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 10 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 15 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 20 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2025
+=======================================================
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/sengaja-error-tes?kode_klpd=D228&tahun=2025&limit=1000
+GAGAL (Status 403)
+    -> [!] Menunggu 5 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 10 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 15 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 20 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2024
+=======================================================
+
+[SKIP] Tahun 2024 sudah final -> Lewati download
+
+PROSES DOWNLOAD SELESAI!
+
+=======================================================
+START GENERATE PENGADAAN 28 Juli 2026 | 08.16 WIB
+=======================================================
+GAGAL TOTAL. Skrip berhenti.

@@ -11958,3 +11958,51 @@ Untracked files:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 
+
+[main 5ec39ec] Auto update RUP 2026-07-28 08:09:45
+ 5 files changed, 83 insertions(+), 26 deletions(-)
+ rename output/rup/2026/{Rekap RUP Tahun 2026 (2026-07-22).xlsx => Rekap RUP Tahun 2026 (2026-07-28).xlsx} (85%)
+
+
+To https://github.com/rizkipem-21/dashboard.pbjkobar-testing.git
+   6c45bc4..5ec39ec  main -> main
+
+PUSH STATUS: 0  
+SELESAI 28/07/2026 08:09:55  
+PUSH GITHUB SUKSES!
+
+==================================================
+PROSES SELESAI SELURUHNYA PADA 28 Juli 2026 | 08.09 WIB
+==================================================
+
+==================================================
+START DOWNLOAD RUP 28 Juli 2026 | 08.17 WIB
+==================================================
+
+==================================================
+--- MENGUNDUH DATA TAHUN 2026 ---
+==================================================
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/sengaja-error-tes?kode_klpd=D228&tahun=2026&limit=1000
+GAGAL (Status 403)
+    -> [!] Menunggu 5 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 10 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 15 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 20 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+  GAGAL TOTAL pada request ini. Berhenti ditarik.
+  -> [Aman] Proses terputus, mempertahankan file v1_tender_sengaja-error-tes_2026.json lama yang utuh.
+
+[SKIP] Tahun 2025 sudah ada (final).
+
+[SKIP] Tahun 2024 sudah ada (final).
+
+PROSES DOWNLOAD SELESAI PADA 28 Juli 2026 | 08.18 WIB
+
+==================================================
+START GENERATE RUP 28 Juli 2026 | 08.18 WIB
+==================================================
+GAGAL TOTAL. Skrip berhenti.

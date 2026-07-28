@@ -1,1 +1,0 @@
-https://data1.inaproc1.id1/api1/v11/rup1/history1-kaji1-ulang1?kode_klpd1=D2281&tahun={tahun}&limit=1000
