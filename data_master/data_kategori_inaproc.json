@@ -13905,6 +13905,24 @@
         "KBLI_2025_Deskripsi": null
     },
     {
+        "Kategori_Tingkat_I": "Atribut",
+        "Kategori_Tingkat_II": "Status Kewajiban Pengisian",
+        "Kategori_Tingkat_III": "Keterangan",
+        "KBLI_2020_Kode": null,
+        "KBLI_2020_Deskripsi": null,
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Lampiran Spesifikasi Atribut Informasi Lainnya:",
+        "Kategori_Tingkat_II": "Status Kewajiban Pengisian",
+        "Kategori_Tingkat_III": "Keterangan",
+        "KBLI_2020_Kode": null,
+        "KBLI_2020_Deskripsi": null,
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
         "Kategori_Tingkat_I": "Alat Transportasi",
         "Kategori_Tingkat_II": "Kendaraan Keperluan Khusus",
         "Kategori_Tingkat_III": "Sepeda Motor Ambulance Roda Tiga",
@@ -17942,6 +17960,24 @@
         "Kategori_Tingkat_III": "Oli Kendaraan Lainnya",
         "KBLI_2020_Kode": "47303",
         "KBLI_2020_Deskripsi": "Perdagangan Eceran Minyak Pelumas Di Toko",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Atribut",
+        "Kategori_Tingkat_II": "Status Kewajiban Pengisian",
+        "Kategori_Tingkat_III": "Keterangan",
+        "KBLI_2020_Kode": null,
+        "KBLI_2020_Deskripsi": null,
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Lampiran Spesifikasi Atribut Informasi Lainnya:",
+        "Kategori_Tingkat_II": "Status Kewajiban Pengisian",
+        "Kategori_Tingkat_III": "Keterangan",
+        "KBLI_2020_Kode": null,
+        "KBLI_2020_Deskripsi": null,
         "KBLI_2025_Kode": null,
         "KBLI_2025_Deskripsi": null
     },
@@ -26998,6 +27034,42 @@
         "KBLI_2020_Deskripsi": "Konstruksi Bangunan Sipil Pengolahan Air Bersih",
         "KBLI_2025_Kode": "42202",
         "KBLI_2025_Deskripsi": "Konstruksi Bangunan Sipil Pengolahan Air Bersih"
+    },
+    {
+        "Kategori_Tingkat_I": "No",
+        "Kategori_Tingkat_II": "Kategori Produk",
+        "Kategori_Tingkat_III": "Sertifikat Badan Usaha",
+        "KBLI_2020_Kode": null,
+        "KBLI_2020_Deskripsi": null,
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "No",
+        "Kategori_Tingkat_II": "Kategori Produk",
+        "Kategori_Tingkat_III": "Sertifikat Badan Usaha",
+        "KBLI_2020_Kode": null,
+        "KBLI_2020_Deskripsi": null,
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "No",
+        "Kategori_Tingkat_II": "Kategori Produk",
+        "Kategori_Tingkat_III": "Kepemilikan Kantor, Workshop dan Peralatan Konstruksi",
+        "KBLI_2020_Kode": null,
+        "KBLI_2020_Deskripsi": null,
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "No",
+        "Kategori_Tingkat_II": "Kategori Produk",
+        "Kategori_Tingkat_III": "Persyaratan Teknis",
+        "KBLI_2020_Kode": null,
+        "KBLI_2020_Deskripsi": null,
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
     },
     {
         "Kategori_Tingkat_I": "Bidang Perumahan dan Kawasan Permukiman",
@@ -44998,6 +45070,15 @@
         "KBLI_2020_Deskripsi": "Pemasangan Perancah (Steiger)",
         "KBLI_2025_Kode": "43902",
         "KBLI_2025_Deskripsi": "Pemasangan Perancah (Steiger)"
+    },
+    {
+        "Kategori_Tingkat_I": "No",
+        "Kategori_Tingkat_II": "Kategori Produk",
+        "Kategori_Tingkat_III": "Sertifikat Badan Usaha",
+        "KBLI_2020_Kode": null,
+        "KBLI_2020_Deskripsi": null,
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
     },
     {
         "Kategori_Tingkat_I": "Bidang Umum",
@@ -83356,6 +83437,231 @@
         "KBLI_2020_Deskripsi": "Perdagangan Besar Alas Kaki",
         "KBLI_2025_Kode": "47713",
         "KBLI_2025_Deskripsi": "Perdagangan Eceran Pelengkap Pakaian"
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Persiapan Lahan Pertanian",
+        "Kategori_Tingkat_III": "Mobilisasi dan Demobilisasi",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Persiapan Lahan Pertanian",
+        "Kategori_Tingkat_III": "Penentuan Stake Out Trase Saluran/ Infrastruktur dan Pemasangan Patok",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Persiapan Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Pembuatan Direksi Keet/Bedeng Kerja",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Persiapan Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pengukuran dan Pemasangan Patok",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Persiapan Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pemasangan Papan Nama Kegiatan/Proyek",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Persiapan Lahan Pertanian",
+        "Kategori_Tingkat_III": "Sistem Manajemen Keselamatan dan Kesehatan Kerja",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Persiapan Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Persiapan Lahan Pertanian Lainnya",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Land Clearing Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Pembersihan Lahan Vegetasi Ringan",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Land Clearing Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Pembersihan Lahan Vegetasi Sedang",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Land Clearing Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Pembersihan Lahan Vegetasi Berat",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Land Clearing Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Land Clearing Lahan Pertanian Lainnya",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Land Leveling Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Perataan Lahan",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Land Leveling Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Cut and Fill",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Land Leveling Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Land Leveling Lahan Pertanian Lainnya",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Sarana dan Prasarana Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Saluran",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Sarana dan Prasarana Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Badan Tanggul Saluran",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Sarana dan Prasarana Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Galengan/Pematang",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Sarana dan Prasarana Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Perpipaan",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Sarana dan Prasarana Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Gorong-Gorong",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Sarana dan Prasarana Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Box Bagi",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Sarana dan Prasarana Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Pintu Air Saluran Tersier",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Sarana dan Prasarana Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Jalan Akses Pertanian",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Sarana dan Prasarana Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Sarana dan Prasarana Lahan Pertanian Lainnya",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Pengolahan Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Pengolahan Tanah",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
+    },
+    {
+        "Kategori_Tingkat_I": "Pekerjaan Cetak Sawah",
+        "Kategori_Tingkat_II": "Pekerjaan Pengolahan Lahan Pertanian",
+        "Kategori_Tingkat_III": "Pekerjaan Pengolahan Lahan Pertanian Lainnya",
+        "KBLI_2020_Kode": "01611 | 42201 | 42911 | 42930",
+        "KBLI_2020_Deskripsi": "Jasa Pengolahan Lahan | Konstruksi Jaringan Irigasi dan Drainase | Konstruksi Bangunan Prasarana Sumber Daya Air | Jasa Pekerjaan Konstruksi Prapabrikasi Bangunan Sipil",
+        "KBLI_2025_Kode": null,
+        "KBLI_2025_Deskripsi": null
     },
     {
         "Kategori_Tingkat_I": "Peralatan Bidang Geofisika",
