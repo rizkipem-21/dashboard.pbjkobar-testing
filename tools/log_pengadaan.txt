@@ -32068,3 +32068,302 @@ MENGIRIM DATA PENGADAAN KE GITHUB DARI PYTHON...
 ✅ Push ke GitHub BERHASIL
 
 PROSES SELESAI SELURUHNYA PADA 28 Juli 2026 | 15.01 WIB
+
+=======================================================
+START DOWNLOAD PENGADAAN 29 Juli 2026 | 09.01 WIB
+=======================================================
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2026
+=======================================================
+
+[BACKUP] v1_ekatalog_paket-e-purchasing_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/ekatalog/paket-e-purchasing?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+
+[BACKUP] v1_ekatalog-archive_instansi-satker_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/ekatalog-archive/instansi-satker?kode_klpd=D228&limit=1000
+SUKSES
+
+[BACKUP] v1_ekatalog-archive_paket-e-purchasing_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/ekatalog-archive/paket-e-purchasing?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+
+[BACKUP] Legacy_tender_non-tender-ekontrak-bapbast_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-bapbast?kode_klpd=D228&tahun=2026
+SUKSES
+
+[BACKUP] v1_tender_non-tender-ekontrak-kontrak_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/non-tender-ekontrak-kontrak?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+
+[BACKUP] Legacy_tender_non-tender-ekontrak-spmkspp_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2026
+SUKSES
+
+[BACKUP] Legacy_tender_non-tender-ekontrak-sppbj_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-sppbj?kode_klpd=D228&tahun=2026
+SUKSES
+
+[BACKUP] v1_tender_non-tender-pengumuman_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/non-tender-pengumuman?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+
+[BACKUP] v1_tender_non-tender-selesai_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/non-tender-selesai?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+
+[BACKUP] v1_tender_pencatatan-non-tender_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+
+[BACKUP] v1_tender_pencatatan-non-tender-realisasi_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender-realisasi?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+
+[BACKUP] v1_tender_pencatatan-swakelola_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+
+[BACKUP] v1_tender_pengumuman_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pengumuman?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+
+[BACKUP] Legacy_tender_tender-ekontrak-bapbast_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-bapbast?kode_klpd=D228&tahun=2026
+SUKSES
+
+[BACKUP] v1_tender_tender-ekontrak-kontrak_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/tender-ekontrak-kontrak?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+
+[BACKUP] Legacy_tender_tender-ekontrak-spmkspp_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2026
+SUKSES
+
+[BACKUP] Legacy_tender_tender-ekontrak-sppbj_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-sppbj?kode_klpd=D228&tahun=2026
+SUKSES
+
+[BACKUP] Legacy_tender_tender-selesai_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/tender-selesai?kode_klpd=D228&tahun=2026
+SUKSES
+
+[BACKUP] v1_tender_tender-selesai-nilai_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/tender-selesai-nilai?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+
+[BACKUP] v1_rup_paket-penyedia_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-penyedia?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+
+[BACKUP] v1_rup_paket-swakelola_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+
+[BACKUP] v1_rup_history-kaji-ulang_2026.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/history-kaji-ulang?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2025
+=======================================================
+
+[BACKUP] v1_ekatalog_paket-e-purchasing_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/ekatalog/paket-e-purchasing?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+
+[BACKUP] v1_ekatalog-archive_instansi-satker_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/ekatalog-archive/instansi-satker?kode_klpd=D228&limit=1000
+SUKSES
+
+[BACKUP] v1_ekatalog-archive_paket-e-purchasing_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/ekatalog-archive/paket-e-purchasing?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+
+[BACKUP] v1_rup_paket-penyedia-terumumkan_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+
+[BACKUP] v1_rup_paket-swakelola-terumumkan_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+
+[BACKUP] Legacy_tender_non-tender-ekontrak-bapbast_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-bapbast?kode_klpd=D228&tahun=2025
+SUKSES
+
+[BACKUP] v1_tender_non-tender-ekontrak-kontrak_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/non-tender-ekontrak-kontrak?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+
+[BACKUP] Legacy_tender_non-tender-ekontrak-spmkspp_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2025
+SUKSES
+
+[BACKUP] Legacy_tender_non-tender-ekontrak-sppbj_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-sppbj?kode_klpd=D228&tahun=2025
+SUKSES
+
+[BACKUP] v1_tender_non-tender-pengumuman_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/non-tender-pengumuman?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+
+[BACKUP] v1_tender_non-tender-selesai_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/non-tender-selesai?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+
+[BACKUP] v1_tender_pencatatan-non-tender_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+SUKSES
+
+[BACKUP] v1_tender_pencatatan-non-tender-realisasi_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender-realisasi?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+
+[BACKUP] v1_tender_pencatatan-swakelola_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+
+[BACKUP] v1_tender_pengumuman_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pengumuman?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+
+[BACKUP] Legacy_tender_tender-ekontrak-bapbast_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-bapbast?kode_klpd=D228&tahun=2025
+SUKSES
+
+[BACKUP] v1_tender_tender-ekontrak-kontrak_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/tender-ekontrak-kontrak?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+
+[BACKUP] Legacy_tender_tender-ekontrak-spmkspp_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2025
+SUKSES
+
+[BACKUP] Legacy_tender_tender-ekontrak-sppbj_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-sppbj?kode_klpd=D228&tahun=2025
+SUKSES
+
+[BACKUP] Legacy_tender_tender-selesai_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/tender-selesai?kode_klpd=D228&tahun=2025
+SUKSES
+
+[BACKUP] v1_tender_tender-selesai-nilai_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/tender-selesai-nilai?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+
+[BACKUP] v1_rup_paket-penyedia_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-penyedia?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+
+[BACKUP] v1_rup_paket-swakelola_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-swakelola?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+
+[BACKUP] v1_rup_history-kaji-ulang_2025.json di-copy ke arsip 2026-07-22
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/history-kaji-ulang?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2024
+=======================================================
+
+[SKIP] Tahun 2024 sudah final -> Lewati download
+
+PROSES DOWNLOAD SELESAI!
+
+=======================================================
+START GENERATE PENGADAAN 29 Juli 2026 | 09.06 WIB
+=======================================================
+
+=======================================================
+   GENERATE DATA TAHUN 2026
+=======================================================
+JSON Rekap sukses dibuat: D:\dashboard.pbjkobar-testing\data\2026\rekap_pengadaan_2026.json
+📦 Arsip harian diamankan ke lokal: Paket Pengadaan Tahun 2026 (2026-07-28).xlsx
+📝 Daftar arsip JSON diperbarui: D:\dashboard.pbjkobar-testing\output\pengadaan\2026\daftar_arsip.json
+SELESAI GENERATE TAHUN 2026 | Total data: 4934
+
+=======================================================
+   GENERATE DATA TAHUN 2025
+=======================================================
+JSON Rekap sukses dibuat: D:\dashboard.pbjkobar-testing\data\2025\rekap_pengadaan_2025.json
+📦 Arsip harian diamankan ke lokal: Paket Pengadaan Tahun 2025 (2026-07-28).xlsx
+📝 Daftar arsip JSON diperbarui: D:\dashboard.pbjkobar-testing\output\pengadaan\2025\daftar_arsip.json
+SELESAI GENERATE TAHUN 2025 | Total data: 10256
+
+[SKIP] Tahun 2024 sudah final -> Lewati generate
+
+==================================================
+START GENERATE TEPRA
+PROSES TEPRA SUKSES
+TEPRA 2026 Sukses (4 Sheet Lengkap) -> D:\dashboard.pbjkobar-testing\output\tepra\2026\Tepra Kobar_Progres PBJ tahun 2026 (2026-07-29).xlsx
+
+==================================================
+MENGIRIM DATA PENGADAAN KE GITHUB DARI PYTHON...
+==================================================
