@@ -49,6 +49,15 @@ def format_tanggal_indo(tgl_str):
     except:
         return str(tgl_str)
 
+def format_tanggal_slash(tgl_str):
+    if pd.isna(tgl_str) or not str(tgl_str).strip() or str(tgl_str).strip() == '-': 
+        return '-'
+    try:
+        dt = pd.to_datetime(str(tgl_str))
+        return dt.strftime('%d/%m/%Y')
+    except:
+        return str(tgl_str)        
+
 def cek_aspek(val):
     val_str = str(val).lower()
     return "Ya" if val_str == 'true' else "Tidak"
@@ -208,7 +217,9 @@ def process_tahun(tahun):
             'Tgl Akhir Pemanfaatan': format_tanggal_indo(item.get('tgl_akhir_pemanfaatan')),
             'Tgl Buat Paket': format_tanggal_indo(item.get('tgl_buat_paket')),
             'Tgl Pengumuman Paket': format_tanggal_indo(item.get('tgl_pengumuman_paket')),
-            'jenis paket': 'Penyedia'
+            'jenis paket': 'Penyedia',
+            'tanggal buat': format_tanggal_slash(item.get('tgl_buat_paket')),
+            'tanggal pengumuman': format_tanggal_slash(item.get('tgl_pengumuman_paket'))
         })
 
     # 4. Proses List SWAKELOLA
@@ -247,7 +258,9 @@ def process_tahun(tahun):
             'Tgl Akhir Pemanfaatan': format_tanggal_indo(item.get('tgl_akhir_pelaksanaan_kontrak')),
             'Tgl Buat Paket': format_tanggal_indo(item.get('tgl_buat_paket')),
             'Tgl Pengumuman Paket': format_tanggal_indo(item.get('tgl_pengumuman_paket')),
-            'jenis paket': 'Swakelola'
+            'jenis paket': 'Swakelola',
+            'tanggal buat': format_tanggal_slash(item.get('tgl_buat_paket')),
+            'tanggal pengumuman': format_tanggal_slash(item.get('tgl_pengumuman_paket'))
         })
 
     # 5. Gabungkan dan Export Excel
