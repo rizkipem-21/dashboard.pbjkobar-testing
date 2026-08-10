@@ -269,8 +269,12 @@ def process_tahun(tahun):
         log_print(f"Data kosong untuk tahun {tahun}.")
         return 0
         
-    # PENGAMAN EXCEL: Sapu bersih karakter tersembunyi (Control Characters) dari seluruh sel
+        # PENGAMAN EXCEL: Sapu bersih karakter tersembunyi (Control Characters) dari seluruh sel
     df_gabungan = df_gabungan.replace(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]', '', regex=True)
+
+    # KONVERSI KE DATETIME: agar filter Excel menampilkan hierarki Tahun > Bulan
+    df_gabungan['tanggal buat'] = pd.to_datetime(df_gabungan['tanggal buat'], errors='coerce', dayfirst=True)
+    df_gabungan['tanggal pengumuman'] = pd.to_datetime(df_gabungan['tanggal pengumuman'], errors='coerce', dayfirst=True)
 
     output_dir = os.path.join(BASE_DIR, "output", "rup", str(tahun))
     os.makedirs(output_dir, exist_ok=True)
@@ -299,11 +303,16 @@ def process_tahun(tahun):
         else:
             ws.column_dimensions[kolom_huruf].width = 18
 
+        # Deteksi posisi kolom tanggal buat & tanggal pengumuman dari header
+    kolom_date = [cell.column for cell in ws[1] if cell.value in ('tanggal buat', 'tanggal pengumuman')]
+
     for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
         for cell in row:
             cell.border = border
             if cell.column_letter == 'R': 
                 cell.number_format = '#,##0'
+            if cell.column in kolom_date and cell.value is not None:
+                cell.number_format = 'dd/mm/yyyy'
 
     wb.save(path_excel)
     kelola_arsip_detail(output_dir, tahun)
