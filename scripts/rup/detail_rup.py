@@ -107,7 +107,6 @@ def kelola_arsip_detail(folder_path, tahun):
     os.makedirs(folder_arsip, exist_ok=True)
     file_excel = [f for f in os.listdir(folder_path) if f.startswith('Detail_RUP') and f.endswith('.xlsx')]
     
-    # Ambil tanggal dari nama file
     arsip_harian = {}
     for f in file_excel:
         import re
@@ -117,12 +116,21 @@ def kelola_arsip_detail(folder_path, tahun):
             if tgl not in arsip_harian: arsip_harian[tgl] = []
             arsip_harian[tgl].append(f)
             
-    # Sisakan file terbaru saja, sisanya pindahkan ke arsip_lokal
     list_tgl = sorted(arsip_harian.keys())
-    for tgl in list_tgl[:-1]: # Semua kecuali yang terakhir
+    for tgl in list_tgl[:-1]:
         for nama_file in arsip_harian[tgl]:
             try: shutil.move(os.path.join(folder_path, nama_file), os.path.join(folder_arsip, nama_file))
             except: pass
+
+def update_arsip_detail_json(folder_path):
+    if not os.path.exists(folder_path): return
+    file_excel = [f for f in os.listdir(folder_path) if f.startswith('Detail_RUP') and f.endswith('.xlsx')]
+    file_excel.sort(reverse=True) 
+    arsip_list = [{"nama_file": f} for f in file_excel]
+    try:
+        with open(os.path.join(folder_path, 'arsip_detail_rup.json'), 'w', encoding='utf-8') as f:
+            json.dump(arsip_list, f, indent=4)
+    except: pass
 
 def get_dict_anggaran(filepath):
     data = load_json_local(filepath)
@@ -248,6 +256,9 @@ def process_tahun(tahun):
         log_print(f"Data kosong untuk tahun {tahun}.")
         return 0
         
+    # PENGAMAN EXCEL: Sapu bersih karakter tersembunyi (Control Characters) dari seluruh sel
+    df_gabungan = df_gabungan.replace(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]', '', regex=True)
+
     output_dir = os.path.join(BASE_DIR, "output", "rup", str(tahun))
     os.makedirs(output_dir, exist_ok=True)
     tgl_cetak = datetime.now().strftime('%Y-%m-%d')
@@ -266,25 +277,25 @@ def process_tahun(tahun):
     for cell in ws[1]:
         cell.fill, cell.font, cell.alignment = h_fill, h_font, Alignment(horizontal='center', vertical='center', wrap_text=True)
 
-    # Auto Width Lebar Kolom
     for col in ws.columns:
         kolom_huruf = col[0].column_letter
-        if kolom_huruf in ['B', 'D', 'F', 'H', 'I', 'Q']: # Kolom Teks Panjang
+        if kolom_huruf in ['B', 'D', 'F', 'H', 'I', 'Q']: 
             ws.column_dimensions[kolom_huruf].width = 40
-        elif kolom_huruf == 'R': # Kolom Pagu
+        elif kolom_huruf == 'R': 
             ws.column_dimensions[kolom_huruf].width = 20
         else:
             ws.column_dimensions[kolom_huruf].width = 18
 
-    # Border & Format Angka Pagu
     for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
         for cell in row:
             cell.border = border
-            if cell.column_letter == 'R': # Pagu
+            if cell.column_letter == 'R': 
                 cell.number_format = '#,##0'
 
     wb.save(path_excel)
     kelola_arsip_detail(output_dir, tahun)
+    update_arsip_detail_json(output_dir) # Memanggil pembuatan arsip JSON
+    
     log_print(f"✅ EXCEL: {path_excel} ({len(df_gabungan)} baris)")
     return len(df_gabungan)
 
