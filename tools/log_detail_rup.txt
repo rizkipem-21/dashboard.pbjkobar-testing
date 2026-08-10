@@ -1,0 +1,9 @@
+
+==================================================
+START GENERATE DETAIL RUP 10 Agustus 2026 | 08.18 WIB
+==================================================
+
+--- MEMPROSES DETAIL TAHUN 2026 ---
+✅ EXCEL: D:\dashboard.pbjkobar-testing\output\rup\2026\Detail_RUP Tahun 2026 (2026-08-10).xlsx (4906 baris)
+
+--- MEMPROSES DETAIL TAHUN 2025 ---

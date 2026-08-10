@@ -11,7 +11,7 @@ del /f /q .git\index.lock >nul 2>&1
 
 :: 1. Memanggil Skrip Python untuk Ekstraksi & Pembersihan PDF
 echo [1/3] Mengekstrak PDF dan menerapkan kamus pembersihan...
-python scripts\kategori_kbli\ekstraktor_kbli.py
+python scripts\kategori_kbli\generate_kbli.py
 
 :: 2. Proses Git untuk mempersiapkan pengunggahan data baru
 echo [2/3] Memeriksa perubahan data untuk dikirim ke GitHub...

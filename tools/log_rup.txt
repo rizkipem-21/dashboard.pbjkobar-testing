@@ -12103,3 +12103,47 @@ PUSH GITHUB SUKSES!
 ==================================================
 PROSES SELESAI SELURUHNYA PADA 29 Juli 2026 | 09.01 WIB
 ==================================================
+
+==================================================
+START GENERATE RUP 10 Agustus 2026 | 08.20 WIB
+==================================================
+
+--- MEMPROSES DATA TAHUN 2026 ---
+DONE -> JSON: rekap_rup_2026.json
+DONE -> EXCEL: D:\dashboard.pbjkobar-testing\output\rup\2026\Rekap RUP Tahun 2026 (2026-08-10).xlsx
+
+[SKIP] Tahun 2025 sudah ada (final).
+
+[SKIP] Tahun 2024 sudah ada (final).
+
+==================================================
+MENGIRIM DATA RUP KE GITHUB DARI PYTHON...
+==================================================
+
+==================================================
+ PROSES SELESAI SELURUHNYA!
+==================================================
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/last-update-rup.txt
+	modified:   output/rup/2026/daftar_arsip.json
+	deleted:    scripts/kategori_kbli/ekstraktor_kbli.py
+	modified:   scripts/kategori_kbli/url_kategori.txt
+	modified:   tools/log_rup.txt
+	deleted:    tools/update_kbli.bat
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	output/rup/2026/Rekap RUP Tahun 2026 (2026-08-10).xlsx
+	scripts/kategori_kbli/generate_kbli.py
+	scripts/rup/detail_rup.py
+	tools/log_detail_rup.txt
+	tools/log_kbli.txt
+	tools/run_kbli.bat
+
+no changes added to commit (use "git add" and/or "git commit -a")
+

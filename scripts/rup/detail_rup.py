@@ -1,0 +1,315 @@
+# ======================================================
+# GENERATE DETAIL RUP (PENYEDIA & SWAKELOLA)
+# ======================================================
+import pandas as pd
+import json
+import os
+import sys
+import subprocess
+import shutil
+from datetime import datetime, timedelta, timezone
+import warnings
+from openpyxl import load_workbook
+from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
+
+# Memastikan bisa import config_rahasia dari root folder
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+import config_rahasia
+
+warnings.filterwarnings("ignore")
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+tahun_n  = datetime.now().year       
+daftar_tahun = [tahun_n, tahun_n - 1, tahun_n - 2]
+
+LOG_FILE = os.path.join(BASE_DIR, 'tools', 'log_detail_rup.txt')
+os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
+
+def log_print(*args, **kwargs):
+    msg = " ".join(str(a) for a in args)
+    print(msg, **kwargs) 
+    if 'end' in kwargs and kwargs['end'] == " ": return
+    with open(LOG_FILE, 'a', encoding='utf-8') as f:
+        f.write(msg + '\n')
+
+def get_waktu_indonesia():
+    tz_wib = timezone(timedelta(hours=7))
+    sekarang = datetime.now(tz_wib)
+    bulan_indo = {1: 'Januari', 2: 'Februari', 3: 'Maret', 4: 'April', 5: 'Mei', 6: 'Juni', 7: 'Juli', 8: 'Agustus', 9: 'September', 10: 'Oktober', 11: 'November', 12: 'Desember'}
+    return f"{sekarang.day} {bulan_indo[sekarang.month]} {sekarang.year} | {sekarang.strftime('%H.%M')} WIB"
+
+def format_tanggal_indo(tgl_str):
+    if pd.isna(tgl_str) or not str(tgl_str).strip() or str(tgl_str).strip() == '-': 
+        return '-'
+    try:
+        dt = pd.to_datetime(str(tgl_str))
+        bulan_indo = {1: 'Januari', 2: 'Februari', 3: 'Maret', 4: 'April', 5: 'Mei', 6: 'Juni', 7: 'Juli', 8: 'Agustus', 9: 'September', 10: 'Oktober', 11: 'November', 12: 'Desember'}
+        return f"{dt.day} {bulan_indo[dt.month]} {dt.year}"
+    except:
+        return str(tgl_str)
+
+def cek_aspek(val):
+    val_str = str(val).lower()
+    return "Ya" if val_str == 'true' else "Tidak"
+
+def sync_to_github():
+    log_print("\n" + "="*50)
+    log_print("MENGIRIM EXCEL DETAIL RUP KE GITHUB...")
+    log_print("==================================================")
+    waktu_sekarang = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    try:
+        subprocess.run(["git", "config", "user.name", "rizkipem-21"], cwd=BASE_DIR)
+        subprocess.run(["git", "config", "user.email", "rizki.pem@gmail.com"], cwd=BASE_DIR)
+        subprocess.run(["git", "add", "."], capture_output=True, text=True, cwd=BASE_DIR)
+        
+        commit_msg = f"Auto update Detail RUP {waktu_sekarang}"
+        subprocess.run(["git", "commit", "-m", commit_msg], capture_output=True, text=True, cwd=BASE_DIR)
+        res_push = subprocess.run(["git", "push"], capture_output=True, text=True, cwd=BASE_DIR)
+        
+        if res_push.returncode == 0:
+            log_print("✅ PUSH GITHUB SUKSES!")
+            return True, "✅ Push ke GitHub BERHASIL"
+        else:
+            log_print("⚠️ PUSH GAGAL / TIDAK ADA PERUBAHAN.")
+            return False, "⚠️ Push gagal atau tidak ada perubahan."
+    except Exception as e:
+        log_print(f"ERROR GIT: {str(e)}")
+        return False, f"❌ Error Git:\n`{str(e)}`"
+
+def kirim_telegram_aman(pesan):
+    if len(pesan) > 4000: pesan = pesan[:4000] + "\n...[TERPOTONG]"
+    url = f"https://api.telegram.org/bot{config_rahasia.BOT_TOKEN}/sendMessage"
+    try:
+        import requests
+        requests.post(url, data={"chat_id": config_rahasia.CHAT_ID, "text": pesan}, timeout=10)
+    except: pass
+
+def load_json_local(path):
+    if not os.path.exists(path): return []
+    try:
+        with open(path, 'r', encoding='utf-8-sig') as f:
+            data = json.load(f)
+            if isinstance(data, list): return data
+            if isinstance(data, dict): return data.get('data', [])
+            return []
+    except: return []
+
+def get_file_path(data_dir, base_name, tahun):
+    v1_path = os.path.join(data_dir, f"v1_{base_name}_{tahun}.json")
+    legacy_path = os.path.join(data_dir, f"Legacy_{base_name}_{tahun}.json")
+    return v1_path if os.path.exists(v1_path) else legacy_path
+
+def kelola_arsip_detail(folder_path, tahun):
+    if not os.path.exists(folder_path): return
+    folder_arsip = os.path.join(BASE_DIR, 'arsip_lokal', 'rup', str(tahun))
+    os.makedirs(folder_arsip, exist_ok=True)
+    file_excel = [f for f in os.listdir(folder_path) if f.startswith('Detail_RUP') and f.endswith('.xlsx')]
+    
+    # Ambil tanggal dari nama file
+    arsip_harian = {}
+    for f in file_excel:
+        import re
+        match = re.search(r"\((.*?)\)", f)
+        if match:
+            tgl = match.group(1)
+            if tgl not in arsip_harian: arsip_harian[tgl] = []
+            arsip_harian[tgl].append(f)
+            
+    # Sisakan file terbaru saja, sisanya pindahkan ke arsip_lokal
+    list_tgl = sorted(arsip_harian.keys())
+    for tgl in list_tgl[:-1]: # Semua kecuali yang terakhir
+        for nama_file in arsip_harian[tgl]:
+            try: shutil.move(os.path.join(folder_path, nama_file), os.path.join(folder_arsip, nama_file))
+            except: pass
+
+def get_dict_anggaran(filepath):
+    data = load_json_local(filepath)
+    dict_anggaran = {}
+    for item in data:
+        kd = item.get('kd_rup')
+        if not kd: continue
+        if kd not in dict_anggaran: dict_anggaran[kd] = {'sd': [], 'mak': []}
+        if item.get('sumber_dana'): dict_anggaran[kd]['sd'].append(str(item.get('sumber_dana')))
+        if item.get('mak'): dict_anggaran[kd]['mak'].append(str(item.get('mak')))
+    return dict_anggaran
+
+def get_dict_lokasi(filepath):
+    data = load_json_local(filepath)
+    dict_lok = {}
+    for item in data:
+        kd = item.get('kd_rup')
+        if not kd: continue
+        d_lok = item.get('detail_lokasi', [])
+        teks = [str(l.get('detil_lokasi')) for l in d_lok if isinstance(l, dict) and l.get('detil_lokasi')]
+        if teks: dict_lok[kd] = "; ".join(teks)
+    return dict_lok
+
+def process_tahun(tahun):
+    log_print(f"\n--- MEMPROSES DETAIL TAHUN {tahun} ---")
+    data_dir = os.path.join(BASE_DIR, 'data', str(tahun))
+    
+    # 1. Mendapatkan PATH 6 File JSON
+    p_terum = get_file_path(data_dir, "rup_paket-penyedia-terumumkan", tahun)
+    p_ang   = get_file_path(data_dir, "rup_paket-anggaran-penyedia", tahun)
+    p_det   = get_file_path(data_dir, "rup_paket-penyedia", tahun)
+    
+    s_terum = get_file_path(data_dir, "rup_paket-swakelola-terumumkan", tahun)
+    s_ang   = get_file_path(data_dir, "rup_paket-anggaran-swakelola", tahun)
+    s_det   = get_file_path(data_dir, "rup_paket-swakelola", tahun)
+
+    # 2. Extract Data Tambahan (Lokasi & Anggaran)
+    dict_p_lok = get_dict_lokasi(p_det)
+    dict_s_lok = get_dict_lokasi(s_det)
+    dict_p_ang = get_dict_anggaran(p_ang)
+    dict_s_ang = get_dict_anggaran(s_ang)
+
+    # 3. Proses List PENYEDIA
+    data_p_raw = load_json_local(p_terum)
+    list_p_final = []
+    for item in data_p_raw:
+        kd = item.get('kd_rup')
+        list_p_final.append({
+            'Kode RUP': kd,
+            'Nama Paket': item.get('nama_paket', '-'),
+            'Nama KLPD': item.get('nama_klpd', '-'),
+            'Satuan Kerja': item.get('nama_satker', '-'),
+            'Tahun Anggaran': item.get('tahun_anggaran', '-'),
+            'Lokasi Pekerjaan': dict_p_lok.get(kd, '-'),
+            'Volume Pekerjaan': item.get('volume_pekerjaan', '-'),
+            'Uraian Pekerjaan': item.get('uraian_pekerjaan', item.get('urarian_pekerjaan', '-')),
+            'Spesifikasi Pekerjaan': item.get('spesifikasi_pekerjaan', '-'),
+            'Produk Dalam Negeri': item.get('status_pdn', '-'),
+            'Usaha Kecil/Koperasi': item.get('status_ukm', '-'),
+            'Aspek Ekonomi': cek_aspek(item.get('spp_aspek_ekonomi')),
+            'Aspek Sosial': cek_aspek(item.get('spp_aspek_sosial')),
+            'Aspek Lingkungan': cek_aspek(item.get('spp_aspek_lingkungan')),
+            'Pra DIPA / DPA': item.get('status_pradipa', '-'),
+            'Sumber Dana': ", ".join(dict_p_ang.get(kd, {}).get('sd', ['-'])) if kd in dict_p_ang else '-',
+            'MAK': ", ".join(dict_p_ang.get(kd, {}).get('mak', ['-'])) if kd in dict_p_ang else '-',
+            'Pagu': item.get('pagu', 0),
+            'Jenis Pengadaan': item.get('jenis_pengadaan', '-'),
+            'Metode Pemilihan': item.get('metode_pengadaan', '-'),
+            'status konsolidasi': item.get('status_konsolidasi', '-'),
+            'Tgl Awal Pemilihan': format_tanggal_indo(item.get('tgl_awal_pemilihan')),
+            'Tgl Akhir Pemilihan': format_tanggal_indo(item.get('tgl_akhir_pemilihan')),
+            'Tgl Awal Kontrak': format_tanggal_indo(item.get('tgl_awal_kontrak')),
+            'Tgl Akhir Kontrak': format_tanggal_indo(item.get('tgl_akhir_kontrak')),
+            'Tgl Awal Pemanfaatan': format_tanggal_indo(item.get('tgl_awal_pemanfaatan')),
+            'Tgl Akhir Pemanfaatan': format_tanggal_indo(item.get('tgl_akhir_pemanfaatan')),
+            'Tgl Buat Paket': format_tanggal_indo(item.get('tgl_buat_paket')),
+            'Tgl Pengumuman Paket': format_tanggal_indo(item.get('tgl_pengumuman_paket')),
+            'jenis paket': 'Penyedia'
+        })
+
+    # 4. Proses List SWAKELOLA
+    data_s_raw = load_json_local(s_terum)
+    list_s_final = []
+    for item in data_s_raw:
+        kd = item.get('kd_rup')
+        tipe = str(item.get('tipe_swakelola', '-'))
+        list_s_final.append({
+            'Kode RUP': kd,
+            'Nama Paket': item.get('nama_paket', '-'),
+            'Nama KLPD': item.get('nama_klpd', '-'),
+            'Satuan Kerja': item.get('nama_satker', '-'),
+            'Tahun Anggaran': item.get('tahun_anggaran', '-'),
+            'Lokasi Pekerjaan': dict_s_lok.get(kd, '-'),
+            'Volume Pekerjaan': item.get('volume_pekerjaan', '-'),
+            'Uraian Pekerjaan': item.get('uraian_pekerjaan', item.get('urarian_pekerjaan', '-')),
+            'Spesifikasi Pekerjaan': '-',
+            'Produk Dalam Negeri': '-',
+            'Usaha Kecil/Koperasi': '-',
+            'Aspek Ekonomi': '-',
+            'Aspek Sosial': '-',
+            'Aspek Lingkungan': '-',
+            'Pra DIPA / DPA': '-',
+            'Sumber Dana': ", ".join(dict_s_ang.get(kd, {}).get('sd', ['-'])) if kd in dict_s_ang else '-',
+            'MAK': ", ".join(dict_s_ang.get(kd, {}).get('mak', ['-'])) if kd in dict_s_ang else '-',
+            'Pagu': item.get('pagu', 0),
+            'Jenis Pengadaan': 'Swakelola',
+            'Metode Pemilihan': f"Tipe {tipe}" if tipe.isdigit() else tipe,
+            'status konsolidasi': '-',
+            'Tgl Awal Pemilihan': '-',
+            'Tgl Akhir Pemilihan': '-',
+            'Tgl Awal Kontrak': '-',
+            'Tgl Akhir Kontrak': '-',
+            'Tgl Awal Pemanfaatan': format_tanggal_indo(item.get('tgl_awal_pelaksanaan_kontrak')),
+            'Tgl Akhir Pemanfaatan': format_tanggal_indo(item.get('tgl_akhir_pelaksanaan_kontrak')),
+            'Tgl Buat Paket': format_tanggal_indo(item.get('tgl_buat_paket')),
+            'Tgl Pengumuman Paket': format_tanggal_indo(item.get('tgl_pengumuman_paket')),
+            'jenis paket': 'Swakelola'
+        })
+
+    # 5. Gabungkan dan Export Excel
+    df_gabungan = pd.DataFrame(list_p_final + list_s_final)
+    if df_gabungan.empty:
+        log_print(f"Data kosong untuk tahun {tahun}.")
+        return 0
+        
+    output_dir = os.path.join(BASE_DIR, "output", "rup", str(tahun))
+    os.makedirs(output_dir, exist_ok=True)
+    tgl_cetak = datetime.now().strftime('%Y-%m-%d')
+    nama_excel = f"Detail_RUP Tahun {tahun} ({tgl_cetak}).xlsx"
+    path_excel = os.path.join(output_dir, nama_excel)
+
+    df_gabungan.to_excel(path_excel, index=False, sheet_name='Detail RUP')
+    
+    # 6. Styling Excel
+    wb = load_workbook(path_excel)
+    ws = wb.active
+    h_fill = PatternFill('solid', start_color='1F4E79')
+    h_font = Font(name='Arial', bold=True, color='FFFFFF')
+    border = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'), bottom=Side(style='thin'))
+
+    for cell in ws[1]:
+        cell.fill, cell.font, cell.alignment = h_fill, h_font, Alignment(horizontal='center', vertical='center', wrap_text=True)
+
+    # Auto Width Lebar Kolom
+    for col in ws.columns:
+        kolom_huruf = col[0].column_letter
+        if kolom_huruf in ['B', 'D', 'F', 'H', 'I', 'Q']: # Kolom Teks Panjang
+            ws.column_dimensions[kolom_huruf].width = 40
+        elif kolom_huruf == 'R': # Kolom Pagu
+            ws.column_dimensions[kolom_huruf].width = 20
+        else:
+            ws.column_dimensions[kolom_huruf].width = 18
+
+    # Border & Format Angka Pagu
+    for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
+        for cell in row:
+            cell.border = border
+            if cell.column_letter == 'R': # Pagu
+                cell.number_format = '#,##0'
+
+    wb.save(path_excel)
+    kelola_arsip_detail(output_dir, tahun)
+    log_print(f"✅ EXCEL: {path_excel} ({len(df_gabungan)} baris)")
+    return len(df_gabungan)
+
+if __name__ == "__main__":
+    tz_wib = timezone(timedelta(hours=7))
+    waktu_mulai = datetime.now(tz_wib)
+    
+    log_print("\n==================================================")
+    log_print(f"START GENERATE DETAIL RUP {get_waktu_indonesia()}")
+    log_print("==================================================")
+
+    total_baris = 0
+    for t in daftar_tahun:
+        total_baris += process_tahun(t)
+
+    git_sukses, pesan_git = sync_to_github()
+    durasi = str(datetime.now(tz_wib) - waktu_mulai).split('.')[0]
+
+    log_print("==================================================")
+    log_print(f"PROSES SELESAI | Durasi: {durasi}")
+    log_print("==================================================")
+
+    if not git_sukses:
+        pesan = f"🚨 GAGAL UPDATE DETAIL RUP 🚨\n\nTerjadi kesalahan saat sinkronisasi GitHub.\n\nStatus:\n{pesan_git}\n\nWaktu: {get_waktu_indonesia()}"
+    else:
+        pesan = f"✅ UPDATE DETAIL RUP SELESAI ✅\n\nSebanyak {total_baris} Total Baris Detail RUP berhasil diekstrak dan Excel telah diupdate.\n\nStatus:\n{pesan_git}\n\nDurasi: {durasi}\nWaktu: {get_waktu_indonesia()}"
+    
+    kirim_telegram_aman(pesan)
