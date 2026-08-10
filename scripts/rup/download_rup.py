@@ -136,7 +136,10 @@ def download_data_api_with_retry(tahun):
                 if req_count == 1: first_response = resp_data
 
                 if resp_data and 'data' in resp_data:
-                    all_data.extend(resp_data['data'])
+                    # JARING PENGAMAN: Mencegah error jika server membalas {"data": null}
+                    isi_data = resp_data['data']
+                    if isi_data is not None:
+                        all_data.extend(isi_data)
                 elif resp_data and isinstance(resp_data, list):
                     all_data.extend(resp_data)
 
@@ -154,12 +157,18 @@ def download_data_api_with_retry(tahun):
                     log_print(f"  -> [Aman] Proses terputus, mempertahankan file {filename} lama yang utuh.")
                 daftar_error_api.append(f"❌ RUP V1 ({tahun}) - {base_name} ({last_error})")    
             else:
-                with open(output_path, 'w', encoding='utf-8') as f:
-                    if len(all_data) == 0 and first_response:
-                        json.dump(first_response, f, ensure_ascii=False, indent=2)
+                # LOGIKA PENGAMAN: Mencegah file utuh tertimpa balasan API kosong (null)
+                if len(all_data) == 0:
+                    if os.path.exists(output_path):
+                        log_print(f"  -> [Aman] Data API kosong (null), mempertahankan file {filename} lama yang utuh.")
                     else:
+                        with open(output_path, 'w', encoding='utf-8') as f: 
+                            f.write("[]")
+                        log_print(f"  -> File baru dibuat dengan daftar kosong [] (Total: 0 baris)")
+                else:
+                    with open(output_path, 'w', encoding='utf-8') as f:
                         json.dump(all_data, f, ensure_ascii=False, indent=2)
-                log_print(f"  -> Disimpan ke {filename} (Total: {len(all_data)} baris)")
+                    log_print(f"  -> Disimpan ke {filename} (Total: {len(all_data)} baris)")
 
         else:
             max_retry = 5
