@@ -1,19 +1,20 @@
 ===== ekatalog
 ## v1
-https://data.inaproc.id/api/v1/ekatalog/paket-e-purchasing?kode_klpd=D228&tahun={tahun}&limit=1000
+## https://data.inaproc.id/api/v1/ekatalog/paket-e-purchasing?kode_klpd=D228&tahun={tahun}&limit=1000
 
 ===== ekatalog-archive
 ## legacy
 
 ## v1
-https://data.inaproc.id/api/v1/ekatalog-archive/instansi-satker?kode_klpd=D228&limit=1000
+## https://data.inaproc.id/api/v1/ekatalog-archive/instansi-satker?kode_klpd=D228&limit=1000
 
 ===== RUP
 ## legacy
 https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun={tahun}
 
 ## v1
-https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/rup/history-kaji-ulang?kode_klpd=D228&tahun={tahun}&limit=1000
+
 
 =====  sikap
 ## v1

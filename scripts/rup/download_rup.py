@@ -80,10 +80,23 @@ def download_data_api_with_retry(tahun):
             tgl_file = datetime.fromtimestamp(os.path.getmtime(output_path)).date()
             if tgl_file < datetime.now().date():
                 import shutil
-                f_arsip = os.path.join(BASE_DIR, 'arsip_json', str(tgl_file.year), f"{tgl_file.month:02d}", f"{tgl_file.day:02d}")
+                
+                # Deteksi 4 digit tahun berawalan "20" (contoh: 2024, 2025, 2026) dari nama file
+                match_tahun = re.search(r'(20\d{2})', filename)
+                
+                if match_tahun:
+                    tahun_file = match_tahun.group(1)
+                    # Masukkan ke sub-folder tahun jika ada
+                    f_arsip = os.path.join(BASE_DIR, 'arsip_json', str(tgl_file.year), f"{tgl_file.month:02d}", f"{tgl_file.day:02d}", tahun_file)
+                    folder_log = f"{tgl_file}/{tahun_file}"
+                else:
+                    # Letakkan di luar jika nama file tidak mengandung tahun
+                    f_arsip = os.path.join(BASE_DIR, 'arsip_json', str(tgl_file.year), f"{tgl_file.month:02d}", f"{tgl_file.day:02d}")
+                    folder_log = f"{tgl_file}"
+                
                 os.makedirs(f_arsip, exist_ok=True)
                 shutil.copy2(output_path, os.path.join(f_arsip, filename))
-                log_print(f"[Backup] {filename} di-copy ke arsip {tgl_file}")
+                log_print(f"[Backup] {filename} di-copy ke arsip {folder_log}")
         # -----------------------------------
 
         log_print(f"DOWNLOAD [{tipe.upper()}]: {target_url}")
