@@ -10,6 +10,7 @@ import warnings
 import pandas as pd
 import sys
 import subprocess
+import time
 from datetime import datetime, timedelta, timezone
 from openpyxl import load_workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
@@ -1043,6 +1044,19 @@ if __name__ == '__main__':
     # 1. PUSH KE GITHUB
     git_sukses, pesan_git = sync_to_github()
 
+    # --- MENGHITUNG DURASI TOTAL & AUTO DELETE ---
+    durasi_str = "Tidak diketahui"
+    file_start = os.path.join(BASE_DIR, 'tools', 'start_time_pengadaan.txt')
+    if os.path.exists(file_start):
+        try:
+            with open(file_start, 'r') as f:
+                waktu_mulai = float(f.read().strip())
+            durasi_detik = int(time.time() - waktu_mulai)
+            durasi_str = str(timedelta(seconds=durasi_detik))
+            os.remove(file_start) # Auto-delete file sementara
+        except: pass
+    # ---------------------------------------------
+
     # 2. KIRIM TELEGRAM
     if len(daftar_error_api) > 0 or not git_sukses:
         pesan_ringkasan = "🚨 LAPORAN UPDATE SISTEM (PENGADAAN) 🚨\n\n"
@@ -1050,10 +1064,10 @@ if __name__ == '__main__':
             teks_error = "⚠️ GAGAL DOWNLOAD API:\n" + "".join([f"{err.replace('_', ' ')}\n" for err in daftar_error_api])
             if len(teks_error) > 3500: teks_error = teks_error[:3500] + "\n... [DAFTAR ERROR DIPOTONG] ...\n"
             pesan_ringkasan += teks_error + "\n"
-        pesan_ringkasan += f"📊 STATUS TEPRA: {status_tepra}\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\nWaktu: {get_waktu_indonesia()}"
+        pesan_ringkasan += f"📊 STATUS TEPRA: {status_tepra}\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
         kirim_telegram_aman(pesan_ringkasan)
     else:
-        pesan_sukses = f"✅ UPDATE PENGADAAN BERHASIL ✅\n\nSeluruh data berhasil diolah.\n📊 STATUS TEPRA: {status_tepra}\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\nWaktu: {get_waktu_indonesia()}"
+        pesan_sukses = f"✅ UPDATE PENGADAAN BERHASIL ✅\n\nSeluruh data berhasil diolah.\n📊 STATUS TEPRA: {status_tepra}\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
         kirim_telegram_aman(pesan_sukses)
         
     log_print(f"\nPROSES SELESAI SELURUHNYA PADA {get_waktu_indonesia()}")

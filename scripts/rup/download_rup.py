@@ -62,7 +62,7 @@ def download_data_api_with_retry(tahun):
         return
 
     with open(txt_path, 'r', encoding='utf-8') as f:
-        urls = [line.strip() for line in f if line.strip()]
+        urls = [line.strip() for line in f if line.strip() and not line.strip().startswith(('#', '='))]
 
     for raw_url in urls:
         target_url = raw_url.replace('{tahun}', str(tahun))
@@ -221,6 +221,11 @@ def download_data_api_with_retry(tahun):
                 daftar_error_api.append(f"❌ RUP Legacy ({tahun}) - {base_name} ({last_error})") 
 
 if __name__ == "__main__":
+    # Catat waktu mulai untuk menghitung durasi total
+    waktu_mulai = time.time()
+    with open(os.path.join(BASE_DIR, 'tools', 'start_time_rup.txt'), 'w') as f:
+        f.write(str(waktu_mulai))
+
     log_print("\n==================================================")
     log_print(f"START DOWNLOAD RUP {get_waktu_indonesia()}")
     log_print("==================================================")

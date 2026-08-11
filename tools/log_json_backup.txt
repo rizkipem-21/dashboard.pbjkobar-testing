@@ -176,3 +176,129 @@ SUKSES
 ==================================================
 PROSES BACKUP JSON SELESAI | Durasi: 0:00:01
 ==================================================
+
+==================================================
+START BACKUP JSON API PADA 11/08/2026 | 08.54 WIB
+==================================================
+
+[SKIP] Legacy_rup_struktur-anggaran-pd_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] v1_rup_history-kaji-ulang_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/jadwal-tahapan-tender?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_jadwal-tahapan-tender_2026.json (Total: 939 baris)
+
+==================================================
+PROSES BACKUP JSON SELESAI | Durasi: 0:00:01
+==================================================
+
+==================================================
+START BACKUP JSON API PADA 11/08/2026 | 14.35 WIB
+==================================================
+
+[SKIP] v1_ekatalog-archive_instansi-satker_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/ekatalog-archive/paket-e-purchasing?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> File dibuat dengan daftar kosong [] (Total: 0 baris)
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/rup/kegiatan-master?kode_klpd=D228&tahun=2026
+SUKSES
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/rup/paket-penyedia-lokasi?kode_klpd=D228&tahun=2026
+SUKSES
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/rup/paket-swakelola-lokasi?kode_klpd=D228&tahun=2026
+SUKSES
+
+[SKIP] Legacy_rup_struktur-anggaran-pd_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/rup/sub-kegiatan-master?kode_klpd=D228&tahun=2026
+SUKSES
+
+[SKIP] v1_rup_history-kaji-ulang_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] v1_rup_master-satker_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] v1_rup_program-master_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] v1_rup_paket-penyedia-terumumkan_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] v1_rup_paket-anggaran-penyedia_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] v1_rup_paket-penyedia_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] v1_rup_paket-swakelola-terumumkan_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] v1_rup_paket-anggaran-swakelola_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] v1_rup_paket-swakelola_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/sikap/penilaian-kinerja-penyedia-non-tender?kode_klpd=D228&tahun=2026
+SUKSES
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/sikap/penilaian-kinerja-penyedia-tender?kode_klpd=D228&tahun=2026
+SUKSES
+
+[SKIP] Legacy_tender_non-tender-ekontrak-bapbast_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] Legacy_tender_non-tender-ekontrak-spmkspp_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] Legacy_tender_non-tender-ekontrak-sppbj_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/jadwal-tahapan-non-tender?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_tender_jadwal-tahapan-non-tender_2026.json (Total: 2759 baris)
+
+[SKIP] v1_tender_non-tender-ekontrak-kontrak_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] v1_tender_non-tender-pengumuman_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] v1_tender_non-tender-selesai_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/non-tender-ekontrak?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_non-tender-ekontrak_2026.json (Total: 148 baris)
+
+[SKIP] v1_tender_pencatatan-non-tender_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] v1_tender_pencatatan-non-tender-realisasi_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> File dibuat dengan daftar kosong [] (Total: 0 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola-realisasi?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> File dibuat dengan daftar kosong [] (Total: 0 baris)
+
+[SKIP] Legacy_tender_tender-ekontrak-bapbast_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] Legacy_tender_tender-ekontrak-spmkspp_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] Legacy_tender_tender-ekontrak-sppbj_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] Legacy_tender_tender-selesai_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] v1_tender_pengumuman_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/peserta-tender?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_peserta-tender_2026.json (Total: 484 baris)
+
+[SKIP] v1_tender_tender-ekontrak-kontrak_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] v1_tender_tender-selesai-nilai_2026.json sudah ditarik sistem utama hari ini. -> Di-copy ke arsip.
+
+[SKIP] v1_tender_jadwal-tahapan-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/tender-ekontrak?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_tender-ekontrak_2026.json (Total: 61 baris)
+
+==================================================
+PROSES BACKUP JSON SELESAI | Durasi: 0:00:25
+==================================================

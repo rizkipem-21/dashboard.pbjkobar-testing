@@ -58,7 +58,7 @@ def kirim_telegram_aman(pesan):
     if len(pesan) > 4000: pesan = pesan[:4000] + "\n...[TERPOTONG]"
     try:
         url = f"https://api.telegram.org/bot{config_rahasia.BOT_TOKEN}/sendMessage"
-        requests.post(url, data={"chat_id": config_rahasia.CHAT_ID, "text": pesan}, timeout=10)
+        requests.post(url, data={"chat_id": config_rahasia.CHAT_ID, "text": pesan, "parse_mode": "HTML"}, timeout=10)
     except: pass
 
 if __name__ == "__main__":
@@ -86,7 +86,18 @@ if __name__ == "__main__":
         match = re.search(r'api/(?:v1|legacy)/(.*?)\?', target_url)
         base_name = match.group(1).replace('/', '_') if match else "unknown"
         filename = f"{tipe}_{base_name}_{tahun_n}.json"
-        output_path = os.path.join(ARSIP_DIR, filename)
+        
+        # --- LOGIKA SUB-FOLDER TAHUN (Adaptasi dari diskusi kemarin) ---
+        match_tahun = re.search(r'(20\d{2})', filename)
+        if match_tahun:
+            tahun_file = match_tahun.group(1)
+            arsip_target = os.path.join(ARSIP_DIR, tahun_file)
+        else:
+            arsip_target = ARSIP_DIR
+        
+        os.makedirs(arsip_target, exist_ok=True)
+        output_path = os.path.join(arsip_target, filename)
+        # ---------------------------------------------------------------
 
         # FITUR SKIP 1: Cek apakah sistem utama sudah mendownloadnya hari ini di folder data
         path_data_utama = os.path.join(BASE_DIR, 'data', str(tahun_n), filename)

@@ -62,7 +62,7 @@ def download_data_pengadaan(tahun, is_n2, data_dir):
     txt_path = os.path.join(BASE_DIR, 'scripts', 'pengadaan', 'url_pengadaan.txt')
     if not os.path.exists(txt_path): return
     with open(txt_path, 'r', encoding='utf-8') as f:
-        urls = [line.strip() for line in f if line.strip()]
+        urls = [line.strip() for line in f if line.strip() and not line.strip().startswith(('#', '='))]
 
     for raw_url in urls:
         target_url = raw_url.replace('{tahun}', str(tahun))
@@ -212,6 +212,11 @@ def download_data_pengadaan(tahun, is_n2, data_dir):
                 daftar_error_api.append(f"❌ PENGADAAN Legacy ({tahun}) - {base_name} ({last_error})")
 
 if __name__ == '__main__':
+    # Catat waktu mulai untuk menghitung durasi total
+    waktu_mulai = time.time()
+    with open(os.path.join(BASE_DIR, 'tools', 'start_time_pengadaan.txt'), 'w') as f:
+        f.write(str(waktu_mulai))
+
     log_print("\n" + "="*55)
     log_print(f"START DOWNLOAD PENGADAAN {get_waktu_indonesia()}")
     log_print("="*55)

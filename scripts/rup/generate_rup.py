@@ -8,6 +8,7 @@ import re
 import sys
 import subprocess
 import shutil
+import time
 from datetime import datetime, timedelta, timezone
 import warnings
 from openpyxl import load_workbook
@@ -321,6 +322,19 @@ if __name__ == "__main__":
     log_print(f"PROSES SELESAI SELURUHNYA PADA {get_waktu_indonesia()}")
     log_print("==================================================")
 
+    # --- MENGHITUNG DURASI TOTAL & AUTO DELETE ---
+    durasi_str = "Tidak diketahui"
+    file_start = os.path.join(BASE_DIR, 'tools', 'start_time_rup.txt')
+    if os.path.exists(file_start):
+        try:
+            with open(file_start, 'r') as f:
+                waktu_mulai = float(f.read().strip())
+            durasi_detik = int(time.time() - waktu_mulai)
+            durasi_str = str(timedelta(seconds=durasi_detik))
+            os.remove(file_start) # Auto-delete file sementara
+        except: pass
+    # ---------------------------------------------
+
     if len(daftar_error_api) > 0 or not git_sukses:
         pesan_ringkasan = "🚨 LAPORAN UPDATE SISTEM (RUP) 🚨\n\n"
         if len(daftar_error_api) > 0:
@@ -331,8 +345,8 @@ if __name__ == "__main__":
                 teks_error = teks_error[:3500] + "\n... [DAFTAR ERROR DIPOTONG] ...\n"
             pesan_ringkasan += teks_error + "\n"
             
-        pesan_ringkasan += f"🌐 STATUS GITHUB:\n{pesan_git}\n\nWaktu: {get_waktu_indonesia()}"
+        pesan_ringkasan += f"🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
         kirim_telegram_aman(pesan_ringkasan)
     else:
-        pesan_sukses = f"✅ UPDATE RUP BERHASIL ✅\n\nSeluruh data berhasil diolah dan sinkronisasi selesai.\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\nWaktu: {get_waktu_indonesia()}"
+        pesan_sukses = f"✅ UPDATE RUP BERHASIL ✅\n\nSeluruh data berhasil diolah dan sinkronisasi selesai.\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
         kirim_telegram_aman(pesan_sukses)

@@ -1,25 +1,75 @@
-===== ekatalog
-## v1
+===== ekatalog =====
+## v1 ## (sudah ada v1 jadi legacy tidak ada)
 ## https://data.inaproc.id/api/v1/ekatalog/paket-e-purchasing?kode_klpd=D228&tahun={tahun}&limit=1000
 
-===== ekatalog-archive
-## legacy
+===== ekatalog-archive =====
+## v1 ## (sudah ada v1 jadi legacy tidak ada)
+https://data.inaproc.id/api/v1/ekatalog-archive/instansi-satker?kode_klpd=D228&limit=1000
+https://data.inaproc.id/api/v1/ekatalog-archive/paket-e-purchasing?kode_klpd=D228&tahun={tahun}&limit=1000
 
-## v1
-## https://data.inaproc.id/api/v1/ekatalog-archive/instansi-satker?kode_klpd=D228&limit=1000
 
-===== RUP
-## legacy
+===== RUP =====
+## legacy ##
+https://data.inaproc.id/api/legacy/rup/kegiatan-master?kode_klpd=D228&tahun={tahun}
+https://data.inaproc.id/api/legacy/rup/paket-penyedia-lokasi?kode_klpd=D228&tahun={tahun}
+https://data.inaproc.id/api/legacy/rup/paket-swakelola-lokasi?kode_klpd=D228&tahun={tahun}
 https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun={tahun}
-
-## v1
+https://data.inaproc.id/api/legacy/rup/sub-kegiatan-master?kode_klpd=D228&tahun={tahun}
+## v1 ##
 https://data.inaproc.id/api/v1/rup/history-kaji-ulang?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/rup/master-satker?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/rup/program-master?kode_klpd=D228&tahun={tahun}&limit=1000
+# penyedia #
+https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/rup/paket-anggaran-penyedia?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/rup/paket-penyedia?kode_klpd=D228&tahun={tahun}&limit=1000
+# swakelola #
+https://data.inaproc.id/api/v1/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/rup/paket-anggaran-swakelola?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/rup/paket-swakelola?kode_klpd=D228&tahun={tahun}&limit=1000
 
 
-=====  sikap
-## v1
+=====  sikap =====
+## legacy ##
+https://data.inaproc.id/api/legacy/sikap/penilaian-kinerja-penyedia-non-tender?kode_klpd=D228&tahun={tahun}
+https://data.inaproc.id/api/legacy/sikap/penilaian-kinerja-penyedia-tender?kode_klpd=D228&tahun={tahun}
+## v1 ##
 ## https://data.inaproc.id/api/v1/sikap/skp-penyedia?limit=1000
 
-===== tender
-## v1
-https://data.inaproc.id/api/v1/tender/jadwal-tahapan-tender?kode_klpd=D228&tahun=2026&limit=1000
+===== non-tender =====
+## legacy ##
+https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-bapbast?kode_klpd=D228&tahun={tahun}
+https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-spmkspp?kode_klpd=D228&tahun={tahun}
+https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-sppbj?kode_klpd=D228&tahun={tahun}
+
+## v1 ##
+https://data.inaproc.id/api/v1/tender/jadwal-tahapan-non-tender?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/tender/non-tender-ekontrak-kontrak?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/tender/non-tender-pengumuman?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/tender/non-tender-selesai?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/tender/non-tender-ekontrak?kode_klpd=D228&tahun={tahun}&limit=1000
+
+===== pencatatan-non-tender =====
+## v1 ##
+https://data.inaproc.id/api/v1/tender/pencatatan-non-tender?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/tender/pencatatan-non-tender-realisasi?kode_klpd=D228&tahun={tahun}&limit=1000
+
+===== pencatatan-swakelola =====   
+## v1 ##
+https://data.inaproc.id/api/v1/tender/pencatatan-swakelola?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/tender/pencatatan-swakelola-realisasi?kode_klpd=D228&tahun=2026&limit=1000
+
+===== tender =====
+## legacy ##
+https://data.inaproc.id/api/legacy/tender/tender-ekontrak-bapbast?kode_klpd=D228&tahun={tahun}
+https://data.inaproc.id/api/legacy/tender/tender-ekontrak-spmkspp?kode_klpd=D228&tahun={tahun}
+https://data.inaproc.id/api/legacy/tender/tender-ekontrak-sppbj?kode_klpd=D228&tahun={tahun}
+https://data.inaproc.id/api/legacy/tender/tender-selesai?kode_klpd=D228&tahun={tahun}
+
+## v1 ##
+https://data.inaproc.id/api/v1/tender/pengumuman?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/tender/peserta-tender?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/tender/tender-ekontrak-kontrak?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/tender/tender-selesai-nilai?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/tender/jadwal-tahapan-tender?kode_klpd=D228&tahun={tahun}&limit=1000
+https://data.inaproc.id/api/v1/tender/tender-ekontrak?kode_klpd=D228&tahun={tahun}&limit=1000

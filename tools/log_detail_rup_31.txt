@@ -15,3 +15,18 @@ START GENERATE DETAIL RUP (BATAS 31 MARET) 10 Agustus 2026 | 14.05 WIB
 PROSES SELESAI SELURUHNYA | Durasi: 0:04:23
 Total Baris Diekstrak: 27173
 ==================================================
+
+==================================================
+START GENERATE DETAIL RUP (BATAS 31 MARET) 11 Agustus 2026 | 08.15 WIB
+==================================================
+
+--- MEMPROSES DETAIL (BATAS 31 MARET) TAHUN 2026 ---
+✅ EXCEL: D:\dashboard.pbjkobar-testing\output\rup\2026\Detail_RUP_31 Tahun 2026 (2026-08-11).xlsx (4907 baris)
+
+[SKIP] Tahun 2025 sudah ada (final).
+
+[SKIP] Tahun 2024 sudah ada (final).
+==================================================
+PROSES SELESAI SELURUHNYA | Durasi: 0:00:58
+Total Baris Diekstrak: 4907
+==================================================
