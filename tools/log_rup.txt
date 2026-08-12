@@ -13058,3 +13058,127 @@ PUSH GITHUB SUKSES!
 ==================================================
 PROSES SELESAI SELURUHNYA PADA 11 Agustus 2026 | 14.58 WIB
 ==================================================
+
+==================================================
+START DOWNLOAD RUP 12 Agustus 2026 | 10.52 WIB
+==================================================
+
+==================================================
+--- MENGUNDUH DATA TAHUN 2026 ---
+==================================================
+
+[Backup] Legacy_rup_struktur-anggaran-pd_2026.json di-copy ke arsip 2026-08-11/2026
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES
+
+[Backup] v1_rup_master-satker_2026.json di-copy ke arsip 2026-08-11/2026
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/master-satker?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_rup_master-satker_2026.json (Total: 121 baris)
+
+[Backup] v1_rup_program-master_2026.json di-copy ke arsip 2026-08-11/2026
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/program-master?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_rup_program-master_2026.json (Total: 253 baris)
+
+[Backup] v1_rup_paket-penyedia-terumumkan_2026.json di-copy ke arsip 2026-08-11/2026
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_rup_paket-penyedia-terumumkan_2026.json (Total: 4850 baris)
+
+[Backup] v1_rup_paket-anggaran-penyedia_2026.json di-copy ke arsip 2026-08-11/2026
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-anggaran-penyedia?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-penyedia_2026.json (Total: 10700 baris)
+
+[Backup] v1_rup_paket-penyedia_2026.json di-copy ke arsip 2026-08-11/2026
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-penyedia?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_rup_paket-penyedia_2026.json (Total: 11772 baris)
+
+[Backup] v1_rup_paket-swakelola-terumumkan_2026.json di-copy ke arsip 2026-08-11/2026
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola-terumumkan_2026.json (Total: 57 baris)
+
+[Backup] v1_rup_paket-anggaran-swakelola_2026.json di-copy ke arsip 2026-08-11/2026
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-anggaran-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-swakelola_2026.json (Total: 754 baris)
+
+[Backup] v1_rup_paket-swakelola_2026.json di-copy ke arsip 2026-08-11/2026
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola_2026.json (Total: 57 baris)
+
+[SKIP] Tahun 2025 sudah ada (final).
+
+[SKIP] Tahun 2024 sudah ada (final).
+
+PROSES DOWNLOAD SELESAI PADA 12 Agustus 2026 | 10.53 WIB
+
+==================================================
+START GENERATE RUP 12 Agustus 2026 | 10.54 WIB
+==================================================
+
+--- MEMPROSES DATA TAHUN 2026 ---
+DONE -> JSON: rekap_rup_2026.json
+DONE -> EXCEL: D:\dashboard.pbjkobar-testing\output\rup\2026\Rekap RUP Tahun 2026 (2026-08-12).xlsx
+
+[SKIP] Tahun 2025 sudah ada (final).
+
+[SKIP] Tahun 2024 sudah ada (final).
+
+==================================================
+MENGIRIM DATA RUP KE GITHUB DARI PYTHON...
+==================================================
+
+==================================================
+ PROSES SELESAI SELURUHNYA!
+==================================================
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/last-update-rup.txt
+	deleted:    output/rup/2026/Rekap RUP Tahun 2026 (2026-08-11).xlsx
+	modified:   output/rup/2026/arsip_detail_rup.json
+	modified:   output/rup/2026/daftar_arsip.json
+	modified:   tools/log_detail_rup.txt
+	modified:   tools/log_rup.txt
+	modified:   tools/run_rup.bat
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	output/rup/2026/Rekap RUP Tahun 2026 (2026-08-12).xlsx
+	tools/start_time_rup.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+

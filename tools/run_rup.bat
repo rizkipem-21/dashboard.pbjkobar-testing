@@ -9,10 +9,13 @@ echo ==================================================
 :: Menghapus file lock Git jika sebelumnya sempat macet
 del /f /q .git\index.lock >nul 2>&1
 
-:: 1. Memanggil Python untuk mengunduh data API
+:: 1. Memanggil Python untuk mengunduh data API Utama
 python scripts\rup\download_rup.py
 
-:: 2. Memanggil Python untuk mengolah Excel, Git Push, dan kirim Telegram
+:: 2. Memanggil Python untuk mengunduh data API Detail
+python scripts\rup\detail_rup.py
+
+:: 3. Memanggil Python untuk mengolah Excel, Git Push, dan kirim Telegram
 python scripts\rup\generate_rup.py
 
 echo.
