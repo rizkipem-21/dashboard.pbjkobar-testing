@@ -124,7 +124,7 @@ def kelola_arsip_bulanan(folder_path, tahun):
     if not os.path.exists(folder_path): return
     folder_arsip_lokal = os.path.join(BASE_DIR, 'arsip_lokal', 'rup', str(tahun))
     os.makedirs(folder_arsip_lokal, exist_ok=True)
-    file_excel = [f for f in os.listdir(folder_path) if f.endswith('.xlsx')]
+    file_excel = [f for f in os.listdir(folder_path) if f.startswith('Rekap') and f.endswith('.xlsx')]
     arsip_bulanan = {}
     for f in file_excel:
         match = re.search(r"\((\d{4}-\d{2}-\d{2})\)", f)
@@ -141,7 +141,7 @@ def kelola_arsip_bulanan(folder_path, tahun):
 
 def update_daftar_arsip_json(folder_path):
     if not os.path.exists(folder_path): return
-    file_excel = [f for f in os.listdir(folder_path) if f.endswith('.xlsx')]
+    file_excel = [f for f in os.listdir(folder_path) if f.startswith('Rekap') and f.endswith('.xlsx')]
     file_excel.sort(reverse=True) 
     arsip_list = [{"nama_file": f} for f in file_excel]
     try:
