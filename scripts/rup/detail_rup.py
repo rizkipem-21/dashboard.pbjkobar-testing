@@ -101,7 +101,9 @@ def load_json_local(path):
         with open(path, 'r', encoding='utf-8-sig') as f:
             data = json.load(f)
             if isinstance(data, list): return data
-            if isinstance(data, dict): return data.get('data', [])
+            if isinstance(data, dict): 
+                isi = data.get('data', [])
+                return isi if isi is not None else []
             return []
     except: return []
 
@@ -143,6 +145,7 @@ def update_arsip_detail_json(folder_path):
 
 def get_dict_anggaran(filepath):
     data = load_json_local(filepath)
+    if not data: return {}
     dict_anggaran = {}
     for item in data:
         kd = item.get('kd_rup')
@@ -154,6 +157,7 @@ def get_dict_anggaran(filepath):
 
 def get_dict_lokasi(filepath):
     data = load_json_local(filepath)
+    if not data: return {}
     dict_lok = {}
     for item in data:
         kd = item.get('kd_rup')

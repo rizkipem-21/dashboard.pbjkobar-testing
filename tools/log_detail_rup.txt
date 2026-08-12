@@ -88,3 +88,20 @@ START GENERATE DETAIL RUP 12 Agustus 2026 | 10.53 WIB
 ✅ EXCEL: D:\dashboard.pbjkobar-testing\output\rup\2026\Detail_RUP Tahun 2026 (2026-08-12).xlsx (4907 baris)
 
 --- MEMPROSES DETAIL TAHUN 2025 ---
+
+==================================================
+START GENERATE DETAIL RUP 12 Agustus 2026 | 14.59 WIB
+==================================================
+
+--- MEMPROSES DETAIL TAHUN 2026 ---
+✅ EXCEL: D:\dashboard.pbjkobar-testing\output\rup\2026\Detail_RUP Tahun 2026 (2026-08-12).xlsx (4907 baris)
+
+--- MEMPROSES DETAIL TAHUN 2025 ---
+✅ EXCEL: D:\dashboard.pbjkobar-testing\output\rup\2025\Detail_RUP Tahun 2025 (2026-08-12).xlsx (10251 baris)
+
+--- MEMPROSES DETAIL TAHUN 2024 ---
+✅ EXCEL: D:\dashboard.pbjkobar-testing\output\rup\2024\Detail_RUP Tahun 2024 (2026-08-12).xlsx (12016 baris)
+
+==================================================
+MENGIRIM EXCEL DETAIL RUP KE GITHUB...
+==================================================
