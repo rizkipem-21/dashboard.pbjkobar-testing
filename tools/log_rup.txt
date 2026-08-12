@@ -13273,3 +13273,38 @@ SUKSES
 [SKIP] Tahun 2024 sudah ada (final).
 
 PROSES DOWNLOAD SELESAI PADA 12 Agustus 2026 | 14.59 WIB
+
+==================================================
+START GENERATE RUP 12 Agustus 2026 | 15.04 WIB
+==================================================
+
+--- MEMPROSES DATA TAHUN 2026 ---
+DONE -> JSON: rekap_rup_2026.json
+DONE -> EXCEL: D:\dashboard.pbjkobar-testing\output\rup\2026\Rekap RUP Tahun 2026 (2026-08-12).xlsx
+
+[SKIP] Tahun 2025 sudah ada (final).
+
+[SKIP] Tahun 2024 sudah ada (final).
+
+==================================================
+MENGIRIM DATA RUP KE GITHUB DARI PYTHON...
+==================================================
+
+==================================================
+ PROSES SELESAI SELURUHNYA!
+==================================================
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/last-update-rup.txt
+	deleted:    output/rup/2026/Detail_RUP Tahun 2026 (2026-08-12).xlsx
+	modified:   output/rup/2026/Rekap RUP Tahun 2026 (2026-08-12).xlsx
+	deleted:    scripts/rup/error_api_rup.json
+	modified:   tools/log_detail_rup.txt
+	modified:   tools/log_rup.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
