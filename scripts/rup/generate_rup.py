@@ -335,6 +335,17 @@ if __name__ == "__main__":
         except: pass
     # ---------------------------------------------
 
+    # --- BACA CATATAN DARI SKRIP-SKRIP SEBELUMNYA ---
+    temp_tg = os.path.join(BASE_DIR, 'tools', 'temp_tg_rup.txt')
+    info_tambahan = ""
+    if os.path.exists(temp_tg):
+        try:
+            with open(temp_tg, 'r', encoding='utf-8') as f:
+                info_tambahan = f.read()
+            os.remove(temp_tg) # Hapus file agar besok mulai dari kosong lagi
+        except: pass
+    # -------------------------------------------------
+
     if len(daftar_error_api) > 0 or not git_sukses:
         pesan_ringkasan = "🚨 LAPORAN UPDATE SISTEM (RUP) 🚨\n\n"
         if len(daftar_error_api) > 0:
@@ -345,8 +356,9 @@ if __name__ == "__main__":
                 teks_error = teks_error[:3500] + "\n... [DAFTAR ERROR DIPOTONG] ...\n"
             pesan_ringkasan += teks_error + "\n"
             
+        pesan_ringkasan += f"📊 RINGKASAN EKSEKUSI:\n{info_tambahan}🔹 Generate RUP: Selesai\n\n"
         pesan_ringkasan += f"🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
         kirim_telegram_aman(pesan_ringkasan)
     else:
-        pesan_sukses = f"✅ UPDATE RUP BERHASIL ✅\n\nSeluruh data berhasil diolah dan sinkronisasi selesai.\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
+        pesan_sukses = f"✅ UPDATE RUP HARIAN SELESAI ✅\n\nSeluruh proses ekstraksi dan sinkronisasi data berhasil.\n\n📊 RINGKASAN EKSEKUSI:\n{info_tambahan}🔹 Generate RUP: Selesai\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
         kirim_telegram_aman(pesan_sukses)

@@ -390,9 +390,9 @@ if __name__ == "__main__":
     log_print(f"PROSES SELESAI | Durasi: {durasi}")
     log_print("==================================================")
 
-    if not git_sukses:
-        pesan = f"🚨 GAGAL UPDATE DETAIL RUP 🚨\n\nTerjadi kesalahan saat sinkronisasi GitHub.\n\nStatus:\n{pesan_git}\n\nWaktu: {get_waktu_indonesia()}"
-    else:
-        pesan = f"✅ UPDATE DETAIL RUP SELESAI ✅\n\nSebanyak {total_baris} Total Baris Detail RUP berhasil diekstrak dan Excel telah diupdate.\n\nStatus:\n{pesan_git}\n\nDurasi: {durasi}\nWaktu: {get_waktu_indonesia()}"
-    
-    kirim_telegram_aman(pesan)
+    # Tulis laporan ke file sementara (Bungkam notifikasi Telegram langsung)
+    temp_tg = os.path.join(BASE_DIR, 'tools', 'temp_tg_rup.txt')
+    try:
+        with open(temp_tg, 'a', encoding='utf-8') as f:
+            f.write(f"🔹 Detail RUP: {total_baris} Baris (Durasi: {durasi})\n")
+    except: pass
