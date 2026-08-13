@@ -379,7 +379,8 @@ def process_tepra(tahun):
             berhasil_simpan = True
         except PermissionError:
             import time
-            print(f"⚠️ Akses Ditolak: File {nama_file_tepra} sedang terbuka.")
+            # Emoji diganti dengan [!] agar CMD Windows tidak error
+            print(f"[!] Akses Ditolak: File {nama_file_tepra} sedang terbuka.")
             tutup_sukses = False
             try:
                 import win32com.client
