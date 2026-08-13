@@ -1,3 +1,7 @@
+# ======================================================
+# generate_tepra.py
+# ======================================================
+
 import os
 import json
 import pandas as pd
@@ -365,7 +369,32 @@ def process_tepra(tahun):
     ws3 = wb.create_sheet(title="Strategis > 2,5m sd 50m")
     style_excel_sheet(ws3, df_k3, "PROSES PENGADAAN BARANG DAN JASA PAKET STRATEGIS (≥Rp2,5M sd 50M)")
 
-    wb.save(out_excel)
+    # === SIMPAN DENGAN PENGAMAN AUTO-CLOSE ===
+    berhasil_simpan = False
+    nama_file_tepra = f'Tepra Kobar_Progres PBJ tahun {tahun} ({tgl_gen}).xlsx'
+    
+    while not berhasil_simpan:
+        try:
+            wb.save(out_excel)
+            berhasil_simpan = True
+        except PermissionError:
+            import time
+            print(f"⚠️ Akses Ditolak: File {nama_file_tepra} sedang terbuka.")
+            tutup_sukses = False
+            try:
+                import win32com.client
+                excel_app = win32com.client.GetActiveObject("Excel.Application")
+                for wb_app in excel_app.Workbooks:
+                    if wb_app.Name == nama_file_tepra:
+                        wb_app.Close(SaveChanges=False)
+                        tutup_sukses = True
+                        break
+            except Exception: pass
+            
+            if not tutup_sukses:
+                os.system(f'mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""File {nama_file_tepra} sedang terbuka. Tutup file di Excel agar proses TEPRA selesai!"", 5, ""Peringatan Excel"", 48)(window.close)")')
+            time.sleep(3)
+    # ==========================================
 
     # --- JALANKAN FUNGSI ARSIP ---
     kelola_arsip_bulanan(out_dir_excel, tahun)

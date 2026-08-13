@@ -1,5 +1,5 @@
 # ======================================================
-# FASE 2: TRANSFORM & LOAD (GENERATE PAKET PENGADAAN)
+# generate_pengadaan.py
 # ======================================================
 
 import os
@@ -166,12 +166,20 @@ def get_kategori_status(sumber, s):
     return "Sedang Berjalan"
 
 def process_tahun(tahun):
+    # Deklarasikan semua path di awal agar dikenali oleh seluruh fungsi
     data_dir = os.path.join(BASE_DIR, 'data', str(tahun))
+    output_dir_excel = os.path.join(BASE_DIR, 'output', 'pengadaan', str(tahun))
     output_json = os.path.join(data_dir, f'rekap_pengadaan_{tahun}.json')
     
-    if tahun == tahun_n2 and os.path.exists(output_json):
-        log_print(f"\n[SKIP] Tahun {tahun} sudah final -> Lewati generate")
-        return None
+    # ---------------------------------------------------------
+    # LOGIKA SKIP: HANYA melewati tahun n-2 (sudah final)
+    # ---------------------------------------------------------
+    if tahun == tahun_n2 and os.path.exists(output_dir_excel):
+        file_sudah_ada = any(f.startswith('Paket Pengadaan Tahun') and f.endswith('.xlsx') for f in os.listdir(output_dir_excel))
+        if file_sudah_ada:
+            log_print(f"\n[SKIP] Excel Tahun {tahun} sudah final -> Lewati generate")
+            return None
+    # ---------------------------------------------------------
 
     log_print(f'\n{"="*55}\n   GENERATE DATA TAHUN {tahun}\n{"="*55}')
     def p(nama): return get_file_path(data_dir, nama, tahun)
@@ -931,42 +939,69 @@ def process_tahun(tahun):
     os.makedirs(output_dir_excel, exist_ok=True)
     output_excel_path = os.path.join(output_dir_excel, nama_file_excel)
 
-    with pd.ExcelWriter(output_excel_path, engine='openpyxl') as writer:
-        df_rekap.to_excel(writer, index=False, sheet_name='1. Rekap per RUP')
-        excel_df_detail.to_excel(writer, index=False, sheet_name='2. Detail per Paket')
+    # === SIMPAN & STYLING EXCEL DENGAN PENGAMAN AUTO-CLOSE ===
+    berhasil_simpan = False
+    while not berhasil_simpan:
+        try:
+            with pd.ExcelWriter(output_excel_path, engine='openpyxl') as writer:
+                df_rekap.to_excel(writer, index=False, sheet_name='1. Rekap per RUP')
+                excel_df_detail.to_excel(writer, index=False, sheet_name='2. Detail per Paket')
 
-    wb = load_workbook(output_excel_path)
-    header_fill = PatternFill('solid', start_color='1F4E79')
-    header_font = Font(name='Arial', bold=True, color='FFFFFF', size=10)
-    header_align = Alignment(horizontal='center', vertical='center', wrap_text=True)
-    data_font = Font(name='Arial', size=10)
-    fill_putih = PatternFill('solid', start_color='FFFFFF')
-    fill_biru_muda = PatternFill('solid', start_color='DCE6F1')
-    border_thin = Border(left=Side(style='thin', color='BFBFBF'), right=Side(style='thin', color='BFBFBF'), top=Side(style='thin', color='BFBFBF'), bottom=Side(style='thin', color='BFBFBF'))
+            wb = load_workbook(output_excel_path)
+            header_fill = PatternFill('solid', start_color='1F4E79')
+            header_font = Font(name='Arial', bold=True, color='FFFFFF', size=10)
+            header_align = Alignment(horizontal='center', vertical='center', wrap_text=True)
+            data_font = Font(name='Arial', size=10)
+            fill_putih = PatternFill('solid', start_color='FFFFFF')
+            fill_biru_muda = PatternFill('solid', start_color='DCE6F1')
+            border_thin = Border(left=Side(style='thin', color='BFBFBF'), right=Side(style='thin', color='BFBFBF'), top=Side(style='thin', color='BFBFBF'), bottom=Side(style='thin', color='BFBFBF'))
 
-    def style_sheet(ws_name, df_ref, dict_lebar, list_kolom_angka):
-        ws = wb[ws_name]
-        for i, col in enumerate(df_ref.columns, start=1): ws.column_dimensions[get_column_letter(i)].width = dict_lebar.get(col, 15)
-        for cell in ws[1]: cell.font, cell.fill, cell.alignment, cell.border = header_font, header_fill, header_align, border_thin
-        ws.row_dimensions[1].height = 32
-        for row_idx, row in enumerate(ws.iter_rows(min_row=2, max_row=ws.max_row), start=2):
-            fill = fill_putih if row_idx % 2 == 0 else fill_biru_muda
-            for cell in row:
-                col_name = df_ref.columns[cell.column - 1]
-                cell.font, cell.fill, cell.border = data_font, fill, border_thin
-                if col_name in list_kolom_angka and str(cell.value).replace('.', '', 1).isdigit():
-                    cell.number_format = '#,##0'
-                    cell.alignment = Alignment(horizontal='right', vertical='center')
-                else: cell.alignment = Alignment(vertical='center', wrap_text=False)
-        ws.freeze_panes = 'A2'
-        ws.auto_filter.ref = ws.dimensions
+            def style_sheet(ws_name, df_ref, dict_lebar, list_kolom_angka):
+                ws = wb[ws_name]
+                for i, col in enumerate(df_ref.columns, start=1): ws.column_dimensions[get_column_letter(i)].width = dict_lebar.get(col, 15)
+                for cell in ws[1]: cell.font, cell.fill, cell.alignment, cell.border = header_font, header_fill, header_align, border_thin
+                ws.row_dimensions[1].height = 32
+                for row_idx, row in enumerate(ws.iter_rows(min_row=2, max_row=ws.max_row), start=2):
+                    fill = fill_putih if row_idx % 2 == 0 else fill_biru_muda
+                    for cell in row:
+                        col_name = df_ref.columns[cell.column - 1]
+                        cell.font, cell.fill, cell.border = data_font, fill, border_thin
+                        if col_name in list_kolom_angka and str(cell.value).replace('.', '', 1).isdigit():
+                            cell.number_format = '#,##0'
+                            cell.alignment = Alignment(horizontal='right', vertical='center')
+                        else: cell.alignment = Alignment(vertical='center', wrap_text=False)
+                ws.freeze_panes = 'A2'
+                ws.auto_filter.ref = ws.dimensions
 
-    lebar_baku = {'Kode Paket': 25, 'Kode RUP': 18, 'Kode RUP Baru': 18, 'Satuan Kerja': 38, 'Nama Paket': 50, 'Metode Pemilihan': 22, 'Jenis Pengadaan': 32, 'Sumber Dana': 14, 'PDN': 10, 'UKM': 10, 'Status Konsolidasi': 18, 'Nilai Pagu RUP': 20, 'Nilai Hasil Pemilihan': 20, 'Tanggal Kontrak': 25, 'Nama Penyedia': 40, 'Status': 28, 'Nilai HPS': 20, 'Nilai PDN': 18, 'Nilai UMK': 18, 'Cara Pengadaan': 25, 'Sumber': 15}
-    style_sheet('1. Rekap per RUP', df_rekap, lebar_baku, kolom_angka_baku)
-    style_sheet('2. Detail per Paket', excel_df_detail, lebar_baku, kolom_angka_baku)
-    wb.save(output_excel_path)
+            lebar_baku = {'Kode Paket': 25, 'Kode RUP': 18, 'Kode RUP Baru': 18, 'Satuan Kerja': 38, 'Nama Paket': 50, 'Metode Pemilihan': 22, 'Jenis Pengadaan': 32, 'Sumber Dana': 14, 'PDN': 10, 'UKM': 10, 'Status Konsolidasi': 18, 'Nilai Pagu RUP': 20, 'Nilai Hasil Pemilihan': 20, 'Tanggal Kontrak': 25, 'Nama Penyedia': 40, 'Status': 28, 'Nilai HPS': 20, 'Nilai PDN': 18, 'Nilai UMK': 18, 'Cara Pengadaan': 25, 'Sumber': 15}
+            style_sheet('1. Rekap per RUP', df_rekap, lebar_baku, kolom_angka_baku)
+            style_sheet('2. Detail per Paket', excel_df_detail, lebar_baku, kolom_angka_baku)
+            wb.save(output_excel_path)
+            berhasil_simpan = True
+            
+        except PermissionError:
+            import time
+            log_print(f"⚠️ Akses Ditolak: File {nama_file_excel} sedang terbuka.")
+            tutup_sukses = False
+            try:
+                import win32com.client
+                excel_app = win32com.client.GetActiveObject("Excel.Application")
+                for wb_app in excel_app.Workbooks:
+                    if wb_app.Name == nama_file_excel:
+                        log_print(f"Menutup otomatis file: {nama_file_excel}...")
+                        wb_app.Close(SaveChanges=False)
+                        tutup_sukses = True
+                        break
+            except Exception: pass
+            
+            if not tutup_sukses:
+                log_print("Memunculkan pop-up peringatan...")
+                os.system(f'mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""File {nama_file_excel} sedang terbuka. Tutup file di Excel agar proses berlanjut!"", 5, ""Peringatan Excel"", 48)(window.close)")')
+            time.sleep(3)
+    # ========================================================
     
-    shutil.copy2(output_excel_path, os.path.join(data_dir, f'master_pengadaan_{tahun}.xlsx'))
+    try: shutil.copy2(output_excel_path, os.path.join(data_dir, f'master_pengadaan_{tahun}.xlsx'))
+    except: pass
     kelola_arsip_bulanan(output_dir_excel, tahun)
     update_daftar_arsip_json(output_dir_excel)
     
