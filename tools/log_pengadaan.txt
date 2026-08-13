@@ -32710,3 +32710,66 @@ TEPRA 2026 Sukses (4 Sheet Lengkap) -> D:\dashboard.pbjkobar-testing\output\tepr
 ==================================================
 MENGIRIM DATA PENGADAAN KE GITHUB DARI PYTHON...
 ==================================================
+✅ Push ke GitHub BERHASIL
+
+PROSES SELESAI SELURUHNYA PADA 13 Agustus 2026 | 10.34 WIB
+
+=======================================================
+START GENERATE PENGADAAN 13 Agustus 2026 | 10.40 WIB
+=======================================================
+
+=======================================================
+   GENERATE DATA TAHUN 2026
+=======================================================
+JSON Rekap sukses dibuat: D:\dashboard.pbjkobar-testing\data\2026\rekap_pengadaan_2026.json
+⚠️ Akses Ditolak: File Paket Pengadaan Tahun 2026 (2026-08-13).xlsx sedang terbuka.
+Memunculkan pop-up peringatan...
+⚠️ Akses Ditolak: File Paket Pengadaan Tahun 2026 (2026-08-13).xlsx sedang terbuka.
+Memunculkan pop-up peringatan...
+📝 Daftar arsip JSON diperbarui: D:\dashboard.pbjkobar-testing\output\pengadaan\2026\daftar_arsip.json
+SELESAI GENERATE TAHUN 2026 | Total data: 4946
+
+=======================================================
+   GENERATE DATA TAHUN 2025
+=======================================================
+JSON Rekap sukses dibuat: D:\dashboard.pbjkobar-testing\data\2025\rekap_pengadaan_2025.json
+📝 Daftar arsip JSON diperbarui: D:\dashboard.pbjkobar-testing\output\pengadaan\2025\daftar_arsip.json
+SELESAI GENERATE TAHUN 2025 | Total data: 10256
+
+[SKIP] Excel Tahun 2024 sudah final -> Lewati generate
+
+==================================================
+START GENERATE TEPRA
+GAGAL PROSES TEPRA:
+Traceback (most recent call last):
+  File "D:\dashboard.pbjkobar-testing\scripts\pengadaan\generate_tepra.py", line 378, in process_tepra
+    wb.save(out_excel)
+    ~~~~~~~^^^^^^^^^^^
+  File "C:\Users\PBJ Rizki\AppData\Local\Programs\Python\Python314\Lib\site-packages\openpyxl\workbook\workbook.py", line 386, in save
+    save_workbook(self, filename)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\PBJ Rizki\AppData\Local\Programs\Python\Python314\Lib\site-packages\openpyxl\writer\excel.py", line 291, in save_workbook
+    archive = ZipFile(filename, 'w', ZIP_DEFLATED, allowZip64=True)
+  File "C:\Users\PBJ Rizki\AppData\Local\Programs\Python\Python314\Lib\zipfile\__init__.py", line 1453, in __init__
+    self.fp = io.open(file, filemode)
+              ~~~~~~~^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'D:\\dashboard.pbjkobar-testing\\output\\tepra\\2026\\Tepra Kobar_Progres PBJ tahun 2026 (2026-08-13).xlsx'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\dashboard.pbjkobar-testing\scripts\pengadaan\generate_tepra.py", line 407, in <module>
+    process_tepra(tahun_n)
+    ~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\dashboard.pbjkobar-testing\scripts\pengadaan\generate_tepra.py", line 382, in process_tepra
+    print(f"\u26a0\ufe0f Akses Ditolak: File {nama_file_tepra} sedang terbuka.")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PBJ Rizki\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 0-1: character maps to <undefined>
+
+
+==================================================
+MENGIRIM DATA PENGADAAN KE GITHUB DARI PYTHON...
+==================================================
