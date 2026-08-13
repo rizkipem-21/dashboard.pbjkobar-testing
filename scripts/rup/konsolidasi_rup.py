@@ -383,44 +383,78 @@ def process_tahun(tahun):
     nama_excel = f"Konsolidasi_RUP Tahun {tahun} ({tgl_cetak}).xlsx"
     path_excel = os.path.join(output_dir, nama_excel)
 
-    df_gabungan.to_excel(path_excel, index=False, sheet_name='Konsolidasi RUP')
-    
-    # 6. Styling Excel
-    wb = load_workbook(path_excel)
-    ws = wb.active
-    h_fill = PatternFill('solid', start_color='1F4E79')
-    h_font = Font(name='Arial', bold=True, color='FFFFFF')
-    border = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'), bottom=Side(style='thin'))
+    # 6. Styling Excel dan Simpan (Dengan Fitur Auto-Close / Pop-Up)
+    berhasil_simpan = False
+    while not berhasil_simpan:
+        try:
+            df_gabungan.to_excel(path_excel, index=False, sheet_name='Konsolidasi RUP')
+            
+            wb = load_workbook(path_excel)
+            ws = wb.active
+            h_fill = PatternFill('solid', start_color='1F4E79')
+            h_font = Font(name='Arial', bold=True, color='FFFFFF')
+            border = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'), bottom=Side(style='thin'))
 
-    for cell in ws[1]:
-        cell.fill, cell.font, cell.alignment = h_fill, h_font, Alignment(horizontal='center', vertical='center', wrap_text=True)
+            for cell in ws[1]:
+                cell.fill, cell.font, cell.alignment = h_fill, h_font, Alignment(horizontal='center', vertical='center', wrap_text=True)
 
-    for col in ws.columns:
-        kolom_nama = str(col[0].value)
-        kolom_huruf = col[0].column_letter
-        
-        # Styling Lebar Dinamis
-        if kolom_nama in ['Nama Paket', 'Satuan Kerja', 'Nama Paket Terkonsolidasi', 'Lokasi Pekerjaan', 'Uraian Pekerjaan', 'Spesifikasi Pekerjaan']:
-            ws.column_dimensions[kolom_huruf].width = 40
-        elif kolom_nama in ['Kode RUP', 'Kode RUP Paket Terkonsolidasi']:
-            ws.column_dimensions[kolom_huruf].width = 22
-        elif kolom_nama == 'Pagu':
-            ws.column_dimensions[kolom_huruf].width = 20
-        else:
-            ws.column_dimensions[kolom_huruf].width = 18
+            for col in ws.columns:
+                kolom_nama = str(col[0].value)
+                kolom_huruf = col[0].column_letter
+                
+                # Styling Lebar Dinamis
+                if kolom_nama in ['Nama Paket', 'Satuan Kerja', 'Nama Paket Terkonsolidasi', 'Lokasi Pekerjaan', 'Uraian Pekerjaan', 'Spesifikasi Pekerjaan']:
+                    ws.column_dimensions[kolom_huruf].width = 40
+                elif kolom_nama in ['Kode RUP', 'Kode RUP Paket Terkonsolidasi']:
+                    ws.column_dimensions[kolom_huruf].width = 22
+                elif kolom_nama == 'Pagu':
+                    ws.column_dimensions[kolom_huruf].width = 20
+                else:
+                    ws.column_dimensions[kolom_huruf].width = 18
 
-    kolom_date = [cell.column for cell in ws[1] if cell.value in ('tanggal buat', 'tanggal pengumuman')]
-    idx_pagu = [cell.column_letter for cell in ws[1] if cell.value == 'Pagu'][0]
+            kolom_date = [cell.column for cell in ws[1] if cell.value in ('tanggal buat', 'tanggal pengumuman')]
+            idx_pagu = [cell.column_letter for cell in ws[1] if cell.value == 'Pagu'][0]
 
-    for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
-        for cell in row:
-            cell.border = border
-            if cell.column_letter == idx_pagu: 
-                cell.number_format = '#,##0'
-            if cell.column in kolom_date and cell.value is not None:
-                cell.number_format = 'dd/mm/yyyy'
+            for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
+                for cell in row:
+                    cell.border = border
+                    if cell.column_letter == idx_pagu: 
+                        cell.number_format = '#,##0'
+                    if cell.column in kolom_date and cell.value is not None:
+                        cell.number_format = 'dd/mm/yyyy'
 
-    wb.save(path_excel)
+            wb.save(path_excel)
+            berhasil_simpan = True
+            
+        except PermissionError:
+            import time
+            log_print(f"⚠️ Akses Ditolak: File {nama_excel} sedang terbuka.")
+            
+            tutup_sukses = False
+            try:
+                # 1. Mencoba menutup HANYA file yang bersangkutan via COM Object
+                import win32com.client
+                excel = win32com.client.GetActiveObject("Excel.Application")
+                for wb_app in excel.Workbooks:
+                    if wb_app.Name == nama_excel:
+                        log_print(f"Menutup otomatis HANYA file: {nama_excel}...")
+                        wb_app.Close(SaveChanges=False)
+                        tutup_sukses = True
+                        break
+            except ImportError:
+                log_print("Library pywin32 belum terinstall.")
+            except Exception:
+                pass # Gagal mengakses proses Windows
+                
+            # 2. Jika gagal ditutup otomatis, munculkan Pop-Up dan tunggu
+            if not tutup_sukses:
+                log_print("Memunculkan pop-up peringatan ke layar...")
+                pesan_popup = f"Data tidak bisa disimpan karena file {nama_excel} sedang TERBUKA. Mohon TUTUP file tersebut di Excel agar sistem bisa melanjutkan proses!"
+                os.system(f'mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""{pesan_popup}"", 5, ""Peringatan Excel"", 48)(window.close)")')
+            
+            time.sleep(3) 
+            log_print("Mencoba menyimpan ulang data...")
+            
     kelola_arsip_detail(output_dir, tahun)
     
     log_print(f"✅ EXCEL: {path_excel} ({len(df_gabungan)} baris)")
