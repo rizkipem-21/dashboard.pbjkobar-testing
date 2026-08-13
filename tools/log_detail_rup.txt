@@ -147,3 +147,30 @@ START GENERATE DETAIL RUP 13 Agustus 2026 | 09.48 WIB
 ==================================================
 MENGIRIM EXCEL DETAIL RUP KE GITHUB...
 ==================================================
+✅ PUSH GITHUB SUKSES!
+==================================================
+PROSES SELESAI | Durasi: 0:00:48
+==================================================
+
+==================================================
+START GENERATE DETAIL RUP 13 Agustus 2026 | 09.50 WIB
+==================================================
+
+--- MEMPROSES DETAIL TAHUN 2026 ---
+⚠️ Akses Ditolak: File Detail_RUP Tahun 2026 (2026-08-13).xlsx sedang terbuka.
+Memunculkan pop-up peringatan ke layar...
+Mencoba menyimpan ulang data...
+⚠️ Akses Ditolak: File Detail_RUP Tahun 2026 (2026-08-13).xlsx sedang terbuka.
+Memunculkan pop-up peringatan ke layar...
+Mencoba menyimpan ulang data...
+✅ EXCEL: D:\dashboard.pbjkobar-testing\output\rup\2026\Detail_RUP Tahun 2026 (2026-08-13).xlsx (4907 baris)
+
+--- MEMPROSES DETAIL TAHUN 2025 ---
+  -> [SKIP] Excel Tahun 2025 sudah ada (Final).
+
+--- MEMPROSES DETAIL TAHUN 2024 ---
+  -> [SKIP] Excel Tahun 2024 sudah ada (Final).
+
+==================================================
+MENGIRIM EXCEL DETAIL RUP KE GITHUB...
+==================================================
