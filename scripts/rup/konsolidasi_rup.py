@@ -215,6 +215,18 @@ def scrap_anak_konsolidasi(kode_rup_induk):
 
 def process_tahun(tahun):
     log_print(f"\n--- MEMPROSES KONSOLIDASI TAHUN {tahun} ---")
+    output_dir = os.path.join(BASE_DIR, "output", "rup", str(tahun))
+    
+    # ---------------------------------------------------------
+    # LOGIKA SKIP: Melewati tahun n-1 & n-2 jika file Excel sudah ada
+    # ---------------------------------------------------------
+    if tahun != tahun_n and os.path.exists(output_dir):
+        file_sudah_ada = any(f.startswith(f'Konsolidasi_RUP Tahun {tahun}') and f.endswith('.xlsx') for f in os.listdir(output_dir))
+        if file_sudah_ada:
+            log_print(f"  -> [SKIP] Excel Tahun {tahun} sudah ada (Final).")
+            return 0
+    # ---------------------------------------------------------
+    
     data_dir = os.path.join(BASE_DIR, 'data', str(tahun))
     
     p_terum = get_file_path(data_dir, "rup_paket-penyedia-terumumkan", tahun)
