@@ -882,8 +882,8 @@ def process_tahun(tahun):
         return ""
     final_df['Status Konsolidasi'] = final_df['Kode RUP'].apply(get_status_konsolidasi)
 
-    cols = ['Kode Paket', 'Kode RUP', 'Kode RUP Baru', 'Nama Instansi', 'Satuan Kerja', 'Nama Paket', 'Metode Pemilihan', 'Jenis Pengadaan', 'Tahun Anggaran', 'Sumber Dana', 'PDN', 'UKM', 'Status Konsolidasi', 'Nilai Pagu RUP', 'Nilai Hasil Pemilihan', 'Tanggal Kontrak', 'Nama Penyedia', 'NPWP 15', 'NPWP 16', 'Alamat', 'Status', 'Nilai HPS', 'Nilai PDN', 'Nilai UMK', 'Cara Pengadaan', 'Sumber']
-    final_df = final_df[cols].fillna("")
+    cols = ['Kode Paket', 'Kode RUP', 'Kode RUP Baru', 'Nama Instansi', 'Satuan Kerja', 'Nama Paket', 'Metode Pemilihan', 'Jenis Pengadaan', 'Tahun Anggaran', 'Nama Program', 'Nama Kegiatan', 'Nama Sub Kegiatan', 'Sumber Dana', 'MAK', 'PDN', 'UKM', 'Status Konsolidasi', 'Nilai Pagu RUP', 'Nilai Hasil Pemilihan', 'No Kontrak', 'Tanggal Kontrak', 'Nama Penyedia', 'NPWP 15', 'NPWP 16', 'Alamat', 'Status', 'Nilai HPS', 'Nilai PDN', 'Nilai UMK', 'Cara Pengadaan', 'Sumber']
+    final_df = final_df.reindex(columns=cols).fillna("")
     final_df['PDN'] = final_df['PDN'].replace("", "N/A")
     final_df['UKM'] = final_df['UKM'].replace("", "N/A")
     final_df['Status'] = final_df['Status'].apply(lambda x: str(x).replace('_', ' ') if pd.notna(x) else x)
@@ -956,10 +956,12 @@ def process_tahun(tahun):
         rekap_data.append({
             'Kode Paket': aggregate_text(group['Kode Paket']), 'Kode RUP': first_row['Kode RUP'], 'Kode RUP Baru': first_row['Kode RUP Baru'], 
             'Nama Instansi': first_row['Nama Instansi'], 'Satuan Kerja': first_row['Satuan Kerja'], 'Nama Paket': first_row['Nama Paket'], 'Metode Pemilihan': first_row['Metode Pemilihan'],
-            'Jenis Pengadaan': first_row['Jenis Pengadaan'], 'Tahun Anggaran': first_row['Tahun Anggaran'], 'Sumber Dana': first_row['Sumber Dana'], 'PDN': first_row['PDN'], 'UKM': first_row['UKM'], 'Status Konsolidasi': first_row['Status Konsolidasi'],
+            'Jenis Pengadaan': first_row['Jenis Pengadaan'], 'Tahun Anggaran': first_row['Tahun Anggaran'], 
+            'Nama Program': first_row['Nama Program'], 'Nama Kegiatan': first_row['Nama Kegiatan'], 'Nama Sub Kegiatan': first_row['Nama Sub Kegiatan'],
+            'Sumber Dana': first_row['Sumber Dana'], 'MAK': first_row['MAK'], 'PDN': first_row['PDN'], 'UKM': first_row['UKM'], 'Status Konsolidasi': first_row['Status Konsolidasi'],
             'Nilai Pagu RUP': pagu_rup if pagu_rup != 0 else "", 'Nilai Hasil Pemilihan': sum_hasil if sum_hasil != 0 else "",
-            'Tanggal Kontrak': aggregate_text(group['Tanggal Kontrak']), 'Nama Penyedia': aggregate_text(group['Nama Penyedia']), 
-            'NPWP 15': aggregate_text(group['NPWP 15']), 'NPWP 16': "", 'Alamat': aggregate_text(group['Alamat']),
+            'No Kontrak': aggregate_text(group['No Kontrak']), 'Tanggal Kontrak': aggregate_text(group['Tanggal Kontrak']), 'Nama Penyedia': aggregate_text(group['Nama Penyedia']), 
+            'NPWP 15': aggregate_text(group['NPWP 15']), 'NPWP 16': aggregate_text(group['NPWP 16']), 'Alamat': aggregate_text(group['Alamat']),
             'Status': aggregate_raw_status(group, pagu_rup, sum_hasil), 'Nilai HPS': sum_hps if sum_hps != 0 else "",
             'Nilai PDN': sum_pdn if sum_pdn != 0 else "", 'Nilai UMK': sum_umk if sum_umk != 0 else "",
             'Cara Pengadaan': aggregate_text(group['Cara Pengadaan']), 'Sumber': aggregate_text(group['Sumber'])
@@ -1016,7 +1018,7 @@ def process_tahun(tahun):
                 ws.freeze_panes = 'A2'
                 ws.auto_filter.ref = ws.dimensions
 
-            lebar_baku = {'Kode Paket': 25, 'Kode RUP': 18, 'Kode RUP Baru': 18, 'Nama Instansi': 30, 'Satuan Kerja': 38, 'Nama Paket': 50, 'Metode Pemilihan': 22, 'Jenis Pengadaan': 32, 'Tahun Anggaran': 18, 'Sumber Dana': 14, 'PDN': 10, 'UKM': 10, 'Status Konsolidasi': 18, 'Nilai Pagu RUP': 20, 'Nilai Hasil Pemilihan': 20, 'Tanggal Kontrak': 25, 'Nama Penyedia': 40, 'NPWP 15': 25, 'NPWP 16': 25, 'Alamat': 40, 'Status': 28, 'Nilai HPS': 20, 'Nilai PDN': 18, 'Nilai UMK': 18, 'Cara Pengadaan': 25, 'Sumber': 15}
+            lebar_baku = {'Kode Paket': 25, 'Kode RUP': 18, 'Kode RUP Baru': 18, 'Nama Instansi': 30, 'Satuan Kerja': 38, 'Nama Paket': 50, 'Metode Pemilihan': 22, 'Jenis Pengadaan': 32, 'Tahun Anggaran': 18, 'Nama Program': 40, 'Nama Kegiatan': 40, 'Nama Sub Kegiatan': 40, 'Sumber Dana': 14, 'MAK': 20, 'PDN': 10, 'UKM': 10, 'Status Konsolidasi': 18, 'Nilai Pagu RUP': 20, 'Nilai Hasil Pemilihan': 20, 'No Kontrak': 25, 'Tanggal Kontrak': 25, 'Nama Penyedia': 40, 'NPWP 15': 25, 'NPWP 16': 25, 'Alamat': 40, 'Status': 28, 'Nilai HPS': 20, 'Nilai PDN': 18, 'Nilai UMK': 18, 'Cara Pengadaan': 25, 'Sumber': 15}
             style_sheet('1. Rekap per RUP', df_rekap, lebar_baku, kolom_angka_baku)
             style_sheet('2. Detail per Paket', excel_df_detail, lebar_baku, kolom_angka_baku)
             wb.save(output_excel_path)

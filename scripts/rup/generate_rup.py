@@ -124,7 +124,8 @@ def kelola_arsip_bulanan(folder_path, tahun):
     if not os.path.exists(folder_path): return
     folder_arsip_lokal = os.path.join(BASE_DIR, 'arsip_lokal', 'rup', str(tahun))
     os.makedirs(folder_arsip_lokal, exist_ok=True)
-    file_excel = [f for f in os.listdir(folder_path) if f.startswith('Rekap') and f.endswith('.xlsx')]
+    
+    file_excel = [f for f in os.listdir(folder_path) if f.startswith('Rekap') and f.endswith('.xlsx') and not f.startswith('~$')]
     arsip_bulanan = {}
     for f in file_excel:
         match = re.search(r"\((\d{4}-\d{2}-\d{2})\)", f)
@@ -136,12 +137,37 @@ def kelola_arsip_bulanan(folder_path, tahun):
     for bulan, list_file in arsip_bulanan.items():
         list_file.sort(key=lambda x: x[0])
         for tgl, nama_file in list_file[:-1]:
-            try: shutil.move(os.path.join(folder_path, nama_file), os.path.join(folder_arsip_lokal, nama_file))
-            except: pass
+            path_sumber = os.path.join(folder_path, nama_file)
+            path_tujuan = os.path.join(folder_arsip_lokal, nama_file)
+            
+            berhasil_pindah = False
+            while not berhasil_pindah:
+                try: 
+                    shutil.move(path_sumber, path_tujuan)
+                    berhasil_pindah = True
+                except PermissionError:
+                    import time
+                    log_print(f"⚠️ Akses Ditolak: File arsip {nama_file} sedang terbuka.")
+                    tutup_sukses = False
+                    try:
+                        import win32com.client
+                        excel_app = win32com.client.GetActiveObject("Excel.Application")
+                        for wb_app in excel_app.Workbooks:
+                            if wb_app.Name == nama_file:
+                                wb_app.Close(SaveChanges=False)
+                                tutup_sukses = True
+                                break
+                    except Exception: pass
+                    
+                    if not tutup_sukses:
+                        os.system(f'mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""File {nama_file} sedang terbuka. Tutup di Excel agar bisa diarsipkan!"", 5, ""Peringatan Excel"", 48)(window.close)")')
+                    time.sleep(3)
+                except Exception: 
+                    berhasil_pindah = True
 
 def update_daftar_arsip_json(folder_path):
     if not os.path.exists(folder_path): return
-    file_excel = [f for f in os.listdir(folder_path) if f.startswith('Rekap') and f.endswith('.xlsx')]
+    file_excel = [f for f in os.listdir(folder_path) if f.startswith('Rekap') and f.endswith('.xlsx') and not f.startswith('~$')]
     file_excel.sort(reverse=True) 
     arsip_list = [{"nama_file": f} for f in file_excel]
     try:
