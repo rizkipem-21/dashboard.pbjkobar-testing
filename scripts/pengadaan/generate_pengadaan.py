@@ -213,6 +213,9 @@ def process_tahun(tahun):
     df1_5   = load_json(p('rup_history-kaji-ulang'))
     df_ang_p = load_json(p('rup_paket-anggaran-penyedia'))
     df_ang_s = load_json(p('rup_paket-anggaran-swakelola'))
+    df_prog  = load_json(p('rup_program-master'))
+    df_keg   = load_json(p('rup_kegiatan-master'))
+    df_sub   = load_json(p('rup_sub-kegiatan-master'))
      
     df2     = load_json(p('tender_non-tender-pengumuman'))
     df2_1   = load_json(p('tender_non-tender-selesai'))
@@ -551,19 +554,62 @@ def process_tahun(tahun):
             try: kd_int = int(float(str(kd).strip()))
             except: continue
             
-            if kd_int not in ang_map: ang_map[kd_int] = {'sd': [], 'mak': []}
+            if kd_int not in ang_map: ang_map[kd_int] = {'sd': [], 'mak': [], 'kd_keg': [], 'kd_sub': []}
             sd = str(row.get('sumber_dana', '')).strip()
             mak = str(row.get('mak', '')).strip()
+            keg = str(row.get('kd_kegiatan', '')).strip()
+            sub = str(row.get('kd_subkegiatan', '')).strip()
+            
             if sd and sd != 'nan': ang_map[kd_int]['sd'].append(sd)
             if mak and mak != 'nan': ang_map[kd_int]['mak'].append(mak)
+            if keg and keg != 'nan': ang_map[kd_int]['kd_keg'].append(keg)
+            if sub and sub != 'nan': ang_map[kd_int]['kd_sub'].append(sub)
             
         for k in ang_map:
             ang_map[k]['sd'] = "; ".join(list(dict.fromkeys(ang_map[k]['sd'])))
             ang_map[k]['mak'] = "; ".join(list(dict.fromkeys(ang_map[k]['mak'])))
+            ang_map[k]['kd_keg'] = list(dict.fromkeys(ang_map[k]['kd_keg']))
+            ang_map[k]['kd_sub'] = list(dict.fromkeys(ang_map[k]['kd_sub']))
         return ang_map
 
     map_ang_p = build_anggaran_map(df_ang_p)
     map_ang_s = build_anggaran_map(df_ang_s)
+
+    # Membangun kamus master
+    map_prog = dict(zip(df_prog['kd_program_str'].astype(str).str.strip(), df_prog['nama_program'])) if not df_prog.empty and 'kd_program_str' in df_prog.columns else {}
+    map_keg = dict(zip(df_keg['kd_kegiatan'].astype(str).str.strip(), df_keg['nama_kegiatan'])) if not df_keg.empty and 'kd_kegiatan' in df_keg.columns else {}
+    map_sub = dict(zip(df_sub['kd_subkegiatan'].astype(str).str.strip(), df_sub['nama_subkegiatan'])) if not df_sub.empty and 'kd_subkegiatan' in df_sub.columns else {}
+
+    def get_nama_program(mak_str):
+        if not mak_str or pd.isna(mak_str): return ""
+        maks = [m.strip() for m in str(mak_str).split(';')]
+        progs = []
+        for m in maks:
+            parts = m.split('.')
+            if len(parts) >= 3:
+                kd_prog = f"{parts[0]}.{parts[1]}.{parts[2]}" # Mengambil 3 blok pertama (misal: 2.11.01)
+                if kd_prog in map_prog: progs.append(map_prog[kd_prog])
+        return "; ".join(list(dict.fromkeys(progs)))
+
+    def get_kegiatan_sub(kd_list, is_swakelola, is_sub=False):
+        if not kd_list: return ""
+        map_ang = map_ang_s if is_swakelola else map_ang_p
+        map_master = map_sub if is_sub else map_keg
+        key_kd = 'kd_sub' if is_sub else 'kd_keg'
+        
+        hasil = []
+        for k in kd_list:
+            try: k_int = int(float(str(k).strip()))
+            except: continue
+            kds = map_ang.get(k_int, {}).get(key_kd, [])
+            for kd in kds:
+                if str(kd) in map_master:
+                    hasil.append(map_master[str(kd)])
+        
+        if not hasil: return ""
+        unik = list(dict.fromkeys(hasil))
+        if len(unik) == 1: return unik[0]
+        return "; ".join(hasil)
 
     def get_anggaran_multi(kd_list, map_ang, key):
         if not kd_list: return ""
@@ -915,6 +961,17 @@ def process_tahun(tahun):
 
     cols = ['Kode Paket', 'Kode RUP', 'Kode RUP Baru', 'Nama Instansi', 'Satuan Kerja', 'Nama Paket', 'Metode Pemilihan', 'Jenis Pengadaan', 'Tahun Anggaran', 'Nama Program', 'Nama Kegiatan', 'Nama Sub Kegiatan', 'Sumber Dana', 'MAK', 'PDN', 'UKM', 'Status Konsolidasi', 'Nilai Pagu RUP', 'Nilai Hasil Pemilihan', 'No Kontrak', 'Tanggal Kontrak', 'Nama Penyedia', 'NPWP 15', 'NPWP 16', 'Alamat', 'Status', 'Nilai HPS', 'Nilai PDN', 'Nilai UMK', 'Cara Pengadaan', 'Sumber']
     final_df = final_df.reindex(columns=cols).fillna("")
+    
+    # Isi Program, Kegiatan, Sub Kegiatan berdasarkan Kode RUP dan MAK
+    for idx, row in final_df.iterrows():
+        kd_rup_str = str(row['Kode RUP'])
+        cleaned_list = [int(i.strip()) for i in kd_rup_str.split(';') if i.strip().isdigit()]
+        is_swakelola = 'Swakelola' in str(row['Sumber']) or 'Swakelola' in str(row['Jenis Pengadaan']) or 'Sumber 4' in str(row['Sumber']) or 'Sumber 1_2' in str(row['Sumber'])
+        
+        final_df.at[idx, 'Nama Program'] = get_nama_program(row['MAK'])
+        final_df.at[idx, 'Nama Kegiatan'] = get_kegiatan_sub(cleaned_list, is_swakelola, is_sub=False)
+        final_df.at[idx, 'Nama Sub Kegiatan'] = get_kegiatan_sub(cleaned_list, is_swakelola, is_sub=True)
+
     final_df['PDN'] = final_df['PDN'].replace("", "N/A")
     final_df['UKM'] = final_df['UKM'].replace("", "N/A")
     final_df['Status'] = final_df['Status'].apply(lambda x: str(x).replace('_', ' ') if pd.notna(x) else x)

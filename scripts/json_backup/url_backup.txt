@@ -28,7 +28,7 @@ https://data.inaproc.id/api/v1/rup/paket-swakelola-terumumkan?kode_klpd=D228&tah
 https://data.inaproc.id/api/v1/rup/paket-anggaran-swakelola?kode_klpd=D228&tahun={tahun}&limit=1000
 https://data.inaproc.id/api/v1/rup/paket-swakelola?kode_klpd=D228&tahun={tahun}&limit=1000
 
-
+ 
 =====  sikap =====
 ## legacy ##
 https://data.inaproc.id/api/legacy/sikap/penilaian-kinerja-penyedia-non-tender?kode_klpd=D228&tahun={tahun}

@@ -210,7 +210,7 @@ def download_data_pengadaan(tahun, is_n2, data_dir):
                 else:
                     log_print(f"  -> [Aman] Server gagal diakses, mempertahankan file {filename}.")
                 daftar_error_api.append(f"❌ PENGADAAN Legacy ({tahun}) - {base_name} ({last_error})")
-
+ 
 if __name__ == '__main__':
     # Catat waktu mulai untuk menghitung durasi total
     waktu_mulai = time.time()
