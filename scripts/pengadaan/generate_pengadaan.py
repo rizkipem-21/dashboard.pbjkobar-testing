@@ -106,11 +106,11 @@ def load_json(path):
 def kelola_arsip_bulanan(folder_path, tahun):
     if not os.path.exists(folder_path): return
     
-    # 1. Buat folder brankas lokal yang tidak akan dibaca GitHub
     folder_arsip_lokal = os.path.join(BASE_DIR, 'arsip_lokal', 'pengadaan', str(tahun))
     os.makedirs(folder_arsip_lokal, exist_ok=True)
     
-    file_excel = [f for f in os.listdir(folder_path) if f.endswith('.xlsx')]
+    # Abaikan file temporary Excel yang berawalan ~$
+    file_excel = [f for f in os.listdir(folder_path) if f.endswith('.xlsx') and not f.startswith('~$')]
     arsip_bulanan = {}
     
     for f in file_excel:
@@ -121,18 +121,40 @@ def kelola_arsip_bulanan(folder_path, tahun):
             arsip_bulanan[bulan].append((match.group(1), f))
             
     for bulan, list_file in arsip_bulanan.items():
-        # Urutkan dari tanggal paling lama ke paling baru
         list_file.sort(key=lambda x: x[0])
         
-        # 2. Pindahkan semua file harian (kecuali yang terbaru) ke folder brankas
         for tgl, nama_file in list_file[:-1]:
             path_sumber = os.path.join(folder_path, nama_file)
             path_tujuan = os.path.join(folder_arsip_lokal, nama_file)
-            try: 
-                shutil.move(path_sumber, path_tujuan)
-                log_print(f"📦 Arsip harian diamankan ke lokal: {nama_file}")
-            except Exception as e: 
-                log_print(f"⚠️ Gagal memindah arsip {nama_file} (Mungkin file terbuka di Excel): {str(e)}")
+            
+            berhasil_pindah = False
+            while not berhasil_pindah:
+                try: 
+                    shutil.move(path_sumber, path_tujuan)
+                    log_print(f"📦 Arsip harian diamankan ke lokal: {nama_file}")
+                    berhasil_pindah = True
+                except PermissionError:
+                    import time
+                    log_print(f"⚠️ Akses Ditolak: File lama {nama_file} sedang terbuka.")
+                    tutup_sukses = False
+                    try:
+                        import win32com.client
+                        excel_app = win32com.client.GetActiveObject("Excel.Application")
+                        for wb_app in excel_app.Workbooks:
+                            if wb_app.Name == nama_file:
+                                log_print(f"Menutup otomatis file: {nama_file}...")
+                                wb_app.Close(SaveChanges=False)
+                                tutup_sukses = True
+                                break
+                    except Exception: pass
+                    
+                    if not tutup_sukses:
+                        log_print("Memunculkan pop-up peringatan arsip...")
+                        os.system(f'mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""File lama {nama_file} sedang terbuka. Tutup file di Excel agar bisa diarsipkan!"", 5, ""Peringatan Excel"", 48)(window.close)")')
+                    time.sleep(3)
+                except Exception as e: 
+                    log_print(f"⚠️ Gagal memindah arsip {nama_file}: {str(e)}")
+                    berhasil_pindah = True
 
 def update_daftar_arsip_json(folder_path):
     """Membaca sisa file Excel di folder output dan memperbarui daftar_arsip.json"""
