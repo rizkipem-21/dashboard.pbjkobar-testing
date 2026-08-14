@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "D:\dashboard.pbjkobar-testing\app\data_penyedia.py", line 186, in <module>
+    app = AppPenyedia()
+  File "D:\dashboard.pbjkobar-testing\app\data_penyedia.py", line 49, in __init__
+    self.create_layout()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "D:\dashboard.pbjkobar-testing\app\data_penyedia.py", line 61, in create_layout
+    self.ent_filter_penyedia.bind("<KeyRelease>", self.filter_tabel_penyedia)
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PBJ Rizki\AppData\Local\Programs\Python\Python314\Lib\tkinter\__init__.py", line 2571, in __getattr__
+    return getattr(self.tk, attr)
+AttributeError: '_tkinter.tkapp' object has no attribute 'filter_tabel_penyedia'

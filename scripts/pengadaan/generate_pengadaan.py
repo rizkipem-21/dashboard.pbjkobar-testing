@@ -571,7 +571,7 @@ def process_tahun(tahun):
             'Nilai Pagu RUP': get_pagu_multi(cleaned_list, 's1'), 'Nilai Hasil Pemilihan': next((map_nt_kontrak[k] for k in kd_nt_list if k in map_nt_kontrak), "N/A"), 
             'Tanggal Kontrak': format_tgl(next((map_nt_tgl_kontrak[k] for k in kd_nt_list if k in map_nt_tgl_kontrak), "")),
             'Nama Penyedia': next((map_nt_penyedia[k] for k in kd_nt_list if k in map_nt_penyedia), ""), 
-            'NPWP 16': next((map_nt_npwp[k] for k in kd_nt_list if k in map_nt_npwp), ""),
+            'NPWP 15': next((map_nt_npwp[k] for k in kd_nt_list if k in map_nt_npwp), ""), 'NPWP 16': "",
             'Alamat': next((map_nt_alamat[k] for k in kd_nt_list if k in map_nt_alamat), ""),
             'Status': status, 'Nilai HPS': r.get('hps'), 'Nilai PDN': next((map_nt_pdn[k] for k in kd_nt_list if k in map_nt_pdn), "N/A"), 
             'Nilai UMK': next((map_nt_umk[k] for k in kd_nt_list if k in map_nt_umk), "N/A"),
@@ -624,7 +624,7 @@ def process_tahun(tahun):
             'Nilai Pagu RUP': get_pagu_multi(cleaned_list, 's1'), 'Nilai Hasil Pemilihan': "" if pd.isna(r.get('total_realisasi')) else r.get('total_realisasi'), 
             'Tanggal Kontrak': format_tgl(r.get('tgl_selesai_paket', '')),
             'Nama Penyedia': map_s3_penyedia.get(str(r.get('kd_nontender_pct')).strip(), ""), 
-            'NPWP 16': map_s3_npwp.get(str(r.get('kd_nontender_pct')).strip(), ""),
+            'NPWP 15': map_s3_npwp.get(str(r.get('kd_nontender_pct')).strip(), ""), 'NPWP 16': "",
             'Alamat': map_s3_alamat.get(str(r.get('kd_nontender_pct')).strip(), ""),
             'Status': r.get('status_nontender_pct_ket'), 'Nilai HPS': pd.NA,
             'Nilai PDN': r.get('nilai_pdn_pct'), 'Nilai UMK': r.get('nilai_umk_pct'), 'Cara Pengadaan': 'Pencatatan Non Tender', 'Sumber': 'Sumber 3'
@@ -659,7 +659,7 @@ def process_tahun(tahun):
             'Sumber Dana': r.get('sumber_dana'), 'PDN': "PDN" if r.get('nilai_pdn_pct', 0)!=0 else "Tidak", 'UKM': "UKM" if r.get('nilai_umk_pct', 0)!=0 else "Tidak",
             'Nilai Pagu RUP': get_pagu_multi(cleaned_list, 's1_2'), 'Nilai Hasil Pemilihan': "" if pd.isna(r.get('total_realisasi')) else r.get('total_realisasi'),
             'Tanggal Kontrak': format_tgl(r.get('tgl_selesai_paket', '')), 
-            'Nama Penyedia': "", 'NPWP 16': "", 'Alamat': "",
+            'Nama Penyedia': "", 'NPWP 15': "", 'NPWP 16': "", 'Alamat': "",
             'Status': r.get('status_swakelola_pct_ket'), 'Nilai HPS': pd.NA, 'Nilai PDN': r.get('nilai_pdn_pct'), 'Nilai UMK': r.get('nilai_umk_pct'),
             'Cara Pengadaan': 'Pencatatan Swakelola', 'Sumber': 'Sumber 4'
         })
@@ -706,7 +706,7 @@ def process_tahun(tahun):
             'Nilai Pagu RUP': get_pagu_multi(cleaned_list, 's1'), 'Nilai Hasil Pemilihan': next((map_t_kontrak[k] for k in kd_t_list if k in map_t_kontrak), "N/A"), 
             'Tanggal Kontrak': format_tgl(next((map_t_tgl_kontrak[k] for k in kd_t_list if k in map_t_tgl_kontrak), "")),
             'Nama Penyedia': next((map_t_penyedia[k] for k in kd_t_list if k in map_t_penyedia), ""), 
-            'NPWP 16': next((map_t_npwp[k] for k in kd_t_list if k in map_t_npwp), ""),
+            'NPWP 15': next((map_t_npwp[k] for k in kd_t_list if k in map_t_npwp), ""), 'NPWP 16': "",
             'Alamat': next((map_t_alamat[k] for k in kd_t_list if k in map_t_alamat), ""),
             'Status': status, 'Nilai HPS': r.get('hps'), 'Nilai PDN': next((map_t_pdn[k] for k in kd_t_list if k in map_t_pdn), "N/A"), 
             'Nilai UMK': next((map_t_umk[k] for k in kd_t_list if k in map_t_umk), "N/A"),
@@ -748,7 +748,7 @@ def process_tahun(tahun):
             'Metode Pemilihan': 'E-Purchasing', 'Jenis Pengadaan': get_s1(kd_lookup, 'jenis_pengadaan', 's1'), 'Tahun Anggaran': r.get('fiscal_year'),
             'Sumber Dana': r.get('funding_source'), 'PDN': status_pdn_katalog, 'UKM': status_ukm_katalog, 'Nilai Pagu RUP': get_pagu_multi(cleaned_list, 's1'),
             'Nilai Hasil Pemilihan': nilai_hasil, 'Tanggal Kontrak': "", 
-            'Nama Penyedia': nama_p, 'NPWP 16': str(r.get('npwp_penyedia', r.get('npwp', ''))), 'Alamat': str(r.get('alamat_penyedia', r.get('alamat', ''))),
+            'Nama Penyedia': nama_p, 'NPWP 15': str(r.get('npwp_penyedia', r.get('npwp', ''))), 'NPWP 16': "", 'Alamat': str(r.get('alamat_penyedia', r.get('alamat', ''))),
             'Status': r.get('status'), 'Nilai HPS': pd.NA, 'Nilai PDN': nilai_pdn_val, 'Nilai UMK': nilai_umk_val,
             'Cara Pengadaan': 'E-Purchasing V6', 'Sumber': 'Sumber 6'
         })
@@ -802,7 +802,7 @@ def process_tahun(tahun):
             'Nama Paket': r.get('nama_paket'), 'Metode Pemilihan': 'E-Purchasing', 'Jenis Pengadaan': get_s1(kd_lookup, 'jenis_pengadaan', 's1'), 'Tahun Anggaran': r.get('tahun_anggaran'),
             'Sumber Dana': r.get('nama_sumber_dana'), 'PDN': status_pdn_katalog, 'UKM': status_ukm_katalog, 'Nilai Pagu RUP': get_pagu_multi(cleaned_list, 's1'),
             'Nilai Hasil Pemilihan': nilai_hasil, 'Tanggal Kontrak': "", 
-            'Nama Penyedia': nama_p, 'NPWP 16': str(r.get('npwp_penyedia', r.get('npwp', ''))), 'Alamat': str(r.get('alamat_penyedia', r.get('alamat', ''))),
+            'Nama Penyedia': nama_p, 'NPWP 15': str(r.get('npwp_penyedia', r.get('npwp', ''))), 'NPWP 16': "", 'Alamat': str(r.get('alamat_penyedia', r.get('alamat', ''))),
             'Status': status_s7, 'Nilai HPS': pd.NA, 'Nilai PDN': nilai_pdn_val, 'Nilai UMK': nilai_umk_val,
             'Cara Pengadaan': 'E-Purchasing V5', 'Sumber': 'Sumber 7'
         })
@@ -823,7 +823,7 @@ def process_tahun(tahun):
                 'Kode Paket': pd.NA, 'Kode RUP': kd, 'Kode RUP Baru': kode_rup_baru_s1, 
                 'Nama Instansi': 'KAB. KOTAWARINGIN BARAT', 'Satuan Kerja': r.get('nama_satker'), 'Nama Paket': r.get('nama_paket'), 'Metode Pemilihan': 'Swakelola',
                 'Jenis Pengadaan': jenis, 'Tahun Anggaran': r.get('tahun_anggaran'), 'Sumber Dana': None, 'PDN': None, 'UKM': None, 'Nilai Pagu RUP': r.get('pagu'), 'Nilai Hasil Pemilihan': "",
-                'Tanggal Kontrak': "", 'Nama Penyedia': "", 'NPWP 16': "", 'Alamat': "", 'Status': 'Pengumuman RUP', 'Nilai HPS': pd.NA, 'Nilai PDN': pd.NA, 'Nilai UMK': pd.NA,
+                'Tanggal Kontrak': "", 'Nama Penyedia': "", 'NPWP 15': "", 'NPWP 16': "", 'Alamat': "", 'Status': 'Pengumuman RUP', 'Nilai HPS': pd.NA, 'Nilai PDN': pd.NA, 'Nilai UMK': pd.NA,
                 'Cara Pengadaan': 'Swakelola', 'Sumber': 'Sumber 1_2'
             })
     df_s1_2 = pd.DataFrame(data_s1_2)
@@ -843,7 +843,7 @@ def process_tahun(tahun):
                 'Nama Instansi': 'KAB. KOTAWARINGIN BARAT', 'Satuan Kerja': r.get('nama_satker'), 'Nama Paket': r.get('nama_paket'), 'Metode Pemilihan': r.get('metode_pengadaan'),
                 'Jenis Pengadaan': r.get('jenis_pengadaan'), 'Tahun Anggaran': r.get('tahun_anggaran'), 'Sumber Dana': None, 'PDN': 'PDN' if r.get('status_pdn')=='PDN' else 'Non-PDN',
                 'UKM': 'UKM' if r.get('status_ukm')=='UKM' else 'Non-UKM', 'Nilai Pagu RUP': r.get('pagu'), 'Nilai Hasil Pemilihan': "",
-                'Tanggal Kontrak': "", 'Nama Penyedia': "", 'NPWP 16': "", 'Alamat': "", 'Status': 'Pengumuman RUP', 'Nilai HPS': pd.NA, 'Nilai PDN': pd.NA, 'Nilai UMK': pd.NA,
+                'Tanggal Kontrak': "", 'Nama Penyedia': "", 'NPWP 15': "", 'NPWP 16': "", 'Alamat': "", 'Status': 'Pengumuman RUP', 'Nilai HPS': pd.NA, 'Nilai PDN': pd.NA, 'Nilai UMK': pd.NA,
                 'Cara Pengadaan': r.get('metode_pengadaan'), 'Sumber': 'Sumber 1'
             })
     df_s1 = pd.DataFrame(data_s1)
@@ -860,7 +860,7 @@ def process_tahun(tahun):
         return ""
     final_df['Status Konsolidasi'] = final_df['Kode RUP'].apply(get_status_konsolidasi)
 
-    cols = ['Kode Paket', 'Kode RUP', 'Kode RUP Baru', 'Nama Instansi', 'Satuan Kerja', 'Nama Paket', 'Metode Pemilihan', 'Jenis Pengadaan', 'Tahun Anggaran', 'Sumber Dana', 'PDN', 'UKM', 'Status Konsolidasi', 'Nilai Pagu RUP', 'Nilai Hasil Pemilihan', 'Tanggal Kontrak', 'Nama Penyedia', 'NPWP 16', 'Alamat', 'Status', 'Nilai HPS', 'Nilai PDN', 'Nilai UMK', 'Cara Pengadaan', 'Sumber']
+    cols = ['Kode Paket', 'Kode RUP', 'Kode RUP Baru', 'Nama Instansi', 'Satuan Kerja', 'Nama Paket', 'Metode Pemilihan', 'Jenis Pengadaan', 'Tahun Anggaran', 'Sumber Dana', 'PDN', 'UKM', 'Status Konsolidasi', 'Nilai Pagu RUP', 'Nilai Hasil Pemilihan', 'Tanggal Kontrak', 'Nama Penyedia', 'NPWP 15', 'NPWP 16', 'Alamat', 'Status', 'Nilai HPS', 'Nilai PDN', 'Nilai UMK', 'Cara Pengadaan', 'Sumber']
     final_df = final_df[cols].fillna("")
     final_df['PDN'] = final_df['PDN'].replace("", "N/A")
     final_df['UKM'] = final_df['UKM'].replace("", "N/A")
@@ -937,7 +937,7 @@ def process_tahun(tahun):
             'Jenis Pengadaan': first_row['Jenis Pengadaan'], 'Tahun Anggaran': first_row['Tahun Anggaran'], 'Sumber Dana': first_row['Sumber Dana'], 'PDN': first_row['PDN'], 'UKM': first_row['UKM'], 'Status Konsolidasi': first_row['Status Konsolidasi'],
             'Nilai Pagu RUP': pagu_rup if pagu_rup != 0 else "", 'Nilai Hasil Pemilihan': sum_hasil if sum_hasil != 0 else "",
             'Tanggal Kontrak': aggregate_text(group['Tanggal Kontrak']), 'Nama Penyedia': aggregate_text(group['Nama Penyedia']), 
-            'NPWP 16': aggregate_text(group['NPWP 16']), 'Alamat': aggregate_text(group['Alamat']),
+            'NPWP 15': aggregate_text(group['NPWP 15']), 'NPWP 16': "", 'Alamat': aggregate_text(group['Alamat']),
             'Status': aggregate_raw_status(group, pagu_rup, sum_hasil), 'Nilai HPS': sum_hps if sum_hps != 0 else "",
             'Nilai PDN': sum_pdn if sum_pdn != 0 else "", 'Nilai UMK': sum_umk if sum_umk != 0 else "",
             'Cara Pengadaan': aggregate_text(group['Cara Pengadaan']), 'Sumber': aggregate_text(group['Sumber'])
@@ -994,7 +994,7 @@ def process_tahun(tahun):
                 ws.freeze_panes = 'A2'
                 ws.auto_filter.ref = ws.dimensions
 
-            lebar_baku = {'Kode Paket': 25, 'Kode RUP': 18, 'Kode RUP Baru': 18, 'Nama Instansi': 30, 'Satuan Kerja': 38, 'Nama Paket': 50, 'Metode Pemilihan': 22, 'Jenis Pengadaan': 32, 'Tahun Anggaran': 18, 'Sumber Dana': 14, 'PDN': 10, 'UKM': 10, 'Status Konsolidasi': 18, 'Nilai Pagu RUP': 20, 'Nilai Hasil Pemilihan': 20, 'Tanggal Kontrak': 25, 'Nama Penyedia': 40, 'NPWP 16': 25, 'Alamat': 40, 'Status': 28, 'Nilai HPS': 20, 'Nilai PDN': 18, 'Nilai UMK': 18, 'Cara Pengadaan': 25, 'Sumber': 15}
+            lebar_baku = {'Kode Paket': 25, 'Kode RUP': 18, 'Kode RUP Baru': 18, 'Nama Instansi': 30, 'Satuan Kerja': 38, 'Nama Paket': 50, 'Metode Pemilihan': 22, 'Jenis Pengadaan': 32, 'Tahun Anggaran': 18, 'Sumber Dana': 14, 'PDN': 10, 'UKM': 10, 'Status Konsolidasi': 18, 'Nilai Pagu RUP': 20, 'Nilai Hasil Pemilihan': 20, 'Tanggal Kontrak': 25, 'Nama Penyedia': 40, 'NPWP 15': 25, 'NPWP 16': 25, 'Alamat': 40, 'Status': 28, 'Nilai HPS': 20, 'Nilai PDN': 18, 'Nilai UMK': 18, 'Cara Pengadaan': 25, 'Sumber': 15}
             style_sheet('1. Rekap per RUP', df_rekap, lebar_baku, kolom_angka_baku)
             style_sheet('2. Detail per Paket', excel_df_detail, lebar_baku, kolom_angka_baku)
             wb.save(output_excel_path)

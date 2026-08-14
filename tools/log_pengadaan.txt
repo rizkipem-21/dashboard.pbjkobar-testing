@@ -32846,3 +32846,38 @@ TEPRA 2026 Sukses (4 Sheet Lengkap) -> D:\dashboard.pbjkobar-testing\output\tepr
 ==================================================
 MENGIRIM DATA PENGADAAN KE GITHUB DARI PYTHON...
 ==================================================
+✅ Push ke GitHub BERHASIL
+
+PROSES SELESAI SELURUHNYA PADA 13 Agustus 2026 | 13.04 WIB
+
+=======================================================
+START GENERATE PENGADAAN 14 Agustus 2026 | 08.29 WIB
+=======================================================
+
+=======================================================
+   GENERATE DATA TAHUN 2026
+=======================================================
+JSON Rekap sukses dibuat: D:\dashboard.pbjkobar-testing\data\2026\rekap_pengadaan_2026.json
+⚠️ Gagal memindah arsip Paket Pengadaan Tahun 2026 (2026-08-13).xlsx (Mungkin file terbuka di Excel): [WinError 32] The process cannot access the file because it is being used by another process: 'D:\\dashboard.pbjkobar-testing\\output\\pengadaan\\2026\\Paket Pengadaan Tahun 2026 (2026-08-13).xlsx'
+⚠️ Gagal memindah arsip ~$Paket Pengadaan Tahun 2026 (2026-08-13).xlsx (Mungkin file terbuka di Excel): [WinError 32] The process cannot access the file because it is being used by another process: 'D:\\dashboard.pbjkobar-testing\\output\\pengadaan\\2026\\~$Paket Pengadaan Tahun 2026 (2026-08-13).xlsx'
+📝 Daftar arsip JSON diperbarui: D:\dashboard.pbjkobar-testing\output\pengadaan\2026\daftar_arsip.json
+SELESAI GENERATE TAHUN 2026 | Total data: 4946
+
+=======================================================
+   GENERATE DATA TAHUN 2025
+=======================================================
+JSON Rekap sukses dibuat: D:\dashboard.pbjkobar-testing\data\2025\rekap_pengadaan_2025.json
+📦 Arsip harian diamankan ke lokal: Paket Pengadaan Tahun 2025 (2026-08-13).xlsx
+📝 Daftar arsip JSON diperbarui: D:\dashboard.pbjkobar-testing\output\pengadaan\2025\daftar_arsip.json
+SELESAI GENERATE TAHUN 2025 | Total data: 10256
+
+[SKIP] Excel Tahun 2024 sudah final -> Lewati generate
+
+==================================================
+START GENERATE TEPRA
+PROSES TEPRA SUKSES
+TEPRA 2026 Sukses (4 Sheet Lengkap) -> D:\dashboard.pbjkobar-testing\output\tepra\2026\Tepra Kobar_Progres PBJ tahun 2026 (2026-08-14).xlsx
+
+==================================================
+MENGIRIM DATA PENGADAAN KE GITHUB DARI PYTHON...
+==================================================
