@@ -78,14 +78,25 @@ if __name__ == "__main__":
     stat_dl = 0
     stat_gagal = 0
 
-    for raw_url in urls:
-        target_url = raw_url.replace('{tahun}', str(tahun_n))
+    # Gabungkan target Tahun N dan Tahun N-1 menjadi antrean tugas
+    daftar_tahun = [tahun_n, tahun_n - 1]
+    tasks = [(t, u) for t in daftar_tahun for u in urls]
+
+    tahun_aktif = None
+    for tahun, raw_url in tasks:
+        if tahun != tahun_aktif:
+            log_print("\n" + "="*50)
+            log_print(f"MEMPROSES TAHUN {tahun}")
+            log_print("="*50)
+            tahun_aktif = tahun
+
+        target_url = raw_url.replace('{tahun}', str(tahun))
         is_v1 = '/v1/' in target_url
         tipe = "v1" if is_v1 else "Legacy"
 
         match = re.search(r'api/(?:v1|legacy)/(.*?)\?', target_url)
         base_name = match.group(1).replace('/', '_') if match else "unknown"
-        filename = f"{tipe}_{base_name}_{tahun_n}.json"
+        filename = f"{tipe}_{base_name}_{tahun}.json"
         
         # --- LOGIKA SUB-FOLDER TAHUN (Adaptasi dari diskusi kemarin) ---
         match_tahun = re.search(r'(20\d{2})', filename)
@@ -100,7 +111,7 @@ if __name__ == "__main__":
         # ---------------------------------------------------------------
 
         # FITUR SKIP 1: Cek apakah sistem utama sudah mendownloadnya hari ini di folder data
-        path_data_utama = os.path.join(BASE_DIR, 'data', str(tahun_n), filename)
+        path_data_utama = os.path.join(BASE_DIR, 'data', str(tahun), filename)
         if os.path.exists(path_data_utama):
             tgl_file = datetime.fromtimestamp(os.path.getmtime(path_data_utama)).date()
             if tgl_file == waktu_mulai.date():

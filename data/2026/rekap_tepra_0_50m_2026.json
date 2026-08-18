@@ -198,16 +198,16 @@
     "Satuan Kerja": "Dinas Pemadam Kebakaran dan Penyelamatan",
     "Data Laporan_Paket": 60,
     "Data Laporan_Pagu": 444206345.0,
-    "Pemilihan_Paket": 9,
-    "Pemilihan_Pagu": 129101092.0,
-    "Hasil_Paket": 9,
-    "Hasil_Pagu": 125580607.0,
+    "Pemilihan_Paket": 6,
+    "Pemilihan_Pagu": 79101092.0,
+    "Hasil_Paket": 6,
+    "Hasil_Pagu": 75945607.0,
     "Kontrak_Paket": 3,
     "Kontrak_Pagu": 26260607.0,
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
-    "Belum_Paket": 51,
-    "Belum_Pagu": 315105253.0
+    "Belum_Paket": 54,
+    "Belum_Pagu": 365105253.0
   },
   {
     "Satuan Kerja": "Dinas Pemberdayaan Masyarakat dan Desa",
@@ -391,8 +391,8 @@
   },
   {
     "Satuan Kerja": "Inspektorat Daerah",
-    "Data Laporan_Paket": 49,
-    "Data Laporan_Pagu": 476139500.0,
+    "Data Laporan_Paket": 50,
+    "Data Laporan_Pagu": 489056792.0,
     "Pemilihan_Paket": 1,
     "Pemilihan_Pagu": 12917292.0,
     "Hasil_Paket": 1,
@@ -401,8 +401,8 @@
     "Kontrak_Pagu": 11908080.0,
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
-    "Belum_Paket": 48,
-    "Belum_Pagu": 463222208.0
+    "Belum_Paket": 49,
+    "Belum_Pagu": 476139500.0
   },
   {
     "Satuan Kerja": "Instalasi Farmasi",
@@ -871,17 +871,17 @@
   },
   {
     "Satuan Kerja": "TOTAL KESELURUHAN",
-    "Data Laporan_Paket": 3881,
-    "Data Laporan_Pagu": 32313291698.0,
-    "Pemilihan_Paket": 371,
-    "Pemilihan_Pagu": 6065207157.0,
-    "Hasil_Paket": 371,
-    "Hasil_Pagu": 5633172753.6,
+    "Data Laporan_Paket": 3882,
+    "Data Laporan_Pagu": 32326208990.0,
+    "Pemilihan_Paket": 368,
+    "Pemilihan_Pagu": 6015207157.0,
+    "Hasil_Paket": 368,
+    "Hasil_Pagu": 5583537753.6,
     "Kontrak_Paket": 275,
     "Kontrak_Pagu": 4214906041.0,
     "SerahTerima_Paket": 85,
     "SerahTerima_Pagu": 604096003.0,
-    "Belum_Paket": 3510,
-    "Belum_Pagu": 26248084541.0
+    "Belum_Paket": 3514,
+    "Belum_Pagu": 26311001833.0
   }
 ]
