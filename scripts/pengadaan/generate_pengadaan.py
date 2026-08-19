@@ -545,6 +545,11 @@ def process_tahun(tahun):
             return None
         except: return None
 
+    def clean_kd(val):
+        if pd.isna(val) or str(val).strip() in ["", "nan", "None"]: return ""
+        try: return str(int(float(val)))
+        except: return str(val).strip()
+
     def build_anggaran_map(df_ang):
         if df_ang.empty: return {}
         ang_map = {}
@@ -557,13 +562,14 @@ def process_tahun(tahun):
             if kd_int not in ang_map: ang_map[kd_int] = {'sd': [], 'mak': [], 'kd_keg': [], 'kd_sub': []}
             sd = str(row.get('sumber_dana', '')).strip()
             mak = str(row.get('mak', '')).strip()
-            keg = str(row.get('kd_kegiatan', '')).strip()
-            sub = str(row.get('kd_subkegiatan', '')).strip()
+            
+            keg = clean_kd(row.get('kd_kegiatan'))
+            sub = clean_kd(row.get('kd_subkegiatan'))
             
             if sd and sd != 'nan': ang_map[kd_int]['sd'].append(sd)
             if mak and mak != 'nan': ang_map[kd_int]['mak'].append(mak)
-            if keg and keg != 'nan': ang_map[kd_int]['kd_keg'].append(keg)
-            if sub and sub != 'nan': ang_map[kd_int]['kd_sub'].append(sub)
+            if keg: ang_map[kd_int]['kd_keg'].append(keg)
+            if sub: ang_map[kd_int]['kd_sub'].append(sub)
             
         for k in ang_map:
             ang_map[k]['sd'] = "; ".join(list(dict.fromkeys(ang_map[k]['sd'])))
@@ -577,8 +583,18 @@ def process_tahun(tahun):
 
     # Membangun kamus master
     map_prog = dict(zip(df_prog['kd_program_str'].astype(str).str.strip(), df_prog['nama_program'])) if not df_prog.empty and 'kd_program_str' in df_prog.columns else {}
-    map_keg = dict(zip(df_keg['kd_kegiatan'].astype(str).str.strip(), df_keg['nama_kegiatan'])) if not df_keg.empty and 'kd_kegiatan' in df_keg.columns else {}
-    map_sub = dict(zip(df_sub['kd_subkegiatan'].astype(str).str.strip(), df_sub['nama_subkegiatan'])) if not df_sub.empty and 'kd_subkegiatan' in df_sub.columns else {}
+    
+    map_keg = {}
+    if not df_keg.empty and 'kd_kegiatan' in df_keg.columns:
+        for k, v in zip(df_keg['kd_kegiatan'], df_keg['nama_kegiatan']):
+            k_cln = clean_kd(k)
+            if k_cln: map_keg[k_cln] = str(v).strip()
+            
+    map_sub = {}
+    if not df_sub.empty and 'kd_subkegiatan' in df_sub.columns:
+        for k, v in zip(df_sub['kd_subkegiatan'], df_sub['nama_subkegiatan']):
+            k_cln = clean_kd(k)
+            if k_cln: map_sub[k_cln] = str(v).strip()
 
     def get_nama_program(mak_str):
         if not mak_str or pd.isna(mak_str): return ""
@@ -608,8 +624,7 @@ def process_tahun(tahun):
         
         if not hasil: return ""
         unik = list(dict.fromkeys(hasil))
-        if len(unik) == 1: return unik[0]
-        return "; ".join(hasil)
+        return "; ".join(unik)
 
     def get_anggaran_multi(kd_list, map_ang, key):
         if not kd_list: return ""
