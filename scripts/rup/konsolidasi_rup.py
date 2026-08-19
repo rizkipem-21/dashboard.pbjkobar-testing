@@ -493,6 +493,36 @@ if __name__ == "__main__":
     log_print(f"START GENERATE KONSOLIDASI RUP {get_waktu_indonesia()}")
     log_print("==================================================")
 
+    # 1. CEK GAGAL TOTAL DOWNLOAD API (HANYA MEMBACA, TIDAK MENGHAPUS)
+    path_error = os.path.join(BASE_DIR, 'scripts', 'rup', 'error_api_rup.json')
+    path_url = os.path.join(BASE_DIR, 'scripts', 'rup', 'url_rup.txt')
+    if os.path.exists(path_error) and os.path.exists(path_url):
+        try:
+            with open(path_error, 'r', encoding='utf-8') as f: err_data = json.load(f)
+            with open(path_url, 'r', encoding='utf-8') as f:
+                jumlah_url = len([l for l in f if l.strip() and not l.strip().startswith(('#', '='))])
+            
+            # Hitung tahun yang akan diproses (mengabaikan tahun yang di-skip)
+            tahun_diproses = 0
+            for t in daftar_tahun:
+                output_dir = os.path.join(BASE_DIR, "output", "rup", str(t))
+                if t != tahun_n and os.path.exists(output_dir):
+                    if any(f.startswith(f'Konsolidasi_RUP Tahun {t}') and f.endswith('.xlsx') for f in os.listdir(output_dir)):
+                        continue
+                tahun_diproses += 1
+                
+            total_target = jumlah_url * tahun_diproses
+            
+            # Jika error memenuhi/melebihi target, matikan skrip
+            if total_target > 0 and len(err_data) >= total_target:
+                log_print("GAGAL TOTAL DOWNLOAD API. Skrip Konsolidasi RUP otomatis dihentikan.")
+                try:
+                    with open(os.path.join(BASE_DIR, 'tools', 'temp_tg_rup.txt'), 'a', encoding='utf-8') as f:
+                        f.write("🔹 Konsolidasi RUP: Batal (API Error)\n")
+                except: pass
+                sys.exit(0)
+        except Exception: pass
+
     total_baris = 0
     for t in daftar_tahun:
         total_baris += process_tahun(t)

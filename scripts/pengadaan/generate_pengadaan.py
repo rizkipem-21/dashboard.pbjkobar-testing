@@ -1182,7 +1182,7 @@ if __name__ == '__main__':
 
     # 3. LOGIKA BERHENTI JIKA GAGAL TOTAL
     if total_target > 0 and len(daftar_error_api) >= total_target:
-        pesan_gagal = f"🚨 LAPORAN UPDATE (PENGADAAN) 🚨\n\n⚠️ GAGAL TOTAL DOWNLOAD API!\nTidak ada data baru. Skrip Generate dihentikan.\n\nWaktu: {get_waktu_indonesia()}"
+        pesan_gagal = f"🚨 LAPORAN UPDATE (PENGADAAN) 🚨\n\n⚠️ GAGAL TOTAL DOWNLOAD API!\nTidak ada data baru. Proses dihentikan.\n\n📊 STATUS EKSEKUSI:\n🔹 Generate Pengadaan: Batal (API Error)\n🔹 Generate TEPRA: Batal (API Error)\n\n📅 Waktu: {get_waktu_indonesia()}"
         kirim_telegram_aman(pesan_gagal)
         log_print("GAGAL TOTAL. Skrip berhenti.")
         sys.exit(0)

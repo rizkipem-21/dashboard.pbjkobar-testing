@@ -769,15 +769,15 @@
   {
     "Satuan Kerja": "Puskesmas Kotawaringin Lama",
     "Pagu Program": 1424797850.0,
-    "Pagu Pengadaan": 1424797850.0,
-    "Paket Penyedia": 21.0,
-    "RUP Penyedia": 212772837.0,
+    "Pagu Pengadaan": 212772837.0,
+    "Paket Penyedia": 34.0,
+    "RUP Penyedia": 327199887.0,
     "Paket Swakelola": 0.0,
     "RUP Swakelola": 0.0,
-    "Total Paket Terumumkan": 21.0,
-    "Total RUP Terumumkan": 212772837.0,
-    "Selisih RUP Terumumkan": -1212025013.0,
-    "Persentase": 14.93354562543732
+    "Total Paket Terumumkan": 34.0,
+    "Total RUP Terumumkan": 327199887.0,
+    "Selisih RUP Terumumkan": 114427050.0,
+    "Persentase": 153.77897461601268
   },
   {
     "Satuan Kerja": "Puskesmas Kumai",
@@ -938,15 +938,15 @@
   {
     "Satuan Kerja": "Puskesmas Teluk Bogam",
     "Pagu Program": 1291889268.0,
-    "Pagu Pengadaan": 269479222000.0,
-    "Paket Penyedia": 22.0,
-    "RUP Penyedia": 350390301.0,
+    "Pagu Pengadaan": 1288698018.0,
+    "Paket Penyedia": 19.0,
+    "RUP Penyedia": 320865383.0,
     "Paket Swakelola": 0.0,
     "RUP Swakelola": 0.0,
-    "Total Paket Terumumkan": 22.0,
-    "Total RUP Terumumkan": 350390301.0,
-    "Selisih RUP Terumumkan": -269128831699.0,
-    "Persentase": 0.1300249786976155
+    "Total Paket Terumumkan": 19.0,
+    "Total RUP Terumumkan": 320865383.0,
+    "Selisih RUP Terumumkan": -967832635.0,
+    "Persentase": 24.898415184805536
   },
   {
     "Satuan Kerja": "Rumah Potong Hewan Ruminansia",

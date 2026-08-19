@@ -258,16 +258,16 @@
     "Satuan Kerja": "Dinas Pendidikan dan Kebudayaan",
     "Data Laporan_Paket": 55,
     "Data Laporan_Pagu": 6465227440.0,
-    "Pemilihan_Paket": 30,
-    "Pemilihan_Pagu": 3707312068.0,
-    "Hasil_Paket": 30,
-    "Hasil_Pagu": 3682261702.0,
+    "Pemilihan_Paket": 31,
+    "Pemilihan_Pagu": 3847498984.0,
+    "Hasil_Paket": 31,
+    "Hasil_Pagu": 3821561702.0,
     "Kontrak_Paket": 3,
     "Kontrak_Pagu": 347319002.0,
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
-    "Belum_Paket": 25,
-    "Belum_Pagu": 2757915372.0
+    "Belum_Paket": 24,
+    "Belum_Pagu": 2617728456.0
   },
   {
     "Satuan Kerja": "Dinas Perhubungan",
@@ -303,16 +303,16 @@
     "Satuan Kerja": "Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah",
     "Data Laporan_Paket": 28,
     "Data Laporan_Pagu": 2784104510.0,
-    "Pemilihan_Paket": 11,
-    "Pemilihan_Pagu": 1079232601.0,
-    "Hasil_Paket": 11,
-    "Hasil_Pagu": 1051994273.0,
+    "Pemilihan_Paket": 12,
+    "Pemilihan_Pagu": 1179232601.0,
+    "Hasil_Paket": 12,
+    "Hasil_Pagu": 1151500223.0,
     "Kontrak_Paket": 9,
     "Kontrak_Pagu": 757394273.0,
     "SerahTerima_Paket": 1,
     "SerahTerima_Pagu": 50500763.0,
-    "Belum_Paket": 17,
-    "Belum_Pagu": 1704871909.0
+    "Belum_Paket": 16,
+    "Belum_Pagu": 1604871909.0
   },
   {
     "Satuan Kerja": "Dinas Perpustakaan dan Kearsipan",
@@ -348,16 +348,16 @@
     "Satuan Kerja": "Dinas Perumahan Rakyat, Kawasan Pemukiman dan Pertanahan",
     "Data Laporan_Paket": 181,
     "Data Laporan_Pagu": 24100076698.0,
-    "Pemilihan_Paket": 171,
-    "Pemilihan_Pagu": 23107158378.0,
-    "Hasil_Paket": 171,
-    "Hasil_Pagu": 23038206425.010002,
+    "Pemilihan_Paket": 175,
+    "Pemilihan_Pagu": 23567530878.0,
+    "Hasil_Paket": 175,
+    "Hasil_Pagu": 23497213425.010002,
     "Kontrak_Paket": 22,
     "Kontrak_Pagu": 2833129460.0,
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
-    "Belum_Paket": 10,
-    "Belum_Pagu": 992918320.0
+    "Belum_Paket": 6,
+    "Belum_Pagu": 532545820.0
   },
   {
     "Satuan Kerja": "Dinas Sosial",
@@ -586,8 +586,8 @@
   },
   {
     "Satuan Kerja": "Puskesmas Kotawaringin Lama",
-    "Data Laporan_Paket": 1,
-    "Data Laporan_Pagu": 50400000.0,
+    "Data Laporan_Paket": 2,
+    "Data Laporan_Pagu": 145950000.0,
     "Pemilihan_Paket": 0,
     "Pemilihan_Pagu": 0.0,
     "Hasil_Paket": 0,
@@ -596,8 +596,8 @@
     "Kontrak_Pagu": 0.0,
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
-    "Belum_Paket": 1,
-    "Belum_Pagu": 50400000.0
+    "Belum_Paket": 2,
+    "Belum_Pagu": 145950000.0
   },
   {
     "Satuan Kerja": "Puskesmas Kumai",
@@ -871,17 +871,17 @@
   },
   {
     "Satuan Kerja": "TOTAL KESELURUHAN",
-    "Data Laporan_Paket": 798,
-    "Data Laporan_Pagu": 94675976782.0,
-    "Pemilihan_Paket": 475,
-    "Pemilihan_Pagu": 61128739249.0,
-    "Hasil_Paket": 475,
-    "Hasil_Pagu": 59257262877.41,
+    "Data Laporan_Paket": 799,
+    "Data Laporan_Pagu": 94771526782.0,
+    "Pemilihan_Paket": 481,
+    "Pemilihan_Pagu": 61829298665.0,
+    "Hasil_Paket": 481,
+    "Hasil_Pagu": 59955075827.41,
     "Kontrak_Paket": 230,
     "Kontrak_Pagu": 27689396734.0,
     "SerahTerima_Paket": 9,
     "SerahTerima_Pagu": 764123653.0,
-    "Belum_Paket": 323,
-    "Belum_Pagu": 33547237533.0
+    "Belum_Paket": 318,
+    "Belum_Pagu": 32942228117.0
   }
 ]

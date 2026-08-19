@@ -325,7 +325,15 @@ if __name__ == "__main__":
 
     # 3. LOGIKA BERHENTI JIKA GAGAL TOTAL
     if total_target > 0 and len(daftar_error_api) >= total_target:
-        pesan_gagal = f"🚨 LAPORAN UPDATE (RUP) 🚨\n\n⚠️ GAGAL TOTAL DOWNLOAD API!\nTidak ada data baru. Skrip Generate dihentikan.\n\nWaktu: {get_waktu_indonesia()}"
+        temp_tg = os.path.join(BASE_DIR, 'tools', 'temp_tg_rup.txt')
+        info_tambahan = ""
+        if os.path.exists(temp_tg):
+            try:
+                with open(temp_tg, 'r', encoding='utf-8') as f: info_tambahan = f.read()
+                os.remove(temp_tg)
+            except: pass
+            
+        pesan_gagal = f"🚨 LAPORAN UPDATE (RUP) 🚨\n\n⚠️ GAGAL TOTAL DOWNLOAD API!\nTidak ada data baru. Proses dihentikan.\n\n📊 STATUS EKSEKUSI:\n{info_tambahan}🔹 Generate RUP: Batal (API Error)\n\n📅 Waktu: {get_waktu_indonesia()}"
         kirim_telegram_aman(pesan_gagal)
         log_print("GAGAL TOTAL. Skrip berhenti.")
         sys.exit(0)
@@ -368,7 +376,6 @@ if __name__ == "__main__":
         try:
             with open(temp_tg, 'r', encoding='utf-8') as f:
                 info_tambahan = f.read()
-            os.remove(temp_tg) # Hapus file agar besok mulai dari kosong lagi
         except: pass
     # -------------------------------------------------
 
@@ -388,3 +395,10 @@ if __name__ == "__main__":
     else:
         pesan_sukses = f"✅ UPDATE RUP HARIAN SELESAI ✅\n\nSeluruh proses ekstraksi dan sinkronisasi data berhasil.\n\n📊 RINGKASAN EKSEKUSI:\n{info_tambahan}🔹 Generate RUP: Selesai\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
         kirim_telegram_aman(pesan_sukses)
+
+    # --- BERSIHKAN FILE SEMENTARA SETELAH LAPORAN TERKIRIM ---
+    if os.path.exists(temp_tg):
+        try:
+            os.remove(temp_tg)
+        except: pass
+    # --------------------------------------------------------

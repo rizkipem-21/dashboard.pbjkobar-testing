@@ -13792,3 +13792,102 @@ SUKSES
 [SKIP] Tahun 2024 sudah ada (final).
 
 PROSES DOWNLOAD SELESAI PADA 18 Agustus 2026 | 08.22 WIB
+
+==================================================
+START DOWNLOAD RUP 19 Agustus 2026 | 09.51 WIB
+==================================================
+
+==================================================
+--- MENGUNDUH DATA TAHUN 2026 ---
+==================================================
+
+[Backup] v1_tender_sengaja-error-tes_2026.json di-copy ke arsip 2026-07-28/2026
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/sengaja-error-tes?kode_klpd=D228&tahun=2026&limit=1000
+GAGAL (Status 403)
+    -> [!] Menunggu 5 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 10 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 15 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 20 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+  GAGAL TOTAL pada request ini. Berhenti ditarik.
+  -> [Aman] Proses terputus, mempertahankan file v1_tender_sengaja-error-tes_2026.json lama yang utuh.
+
+[SKIP] Tahun 2025 sudah ada (final).
+
+[SKIP] Tahun 2024 sudah ada (final).
+
+PROSES DOWNLOAD SELESAI PADA 19 Agustus 2026 | 09.52 WIB
+
+==================================================
+START GENERATE RUP 19 Agustus 2026 | 09.52 WIB
+==================================================
+GAGAL TOTAL. Skrip berhenti.
+
+==================================================
+START DOWNLOAD RUP 19 Agustus 2026 | 10.36 WIB
+==================================================
+
+==================================================
+--- MENGUNDUH DATA TAHUN 2026 ---
+==================================================
+
+[Backup] v1_tender_sengaja-error-tes_2026.json di-copy ke arsip 2026-07-28/2026
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/sengaja-error-tes?kode_klpd=D228&tahun=2026&limit=1000
+GAGAL (Status 403)
+    -> [!] Menunggu 5 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 10 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 15 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 20 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+  GAGAL TOTAL pada request ini. Berhenti ditarik.
+  -> [Aman] Proses terputus, mempertahankan file v1_tender_sengaja-error-tes_2026.json lama yang utuh.
+
+[SKIP] Tahun 2025 sudah ada (final).
+
+[SKIP] Tahun 2024 sudah ada (final).
+
+PROSES DOWNLOAD SELESAI PADA 19 Agustus 2026 | 10.37 WIB
+
+==================================================
+START GENERATE RUP 19 Agustus 2026 | 10.37 WIB
+==================================================
+GAGAL TOTAL. Skrip berhenti.
+
+==================================================
+START DOWNLOAD RUP 19 Agustus 2026 | 10.38 WIB
+==================================================
+
+==================================================
+--- MENGUNDUH DATA TAHUN 2026 ---
+==================================================
+
+[Backup] v1_tender_sengaja-error-tes_2026.json di-copy ke arsip 2026-07-28/2026
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/sengaja-error-tes?kode_klpd=D228&tahun=2026&limit=1000
+GAGAL (Status 403)
+    -> [!] Menunggu 5 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 10 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 15 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 20 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+  GAGAL TOTAL pada request ini. Berhenti ditarik.
+  -> [Aman] Proses terputus, mempertahankan file v1_tender_sengaja-error-tes_2026.json lama yang utuh.
+
+[SKIP] Tahun 2025 sudah ada (final).
+
+[SKIP] Tahun 2024 sudah ada (final).
+
+PROSES DOWNLOAD SELESAI PADA 19 Agustus 2026 | 10.39 WIB
+
+==================================================
+START GENERATE RUP 19 Agustus 2026 | 10.39 WIB
+==================================================
+GAGAL TOTAL. Skrip berhenti.

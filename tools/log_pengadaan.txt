@@ -33714,3 +33714,139 @@ TEPRA 2026 Sukses (4 Sheet Lengkap) -> D:\dashboard.pbjkobar-testing\output\tepr
 ==================================================
 MENGIRIM DATA PENGADAAN KE GITHUB DARI PYTHON...
 ==================================================
+✅ Push ke GitHub BERHASIL
+
+PROSES SELESAI SELURUHNYA PADA 18 Agustus 2026 | 08.36 WIB
+
+=======================================================
+START DOWNLOAD PENGADAAN 19 Agustus 2026 | 10.57 WIB
+=======================================================
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2026
+=======================================================
+
+[BACKUP] v1_tender_sengaja-error-tes_2026.json di-copy ke arsip 2026-07-28/2026
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/sengaja-error-tes?kode_klpd=D228&tahun=2026&limit=1000
+GAGAL (Status 403)
+    -> [!] Menunggu 5 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 10 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 15 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 20 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+  -> [Aman] Proses terputus, mempertahankan file v1_tender_sengaja-error-tes_2026.json lama yang utuh.
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2025
+=======================================================
+
+[BACKUP] v1_tender_sengaja-error-tes_2025.json di-copy ke arsip 2026-07-28/2025
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/sengaja-error-tes?kode_klpd=D228&tahun=2025&limit=1000
+GAGAL (Status 403)
+    -> [!] Menunggu 5 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 10 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 15 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 20 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+  -> [Aman] Proses terputus, mempertahankan file v1_tender_sengaja-error-tes_2025.json lama yang utuh.
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2024
+=======================================================
+
+[SKIP] Tahun 2024 sudah final -> Lewati download
+
+PROSES DOWNLOAD SELESAI!
+
+=======================================================
+START GENERATE PENGADAAN 19 Agustus 2026 | 10.59 WIB
+=======================================================
+GAGAL TOTAL. Skrip berhenti.
+
+=======================================================
+START DOWNLOAD PENGADAAN 19 Agustus 2026 | 10.59 WIB
+=======================================================
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2026
+=======================================================
+
+[BACKUP] v1_tender_sengaja-error-tes_2026.json di-copy ke arsip 2026-07-28/2026
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/sengaja-error-tes?kode_klpd=D228&tahun=2026&limit=1000
+GAGAL (Status 403)
+    -> [!] Menunggu 5 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 10 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 15 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 20 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+  -> [Aman] Proses terputus, mempertahankan file v1_tender_sengaja-error-tes_2026.json lama yang utuh.
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2025
+=======================================================
+
+[BACKUP] v1_tender_sengaja-error-tes_2025.json di-copy ke arsip 2026-07-28/2025
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/sengaja-error-tes?kode_klpd=D228&tahun=2025&limit=1000
+GAGAL (Status 403)
+    -> [!] Menunggu 5 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 10 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 15 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+    -> [!] Menunggu 20 detik agar server Inaproc stabil...
+GAGAL (Status 403)
+  -> [Aman] Proses terputus, mempertahankan file v1_tender_sengaja-error-tes_2025.json lama yang utuh.
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2024
+=======================================================
+
+[SKIP] Tahun 2024 sudah final -> Lewati download
+
+PROSES DOWNLOAD SELESAI!
+
+=======================================================
+START GENERATE PENGADAAN 19 Agustus 2026 | 11.01 WIB
+=======================================================
+GAGAL TOTAL. Skrip berhenti.
+
+=======================================================
+START GENERATE PENGADAAN 19 Agustus 2026 | 11.22 WIB
+=======================================================
+
+=======================================================
+   GENERATE DATA TAHUN 2026
+=======================================================
+JSON Rekap sukses dibuat: D:\dashboard.pbjkobar-testing\data\2026\rekap_pengadaan_2026.json
+📦 Arsip harian diamankan ke lokal: Paket Pengadaan Tahun 2026 (2026-08-18).xlsx
+📝 Daftar arsip JSON diperbarui: D:\dashboard.pbjkobar-testing\output\pengadaan\2026\daftar_arsip.json
+SELESAI GENERATE TAHUN 2026 | Total data: 4956
+
+=======================================================
+   GENERATE DATA TAHUN 2025
+=======================================================
+JSON Rekap sukses dibuat: D:\dashboard.pbjkobar-testing\data\2025\rekap_pengadaan_2025.json
+📦 Arsip harian diamankan ke lokal: Paket Pengadaan Tahun 2025 (2026-08-18).xlsx
+📝 Daftar arsip JSON diperbarui: D:\dashboard.pbjkobar-testing\output\pengadaan\2025\daftar_arsip.json
+SELESAI GENERATE TAHUN 2025 | Total data: 10256
+
+[SKIP] Excel Tahun 2024 sudah final -> Lewati generate
+
+==================================================
+START GENERATE TEPRA
+PROSES TEPRA SUKSES
+TEPRA 2026 Sukses (4 Sheet Lengkap) -> D:\dashboard.pbjkobar-testing\output\tepra\2026\Tepra Kobar_Progres PBJ tahun 2026 (2026-08-19).xlsx
+
+==================================================
+MENGIRIM DATA PENGADAAN KE GITHUB DARI PYTHON...
+==================================================

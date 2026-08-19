@@ -220,3 +220,18 @@ MENGIRIM EXCEL DETAIL RUP KE GITHUB...
 ==================================================
 PROSES SELESAI | Durasi: 0:00:38
 ==================================================
+
+==================================================
+START GENERATE DETAIL RUP 19 Agustus 2026 | 09.52 WIB
+==================================================
+GAGAL TOTAL DOWNLOAD API. Skrip Detail RUP otomatis dihentikan.
+
+==================================================
+START GENERATE DETAIL RUP 19 Agustus 2026 | 10.37 WIB
+==================================================
+GAGAL TOTAL DOWNLOAD API. Skrip Detail RUP otomatis dihentikan.
+
+==================================================
+START GENERATE DETAIL RUP 19 Agustus 2026 | 10.39 WIB
+==================================================
+GAGAL TOTAL DOWNLOAD API. Skrip Detail RUP otomatis dihentikan.
