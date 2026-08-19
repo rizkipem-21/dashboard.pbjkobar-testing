@@ -980,12 +980,22 @@ def process_tahun(tahun):
     # Isi Program, Kegiatan, Sub Kegiatan berdasarkan Kode RUP dan MAK
     for idx, row in final_df.iterrows():
         kd_rup_str = str(row['Kode RUP'])
+        kd_baru_str = str(row['Kode RUP Baru'])
+        
         cleaned_list = [int(i.strip()) for i in kd_rup_str.split(';') if i.strip().isdigit()]
+        list_baru = [int(i.strip()) for i in kd_baru_str.split(';') if i.strip().isdigit()]
+        
         is_swakelola = 'Swakelola' in str(row['Sumber']) or 'Swakelola' in str(row['Jenis Pengadaan']) or 'Sumber 4' in str(row['Sumber']) or 'Sumber 1_2' in str(row['Sumber'])
         
         final_df.at[idx, 'Nama Program'] = get_nama_program(row['MAK'])
-        final_df.at[idx, 'Nama Kegiatan'] = get_kegiatan_sub(cleaned_list, is_swakelola, is_sub=False)
-        final_df.at[idx, 'Nama Sub Kegiatan'] = get_kegiatan_sub(cleaned_list, is_swakelola, is_sub=True)
+        
+        keg = get_kegiatan_sub(cleaned_list, is_swakelola, is_sub=False)
+        if not keg and list_baru: keg = get_kegiatan_sub(list_baru, is_swakelola, is_sub=False)
+        final_df.at[idx, 'Nama Kegiatan'] = keg
+        
+        sub = get_kegiatan_sub(cleaned_list, is_swakelola, is_sub=True)
+        if not sub and list_baru: sub = get_kegiatan_sub(list_baru, is_swakelola, is_sub=True)
+        final_df.at[idx, 'Nama Sub Kegiatan'] = sub
 
     final_df['PDN'] = final_df['PDN'].replace("", "N/A")
     final_df['UKM'] = final_df['UKM'].replace("", "N/A")
