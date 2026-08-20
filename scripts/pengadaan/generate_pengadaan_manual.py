@@ -1160,10 +1160,6 @@ def process_tahun(tahun):
         })
     df_rekap = pd.DataFrame(rekap_data)
 
-    with open(output_json, "w", encoding="utf-8") as f:
-        json.dump(final_df.to_dict(orient='records'), f, ensure_ascii=False, indent=2)
-    log_print(f"JSON Rekap sukses dibuat: {output_json}")
-
     kolom_angka_baku = ['Nilai Pagu RUP', 'Nilai Hasil Pemilihan', 'Nilai HPS', 'Nilai PDN', 'Nilai UMK']
     excel_df_detail = final_df.copy()
     for col in kolom_angka_baku:
@@ -1171,7 +1167,8 @@ def process_tahun(tahun):
             excel_df_detail[col] = excel_df_detail[col].apply(lambda x: safe_numeric(x) if safe_numeric(x) != 0 else "")
 
     tahun_label = str(df1['tahun_anggaran'].iloc[0]) if not df1.empty and 'tahun_anggaran' in df1.columns else str(tahun)
-    nama_file_excel = f'Paket Pengadaan Tahun {tahun_label} ({datetime.now().strftime("%Y-%m-%d")}).xlsx'
+    nama_file_excel = f'Paket Pengadaan Tahun {tahun_label} Manual ({datetime.now().strftime("%Y-%m-%d %H%M%S")}).xlsx'
+    
     output_dir_excel = os.path.join(BASE_DIR, 'output', 'pengadaan', str(tahun))
     os.makedirs(output_dir_excel, exist_ok=True)
     output_excel_path = os.path.join(output_dir_excel, nama_file_excel)
