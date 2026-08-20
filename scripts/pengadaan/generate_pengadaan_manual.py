@@ -25,19 +25,33 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 tahun_n      = datetime.now().year       
 tahun_n1     = tahun_n - 1               
+tahun_n2     = 0 # Dinonaktifkan agar mode manual tidak otomatis men-skip tahun manapun
 
 # ======================================================
-# KONTROL PILIHAN TAHUN MANUAL
+# KONTROL MODE ARSIP & PILIHAN TAHUN MANUAL
 # ======================================================
-LOAD_DARI_ARSIP = False  # Matikan fitur baca dari arsip
-tahun_n2 = 0             # Nonaktifkan skip otomatis agar paksa generate
+LOAD_DARI_ARSIP = True
 
 print("\n" + "="*55)
-print(" 🛠️ MODE GENERATE PENGADAAN MANUAL")
+print(" 📂 MODE LOAD DATA DARI ARSIP & MANUAL GENERATE")
 print("="*55)
-print("Masukkan tahun yang ingin di-generate.")
-print("Bisa lebih dari 1 tahun, pisahkan dengan koma (contoh: 2024, 2025, 2026)")
-input_tahun = input("Tahun: ").strip()
+
+# 1. Pilih Folder Arsip
+print("--- 1. PENGATURAN FOLDER ARSIP ---")
+PILIH_TAHUN = input("Masukkan TAHUN Arsip (contoh: 2026) : ").strip()
+PILIH_BULAN = input("Masukkan BULAN Arsip (contoh: 07)   : ").strip()
+PILIH_TANGGAL = input("Masukkan TANGGAL Arsip (contoh: 31): ").strip()
+
+path_cek_arsip = os.path.join(BASE_DIR, 'arsip_json', PILIH_TAHUN, PILIH_BULAN, PILIH_TANGGAL)
+if not os.path.exists(path_cek_arsip):
+    print(f"\n❌ ERROR: Folder arsip tidak ditemukan!\nJalur: {path_cek_arsip}\n")
+    sys.exit(1)
+print(f"✅ Folder arsip ditemukan!\n")
+
+# 2. Pilih Tahun yang ingin di-generate
+print("--- 2. PENGATURAN TAHUN DATA ---")
+print("Bisa lebih dari 1 tahun, pisahkan dengan koma (contoh: 2024, 2025)")
+input_tahun = input("Masukkan Tahun Data: ").strip()
 
 daftar_tahun = []
 for t in input_tahun.split(','):
@@ -48,7 +62,7 @@ if not daftar_tahun:
     print("\n❌ ERROR: Format tahun tidak valid. Skrip dihentikan.")
     sys.exit(1)
 
-print(f"✅ Tahun yang akan diproses: {daftar_tahun}\n")
+print(f"\n🚀 Memulai proses generate tahun {daftar_tahun} dari arsip {PILIH_TANGGAL}-{PILIH_BULAN}-{PILIH_TAHUN}...\n")
 # ======================================================
 
 # MENGGUNAKAN LOG TUNGGAL (Sama dengan script download)
