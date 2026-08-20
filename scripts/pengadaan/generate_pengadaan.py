@@ -192,14 +192,14 @@ def process_tahun(tahun):
     data_dir = os.path.join(BASE_DIR, 'data', str(tahun))
     output_dir_excel = os.path.join(BASE_DIR, 'output', 'pengadaan', str(tahun))
     output_json = os.path.join(data_dir, f'rekap_pengadaan_{tahun}.json')
-    
+        
     # ---------------------------------------------------------
     # LOGIKA SKIP: HANYA melewati tahun n-2 (sudah final)
     # ---------------------------------------------------------
-    if tahun == tahun_n2 and os.path.exists(output_dir_excel):
+    if tahun == tahun_n2 and os.path.exists(output_dir_excel) and os.path.exists(output_json):
         file_sudah_ada = any(f.startswith('Paket Pengadaan Tahun') and f.endswith('.xlsx') for f in os.listdir(output_dir_excel))
         if file_sudah_ada:
-            log_print(f"\n[SKIP] Excel Tahun {tahun} sudah final -> Lewati generate")
+            log_print(f"\n[SKIP] Data Tahun {tahun} sudah lengkap & final -> Lewati generate")
             return None
     # ---------------------------------------------------------
 
