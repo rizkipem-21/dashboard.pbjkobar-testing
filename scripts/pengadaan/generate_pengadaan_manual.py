@@ -25,8 +25,31 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 tahun_n      = datetime.now().year       
 tahun_n1     = tahun_n - 1               
-tahun_n2     = tahun_n - 2               
-daftar_tahun = [tahun_n, tahun_n1, tahun_n2] 
+
+# ======================================================
+# KONTROL PILIHAN TAHUN MANUAL
+# ======================================================
+LOAD_DARI_ARSIP = False  # Matikan fitur baca dari arsip
+tahun_n2 = 0             # Nonaktifkan skip otomatis agar paksa generate
+
+print("\n" + "="*55)
+print(" 🛠️ MODE GENERATE PENGADAAN MANUAL")
+print("="*55)
+print("Masukkan tahun yang ingin di-generate.")
+print("Bisa lebih dari 1 tahun, pisahkan dengan koma (contoh: 2024, 2025, 2026)")
+input_tahun = input("Tahun: ").strip()
+
+daftar_tahun = []
+for t in input_tahun.split(','):
+    if t.strip().isdigit():
+        daftar_tahun.append(int(t.strip()))
+
+if not daftar_tahun:
+    print("\n❌ ERROR: Format tahun tidak valid. Skrip dihentikan.")
+    sys.exit(1)
+
+print(f"✅ Tahun yang akan diproses: {daftar_tahun}\n")
+# ======================================================
 
 # MENGGUNAKAN LOG TUNGGAL (Sama dengan script download)
 LOG_FILE = os.path.join(BASE_DIR, 'tools', 'log_pengadaan.txt')
@@ -189,14 +212,22 @@ def get_kategori_status(sumber, s):
 
 def process_tahun(tahun):
     # Deklarasikan semua path di awal agar dikenali oleh seluruh fungsi
-    data_dir = os.path.join(BASE_DIR, 'data', str(tahun))
+    if LOAD_DARI_ARSIP:
+        data_dir = os.path.join(BASE_DIR, 'arsip_json', PILIH_TAHUN, PILIH_BULAN, PILIH_TANGGAL, str(tahun))
+        folder_utama = os.path.join(BASE_DIR, 'data', str(tahun))
+        os.makedirs(folder_utama, exist_ok=True)
+        output_json = os.path.join(folder_utama, f'rekap_pengadaan_{tahun}.json')
+    else:
+        data_dir = os.path.join(BASE_DIR, 'data', str(tahun))
+        output_json = os.path.join(data_dir, f'rekap_pengadaan_{tahun}.json')
+        folder_utama = data_dir
+        
     output_dir_excel = os.path.join(BASE_DIR, 'output', 'pengadaan', str(tahun))
-    output_json = os.path.join(data_dir, f'rekap_pengadaan_{tahun}.json')
         
     # ---------------------------------------------------------
     # LOGIKA SKIP: HANYA melewati tahun n-2 (sudah final)
     # ---------------------------------------------------------
-    if tahun == tahun_n2 and os.path.exists(output_dir_excel) and os.path.exists(output_json):
+    if not LOAD_DARI_ARSIP and tahun == tahun_n2 and os.path.exists(output_dir_excel) and os.path.exists(output_json):
         file_sudah_ada = any(f.startswith('Paket Pengadaan Tahun') and f.endswith('.xlsx') for f in os.listdir(output_dir_excel))
         if file_sudah_ada:
             log_print(f"\n[SKIP] Data Tahun {tahun} sudah lengkap & final -> Lewati generate")
@@ -1192,7 +1223,7 @@ def process_tahun(tahun):
             time.sleep(3)
     # ========================================================
     
-    try: shutil.copy2(output_excel_path, os.path.join(data_dir, f'master_pengadaan_{tahun}.xlsx'))
+    try: shutil.copy2(output_excel_path, os.path.join(folder_utama, f'master_pengadaan_{tahun}.xlsx'))
     except: pass
     kelola_arsip_bulanan(output_dir_excel, tahun)
     update_daftar_arsip_json(output_dir_excel)
@@ -1233,7 +1264,7 @@ if __name__ == '__main__':
             
         tahun_diproses = 0
         for t in daftar_tahun:
-            if t == tahun_n2 and os.path.exists(os.path.join(BASE_DIR, 'data', str(t), f'rekap_pengadaan_{t}.json')):
+            if not LOAD_DARI_ARSIP and t == tahun_n2 and os.path.exists(os.path.join(BASE_DIR, 'data', str(t), f'rekap_pengadaan_{t}.json')):
                 continue
             tahun_diproses += 1
             

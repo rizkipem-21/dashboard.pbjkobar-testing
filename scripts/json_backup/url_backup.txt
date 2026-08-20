@@ -57,7 +57,7 @@ https://data.inaproc.id/api/v1/tender/pencatatan-non-tender-realisasi?kode_klpd=
 ===== pencatatan-swakelola =====   
 ## v1 ##
 https://data.inaproc.id/api/v1/tender/pencatatan-swakelola?kode_klpd=D228&tahun={tahun}&limit=1000
-https://data.inaproc.id/api/v1/tender/pencatatan-swakelola-realisasi?kode_klpd=D228&tahun=2026&limit=1000
+https://data.inaproc.id/api/v1/tender/pencatatan-swakelola-realisasi?kode_klpd=D228&tahun={tahun}&limit=1000
 
 ===== tender =====
 ## legacy ##
