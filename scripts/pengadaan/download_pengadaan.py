@@ -75,9 +75,12 @@ def download_data_pengadaan(tahun, is_n2, data_dir):
         
         filename = f"{tipe}_{base_name}_{tahun}.json"
         output_path = os.path.join(data_dir, filename)
-        log_print("") # Tambahan enter otomatis
 
-        if is_n2 and os.path.exists(output_path): continue
+        if is_n2 and os.path.exists(output_path):
+            log_print(f"[SKIP] {filename} sudah ada (final).")
+            continue
+
+        log_print("") # Tambahan enter otomatis
 
         # -- TAMBAHAN LOGIKA BACKUP HARIAN (COPY) --
         if os.path.exists(output_path):

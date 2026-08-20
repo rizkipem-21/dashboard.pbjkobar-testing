@@ -977,7 +977,7 @@ def process_tahun(tahun):
     cols = ['Kode Paket', 'Kode RUP', 'Kode RUP Baru', 'Nama Instansi', 'Satuan Kerja', 'Nama Paket', 'Metode Pemilihan', 'Jenis Pengadaan', 'Tahun Anggaran', 'Nama Program', 'Nama Kegiatan', 'Nama Sub Kegiatan', 'Sumber Dana', 'MAK', 'PDN', 'UKM', 'Status Konsolidasi', 'Nilai Pagu RUP', 'Nilai Hasil Pemilihan', 'No Kontrak', 'Tanggal Kontrak', 'Nama Penyedia', 'NPWP 15', 'NPWP 16', 'Alamat', 'Status', 'Nilai HPS', 'Nilai PDN', 'Nilai UMK', 'Cara Pengadaan', 'Sumber']
     final_df = final_df.reindex(columns=cols).fillna("")
     
-    # Isi Program, Kegiatan, Sub Kegiatan berdasarkan Kode RUP dan MAK
+    # Isi Sumber Dana, MAK, Program, Kegiatan, Sub Kegiatan berdasarkan Kode RUP
     for idx, row in final_df.iterrows():
         kd_rup_str = str(row['Kode RUP'])
         kd_baru_str = str(row['Kode RUP Baru'])
@@ -986,13 +986,27 @@ def process_tahun(tahun):
         list_baru = [int(i.strip()) for i in kd_baru_str.split(';') if i.strip().isdigit()]
         
         is_swakelola = 'Swakelola' in str(row['Sumber']) or 'Swakelola' in str(row['Jenis Pengadaan']) or 'Sumber 4' in str(row['Sumber']) or 'Sumber 1_2' in str(row['Sumber'])
+        map_ang_target = map_ang_s if is_swakelola else map_ang_p
+
+        # 1. Tarik Sumber Dana terpusat dari Anggaran
+        sd = get_anggaran_multi(cleaned_list, map_ang_target, 'sd')
+        if not sd and list_baru: sd = get_anggaran_multi(list_baru, map_ang_target, 'sd')
+        if sd: final_df.at[idx, 'Sumber Dana'] = sd
+
+        # 2. Tarik MAK terpusat dari Anggaran
+        mak = get_anggaran_multi(cleaned_list, map_ang_target, 'mak')
+        if not mak and list_baru: mak = get_anggaran_multi(list_baru, map_ang_target, 'mak')
+        if mak: final_df.at[idx, 'MAK'] = mak
         
-        final_df.at[idx, 'Nama Program'] = get_nama_program(row['MAK'])
+        # 3. Tarik Program menggunakan MAK yang baru ditarik
+        final_df.at[idx, 'Nama Program'] = get_nama_program(final_df.at[idx, 'MAK'])
         
+        # 4. Tarik Kegiatan
         keg = get_kegiatan_sub(cleaned_list, is_swakelola, is_sub=False)
         if not keg and list_baru: keg = get_kegiatan_sub(list_baru, is_swakelola, is_sub=False)
         final_df.at[idx, 'Nama Kegiatan'] = keg
         
+        # 5. Tarik Sub Kegiatan
         sub = get_kegiatan_sub(cleaned_list, is_swakelola, is_sub=True)
         if not sub and list_baru: sub = get_kegiatan_sub(list_baru, is_swakelola, is_sub=True)
         final_df.at[idx, 'Nama Sub Kegiatan'] = sub
