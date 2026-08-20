@@ -81,31 +81,7 @@ def get_waktu_indonesia():
     bulan_indo = {1: 'Januari', 2: 'Februari', 3: 'Maret', 4: 'April', 5: 'Mei', 6: 'Juni', 7: 'Juli', 8: 'Agustus', 9: 'September', 10: 'Oktober', 11: 'November', 12: 'Desember'}
     return f"{sekarang.day} {bulan_indo[sekarang.month]} {sekarang.year} | {sekarang.strftime('%H.%M')} WIB"
 
-def sync_to_github():
-    log_print("\n==================================================")
-    log_print("MENGIRIM DATA PENGADAAN KE GITHUB DARI PYTHON...")
-    log_print("==================================================")
-
-    waktu_sekarang = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    try:
-        subprocess.run(["git", "config", "user.name", "rizkipem-21"], cwd=BASE_DIR)
-        subprocess.run(["git", "config", "user.email", "rizki.pem@gmail.com"], cwd=BASE_DIR)
-        subprocess.run(["git", "add", "."], capture_output=True, text=True, cwd=BASE_DIR)
-        
-        commit_msg = f"Auto update Pengadaan {waktu_sekarang}"
-        subprocess.run(["git", "commit", "-m", commit_msg], capture_output=True, text=True, cwd=BASE_DIR)
-        
-        res_push = subprocess.run(["git", "push"], capture_output=True, text=True, cwd=BASE_DIR)
-        if res_push.returncode == 0:
-            log_print("✅ Push ke GitHub BERHASIL")
-            return True, "✅ Push ke GitHub BERHASIL"
-        else:
-            error_git = res_push.stderr.strip()
-            log_print(f"❌ Push ke GitHub GAGAL: {error_git}")
-            return False, f"❌ Push ke GitHub GAGAL:\n`{error_git}`"
-    except Exception as e:
-        log_print(f"❌ Terjadi kesalahan pada eksekusi Git: {str(e)}")
-        return False, f"❌ Terjadi kesalahan pada eksekusi Git:\n`{str(e)}`"
+# Fungsi Git Push dinonaktifkan untuk mode manual
 
 def format_tgl(val):
     if not val or (not isinstance(val, str) and pd.isna(val)): return ""
@@ -1167,11 +1143,12 @@ def process_tahun(tahun):
             excel_df_detail[col] = excel_df_detail[col].apply(lambda x: safe_numeric(x) if safe_numeric(x) != 0 else "")
 
     tahun_label = str(df1['tahun_anggaran'].iloc[0]) if not df1.empty and 'tahun_anggaran' in df1.columns else str(tahun)
-    nama_file_excel = f'Paket Pengadaan Tahun {tahun_label} Manual ({datetime.now().strftime("%Y-%m-%d %H%M%S")}).xlsx'
     
-    output_dir_excel = os.path.join(BASE_DIR, 'output', 'pengadaan', str(tahun))
-    os.makedirs(output_dir_excel, exist_ok=True)
-    output_excel_path = os.path.join(output_dir_excel, nama_file_excel)
+    # Tambahkan kata "Manual" dan info tanggal arsip pada nama file
+    nama_file_excel = f'Paket Pengadaan Tahun {tahun_label} Manual Arsip {PILIH_TAHUN}-{PILIH_BULAN}-{PILIH_TANGGAL} ({datetime.now().strftime("%H%M%S")}).xlsx'
+    
+    # Arahkan penyimpanan langsung ke folder "data" (folder_utama)
+    output_excel_path = os.path.join(folder_utama, nama_file_excel)
 
     # === SIMPAN & STYLING EXCEL DENGAN PENGAMAN AUTO-CLOSE ===
     berhasil_simpan = False
@@ -1234,12 +1211,9 @@ def process_tahun(tahun):
             time.sleep(3)
     # ========================================================
     
-    try: shutil.copy2(output_excel_path, os.path.join(folder_utama, f'master_pengadaan_{tahun}.xlsx'))
-    except: pass
-    kelola_arsip_bulanan(output_dir_excel, tahun)
-    update_daftar_arsip_json(output_dir_excel)
+    # Master copy & update daftar arsip JSON DIMATIKAN untuk mode manual
     
-    log_print(f'SELESAI GENERATE TAHUN {tahun} | Total data: {len(final_df)}')
+    log_print(f'SELESAI GENERATE MANUAL TAHUN {tahun} | Total data: {len(final_df)}')
     return len(final_df)
 
 
@@ -1290,53 +1264,7 @@ if __name__ == '__main__':
 
     for t in daftar_tahun: process_tahun(t)
 
-    with open(os.path.join(BASE_DIR, "data", "last-update-pengadaan.txt"), "w", encoding='utf-8') as f:
-        f.write(get_waktu_indonesia())
-
-    # --- EKSEKUSI TEPRA ---
-    log_print("\n" + "="*50)
-    log_print("START GENERATE TEPRA")
-    status_tepra = "✅ Data TEPRA berhasil dibuat."
-    try:
-        path_tepra = os.path.join(BASE_DIR, 'scripts', 'pengadaan', 'generate_tepra.py')
-        res_tepra = subprocess.run([sys.executable, path_tepra], capture_output=True, text=True)
-        if res_tepra.returncode == 0:
-            log_print("PROSES TEPRA SUKSES\n" + res_tepra.stdout.strip())
-        else:
-            log_print(f"GAGAL PROSES TEPRA:\n{res_tepra.stderr}")
-            status_tepra = "⚠️ Gagal membuat data TEPRA (Cek Log)."
-    except Exception as e:
-        log_print(f"ERROR TEPRA: {str(e)}")
-        status_tepra = "⚠️ Error sistem saat eksekusi TEPRA."
-    # ----------------------
-
-    # 1. PUSH KE GITHUB
-    git_sukses, pesan_git = sync_to_github()
-
-    # --- MENGHITUNG DURASI TOTAL & AUTO DELETE ---
-    durasi_str = "Tidak diketahui"
-    file_start = os.path.join(BASE_DIR, 'tools', 'start_time_pengadaan.txt')
-    if os.path.exists(file_start):
-        try:
-            with open(file_start, 'r') as f:
-                waktu_mulai = float(f.read().strip())
-            durasi_detik = int(time.time() - waktu_mulai)
-            durasi_str = str(timedelta(seconds=durasi_detik))
-            os.remove(file_start) # Auto-delete file sementara
-        except: pass
-    # ---------------------------------------------
-
-    # 2. KIRIM TELEGRAM
-    if len(daftar_error_api) > 0 or not git_sukses:
-        pesan_ringkasan = "🚨 LAPORAN UPDATE SISTEM (PENGADAAN) 🚨\n\n"
-        if len(daftar_error_api) > 0:
-            teks_error = "⚠️ GAGAL DOWNLOAD API:\n" + "".join([f"{err.replace('_', ' ')}\n" for err in daftar_error_api])
-            if len(teks_error) > 3500: teks_error = teks_error[:3500] + "\n... [DAFTAR ERROR DIPOTONG] ...\n"
-            pesan_ringkasan += teks_error + "\n"
-        pesan_ringkasan += f"📊 STATUS TEPRA: {status_tepra}\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
-        kirim_telegram_aman(pesan_ringkasan)
-    else:
-        pesan_sukses = f"✅ UPDATE PENGADAAN BERHASIL ✅\n\nSeluruh data berhasil diolah.\n📊 STATUS TEPRA: {status_tepra}\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
-        kirim_telegram_aman(pesan_sukses)
-        
-    log_print(f"\nPROSES SELESAI SELURUHNYA PADA {get_waktu_indonesia()}")
+    log_print("\n" + "="*55)
+    log_print(f"✅ PROSES GENERATE MANUAL SELESAI PADA {get_waktu_indonesia()}")
+    log_print("Silakan cek file Excel Anda di dalam folder data.")
+    log_print("="*55)
