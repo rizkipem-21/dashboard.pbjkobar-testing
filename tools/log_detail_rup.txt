@@ -235,3 +235,21 @@ GAGAL TOTAL DOWNLOAD API. Skrip Detail RUP otomatis dihentikan.
 START GENERATE DETAIL RUP 19 Agustus 2026 | 10.39 WIB
 ==================================================
 GAGAL TOTAL DOWNLOAD API. Skrip Detail RUP otomatis dihentikan.
+
+==================================================
+START GENERATE DETAIL RUP 21 Agustus 2026 | 15.03 WIB
+==================================================
+
+--- MEMPROSES DETAIL TAHUN 2026 ---
+⚠️ Akses Ditolak: File arsip Detail_RUP Tahun 2026 (2026-08-13).xlsx sedang terbuka.
+✅ EXCEL: D:\dashboard.pbjkobar-testing\output\rup\2026\Detail_RUP Tahun 2026 (2026-08-21).xlsx (4917 baris)
+
+--- MEMPROSES DETAIL TAHUN 2025 ---
+  -> [SKIP] Excel Tahun 2025 sudah ada (Final).
+
+--- MEMPROSES DETAIL TAHUN 2024 ---
+  -> [SKIP] Excel Tahun 2024 sudah ada (Final).
+
+==================================================
+MENGIRIM EXCEL DETAIL RUP KE GITHUB...
+==================================================

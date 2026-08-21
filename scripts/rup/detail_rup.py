@@ -175,9 +175,23 @@ def get_dict_anggaran(filepath):
     for item in data:
         kd = item.get('kd_rup')
         if not kd: continue
-        if kd not in dict_anggaran: dict_anggaran[kd] = {'sd': [], 'mak': []}
+        if kd not in dict_anggaran: dict_anggaran[kd] = {'sd': [], 'mak': [], 'kd_keg': [], 'kd_sub': []}
+        
         if item.get('sumber_dana'): dict_anggaran[kd]['sd'].append(str(item.get('sumber_dana')))
         if item.get('mak'): dict_anggaran[kd]['mak'].append(str(item.get('mak')))
+        
+        keg = item.get('kd_kegiatan')
+        if pd.notna(keg) and str(keg).strip() not in ["", "nan", "None"]:
+            try: kd_keg_cln = str(int(float(keg)))
+            except: kd_keg_cln = str(keg).strip()
+            dict_anggaran[kd]['kd_keg'].append(kd_keg_cln)
+            
+        sub = item.get('kd_subkegiatan')
+        if pd.notna(sub) and str(sub).strip() not in ["", "nan", "None"]:
+            try: kd_sub_cln = str(int(float(sub)))
+            except: kd_sub_cln = str(sub).strip()
+            dict_anggaran[kd]['kd_sub'].append(kd_sub_cln)
+            
     return dict_anggaran
 
 def get_dict_lokasi(filepath):
@@ -208,7 +222,7 @@ def process_tahun(tahun):
     
     data_dir = os.path.join(BASE_DIR, 'data', str(tahun))
     
-    # 1. Mendapatkan PATH 6 File JSON
+    # 1. Mendapatkan PATH 6 File JSON + 3 Master JSON
     p_terum = get_file_path(data_dir, "rup_paket-penyedia-terumumkan", tahun)
     p_ang   = get_file_path(data_dir, "rup_paket-anggaran-penyedia", tahun)
     p_det   = get_file_path(data_dir, "rup_paket-penyedia", tahun)
@@ -216,12 +230,54 @@ def process_tahun(tahun):
     s_terum = get_file_path(data_dir, "rup_paket-swakelola-terumumkan", tahun)
     s_ang   = get_file_path(data_dir, "rup_paket-anggaran-swakelola", tahun)
     s_det   = get_file_path(data_dir, "rup_paket-swakelola", tahun)
+    
+    p_prog  = get_file_path(data_dir, "rup_program-master", tahun)
+    p_keg   = get_file_path(data_dir, "rup_kegiatan-master", tahun)
+    p_sub   = get_file_path(data_dir, "rup_sub-kegiatan-master", tahun)
 
-    # 2. Extract Data Tambahan (Lokasi & Anggaran)
+    # 2. Extract Data Tambahan (Lokasi, Anggaran, & Master Kamus)
     dict_p_lok = get_dict_lokasi(p_det)
     dict_s_lok = get_dict_lokasi(s_det)
     dict_p_ang = get_dict_anggaran(p_ang)
     dict_s_ang = get_dict_anggaran(s_ang)
+    
+    df_prog = pd.DataFrame(load_json_local(p_prog))
+    df_keg = pd.DataFrame(load_json_local(p_keg))
+    df_sub = pd.DataFrame(load_json_local(p_sub))
+
+    def clean_kd(val):
+        if pd.isna(val) or str(val).strip() in ["", "nan", "None"]: return ""
+        try: return str(int(float(val)))
+        except: return str(val).strip()
+
+    map_prog = dict(zip(df_prog['kd_program_str'].astype(str).str.strip(), df_prog['nama_program'])) if not df_prog.empty and 'kd_program_str' in df_prog.columns else {}
+    
+    map_keg = {}
+    if not df_keg.empty and 'kd_kegiatan' in df_keg.columns:
+        for k, v in zip(df_keg['kd_kegiatan'], df_keg['nama_kegiatan']):
+            k_cln = clean_kd(k)
+            if k_cln: map_keg[k_cln] = str(v).strip()
+            
+    map_sub = {}
+    if not df_sub.empty and 'kd_subkegiatan' in df_sub.columns:
+        for k, v in zip(df_sub['kd_subkegiatan'], df_sub['nama_subkegiatan']):
+            k_cln = clean_kd(k)
+            if k_cln: map_sub[k_cln] = str(v).strip()
+
+    def get_nama_program(mak_list):
+        if not mak_list: return "-"
+        progs = []
+        for m in mak_list:
+            parts = str(m).strip().split('.')
+            if len(parts) >= 3:
+                kd_prog = f"{parts[0]}.{parts[1]}.{parts[2]}"
+                if kd_prog in map_prog: progs.append(map_prog[kd_prog])
+        return ", ".join(list(dict.fromkeys(progs))) if progs else "-"
+
+    def get_kegiatan_sub(kd_list, map_master):
+        if not kd_list: return "-"
+        hasil = [map_master[str(kd)] for kd in kd_list if str(kd) in map_master]
+        return ", ".join(list(dict.fromkeys(hasil))) if hasil else "-"
 
     # 3. Proses List PENYEDIA
     data_p_raw = load_json_local(p_terum)
@@ -246,6 +302,9 @@ def process_tahun(tahun):
             'Pra DIPA / DPA': item.get('status_pradipa', '-'),
             'Sumber Dana': ", ".join(dict_p_ang.get(kd, {}).get('sd', ['-'])) if kd in dict_p_ang else '-',
             'MAK': ", ".join(dict_p_ang.get(kd, {}).get('mak', ['-'])) if kd in dict_p_ang else '-',
+            'Nama Program': get_nama_program(dict_p_ang.get(kd, {}).get('mak', [])) if kd in dict_p_ang else '-',
+            'Nama Kegiatan': get_kegiatan_sub(dict_p_ang.get(kd, {}).get('kd_keg', []), map_keg) if kd in dict_p_ang else '-',
+            'Nama Sub Kegiatan': get_kegiatan_sub(dict_p_ang.get(kd, {}).get('kd_sub', []), map_sub) if kd in dict_p_ang else '-',
             'Pagu': item.get('pagu', 0),
             'Jenis Pengadaan': item.get('jenis_pengadaan', '-'),
             'Metode Pemilihan': item.get('metode_pengadaan', '-'),
@@ -287,6 +346,9 @@ def process_tahun(tahun):
             'Pra DIPA / DPA': '-',
             'Sumber Dana': ", ".join(dict_s_ang.get(kd, {}).get('sd', ['-'])) if kd in dict_s_ang else '-',
             'MAK': ", ".join(dict_s_ang.get(kd, {}).get('mak', ['-'])) if kd in dict_s_ang else '-',
+            'Nama Program': get_nama_program(dict_s_ang.get(kd, {}).get('mak', [])) if kd in dict_s_ang else '-',
+            'Nama Kegiatan': get_kegiatan_sub(dict_s_ang.get(kd, {}).get('kd_keg', []), map_keg) if kd in dict_s_ang else '-',
+            'Nama Sub Kegiatan': get_kegiatan_sub(dict_s_ang.get(kd, {}).get('kd_sub', []), map_sub) if kd in dict_s_ang else '-',
             'Pagu': item.get('pagu', 0),
             'Jenis Pengadaan': 'Swakelola',
             'Metode Pemilihan': f"Tipe {tipe}" if tipe.isdigit() else tipe,
@@ -338,22 +400,27 @@ def process_tahun(tahun):
             for cell in ws[1]:
                 cell.fill, cell.font, cell.alignment = h_fill, h_font, Alignment(horizontal='center', vertical='center', wrap_text=True)
 
+            # Deteksi dinamis untuk Pagu dan Tanggal agar aman dari pergeseran posisi kolom
+            kolom_pagu_letter = next((cell.column_letter for cell in ws[1] if cell.value == 'Pagu'), 'U')
+            kolom_date = [cell.column for cell in ws[1] if cell.value in ('tanggal buat', 'tanggal pengumuman')]
+
             for col in ws.columns:
                 kolom_huruf = col[0].column_letter
-                if kolom_huruf in ['B', 'D', 'F', 'H', 'I', 'Q']: 
+                nama_kolom = str(col[0].value)
+                
+                # Menggunakan deteksi nama kolom agar tidak mempedulikan huruf abjad (A, B, C)
+                if nama_kolom in ['Nama Paket', 'Satuan Kerja', 'Lokasi Pekerjaan', 'Uraian Pekerjaan', 'Spesifikasi Pekerjaan', 'MAK', 'Nama Program', 'Nama Kegiatan', 'Nama Sub Kegiatan']: 
                     ws.column_dimensions[kolom_huruf].width = 40
-                elif kolom_huruf == 'R': 
+                elif nama_kolom == 'Pagu': 
                     ws.column_dimensions[kolom_huruf].width = 20
                 else:
                     ws.column_dimensions[kolom_huruf].width = 18
 
-            # Deteksi posisi kolom tanggal buat & tanggal pengumuman dari header
-            kolom_date = [cell.column for cell in ws[1] if cell.value in ('tanggal buat', 'tanggal pengumuman')]
-
             for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
                 for cell in row:
                     cell.border = border
-                    if cell.column_letter == 'R': 
+                    # Mengunci format uang berapapun posisi kolom Pagu saat ini
+                    if cell.column_letter == kolom_pagu_letter: 
                         cell.number_format = '#,##0'
                     if cell.column in kolom_date and cell.value is not None:
                         cell.number_format = 'dd/mm/yyyy'
