@@ -730,15 +730,15 @@
   {
     "Satuan Kerja": "Puskesmas Arut Utara",
     "Pagu Program": 1398847285.0,
-    "Pagu Pengadaan": 1367075285.0,
+    "Pagu Pengadaan": 721339185.0,
     "Paket Penyedia": 6.0,
     "RUP Penyedia": 721339185.0,
     "Paket Swakelola": 0.0,
     "RUP Swakelola": 0.0,
     "Total Paket Terumumkan": 6.0,
     "Total RUP Terumumkan": 721339185.0,
-    "Selisih RUP Terumumkan": -645736100.0,
-    "Persentase": 52.765139777945734
+    "Selisih RUP Terumumkan": 0.0,
+    "Persentase": 100.0
   },
   {
     "Satuan Kerja": "Puskesmas Ipuh Bangun Jaya",
@@ -1004,14 +1004,14 @@
     "Satuan Kerja": "Sekretariat DPRD",
     "Pagu Program": 16485728018.0,
     "Pagu Pengadaan": 8905641688.0,
-    "Paket Penyedia": 133.0,
-    "RUP Penyedia": 8755641688.0,
+    "Paket Penyedia": 132.0,
+    "RUP Penyedia": 7895641688.0,
     "Paket Swakelola": 1.0,
     "RUP Swakelola": 150000000.0,
-    "Total Paket Terumumkan": 134.0,
-    "Total RUP Terumumkan": 8905641688.0,
-    "Selisih RUP Terumumkan": 0.0,
-    "Persentase": 100.0
+    "Total Paket Terumumkan": 133.0,
+    "Total RUP Terumumkan": 8045641688.0,
+    "Selisih RUP Terumumkan": -860000000.0,
+    "Persentase": 90.3432000732882
   },
   {
     "Satuan Kerja": "Sekretariat Daerah",

@@ -98,16 +98,23 @@ def sync_to_github():
         return False, f"❌ Terjadi kesalahan pada eksekusi Git:\n`{str(e)}`"
 
 def kirim_telegram_aman(pesan):
-    if len(pesan) > 4000:
-        pesan = pesan[:4000] + "\n...[TERPOTONG]"
+    if len(pesan) > 4000: pesan = pesan[:4000] + "\n...[TERPOTONG]"
+    import requests
+    import time
     url = f"https://api.telegram.org/bot{config_rahasia.BOT_TOKEN}/sendMessage"
-    try:
-        import requests
-        res = requests.post(url, data={"chat_id": config_rahasia.CHAT_ID, "text": pesan}, timeout=10)
-        if res.status_code != 200:
-            log_print(f"🚨 GAGAL KIRIM TELEGRAM (STATUS {res.status_code}): {res.text}")
-    except Exception as e:
-        log_print(f"🚨 GAGAL KONEKSI KE TELEGRAM (JARINGAN PUTUS): {str(e)}")
+    
+    for percobaan in range(1, 4):
+        try:
+            res = requests.post(url, data={"chat_id": config_rahasia.CHAT_ID, "text": pesan}, timeout=30)
+            if res.status_code != 200:
+                log_print(f"🚨 GAGAL KIRIM TELEGRAM (STATUS {res.status_code}): {res.text}")
+            break
+        except Exception as e:
+            if percobaan < 3:
+                log_print(f"⚠️ Koneksi Telegram lambat. Mencoba ulang ({percobaan}/3)...")
+                time.sleep(5)
+            else:
+                log_print(f"🚨 GAGAL KONEKSI KE TELEGRAM (JARINGAN PUTUS): {str(e)}")
 
 def load_json_local(path):
     try:
