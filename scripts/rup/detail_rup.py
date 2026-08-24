@@ -214,9 +214,18 @@ def get_dict_lokasi(filepath):
     for item in data:
         kd = item.get('kd_rup')
         if not kd: continue
-        d_lok = item.get('detail_lokasi', [])
-        teks = [str(l.get('detil_lokasi')) for l in d_lok if isinstance(l, dict) and l.get('detil_lokasi')]
-        if teks: dict_lok[kd] = "; ".join(teks)
+        
+        d_lok = item.get('detail_lokasi')
+        
+        if isinstance(d_lok, list):
+            # Jika data berbentuk list
+            teks = [str(l.get('detil_lokasi', l.get('detail_lokasi', ''))) for l in d_lok if isinstance(l, dict)]
+            teks = [t for t in teks if t]
+            if teks: dict_lok[kd] = "; ".join(teks)
+        elif pd.notna(d_lok) and str(d_lok).strip():
+            # Jika data langsung berupa teks
+            dict_lok[kd] = str(d_lok).strip()
+            
     return dict_lok
 
 def process_tahun(tahun):
@@ -235,22 +244,25 @@ def process_tahun(tahun):
     
     data_dir = os.path.join(BASE_DIR, 'data', str(tahun))
     
-    # 1. Mendapatkan PATH 6 File JSON + 3 Master JSON
+    # 1. Mendapatkan PATH File JSON + Master JSON
     p_terum = get_file_path(data_dir, "rup_paket-penyedia-terumumkan", tahun)
     p_ang   = get_file_path(data_dir, "rup_paket-anggaran-penyedia", tahun)
     p_det   = get_file_path(data_dir, "rup_paket-penyedia", tahun)
+    p_lok   = get_file_path(data_dir, "rup_paket-penyedia-lokasi", tahun)
     
     s_terum = get_file_path(data_dir, "rup_paket-swakelola-terumumkan", tahun)
     s_ang   = get_file_path(data_dir, "rup_paket-anggaran-swakelola", tahun)
     s_det   = get_file_path(data_dir, "rup_paket-swakelola", tahun)
+    s_lok   = get_file_path(data_dir, "rup_paket-swakelola-lokasi", tahun)
     
     p_prog  = get_file_path(data_dir, "rup_program-master", tahun)
     p_keg   = get_file_path(data_dir, "rup_kegiatan-master", tahun)
     p_sub   = get_file_path(data_dir, "rup_sub-kegiatan-master", tahun)
 
     # 2. Extract Data Tambahan (Lokasi, Anggaran, & Master Kamus)
-    dict_p_lok = get_dict_lokasi(p_det)
-    dict_s_lok = get_dict_lokasi(s_det)
+    # Panggil lokasi dari file lokasi khusus
+    dict_p_lok = get_dict_lokasi(p_lok)
+    dict_s_lok = get_dict_lokasi(s_lok)
     dict_p_ang = get_dict_anggaran(p_ang)
     dict_s_ang = get_dict_anggaran(s_ang)
     

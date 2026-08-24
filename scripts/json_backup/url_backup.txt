@@ -10,7 +10,7 @@
 ## v1 ## (sudah ada v1 jadi legacy tidak ada)
 https://data.inaproc.id/api/v1/ekatalog-archive/instansi-satker?kode_klpd=D228&limit=1000
 https://data.inaproc.id/api/v1/ekatalog-archive/paket-e-purchasing?kode_klpd=D228&tahun={tahun}&limit=1000
-
+ 
 
 ===== RUP =====
 ## legacy ##
