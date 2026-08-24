@@ -1,5 +1,7 @@
+### ini file generate_rup.py ###
+
 # ======================================================
-# 2. GENERATE RUP MULTI TAHUN (JSON + EXCEL + GIT + TELEGRAM)
+# GENERATE RUP MULTI TAHUN (JSON + EXCEL + GIT + TELEGRAM)
 # ======================================================
 import pandas as pd
 import json
@@ -215,7 +217,17 @@ def process_tahun(tahun):
     df_master = df_master[df_master['tahun_aktif'].astype(str).str.contains(str(tahun), na=False)]
     master_satker = df_master[['kd_satker', 'nama_satker']].drop_duplicates().dropna(subset=['kd_satker'])
     master_satker['kd_satker'] = master_satker['kd_satker'].astype(int)
-    master_satker.rename(columns={'nama_satker': 'Satuan Kerja'}, inplace=True)
+    
+    # Format Satuan Kerja menjadi "Nama Satker - Kode Satker"
+    def format_satker_master(row):
+        nama = str(row['nama_satker']).strip()
+        kd = str(row['kd_satker']).strip()
+        if pd.notna(row['nama_satker']) and nama.lower() not in ['nan', 'none', '']:
+            return f"{nama} - {kd}"
+        return kd
+
+    master_satker['Satuan Kerja'] = master_satker.apply(format_satker_master, axis=1)
+    master_satker.drop(columns=['nama_satker'], inplace=True)
 
     for d in [df_penyedia, df_swakelola, df_program, df_struktur]:
         if not d.empty and 'kd_satker' in d.columns:

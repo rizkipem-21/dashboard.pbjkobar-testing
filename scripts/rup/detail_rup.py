@@ -1,3 +1,5 @@
+### ini file detail_rup.py ###
+
 # ======================================================
 # GENERATE DETAIL RUP (PENYEDIA & SWAKELOLA)
 # ======================================================
@@ -290,6 +292,14 @@ def process_tahun(tahun):
         hasil = [map_master[str(kd)] for kd in kd_list if str(kd) in map_master]
         return ", ".join(list(dict.fromkeys(hasil))) if hasil else "-"
 
+    def format_satker(nama, kd):
+        n = str(nama).strip() if pd.notna(nama) and str(nama).lower() not in ['nan', 'none', ''] else ""
+        k = str(kd).strip() if pd.notna(kd) and str(kd).lower() not in ['nan', 'none', ''] else ""
+        try: k = str(int(float(k)))
+        except: pass
+        if n and k: return f"{n} - {k}"
+        return n if n else "-"
+
     # 3. Proses List PENYEDIA
     data_p_raw = load_json_local(p_terum)
     list_p_final = []
@@ -299,7 +309,7 @@ def process_tahun(tahun):
             'Kode RUP': kd,
             'Nama Paket': item.get('nama_paket', '-'),
             'Nama KLPD': item.get('nama_klpd', '-'),
-            'Satuan Kerja': item.get('nama_satker', '-'),
+            'Satuan Kerja': format_satker(item.get('nama_satker'), item.get('kd_satker_str')),
             'Tahun Anggaran': item.get('tahun_anggaran', '-'),
             'Lokasi Pekerjaan': dict_p_lok.get(kd, '-'),
             'Volume Pekerjaan': item.get('volume_pekerjaan', '-'),
@@ -343,7 +353,7 @@ def process_tahun(tahun):
             'Kode RUP': kd,
             'Nama Paket': item.get('nama_paket', '-'),
             'Nama KLPD': item.get('nama_klpd', '-'),
-            'Satuan Kerja': item.get('nama_satker', '-'),
+            'Satuan Kerja': format_satker(item.get('nama_satker'), item.get('kd_satker_str')),
             'Tahun Anggaran': item.get('tahun_anggaran', '-'),
             'Lokasi Pekerjaan': dict_s_lok.get(kd, '-'),
             'Volume Pekerjaan': item.get('volume_pekerjaan', '-'),
