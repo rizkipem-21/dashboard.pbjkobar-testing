@@ -415,8 +415,19 @@ def process_tahun(tahun):
         # Gandakan baris sebanyak jumlah anak
         for anak in anak_konsolidasi:
             row_lengkap = base_induk.copy()
-            row_lengkap['Kode RUP Paket Terkonsolidasi'] = anak['Kode RUP Paket Terkonsolidasi']
+            kd_anak = anak['Kode RUP Paket Terkonsolidasi']
+            row_lengkap['Kode RUP Paket Terkonsolidasi'] = kd_anak
             row_lengkap['Nama Paket Terkonsolidasi'] = anak['Nama Paket Terkonsolidasi']
+            
+            # --- CEK LOKASI PEKERJAAN BERDASARKAN RUP ANAK (PENYEDIA) ---
+            lokasi_anak = "-"
+            if kd_anak and str(kd_anak).strip().isdigit():
+                kd_anak_int = int(str(kd_anak).strip())
+                lokasi_anak = dict_p_lok.get(kd_anak_int, dict_p_lok.get(str(kd_anak).strip(), "-"))
+            
+            row_lengkap['Lokasi Pekerjaan'] = lokasi_anak
+            # -----------------------------------------------------------
+            
             list_final.append(row_lengkap)
 
     # 4. Proses List SWAKELOLA (Sangat jarang ada Konsolidasi, tapi sebagai pengaman tetap disaring)
@@ -472,8 +483,19 @@ def process_tahun(tahun):
         
         for anak in anak_konsolidasi:
             row_lengkap = base_induk.copy()
-            row_lengkap['Kode RUP Paket Terkonsolidasi'] = anak['Kode RUP Paket Terkonsolidasi']
+            kd_anak = anak['Kode RUP Paket Terkonsolidasi']
+            row_lengkap['Kode RUP Paket Terkonsolidasi'] = kd_anak
             row_lengkap['Nama Paket Terkonsolidasi'] = anak['Nama Paket Terkonsolidasi']
+            
+            # --- CEK LOKASI PEKERJAAN BERDASARKAN RUP ANAK (SWAKELOLA) ---
+            lokasi_anak = "-"
+            if kd_anak and str(kd_anak).strip().isdigit():
+                kd_anak_int = int(str(kd_anak).strip())
+                lokasi_anak = dict_s_lok.get(kd_anak_int, dict_s_lok.get(str(kd_anak).strip(), "-"))
+            
+            row_lengkap['Lokasi Pekerjaan'] = lokasi_anak
+            # -------------------------------------------------------------
+            
             list_final.append(row_lengkap)
 
     # 5. Gabungkan dan Export Excel
