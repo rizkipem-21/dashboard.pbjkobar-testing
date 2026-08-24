@@ -14057,3 +14057,49 @@ SUKSES
   -> Disimpan ke v1_rup_paket-swakelola_2024.json (Total: 4136 baris)
 
 PROSES DOWNLOAD SELESAI PADA 24 Agustus 2026 | 08.56 WIB
+
+==================================================
+START GENERATE RUP 24 Agustus 2026 | 08.59 WIB
+==================================================
+
+--- MEMPROSES DATA TAHUN 2026 ---
+DONE -> JSON: rekap_rup_2026.json
+DONE -> EXCEL: D:\dashboard.pbjkobar-testing\output\rup\2026\Rekap RUP Tahun 2026 (2026-08-24).xlsx
+
+[SKIP] Tahun 2025 sudah ada (final).
+
+--- MEMPROSES DATA TAHUN 2024 ---
+DONE -> JSON: rekap_rup_2024.json
+DONE -> EXCEL: D:\dashboard.pbjkobar-testing\output\rup\2024\Rekap RUP Tahun 2024 (2026-08-24).xlsx
+
+==================================================
+MENGIRIM DATA RUP KE GITHUB DARI PYTHON...
+==================================================
+
+==================================================
+ PROSES SELESAI SELURUHNYA!
+==================================================
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/last-update-rup.txt
+	deleted:    output/rup/2024/Rekap RUP Tahun 2024 (2026-08-10).xlsx
+	modified:   output/rup/2024/daftar_arsip.json
+	deleted:    output/rup/2026/Rekap RUP Tahun 2026 (2026-08-13).xlsx
+	modified:   output/rup/2026/daftar_arsip.json
+	deleted:    scripts/rup/error_api_rup.json
+	modified:   tools/log_konsolidasi_rup.txt
+	modified:   tools/log_rup.txt
+	modified:   tools/temp_tg_rup.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	data/2024/
+	output/rup/2024/Rekap RUP Tahun 2024 (2026-08-24).xlsx
+	output/rup/2026/Rekap RUP Tahun 2026 (2026-08-24).xlsx
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
