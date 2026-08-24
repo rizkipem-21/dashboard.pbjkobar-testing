@@ -36145,3 +36145,9 @@ SUKSES
 SUKSES
 SUKSES
 SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola-realisasi_2024.json (Total: 6576 baris)
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-bapbast?kode_klpd=D228&tahun=2024
