@@ -1888,3 +1888,133 @@ MENGIRIM EXCEL KONSOLIDASI RUP KE GITHUB...
 ==================================================
 PROSES SELESAI | Durasi: 0:09:28
 ==================================================
+
+==================================================
+START GENERATE KONSOLIDASI RUP 24 Agustus 2026 | 11.51 WIB
+==================================================
+
+--- MEMPROSES KONSOLIDASI TAHUN 2026 ---
+Dapat 3 anak rup
+Dapat 6 anak rup
+Dapat 6 anak rup
+Dapat 2 anak rup
+Dapat 2 anak rup
+Dapat 2 anak rup
+Dapat 8 anak rup
+Dapat 2 anak rup
+Dapat 10 anak rup
+Dapat 8 anak rup
+Dapat 7 anak rup
+Dapat 18 anak rup
+Dapat 13 anak rup
+Dapat 2 anak rup
+Dapat 2 anak rup
+Dapat 2 anak rup
+Dapat 7 anak rup
+Dapat 12 anak rup
+Dapat 3 anak rup
+Dapat 6 anak rup
+Dapat 14 anak rup
+Dapat 7 anak rup
+Dapat 14 anak rup
+Dapat 10 anak rup
+Dapat 2 anak rup
+Dapat 2 anak rup
+Dapat 6 anak rup
+Dapat 13 anak rup
+Dapat 9 anak rup
+Dapat 12 anak rup
+Dapat 1 anak rup
+Dapat 3 anak rup
+Dapat 2 anak rup
+Dapat 2 anak rup
+Dapat 3 anak rup
+Dapat 4 anak rup
+Dapat 5 anak rup
+Dapat 8 anak rup
+Dapat 2 anak rup
+Dapat 3 anak rup
+Dapat 2 anak rup
+Dapat 8 anak rup
+Dapat 2 anak rup
+Dapat 2 anak rup
+Dapat 6 anak rup
+Dapat 4 anak rup
+Dapat 15 anak rup
+Dapat 14 anak rup
+Dapat 7 anak rup
+Dapat 8 anak rup
+Dapat 9 anak rup
+Dapat 6 anak rup
+Dapat 7 anak rup
+Dapat 12 anak rup
+Dapat 3 anak rup
+Dapat 6 anak rup
+Dapat 3 anak rup
+Dapat 12 anak rup
+Dapat 2 anak rup
+Dapat 2 anak rup
+Dapat 4 anak rup
+Dapat 3 anak rup
+Dapat 2 anak rup
+Dapat 2 anak rup
+Dapat 2 anak rup
+Dapat 17 anak rup
+Dapat 12 anak rup
+Dapat 3 anak rup
+Dapat 2 anak rup
+Dapat 14 anak rup
+Dapat 2 anak rup
+Dapat 11 anak rup
+Dapat 3 anak rup
+Dapat 2 anak rup
+Dapat 4 anak rup
+Dapat 2 anak rup
+Dapat 2 anak rup
+Dapat 2 anak rup
+Dapat 2 anak rup
+Dapat 9 anak rup
+Dapat 9 anak rup
+Dapat 14 anak rup
+Dapat 9 anak rup
+Dapat 14 anak rup
+Dapat 18 anak rup
+Dapat 2 anak rup
+Dapat 8 anak rup
+Dapat 6 anak rup
+Dapat 12 anak rup
+Dapat 16 anak rup
+Dapat 3 anak rup
+Dapat 33 anak rup
+Dapat 4 anak rup
+Dapat 16 anak rup
+Dapat 2 anak rup
+Dapat 9 anak rup
+Dapat 16 anak rup
+Dapat 2 anak rup
+Dapat 2 anak rup
+Dapat 4 anak rup
+Dapat 2 anak rup
+Dapat 13 anak rup
+Dapat 2 anak rup
+Dapat 2 anak rup
+Dapat 13 anak rup
+Dapat 5 anak rup
+Dapat 11 anak rup
+Dapat 7 anak rup
+Dapat 1 anak rup
+Dapat 3 anak rup
+Dapat 6 anak rup
+Dapat 2 anak rup
+Dapat 13 anak rup
+✅ EXCEL: D:\dashboard.pbjkobar-testing\output\rup\2026\Konsolidasi_RUP Tahun 2026 (2026-08-24).xlsx (752 baris)
+
+--- MEMPROSES KONSOLIDASI TAHUN 2025 ---
+  -> [SKIP] Excel Tahun 2025 sudah ada (Final).
+
+--- MEMPROSES KONSOLIDASI TAHUN 2024 ---
+  -> [SKIP] Excel Tahun 2024 sudah ada (Final).
+
+==================================================
+MENGIRIM EXCEL KONSOLIDASI RUP KE GITHUB...
+==================================================
