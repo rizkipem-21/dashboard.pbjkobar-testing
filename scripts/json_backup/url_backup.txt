@@ -39,7 +39,7 @@ https://data.inaproc.id/api/legacy/sikap/penilaian-kinerja-penyedia-non-tender?k
 https://data.inaproc.id/api/legacy/sikap/penilaian-kinerja-penyedia-tender?kode_klpd=D228&tahun={tahun}
 ## v1 ##
 ## https://data.inaproc.id/api/v1/sikap/skp-penyedia?limit=1000
-
+ 
 ===== non-tender =====
 ## legacy ##
 https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-bapbast?kode_klpd=D228&tahun={tahun}

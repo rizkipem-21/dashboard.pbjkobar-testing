@@ -234,6 +234,8 @@ def process_tahun(tahun):
     df5_3   = load_json(p('tender_tender-ekontrak-kontrak'))
     df5_4   = load_json(p('tender_tender-ekontrak-spmkspp'))
     df5_5   = load_json(p('tender_tender-ekontrak-bapbast'))
+    df_sikap_nt = load_json(p('sikap_penilaian-kinerja-penyedia-non-tender'))
+    df_sikap_t  = load_json(p('sikap_penilaian-kinerja-penyedia-tender'))
     df6     = load_json(p('ekatalog_paket-e-purchasing'))
     df7     = load_json(p('ekatalog-archive_paket-e-purchasing'))
     df7_1   = load_json(p('ekatalog-archive_instansi-satker'))
@@ -256,6 +258,46 @@ def process_tahun(tahun):
     set_t_kontrak = get_set(df5_3, 'kd_tender')
     set_t_spmkspp = get_set(df5_4, 'kd_tender')
     set_t_bapbast = get_set(df5_5, 'kd_tender')
+
+    # ================== EKSTRAKSI NILAI SIKAP ==================
+    def parse_sikap(df, key_col):
+        res = {}
+        if df.empty or key_col not in df.columns: return res
+        for _, r in df.iterrows():
+            for k in str(r.get(key_col, '')).split(';'):
+                kd = k.strip()
+                if not kd or kd == 'nan': continue
+                if kd not in res:
+                    res[kd] = {'kualitas': 0.0, 'biaya': 0.0, 'waktu': 0.0, 'layanan': 0.0, 'has_data': False}
+                
+                indikator = str(r.get('indikator_penilaian', '')).lower()
+                try: nilai = float(r.get('nilai_indikator', 0))
+                except: nilai = 0.0
+                
+                if "kualitas dan kuantitas" in indikator: res[kd]['kualitas'] = nilai; res[kd]['has_data'] = True
+                elif "biaya" in indikator: res[kd]['biaya'] = nilai; res[kd]['has_data'] = True
+                elif "waktu" in indikator: res[kd]['waktu'] = nilai; res[kd]['has_data'] = True
+                elif "layanan" in indikator: res[kd]['layanan'] = nilai; res[kd]['has_data'] = True
+        return res
+
+    map_sikap_nt = parse_sikap(df_sikap_nt, 'kd_nontender')
+    map_sikap_t  = parse_sikap(df_sikap_t, 'kd_tender')
+    set_kinerja_nt = {k for k, v in map_sikap_nt.items() if v['has_data']}
+    set_kinerja_t  = {k for k, v in map_sikap_t.items() if v['has_data']}
+
+    def get_kinerja_vals(kd_list, map_sikap):
+        if not kd_list: return "", "", "", "", "", ""
+        for k in kd_list:
+            if k in map_sikap and map_sikap[k]['has_data']:
+                d = map_sikap[k]
+                skor_angka = (d['kualitas'] * 0.30) + (d['biaya'] * 0.20) + (d['waktu'] * 0.30) + (d['layanan'] * 0.20)
+                if skor_angka >= 3: kata = "Sangat Baik"
+                elif skor_angka >= 2: kata = "Baik"
+                elif skor_angka >= 1: kata = "Cukup"
+                else: kata = "Buruk"
+                return d['kualitas'], d['biaya'], d['waktu'], d['layanan'], round(skor_angka, 2), kata
+        return "", "", "", "", "", ""
+    # ===========================================================
 
     def build_multi_kd_map(df, kd_col, val_col):
         m = {}
@@ -734,12 +776,13 @@ def process_tahun(tahun):
         status_awal = r.get('status_nontender')
         
         if pd.notna(status_awal) and 'berlangsung' in str(status_awal).lower():
-            found_in_selesai = any(k in s for k in kd_nt_list for s in [set_bapbast, set_spmkspp, set_kontrak, set_sppbj, set_selesai])
+            found_in_selesai = any(k in s for k in kd_nt_list for s in [set_kinerja_nt, set_bapbast, set_spmkspp, set_kontrak, set_sppbj, set_selesai])
             status = 'Berlangsung' if found_in_selesai else 'Pemilihan Penyedia'
         else:
             status = status_awal
             for k in kd_nt_list:
-                if k in set_bapbast: status='BAPBAST'; break
+                if k in set_kinerja_nt: status='Kinerja Dinilai'; break
+                elif k in set_bapbast: status='BAPBAST'; break
                 elif k in set_spmkspp: status='SPMKSPP'; break
                 elif k in set_kontrak: status='Kontrak'; break
                 elif k in set_sppbj: status='SPPBJ'; break
@@ -895,12 +938,13 @@ def process_tahun(tahun):
         status_awal = r.get('status_tender')
         
         if pd.notna(status_awal) and 'berlangsung' in str(status_awal).lower():
-            found_in_selesai = any(k in s for k in kd_t_list for s in [set_t_bapbast, set_t_spmkspp, set_t_kontrak, set_t_sppbj, set_t_selesai])
+            found_in_selesai = any(k in s for k in kd_t_list for s in [set_kinerja_t, set_t_bapbast, set_t_spmkspp, set_t_kontrak, set_t_sppbj, set_t_selesai])
             status = 'Berlangsung' if found_in_selesai else 'Pemilihan Penyedia'
         else:
             status = status_awal
             for k in kd_t_list:
-                if k in set_t_bapbast: status='BAPBAST'; break
+                if k in set_kinerja_t: status='Kinerja Dinilai'; break
+                elif k in set_t_bapbast: status='BAPBAST'; break
                 elif k in set_t_spmkspp: status='SPMKSPP'; break
                 elif k in set_t_kontrak: status='Kontrak'; break
                 elif k in set_t_sppbj: status='SPPBJ'; break
@@ -1100,12 +1144,16 @@ def process_tahun(tahun):
         'Kualifikasi Paket', 'Nilai Pagu RUP', 'Nilai Hasil Pemilihan', 'Nilai Negosiasi', 
         'No SPPBJ', 'Tanggal SPPBJ', 'No Kontrak', 'Tanggal Kontrak', 'Jenis Kontrak', 
         'Nilai Kontrak', 'Status Kontrak', 'No SPMK SPP', 'Tanggal SPMK SPP', 'No BAST', 
-        'Tanggal BAST', 'No BAP', 'Tanggal BAP', 'Nama Penyedia', 'NPWP 15', 'NPWP 16', 
+        'Tanggal BAST', 'No BAP', 'Tanggal BAP', 
+        'Penilaian Kualitas dan kuantitas dengan indikator kesesuaian', 'Penilaian Biaya dengan indikator kemampuan pengendalian biaya',
+        'Penilaian Waktu dengan indikator ketepatan', 'Penilaian Layanan dengan indikator komunikasi dan tingkat respon',
+        'Kinerja Penyedia dalam angka', 'Kinerja Penyedia dalam kata',
+        'Nama Penyedia', 'NPWP 15', 'NPWP 16', 
         'Alamat', 'Status', 'Nilai HPS', 'Nilai PDN', 'Nilai UMK', 'Cara Pengadaan', 'Sumber'
     ]
     final_df = final_df.reindex(columns=cols).fillna("")
     
-    # Isi Sumber Dana, MAK, Program, Kegiatan, Sub Kegiatan berdasarkan Kode RUP
+    # Isi Sumber Dana, MAK, Program, Kegiatan, Sub Kegiatan, & Kinerja berdasarkan Kode RUP
     for idx, row in final_df.iterrows():
         kd_rup_str = str(row['Kode RUP'])
         kd_baru_str = str(row['Kode RUP Baru'])
@@ -1138,6 +1186,24 @@ def process_tahun(tahun):
         sub = get_kegiatan_sub(cleaned_list, is_swakelola, is_sub=True)
         if not sub and list_baru: sub = get_kegiatan_sub(list_baru, is_swakelola, is_sub=True)
         final_df.at[idx, 'Nama Sub Kegiatan'] = sub
+        
+        # 6. Tarik Penilaian Kinerja (Sumber 2 & 5)
+        sumber = str(row['Sumber'])
+        kual, bia, wak, lay, s_ang, s_kat = "", "", "", "", "", ""
+        if "Sumber 2" in sumber:
+            kd_nt_list = [i.strip() for i in str(row['Kode Paket']).split(';')] if pd.notna(row['Kode Paket']) else []
+            kual, bia, wak, lay, s_ang, s_kat = get_kinerja_vals(kd_nt_list, map_sikap_nt)
+        elif "Sumber 5" in sumber:
+            kd_t_list = [i.strip() for i in str(row['Kode Paket']).split(';')] if pd.notna(row['Kode Paket']) else []
+            kual, bia, wak, lay, s_ang, s_kat = get_kinerja_vals(kd_t_list, map_sikap_t)
+            
+        if s_ang != "":
+            final_df.at[idx, 'Penilaian Kualitas dan kuantitas dengan indikator kesesuaian'] = kual
+            final_df.at[idx, 'Penilaian Biaya dengan indikator kemampuan pengendalian biaya'] = bia
+            final_df.at[idx, 'Penilaian Waktu dengan indikator ketepatan'] = wak
+            final_df.at[idx, 'Penilaian Layanan dengan indikator komunikasi dan tingkat respon'] = lay
+            final_df.at[idx, 'Kinerja Penyedia dalam angka'] = s_ang
+            final_df.at[idx, 'Kinerja Penyedia dalam kata'] = s_kat
 
     final_df['PDN'] = final_df['PDN'].replace("", "N/A")
     final_df['UKM'] = final_df['UKM'].replace("", "N/A")
@@ -1156,6 +1222,7 @@ def process_tahun(tahun):
         def get_score(s_text):
             s_low = str(s_text).strip().lower()
             if 'batal' in s_low or 'gagal' in s_low or 'cancel' in s_low: return -1
+            elif 'kinerja dinilai' in s_low: return 110
             elif 'bapbast' in s_low or 'payment' in s_low or 'completed' in s_low or 'paket selesai' in s_low: return 100
             elif 'spmkspp' in s_low: return 60
             elif 'kontrak' in s_low: return 50
@@ -1225,6 +1292,12 @@ def process_tahun(tahun):
             'Tanggal SPMK SPP': aggregate_text(group['Tanggal SPMK SPP']), 'No BAST': aggregate_text(group['No BAST']),
             'Tanggal BAST': aggregate_text(group['Tanggal BAST']), 'No BAP': aggregate_text(group['No BAP']),
             'Tanggal BAP': aggregate_text(group['Tanggal BAP']),
+            'Penilaian Kualitas dan kuantitas dengan indikator kesesuaian': aggregate_text(group['Penilaian Kualitas dan kuantitas dengan indikator kesesuaian']),
+            'Penilaian Biaya dengan indikator kemampuan pengendalian biaya': aggregate_text(group['Penilaian Biaya dengan indikator kemampuan pengendalian biaya']),
+            'Penilaian Waktu dengan indikator ketepatan': aggregate_text(group['Penilaian Waktu dengan indikator ketepatan']),
+            'Penilaian Layanan dengan indikator komunikasi dan tingkat respon': aggregate_text(group['Penilaian Layanan dengan indikator komunikasi dan tingkat respon']),
+            'Kinerja Penyedia dalam angka': aggregate_text(group['Kinerja Penyedia dalam angka']),
+            'Kinerja Penyedia dalam kata': aggregate_text(group['Kinerja Penyedia dalam kata']),
             'Nama Penyedia': aggregate_text(group['Nama Penyedia']), 'NPWP 15': aggregate_text(group['NPWP 15']), 'NPWP 16': aggregate_text(group['NPWP 16']), 
             'Alamat': aggregate_text(group['Alamat']),
             'Status': aggregate_raw_status(group, pagu_rup, sum_hasil), 'Nilai HPS': sum_hps if sum_hps != 0 else "",
