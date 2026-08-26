@@ -1288,6 +1288,7 @@ def process_tahun(tahun):
             style_sheet('2. Detail per Paket', excel_df_detail, lebar_baku, kolom_angka_baku)
             wb.save(output_excel_path)
             berhasil_simpan = True
+            log_print(f"✅ EXCEL Pengadaan sukses dibuat: {output_excel_path}")
             
         except PermissionError:
             import time
@@ -1310,8 +1311,13 @@ def process_tahun(tahun):
             time.sleep(3)
     # ========================================================
     
-    try: shutil.copy2(output_excel_path, os.path.join(data_dir, f'master_pengadaan_{tahun}.xlsx'))
-    except: pass
+    try: 
+        master_path = os.path.join(data_dir, f'master_pengadaan_{tahun}.xlsx')
+        shutil.copy2(output_excel_path, master_path)
+        log_print(f"✅ EXCEL Master sukses disalin: {master_path}")
+    except Exception as e: 
+        log_print(f"⚠️ Gagal menyalin EXCEL Master: {str(e)}")
+        
     kelola_arsip_bulanan(output_dir_excel, tahun)
     update_daftar_arsip_json(output_dir_excel)
     
