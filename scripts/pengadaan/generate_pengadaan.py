@@ -1144,12 +1144,12 @@ def process_tahun(tahun):
         'Kualifikasi Paket', 'Nilai Pagu RUP', 'Nilai Hasil Pemilihan', 'Nilai Negosiasi', 
         'No SPPBJ', 'Tanggal SPPBJ', 'No Kontrak', 'Tanggal Kontrak', 'Jenis Kontrak', 
         'Nilai Kontrak', 'Status Kontrak', 'No SPMK SPP', 'Tanggal SPMK SPP', 'No BAST', 
-        'Tanggal BAST', 'No BAP', 'Tanggal BAP', 
+        'Tanggal BAST', 'No BAP', 'Tanggal BAP', 'Nama Penyedia', 'NPWP 15', 'NPWP 16', 
+        'Alamat', 'Status', 'Nilai HPS', 'Nilai PDN', 'Nilai UMK', 
         'Penilaian Kualitas dan kuantitas dengan indikator kesesuaian', 'Penilaian Biaya dengan indikator kemampuan pengendalian biaya',
         'Penilaian Waktu dengan indikator ketepatan', 'Penilaian Layanan dengan indikator komunikasi dan tingkat respon',
         'Kinerja Penyedia dalam angka', 'Kinerja Penyedia dalam kata',
-        'Nama Penyedia', 'NPWP 15', 'NPWP 16', 
-        'Alamat', 'Status', 'Nilai HPS', 'Nilai PDN', 'Nilai UMK', 'Cara Pengadaan', 'Sumber'
+        'Cara Pengadaan', 'Sumber'
     ]
     final_df = final_df.reindex(columns=cols).fillna("")
     
@@ -1292,16 +1292,16 @@ def process_tahun(tahun):
             'Tanggal SPMK SPP': aggregate_text(group['Tanggal SPMK SPP']), 'No BAST': aggregate_text(group['No BAST']),
             'Tanggal BAST': aggregate_text(group['Tanggal BAST']), 'No BAP': aggregate_text(group['No BAP']),
             'Tanggal BAP': aggregate_text(group['Tanggal BAP']),
+            'Nama Penyedia': aggregate_text(group['Nama Penyedia']), 'NPWP 15': aggregate_text(group['NPWP 15']), 'NPWP 16': aggregate_text(group['NPWP 16']), 
+            'Alamat': aggregate_text(group['Alamat']),
+            'Status': aggregate_raw_status(group, pagu_rup, sum_hasil), 'Nilai HPS': sum_hps if sum_hps != 0 else "",
+            'Nilai PDN': sum_pdn if sum_pdn != 0 else "", 'Nilai UMK': sum_umk if sum_umk != 0 else "",
             'Penilaian Kualitas dan kuantitas dengan indikator kesesuaian': aggregate_text(group['Penilaian Kualitas dan kuantitas dengan indikator kesesuaian']),
             'Penilaian Biaya dengan indikator kemampuan pengendalian biaya': aggregate_text(group['Penilaian Biaya dengan indikator kemampuan pengendalian biaya']),
             'Penilaian Waktu dengan indikator ketepatan': aggregate_text(group['Penilaian Waktu dengan indikator ketepatan']),
             'Penilaian Layanan dengan indikator komunikasi dan tingkat respon': aggregate_text(group['Penilaian Layanan dengan indikator komunikasi dan tingkat respon']),
             'Kinerja Penyedia dalam angka': aggregate_text(group['Kinerja Penyedia dalam angka']),
             'Kinerja Penyedia dalam kata': aggregate_text(group['Kinerja Penyedia dalam kata']),
-            'Nama Penyedia': aggregate_text(group['Nama Penyedia']), 'NPWP 15': aggregate_text(group['NPWP 15']), 'NPWP 16': aggregate_text(group['NPWP 16']), 
-            'Alamat': aggregate_text(group['Alamat']),
-            'Status': aggregate_raw_status(group, pagu_rup, sum_hasil), 'Nilai HPS': sum_hps if sum_hps != 0 else "",
-            'Nilai PDN': sum_pdn if sum_pdn != 0 else "", 'Nilai UMK': sum_umk if sum_umk != 0 else "",
             'Cara Pengadaan': aggregate_text(group['Cara Pengadaan']), 'Sumber': aggregate_text(group['Sumber'])
         })
     df_rekap = pd.DataFrame(rekap_data)
