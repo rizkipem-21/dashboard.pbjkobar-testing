@@ -1311,13 +1311,39 @@ def process_tahun(tahun):
             time.sleep(3)
     # ========================================================
     
-    try: 
-        master_path = os.path.join(data_dir, f'master_pengadaan_{tahun}.xlsx')
-        shutil.copy2(output_excel_path, master_path)
-        log_print(f"✅ EXCEL Master sukses disalin: {master_path}")
-    except Exception as e: 
-        log_print(f"⚠️ Gagal menyalin EXCEL Master: {str(e)}")
-        
+    master_path = os.path.join(data_dir, f'master_pengadaan_{tahun}.xlsx')
+    nama_file_master = f'master_pengadaan_{tahun}.xlsx'
+    berhasil_salin = False
+    
+    while not berhasil_salin:
+        try:
+            shutil.copy2(output_excel_path, master_path)
+            log_print(f"✅ EXCEL Master sukses disalin: {master_path}")
+            berhasil_salin = True
+        except PermissionError:
+            import time
+            log_print(f"⚠️ Akses Ditolak: File {nama_file_master} sedang terbuka.")
+            tutup_sukses = False
+            try:
+                import win32com.client
+                excel_app = win32com.client.GetActiveObject("Excel.Application")
+                for wb_app in excel_app.Workbooks:
+                    if wb_app.Name == nama_file_master:
+                        log_print(f"Menutup otomatis file: {nama_file_master}...")
+                        wb_app.Close(SaveChanges=False)
+                        tutup_sukses = True
+                        break
+            except Exception: 
+                pass
+            
+            if not tutup_sukses:
+                log_print("Memunculkan pop-up peringatan...")
+                os.system(f'mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""File {nama_file_master} sedang terbuka. Tutup file di Excel agar proses berlanjut!"", 5, ""Peringatan Excel"", 48)(window.close)")')
+            time.sleep(3)
+        except Exception as e:
+            log_print(f"⚠️ Gagal menyalin EXCEL Master (Error Lain): {str(e)}")
+            break # Keluar dari loop jika errornya bukan karena file terbuka
+            
     kelola_arsip_bulanan(output_dir_excel, tahun)
     update_daftar_arsip_json(output_dir_excel)
     
