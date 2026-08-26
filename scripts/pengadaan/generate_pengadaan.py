@@ -284,20 +284,29 @@ def process_tahun(tahun):
 
     # === FUNGSI HELPER NULL & MAP BARU ===
     def get_mapped_val(kd_list, map_dict, is_date=False, is_numeric=False):
-        if not kd_list: return "tidak ada data (null)"
+        if not kd_list: return "" # Jika tidak ada kode paket sama sekali, biarkan kosong
+        
         for k in kd_list:
             if k in map_dict:
+                # KONDISI 2: Paket SUDAH SAMPAI tahap ini (kodenya ada di dictionary tahap ini)
                 val = map_dict[k]
+                
+                # Jika sudah sampai tahapnya tapi data benar-benar kosong dari LKPP
                 if pd.isna(val) or val is None or str(val).strip() == "" or str(val).lower() in ["nan", "none"]:
-                    continue
+                    return "tidak ada data (null)"
+                    
                 if is_date:
                     t = format_tgl(val)
                     return t if t else "tidak ada data (null)"
                 if is_numeric:
                     try: return float(val)
                     except: return "tidak ada data (null)"
+                    
                 return str(val).strip()
-        return "tidak ada data (null)"
+                
+        # KONDISI 1: Jika loop selesai dan paket TIDAK DITEMUKAN di dictionary tahap ini.
+        # Artinya, urutan paket memang BELUM SAMPAI ke tahap ini.
+        return ""
 
     map_nt_nil_neg = build_multi_kd_map(df2_1, 'kd_nontender', 'nilai_negosiasi')
     map_nt_npwp16 = build_multi_kd_map(df2_1, 'kd_nontender', 'npwp16_penyedia')
