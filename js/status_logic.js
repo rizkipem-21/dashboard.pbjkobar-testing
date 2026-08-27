@@ -5,12 +5,15 @@ function getKategoriStatus(row) {
   const sumber = (row["Sumber"] || "").toLowerCase();
   const s = (row["Status"] || "").toLowerCase();
 
+  // Pengaman khusus untuk paket konsolidasi yang masih menyisakan pagu
+  if (s.includes("sisa pagu")) return "Sedang Berjalan";
+
   if (sumber.includes("sumber 1")) return "Belum Proses";
   
   // LOGIKA UNTUK SUMBER 2 (NON TENDER) & SUMBER 5 (TENDER)
   if (sumber.includes("sumber 2") || sumber.includes("sumber 5")) {
-    // HANYA BAPBAST yang dianggap Sudah Selesai. 
-    if (s.includes("bapbast")) return "Sudah Selesai";
+    // Kinerja Dinilai dan BAPBAST dianggap Sudah Selesai. 
+    if (s.includes("kinerja dinilai") || s.includes("bapbast")) return "Sudah Selesai";
     return "Sedang Berjalan"; 
   }
   
@@ -30,7 +33,7 @@ function getKategoriStatus(row) {
   }
 
   // Fallback pengaman untuk status secara umum
-  if (s.includes("bapbast") || s.includes("payment") || s.includes("completed")) return "Sudah Selesai";
+  if (s.includes("kinerja dinilai") || s.includes("bapbast") || s.includes("payment") || s.includes("completed")) return "Sudah Selesai";
   if (s.includes("pengumuman rup") || s === "" || s === "-") return "Belum Proses";
   
   return "Sedang Berjalan";
