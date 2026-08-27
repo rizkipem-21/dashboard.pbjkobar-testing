@@ -1,3 +1,5 @@
+<!-- ### ===== ini file data_rup.html ===== ### -->
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -346,19 +348,23 @@ function renderTable() {
     const persen = Number(row["Persentase"] || 0).toFixed(2) + "%";
 
     const tr = document.createElement("tr");
+    
+    // Tentukan warna merah tebal jika selisih tidak sama dengan 0
+    const warnaTeks = selisih !== 0 ? "color: #e63329 !important;" : "";
+
     tr.innerHTML = `
-      <td class="td-center" style="color:#94a3b8;font-size:0.65rem;">${index + 1}</td>
-      <td style="font-weight:500;">${row["Satuan Kerja"] ?? ""}</td>
-      <td class="td-rupiah">${rupiah(row["Pagu Program"])}</td>
-      <td class="td-rupiah">${rupiah(paguPengadaan)}</td>
-      <td class="td-center" style="font-weight:600; color:#1e4d8c;">${pktPenyedia}</td>
-      <td class="td-rupiah">${rupiah(rupPenyedia)}</td>
-      <td class="td-center" style="font-weight:600; color:#1e4d8c;">${pktSwakelola}</td>
-      <td class="td-rupiah">${rupiah(rupSwakelola)}</td>
-      <td class="td-center" style="font-weight:600;">${pktTotal}</td>
-      <td class="td-rupiah" style="font-weight:600;">${rupiah(rupTerumumkan)}</td>
-      <td class="td-rupiah" style="color: ${selisih < 0 ? '#e63329' : '#1e293b'}">${rupiah(selisih)}</td>
-      <td class="td-persen">${persen}</td>
+      <td class="td-center" style="font-size:0.65rem; ${warnaTeks || 'color:#94a3b8;'}">${index + 1}</td>
+      <td style="font-weight:500; ${warnaTeks}">${row["Satuan Kerja"] ?? ""}</td>
+      <td class="td-rupiah" style="${warnaTeks}">${rupiah(row["Pagu Program"])}</td>
+      <td class="td-rupiah" style="${warnaTeks}">${rupiah(paguPengadaan)}</td>
+      <td class="td-center" style="font-weight:600; ${warnaTeks || 'color:#1e4d8c;'}">${pktPenyedia}</td>
+      <td class="td-rupiah" style="${warnaTeks}">${rupiah(rupPenyedia)}</td>
+      <td class="td-center" style="font-weight:600; ${warnaTeks || 'color:#1e4d8c;'}">${pktSwakelola}</td>
+      <td class="td-rupiah" style="${warnaTeks}">${rupiah(rupSwakelola)}</td>
+      <td class="td-center" style="font-weight:600; ${warnaTeks}">${pktTotal}</td>
+      <td class="td-rupiah" style="font-weight:600; ${warnaTeks}">${rupiah(rupTerumumkan)}</td>
+      <td class="td-rupiah" style="${warnaTeks || 'color:#1e293b;'}">${rupiah(selisih)}</td>
+      <td class="td-persen" style="${warnaTeks}">${persen}</td>
     `;
     body.appendChild(tr);
   });
@@ -389,7 +395,7 @@ function renderSummary() {
   document.getElementById("statPktSwakelola").innerText = tPktSwakelola.toLocaleString("id-ID") + " Paket";
   document.getElementById("statRup").innerText = rupiah(tRup);
   document.getElementById("statTotalPkt").innerText = tPkt.toLocaleString("id-ID") + " Paket";
-  document.getElementById("statPersen").innerText = persenTotal.toFixed(2) + "%";
+  document.getElementById("statPersen").innerText = persenTotal.toFixed(3) + "%";
 }
 
 // === EXCEL DOWNLOAD BERWARNA + RUMUS TOTAL ===

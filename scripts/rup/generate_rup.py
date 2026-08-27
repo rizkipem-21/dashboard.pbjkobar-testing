@@ -215,19 +215,30 @@ def process_tahun(tahun):
         df_master['kd_satker'] = pd.to_numeric(df_master['kd_satker'], errors='coerce')
     
     df_master = df_master[df_master['tahun_aktif'].astype(str).str.contains(str(tahun), na=False)]
-    master_satker = df_master[['kd_satker', 'nama_satker']].drop_duplicates().dropna(subset=['kd_satker'])
+    
+    # Ambil kd_satker_str jika tersedia di data master
+    cols_to_extract = ['kd_satker', 'nama_satker']
+    if 'kd_satker_str' in df_master.columns: cols_to_extract.append('kd_satker_str')
+        
+    master_satker = df_master[cols_to_extract].drop_duplicates().dropna(subset=['kd_satker'])
     master_satker['kd_satker'] = master_satker['kd_satker'].astype(int)
     
-    # Format Satuan Kerja menjadi "Nama Satker - Kode Satker"
+    # Format Satuan Kerja menggunakan kd_satker_str
     def format_satker_master(row):
         nama = str(row['nama_satker']).strip()
-        kd = str(row['kd_satker']).strip()
+        # Ambil kd_satker_str, jika kebetulan kosong, fallback ke kd_satker
+        kd = str(row.get('kd_satker_str', row['kd_satker'])).strip()
+        
         if pd.notna(row['nama_satker']) and nama.lower() not in ['nan', 'none', '']:
             return f"{nama} - {kd}"
         return kd
 
     master_satker['Satuan Kerja'] = master_satker.apply(format_satker_master, axis=1)
-    master_satker.drop(columns=['nama_satker'], inplace=True)
+    
+    # Hapus kolom teks agar tidak mengganggu proses merge selanjutnya
+    cols_to_drop = ['nama_satker']
+    if 'kd_satker_str' in master_satker.columns: cols_to_drop.append('kd_satker_str')
+    master_satker.drop(columns=cols_to_drop, inplace=True)
 
     for d in [df_penyedia, df_swakelola, df_program, df_struktur]:
         if not d.empty and 'kd_satker' in d.columns:
