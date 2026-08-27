@@ -1,3 +1,5 @@
+<!-- ### ===== ini file index.html ===== ### -->
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -294,7 +296,16 @@
         document.getElementById("rupPktSwakelola").innerText = tPktSwakelola.toLocaleString("id-ID") + " Paket";
         document.getElementById("rupStatTerumumkan").innerText = rupiah(tRup);
         document.getElementById("rupPktTotal").innerText = tPkt.toLocaleString("id-ID") + " Paket";
-        document.getElementById("rupStatPersen").innerText = persenTotal.toFixed(3) + "%";
+        
+        const elPersen = document.getElementById("rupStatPersen");
+        elPersen.innerText = persenTotal.toFixed(3) + "%";
+        
+        // Ubah teks jadi merah jika Total RUP tidak sama persis dengan Pagu Pengadaan
+        if (tRup !== tPengadaan) {
+          elPersen.style.color = "#ff4d4d"; // Warna merah terang
+        } else {
+          elPersen.style.color = "#ffffff"; // Putih normal
+        }
       } catch (e) {
         document.getElementById("rupStatProgram").innerText = "Rp 0";
         document.getElementById("rupStatPengadaan").innerText = "Rp 0";

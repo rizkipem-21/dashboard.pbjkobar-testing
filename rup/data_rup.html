@@ -395,7 +395,15 @@ function renderSummary() {
   document.getElementById("statPktSwakelola").innerText = tPktSwakelola.toLocaleString("id-ID") + " Paket";
   document.getElementById("statRup").innerText = rupiah(tRup);
   document.getElementById("statTotalPkt").innerText = tPkt.toLocaleString("id-ID") + " Paket";
-  document.getElementById("statPersen").innerText = persenTotal.toFixed(3) + "%";
+  const elPersen = document.getElementById("statPersen");
+  elPersen.innerText = persenTotal.toFixed(3) + "%"; // Menggunakan 3 desimal (100.000%)
+  
+  // Jika Total RUP tidak sama persis dengan Pagu Pengadaan (berarti bukan 100%), ubah teks jadi merah
+  if (tRup !== tPengadaan) {
+    elPersen.style.color = "#ff4d4d"; // Merah terang agar terbaca di background hijau
+  } else {
+    elPersen.style.color = "#ffffff"; // Putih normal jika pas 100%
+  }
 }
 
 // === EXCEL DOWNLOAD BERWARNA + RUMUS TOTAL ===
