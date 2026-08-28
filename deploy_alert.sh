@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 1. Jalankan perintah deploy/build (gunakan 'perintah_fiktif' dulu untuk tes)
-perintah_fiktif > log_proses.txt 2>&1
+npx wrangler deploy > log_proses.txt 2>&1
 STATUS=$?
 
 # 2. Tampilkan isi log ke layar Cloudflare
@@ -21,9 +21,3 @@ $PESAN_ERROR"
 
     exit 1
 fi
-
-
-
-
-
-
