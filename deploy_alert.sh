@@ -6,7 +6,7 @@ CHAT_ID=$(python -c "import config_rahasia; print(config_rahasia.CHAT_ID)")
 
 # 2. Jalankan perintah deploy/build Anda
 # Ubah 'npx wrangler deploy' dengan perintah asli Anda jika berbeda
-npx wrangler deploy > log_proses.txt 2>&1
+perintah_fiktif > log_proses.txt 2>&1
 STATUS=$?
 
 # 3. Tampilkan isi log ke layar Cloudflare
