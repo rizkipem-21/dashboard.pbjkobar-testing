@@ -8,7 +8,7 @@ CHAT_ID=$(python -c "import config_rahasia; print(config_rahasia.CHAT_ID)")
 # Ubah 'npx wrangler deploy' dengan perintah asli Anda jika berbeda
 perintah_fiktif > log_proses.txt 2>&1
 STATUS=$?
-
+ 
 # 3. Tampilkan isi log ke layar Cloudflare
 cat log_proses.txt
 
