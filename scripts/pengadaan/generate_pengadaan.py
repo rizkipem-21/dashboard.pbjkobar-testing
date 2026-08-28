@@ -1307,7 +1307,7 @@ def process_tahun(tahun):
     df_rekap = pd.DataFrame(rekap_data)
 
     with open(output_json, "w", encoding="utf-8") as f:
-        json.dump(final_df.to_dict(orient='records'), f, ensure_ascii=False, indent=2)
+        json.dump(final_df.to_dict(orient='records'), f, ensure_ascii=False, separators=(',', ':'))
     log_print(f"JSON Rekap sukses dibuat: {output_json}")
 
     kolom_angka_baku = ['Nilai Pagu RUP', 'Nilai Hasil Pemilihan', 'Nilai Negosiasi', 'Nilai Kontrak', 'Nilai HPS', 'Nilai PDN', 'Nilai UMK']
