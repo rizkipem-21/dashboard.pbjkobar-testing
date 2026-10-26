@@ -860,6 +860,18 @@ def process_tahun(tahun):
                     if npwp and npwp.lower() not in ['', 'nan', 'none', '-'] and npwp not in npwp_set: npwp_set.append(npwp)
                 if npwp_set: map_s4_npwp[norm_kd(pkt_id)] = "; ".join(npwp_set)
 
+    # Cadangan Kode RUP: pencatatan non tender realisasi (kolom kd_rup_paket)
+    map_s3_rup_realisasi = {}
+    if not df3_1.empty and 'kd_rup_paket' in df3_1.columns:
+        kd_kolom_rup = next((c for c in df3_1.columns if c.lower().strip() in ['kd_nontender_pct', 'kd_nontender', 'kode_paket']), None)
+        if kd_kolom_rup:
+            for pkt_id, group in df3_1.groupby(kd_kolom_rup):
+                rups = []
+                for x in group['kd_rup_paket']:
+                    x = norm_kd(x)
+                    if x and x not in rups: rups.append(x)
+                if rups: map_s3_rup_realisasi[norm_kd(pkt_id)] = ";".join(rups)
+
     # =========================================================================
     # BAGIAN BARU: BANGUN BARIS REALISASI DARI INAPROC (DATA DASAR)
     # 9 kolom data dasar diisi dari Inaproc & TIDAK diubah lagi setelah ini
@@ -871,17 +883,43 @@ def process_tahun(tahun):
 
     data_inaproc = []
     jumlah_tidak_cocok = 0
+    jumlah_rup_cadangan = {}
+    perlu_dicek = []   # baris yang perlu dicek manual (Tidak Cocok / Kode RUP kosong)
+    nama_tabel = {'df2': 'tender_non-tender-pengumuman (kd_nontender)', 'df3': 'tender_pencatatan-non-tender (kd_nontender_pct)',
+                  'df4': 'tender_pencatatan-swakelola (kd_swakelola_pct)', 'df5': 'tender_pengumuman (kd_tender)',
+                  'df6': 'ekatalog_paket-e-purchasing (order_id)', 'df7': 'ekatalog-archive_paket-e-purchasing (kd_paket)'}
 
     for _, ina in df_ina.iterrows():
         kode_paket = norm_kd(ina.get('kode_paket'))
         kd_list = [kode_paket] if kode_paket else []
 
+        # --- Cari baris sumber berdasarkan Kode Paket ---
+        tipe = resolve_tipe_sumber(ina.get('sumber_transaksi'))
+        kandidat = [tipe] if tipe else ['df5', 'df2', 'df3', 'df4', 'df6', 'df7']
+        r, tipe_found = None, None
+        for t in kandidat:
+            hit = idx_map[t].get(kode_paket)
+            if hit is not None:
+                r, tipe_found = hit, t
+                break
+
         # --- Kode RUP: tetap lewat kode pembersihan lama ---
+        # Urutan sumber: 1) Inaproc  2) tabel sumber (kd_rup / rup_code)  3) pencatatan non tender realisasi (kd_rup_paket)
         kode_rup_bersih = bersihkan_dan_ambil_kanan(ina.get('kode_rup'))
+        asal_rup = 'Inaproc'
+        if not kode_rup_bersih and r is not None:
+            kode_rup_bersih = bersihkan_dan_ambil_kanan(r.get('rup_code' if tipe_found == 'df6' else 'kd_rup'))
+            if kode_rup_bersih: asal_rup = 'Tabel sumber'
+        if not kode_rup_bersih and kode_paket in map_s3_rup_realisasi:
+            kode_rup_bersih = bersihkan_dan_ambil_kanan(map_s3_rup_realisasi[kode_paket])
+            if kode_rup_bersih: asal_rup = 'Realisasi (kd_rup_paket)'
         cleaned_list = [int(i.strip()) for i in kode_rup_bersih.split(';') if i.strip().isdigit()]
         kode_rup_asli = ";".join(map(str, cleaned_list))
         kode_rup_baru = cari_rup_baru(kode_rup_asli)
         kd_lookup = cleaned_list[0] if cleaned_list else None
+        if asal_rup != 'Inaproc':
+            jumlah_rup_cadangan[asal_rup] = jumlah_rup_cadangan.get(asal_rup, 0) + 1
+            tambah_executed(kode_rup_asli)   # RUP hasil cadangan juga dianggap sudah terealisasi
 
         total_nilai = val(ina, 'total_nilai', "")
         metode = val(ina, 'metode_pengadaan')
@@ -899,16 +937,6 @@ def process_tahun(tahun):
             'Nama Penyedia': val(ina, 'nama_penyedia'),
             'Nilai Hasil Pemilihan': total_nilai,
         }
-
-        # --- Cari baris sumber berdasarkan Kode Paket ---
-        tipe = resolve_tipe_sumber(ina.get('sumber_transaksi'))
-        kandidat = [tipe] if tipe else ['df5', 'df2', 'df3', 'df4', 'df6', 'df7']
-        r, tipe_found = None, None
-        for t in kandidat:
-            hit = idx_map[t].get(kode_paket)
-            if hit is not None:
-                r, tipe_found = hit, t
-                break
 
         det = {c: "" for c in KOLOM_DETAIL}
 
@@ -1036,9 +1064,30 @@ def process_tahun(tahun):
         row_out['Status Realisasi'] = 'Realisasi'
         data_inaproc.append(row_out)
 
+        masalah = []
+        if r is None:
+            masalah.append("Kode Paket tidak ditemukan di " + (nama_tabel[tipe] if tipe else "semua tabel sumber"))
+        if not kode_rup_asli:
+            masalah.append("Kode RUP kosong (Inaproc, tabel sumber, dan kd_rup_paket)")
+        if masalah:
+            perlu_dicek.append({
+                'Masalah': " | ".join(masalah), 'Kode Paket': kode_paket, 'Kode RUP': kode_rup_asli,
+                'Sumber Transaksi (Inaproc)': val(ina, 'sumber_transaksi'), 'Tahapan (Inaproc)': val(ina, 'tahapan_pengadaan'),
+                'Status Paket (Inaproc)': val(ina, 'status_paket'), 'Satuan Kerja': base['Satuan Kerja'],
+                'Nama Paket': base['Nama Paket'], 'Nilai Hasil Pemilihan': base['Nilai Hasil Pemilihan']
+            })
+
     df_inaproc_rows = pd.DataFrame(data_inaproc)
+    for asal, jml in jumlah_rup_cadangan.items():
+        log_print(f"ℹ️ Tahun {tahun}: {jml} baris Kode RUP-nya diisi dari cadangan: {asal}")
+    df_perlu_dicek = pd.DataFrame(perlu_dicek)
     if jumlah_tidak_cocok:
         log_print(f"ℹ️ Tahun {tahun}: {jumlah_tidak_cocok} dari {len(data_inaproc)} baris Inaproc berstatus '{TEKS_TIDAK_COCOK}' (Kode Paket tidak ditemukan di tabel pencarinya)")
+    if perlu_dicek:
+        log_print(f"🔎 Tahun {tahun}: {len(perlu_dicek)} baris PERLU DICEK MANUAL -> lihat sheet '3. Perlu Dicek' di Excel. Daftar:")
+        for item in perlu_dicek[:100]:
+            log_print(f"   - {item['Kode Paket']} | {item['Sumber Transaksi (Inaproc)']} | {str(item['Nama Paket'])[:60]} | {item['Masalah']}")
+        if len(perlu_dicek) > 100: log_print(f"   ... dan {len(perlu_dicek) - 100} baris lainnya (lihat sheet Excel)")
 
     # =========================================================================
     # BARIS "PENGUMUMAN RUP" (BELUM REALISASI) - DARI SUMBER 1 & 1_2 (LOGIKA LAMA)
@@ -1308,6 +1357,8 @@ def process_tahun(tahun):
             with pd.ExcelWriter(output_excel_path, engine='openpyxl') as writer:
                 df_rekap.to_excel(writer, index=False, sheet_name='1. Rekap per RUP')
                 excel_df_detail.to_excel(writer, index=False, sheet_name='2. Detail per Paket')
+                if not df_perlu_dicek.empty:
+                    df_perlu_dicek.to_excel(writer, index=False, sheet_name='3. Perlu Dicek')
 
             wb = load_workbook(output_excel_path)
             header_fill = PatternFill('solid', start_color='1F4E79')
@@ -1338,6 +1389,8 @@ def process_tahun(tahun):
             lebar_baku = {} # Dikosongkan karena tidak lagi diperlukan
             style_sheet('1. Rekap per RUP', df_rekap, lebar_baku, kolom_angka_baku)
             style_sheet('2. Detail per Paket', excel_df_detail, lebar_baku, kolom_angka_baku)
+            if not df_perlu_dicek.empty:
+                style_sheet('3. Perlu Dicek', df_perlu_dicek, lebar_baku, ['Nilai Hasil Pemilihan'])
             wb.save(output_excel_path)
             berhasil_simpan = True
             log_print(f"✅ EXCEL Pengadaan sukses dibuat: {output_excel_path}")

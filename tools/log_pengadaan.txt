@@ -37827,3 +37827,50 @@ TEPRA 2026 Sukses (4 Sheet Lengkap) -> D:\dashboard.pbjkobar-testing\output\tepr
 ==================================================
 MENGIRIM DATA PENGADAAN KE GITHUB DARI PYTHON...
 ==================================================
+✅ Push ke GitHub BERHASIL
+
+PROSES SELESAI SELURUHNYA PADA 26 Oktober 2026 | 08.27 WIB
+
+=======================================================
+START GENERATE PENGADAAN (INAPROC) 26 Oktober 2026 | 08.45 WIB
+=======================================================
+
+=======================================================
+   GENERATE DATA TAHUN 2026
+=======================================================
+ℹ️ Tahun 2026: 32 baris Kode RUP-nya diisi dari cadangan: Realisasi (kd_rup_paket)
+ℹ️ Tahun 2026: 6 dari 1309 baris Inaproc berstatus 'Tidak Cocok' (Kode Paket tidak ditemukan di tabel pencarinya)
+🔎 Tahun 2026: 6 baris PERLU DICEK MANUAL -> lihat sheet '3. Perlu Dicek' di Excel. Daftar:
+   - 11154714000 | Pencatatan Non Tender | Belanja Makanan dan Minuman Rapat pada sub kegiatan Pembentu | Kode Paket tidak ditemukan di tender_pencatatan-non-tender (kd_nontender_pct)
+   - 11154686000 | Pencatatan Non Tender | Pemeliharaan Penerangan Lingkungan Pemukiman Kelurahan Kumai | Kode Paket tidak ditemukan di tender_pencatatan-non-tender (kd_nontender_pct)
+   - 11154736000 | Pencatatan Non Tender | Belanja makanan dan minuman rapat kegiatan sosialisasi/Monev | Kode Paket tidak ditemukan di tender_pencatatan-non-tender (kd_nontender_pct)
+   - 11154838000 | Pencatatan Non Tender | Makan dan Snack Bimbingan Teknik BUMDesa | Kode Paket tidak ditemukan di tender_pencatatan-non-tender (kd_nontender_pct)
+   - 11154690000 | Pencatatan Non Tender | Spanduk Pelatihan di Kelurahan Kumai Hulu | Kode Paket tidak ditemukan di tender_pencatatan-non-tender (kd_nontender_pct)
+   - 11154730000 | Pencatatan Non Tender | Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak pada s | Kode Paket tidak ditemukan di tender_pencatatan-non-tender (kd_nontender_pct)
+JSON Rekap sukses dibuat: D:\dashboard.pbjkobar-testing\data\2026\rekap_pengadaan_2026.json
+✅ EXCEL Pengadaan sukses dibuat: D:\dashboard.pbjkobar-testing\output\pengadaan\2026\Paket Pengadaan Tahun 2026 (2026-10-26).xlsx
+⚠️ Akses Ditolak: File master_pengadaan_2026.xlsx sedang terbuka.
+Menutup otomatis file: master_pengadaan_2026.xlsx...
+✅ EXCEL Master sukses disalin: D:\dashboard.pbjkobar-testing\data\2026\master_pengadaan_2026.xlsx
+📝 Daftar arsip JSON diperbarui: D:\dashboard.pbjkobar-testing\output\pengadaan\2026\daftar_arsip.json
+SELESAI GENERATE TAHUN 2026 | Total data: 5173
+
+=======================================================
+   GENERATE DATA TAHUN 2025
+=======================================================
+JSON Rekap sukses dibuat: D:\dashboard.pbjkobar-testing\data\2025\rekap_pengadaan_2025.json
+✅ EXCEL Pengadaan sukses dibuat: D:\dashboard.pbjkobar-testing\output\pengadaan\2025\Paket Pengadaan Tahun 2025 (2026-10-26).xlsx
+✅ EXCEL Master sukses disalin: D:\dashboard.pbjkobar-testing\data\2025\master_pengadaan_2025.xlsx
+📝 Daftar arsip JSON diperbarui: D:\dashboard.pbjkobar-testing\output\pengadaan\2025\daftar_arsip.json
+SELESAI GENERATE TAHUN 2025 | Total data: 5047
+
+[SKIP] Data Tahun 2024 sudah lengkap & final -> Lewati generate
+
+==================================================
+START GENERATE TEPRA
+PROSES TEPRA SUKSES
+TEPRA 2026 Sukses (4 Sheet Lengkap) -> D:\dashboard.pbjkobar-testing\output\tepra\2026\Tepra Kobar_Progres PBJ tahun 2026 (2026-10-26).xlsx
+
+==================================================
+MENGIRIM DATA PENGADAAN KE GITHUB DARI PYTHON...
+==================================================
