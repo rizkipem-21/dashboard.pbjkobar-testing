@@ -1084,10 +1084,7 @@ def process_tahun(tahun):
     if jumlah_tidak_cocok:
         log_print(f"ℹ️ Tahun {tahun}: {jumlah_tidak_cocok} dari {len(data_inaproc)} baris Inaproc berstatus '{TEKS_TIDAK_COCOK}' (Kode Paket tidak ditemukan di tabel pencarinya)")
     if perlu_dicek:
-        log_print(f"🔎 Tahun {tahun}: {len(perlu_dicek)} baris PERLU DICEK MANUAL -> lihat sheet '3. Perlu Dicek' di Excel. Daftar:")
-        for item in perlu_dicek[:100]:
-            log_print(f"   - {item['Kode Paket']} | {item['Sumber Transaksi (Inaproc)']} | {str(item['Nama Paket'])[:60]} | {item['Masalah']}")
-        if len(perlu_dicek) > 100: log_print(f"   ... dan {len(perlu_dicek) - 100} baris lainnya (lihat sheet Excel)")
+        log_print(f"🔎 Tahun {tahun}: {len(perlu_dicek)} baris PERLU DICEK MANUAL -> lihat sheet '3. Perlu Dicek' di Excel.")
 
     # =========================================================================
     # BARIS "PENGUMUMAN RUP" (BELUM REALISASI) - DARI SUMBER 1 & 1_2 (LOGIKA LAMA)
