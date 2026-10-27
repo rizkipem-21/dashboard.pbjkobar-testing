@@ -392,9 +392,9 @@
   {
     "Satuan Kerja": "DINAS PERINDUSTRIAN, PERDAGANGAN, KOPERASI, USAHA KECIL DAN MENENGAH - 2.17.3.30.3.31.01.0000",
     "Data Laporan_Paket": 1,
-    "Data Laporan_Pagu": 2688000000.0,
+    "Data Laporan_Pagu": 2646500000.0,
     "Pemilihan_Paket": 1,
-    "Pemilihan_Pagu": 2688000000.0,
+    "Pemilihan_Pagu": 2646500000.0,
     "Hasil_Paket": 1,
     "Hasil_Pagu": 2646500000.0,
     "Kontrak_Paket": 1,
@@ -885,6 +885,21 @@
     "Belum_Pagu": 0.0
   },
   {
+    "Satuan Kerja": "KECAMATAN PANGKALAN LADA - 7.01.0.00.0.00.05.0000",
+    "Data Laporan_Paket": 0,
+    "Data Laporan_Pagu": 0.0,
+    "Pemilihan_Paket": 0,
+    "Pemilihan_Pagu": 0.0,
+    "Hasil_Paket": 0,
+    "Hasil_Pagu": 0.0,
+    "Kontrak_Paket": 0,
+    "Kontrak_Pagu": 0.0,
+    "SerahTerima_Paket": 0,
+    "SerahTerima_Pagu": 0.0,
+    "Belum_Paket": 0,
+    "Belum_Pagu": 0.0
+  },
+  {
     "Satuan Kerja": "Kecamatan Arut Selatan - 7.01.0.00.0.00.02.0000",
     "Data Laporan_Paket": 0,
     "Data Laporan_Pagu": 0.0,
@@ -991,6 +1006,21 @@
   },
   {
     "Satuan Kerja": "Laboratorium Kesehatan Daerah - 1.02.0.00.0.00.01.0003",
+    "Data Laporan_Paket": 0,
+    "Data Laporan_Pagu": 0.0,
+    "Pemilihan_Paket": 0,
+    "Pemilihan_Pagu": 0.0,
+    "Hasil_Paket": 0,
+    "Hasil_Pagu": 0.0,
+    "Kontrak_Paket": 0,
+    "Kontrak_Pagu": 0.0,
+    "SerahTerima_Paket": 0,
+    "SerahTerima_Pagu": 0.0,
+    "Belum_Paket": 0,
+    "Belum_Pagu": 0.0
+  },
+  {
+    "Satuan Kerja": "PUSKESMAS ARUT UTARA - 1.02.0.00.0.00.01.0017",
     "Data Laporan_Paket": 0,
     "Data Laporan_Pagu": 0.0,
     "Pemilihan_Paket": 0,
@@ -1457,9 +1487,9 @@
   {
     "Satuan Kerja": "TOTAL KESELURUHAN",
     "Data Laporan_Paket": 46,
-    "Data Laporan_Pagu": 248425975553.0,
+    "Data Laporan_Pagu": 248384475553.0,
     "Pemilihan_Paket": 32,
-    "Pemilihan_Pagu": 147115370800.0,
+    "Pemilihan_Pagu": 147073870800.0,
     "Hasil_Paket": 32,
     "Hasil_Pagu": 71235380009.0,
     "Kontrak_Paket": 32,
