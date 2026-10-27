@@ -253,6 +253,12 @@ def get_kategori_status(sumber, s):
     if "pengumuman rup" in s or s == "" or s == "-": return "Belum Proses"
     return "Sedang Berjalan"
 
+def bersihkan_teks(x):
+    """Ganti enter/tab dengan spasi (agar kata tidak menyatu & tinggi baris Excel normal), buang karakter kontrol lain"""
+    if not isinstance(x, str): return x
+    x = re.sub(r'[\r\n\t\u2028\u2029\x85]+', ' ', x)
+    return re.sub(r'[\x00-\x1F]', '', x)
+
 # Kolom pelengkap (di luar 9 kolom data dasar Inaproc) yang diisi per baris
 KOLOM_DETAIL = [
     'Tahun Anggaran', 'Sumber Dana', 'MAK', 'PDN', 'UKM', 'Kualifikasi Paket', 'Nilai Pagu RUP',
@@ -283,6 +289,11 @@ def process_tahun(tahun):
 
     # ===== SUMBER DATA DASAR BARU (INAPROC) =====
     df_ina  = load_json(p('dashboard_realisasi_table'))
+    path_ina = p('dashboard_realisasi_table')
+    if df_ina.empty:
+        log_print(f"⚠️ Tahun {tahun}: data Inaproc KOSONG / tidak terbaca ({path_ina}). Baris realisasi TIDAK akan dibuat, hanya baris Pengumuman RUP!")
+    else:
+        log_print(f"ℹ️ Tahun {tahun}: {len(df_ina)} baris Inaproc dimuat dari {os.path.basename(path_ina)}")
 
     df1     = load_json(p('rup_paket-penyedia-terumumkan'))
     df1_2   = load_json(p('rup_paket-swakelola-terumumkan'))
@@ -964,6 +975,8 @@ def process_tahun(tahun):
                 else: j_cad = val(r, 'jenis_pengadaan')
             if norm_kd(j_cad) in ('', '-'):
                 j_cad = get_s1(kd_lookup, 'jenis_pengadaan', 's1') or ""
+            if norm_kd(j_cad) in ('', '-') and tipe_found == 'df4':
+                j_cad = "N/A"   # sama seperti kode lama: swakelola tanpa tipe diisi "N/A"
             if norm_kd(j_cad) not in ('', '-'):
                 jenis = j_cad
                 jumlah_jenis_cadangan += 1
@@ -1190,7 +1203,7 @@ def process_tahun(tahun):
     # Baris Inaproc TIDAK di-drop_duplicates (jumlah baris harus sesuai Inaproc)
     bagian = [d for d in [df_inaproc_rows, df_s1_2, df_s1] if not d.empty]
     final_df = pd.concat(bagian, ignore_index=True) if bagian else pd.DataFrame()
-    final_df = final_df.map(lambda x: re.sub(r'[\x00-\x1F]', '', str(x)) if isinstance(x, str) else x)
+    final_df = final_df.map(bersihkan_teks)
 
     def get_status_konsolidasi(rup_val):
         if pd.isna(rup_val) or not str(rup_val).strip(): return ""
@@ -1274,6 +1287,9 @@ def process_tahun(tahun):
     final_df['PDN'] = final_df['PDN'].replace("", "N/A")
     final_df['UKM'] = final_df['UKM'].replace("", "N/A")
     final_df['Status'] = final_df['Status'].apply(lambda x: str(x).replace('_', ' ') if pd.notna(x) else x)
+
+    # Program/Kegiatan/Sub Kegiatan/MAK diisi SETELAH pembersihan awal, jadi dibersihkan lagi di sini
+    final_df = final_df.map(bersihkan_teks)
 
     def safe_numeric(v):
         if v in ("N/A", "", None) or pd.isna(v): return 0.0
