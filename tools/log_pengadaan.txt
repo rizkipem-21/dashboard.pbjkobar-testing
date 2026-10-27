@@ -37911,3 +37911,44 @@ TEPRA 2026 Sukses (4 Sheet Lengkap) -> D:\dashboard.pbjkobar-testing\output\tepr
 ==================================================
 MENGIRIM DATA PENGADAAN KE GITHUB DARI PYTHON...
 ==================================================
+✅ Push ke GitHub BERHASIL
+
+PROSES SELESAI SELURUHNYA PADA 26 Oktober 2026 | 13.14 WIB
+
+=======================================================
+START GENERATE PENGADAAN (INAPROC) 27 Oktober 2026 | 08.55 WIB
+=======================================================
+
+=======================================================
+   GENERATE DATA TAHUN 2026
+=======================================================
+ℹ️ Tahun 2026: 46 baris Metode Pemilihan diisi dari cadangan (Inaproc kosong / '-')
+ℹ️ Tahun 2026: 47 baris Jenis Pengadaan diisi dari cadangan (Inaproc kosong)
+ℹ️ Tahun 2026: 32 baris Kode RUP-nya diisi dari cadangan: Realisasi (kd_rup_paket)
+JSON Rekap sukses dibuat: D:\dashboard.pbjkobar-testing\data\2026\rekap_pengadaan_2026.json
+✅ EXCEL Pengadaan sukses dibuat: D:\dashboard.pbjkobar-testing\output\pengadaan\2026\Paket Pengadaan Tahun 2026 (2026-10-27).xlsx
+✅ EXCEL Master sukses disalin: D:\dashboard.pbjkobar-testing\data\2026\master_pengadaan_2026.xlsx
+📦 Arsip harian diamankan ke lokal: Paket Pengadaan Tahun 2026 (2026-10-26).xlsx
+📝 Daftar arsip JSON diperbarui: D:\dashboard.pbjkobar-testing\output\pengadaan\2026\daftar_arsip.json
+SELESAI GENERATE TAHUN 2026 | Total data: 5088
+
+=======================================================
+   GENERATE DATA TAHUN 2025
+=======================================================
+JSON Rekap sukses dibuat: D:\dashboard.pbjkobar-testing\data\2025\rekap_pengadaan_2025.json
+✅ EXCEL Pengadaan sukses dibuat: D:\dashboard.pbjkobar-testing\output\pengadaan\2025\Paket Pengadaan Tahun 2025 (2026-10-27).xlsx
+✅ EXCEL Master sukses disalin: D:\dashboard.pbjkobar-testing\data\2025\master_pengadaan_2025.xlsx
+📦 Arsip harian diamankan ke lokal: Paket Pengadaan Tahun 2025 (2026-10-26).xlsx
+📝 Daftar arsip JSON diperbarui: D:\dashboard.pbjkobar-testing\output\pengadaan\2025\daftar_arsip.json
+SELESAI GENERATE TAHUN 2025 | Total data: 5047
+
+[SKIP] Data Tahun 2024 sudah lengkap & final -> Lewati generate
+
+==================================================
+START GENERATE TEPRA
+PROSES TEPRA SUKSES
+TEPRA 2026 Sukses (4 Sheet Lengkap) -> D:\dashboard.pbjkobar-testing\output\tepra\2026\Tepra Kobar_Progres PBJ tahun 2026 (2026-10-27).xlsx
+
+==================================================
+MENGIRIM DATA PENGADAAN KE GITHUB DARI PYTHON...
+==================================================

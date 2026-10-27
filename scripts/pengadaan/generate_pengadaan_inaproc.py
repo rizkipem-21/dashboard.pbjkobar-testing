@@ -695,7 +695,11 @@ def process_tahun(tahun):
     df1_map, df1_2_map, df1_3_map, df1_4_map = build_df_map(df1), build_df_map(df1_2), build_df_map(df1_3), build_df_map(df1_4)
     map_status_konsol = {}
     if not df1_3.empty and 'kd_rup' in df1_3.columns and 'status_konsolidasi' in df1_3.columns:
-        map_status_konsol = {int(float(str(k).strip())): v for k, v in zip(df1_3['kd_rup'], df1_3['status_konsolidasi']) if pd.notna(k) and str(k).strip().isdigit()}
+        # Kunci diubah ke int lewat int(float(..)) agar tetap terbaca walau kolom kd_rup berubah jadi float (mis. "65400376.0")
+        for k, v in zip(df1_3['kd_rup'], df1_3['status_konsolidasi']):
+            try: k_int = int(float(str(k).strip()))
+            except: continue
+            if pd.notna(v) and str(v).strip(): map_status_konsol[k_int] = v
 
     def get_s1(kd, col, tipe='s1'):
         try:
@@ -881,6 +885,14 @@ def process_tahun(tahun):
     rantai_t  = [(set_kinerja_t, 'Kinerja Dinilai'), (set_t_bapbast, 'BAPBAST'), (set_t_spmkspp, 'SPMKSPP'),
                  (set_t_kontrak, 'Kontrak'), (set_t_sppbj, 'SPPBJ'), (set_t_selesai, 'Tender Selesai')]
 
+    def _peta_swakelola(df):
+        if df.empty or 'kd_rup' not in df.columns or 'tipe_swakelola' not in df.columns: return {}
+        return df.dropna(subset=['kd_rup']).drop_duplicates(subset=['kd_rup']).set_index('kd_rup')['tipe_swakelola'].to_dict()
+    swakelola_map = _peta_swakelola(df1_2)
+    swakelola_map_fallback = _peta_swakelola(df1_4)
+    jumlah_metode_cadangan = 0
+    jumlah_jenis_cadangan = 0
+
     data_inaproc = []
     jumlah_tidak_cocok = 0
     jumlah_rup_cadangan = {}
@@ -922,7 +934,39 @@ def process_tahun(tahun):
             tambah_executed(kode_rup_asli)   # RUP hasil cadangan juga dianggap sudah terealisasi
 
         total_nilai = val(ina, 'total_nilai', "")
+
+        # --- Metode Pemilihan: jika kosong / "-" -> ambil seperti kode lama (dari tabel sumber, lalu RUP) ---
         metode = val(ina, 'metode_pengadaan')
+        if norm_kd(metode) in ('', '-'):
+            m_cad = ""
+            if r is not None:
+                if tipe_found == 'df4': m_cad = 'Swakelola'
+                elif tipe_found in ('df6', 'df7'): m_cad = 'E-Purchasing'
+                else: m_cad = val(r, 'mtd_pemilihan')
+            if norm_kd(m_cad) in ('', '-'):
+                m_cad = get_s1(kd_lookup, 'metode_pengadaan', 's1') or ""
+            if norm_kd(m_cad) not in ('', '-'):
+                metode = m_cad
+                jumlah_metode_cadangan += 1
+
+        # --- Jenis Pengadaan: jika kosong / "-" -> ambil seperti kode lama (dari tabel sumber, lalu RUP) ---
+        jenis = val(ina, 'jenis_pengadaan')
+        if norm_kd(jenis) in ('', '-'):
+            j_cad = ""
+            if r is not None:
+                if tipe_found == 'df3': j_cad = val(r, 'kategori_pengadaan')
+                elif tipe_found == 'df4':
+                    tsw = val(r, 'tipe_swakelola', None)
+                    if tsw is None: tsw = swakelola_map.get(kd_lookup, swakelola_map_fallback.get(kd_lookup))
+                    try: j_cad = f"Swakelola {int(float(tsw))}"
+                    except: j_cad = ""
+                elif tipe_found in ('df6', 'df7'): j_cad = get_s1(kd_lookup, 'jenis_pengadaan', 's1') or ""
+                else: j_cad = val(r, 'jenis_pengadaan')
+            if norm_kd(j_cad) in ('', '-'):
+                j_cad = get_s1(kd_lookup, 'jenis_pengadaan', 's1') or ""
+            if norm_kd(j_cad) not in ('', '-'):
+                jenis = j_cad
+                jumlah_jenis_cadangan += 1
 
         # --- 9 KOLOM DATA DASAR (dari Inaproc) ---
         base = {
@@ -933,7 +977,7 @@ def process_tahun(tahun):
             'Satuan Kerja': val(ina, 'nama_satuan_kerja'),
             'Nama Paket': val(ina, 'nama_paket'),
             'Metode Pemilihan': metode,
-            'Jenis Pengadaan': val(ina, 'jenis_pengadaan'),
+            'Jenis Pengadaan': jenis,
             'Nama Penyedia': val(ina, 'nama_penyedia'),
             'Nilai Hasil Pemilihan': total_nilai,
         }
@@ -1078,6 +1122,10 @@ def process_tahun(tahun):
             })
 
     df_inaproc_rows = pd.DataFrame(data_inaproc)
+    if jumlah_metode_cadangan:
+        log_print(f"ℹ️ Tahun {tahun}: {jumlah_metode_cadangan} baris Metode Pemilihan diisi dari cadangan (Inaproc kosong / '-')")
+    if jumlah_jenis_cadangan:
+        log_print(f"ℹ️ Tahun {tahun}: {jumlah_jenis_cadangan} baris Jenis Pengadaan diisi dari cadangan (Inaproc kosong)")
     for asal, jml in jumlah_rup_cadangan.items():
         log_print(f"ℹ️ Tahun {tahun}: {jml} baris Kode RUP-nya diisi dari cadangan: {asal}")
     df_perlu_dicek = pd.DataFrame(perlu_dicek)
