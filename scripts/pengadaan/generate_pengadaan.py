@@ -1,5 +1,7 @@
 # ======================================================
 # ini file generate_pengadaan.py
+# DATA DASAR = Inaproc (dashboard/realisasi/table)
+# Kolom lain dilengkapi dengan logika lama (lewat Kode Paket / Kode RUP)
 # ======================================================
 
 import os
@@ -23,14 +25,18 @@ warnings.filterwarnings('ignore')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-tahun_n      = datetime.now().year       
-tahun_n1     = tahun_n - 1               
-tahun_n2     = tahun_n - 2               
-daftar_tahun = [tahun_n, tahun_n1, tahun_n2] 
+tahun_n      = datetime.now().year
+tahun_n1     = tahun_n - 1
+tahun_n2     = tahun_n - 2
+daftar_tahun = [tahun_n, tahun_n1, tahun_n2]
 
 # MENGGUNAKAN LOG TUNGGAL (Sama dengan script download)
 LOG_FILE = os.path.join(BASE_DIR, 'tools', 'log_pengadaan.txt')
 os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
+
+TEKS_TIDAK_COCOK = "Tidak Cocok"
+ringkasan_tahun = {}   # {tahun: {realisasi, belum, tidak_cocok, perlu_dicek}} untuk ringkasan Telegram
+tahun_dilewati = []   # [(tahun, alasan)] tahun yang dilewati karena data tidak valid -> dilaporkan ke Telegram
 
 def log_print(*args, **kwargs):
     msg = " ".join(str(a) for a in args)
@@ -54,10 +60,10 @@ def sync_to_github():
         subprocess.run(["git", "config", "user.name", "rizkipem-21"], cwd=BASE_DIR)
         subprocess.run(["git", "config", "user.email", "rizki.pem@gmail.com"], cwd=BASE_DIR)
         subprocess.run(["git", "add", "."], capture_output=True, text=True, cwd=BASE_DIR)
-        
+
         commit_msg = f"Auto update Pengadaan {waktu_sekarang}"
         subprocess.run(["git", "commit", "-m", commit_msg], capture_output=True, text=True, cwd=BASE_DIR)
-        
+
         res_push = subprocess.run(["git", "push"], capture_output=True, text=True, cwd=BASE_DIR)
         if res_push.returncode == 0:
             log_print("✅ Push ke GitHub BERHASIL")
@@ -87,49 +93,111 @@ def load_json(path):
     try:
         with open(path, 'r', encoding='utf-8-sig') as f:
             data = json.load(f)
-            
+
             # Jika data adalah list langsung
-            if isinstance(data, list): 
+            if isinstance(data, list):
                 return pd.json_normalize(data) if data else pd.DataFrame()
-                
+
             # Jika data adalah dictionary (respons API standar)
             if isinstance(data, dict):
                 for k in ['data', 'items', 'results']:
-                    if k in data and isinstance(data[k], list): 
+                    if k in data and isinstance(data[k], list):
                         return pd.json_normalize(data[k])
-                
-                return pd.DataFrame() 
-                
+
+                return pd.DataFrame()
+
     except Exception as e:
         return pd.DataFrame()
 
+# ======================================================
+# HELPER BARU: NORMALISASI KUNCI PENCOCOKAN
+# (semua kunci dijadikan teks tanpa ".0" agar angka vs teks tidak gagal cocok)
+# ======================================================
+def norm_kd(v):
+    if v is None: return ""
+    try:
+        if pd.isna(v): return ""
+    except (TypeError, ValueError):
+        pass
+    s = str(v).strip()
+    if s.lower() in ("nan", "none", "<na>", "nat"): return ""
+    if re.fullmatch(r"-?\d+\.0+", s): s = s.split('.')[0]
+    return s
+
+def val(r, k, default=""):
+    """Ambil nilai dari baris (Series/dict); NaN/None -> default"""
+    v = r.get(k, default) if r is not None else default
+    try:
+        if v is None or pd.isna(v): return default
+    except (TypeError, ValueError):
+        pass
+    return v
+
+def to_float(v):
+    try:
+        if v in ("N/A", "", None) or pd.isna(v): return 0.0
+        return float(str(v).replace(',', ''))
+    except: return 0.0
+
+def build_row_index(df, col):
+    """Kamus {kode_paket_teks: baris pertama} dari sebuah tabel sumber"""
+    idx = {}
+    if df.empty or col not in df.columns: return idx
+    for _, r in df.iterrows():
+        for k in str(r[col]).split(';'):
+            k = norm_kd(k)
+            if k and k not in idx: idx[k] = r
+    return idx
+
+def resolve_tipe_sumber(sumber_transaksi):
+    """Menentukan tabel pencari berdasarkan kolom sumber_transaksi Inaproc"""
+    s = str(sumber_transaksi or '').strip().lower()
+    if not s: return None
+    if 'swakelola' in s: return 'df4'
+    if 'pencatatan' in s: return 'df3'
+    if 'non tender' in s or 'non-tender' in s or 'nontender' in s: return 'df2'
+    if 'tender' in s: return 'df5'
+    if 'katalog' in s or 'purchasing' in s:
+        return 'df7' if ('5' in s) else 'df6'
+    return None
+
+def hitung_status(status_awal, kd_list, rantai):
+    """Logika status lama. rantai = [(set_kode, label), ...] urut prioritas"""
+    if pd.notna(status_awal) and 'berlangsung' in str(status_awal).lower():
+        ada = any(k in s for k in kd_list for s, _ in rantai)
+        return 'Berlangsung' if ada else 'Pemilihan Penyedia'
+    for k in kd_list:
+        for s, label in rantai:
+            if k in s: return label
+    return status_awal
+
 def kelola_arsip_bulanan(folder_path, tahun):
     if not os.path.exists(folder_path): return
-    
+
     folder_arsip_lokal = os.path.join(BASE_DIR, 'arsip_lokal', 'pengadaan', str(tahun))
     os.makedirs(folder_arsip_lokal, exist_ok=True)
-    
+
     # Abaikan file temporary Excel yang berawalan ~$
     file_excel = [f for f in os.listdir(folder_path) if f.endswith('.xlsx') and not f.startswith('~$')]
     arsip_bulanan = {}
-    
+
     for f in file_excel:
         match = re.search(r"\((\d{4}-\d{2}-\d{2})\)", f)
         if match:
             bulan = match.group(1)[:7]
             if bulan not in arsip_bulanan: arsip_bulanan[bulan] = []
             arsip_bulanan[bulan].append((match.group(1), f))
-            
+
     for bulan, list_file in arsip_bulanan.items():
         list_file.sort(key=lambda x: x[0])
-        
+
         for tgl, nama_file in list_file[:-1]:
             path_sumber = os.path.join(folder_path, nama_file)
             path_tujuan = os.path.join(folder_arsip_lokal, nama_file)
-            
+
             berhasil_pindah = False
             while not berhasil_pindah:
-                try: 
+                try:
                     shutil.move(path_sumber, path_tujuan)
                     log_print(f"📦 Arsip harian diamankan ke lokal: {nama_file}")
                     berhasil_pindah = True
@@ -147,26 +215,26 @@ def kelola_arsip_bulanan(folder_path, tahun):
                                 tutup_sukses = True
                                 break
                     except Exception: pass
-                    
+
                     if not tutup_sukses:
                         log_print("Memunculkan pop-up peringatan arsip...")
                         os.system(f'mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""File lama {nama_file} sedang terbuka. Tutup file di Excel agar bisa diarsipkan!"", 5, ""Peringatan Excel"", 48)(window.close)")')
                     time.sleep(3)
-                except Exception as e: 
+                except Exception as e:
                     log_print(f"⚠️ Gagal memindah arsip {nama_file}: {str(e)}")
                     berhasil_pindah = True
 
 def update_daftar_arsip_json(folder_path):
     """Membaca sisa file Excel di folder output dan memperbarui daftar_arsip.json"""
     if not os.path.exists(folder_path): return
-    
+
     # Ambil semua file excel, urutkan dari yang terbaru (Z-A)
     file_excel = [f for f in os.listdir(folder_path) if f.endswith('.xlsx')]
-    file_excel.sort(reverse=True) 
-    
+    file_excel.sort(reverse=True)
+
     # Buat format JSON (sesuaikan dengan format yang dibaca website Anda)
     arsip_list = [{"nama_file": f} for f in file_excel]
-    
+
     # Simpan ke daftar_arsip.json
     path_json = os.path.join(folder_path, 'daftar_arsip.json')
     try:
@@ -174,7 +242,7 @@ def update_daftar_arsip_json(folder_path):
             json.dump(arsip_list, f, indent=4)
         log_print(f"📝 Daftar arsip JSON diperbarui: {path_json}")
     except Exception as e:
-        log_print(f"⚠️ Gagal memperbarui daftar_arsip.json: {str(e)}")                
+        log_print(f"⚠️ Gagal memperbarui daftar_arsip.json: {str(e)}")
 
 def get_kategori_status(sumber, s):
     sumber, s = str(sumber).lower(), str(s).lower()
@@ -187,12 +255,27 @@ def get_kategori_status(sumber, s):
     if "pengumuman rup" in s or s == "" or s == "-": return "Belum Proses"
     return "Sedang Berjalan"
 
+def bersihkan_teks(x):
+    """Ganti enter/tab dengan spasi (agar kata tidak menyatu & tinggi baris Excel normal), buang karakter kontrol lain"""
+    if not isinstance(x, str): return x
+    x = re.sub(r'[\r\n\t\u2028\u2029\x85]+', ' ', x)
+    return re.sub(r'[\x00-\x1F]', '', x)
+
+# Kolom pelengkap (di luar 9 kolom data dasar Inaproc) yang diisi per baris
+KOLOM_DETAIL = [
+    'Tahun Anggaran', 'Sumber Dana', 'MAK', 'PDN', 'UKM', 'Kualifikasi Paket', 'Nilai Pagu RUP',
+    'Nilai Negosiasi', 'No SPPBJ', 'Tanggal SPPBJ', 'No Kontrak', 'Tanggal Kontrak', 'Jenis Kontrak',
+    'Nilai Kontrak', 'Status Kontrak', 'No SPMK SPP', 'Tanggal SPMK SPP', 'No BAST', 'Tanggal BAST',
+    'No BAP', 'Tanggal BAP', 'NPWP 15', 'NPWP 16', 'Alamat', 'Status', 'Nilai HPS', 'Nilai PDN',
+    'Nilai UMK', 'Cara Pengadaan', 'Sumber'
+]
+
 def process_tahun(tahun):
     # Deklarasikan semua path di awal agar dikenali oleh seluruh fungsi
     data_dir = os.path.join(BASE_DIR, 'data', str(tahun))
     output_dir_excel = os.path.join(BASE_DIR, 'output', 'pengadaan', str(tahun))
     output_json = os.path.join(data_dir, f'rekap_pengadaan_{tahun}.json')
-        
+
     # ---------------------------------------------------------
     # LOGIKA SKIP: HANYA melewati tahun n-2 (sudah final)
     # ---------------------------------------------------------
@@ -205,7 +288,21 @@ def process_tahun(tahun):
 
     log_print(f'\n{"="*55}\n   GENERATE DATA TAHUN {tahun}\n{"="*55}')
     def p(nama): return get_file_path(data_dir, nama, tahun)
-    
+
+    # ===== SUMBER DATA DASAR BARU (INAPROC) =====
+    df_ina  = load_json(p('dashboard_realisasi_table'))
+    path_ina = p('dashboard_realisasi_table')
+    if df_ina.empty:
+        # PENGAMAN: data Inaproc kosong dianggap TIDAK VALID.
+        # Jika hasil lama tahun ini sudah ada -> lewati, pertahankan file lama (jangan ditimpa data tanpa realisasi).
+        if os.path.exists(output_json):
+            log_print(f"⚠️ Tahun {tahun}: data Inaproc KOSONG / tidak terbaca ({path_ina}). Dianggap tidak valid -> tahun {tahun} DILEWATI, hasil lama dipertahankan.")
+            tahun_dilewati.append((tahun, "data Inaproc kosong/tidak terbaca, memakai hasil lama"))
+            return None
+        log_print(f"⚠️ Tahun {tahun}: data Inaproc KOSONG / tidak terbaca ({path_ina}) dan belum ada hasil lama. Baris realisasi TIDAK akan dibuat, hanya baris Pengumuman RUP!")
+    else:
+        log_print(f"ℹ️ Tahun {tahun}: {len(df_ina)} baris Inaproc dimuat dari {os.path.basename(path_ina)}")
+
     df1     = load_json(p('rup_paket-penyedia-terumumkan'))
     df1_2   = load_json(p('rup_paket-swakelola-terumumkan'))
     df1_3   = load_json(p('rup_paket-penyedia'))
@@ -216,7 +313,7 @@ def process_tahun(tahun):
     df_prog  = load_json(p('rup_program-master'))
     df_keg   = load_json(p('rup_kegiatan-master'))
     df_sub   = load_json(p('rup_sub-kegiatan-master'))
-     
+
     df2     = load_json(p('tender_non-tender-pengumuman'))
     df2_1   = load_json(p('tender_non-tender-selesai'))
     df2_2   = load_json(p('tender_non-tender-ekontrak-sppbj'))
@@ -238,14 +335,26 @@ def process_tahun(tahun):
     df_sikap_t  = load_json(p('sikap_penilaian-kinerja-penyedia-tender'))
     df6     = load_json(p('ekatalog_paket-e-purchasing'))
     df7     = load_json(p('ekatalog-archive_paket-e-purchasing'))
-    df7_1   = load_json(p('ekatalog-archive_instansi-satker'))
 
+    # ===== INDEKS PENCOCOKAN KODE PAKET (dibuat SEBELUM filter batal, agar paket Inaproc tetap ketemu) =====
+    idx_map = {
+        'df2': build_row_index(df2, 'kd_nontender'),
+        'df3': build_row_index(df3, 'kd_nontender_pct'),
+        'df4': build_row_index(df4, 'kd_swakelola_pct'),
+        'df5': build_row_index(df5, 'kd_tender'),
+        'df6': build_row_index(df6, 'order_id'),
+        'df7': build_row_index(df7, 'kd_paket'),   # V5: Kode Paket Inaproc = kd_paket (BUKAN no_paket)
+    }
+
+    # Filter lama (hanya dipakai untuk menentukan executed_rups / Pengumuman RUP)
     if not df2.empty and 'status_nontender' in df2.columns: df2 = df2[df2['status_nontender'] != 'Gagal/Batal']
     if not df5.empty and 'status_tender' in df5.columns: df5 = df5[df5['status_tender'] != 'Gagal/Batal']
     if not df3.empty and 'status_nontender_pct_ket' in df3.columns: df3 = df3[df3['status_nontender_pct_ket'].astype(str).str.strip() != 'Paket Dibatalkan']
     if not df6.empty and 'status' in df6.columns: df6 = df6[~df6['status'].isin(['CANCELLED_ON_NEGOTIATION', 'CANCELLED_ON_REVIEW', 'CANCELLED'])]
 
-    def get_set(df, col): return set(df[col].astype(str).str.split(';').explode().str.strip()) if not df.empty and col in df.columns else set()
+    def get_set(df, col):
+        if df.empty or col not in df.columns: return set()
+        return {norm_kd(x) for x in df[col].astype(str).str.split(';').explode() if norm_kd(x)}
 
     set_selesai   = get_set(df2_1, 'kd_nontender')
     set_sppbj     = get_set(df2_2, 'kd_nontender')
@@ -265,15 +374,15 @@ def process_tahun(tahun):
         if df.empty or key_col not in df.columns: return res
         for _, r in df.iterrows():
             for k in str(r.get(key_col, '')).split(';'):
-                kd = k.strip()
-                if not kd or kd == 'nan': continue
+                kd = norm_kd(k)
+                if not kd: continue
                 if kd not in res:
                     res[kd] = {'kualitas': 0.0, 'biaya': 0.0, 'waktu': 0.0, 'layanan': 0.0, 'has_data': False}
-                
+
                 indikator = str(r.get('indikator_penilaian', '')).lower()
                 try: nilai = float(r.get('nilai_indikator', 0))
                 except: nilai = 0.0
-                
+
                 if "kualitas dan kuantitas" in indikator: res[kd]['kualitas'] = nilai; res[kd]['has_data'] = True
                 elif "biaya" in indikator: res[kd]['biaya'] = nilai; res[kd]['has_data'] = True
                 elif "waktu" in indikator: res[kd]['waktu'] = nilai; res[kd]['has_data'] = True
@@ -304,7 +413,8 @@ def process_tahun(tahun):
         if not df.empty and val_col in df.columns:
             for _, r in df.iterrows():
                 for k in str(r.get(kd_col, '')).split(';'):
-                    if k.strip(): m[k.strip()] = r.get(val_col)
+                    k = norm_kd(k)
+                    if k: m[k] = r.get(val_col)
         return m
 
     map_nt_kontrak = build_multi_kd_map(df2_1, 'kd_nontender', 'nilai_negosiasi')
@@ -313,7 +423,7 @@ def process_tahun(tahun):
     map_t_kontrak  = build_multi_kd_map(df5_1_1, 'kd_tender', 'nilai_negosiasi')
     map_t_pdn      = build_multi_kd_map(df5_3, 'kd_tender', 'nilai_pdn_kontrak')
     map_t_umk      = build_multi_kd_map(df5_3, 'kd_tender', 'nilai_umk_kontrak')
-    
+
     map_nt_tgl_kontrak = build_multi_kd_map(df2_3, 'kd_nontender', 'tgl_kontrak')
     map_t_tgl_kontrak  = build_multi_kd_map(df5_3, 'kd_tender', 'tgl_kontrak')
     map_nt_penyedia    = build_multi_kd_map(df2_1, 'kd_nontender', 'nama_penyedia')
@@ -324,30 +434,29 @@ def process_tahun(tahun):
     map_t_alamat       = build_multi_kd_map(df5_1_1, 'kd_tender', 'alamat_penyedia')
     map_t_mak          = build_multi_kd_map(df5_1, 'kd_tender', 'mak')
 
-    # === FUNGSI HELPER NULL & MAP BARU ===
+    # === FUNGSI HELPER NULL & MAP ===
     def get_mapped_val(kd_list, map_dict, is_date=False, is_numeric=False):
         if not kd_list: return "" # Jika tidak ada kode paket sama sekali, biarkan kosong
-        
+
         for k in kd_list:
             if k in map_dict:
                 # KONDISI 2: Paket SUDAH SAMPAI tahap ini (kodenya ada di dictionary tahap ini)
-                val = map_dict[k]
-                
+                v = map_dict[k]
+
                 # Jika sudah sampai tahapnya tapi data benar-benar kosong dari LKPP
-                if pd.isna(val) or val is None or str(val).strip() == "" or str(val).lower() in ["nan", "none"]:
+                if pd.isna(v) or v is None or str(v).strip() == "" or str(v).lower() in ["nan", "none"]:
                     return "tidak ada data (null)"
-                    
+
                 if is_date:
-                    t = format_tgl(val)
+                    t = format_tgl(v)
                     return t if t else "tidak ada data (null)"
                 if is_numeric:
-                    try: return float(val)
+                    try: return float(v)
                     except: return "tidak ada data (null)"
-                    
-                return str(val).strip()
-                
-        # KONDISI 1: Jika loop selesai dan paket TIDAK DITEMUKAN di dictionary tahap ini.
-        # Artinya, urutan paket memang BELUM SAMPAI ke tahap ini.
+
+                return str(v).strip()
+
+        # KONDISI 1: paket belum sampai ke tahap ini
         return ""
 
     map_nt_nil_neg = build_multi_kd_map(df2_1, 'kd_nontender', 'nilai_negosiasi')
@@ -383,21 +492,8 @@ def process_tahun(tahun):
     map_t_tgl_bap = build_multi_kd_map(df5_5, 'kd_tender', 'tgl_bap')
     # ==================================
 
-    path_kamus = os.path.join(BASE_DIR, 'data_master', 'kamus_penyedia.json')
-    map_offline_penyedia = {}
-    if os.path.exists(path_kamus):
-        try:
-            with open(path_kamus, 'r', encoding='utf-8') as f:
-                kamus_list = json.load(f)
-                if isinstance(kamus_list, list):
-                   for item in kamus_list:
-                       nama = item.get('nama_penyedia', "")
-                       if item.get('kode_penyedia'): map_offline_penyedia[str(item['kode_penyedia'])] = nama
-                       if item.get('kd_penyedia'): map_offline_penyedia[str(item['kd_penyedia'])] = nama
-        except: pass
-
     # =========================================================================
-    # BLOK BARU: PEMBERSIHAN DATA & PEMETAAN KAJI ULANG 
+    # BLOK: PEMBERSIHAN DATA & PEMETAAN KAJI ULANG (TIDAK DIUBAH)
     # =========================================================================
     status_terakhir = {} # Menyimpan riwayat terakhir: {rup_id: {'tgl': '...', 'is_batal': True/False}}
     kaji_ulang_dict = {}
@@ -410,14 +506,14 @@ def process_tahun(tahun):
                 alasan = str(r.get('alasan_kajiulang', '')).lower()
                 jenis_rev = str(r.get('jenis_revisi', '')).lower()
                 tgl = str(r.get('tgl_kaji_ulang', ''))
-                
+
                 # Cek Indikator Batal dan Aktif (Saringan Kata Kematian & Hakim Waktu)
                 kematian = ['batal', 'pembatalan', 'hapus']
                 is_batal = any(k in alasan for k in kematian) or any(k in jenis_rev for k in kematian)
-                
+
                 # Pengaktifan HANYA SAH jika tidak ada unsur kematian di atas
                 is_aktif = ('aktif' in alasan or 'pengaktifan' in jenis_rev) and not is_batal
-                
+
                 # Fungsi internal pencatat sejarah
                 def catat_sejarah(k_id, batal_flag, tgl_str):
                     if k_id not in status_terakhir:
@@ -434,13 +530,14 @@ def process_tahun(tahun):
                 elif is_aktif:
                     catat_sejarah(lama, False, tgl)
                     catat_sejarah(baru, False, tgl)
-                
+
                 # Masukkan ke kamus jika ini revisi normal (bukan batal)
                 if lama != baru and not is_batal:
                     kaji_ulang_dict[lama] = baru
             except: pass
 
-    # Eksekusi Blacklist HANYA untuk paket yang nasib TERAKHIRNYA adalah batal
+    # Blacklist HANYA untuk paket yang nasib TERAKHIRNYA adalah batal
+    # (dipakai untuk baris Sumber 1 / 1_2 dan pelacakan Kode RUP Baru; TIDAK dipakai membuang baris Inaproc)
     blacklist_rup = {k for k, v in status_terakhir.items() if v['is_batal']}
 
     path_manual_konsol = os.path.join(BASE_DIR, 'data_master', 'manual_konsolidasi.json')
@@ -478,53 +575,40 @@ def process_tahun(tahun):
             return False
         except: return False
 
-    def is_related_list(l_list, r_list):
-        """Memastikan Kiri memiliki ikatan sejarah dengan Kanan secara sejajar"""
-        if l_list == r_list: return True
-        for i in range(len(l_list)):
-            if not is_related(l_list[i], r_list[i]): return False
-        return True
-
     def bersihkan_dan_ambil_kanan(raw_rup_str):
-        if pd.isna(raw_rup_str) or not str(raw_rup_str).strip(): return ""
-        parts = [p.strip() for p in str(raw_rup_str).split(';') if p.strip()]
-        
+        if raw_rup_str is None or pd.isna(raw_rup_str) or not str(raw_rup_str).strip(): return ""
+        parts = [norm_kd(p) for p in str(raw_rup_str).split(';')]
+        parts = [p for p in parts if p]
+
         if len(parts) <= 1:
             return ";".join(parts)
-            
-        # =================================================================
+
         # TAHAP 1: PEMETAAN SILSILAH (Melihat Gambaran Besar)
-        # =================================================================
         families = []
-        for p in parts:
+        for pp in parts:
             found_family = False
             for fam in families:
-                # Jika p punya riwayat dengan salah satu anggota keluarga ini
-                if any(is_related(p, member) for member in fam):
-                    fam.append(p)
+                if any(is_related(pp, member) for member in fam):
+                    fam.append(pp)
                     found_family = True
                     break
             if not found_family:
-                families.append([p]) # Buat keluarga baru jika mandiri
-                
-        # =================================================================
+                families.append([pp]) # Buat keluarga baru jika mandiri
+
         # TAHAP 2: KLASIFIKASI & EKSEKUSI
-        # =================================================================
-        
         # SKENARIO 1: 1 HISTORY PANJANG (Baik Genap/Ganjil)
         if len(families) == 1:
             return parts[-1] # Langsung comot paling kanan
-            
+
         # SKENARIO 2: PASANGAN IDENTIK (Acak / Cermin / Berurutan)
         if len(parts) % 2 == 0:
             mid = len(parts) // 2
             kiri = parts[:mid]
             kanan = parts[mid:]
-            
-            # Cek silang apakah Kiri dan Kanan punya pasangan tepat 1-1
+
             is_pasangan_identik = True
             kanan_terpakai = set()
-            
+
             for k in kiri:
                 punya_pasangan = False
                 for idx_kn, kn in enumerate(kanan):
@@ -535,21 +619,19 @@ def process_tahun(tahun):
                 if not punya_pasangan:
                     is_pasangan_identik = False
                     break
-                    
+
             if is_pasangan_identik:
                 return ";".join(kanan) # Belah 2, Ambil mutlak Kanan
-                
+
         # SKENARIO 3: LONCATAN / JOMBLO / CAMPURAN (A B C)
-        # Eksekusi: Ambil 1 kode paling kanan dari setiap keluarga
         rightmost_set = set(fam[-1] for fam in families)
         final_parts = []
-        
-        # Mempertahankan urutan cetak aslinya
-        for p in parts:
-            if p in rightmost_set:
-                final_parts.append(p)
-                rightmost_set.remove(p) # Kunci agar tidak duplikat
-                
+
+        for pp in parts:
+            if pp in rightmost_set:
+                final_parts.append(pp)
+                rightmost_set.remove(pp) # Kunci agar tidak duplikat
+
         return ";".join(final_parts)
 
     def cari_rup_baru(kode_rup_bersih):
@@ -557,14 +639,14 @@ def process_tahun(tahun):
         if not kode_rup_bersih: return ""
         parts = kode_rup_bersih.split(';')
         results = []
-        for p in parts:
-            if p.isdigit():
-                curr = int(p)
+        for pp in parts:
+            if pp.isdigit():
+                curr = int(pp)
                 if curr in blacklist_rup: continue
-                
+
                 awal = curr
                 visited = set()
-                
+
                 # Telusuri terus ke depan sampai ujung rantai
                 while curr in kaji_ulang_dict and curr not in visited:
                     visited.add(curr)
@@ -574,7 +656,7 @@ def process_tahun(tahun):
                         curr = None
                         break
                     curr = next_rup
-                
+
                 if curr is not None and curr != awal:
                     results.append(str(curr))
         return ";".join(list(dict.fromkeys(results)))
@@ -599,31 +681,31 @@ def process_tahun(tahun):
 
     def get_pagu_multi(kd_list, tipe='s1'):
         if not kd_list: return None
-        total, added = 0, set() 
+        total, added = 0, set()
         for k in kd_list:
             try: k_int = int(float(str(k).strip()))
             except: continue
-            
+
             if k_int in added: continue
             added.add(k_int)
-            
+
             if tipe == 's1':
-                val = map_pagu_s1.get(k_int, map_pagu_s1_3.get(k_int, 0))
+                v = map_pagu_s1.get(k_int, map_pagu_s1_3.get(k_int, 0))
             else:
-                val = map_pagu_s1_2.get(k_int, map_pagu_s1_4.get(k_int, 0))
-                
-            if (pd.isna(val) or float(val) == 0) and k_int in kaji_ulang_dict:
+                v = map_pagu_s1_2.get(k_int, map_pagu_s1_4.get(k_int, 0))
+
+            if (pd.isna(v) or float(v) == 0) and k_int in kaji_ulang_dict:
                 k_baru = kaji_ulang_dict[k_int]
                 if tipe == 's1':
-                    val = map_pagu_s1.get(k_baru, map_pagu_s1_3.get(k_baru, 0))
+                    v = map_pagu_s1.get(k_baru, map_pagu_s1_3.get(k_baru, 0))
                 else:
-                    val = map_pagu_s1_2.get(k_baru, map_pagu_s1_4.get(k_baru, 0))
-                    
-            total += float(val) if not pd.isna(val) else 0
+                    v = map_pagu_s1_2.get(k_baru, map_pagu_s1_4.get(k_baru, 0))
+
+            total += float(v) if not pd.isna(v) else 0
         return total if total != 0 else None
 
     def build_df_map(df_source):
-        if not df_source.empty:
+        if not df_source.empty and 'kd_rup' in df_source.columns:
             df_clean = df_source.dropna(subset=['kd_rup']).drop_duplicates(subset=['kd_rup']).copy()
             df_clean['kd_rup'] = df_clean['kd_rup'].apply(lambda x: int(float(str(x).strip())))
             return df_clean.set_index('kd_rup')
@@ -632,25 +714,29 @@ def process_tahun(tahun):
     df1_map, df1_2_map, df1_3_map, df1_4_map = build_df_map(df1), build_df_map(df1_2), build_df_map(df1_3), build_df_map(df1_4)
     map_status_konsol = {}
     if not df1_3.empty and 'kd_rup' in df1_3.columns and 'status_konsolidasi' in df1_3.columns:
-        map_status_konsol = {int(float(str(k).strip())): v for k, v in zip(df1_3['kd_rup'], df1_3['status_konsolidasi']) if pd.notna(k) and str(k).strip().isdigit()}
+        # Kunci diubah ke int lewat int(float(..)) agar tetap terbaca walau kolom kd_rup berubah jadi float (mis. "65400376.0")
+        for k, v in zip(df1_3['kd_rup'], df1_3['status_konsolidasi']):
+            try: k_int = int(float(str(k).strip()))
+            except: continue
+            if pd.notna(v) and str(v).strip(): map_status_konsol[k_int] = v
 
     def get_s1(kd, col, tipe='s1'):
         try:
-            if pd.isna(kd): return None
+            if kd is None or pd.isna(kd): return None
             kd_match = int(float(str(kd).strip()))
             if tipe == 's1':
-                if not df1_map.empty and kd_match in df1_map.index and not pd.isna(df1_map.loc[kd_match, col]): return df1_map.loc[kd_match, col]
-                if not df1_3_map.empty and kd_match in df1_3_map.index and not pd.isna(df1_3_map.loc[kd_match, col]): return df1_3_map.loc[kd_match, col]
+                if not df1_map.empty and kd_match in df1_map.index and col in df1_map.columns and not pd.isna(df1_map.loc[kd_match, col]): return df1_map.loc[kd_match, col]
+                if not df1_3_map.empty and kd_match in df1_3_map.index and col in df1_3_map.columns and not pd.isna(df1_3_map.loc[kd_match, col]): return df1_3_map.loc[kd_match, col]
             elif tipe == 's1_2':
-                if not df1_2_map.empty and kd_match in df1_2_map.index and not pd.isna(df1_2_map.loc[kd_match, col]): return df1_2_map.loc[kd_match, col]
-                if not df1_4_map.empty and kd_match in df1_4_map.index and not pd.isna(df1_4_map.loc[kd_match, col]): return df1_4_map.loc[kd_match, col]
+                if not df1_2_map.empty and kd_match in df1_2_map.index and col in df1_2_map.columns and not pd.isna(df1_2_map.loc[kd_match, col]): return df1_2_map.loc[kd_match, col]
+                if not df1_4_map.empty and kd_match in df1_4_map.index and col in df1_4_map.columns and not pd.isna(df1_4_map.loc[kd_match, col]): return df1_4_map.loc[kd_match, col]
             return None
         except: return None
 
-    def clean_kd(val):
-        if pd.isna(val) or str(val).strip() in ["", "nan", "None"]: return ""
-        try: return str(int(float(val)))
-        except: return str(val).strip()
+    def clean_kd(v):
+        if pd.isna(v) or str(v).strip() in ["", "nan", "None"]: return ""
+        try: return str(int(float(v)))
+        except: return str(v).strip()
 
     def build_anggaran_map(df_ang):
         if df_ang.empty: return {}
@@ -660,19 +746,19 @@ def process_tahun(tahun):
             if pd.isna(kd): continue
             try: kd_int = int(float(str(kd).strip()))
             except: continue
-            
+
             if kd_int not in ang_map: ang_map[kd_int] = {'sd': [], 'mak': [], 'kd_keg': [], 'kd_sub': []}
             sd = str(row.get('sumber_dana', '')).strip()
             mak = str(row.get('mak', '')).strip()
-            
+
             keg = clean_kd(row.get('kd_kegiatan'))
             sub = clean_kd(row.get('kd_subkegiatan'))
-            
+
             if sd and sd != 'nan': ang_map[kd_int]['sd'].append(sd)
             if mak and mak != 'nan': ang_map[kd_int]['mak'].append(mak)
             if keg: ang_map[kd_int]['kd_keg'].append(keg)
             if sub: ang_map[kd_int]['kd_sub'].append(sub)
-            
+
         for k in ang_map:
             ang_map[k]['sd'] = "; ".join(list(dict.fromkeys(ang_map[k]['sd'])))
             ang_map[k]['mak'] = "; ".join(list(dict.fromkeys(ang_map[k]['mak'])))
@@ -685,13 +771,13 @@ def process_tahun(tahun):
 
     # Membangun kamus master
     map_prog = dict(zip(df_prog['kd_program_str'].astype(str).str.strip(), df_prog['nama_program'])) if not df_prog.empty and 'kd_program_str' in df_prog.columns else {}
-    
+
     map_keg = {}
     if not df_keg.empty and 'kd_kegiatan' in df_keg.columns:
         for k, v in zip(df_keg['kd_kegiatan'], df_keg['nama_kegiatan']):
             k_cln = clean_kd(k)
             if k_cln: map_keg[k_cln] = str(v).strip()
-            
+
     map_sub = {}
     if not df_sub.empty and 'kd_subkegiatan' in df_sub.columns:
         for k, v in zip(df_sub['kd_subkegiatan'], df_sub['nama_subkegiatan']):
@@ -714,7 +800,7 @@ def process_tahun(tahun):
         map_ang = map_ang_s if is_swakelola else map_ang_p
         map_master = map_sub if is_sub else map_keg
         key_kd = 'kd_sub' if is_sub else 'kd_keg'
-        
+
         hasil = []
         for k in kd_list:
             try: k_int = int(float(str(k).strip()))
@@ -723,7 +809,7 @@ def process_tahun(tahun):
             for kd in kds:
                 if str(kd) in map_master:
                     hasil.append(map_master[str(kd)])
-        
+
         if not hasil: return ""
         unik = list(dict.fromkeys(hasil))
         return "; ".join(unik)
@@ -733,21 +819,33 @@ def process_tahun(tahun):
         res = [map_ang[k][key] for k in kd_list if k in map_ang and map_ang[k][key]]
         return "; ".join(list(dict.fromkeys(res)))
 
+    # ---------------------------------------------------------------
+    # executed_rups: RUP yang SUDAH terealisasi (tidak boleh muncul lagi sebagai "Pengumuman RUP")
+    # = logika lama (tabel transaksi) + seluruh Kode RUP dari Inaproc
+    # ---------------------------------------------------------------
     executed_rups = set()
+
+    def tambah_executed(raw_k):
+        bersih = bersihkan_dan_ambil_kanan(raw_k)
+        for k_str in bersih.split(';'):
+            if k_str.strip().isdigit():
+                curr = int(k_str.strip())
+                executed_rups.add(curr)
+                # Lacak sampai ujung riwayat agar RUP Baru tidak lolos ke Pengumuman RUP
+                visited = set()
+                while curr in kaji_ulang_dict and curr not in visited:
+                    visited.add(curr)
+                    curr = kaji_ulang_dict[curr]
+                    executed_rups.add(curr)
+
     for df_trans, col_name in [(df2,'kd_rup_raw'), (df3,'kd_rup_raw'), (df4,'kd_rup_raw'), (df5,'kd_rup_raw'), (df6,'rup_code_raw'), (df7,'kd_rup_raw')]:
         if not df_trans.empty and col_name in df_trans.columns:
             for raw_k in df_trans[col_name]:
-                bersih = bersihkan_dan_ambil_kanan(raw_k)
-                for k_str in bersih.split(';'):
-                    if k_str.strip().isdigit():
-                        curr = int(k_str.strip())
-                        executed_rups.add(curr)
-                        # Lacak sampai ujung riwayat agar RUP Baru tidak lolos ke Pengumuman RUP
-                        visited = set()
-                        while curr in kaji_ulang_dict and curr not in visited:
-                            visited.add(curr)
-                            curr = kaji_ulang_dict[curr]
-                            executed_rups.add(curr)
+                tambah_executed(raw_k)
+
+    if not df_ina.empty and 'kode_rup' in df_ina.columns:
+        for raw_k in df_ina['kode_rup']:
+            tambah_executed(raw_k)
 
     def format_satker(nama, kd):
         n = str(nama).strip() if pd.notna(nama) and str(nama).lower() not in ['nan', 'none', ''] else ""
@@ -757,377 +855,381 @@ def process_tahun(tahun):
         if n and k: return f"{n} - {k}"
         return n if n else ""
 
-    data_s2=[]
-    for _, r in df2.iterrows():
-        raw_rup = r.get('kd_rup_raw')
-        kode_rup_asli_kotor = bersihkan_dan_ambil_kanan(raw_rup)
-        
-        # Saringan Konsolidasi: Buang RUP yang batal, sisakan yang hidup
-        cleaned_list = [int(i.strip()) for i in kode_rup_asli_kotor.split(';') if i.strip().isdigit() and int(i.strip()) not in blacklist_rup]
-        
-        # Buang baris paket INI HANYA JIKA semua RUP-nya batal
-        if not cleaned_list: continue 
-        
-        kode_rup_asli = ";".join(map(str, cleaned_list))
-        kode_rup_baru = cari_rup_baru(kode_rup_asli)
-
-        kd_lookup = cleaned_list[0] if cleaned_list else r.get('kd_rup')
-        kd_nt_list = [i.strip() for i in str(r.get('kd_nontender', '')).split(';')] if pd.notna(r.get('kd_nontender')) else []
-        status_awal = r.get('status_nontender')
-        
-        if pd.notna(status_awal) and 'berlangsung' in str(status_awal).lower():
-            found_in_selesai = any(k in s for k in kd_nt_list for s in [set_kinerja_nt, set_bapbast, set_spmkspp, set_kontrak, set_sppbj, set_selesai])
-            status = 'Berlangsung' if found_in_selesai else 'Pemilihan Penyedia'
-        else:
-            status = status_awal
-            for k in kd_nt_list:
-                if k in set_kinerja_nt: status='Kinerja Dinilai'; break
-                elif k in set_bapbast: status='BAPBAST'; break
-                elif k in set_spmkspp: status='SPMKSPP'; break
-                elif k in set_kontrak: status='Kontrak'; break
-                elif k in set_sppbj: status='SPPBJ'; break
-                elif k in set_selesai: status='Non Tender Selesai'; break
-
-        data_s2.append({
-            'Kode Paket': r.get('kd_nontender'), 'Kode RUP': kode_rup_asli, 'Kode RUP Baru': kode_rup_baru, 
-            'Nama Instansi': 'KAB. KOTAWARINGIN BARAT', 'Satuan Kerja': format_satker(r.get('nama_satker'), r.get('kd_satker_str')), 'Nama Paket': r.get('nama_paket'),
-            'Metode Pemilihan': r.get('mtd_pemilihan'), 'Jenis Pengadaan': r.get('jenis_pengadaan'), 'Tahun Anggaran': r.get('tahun_anggaran'),
-            'Sumber Dana': r.get('sumber_dana'), 'MAK': r.get('mak'), 'PDN': get_s1(kd_lookup, 'status_pdn', 's1'), 'UKM': get_s1(kd_lookup, 'status_ukm', 's1'), 
-            'Kualifikasi Paket': get_mapped_val(kd_nt_list, map_nt_kualifikasi), 'Nilai Pagu RUP': get_pagu_multi(cleaned_list, 's1'), 
-            'Nilai Hasil Pemilihan': next((map_nt_kontrak[k] for k in kd_nt_list if k in map_nt_kontrak), "N/A"), 
-            'Nilai Negosiasi': get_mapped_val(kd_nt_list, map_nt_nil_neg, is_numeric=True),
-            'No SPPBJ': get_mapped_val(kd_nt_list, map_nt_no_sppbj), 'Tanggal SPPBJ': get_mapped_val(kd_nt_list, map_nt_tgl_sppbj, is_date=True),
-            'No Kontrak': get_mapped_val(kd_nt_list, map_nt_no_kontrak), 'Tanggal Kontrak': get_mapped_val(kd_nt_list, map_nt_tgl_kontrak, is_date=True),
-            'Jenis Kontrak': get_mapped_val(kd_nt_list, map_nt_jenis_kontrak), 'Nilai Kontrak': get_mapped_val(kd_nt_list, map_nt_nil_kontrak, is_numeric=True),
-            'Status Kontrak': get_mapped_val(kd_nt_list, map_nt_status_kontrak), 'No SPMK SPP': get_mapped_val(kd_nt_list, map_nt_no_spmkspp),
-            'Tanggal SPMK SPP': get_mapped_val(kd_nt_list, map_nt_tgl_spmkspp, is_date=True), 'No BAST': get_mapped_val(kd_nt_list, map_nt_no_bast),
-            'Tanggal BAST': get_mapped_val(kd_nt_list, map_nt_tgl_bast, is_date=True), 'No BAP': get_mapped_val(kd_nt_list, map_nt_no_bap),
-            'Tanggal BAP': get_mapped_val(kd_nt_list, map_nt_tgl_bap, is_date=True),
-            'Nama Penyedia': next((map_nt_penyedia[k] for k in kd_nt_list if k in map_nt_penyedia), ""), 
-            'NPWP 15': next((map_nt_npwp[k] for k in kd_nt_list if k in map_nt_npwp), ""), 'NPWP 16': get_mapped_val(kd_nt_list, map_nt_npwp16),
-            'Alamat': next((map_nt_alamat[k] for k in kd_nt_list if k in map_nt_alamat), ""),
-            'Status': status, 'Nilai HPS': r.get('hps'), 'Nilai PDN': next((map_nt_pdn[k] for k in kd_nt_list if k in map_nt_pdn), "N/A"), 
-            'Nilai UMK': next((map_nt_umk[k] for k in kd_nt_list if k in map_nt_umk), "N/A"),
-            'Cara Pengadaan': 'Non Tender', 'Sumber': 'Sumber 2'
-        })
-    df_s2 = pd.DataFrame(data_s2)
-
-    map_s3_penyedia, map_s3_npwp, map_s3_alamat = {}, {}, {}
+    # =========================================================================
+    # PETA PELENGKAP PER SUMBER (pencatatan non tender & swakelola)
+    # =========================================================================
+    map_s3_npwp, map_s3_alamat = {}, {}
     if not df3_1.empty and 'nama_penyedia' in df3_1.columns:
         kd_kolom_3_1 = next((c for c in df3_1.columns if c.lower().strip() in ['kd_nontender_pct', 'kd_nontender', 'kode_paket']), None)
         if kd_kolom_3_1:
             for pkt_id, group in df3_1.groupby(kd_kolom_3_1):
-                penyedia_set = set()
+                npwp_set, alamat_set = [], []
                 for _, row in group.iterrows():
-                    nama = str(row.get('nama_penyedia', '')).strip()
                     npwp = str(row.get('npwp_penyedia', row.get('npwp', ''))).strip()
                     alamat = str(row.get('alamat_penyedia', row.get('alamat', ''))).strip()
-                    if nama and nama.lower() not in ['', 'nan', 'none', '-']:
-                        penyedia_set.add((nama, npwp, alamat))
-                
-                daftar_nama = [item[0] for item in penyedia_set if item[0]]
-                daftar_npwp = [item[1] for item in penyedia_set if item[1]]
-                daftar_alamat = [item[2] for item in penyedia_set if item[2]]
-                
-                if daftar_nama: map_s3_penyedia[str(pkt_id).strip()] = "; ".join(daftar_nama)
-                if daftar_npwp: map_s3_npwp[str(pkt_id).strip()] = "; ".join(daftar_npwp)
-                if daftar_alamat: map_s3_alamat[str(pkt_id).strip()] = "; ".join(daftar_alamat)
+                    if npwp and npwp.lower() not in ['', 'nan', 'none', '-'] and npwp not in npwp_set: npwp_set.append(npwp)
+                    if alamat and alamat.lower() not in ['', 'nan', 'none', '-'] and alamat not in alamat_set: alamat_set.append(alamat)
+                if npwp_set: map_s3_npwp[norm_kd(pkt_id)] = "; ".join(npwp_set)
+                if alamat_set: map_s3_alamat[norm_kd(pkt_id)] = "; ".join(alamat_set)
 
-    data_s3=[]
-    for _, r in df3.iterrows():
-        raw_rup = r.get('kd_rup_raw')
-        kode_rup_asli_kotor = bersihkan_dan_ambil_kanan(raw_rup)
-        
-        # Saringan Konsolidasi: Buang RUP yang batal, sisakan yang hidup
-        cleaned_list = [int(i.strip()) for i in kode_rup_asli_kotor.split(';') if i.strip().isdigit() and int(i.strip()) not in blacklist_rup]
-        
-        # Buang baris paket INI HANYA JIKA semua RUP-nya batal
-        if not cleaned_list: continue 
-        
-        kode_rup_asli = ";".join(map(str, cleaned_list))
-        kode_rup_baru = cari_rup_baru(kode_rup_asli)
-
-        kd_lookup = cleaned_list[0] if cleaned_list else r.get('kd_rup')
-        
-        data_s3.append({
-            'Kode Paket': r.get('kd_nontender_pct'), 'Kode RUP': kode_rup_asli, 'Kode RUP Baru': kode_rup_baru, 
-            'Nama Instansi': 'KAB. KOTAWARINGIN BARAT', 'Satuan Kerja': format_satker(r.get('nama_satker'), r.get('kd_satker_str')), 'Nama Paket': r.get('nama_paket'),
-            'Metode Pemilihan': r.get('mtd_pemilihan'), 'Jenis Pengadaan': r.get('kategori_pengadaan'), 'Tahun Anggaran': r.get('tahun_anggaran'),
-            'Sumber Dana': r.get('sumber_dana'), 'MAK': get_anggaran_multi(cleaned_list, map_ang_p, 'mak'), 'PDN': get_s1(kd_lookup, 'status_pdn', 's1'), 'UKM': get_s1(kd_lookup, 'status_ukm', 's1'), 
-            'Kualifikasi Paket': "", 'Nilai Pagu RUP': get_pagu_multi(cleaned_list, 's1'), 'Nilai Hasil Pemilihan': "" if pd.isna(r.get('total_realisasi')) else r.get('total_realisasi'), 
-            'Nilai Negosiasi': "", 'No SPPBJ': "", 'Tanggal SPPBJ': "", 'No Kontrak': "", 'Tanggal Kontrak': "", 'Jenis Kontrak': "", 'Nilai Kontrak': "",
-            'Status Kontrak': "", 'No SPMK SPP': "", 'Tanggal SPMK SPP': "", 'No BAST': "", 'Tanggal BAST': "", 'No BAP': "", 'Tanggal BAP': "",
-            'Nama Penyedia': map_s3_penyedia.get(str(r.get('kd_nontender_pct')).strip(), ""), 
-            'NPWP 15': map_s3_npwp.get(str(r.get('kd_nontender_pct')).strip(), ""), 'NPWP 16': "",
-            'Alamat': map_s3_alamat.get(str(r.get('kd_nontender_pct')).strip(), ""),
-            'Status': r.get('status_nontender_pct_ket'), 'Nilai HPS': pd.NA,
-            'Nilai PDN': r.get('nilai_pdn_pct'), 'Nilai UMK': r.get('nilai_umk_pct'), 'Cara Pengadaan': 'Pencatatan Non Tender', 'Sumber': 'Sumber 3'
-        })
-    df_s3 = pd.DataFrame(data_s3)
-
-    map_s4_pelaksana, map_s4_npwp = {}, {}
+    map_s4_npwp = {}
     if not df4_1.empty and 'nama_pelaksana' in df4_1.columns:
         kd_kolom_4_1 = next((c for c in df4_1.columns if c.lower().strip() in ['kd_swakelola_pct', 'kd_swakelola', 'kode_paket']), None)
         if kd_kolom_4_1:
             for pkt_id, group in df4_1.groupby(kd_kolom_4_1):
-                pelaksana_set = set()
+                npwp_set = []
                 for _, row in group.iterrows():
-                    nama = str(row.get('nama_pelaksana', '')).strip()
                     npwp = str(row.get('npwp_pelaksana', row.get('npwp', ''))).strip()
-                    if nama and nama.lower() not in ['', 'nan', 'none', '-']:
-                        pelaksana_set.add((nama, npwp))
-                
-                daftar_nama = [item[0] for item in pelaksana_set if item[0]]
-                daftar_npwp = [item[1] for item in pelaksana_set if item[1]]
-                
-                if daftar_nama: map_s4_pelaksana[str(pkt_id).strip()] = "; ".join(daftar_nama)
-                if daftar_npwp: map_s4_npwp[str(pkt_id).strip()] = "; ".join(daftar_npwp)
+                    if npwp and npwp.lower() not in ['', 'nan', 'none', '-'] and npwp not in npwp_set: npwp_set.append(npwp)
+                if npwp_set: map_s4_npwp[norm_kd(pkt_id)] = "; ".join(npwp_set)
 
-    data_s4=[]
-    swakelola_map = df1_2.set_index('kd_rup')['tipe_swakelola'] if not df1_2.empty else {}
-    swakelola_map_fallback = df1_4.set_index('kd_rup')['tipe_swakelola'] if not df1_4.empty else {}
-    
-    for _, r in df4.iterrows():
-        raw_rup = r.get('kd_rup_raw')
-        kode_rup_asli_kotor = bersihkan_dan_ambil_kanan(raw_rup)
-        
-        # Saringan Konsolidasi: Buang RUP yang batal, sisakan yang hidup
-        cleaned_list = [int(i.strip()) for i in kode_rup_asli_kotor.split(';') if i.strip().isdigit() and int(i.strip()) not in blacklist_rup]
-        
-        # Buang baris paket INI HANYA JIKA semua RUP-nya batal
-        if not cleaned_list: continue 
-        
+    # Cadangan Kode RUP: pencatatan non tender realisasi (kolom kd_rup_paket)
+    map_s3_rup_realisasi = {}
+    if not df3_1.empty and 'kd_rup_paket' in df3_1.columns:
+        kd_kolom_rup = next((c for c in df3_1.columns if c.lower().strip() in ['kd_nontender_pct', 'kd_nontender', 'kode_paket']), None)
+        if kd_kolom_rup:
+            for pkt_id, group in df3_1.groupby(kd_kolom_rup):
+                rups = []
+                for x in group['kd_rup_paket']:
+                    x = norm_kd(x)
+                    if x and x not in rups: rups.append(x)
+                if rups: map_s3_rup_realisasi[norm_kd(pkt_id)] = ";".join(rups)
+
+    # =========================================================================
+    # BAGIAN BARU: BANGUN BARIS REALISASI DARI INAPROC (DATA DASAR)
+    # 9 kolom data dasar diisi dari Inaproc & TIDAK diubah lagi setelah ini
+    # =========================================================================
+    def alasan_pdn_ukm(kd, cleaned):
+        """Alasan PDN/UKM bernilai N/A (RUP yang dipakai = Kode RUP pertama, bukan Kode RUP Baru)"""
+        if not cleaned: return "Kode RUP kosong"
+        ada = (not df1_map.empty and kd in df1_map.index) or (not df1_3_map.empty and kd in df1_3_map.index)
+        if not ada: return f"RUP {kd} tidak ditemukan di file RUP penyedia"
+        return f"RUP {kd} ditemukan tetapi status PDN/UKM kosong di data RUP"
+
+    rantai_nt = [(set_kinerja_nt, 'Kinerja Dinilai'), (set_bapbast, 'BAPBAST'), (set_spmkspp, 'SPMKSPP'),
+                 (set_kontrak, 'Kontrak'), (set_sppbj, 'SPPBJ'), (set_selesai, 'Non Tender Selesai')]
+    rantai_t  = [(set_kinerja_t, 'Kinerja Dinilai'), (set_t_bapbast, 'BAPBAST'), (set_t_spmkspp, 'SPMKSPP'),
+                 (set_t_kontrak, 'Kontrak'), (set_t_sppbj, 'SPPBJ'), (set_t_selesai, 'Tender Selesai')]
+
+    def _peta_swakelola(df):
+        if df.empty or 'kd_rup' not in df.columns or 'tipe_swakelola' not in df.columns: return {}
+        return df.dropna(subset=['kd_rup']).drop_duplicates(subset=['kd_rup']).set_index('kd_rup')['tipe_swakelola'].to_dict()
+    swakelola_map = _peta_swakelola(df1_2)
+    swakelola_map_fallback = _peta_swakelola(df1_4)
+    jumlah_metode_cadangan = 0
+    jumlah_jenis_cadangan = 0
+
+    data_inaproc = []
+    jumlah_tidak_cocok = 0
+    jumlah_rup_cadangan = {}
+    perlu_dicek = []   # baris yang perlu dicek manual (Tidak Cocok / Kode RUP kosong)
+    nama_tabel = {'df2': 'tender_non-tender-pengumuman (kd_nontender)', 'df3': 'tender_pencatatan-non-tender (kd_nontender_pct)',
+                  'df4': 'tender_pencatatan-swakelola (kd_swakelola_pct)', 'df5': 'tender_pengumuman (kd_tender)',
+                  'df6': 'ekatalog_paket-e-purchasing (order_id)', 'df7': 'ekatalog-archive_paket-e-purchasing (kd_paket)'}
+
+    for _, ina in df_ina.iterrows():
+        kode_paket = norm_kd(ina.get('kode_paket'))
+        kd_list = [kode_paket] if kode_paket else []
+
+        # --- Cari baris sumber berdasarkan Kode Paket ---
+        tipe = resolve_tipe_sumber(ina.get('sumber_transaksi'))
+        kandidat = [tipe] if tipe else ['df5', 'df2', 'df3', 'df4', 'df6', 'df7']
+        r, tipe_found = None, None
+        for t in kandidat:
+            hit = idx_map[t].get(kode_paket)
+            if hit is not None:
+                r, tipe_found = hit, t
+                break
+
+        # --- Kode RUP: tetap lewat kode pembersihan lama ---
+        # Urutan sumber: 1) Inaproc  2) tabel sumber (kd_rup / rup_code)  3) pencatatan non tender realisasi (kd_rup_paket)
+        kode_rup_bersih = bersihkan_dan_ambil_kanan(ina.get('kode_rup'))
+        asal_rup = 'Inaproc'
+        if not kode_rup_bersih and r is not None:
+            kode_rup_bersih = bersihkan_dan_ambil_kanan(r.get('rup_code' if tipe_found == 'df6' else 'kd_rup'))
+            if kode_rup_bersih: asal_rup = 'Tabel sumber'
+        if not kode_rup_bersih and kode_paket in map_s3_rup_realisasi:
+            kode_rup_bersih = bersihkan_dan_ambil_kanan(map_s3_rup_realisasi[kode_paket])
+            if kode_rup_bersih: asal_rup = 'Realisasi (kd_rup_paket)'
+        cleaned_list = [int(i.strip()) for i in kode_rup_bersih.split(';') if i.strip().isdigit()]
         kode_rup_asli = ";".join(map(str, cleaned_list))
         kode_rup_baru = cari_rup_baru(kode_rup_asli)
+        kd_lookup = cleaned_list[0] if cleaned_list else None
+        if asal_rup != 'Inaproc':
+            jumlah_rup_cadangan[asal_rup] = jumlah_rup_cadangan.get(asal_rup, 0) + 1
+            tambah_executed(kode_rup_asli)   # RUP hasil cadangan juga dianggap sudah terealisasi
 
-        kd_lookup = cleaned_list[0] if cleaned_list else r.get('kd_rup')
+        total_nilai = val(ina, 'total_nilai', "")
 
-        jenis = f"Swakelola {int(swakelola_map[kd_lookup])}" if kd_lookup in swakelola_map else (f"Swakelola {int(swakelola_map_fallback[kd_lookup])}" if kd_lookup in swakelola_map_fallback else "N/A")
-        
-        data_s4.append({
-            'Kode Paket': r.get('kd_swakelola_pct'), 'Kode RUP': kode_rup_asli, 'Kode RUP Baru': kode_rup_baru, 
-            'Nama Instansi': 'KAB. KOTAWARINGIN BARAT', 'Satuan Kerja': format_satker(r.get('nama_satker'), r.get('kd_satker_str')), 'Nama Paket': r.get('nama_paket'),
-            'Metode Pemilihan': 'Swakelola', 'Jenis Pengadaan': jenis, 'Tahun Anggaran': r.get('tahun_anggaran'),
-            'Sumber Dana': r.get('sumber_dana'), 'MAK': get_anggaran_multi(cleaned_list, map_ang_s, 'mak'), 'PDN': "PDN" if r.get('nilai_pdn_pct', 0)!=0 else "Tidak", 'UKM': "UKM" if r.get('nilai_umk_pct', 0)!=0 else "Tidak",
-            'Kualifikasi Paket': "", 'Nilai Pagu RUP': get_pagu_multi(cleaned_list, 's1_2'), 'Nilai Hasil Pemilihan': "" if pd.isna(r.get('total_realisasi')) else r.get('total_realisasi'),
-            'Nilai Negosiasi': "", 'No SPPBJ': "", 'Tanggal SPPBJ': "", 'No Kontrak': "", 'Tanggal Kontrak': "", 'Jenis Kontrak': "", 'Nilai Kontrak': "",
-            'Status Kontrak': "", 'No SPMK SPP': "", 'Tanggal SPMK SPP': "", 'No BAST': "", 'Tanggal BAST': "", 'No BAP': "", 'Tanggal BAP': "",
-            'Nama Penyedia': map_s4_pelaksana.get(str(r.get('kd_swakelola_pct')).strip(), ""), 
-            'NPWP 15': map_s4_npwp.get(str(r.get('kd_swakelola_pct')).strip(), ""), 'NPWP 16': "", 'Alamat': "",
-            'Status': r.get('status_swakelola_pct_ket'), 'Nilai HPS': pd.NA, 'Nilai PDN': r.get('nilai_pdn_pct'), 'Nilai UMK': r.get('nilai_umk_pct'),
-            'Cara Pengadaan': 'Pencatatan Swakelola', 'Sumber': 'Sumber 4'
-        })
-    df_s4 = pd.DataFrame(data_s4)
+        # --- Metode Pemilihan: jika kosong / "-" -> ambil seperti kode lama (dari tabel sumber, lalu RUP) ---
+        metode = val(ina, 'metode_pengadaan')
+        if norm_kd(metode) in ('', '-'):
+            m_cad = ""
+            if r is not None:
+                if tipe_found == 'df4': m_cad = 'Swakelola'
+                elif tipe_found in ('df6', 'df7'): m_cad = 'E-Purchasing'
+                else: m_cad = val(r, 'mtd_pemilihan')
+            if norm_kd(m_cad) in ('', '-'):
+                m_cad = get_s1(kd_lookup, 'metode_pengadaan', 's1') or ""
+            if norm_kd(m_cad) not in ('', '-'):
+                metode = m_cad
+                jumlah_metode_cadangan += 1
 
-    data_s5=[]
-    for _, r in df5.iterrows():
-        raw_rup = r.get('kd_rup_raw')
-        kode_rup_asli_kotor = bersihkan_dan_ambil_kanan(raw_rup)
-        
-        # Saringan Konsolidasi: Buang RUP yang batal, sisakan yang hidup
-        cleaned_list = [int(i.strip()) for i in kode_rup_asli_kotor.split(';') if i.strip().isdigit() and int(i.strip()) not in blacklist_rup]
-        
-        # Buang baris paket INI HANYA JIKA semua RUP-nya batal
-        if not cleaned_list: continue 
-        
-        kode_rup_asli = ";".join(map(str, cleaned_list))
-        kode_rup_baru = cari_rup_baru(kode_rup_asli)
+        # --- Jenis Pengadaan: jika kosong / "-" -> ambil seperti kode lama (dari tabel sumber, lalu RUP) ---
+        jenis = val(ina, 'jenis_pengadaan')
+        if norm_kd(jenis) in ('', '-'):
+            j_cad = ""
+            if r is not None:
+                if tipe_found == 'df3': j_cad = val(r, 'kategori_pengadaan')
+                elif tipe_found == 'df4':
+                    tsw = val(r, 'tipe_swakelola', None)
+                    if tsw is None: tsw = swakelola_map.get(kd_lookup, swakelola_map_fallback.get(kd_lookup))
+                    try: j_cad = f"Swakelola {int(float(tsw))}"
+                    except: j_cad = ""
+                elif tipe_found in ('df6', 'df7'): j_cad = get_s1(kd_lookup, 'jenis_pengadaan', 's1') or ""
+                else: j_cad = val(r, 'jenis_pengadaan')
+            if norm_kd(j_cad) in ('', '-'):
+                j_cad = get_s1(kd_lookup, 'jenis_pengadaan', 's1') or ""
+            if norm_kd(j_cad) in ('', '-') and tipe_found == 'df4':
+                j_cad = "N/A"   # sama seperti kode lama: swakelola tanpa tipe diisi "N/A"
+            if norm_kd(j_cad) not in ('', '-'):
+                jenis = j_cad
+                jumlah_jenis_cadangan += 1
 
-        kd_lookup = cleaned_list[0] if cleaned_list else r.get('kd_rup')
-        kd_t_list = [i.strip() for i in str(r.get('kd_tender', '')).split(';')] if pd.notna(r.get('kd_tender')) else []
-        status_awal = r.get('status_tender')
-        
-        if pd.notna(status_awal) and 'berlangsung' in str(status_awal).lower():
-            found_in_selesai = any(k in s for k in kd_t_list for s in [set_kinerja_t, set_t_bapbast, set_t_spmkspp, set_t_kontrak, set_t_sppbj, set_t_selesai])
-            status = 'Berlangsung' if found_in_selesai else 'Pemilihan Penyedia'
-        else:
-            status = status_awal
-            for k in kd_t_list:
-                if k in set_kinerja_t: status='Kinerja Dinilai'; break
-                elif k in set_t_bapbast: status='BAPBAST'; break
-                elif k in set_t_spmkspp: status='SPMKSPP'; break
-                elif k in set_t_kontrak: status='Kontrak'; break
-                elif k in set_t_sppbj: status='SPPBJ'; break
-                elif k in set_t_selesai: status='Tender Selesai'; break
+        # --- 9 KOLOM DATA DASAR (dari Inaproc) ---
+        base = {
+            'Kode Paket': kode_paket,
+            'Kode RUP': kode_rup_asli,
+            'Kode RUP Baru': kode_rup_baru,
+            'Nama Instansi': val(ina, 'nama_instansi'),
+            'Satuan Kerja': val(ina, 'nama_satuan_kerja'),
+            'Nama Paket': val(ina, 'nama_paket'),
+            'Metode Pemilihan': metode,
+            'Jenis Pengadaan': jenis,
+            'Nama Penyedia': val(ina, 'nama_penyedia'),
+            'Nilai Hasil Pemilihan': total_nilai,
+        }
 
-        mtd = str(r.get('mtd_pemilihan', '')).strip().lower()
-        kat_metode = 'Seleksi' if mtd == 'seleksi' else ('Tender Cepat' if mtd == 'tender cepat' else 'Tender')
+        det = {c: "" for c in KOLOM_DETAIL}
 
-        data_s5.append({
-            'Kode Paket': r.get('kd_tender'), 'Kode RUP': kode_rup_asli, 'Kode RUP Baru': kode_rup_baru, 
-            'Nama Instansi': 'KAB. KOTAWARINGIN BARAT', 'Satuan Kerja': format_satker(r.get('nama_satker'), r.get('kd_satker_str')), 'Nama Paket': r.get('nama_paket'),
-            'Metode Pemilihan': r.get('mtd_pemilihan'), 'Jenis Pengadaan': r.get('jenis_pengadaan'), 'Tahun Anggaran': r.get('tahun_anggaran'),
-            'Sumber Dana': r.get('sumber_dana'), 'MAK': next((map_t_mak[k] for k in kd_t_list if k in map_t_mak), ""), 'PDN': get_s1(kd_lookup, 'status_pdn', 's1'), 'UKM': get_s1(kd_lookup, 'status_ukm', 's1'), 
-            'Kualifikasi Paket': get_mapped_val(kd_t_list, map_t_kualifikasi), 'Nilai Pagu RUP': get_pagu_multi(cleaned_list, 's1'), 
-            'Nilai Hasil Pemilihan': next((map_t_kontrak[k] for k in kd_t_list if k in map_t_kontrak), "N/A"), 
-            'Nilai Negosiasi': get_mapped_val(kd_t_list, map_t_nil_neg, is_numeric=True),
-            'No SPPBJ': get_mapped_val(kd_t_list, map_t_no_sppbj), 'Tanggal SPPBJ': get_mapped_val(kd_t_list, map_t_tgl_sppbj, is_date=True),
-            'No Kontrak': get_mapped_val(kd_t_list, map_t_no_kontrak), 'Tanggal Kontrak': get_mapped_val(kd_t_list, map_t_tgl_kontrak, is_date=True),
-            'Jenis Kontrak': get_mapped_val(kd_t_list, map_t_jenis_kontrak), 'Nilai Kontrak': get_mapped_val(kd_t_list, map_t_nil_kontrak, is_numeric=True),
-            'Status Kontrak': get_mapped_val(kd_t_list, map_t_status_kontrak), 'No SPMK SPP': get_mapped_val(kd_t_list, map_t_no_spmkspp),
-            'Tanggal SPMK SPP': get_mapped_val(kd_t_list, map_t_tgl_spmkspp, is_date=True), 'No BAST': get_mapped_val(kd_t_list, map_t_no_bast),
-            'Tanggal BAST': get_mapped_val(kd_t_list, map_t_tgl_bast, is_date=True), 'No BAP': get_mapped_val(kd_t_list, map_t_no_bap),
-            'Tanggal BAP': get_mapped_val(kd_t_list, map_t_tgl_bap, is_date=True),
-            'Nama Penyedia': next((map_t_penyedia[k] for k in kd_t_list if k in map_t_penyedia), ""), 
-            'NPWP 15': next((map_t_npwp[k] for k in kd_t_list if k in map_t_npwp), ""), 'NPWP 16': get_mapped_val(kd_t_list, map_t_npwp16),
-            'Alamat': next((map_t_alamat[k] for k in kd_t_list if k in map_t_alamat), ""),
-            'Status': status, 'Nilai HPS': r.get('hps'), 'Nilai PDN': next((map_t_pdn[k] for k in kd_t_list if k in map_t_pdn), "N/A"), 
-            'Nilai UMK': next((map_t_umk[k] for k in kd_t_list if k in map_t_umk), "N/A"),
-            'Cara Pengadaan': kat_metode, 'Sumber': 'Sumber 5'
-        })
-    df_s5 = pd.DataFrame(data_s5)
+        # Kolom berbasis Kode RUP (berlaku untuk semua, termasuk "Tidak Cocok")
+        is_swa = (tipe_found == 'df4') or ('swakelola' in str(metode).lower())
+        det['PDN'] = get_s1(kd_lookup, 'status_pdn', 's1')
+        det['UKM'] = get_s1(kd_lookup, 'status_ukm', 's1')
+        det['Nilai Pagu RUP'] = get_pagu_multi(cleaned_list, 's1_2' if is_swa else 's1')
+        det['Sumber Dana'] = val(ina, 'sumber_dana')
+        det['Tahun Anggaran'] = val(ina, 'tahun_anggaran')
 
-    data_s6=[]
-    for _, r in df6.iterrows():
-        raw_rup = r.get('rup_code_raw')
-        kode_rup_asli_kotor = bersihkan_dan_ambil_kanan(raw_rup)
-        
-        # Saringan Konsolidasi: Buang RUP yang batal, sisakan yang hidup
-        cleaned_list = [int(i.strip()) for i in kode_rup_asli_kotor.split(';') if i.strip().isdigit() and int(i.strip()) not in blacklist_rup]
-        
-        # Buang baris paket INI HANYA JIKA semua RUP-nya batal
-        if not cleaned_list: continue 
-        
-        kode_rup_asli = ";".join(map(str, cleaned_list))
-        kode_rup_baru = cari_rup_baru(kode_rup_asli)
+        if r is None:
+            # Kode Paket tidak ditemukan di tabel pencarinya
+            det['Status'] = TEKS_TIDAK_COCOK
+            jumlah_tidak_cocok += 1
 
-        kd_lookup = cleaned_list[0] if cleaned_list else r.get('rup_code')
-        nilai_hasil = r.get('total') if not pd.isna(r.get('total')) else ""
-        
-        try:
-            status_pdn_katalog = get_s1(kd_lookup, 'status_pdn', 's1')
-            status_ukm_katalog = get_s1(kd_lookup, 'status_ukm', 's1')
+        elif tipe_found == 'df2':
+            status = hitung_status(r.get('status_nontender'), kd_list, rantai_nt)
+            det.update({
+                'Tahun Anggaran': val(r, 'tahun_anggaran', det['Tahun Anggaran']),
+                'Sumber Dana': val(r, 'sumber_dana', det['Sumber Dana']), 'MAK': val(r, 'mak'),
+                'Kualifikasi Paket': get_mapped_val(kd_list, map_nt_kualifikasi),
+                'Nilai Negosiasi': get_mapped_val(kd_list, map_nt_nil_neg, is_numeric=True),
+                'No SPPBJ': get_mapped_val(kd_list, map_nt_no_sppbj), 'Tanggal SPPBJ': get_mapped_val(kd_list, map_nt_tgl_sppbj, is_date=True),
+                'No Kontrak': get_mapped_val(kd_list, map_nt_no_kontrak), 'Tanggal Kontrak': get_mapped_val(kd_list, map_nt_tgl_kontrak, is_date=True),
+                'Jenis Kontrak': get_mapped_val(kd_list, map_nt_jenis_kontrak), 'Nilai Kontrak': get_mapped_val(kd_list, map_nt_nil_kontrak, is_numeric=True),
+                'Status Kontrak': get_mapped_val(kd_list, map_nt_status_kontrak), 'No SPMK SPP': get_mapped_val(kd_list, map_nt_no_spmkspp),
+                'Tanggal SPMK SPP': get_mapped_val(kd_list, map_nt_tgl_spmkspp, is_date=True), 'No BAST': get_mapped_val(kd_list, map_nt_no_bast),
+                'Tanggal BAST': get_mapped_val(kd_list, map_nt_tgl_bast, is_date=True), 'No BAP': get_mapped_val(kd_list, map_nt_no_bap),
+                'Tanggal BAP': get_mapped_val(kd_list, map_nt_tgl_bap, is_date=True),
+                'NPWP 15': next((map_nt_npwp[k] for k in kd_list if k in map_nt_npwp), ""), 'NPWP 16': get_mapped_val(kd_list, map_nt_npwp16),
+                'Alamat': next((map_nt_alamat[k] for k in kd_list if k in map_nt_alamat), ""),
+                'Status': status, 'Nilai HPS': val(r, 'hps'),
+                'Nilai PDN': next((map_nt_pdn[k] for k in kd_list if k in map_nt_pdn), "N/A"),
+                'Nilai UMK': next((map_nt_umk[k] for k in kd_list if k in map_nt_umk), "N/A"),
+                'Cara Pengadaan': 'Non Tender', 'Sumber': 'Sumber 2'
+            })
+
+        elif tipe_found == 'df3':
+            det.update({
+                'Tahun Anggaran': val(r, 'tahun_anggaran', det['Tahun Anggaran']),
+                'Sumber Dana': val(r, 'sumber_dana', det['Sumber Dana']),
+                'MAK': get_anggaran_multi(cleaned_list, map_ang_p, 'mak'),
+                'NPWP 15': map_s3_npwp.get(kode_paket, ""), 'Alamat': map_s3_alamat.get(kode_paket, ""),
+                'Status': val(r, 'status_nontender_pct_ket'),
+                'Nilai PDN': val(r, 'nilai_pdn_pct'), 'Nilai UMK': val(r, 'nilai_umk_pct'),
+                'Cara Pengadaan': 'Pencatatan Non Tender', 'Sumber': 'Sumber 3'
+            })
+
+        elif tipe_found == 'df4':
+            det.update({
+                'Tahun Anggaran': val(r, 'tahun_anggaran', det['Tahun Anggaran']),
+                'Sumber Dana': val(r, 'sumber_dana', det['Sumber Dana']),
+                'MAK': get_anggaran_multi(cleaned_list, map_ang_s, 'mak'),
+                'PDN': "PDN" if to_float(r.get('nilai_pdn_pct', 0)) != 0 else "Tidak",
+                'UKM': "UKM" if to_float(r.get('nilai_umk_pct', 0)) != 0 else "Tidak",
+                'NPWP 15': map_s4_npwp.get(kode_paket, ""),
+                'Status': val(r, 'status_swakelola_pct_ket'),
+                'Nilai PDN': val(r, 'nilai_pdn_pct'), 'Nilai UMK': val(r, 'nilai_umk_pct'),
+                'Cara Pengadaan': 'Pencatatan Swakelola', 'Sumber': 'Sumber 4'
+            })
+
+        elif tipe_found == 'df5':
+            status = hitung_status(r.get('status_tender'), kd_list, rantai_t)
+            mtd = str(r.get('mtd_pemilihan', '')).strip().lower()
+            kat_metode = 'Seleksi' if mtd == 'seleksi' else ('Tender Cepat' if mtd == 'tender cepat' else 'Tender')
+            det.update({
+                'Tahun Anggaran': val(r, 'tahun_anggaran', det['Tahun Anggaran']),
+                'Sumber Dana': val(r, 'sumber_dana', det['Sumber Dana']),
+                'MAK': next((map_t_mak[k] for k in kd_list if k in map_t_mak), ""),
+                'Kualifikasi Paket': get_mapped_val(kd_list, map_t_kualifikasi),
+                'Nilai Negosiasi': get_mapped_val(kd_list, map_t_nil_neg, is_numeric=True),
+                'No SPPBJ': get_mapped_val(kd_list, map_t_no_sppbj), 'Tanggal SPPBJ': get_mapped_val(kd_list, map_t_tgl_sppbj, is_date=True),
+                'No Kontrak': get_mapped_val(kd_list, map_t_no_kontrak), 'Tanggal Kontrak': get_mapped_val(kd_list, map_t_tgl_kontrak, is_date=True),
+                'Jenis Kontrak': get_mapped_val(kd_list, map_t_jenis_kontrak), 'Nilai Kontrak': get_mapped_val(kd_list, map_t_nil_kontrak, is_numeric=True),
+                'Status Kontrak': get_mapped_val(kd_list, map_t_status_kontrak), 'No SPMK SPP': get_mapped_val(kd_list, map_t_no_spmkspp),
+                'Tanggal SPMK SPP': get_mapped_val(kd_list, map_t_tgl_spmkspp, is_date=True), 'No BAST': get_mapped_val(kd_list, map_t_no_bast),
+                'Tanggal BAST': get_mapped_val(kd_list, map_t_tgl_bast, is_date=True), 'No BAP': get_mapped_val(kd_list, map_t_no_bap),
+                'Tanggal BAP': get_mapped_val(kd_list, map_t_tgl_bap, is_date=True),
+                'NPWP 15': next((map_t_npwp[k] for k in kd_list if k in map_t_npwp), ""), 'NPWP 16': get_mapped_val(kd_list, map_t_npwp16),
+                'Alamat': next((map_t_alamat[k] for k in kd_list if k in map_t_alamat), ""),
+                'Status': status, 'Nilai HPS': val(r, 'hps'),
+                'Nilai PDN': next((map_t_pdn[k] for k in kd_list if k in map_t_pdn), "N/A"),
+                'Nilai UMK': next((map_t_umk[k] for k in kd_list if k in map_t_umk), "N/A"),
+                'Cara Pengadaan': kat_metode, 'Sumber': 'Sumber 5'
+            })
+
+        elif tipe_found == 'df6':
+            nilai_hasil = total_nilai
+            status_pdn_katalog, status_ukm_katalog = det['PDN'], det['UKM']
             nilai_pdn_val = nilai_hasil if str(status_pdn_katalog).strip().upper() == 'PDN' else 0
             nilai_umk_val = nilai_hasil if str(status_ukm_katalog).strip().upper() == 'UKM' else 0
-        except:
-            status_pdn_katalog, status_ukm_katalog, nilai_pdn_val, nilai_umk_val = "N/A", "N/A", "N/A", "N/A"
+            det.update({
+                'Tahun Anggaran': val(r, 'fiscal_year', det['Tahun Anggaran']),
+                'Sumber Dana': val(r, 'funding_source', det['Sumber Dana']), 'MAK': val(r, 'mak'),
+                'No Kontrak': f"EP-{kode_paket}" if kode_paket else "",
+                'NPWP 15': str(val(r, 'npwp_penyedia', val(r, 'npwp', ''))),
+                'Alamat': str(val(r, 'alamat_penyedia', val(r, 'alamat', ''))),
+                'Status': val(r, 'status'),
+                'Nilai PDN': nilai_pdn_val, 'Nilai UMK': nilai_umk_val,
+                'Cara Pengadaan': 'E-Purchasing V6', 'Sumber': 'Sumber 6'
+            })
 
-        kode_p = str(r.get('kode_penyedia', ""))
-        nama_p = map_offline_penyedia.get(kode_p, kode_p) if kode_p and kode_p != "None" else ""
-
-        data_s6.append({
-            'Kode Paket': r.get('order_id'), 'Kode RUP': kode_rup_asli, 'Kode RUP Baru': kode_rup_baru, 
-            'Nama Instansi': 'KAB. KOTAWARINGIN BARAT', 'Satuan Kerja': format_satker(r.get('nama_satker'), r.get('kode_satker')), 'Nama Paket': r.get('rup_name'),
-            'Metode Pemilihan': 'E-Purchasing', 'Jenis Pengadaan': get_s1(kd_lookup, 'jenis_pengadaan', 's1'), 'Tahun Anggaran': r.get('fiscal_year'),
-            'Sumber Dana': r.get('funding_source'), 'MAK': r.get('mak'), 'PDN': status_pdn_katalog, 'UKM': status_ukm_katalog, 
-            'Kualifikasi Paket': "", 'Nilai Pagu RUP': get_pagu_multi(cleaned_list, 's1'), 'Nilai Hasil Pemilihan': nilai_hasil, 
-            'Nilai Negosiasi': "", 'No SPPBJ': "", 'Tanggal SPPBJ': "", 
-            'No Kontrak': f"EP-{r.get('order_id')}" if pd.notna(r.get('order_id')) and str(r.get('order_id')).strip() else "", 
-            'Tanggal Kontrak': "", 'Jenis Kontrak': "", 'Nilai Kontrak': "",
-            'Status Kontrak': "", 'No SPMK SPP': "", 'Tanggal SPMK SPP': "", 'No BAST': "", 'Tanggal BAST': "", 'No BAP': "", 'Tanggal BAP': "",
-            'Nama Penyedia': nama_p, 'NPWP 15': str(r.get('npwp_penyedia', r.get('npwp', ''))), 'NPWP 16': "", 'Alamat': str(r.get('alamat_penyedia', r.get('alamat', ''))),
-            'Status': r.get('status'), 'Nilai HPS': pd.NA, 'Nilai PDN': nilai_pdn_val, 'Nilai UMK': nilai_umk_val,
-            'Cara Pengadaan': 'E-Purchasing V6', 'Sumber': 'Sumber 6'
-        })
-    df_s6 = pd.DataFrame(data_s6)
-
-    data_s7=[]
-    map_satker_v5 = {}
-    if not df7_1.empty:
-        for _, row_s in df7_1.iterrows():
-            kd_s = row_s.get('kd_satker')
-            kd_str = row_s.get('kd_satker_str', kd_s)
-            gabung = format_satker(row_s.get('nama_satker'), kd_str)
-            if pd.notna(kd_s):
-                try: map_satker_v5[str(int(float(kd_s)))] = gabung
-                except: map_satker_v5[str(kd_s).strip()] = gabung
-
-    for _, r in df7.iterrows():
-        raw_rup = r.get('kd_rup_raw')
-        kode_rup_asli_kotor = bersihkan_dan_ambil_kanan(raw_rup)
-        
-        # Saringan Konsolidasi: Buang RUP yang batal, sisakan yang hidup
-        cleaned_list = [int(i.strip()) for i in kode_rup_asli_kotor.split(';') if i.strip().isdigit() and int(i.strip()) not in blacklist_rup]
-        
-        # Buang baris paket INI HANYA JIKA semua RUP-nya batal
-        if not cleaned_list: continue 
-        
-        kode_rup_asli = ";".join(map(str, cleaned_list))
-        kode_rup_baru = cari_rup_baru(kode_rup_asli)
-
-        kd_lookup = cleaned_list[0] if cleaned_list else r.get('kd_rup')
-        nilai_hasil = r.get('total_harga') if not pd.isna(r.get('total_harga')) else ""
-        
-        try:
-            status_pdn_katalog = get_s1(kd_lookup, 'status_pdn', 's1')
-            status_ukm_katalog = get_s1(kd_lookup, 'status_ukm', 's1')
+        elif tipe_found == 'df7':
+            nilai_hasil = total_nilai
+            status_pdn_katalog, status_ukm_katalog = det['PDN'], det['UKM']
             nilai_pdn_val = nilai_hasil if str(status_pdn_katalog).strip().upper() == 'PDN' else 0
             nilai_umk_val = nilai_hasil if str(status_ukm_katalog).strip().upper() == 'UKM' else 0
-        except:
-            status_pdn_katalog, status_ukm_katalog, nilai_pdn_val, nilai_umk_val = "N/A", "N/A", "N/A", "N/A"
+            paket_status_str = r.get('paket_status_str')
+            status_s7 = r.get('status_paket') if paket_status_str == "Paket Proses" else paket_status_str
+            det.update({
+                'Tahun Anggaran': val(r, 'tahun_anggaran', det['Tahun Anggaran']),
+                'Sumber Dana': val(r, 'nama_sumber_dana', det['Sumber Dana']),
+                'MAK': get_anggaran_multi(cleaned_list, map_ang_p, 'mak'),
+                'NPWP 15': str(val(r, 'npwp_penyedia', val(r, 'npwp', ''))),
+                'Alamat': str(val(r, 'alamat_penyedia', val(r, 'alamat', ''))),
+                'Status': status_s7,
+                'Nilai PDN': nilai_pdn_val, 'Nilai UMK': nilai_umk_val,
+                'Cara Pengadaan': 'E-Purchasing V5', 'Sumber': 'Sumber 7'
+            })
 
-        kode_p = str(r.get('kd_penyedia', ""))
-        nama_p = map_offline_penyedia.get(kode_p, kode_p) if kode_p and kode_p != "None" else ""
-        sid = r.get('satker_id')
-        try: key_id = str(int(float(sid))) if pd.notna(sid) else ""
-        except: key_id = str(sid).strip() if pd.notna(sid) else ""
-        
-        paket_status_str = r.get('paket_status_str')
-        status_s7 = r.get('status_paket') if paket_status_str == "Paket Proses" else (r.get('paket_status_str') if paket_status_str == "Paket Selesai" else paket_status_str)
+        row_out = {}
+        row_out.update(det)
+        row_out.update(base)            # data dasar Inaproc selalu menang
+        row_out['Status Realisasi'] = 'Realisasi'
+        data_inaproc.append(row_out)
 
-        data_s7.append({
-            'Kode Paket': r.get('no_paket'), 'Kode RUP': kode_rup_asli, 'Kode RUP Baru': kode_rup_baru, 
-            'Nama Instansi': 'KAB. KOTAWARINGIN BARAT', 'Satuan Kerja': map_satker_v5.get(key_id, ""),
-            'Nama Paket': r.get('nama_paket'), 'Metode Pemilihan': 'E-Purchasing', 'Jenis Pengadaan': get_s1(kd_lookup, 'jenis_pengadaan', 's1'), 'Tahun Anggaran': r.get('tahun_anggaran'),
-            'Sumber Dana': r.get('nama_sumber_dana'), 'MAK': get_anggaran_multi(cleaned_list, map_ang_p, 'mak'), 'PDN': status_pdn_katalog, 'UKM': status_ukm_katalog, 
-            'Kualifikasi Paket': "", 'Nilai Pagu RUP': get_pagu_multi(cleaned_list, 's1'), 'Nilai Hasil Pemilihan': nilai_hasil, 
-            'Nilai Negosiasi': "", 'No SPPBJ': "", 'Tanggal SPPBJ': "", 'No Kontrak': "", 'Tanggal Kontrak': "", 'Jenis Kontrak': "", 'Nilai Kontrak': "",
-            'Status Kontrak': "", 'No SPMK SPP': "", 'Tanggal SPMK SPP': "", 'No BAST': "", 'Tanggal BAST': "", 'No BAP': "", 'Tanggal BAP': "",
-            'Nama Penyedia': nama_p, 'NPWP 15': str(r.get('npwp_penyedia', r.get('npwp', ''))), 'NPWP 16': "", 'Alamat': str(r.get('alamat_penyedia', r.get('alamat', ''))),
-            'Status': status_s7, 'Nilai HPS': pd.NA, 'Nilai PDN': nilai_pdn_val, 'Nilai UMK': nilai_umk_val,
-            'Cara Pengadaan': 'E-Purchasing V5', 'Sumber': 'Sumber 7'
-        })
-    df_s7 = pd.DataFrame(data_s7)
+        masalah = []
+        if r is None:
+            masalah.append("Kode Paket tidak ditemukan di " + (nama_tabel[tipe] if tipe else "semua tabel sumber"))
+        if not kode_rup_asli:
+            masalah.append("Kode RUP kosong (Inaproc, tabel sumber, dan kd_rup_paket)")
+        pdn_k, ukm_k = norm_kd(det.get('PDN')) == '', norm_kd(det.get('UKM')) == ''
+        if pdn_k or ukm_k:
+            label = "PDN & UKM" if (pdn_k and ukm_k) else ("PDN" if pdn_k else "UKM")
+            masalah.append(f"{label} N/A ({alasan_pdn_ukm(kd_lookup, cleaned_list)})")
+        if masalah:
+            perlu_dicek.append({
+                'Masalah': " | ".join(masalah), 'Kode Paket': kode_paket, 'Kode RUP': kode_rup_asli,
+                'Sumber Transaksi (Inaproc)': val(ina, 'sumber_transaksi'), 'Tahapan (Inaproc)': val(ina, 'tahapan_pengadaan'),
+                'Status Paket (Inaproc)': val(ina, 'status_paket'), 'Satuan Kerja': base['Satuan Kerja'],
+                'Nama Paket': base['Nama Paket'], 'Nilai Hasil Pemilihan': base['Nilai Hasil Pemilihan']
+            })
 
-    data_s1_2=[]
+    df_inaproc_rows = pd.DataFrame(data_inaproc)
+    if jumlah_metode_cadangan:
+        log_print(f"ℹ️ Tahun {tahun}: {jumlah_metode_cadangan} baris Metode Pemilihan diisi dari cadangan (Inaproc kosong / '-')")
+    if jumlah_jenis_cadangan:
+        log_print(f"ℹ️ Tahun {tahun}: {jumlah_jenis_cadangan} baris Jenis Pengadaan diisi dari cadangan (Inaproc kosong)")
+    for asal, jml in jumlah_rup_cadangan.items():
+        log_print(f"ℹ️ Tahun {tahun}: {jml} baris Kode RUP-nya diisi dari cadangan: {asal}")
+    df_perlu_dicek = pd.DataFrame(perlu_dicek)
+    if jumlah_tidak_cocok:
+        log_print(f"ℹ️ Tahun {tahun}: {jumlah_tidak_cocok} dari {len(data_inaproc)} baris Inaproc berstatus '{TEKS_TIDAK_COCOK}' (Kode Paket tidak ditemukan di tabel pencarinya)")
+    if perlu_dicek:
+        n_tc = sum('Kode Paket tidak ditemukan' in x['Masalah'] for x in perlu_dicek)
+        n_rk = sum('Kode RUP kosong (' in x['Masalah'] for x in perlu_dicek)
+        n_pu = sum('N/A (' in x['Masalah'] for x in perlu_dicek)
+        log_print(f"🔎 Tahun {tahun}: {len(perlu_dicek)} baris PERLU DICEK MANUAL (Tidak Cocok: {n_tc}, Kode RUP kosong: {n_rk}, PDN/UKM N/A: {n_pu}) -> lihat sheet '3. Perlu Dicek' di Excel.")
+
+    # =========================================================================
+    # BARIS "PENGUMUMAN RUP" (BELUM REALISASI) - DARI SUMBER 1 & 1_2 (LOGIKA LAMA)
+    # =========================================================================
+    swakelola_map = df1_2.set_index('kd_rup')['tipe_swakelola'] if (not df1_2.empty and 'tipe_swakelola' in df1_2.columns) else {}
+
+    data_s1_2 = []
     for _, r in df1_2.iterrows():
         kd = r.get('kd_rup')
+        kd_int = None
         try:
             kd_int = int(float(str(kd).strip()))
             if kd_int in blacklist_rup: continue
         except: pass
-            
+
         if kd not in executed_rups:
             jenis = f"Swakelola {int(swakelola_map[kd])}" if kd in swakelola_map else "N/A"
             kode_rup_baru_s1 = cari_rup_baru(str(kd)) if pd.notna(kd) else ""
             data_s1_2.append({
-                'Kode Paket': pd.NA, 'Kode RUP': kd, 'Kode RUP Baru': kode_rup_baru_s1, 
+                'Kode Paket': pd.NA, 'Kode RUP': kd, 'Kode RUP Baru': kode_rup_baru_s1,
                 'Nama Instansi': 'KAB. KOTAWARINGIN BARAT', 'Satuan Kerja': format_satker(r.get('nama_satker'), r.get('kd_satker_str')), 'Nama Paket': r.get('nama_paket'), 'Metode Pemilihan': 'Swakelola',
-                'Jenis Pengadaan': jenis, 'Tahun Anggaran': r.get('tahun_anggaran'), 'Sumber Dana': map_ang_s.get(kd_int, {}).get('sd', ''), 'MAK': map_ang_s.get(kd_int, {}).get('mak', ''), 'PDN': None, 'UKM': None, 
-                'Kualifikasi Paket': "", 'Nilai Pagu RUP': r.get('pagu'), 'Nilai Hasil Pemilihan': "", 
+                'Jenis Pengadaan': jenis, 'Tahun Anggaran': r.get('tahun_anggaran'), 'Sumber Dana': map_ang_s.get(kd_int, {}).get('sd', ''), 'MAK': map_ang_s.get(kd_int, {}).get('mak', ''), 'PDN': None, 'UKM': None,
+                'Kualifikasi Paket': "", 'Nilai Pagu RUP': r.get('pagu'), 'Nilai Hasil Pemilihan': "",
                 'Nilai Negosiasi': "", 'No SPPBJ': "", 'Tanggal SPPBJ': "", 'No Kontrak': "", 'Tanggal Kontrak': "", 'Jenis Kontrak': "", 'Nilai Kontrak': "",
                 'Status Kontrak': "", 'No SPMK SPP': "", 'Tanggal SPMK SPP': "", 'No BAST': "", 'Tanggal BAST': "", 'No BAP': "", 'Tanggal BAP': "",
                 'Nama Penyedia': "", 'NPWP 15': "", 'NPWP 16': "", 'Alamat': "", 'Status': 'Pengumuman RUP', 'Nilai HPS': pd.NA, 'Nilai PDN': pd.NA, 'Nilai UMK': pd.NA,
-                'Cara Pengadaan': 'Swakelola', 'Sumber': 'Sumber 1_2'
+                'Cara Pengadaan': 'Swakelola', 'Sumber': 'Sumber 1_2', 'Status Realisasi': 'Belum Realisasi'
             })
-    df_s1_2 = pd.DataFrame(data_s1_2)
+    df_s1_2 = pd.DataFrame(data_s1_2).drop_duplicates(ignore_index=True) if data_s1_2 else pd.DataFrame()
 
-    data_s1=[]
+    data_s1 = []
     for _, r in df1.iterrows():
         kd = r.get('kd_rup')
+        kd_int = None
         try:
             kd_int = int(float(str(kd).strip()))
             if kd_int in blacklist_rup: continue
         except: pass
-            
+
         if kd not in executed_rups:
             kode_rup_baru_s1 = cari_rup_baru(str(kd)) if pd.notna(kd) else ""
             data_s1.append({
-                'Kode Paket': pd.NA, 'Kode RUP': kd, 'Kode RUP Baru': kode_rup_baru_s1, 
+                'Kode Paket': pd.NA, 'Kode RUP': kd, 'Kode RUP Baru': kode_rup_baru_s1,
                 'Nama Instansi': 'KAB. KOTAWARINGIN BARAT', 'Satuan Kerja': format_satker(r.get('nama_satker'), r.get('kd_satker_str')), 'Nama Paket': r.get('nama_paket'), 'Metode Pemilihan': r.get('metode_pengadaan'),
                 'Jenis Pengadaan': r.get('jenis_pengadaan'), 'Tahun Anggaran': r.get('tahun_anggaran'), 'Sumber Dana': map_ang_p.get(kd_int, {}).get('sd', ''), 'MAK': map_ang_p.get(kd_int, {}).get('mak', ''), 'PDN': 'PDN' if r.get('status_pdn')=='PDN' else 'Non-PDN',
-                'UKM': 'UKM' if r.get('status_ukm')=='UKM' else 'Non-UKM', 
-                'Kualifikasi Paket': "", 'Nilai Pagu RUP': r.get('pagu'), 'Nilai Hasil Pemilihan': "", 
+                'UKM': 'UKM' if r.get('status_ukm')=='UKM' else 'Non-UKM',
+                'Kualifikasi Paket': "", 'Nilai Pagu RUP': r.get('pagu'), 'Nilai Hasil Pemilihan': "",
                 'Nilai Negosiasi': "", 'No SPPBJ': "", 'Tanggal SPPBJ': "", 'No Kontrak': "", 'Tanggal Kontrak': "", 'Jenis Kontrak': "", 'Nilai Kontrak': "",
                 'Status Kontrak': "", 'No SPMK SPP': "", 'Tanggal SPMK SPP': "", 'No BAST': "", 'Tanggal BAST': "", 'No BAP': "", 'Tanggal BAP': "",
                 'Nama Penyedia': "", 'NPWP 15': "", 'NPWP 16': "", 'Alamat': "", 'Status': 'Pengumuman RUP', 'Nilai HPS': pd.NA, 'Nilai PDN': pd.NA, 'Nilai UMK': pd.NA,
-                'Cara Pengadaan': r.get('metode_pengadaan'), 'Sumber': 'Sumber 1'
+                'Cara Pengadaan': r.get('metode_pengadaan'), 'Sumber': 'Sumber 1', 'Status Realisasi': 'Belum Realisasi'
             })
-    df_s1 = pd.DataFrame(data_s1)
+    df_s1 = pd.DataFrame(data_s1).drop_duplicates(ignore_index=True) if data_s1 else pd.DataFrame()
 
-    final_df = pd.concat([df_s2, df_s3, df_s4, df_s1_2, df_s5, df_s6, df_s7, df_s1], ignore_index=True)
-    final_df = final_df.drop_duplicates(ignore_index=True)
-    final_df = final_df.map(lambda x: re.sub(r'[\x00-\x1F]', '', str(x)) if isinstance(x, str) else x)
+    # Baris Inaproc TIDAK di-drop_duplicates (jumlah baris harus sesuai Inaproc)
+    bagian = [d for d in [df_inaproc_rows, df_s1_2, df_s1] if not d.empty]
+    final_df = pd.concat(bagian, ignore_index=True) if bagian else pd.DataFrame()
+    if final_df.empty:
+        log_print(f"⚠️ Tahun {tahun}: tidak ada data sama sekali (Inaproc dan RUP kosong). Tahun {tahun} dilewati.")
+        tahun_dilewati.append((tahun, "tidak ada data sama sekali (Inaproc dan RUP kosong)"))
+        return None
+    final_df = final_df.map(bersihkan_teks)
 
     def get_status_konsolidasi(rup_val):
         if pd.isna(rup_val) or not str(rup_val).strip(): return ""
@@ -1138,30 +1240,33 @@ def process_tahun(tahun):
     final_df['Status Konsolidasi'] = final_df['Kode RUP'].apply(get_status_konsolidasi)
 
     cols = [
-        'Kode Paket', 'Kode RUP', 'Kode RUP Baru', 'Nama Instansi', 'Satuan Kerja', 'Nama Paket', 
-        'Metode Pemilihan', 'Jenis Pengadaan', 'Tahun Anggaran', 'Nama Program', 'Nama Kegiatan', 
-        'Nama Sub Kegiatan', 'Sumber Dana', 'MAK', 'PDN', 'UKM', 'Status Konsolidasi', 
-        'Kualifikasi Paket', 'Nilai Pagu RUP', 'Nilai Hasil Pemilihan', 'Nilai Negosiasi', 
-        'No SPPBJ', 'Tanggal SPPBJ', 'No Kontrak', 'Tanggal Kontrak', 'Jenis Kontrak', 
-        'Nilai Kontrak', 'Status Kontrak', 'No SPMK SPP', 'Tanggal SPMK SPP', 'No BAST', 
-        'Tanggal BAST', 'No BAP', 'Tanggal BAP', 'Nama Penyedia', 'NPWP 15', 'NPWP 16', 
-        'Alamat', 'Status', 'Nilai HPS', 'Nilai PDN', 'Nilai UMK', 
+        'Kode Paket', 'Kode RUP', 'Kode RUP Baru', 'Nama Instansi', 'Satuan Kerja', 'Nama Paket',
+        'Metode Pemilihan', 'Jenis Pengadaan', 'Tahun Anggaran', 'Nama Program', 'Nama Kegiatan',
+        'Nama Sub Kegiatan', 'Sumber Dana', 'MAK', 'PDN', 'UKM', 'Status Konsolidasi',
+        'Kualifikasi Paket', 'Nilai Pagu RUP', 'Nilai Hasil Pemilihan', 'Nilai Negosiasi',
+        'No SPPBJ', 'Tanggal SPPBJ', 'No Kontrak', 'Tanggal Kontrak', 'Jenis Kontrak',
+        'Nilai Kontrak', 'Status Kontrak', 'No SPMK SPP', 'Tanggal SPMK SPP', 'No BAST',
+        'Tanggal BAST', 'No BAP', 'Tanggal BAP', 'Nama Penyedia', 'NPWP 15', 'NPWP 16',
+        'Alamat', 'Status', 'Nilai HPS', 'Nilai PDN', 'Nilai UMK',
         'Penilaian Kualitas dan kuantitas dengan indikator kesesuaian', 'Penilaian Biaya dengan indikator kemampuan pengendalian biaya',
         'Penilaian Waktu dengan indikator ketepatan', 'Penilaian Layanan dengan indikator komunikasi dan tingkat respon',
         'Kinerja Penyedia dalam angka', 'Kinerja Penyedia dalam kata',
-        'Cara Pengadaan', 'Sumber'
+        'Cara Pengadaan', 'Sumber', 'Status Realisasi'
     ]
     final_df = final_df.reindex(columns=cols).fillna("")
-    
+
     # Isi Sumber Dana, MAK, Program, Kegiatan, Sub Kegiatan, & Kinerja berdasarkan Kode RUP
+    # (9 kolom data dasar Inaproc TIDAK disentuh di loop ini)
     for idx, row in final_df.iterrows():
         kd_rup_str = str(row['Kode RUP'])
         kd_baru_str = str(row['Kode RUP Baru'])
-        
+
         cleaned_list = [int(i.strip()) for i in kd_rup_str.split(';') if i.strip().isdigit()]
         list_baru = [int(i.strip()) for i in kd_baru_str.split(';') if i.strip().isdigit()]
-        
-        is_swakelola = 'Swakelola' in str(row['Sumber']) or 'Swakelola' in str(row['Jenis Pengadaan']) or 'Sumber 4' in str(row['Sumber']) or 'Sumber 1_2' in str(row['Sumber'])
+
+        is_swakelola = ('Swakelola' in str(row['Sumber']) or 'Swakelola' in str(row['Jenis Pengadaan'])
+                        or 'Sumber 4' in str(row['Sumber']) or 'Sumber 1_2' in str(row['Sumber'])
+                        or str(row['Metode Pemilihan']).strip().lower() == 'swakelola')
         map_ang_target = map_ang_s if is_swakelola else map_ang_p
 
         # 1. Tarik Sumber Dana terpusat dari Anggaran
@@ -1173,30 +1278,30 @@ def process_tahun(tahun):
         mak = get_anggaran_multi(cleaned_list, map_ang_target, 'mak')
         if not mak and list_baru: mak = get_anggaran_multi(list_baru, map_ang_target, 'mak')
         if mak: final_df.at[idx, 'MAK'] = mak
-        
+
         # 3. Tarik Program menggunakan MAK yang baru ditarik
         final_df.at[idx, 'Nama Program'] = get_nama_program(final_df.at[idx, 'MAK'])
-        
+
         # 4. Tarik Kegiatan
         keg = get_kegiatan_sub(cleaned_list, is_swakelola, is_sub=False)
         if not keg and list_baru: keg = get_kegiatan_sub(list_baru, is_swakelola, is_sub=False)
         final_df.at[idx, 'Nama Kegiatan'] = keg
-        
+
         # 5. Tarik Sub Kegiatan
         sub = get_kegiatan_sub(cleaned_list, is_swakelola, is_sub=True)
         if not sub and list_baru: sub = get_kegiatan_sub(list_baru, is_swakelola, is_sub=True)
         final_df.at[idx, 'Nama Sub Kegiatan'] = sub
-        
+
         # 6. Tarik Penilaian Kinerja (Sumber 2 & 5)
         sumber = str(row['Sumber'])
         kual, bia, wak, lay, s_ang, s_kat = "", "", "", "", "", ""
         if "Sumber 2" in sumber:
-            kd_nt_list = [i.strip() for i in str(row['Kode Paket']).split(';')] if pd.notna(row['Kode Paket']) else []
+            kd_nt_list = [norm_kd(i) for i in str(row['Kode Paket']).split(';')] if str(row['Kode Paket']).strip() else []
             kual, bia, wak, lay, s_ang, s_kat = get_kinerja_vals(kd_nt_list, map_sikap_nt)
         elif "Sumber 5" in sumber:
-            kd_t_list = [i.strip() for i in str(row['Kode Paket']).split(';')] if pd.notna(row['Kode Paket']) else []
+            kd_t_list = [norm_kd(i) for i in str(row['Kode Paket']).split(';')] if str(row['Kode Paket']).strip() else []
             kual, bia, wak, lay, s_ang, s_kat = get_kinerja_vals(kd_t_list, map_sikap_t)
-            
+
         if s_ang != "":
             final_df.at[idx, 'Penilaian Kualitas dan kuantitas dengan indikator kesesuaian'] = kual
             final_df.at[idx, 'Penilaian Biaya dengan indikator kemampuan pengendalian biaya'] = bia
@@ -1209,9 +1314,19 @@ def process_tahun(tahun):
     final_df['UKM'] = final_df['UKM'].replace("", "N/A")
     final_df['Status'] = final_df['Status'].apply(lambda x: str(x).replace('_', ' ') if pd.notna(x) else x)
 
-    def safe_numeric(val):
-        if val in ("N/A", "", None) or pd.isna(val): return 0.0
-        try: return float(val)
+    # Program/Kegiatan/Sub Kegiatan/MAK diisi SETELAH pembersihan awal, jadi dibersihkan lagi di sini
+    final_df = final_df.map(bersihkan_teks)
+
+    ringkasan_tahun[tahun] = {
+        'realisasi': int((final_df['Status Realisasi'] == 'Realisasi').sum()),
+        'belum': int((final_df['Status Realisasi'] == 'Belum Realisasi').sum()),
+        'tidak_cocok': jumlah_tidak_cocok,
+        'perlu_dicek': len(perlu_dicek),
+    }
+
+    def safe_numeric(v):
+        if v in ("N/A", "", None) or pd.isna(v): return 0.0
+        try: return float(v)
         except: return 0.0
 
     def aggregate_text(series):
@@ -1221,6 +1336,7 @@ def process_tahun(tahun):
     def aggregate_raw_status(group, pagu_rup, sum_hasil):
         def get_score(s_text):
             s_low = str(s_text).strip().lower()
+            if 'tidak cocok' in s_low: return 0
             if 'batal' in s_low or 'gagal' in s_low or 'cancel' in s_low: return -1
             elif 'kinerja dinilai' in s_low: return 110
             elif 'bapbast' in s_low or 'payment' in s_low or 'completed' in s_low or 'paket selesai' in s_low: return 100
@@ -1235,16 +1351,16 @@ def process_tahun(tahun):
 
         scored_statuses = []
         all_batal, has_proses_berjalan = True, False
-        
+
         for _, row in group.iterrows():
             raw_s = str(row['Status']).strip()
             score = get_score(raw_s)
             if score != -1: all_batal = False
             if 0 < score < 100 and score != 10: has_proses_berjalan = True
             if raw_s: scored_statuses.append((score, raw_s))
-            
+
         if all_batal or not scored_statuses: return "; ".join(list(dict.fromkeys([s for score, s in scored_statuses])))
-        
+
         valid_scored = [item for item in scored_statuses if item[0] != -1]
         if not valid_scored: return "; ".join(list(dict.fromkeys([s for score, s in scored_statuses])))
 
@@ -1256,7 +1372,7 @@ def process_tahun(tahun):
 
         max_score = max([score for score, s in valid_scored])
         hasil_status = "; ".join(list(dict.fromkeys([s for score, s in valid_scored if score == max_score])))
-        
+
         persentase_terpakai = (sum_hasil / pagu_rup) * 100 if pagu_rup > 0 else 100
         if len(group) > 1 and max_score == 100 and persentase_terpakai < 80: return "Sedang Berjalan (Sisa Pagu)"
         return hasil_status
@@ -1265,7 +1381,11 @@ def process_tahun(tahun):
     for c in ['Nilai HPS', 'Nilai Hasil Pemilihan', 'Nilai PDN', 'Nilai UMK', 'Nilai Pagu RUP', 'Nilai Negosiasi', 'Nilai Kontrak']:
         df_agregasi[c] = df_agregasi[c].apply(safe_numeric)
 
-    df_agregasi['Kode RUP_Group'] = df_agregasi['Kode RUP'].apply(lambda x: str(x).split(';')[0].strip() if x else "UNKNOWN")
+    # Baris tanpa Kode RUP tidak digabung jadi satu grup "UNKNOWN", tapi per Kode Paket
+    df_agregasi['Kode RUP_Group'] = [
+        (str(rup).split(';')[0].strip() if str(rup).strip() else f"TANPA_RUP_{kp if str(kp).strip() else i}")
+        for i, (rup, kp) in enumerate(zip(df_agregasi['Kode RUP'], df_agregasi['Kode Paket']))
+    ]
     grouped = df_agregasi.groupby('Kode RUP_Group')
 
     rekap_data = []
@@ -1276,23 +1396,24 @@ def process_tahun(tahun):
         sum_neg = group['Nilai Negosiasi'].sum()
         sum_kon = group['Nilai Kontrak'].sum()
         pagu_rup = first_row['Nilai Pagu RUP']
+        status_realisasi = 'Realisasi' if (group['Status Realisasi'] == 'Realisasi').any() else 'Belum Realisasi'
 
         rekap_data.append({
-            'Kode Paket': aggregate_text(group['Kode Paket']), 'Kode RUP': first_row['Kode RUP'], 'Kode RUP Baru': first_row['Kode RUP Baru'], 
+            'Kode Paket': aggregate_text(group['Kode Paket']), 'Kode RUP': first_row['Kode RUP'], 'Kode RUP Baru': first_row['Kode RUP Baru'],
             'Nama Instansi': first_row['Nama Instansi'], 'Satuan Kerja': first_row['Satuan Kerja'], 'Nama Paket': first_row['Nama Paket'], 'Metode Pemilihan': first_row['Metode Pemilihan'],
-            'Jenis Pengadaan': first_row['Jenis Pengadaan'], 'Tahun Anggaran': first_row['Tahun Anggaran'], 
+            'Jenis Pengadaan': first_row['Jenis Pengadaan'], 'Tahun Anggaran': first_row['Tahun Anggaran'],
             'Nama Program': first_row['Nama Program'], 'Nama Kegiatan': first_row['Nama Kegiatan'], 'Nama Sub Kegiatan': first_row['Nama Sub Kegiatan'],
             'Sumber Dana': first_row['Sumber Dana'], 'MAK': first_row['MAK'], 'PDN': first_row['PDN'], 'UKM': first_row['UKM'], 'Status Konsolidasi': first_row['Status Konsolidasi'],
-            'Kualifikasi Paket': aggregate_text(group['Kualifikasi Paket']), 'Nilai Pagu RUP': pagu_rup if pagu_rup != 0 else "", 
+            'Kualifikasi Paket': aggregate_text(group['Kualifikasi Paket']), 'Nilai Pagu RUP': pagu_rup if pagu_rup != 0 else "",
             'Nilai Hasil Pemilihan': sum_hasil if sum_hasil != 0 else "", 'Nilai Negosiasi': sum_neg if sum_neg != 0 else "",
             'No SPPBJ': aggregate_text(group['No SPPBJ']), 'Tanggal SPPBJ': aggregate_text(group['Tanggal SPPBJ']),
-            'No Kontrak': aggregate_text(group['No Kontrak']), 'Tanggal Kontrak': aggregate_text(group['Tanggal Kontrak']), 
+            'No Kontrak': aggregate_text(group['No Kontrak']), 'Tanggal Kontrak': aggregate_text(group['Tanggal Kontrak']),
             'Jenis Kontrak': aggregate_text(group['Jenis Kontrak']), 'Nilai Kontrak': sum_kon if sum_kon != 0 else "",
             'Status Kontrak': aggregate_text(group['Status Kontrak']), 'No SPMK SPP': aggregate_text(group['No SPMK SPP']),
             'Tanggal SPMK SPP': aggregate_text(group['Tanggal SPMK SPP']), 'No BAST': aggregate_text(group['No BAST']),
             'Tanggal BAST': aggregate_text(group['Tanggal BAST']), 'No BAP': aggregate_text(group['No BAP']),
             'Tanggal BAP': aggregate_text(group['Tanggal BAP']),
-            'Nama Penyedia': aggregate_text(group['Nama Penyedia']), 'NPWP 15': aggregate_text(group['NPWP 15']), 'NPWP 16': aggregate_text(group['NPWP 16']), 
+            'Nama Penyedia': aggregate_text(group['Nama Penyedia']), 'NPWP 15': aggregate_text(group['NPWP 15']), 'NPWP 16': aggregate_text(group['NPWP 16']),
             'Alamat': aggregate_text(group['Alamat']),
             'Status': aggregate_raw_status(group, pagu_rup, sum_hasil), 'Nilai HPS': sum_hps if sum_hps != 0 else "",
             'Nilai PDN': sum_pdn if sum_pdn != 0 else "", 'Nilai UMK': sum_umk if sum_umk != 0 else "",
@@ -1302,7 +1423,8 @@ def process_tahun(tahun):
             'Penilaian Layanan dengan indikator komunikasi dan tingkat respon': aggregate_text(group['Penilaian Layanan dengan indikator komunikasi dan tingkat respon']),
             'Kinerja Penyedia dalam angka': aggregate_text(group['Kinerja Penyedia dalam angka']),
             'Kinerja Penyedia dalam kata': aggregate_text(group['Kinerja Penyedia dalam kata']),
-            'Cara Pengadaan': aggregate_text(group['Cara Pengadaan']), 'Sumber': aggregate_text(group['Sumber'])
+            'Cara Pengadaan': aggregate_text(group['Cara Pengadaan']), 'Sumber': aggregate_text(group['Sumber']),
+            'Status Realisasi': status_realisasi
         })
     df_rekap = pd.DataFrame(rekap_data)
 
@@ -1329,6 +1451,8 @@ def process_tahun(tahun):
             with pd.ExcelWriter(output_excel_path, engine='openpyxl') as writer:
                 df_rekap.to_excel(writer, index=False, sheet_name='1. Rekap per RUP')
                 excel_df_detail.to_excel(writer, index=False, sheet_name='2. Detail per Paket')
+                if not df_perlu_dicek.empty:
+                    df_perlu_dicek.to_excel(writer, index=False, sheet_name='3. Perlu Dicek')
 
             wb = load_workbook(output_excel_path)
             header_fill = PatternFill('solid', start_color='1F4E79')
@@ -1359,10 +1483,12 @@ def process_tahun(tahun):
             lebar_baku = {} # Dikosongkan karena tidak lagi diperlukan
             style_sheet('1. Rekap per RUP', df_rekap, lebar_baku, kolom_angka_baku)
             style_sheet('2. Detail per Paket', excel_df_detail, lebar_baku, kolom_angka_baku)
+            if not df_perlu_dicek.empty:
+                style_sheet('3. Perlu Dicek', df_perlu_dicek, lebar_baku, ['Nilai Hasil Pemilihan'])
             wb.save(output_excel_path)
             berhasil_simpan = True
             log_print(f"✅ EXCEL Pengadaan sukses dibuat: {output_excel_path}")
-            
+
         except PermissionError:
             import time
             log_print(f"⚠️ Akses Ditolak: File {nama_file_excel} sedang terbuka.")
@@ -1377,17 +1503,17 @@ def process_tahun(tahun):
                         tutup_sukses = True
                         break
             except Exception: pass
-            
+
             if not tutup_sukses:
                 log_print("Memunculkan pop-up peringatan...")
                 os.system(f'mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""File {nama_file_excel} sedang terbuka. Tutup file di Excel agar proses berlanjut!"", 5, ""Peringatan Excel"", 48)(window.close)")')
             time.sleep(3)
     # ========================================================
-    
+
     master_path = os.path.join(data_dir, f'master_pengadaan_{tahun}.xlsx')
     nama_file_master = f'master_pengadaan_{tahun}.xlsx'
     berhasil_salin = False
-    
+
     while not berhasil_salin:
         try:
             shutil.copy2(output_excel_path, master_path)
@@ -1406,9 +1532,9 @@ def process_tahun(tahun):
                         wb_app.Close(SaveChanges=False)
                         tutup_sukses = True
                         break
-            except Exception: 
+            except Exception:
                 pass
-            
+
             if not tutup_sukses:
                 log_print("Memunculkan pop-up peringatan...")
                 os.system(f'mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""File {nama_file_master} sedang terbuka. Tutup file di Excel agar proses berlanjut!"", 5, ""Peringatan Excel"", 48)(window.close)")')
@@ -1416,10 +1542,10 @@ def process_tahun(tahun):
         except Exception as e:
             log_print(f"⚠️ Gagal menyalin EXCEL Master (Error Lain): {str(e)}")
             break # Keluar dari loop jika errornya bukan karena file terbuka
-            
+
     kelola_arsip_bulanan(output_dir_excel, tahun)
     update_daftar_arsip_json(output_dir_excel)
-    
+
     log_print(f'SELESAI GENERATE TAHUN {tahun} | Total data: {len(final_df)}')
     return len(final_df)
 
@@ -1429,11 +1555,11 @@ def kirim_telegram_aman(pesan):
     import requests
     import time
     url = f"https://api.telegram.org/bot{config_rahasia.BOT_TOKEN}/sendMessage"
-    
+
     for percobaan in range(1, 4):
         try:
             res = requests.post(url, data={"chat_id": config_rahasia.CHAT_ID, "text": pesan}, timeout=30)
-            if res.status_code != 200: 
+            if res.status_code != 200:
                 log_print(f"🚨 GAGAL KIRIM TELEGRAM (STATUS {res.status_code}): {res.text}")
             break
         except Exception as e:
@@ -1464,13 +1590,13 @@ if __name__ == '__main__':
     if os.path.exists(path_url):
         with open(path_url, 'r', encoding='utf-8') as f:
             jumlah_url = len([line for line in f if line.strip()])
-            
+
         tahun_diproses = 0
         for t in daftar_tahun:
             if t == tahun_n2 and os.path.exists(os.path.join(BASE_DIR, 'data', str(t), f'rekap_pengadaan_{t}.json')):
                 continue
             tahun_diproses += 1
-            
+
         total_target = jumlah_url * tahun_diproses
 
     # 3. LOGIKA BERHENTI JIKA GAGAL TOTAL
@@ -1481,6 +1607,22 @@ if __name__ == '__main__':
         sys.exit(0)
 
     for t in daftar_tahun: process_tahun(t)
+
+    # Ringkasan angka per tahun untuk Telegram
+    def _fmt(n): return f"{n:,}".replace(",", ".")
+    blok_ringkasan = ""
+    if ringkasan_tahun:
+        baris_r = "".join([f"• {t}: Realisasi {_fmt(v['realisasi'])} | Belum {_fmt(v['belum'])} | Tidak Cocok {_fmt(v['tidak_cocok'])} | Perlu Dicek {_fmt(v['perlu_dicek'])}\n"
+                           for t, v in sorted(ringkasan_tahun.items(), reverse=True)])
+        blok_ringkasan = f"📈 RINGKASAN DATA:\n{baris_r}\n"
+
+    # Peringatan Telegram untuk tahun yang dilewati (data Inaproc tidak valid)
+    blok_peringatan = ""
+    teks_status = "Seluruh data berhasil diolah."
+    if tahun_dilewati:
+        baris = "".join([f"• Tahun {t}: {alasan}\n" for t, alasan in tahun_dilewati])
+        blok_peringatan = f"⚠️ PERINGATAN - TAHUN DILEWATI:\n{baris}Hasil lama dipertahankan. Cek log & unduhan Inaproc.\n\n"
+        teks_status = "Sebagian data diolah (ada tahun yang dilewati)."
 
     with open(os.path.join(BASE_DIR, "data", "last-update-pengadaan.txt"), "w", encoding='utf-8') as f:
         f.write(get_waktu_indonesia())
@@ -1525,10 +1667,11 @@ if __name__ == '__main__':
             teks_error = "⚠️ GAGAL DOWNLOAD API:\n" + "".join([f"{err.replace('_', ' ')}\n" for err in daftar_error_api])
             if len(teks_error) > 3500: teks_error = teks_error[:3500] + "\n... [DAFTAR ERROR DIPOTONG] ...\n"
             pesan_ringkasan += teks_error + "\n"
+        pesan_ringkasan += blok_peringatan + blok_ringkasan
         pesan_ringkasan += f"📊 STATUS TEPRA: {status_tepra}\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
         kirim_telegram_aman(pesan_ringkasan)
     else:
-        pesan_sukses = f"✅ UPDATE PENGADAAN BERHASIL ✅\n\nSeluruh data berhasil diolah.\n📊 STATUS TEPRA: {status_tepra}\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
+        pesan_sukses = f"✅ UPDATE PENGADAAN BERHASIL ✅\n\n{teks_status}\n{blok_peringatan}{blok_ringkasan}📊 STATUS TEPRA: {status_tepra}\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
         kirim_telegram_aman(pesan_sukses)
-        
+
     log_print(f"\nPROSES SELESAI SELURUHNYA PADA {get_waktu_indonesia()}")

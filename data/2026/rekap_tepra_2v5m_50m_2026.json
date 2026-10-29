@@ -1351,8 +1351,8 @@
   },
   {
     "Satuan Kerja": "RUMAH SAKIT UMUM DAERAH SULTAN IMANUDDIN - 1.02.0.00.0.00.01.0001",
-    "Data Laporan_Paket": 17,
-    "Data Laporan_Pagu": 83360000000.0,
+    "Data Laporan_Paket": 18,
+    "Data Laporan_Pagu": 88360000000.0,
     "Pemilihan_Paket": 17,
     "Pemilihan_Pagu": 83360000000.0,
     "Hasil_Paket": 17,
@@ -1361,8 +1361,8 @@
     "Kontrak_Pagu": 8336802274.0,
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
-    "Belum_Paket": 0,
-    "Belum_Pagu": 0.0
+    "Belum_Paket": 1,
+    "Belum_Pagu": 5000000000.0
   },
   {
     "Satuan Kerja": "Rumah Sakit Kutaringin - 1.02.0.00.0.00.01.0002",
@@ -1486,8 +1486,8 @@
   },
   {
     "Satuan Kerja": "TOTAL KESELURUHAN",
-    "Data Laporan_Paket": 46,
-    "Data Laporan_Pagu": 248384475553.0,
+    "Data Laporan_Paket": 47,
+    "Data Laporan_Pagu": 253384475553.0,
     "Pemilihan_Paket": 32,
     "Pemilihan_Pagu": 147073870800.0,
     "Hasil_Paket": 32,
@@ -1496,7 +1496,7 @@
     "Kontrak_Pagu": 71235380009.0,
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
-    "Belum_Paket": 14,
-    "Belum_Pagu": 101310604753.0
+    "Belum_Paket": 15,
+    "Belum_Pagu": 106310604753.0
   }
 ]
