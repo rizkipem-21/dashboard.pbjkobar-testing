@@ -214,13 +214,22 @@
       </div>
     </div>
 
-    <div class="filter-group" style="min-width:130px;">
+    <div class="filter-group">
       <label>Status Realisasi</label>
-      <select id="filterRealisasi" onchange="applyFilter()">
-        <option value="semua" selected>Semua</option>
-        <option value="Realisasi">Realisasi</option>
-        <option value="Belum Realisasi">Belum Realisasi</option>
-      </select>
+      <div class="check-dropdown">
+        <button class="check-btn" id="btn_realisasi" onclick="toggleFilterPanel('realisasi',event)"><span id="label_realisasi">-- Semua --</span></button>
+        <div class="check-panel" id="panel_realisasi">
+          <div class="check-list-container">
+            <div class="check-item"><input type="checkbox" id="all_realisasi" checked onchange="toggleAllFilter('realisasi',this)"><label for="all_realisasi" style="font-weight:600; cursor:pointer;">Pilih Semua</label></div>
+            <div style="border-top:1px solid #eee; margin:4px 0;"></div>
+            <div id="list_realisasi"></div>
+          </div>
+          <div style="display:flex; gap:8px; padding:10px; background:#f8fafc; border-top:1px solid #eee;">
+            <button style="height:20px; font-size:9px;" class="w-full bg-blue-900 text-white rounded font-bold" onclick="applyFilterPanel('realisasi')">✓ OK</button>
+            <button style="height:20px; font-size:9px;" class="w-full border rounded font-bold" onclick="cancelFilterPanel('realisasi')">✕ Batal</button>
+          </div>
+        </div>
+      </div>
     </div>
     
     <button id="resetFilter" class="btn-reset">✕ Reset Semua Filter</button>
@@ -420,6 +429,7 @@ const filterConfigs = {
   "metode": { key: "Metode Pemilihan", isStatic:false },
   "cara":   { key: "Cara Pengadaan", isStatic:true, staticOptions: ["Tender","Non Tender","Pencatatan Non Tender","E-Purchasing V5","E-Purchasing V6","Swakelola"] },
   "status": { key: "Status", isStatic:true, staticOptions: ["Belum Proses","Sedang Berjalan","Sudah Selesai"] },
+  "realisasi": { key: "Status Realisasi", isStatic:true, staticOptions: ["Realisasi","Belum Realisasi"] },
   "status_rinci": { key: "Status", isStatic:false }
 };
 let filterSnapshots = {};
@@ -559,6 +569,7 @@ function updateFilterLabel(type){
   const lbl = document.getElementById(`label_${type}`);
   if (chk.length === 0) lbl.innerText = "Tidak ada";
   else if (chk.length === all.length) lbl.innerText = "-- Semua --";
+  else if (chk.length === 1) lbl.innerText = chk[0].value;
   else lbl.innerText = `${chk.length} dipilih`;
 }
 
@@ -595,8 +606,6 @@ function resetFilterInputs(){
     if (allCb) allCb.checked = true;
     updateFilterLabel(f);
   }
-
-  document.getElementById("filterRealisasi").value = "semua";
 }
 
 function applyFilter() {
@@ -604,7 +613,7 @@ function applyFilter() {
   const kodeRUP   = document.getElementById("filterKodeRUP").value.trim().toLowerCase();
   const satker = document.getElementById("filterSatker").value.trim().toLowerCase();
   const paket  = document.getElementById("filterPaket").value.trim().toLowerCase();
-  const realisasiPilih = document.getElementById("filterRealisasi").value;
+  const checkedRealisasi = getCheckedValues("realisasi");
   const checkedJenis  = getCheckedValues("jenis");
   const checkedMetode = getCheckedValues("metode");
   const checkedCara   = getCheckedValues("cara");
@@ -637,7 +646,7 @@ function applyFilter() {
     }
     
         // 3. Filter Status Realisasi (dari kolom "Status Realisasi")
-    if (realisasiPilih !== "semua" && getStatusRealisasi(row) !== realisasiPilih) return false;
+    if (checkedRealisasi !== null && !checkedRealisasi.includes(getStatusRealisasi(row))) return false;
 
     // 4. Filter Status (kategori), berlaku di semua mode
     if (checkedStatus !== null) {
