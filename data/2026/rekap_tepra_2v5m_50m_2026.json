@@ -646,8 +646,8 @@
   },
   {
     "Satuan Kerja": "Dinas Pendidikan dan Kebudayaan - 1.01.2.22.0.00.01.0000",
-    "Data Laporan_Paket": 3,
-    "Data Laporan_Pagu": 22302314880.0,
+    "Data Laporan_Paket": 2,
+    "Data Laporan_Pagu": 7692720000.0,
     "Pemilihan_Paket": 0,
     "Pemilihan_Pagu": 0.0,
     "Hasil_Paket": 0,
@@ -656,8 +656,8 @@
     "Kontrak_Pagu": 0.0,
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
-    "Belum_Paket": 3,
-    "Belum_Pagu": 22302314880.0
+    "Belum_Paket": 2,
+    "Belum_Pagu": 7692720000.0
   },
   {
     "Satuan Kerja": "Dinas Perhubungan - 2.15.0.00.0.00.01.0000",
@@ -1516,8 +1516,8 @@
   },
   {
     "Satuan Kerja": "TOTAL KESELURUHAN",
-    "Data Laporan_Paket": 47,
-    "Data Laporan_Pagu": 253293360433.0,
+    "Data Laporan_Paket": 46,
+    "Data Laporan_Pagu": 238683765553.0,
     "Pemilihan_Paket": 32,
     "Pemilihan_Pagu": 149427370800.0,
     "Hasil_Paket": 32,
@@ -1526,7 +1526,7 @@
     "Kontrak_Pagu": 68622445010.0,
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
-    "Belum_Paket": 15,
-    "Belum_Pagu": 103865989633.0
+    "Belum_Paket": 14,
+    "Belum_Pagu": 89256394753.0
   }
 ]

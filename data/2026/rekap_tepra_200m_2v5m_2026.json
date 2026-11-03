@@ -796,8 +796,8 @@
   },
   {
     "Satuan Kerja": "INSTALASI FARMASI - 1.02.0.00.0.00.01.0022",
-    "Data Laporan_Paket": 17,
-    "Data Laporan_Pagu": 24904606375.0,
+    "Data Laporan_Paket": 18,
+    "Data Laporan_Pagu": 26582835300.0,
     "Pemilihan_Paket": 17,
     "Pemilihan_Pagu": 24904606375.0,
     "Hasil_Paket": 17,
@@ -806,8 +806,8 @@
     "Kontrak_Pagu": 464784509.0,
     "SerahTerima_Paket": 3,
     "SerahTerima_Pagu": 80675605.0,
-    "Belum_Paket": 0,
-    "Belum_Pagu": 0.0
+    "Belum_Paket": 1,
+    "Belum_Pagu": 1678228925.0
   },
   {
     "Satuan Kerja": "Inspektorat Daerah - 6.01.0.00.0.00.01.0000",
@@ -1516,8 +1516,8 @@
   },
   {
     "Satuan Kerja": "TOTAL KESELURUHAN",
-    "Data Laporan_Paket": 239,
-    "Data Laporan_Pagu": 181264257441.0,
+    "Data Laporan_Paket": 240,
+    "Data Laporan_Pagu": 182942486366.0,
     "Pemilihan_Paket": 164,
     "Pemilihan_Pagu": 147769023701.0,
     "Hasil_Paket": 164,
@@ -1526,7 +1526,7 @@
     "Kontrak_Pagu": 69520478015.0,
     "SerahTerima_Paket": 44,
     "SerahTerima_Pagu": 6682823959.0,
-    "Belum_Paket": 75,
-    "Belum_Pagu": 33495233740.0
+    "Belum_Paket": 76,
+    "Belum_Pagu": 35173462665.0
   }
 ]

@@ -42,6 +42,43 @@ def log_print(*args, **kwargs):
     with open(LOG_FILE, 'a', encoding='utf-8') as f:
         f.write(msg + '\n')
 
+def alasan_http(resp):
+    """Ubah status HTTP menjadi alasan yang mudah dipahami + cuplikan pesan server"""
+    peta = {
+        400: "Permintaan tidak valid (parameter URL salah)",
+        401: "Token tidak valid / kedaluwarsa (cek token.txt)",
+        403: "Akses ditolak: token tidak punya izin ke endpoint ini",
+        404: "Endpoint/data tidak ditemukan (cek URL)",
+        408: "Waktu permintaan habis",
+        429: "Terlalu banyak permintaan (kena batas rate limit)",
+        500: "Error internal di server Inaproc",
+        502: "Bad Gateway: server perantara Inaproc menerima respons buruk dari server utama",
+        503: "Layanan Inaproc tidak tersedia (maintenance / kelebihan beban)",
+        504: "Gateway Timeout: server Inaproc terlalu lama memproses (data besar / server sibuk)",
+    }
+    alasan = peta.get(resp.status_code, resp.reason or "Tidak diketahui")
+    cuplikan = ""
+    try:
+        teks = re.sub(r"<[^>]+>", " ", resp.text or "")
+        teks = re.sub(r"\s+", " ", teks).strip()[:120]
+        if teks: cuplikan = f" | Pesan server: {teks}"
+    except Exception:
+        pass
+    return f"Status {resp.status_code} - {alasan}{cuplikan}"
+ 
+def alasan_error(e):
+    """Ubah exception koneksi menjadi alasan yang mudah dipahami"""
+    nama = type(e).__name__
+    if isinstance(e, requests.exceptions.Timeout):
+        return "Waktu tunggu habis (server tidak merespons dalam 150 detik)"
+    if isinstance(e, requests.exceptions.SSLError):
+        return f"Gagal koneksi aman/SSL ({str(e)[:80]})"
+    if isinstance(e, requests.exceptions.ConnectionError):
+        return f"Gagal tersambung ke server (internet putus / DNS / server mati) [{nama}]"
+    if isinstance(e, ValueError):
+        return "Respons server bukan JSON yang valid"
+    return f"{nama}: {str(e)[:100]}"
+ 
 def get_waktu_indonesia():
     tz_wib = timezone(timedelta(hours=7))
     sekarang = datetime.now(tz_wib)
@@ -130,10 +167,10 @@ def download_data_api_with_retry(tahun):
                             success = True
                             break
                         else:
-                            last_error = f"Status {response.status_code}"
+                            last_error = alasan_http(response)
                             log_print(f"GAGAL ({last_error})")
                     except Exception as e:
-                        last_error = f"Koneksi Terputus / {str(e)}"
+                        last_error = alasan_error(e)
                         log_print(f"ERROR: {last_error}")
                     
                     if i < max_retry and not page_success:
@@ -200,10 +237,10 @@ def download_data_api_with_retry(tahun):
                         success = True
                         break
                     else:
-                        last_error = f"Status {response.status_code}"
+                        last_error = alasan_http(response)
                         log_print(f"GAGAL ({last_error})")
                 except Exception as e:
-                    last_error = f"Koneksi Terputus / {str(e)}"
+                    last_error = alasan_error(e)
                     log_print(f"ERROR: {last_error}")
 
                 if i < max_retry and not success:
