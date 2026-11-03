@@ -79,6 +79,15 @@ def alasan_error(e):
         return "Respons server bukan JSON yang valid"
     return f"{nama}: {str(e)[:100]}"
  
+def hitung_baris(data):
+    """Hitung jumlah baris dari respons legacy (list, atau dict berisi data/items/results)"""
+    if isinstance(data, list): return len(data)
+    if isinstance(data, dict):
+        for k in ('data', 'items', 'results'):
+            if isinstance(data.get(k), list): return len(data[k])
+        return 1
+    return 0
+
 def get_waktu_indonesia():
     tz_wib = timezone(timedelta(hours=7))
     sekarang = datetime.now(tz_wib)
@@ -233,7 +242,7 @@ def download_data_api_with_retry(tahun):
                         data = response.json()
                         with open(output_path, 'w', encoding='utf-8') as f:
                             json.dump(data, f, ensure_ascii=False, indent=2)
-                        log_print("SUKSES")
+                        log_print(f"SUKSES (Total: {hitung_baris(data)} baris)")
                         success = True
                         break
                     else:

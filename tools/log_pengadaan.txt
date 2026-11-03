@@ -42294,3 +42294,176 @@ TEPRA 2026 Sukses (4 Sheet Lengkap) -> D:\dashboard.pbjkobar-testing\output\tepr
 ==================================================
 MENGIRIM DATA PENGADAAN KE GITHUB DARI PYTHON...
 ==================================================
+✅ Push ke GitHub BERHASIL
+
+PROSES SELESAI SELURUHNYA PADA 3 November 2026 | 14.00 WIB
+
+=======================================================
+START DOWNLOAD PENGADAAN 3 November 2026 | 14.31 WIB
+=======================================================
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2026
+=======================================================
+
+[BACKUP] Legacy_sikap_penilaian-kinerja-penyedia-non-tender_2026.json di-copy ke arsip 2026-10-30/2026
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/sikap/penilaian-kinerja-penyedia-non-tender?kode_klpd=D228&tahun=2026
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+    -> [!] Menunggu 5 detik agar server Inaproc stabil...
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+    -> [!] Menunggu 10 detik agar server Inaproc stabil...
+
+=======================================================
+START DOWNLOAD PENGADAAN 3 November 2026 | 14.32 WIB
+=======================================================
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2026
+=======================================================
+
+[BACKUP] Legacy_sikap_penilaian-kinerja-penyedia-non-tender_2026.json di-copy ke arsip 2026-10-30/2026
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/sikap/penilaian-kinerja-penyedia-non-tender?kode_klpd=D228&tahun=2026
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+    -> [!] Menunggu 5 detik agar server Inaproc stabil...
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+    -> [!] Menunggu 10 detik agar server Inaproc stabil...
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+    -> [!] Menunggu 15 detik agar server Inaproc stabil...
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+    -> [!] Menunggu 20 detik agar server Inaproc stabil...
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+  -> [Aman] Server gagal diakses, mempertahankan file Legacy_sikap_penilaian-kinerja-penyedia-non-tender_2026.json.
+
+[BACKUP] Legacy_sikap_penilaian-kinerja-penyedia-tender_2026.json di-copy ke arsip 2026-10-30/2026
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/sikap/penilaian-kinerja-penyedia-tender?kode_klpd=D228&tahun=2026
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+    -> [!] Menunggu 5 detik agar server Inaproc stabil...
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+    -> [!] Menunggu 10 detik agar server Inaproc stabil...
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+    -> [!] Menunggu 15 detik agar server Inaproc stabil...
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+    -> [!] Menunggu 20 detik agar server Inaproc stabil...
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+  -> [Aman] Server gagal diakses, mempertahankan file Legacy_sikap_penilaian-kinerja-penyedia-tender_2026.json.
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2025
+=======================================================
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/dashboard/realisasi/table?tahun=2025&jenis=4&instansi=D228&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_dashboard_realisasi_table_2025.json (Total: 5268 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/ekatalog/paket-e-purchasing?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+  -> Disimpan ke v1_ekatalog_paket-e-purchasing_2025.json (Total: 724 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/ekatalog-archive/instansi-satker?kode_klpd=D228&limit=1000
+SUKSES
+  -> Disimpan ke v1_ekatalog-archive_instansi-satker_2025.json (Total: 122 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/ekatalog-archive/paket-e-purchasing?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+  -> Disimpan ke v1_ekatalog-archive_paket-e-purchasing_2025.json (Total: 344 baris)
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/rup/kegiatan-master?kode_klpd=D228&tahun=2025
+SUKSES
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/rup/sub-kegiatan-master?kode_klpd=D228&tahun=2025
+SUKSES
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/history-kaji-ulang?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+
+=======================================================
+START DOWNLOAD PENGADAAN 3 November 2026 | 14.35 WIB
+=======================================================
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2026
+=======================================================
+
+[BACKUP] Legacy_sikap_penilaian-kinerja-penyedia-tender_2026.json di-copy ke arsip 2026-10-30/2026
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/sikap/penilaian-kinerja-penyedia-tender?kode_klpd=D228&tahun=2026
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+    -> [!] Menunggu 5 detik agar server Inaproc stabil...
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+    -> [!] Menunggu 10 detik agar server Inaproc stabil...
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+    -> [!] Menunggu 15 detik agar server Inaproc stabil...
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+    -> [!] Menunggu 20 detik agar server Inaproc stabil...
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+  -> [Aman] Server gagal diakses, mempertahankan file Legacy_sikap_penilaian-kinerja-penyedia-tender_2026.json.
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2025
+=======================================================
+
+[BACKUP] Legacy_sikap_penilaian-kinerja-penyedia-tender_2025.json di-copy ke arsip 2026-10-29/2025
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/sikap/penilaian-kinerja-penyedia-tender?kode_klpd=D228&tahun=2025
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+    -> [!] Menunggu 5 detik agar server Inaproc stabil...
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+    -> [!] Menunggu 10 detik agar server Inaproc stabil...
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+    -> [!] Menunggu 15 detik agar server Inaproc stabil...
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+    -> [!] Menunggu 20 detik agar server Inaproc stabil...
+GAGAL (Status 403 - Akses ditolak: token tidak punya izin ke endpoint ini | Pesan server: { "error": "Access to this API has been disallowed" })
+  -> [Aman] Server gagal diakses, mempertahankan file Legacy_sikap_penilaian-kinerja-penyedia-tender_2025.json.
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2024
+=======================================================
+
+[SKIP] Tahun 2024 sudah final -> Lewati download
+
+PROSES DOWNLOAD SELESAI!
+
+=======================================================
+START GENERATE PENGADAAN 3 November 2026 | 14.37 WIB
+=======================================================
+GAGAL TOTAL. Skrip berhenti.
+
+=======================================================
+START DOWNLOAD PENGADAAN 3 November 2026 | 14.43 WIB
+=======================================================
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2026
+=======================================================
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-bapbast?kode_klpd=D228&tahun=2026
+SUKSES (Total: 2 baris)
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2025
+=======================================================
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-bapbast?kode_klpd=D228&tahun=2025
+SUKSES (Total: 45 baris)
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2024
+=======================================================
+
+[SKIP] Tahun 2024 sudah final -> Lewati download
+
+PROSES DOWNLOAD SELESAI!

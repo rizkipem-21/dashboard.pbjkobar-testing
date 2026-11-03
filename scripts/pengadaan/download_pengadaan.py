@@ -89,6 +89,15 @@ def alasan_error(e):
         return "Respons server bukan JSON yang valid"
     return f"{nama}: {str(e)[:100]}"
  
+def hitung_baris(data):
+    """Hitung jumlah baris dari respons legacy (list, atau dict berisi data/items/results)"""
+    if isinstance(data, list): return len(data)
+    if isinstance(data, dict):
+        for k in ('data', 'items', 'results'):
+            if isinstance(data.get(k), list): return len(data[k])
+        return 1
+    return 0
+
 def get_waktu_indonesia():
     tz_wib = timezone(timedelta(hours=7))
     sekarang = datetime.now(tz_wib)
@@ -169,10 +178,10 @@ def download_data_pengadaan(tahun, is_n2, data_dir):
                             success = True
                             break
                         else:
-                            last_error = f"Status {resp.status_code}"
+                            last_error = alasan_http(resp)
                             log_print(f"GAGAL ({last_error})")
                     except Exception as e:
-                        last_error = f"Koneksi Terputus / {str(e)}"
+                        last_error = alasan_error(e)
                         log_print(f"ERROR: {last_error}")
                     
                     if i < 5 and not success:
@@ -228,15 +237,16 @@ def download_data_pengadaan(tahun, is_n2, data_dir):
                     resp = requests.get(target_url, headers=HEADERS, timeout=150)
                     if resp.status_code == 200:
                         with open(output_path, 'w', encoding='utf-8') as f:
-                            json.dump(resp.json(), f, ensure_ascii=False, indent=2)
-                        log_print("SUKSES")
+                            data_legacy = resp.json()
+                            json.dump(data_legacy, f, ensure_ascii=False, indent=2)
+                        log_print(f"SUKSES (Total: {hitung_baris(data_legacy)} baris)")
                         success = True
                         break
                     else:
-                        last_error = f"Status {resp.status_code}"
+                        last_error = alasan_http(resp)
                         log_print(f"GAGAL ({last_error})")
                 except Exception as e:
-                    last_error = f"Koneksi Terputus / {str(e)}"
+                    last_error = alasan_error(e)
                     log_print(f"ERROR: {last_error}")
                 
                 if i < 5 and not success:
