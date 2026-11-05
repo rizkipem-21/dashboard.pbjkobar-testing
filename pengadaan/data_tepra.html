@@ -129,8 +129,14 @@
   <div class="filter-group">
     <input type="text" id="filterSatker" class="filter-input" placeholder="Cari Satuan Kerja..." oninput="applyFilters()">
     
-    <select id="sortData" class="filter-select" onchange="applyFilters()">
+    <select id="sortData" class="filter-select" onchange="onSortChange('progres')">
       <option value="">-- Urutkan PKT Berprogres --</option>
+      <option value="desc">Paling Banyak (Tertinggi)</option>
+      <option value="asc">Paling Sedikit (Terendah)</option>
+    </select>
+
+    <select id="sortBelum" class="filter-select" onchange="onSortChange('belum')">
+      <option value="">-- Urutkan Belum Pengadaan --</option>
       <option value="desc">Paling Banyak (Tertinggi)</option>
       <option value="asc">Paling Sedikit (Terendah)</option>
     </select>
@@ -287,12 +293,19 @@ function toggleHasData() {
 function resetFilters() {
   document.getElementById("filterSatker").value = "";
   document.getElementById("sortData").value = "";
+  document.getElementById("sortBelum").value = "";
   
   isFilterHasData = false;
   const btn = document.getElementById("btnHasData");
   btn.classList.remove("active");
   btn.innerText = "Tampilkan Yang Punya Data";
   
+  applyFilters();
+}
+
+function onSortChange(sumber) {
+  if (sumber === 'progres') document.getElementById("sortBelum").value = "";
+  else document.getElementById("sortData").value = "";
   applyFilters();
 }
 
@@ -313,11 +326,18 @@ function applyFilters() {
   });
 
   // 2. SORTING
-  if (sortMode) {
+  const sortBelum = document.getElementById("sortBelum").value;
+  if (sortMode || sortBelum) {
     filteredData.sort((a, b) => {
       if (a["Satuan Kerja"] === "TOTAL KESELURUHAN") return 1;
       if (b["Satuan Kerja"] === "TOTAL KESELURUHAN") return -1;
-      
+
+      // Urutkan berdasarkan kolom PKT "Belum Pengadaan" (selisih sama -> bandingkan Rp)
+      if (sortBelum) {
+        const d = (a["Belum_Paket"] || 0) - (b["Belum_Paket"] || 0) || (a["Belum_Pagu"] || 0) - (b["Belum_Pagu"] || 0);
+        return sortBelum === 'desc' ? -d : d;
+      }
+
       let valA, valB;
       if (activeTabIndex === 0) {
         valA = a["Hasil_Paket"] || 0;
