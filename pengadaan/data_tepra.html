@@ -1,3 +1,14 @@
+<!--
+=====================================================================
+ FILE    : Rekap Data TEPRA (Tim Evaluasi dan Pengawasan Realisasi Anggaran)
+ FUNGSI  : Menampilkan progres pengadaan barang/jasa per Satuan Kerja
+ SUMBER  : ../data/{tahun}/rekap_tepra_*.json
+ TAB     : 0) Non Strategis 0-50 Jt          1) Non Strategis >50-200 Jt
+           2) Strategis >200 Jt-2,5 M        3) Strategis >=2,5-50 M
+           4) Total Keseluruhan Paket (gabungan 4 kategori)
+=====================================================================
+-->
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -110,6 +121,7 @@
   <button class="tab-btn" onclick="switchTab(1, this)">Non Strategis (>50 Juta - ≤200 Juta)</button>
   <button class="tab-btn" onclick="switchTab(2, this)">Strategis (>200 Juta s.d 2,5 Miliar)</button>
   <button class="tab-btn" onclick="switchTab(3, this)">Strategis (≥2,5 Miliar s.d 50 Miliar)</button>
+  <button class="tab-btn" onclick="switchTab(4, this)">Total Keseluruhan Paket</button>
 </div>
 
 <!-- KONTROL & FILTER -->
@@ -164,7 +176,8 @@ const tabConfigs = [
   { id: 0, filePrefix: "rekap_tepra_0_50m" },
   { id: 1, filePrefix: "rekap_tepra_50_200m" },
   { id: 2, filePrefix: "rekap_tepra_200m_2v5m" },
-  { id: 3, filePrefix: "rekap_tepra_2v5m_50m" }
+  { id: 3, filePrefix: "rekap_tepra_2v5m_50m" },
+  { id: 4, filePrefix: "rekap_tepra_total" }
 ];
 
 function formatRp(angka) {
