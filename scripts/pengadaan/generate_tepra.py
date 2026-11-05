@@ -341,6 +341,7 @@ def process_tepra(tahun):
     if df.empty: return
     df['Nilai Pagu RUP'] = df['Nilai Pagu RUP'].apply(safe_float)
     df['Nilai Hasil Pemilihan'] = df['Nilai Hasil Pemilihan'].apply(safe_float)
+    df['Satuan Kerja'] = df['Satuan Kerja'].astype(str).str.replace(r'\s+', ' ', regex=True).str.strip().str.upper()    
 
     # 1. TARIK DATA KATEGORI 0 (0 Juta - 50 Juta) --> Batas bawah -1 agar 0 terbawa
     df_k0 = get_data_rekap(df, -1, 50000000)
@@ -354,6 +355,9 @@ def process_tepra(tahun):
     # 4. TARIK DATA KATEGORI 3 (2,5 Miliar - 50 Miliar)
     df_k3 = get_data_rekap(df, 2500000000, 50000000000)
 
+    # 5. TOTAL SELURUH PAKET (gabungan 4 kategori)
+    df_total = get_data_rekap(df, -1, 50000000000)
+
     # EXPORT JSON UNTUK WEB
     out_dir_data = os.path.join(BASE_DIR, 'data', str(tahun))
     os.makedirs(out_dir_data, exist_ok=True)
@@ -366,7 +370,9 @@ def process_tepra(tahun):
         with open(os.path.join(out_dir_data, f'rekap_tepra_200m_2v5m_{tahun}.json'), "w", encoding="utf-8") as f: json.dump(df_k2.to_dict(orient='records'), f, ensure_ascii=False, indent=2)
     if not df_k3.empty:
         with open(os.path.join(out_dir_data, f'rekap_tepra_2v5m_50m_{tahun}.json'), "w", encoding="utf-8") as f: json.dump(df_k3.to_dict(orient='records'), f, ensure_ascii=False, indent=2)
-
+    if not df_total.empty:
+        with open(os.path.join(out_dir_data, f'rekap_tepra_total_{tahun}.json'), "w", encoding="utf-8") as f: json.dump(df_total.to_dict(orient='records'), f, ensure_ascii=False, indent=2)
+        
     # EXPORT KE EXCEL
     out_dir_excel = os.path.join(BASE_DIR, 'output', 'tepra', str(tahun))
     os.makedirs(out_dir_excel, exist_ok=True)
@@ -391,6 +397,10 @@ def process_tepra(tahun):
     # CETAK SHEET 3 (2,5 M - 50 M)
     ws3 = wb.create_sheet(title="Strategis > 2,5m sd 50m")
     style_excel_sheet(ws3, df_k3, "PROSES PENGADAAN BARANG DAN JASA PAKET STRATEGIS (≥Rp2,5M sd 50M)")
+
+    # CETAK SHEET 4 (TOTAL KESELURUHAN PAKET)
+    ws4 = wb.create_sheet(title="Total Keseluruhan Paket")
+    style_excel_sheet(ws4, df_total, "PROSES PENGADAAN BARANG DAN JASA TOTAL KESELURUHAN PAKET (NON STRATEGIS DAN STRATEGIS)")
 
     # === SIMPAN DENGAN PENGAMAN AUTO-CLOSE ===
     berhasil_simpan = False
@@ -425,7 +435,7 @@ def process_tepra(tahun):
     update_daftar_arsip_json(out_dir_excel)
     # -----------------------------
     
-    print(f"TEPRA {tahun} Sukses (4 Sheet Lengkap) -> {out_excel}")
+    print(f"TEPRA {tahun} Sukses (5 Sheet Lengkap) -> {out_excel}")
 
 if __name__ == '__main__':
     process_tepra(tahun_n)
