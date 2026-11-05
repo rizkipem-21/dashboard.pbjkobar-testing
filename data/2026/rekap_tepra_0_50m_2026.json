@@ -12,7 +12,8 @@
     "SerahTerima_Paket": 13,
     "SerahTerima_Pagu": 45580432.0,
     "Belum_Paket": 57,
-    "Belum_Pagu": 324423180.0
+    "Belum_Pagu": 324423180.0,
+    "Progres_Persen": 20.8
   },
   {
     "Satuan Kerja": "BADAN KESATUAN BANGSA DAN POLITIK - 8.01.0.00.0.00.01.0000",
@@ -27,7 +28,8 @@
     "SerahTerima_Paket": 27,
     "SerahTerima_Pagu": 146091472.0,
     "Belum_Paket": 45,
-    "Belum_Pagu": 240478163.0
+    "Belum_Pagu": 240478163.0,
+    "Progres_Persen": 38.4
   },
   {
     "Satuan Kerja": "BADAN KEUANGAN DAN ASET DAERAH - 5.02.0.00.0.00.01.0000",
@@ -42,7 +44,8 @@
     "SerahTerima_Paket": 23,
     "SerahTerima_Pagu": 173154650.0,
     "Belum_Paket": 46,
-    "Belum_Pagu": 230653307.0
+    "Belum_Pagu": 230653307.0,
+    "Progres_Persen": 50.5
   },
   {
     "Satuan Kerja": "BADAN PENANGGULANGAN BENCANA DAERAH - 1.05.0.00.0.00.02.0000",
@@ -57,7 +60,8 @@
     "SerahTerima_Paket": 3,
     "SerahTerima_Pagu": 16820013.0,
     "Belum_Paket": 91,
-    "Belum_Pagu": 500832119.0
+    "Belum_Pagu": 500832119.0,
+    "Progres_Persen": 3.2
   },
   {
     "Satuan Kerja": "BADAN PENDAPATAN DAERAH - 5.02.0.00.0.00.02.0000",
@@ -72,7 +76,8 @@
     "SerahTerima_Paket": 4,
     "SerahTerima_Pagu": 126018300.0,
     "Belum_Paket": 80,
-    "Belum_Pagu": 734678337.0
+    "Belum_Pagu": 734678337.0,
+    "Progres_Persen": 5.9
   },
   {
     "Satuan Kerja": "BADAN PERENCANAAN PEMBANGUNAN, RISET DAN INOVASI DAERAH - 5.01.5.05.0.00.01.0000",
@@ -87,7 +92,8 @@
     "SerahTerima_Paket": 1,
     "SerahTerima_Pagu": 29143938.0,
     "Belum_Paket": 121,
-    "Belum_Pagu": 718426571.0
+    "Belum_Pagu": 718426571.0,
+    "Progres_Persen": 1.6
   },
   {
     "Satuan Kerja": "DINAS KEPEMUDAAN DAN OLAHRAGA - 2.19.0.00.0.00.01.0000",
@@ -102,7 +108,8 @@
     "SerahTerima_Paket": 7,
     "SerahTerima_Pagu": 14244750.0,
     "Belum_Paket": 82,
-    "Belum_Pagu": 1069113981.0
+    "Belum_Pagu": 1069113981.0,
+    "Progres_Persen": 11.8
   },
   {
     "Satuan Kerja": "DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL - 2.12.0.00.0.00.01.0000",
@@ -117,7 +124,8 @@
     "SerahTerima_Paket": 5,
     "SerahTerima_Pagu": 89706258.0,
     "Belum_Paket": 62,
-    "Belum_Pagu": 329731981.0
+    "Belum_Pagu": 329731981.0,
+    "Progres_Persen": 8.8
   },
   {
     "Satuan Kerja": "DINAS KESEHATAN - 1.02.0.00.0.00.01.0000",
@@ -132,7 +140,8 @@
     "SerahTerima_Paket": 34,
     "SerahTerima_Pagu": 1600758143.0,
     "Belum_Paket": 105,
-    "Belum_Pagu": 755401398.0
+    "Belum_Pagu": 755401398.0,
+    "Progres_Persen": 28.1
   },
   {
     "Satuan Kerja": "DINAS KOMUNIKASI, INFORMATIKA, STATISTIK DAN PERSANDIAN - 2.16.2.20.2.21.01.0000",
@@ -147,7 +156,8 @@
     "SerahTerima_Paket": 4,
     "SerahTerima_Pagu": 1781550.0,
     "Belum_Paket": 14,
-    "Belum_Pagu": 110954567.0
+    "Belum_Pagu": 110954567.0,
+    "Progres_Persen": 62.2
   },
   {
     "Satuan Kerja": "DINAS LINGKUNGAN HIDUP - 2.11.3.28.0.00.01.0000",
@@ -162,7 +172,8 @@
     "SerahTerima_Paket": 30,
     "SerahTerima_Pagu": 207031233.0,
     "Belum_Paket": 85,
-    "Belum_Pagu": 623476033.0
+    "Belum_Pagu": 623476033.0,
+    "Progres_Persen": 38.4
   },
   {
     "Satuan Kerja": "DINAS PARIWISATA - 3.26.0.00.0.00.01.0000",
@@ -177,7 +188,8 @@
     "SerahTerima_Paket": 9,
     "SerahTerima_Pagu": 71225000.0,
     "Belum_Paket": 90,
-    "Belum_Pagu": 791700367.0
+    "Belum_Pagu": 791700367.0,
+    "Progres_Persen": 10.0
   },
   {
     "Satuan Kerja": "DINAS PEKERJAAN UMUM DAN PENATAAN RUANG - 1.03.0.00.0.00.01.0000",
@@ -192,7 +204,8 @@
     "SerahTerima_Paket": 4,
     "SerahTerima_Pagu": 112581750.0,
     "Belum_Paket": 121,
-    "Belum_Pagu": 1186617268.0
+    "Belum_Pagu": 1186617268.0,
+    "Progres_Persen": 41.8
   },
   {
     "Satuan Kerja": "DINAS PEMADAM KEBAKARAN DAN PENYELAMATAN - 1.05.0.00.0.00.03.0000",
@@ -207,7 +220,8 @@
     "SerahTerima_Paket": 9,
     "SerahTerima_Pagu": 39382607.0,
     "Belum_Paket": 42,
-    "Belum_Pagu": 273383210.0
+    "Belum_Pagu": 273383210.0,
+    "Progres_Persen": 25.0
   },
   {
     "Satuan Kerja": "DINAS PEMBERDAYAAN MASYARAKAT DAN DESA - 2.13.0.00.0.00.01.0000",
@@ -222,7 +236,8 @@
     "SerahTerima_Paket": 11,
     "SerahTerima_Pagu": 39851700.0,
     "Belum_Paket": 36,
-    "Belum_Pagu": 212720671.0
+    "Belum_Pagu": 212720671.0,
+    "Progres_Persen": 30.8
   },
   {
     "Satuan Kerja": "DINAS PEMBERDAYAAN PEREMPUAN DAN PERLINDUNGAN ANAK, PENGENDALIAN PENDUDUK DAN KELUARGA BERENCANA - 2.08.2.14.0.00.01.0000",
@@ -237,7 +252,8 @@
     "SerahTerima_Paket": 6,
     "SerahTerima_Pagu": 61729750.0,
     "Belum_Paket": 101,
-    "Belum_Pagu": 598751526.0
+    "Belum_Pagu": 598751526.0,
+    "Progres_Persen": 10.6
   },
   {
     "Satuan Kerja": "DINAS PENANAMAN MODAL DAN PELAYANAN TERPADU SATU PINTU - 2.18.0.00.0.00.01.0000",
@@ -252,7 +268,8 @@
     "SerahTerima_Paket": 3,
     "SerahTerima_Pagu": 5417650.0,
     "Belum_Paket": 37,
-    "Belum_Pagu": 262222599.0
+    "Belum_Pagu": 262222599.0,
+    "Progres_Persen": 15.9
   },
   {
     "Satuan Kerja": "DINAS PENDIDIKAN DAN KEBUDAYAAN - 1.01.2.22.0.00.01.0000",
@@ -267,7 +284,8 @@
     "SerahTerima_Paket": 28,
     "SerahTerima_Pagu": 330130500.0,
     "Belum_Paket": 191,
-    "Belum_Pagu": 1541652361.0
+    "Belum_Pagu": 1541652361.0,
+    "Progres_Persen": 26.8
   },
   {
     "Satuan Kerja": "DINAS PERHUBUNGAN - 2.15.0.00.0.00.01.0000",
@@ -282,7 +300,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 59,
-    "Belum_Pagu": 366400095.0
+    "Belum_Pagu": 366400095.0,
+    "Progres_Persen": 9.2
   },
   {
     "Satuan Kerja": "DINAS PERIKANAN DAN KETAHANAN PANGAN - 2.09.3.25.0.00.01.0000",
@@ -297,7 +316,8 @@
     "SerahTerima_Paket": 4,
     "SerahTerima_Pagu": 74105657.0,
     "Belum_Paket": 61,
-    "Belum_Pagu": 393670249.0
+    "Belum_Pagu": 393670249.0,
+    "Progres_Persen": 19.7
   },
   {
     "Satuan Kerja": "DINAS PERINDUSTRIAN, PERDAGANGAN, KOPERASI, USAHA KECIL DAN MENENGAH - 2.17.3.30.3.31.01.0000",
@@ -312,7 +332,8 @@
     "SerahTerima_Paket": 25,
     "SerahTerima_Pagu": 1050691140.0,
     "Belum_Paket": 78,
-    "Belum_Pagu": 629913729.0
+    "Belum_Pagu": 629913729.0,
+    "Progres_Persen": 27.8
   },
   {
     "Satuan Kerja": "DINAS PERPUSTAKAAN DAN KEARSIPAN - 2.23.2.24.0.00.01.0000",
@@ -327,7 +348,8 @@
     "SerahTerima_Paket": 19,
     "SerahTerima_Pagu": 33106584.0,
     "Belum_Paket": 72,
-    "Belum_Pagu": 265262353.0
+    "Belum_Pagu": 265262353.0,
+    "Progres_Persen": 28.0
   },
   {
     "Satuan Kerja": "DINAS PERTANIAN - 3.27.0.00.0.00.01.0000",
@@ -342,7 +364,8 @@
     "SerahTerima_Paket": 24,
     "SerahTerima_Pagu": 319521320.0,
     "Belum_Paket": 81,
-    "Belum_Pagu": 888595336.0
+    "Belum_Pagu": 888595336.0,
+    "Progres_Persen": 27.0
   },
   {
     "Satuan Kerja": "DINAS PERUMAHAN RAKYAT, KAWASAN PEMUKIMAN DAN PERTANAHAN - 1.04.2.10.0.00.01.0000",
@@ -357,7 +380,8 @@
     "SerahTerima_Paket": 43,
     "SerahTerima_Pagu": 139788121.0,
     "Belum_Paket": 21,
-    "Belum_Pagu": 168097924.0
+    "Belum_Pagu": 168097924.0,
+    "Progres_Persen": 75.0
   },
   {
     "Satuan Kerja": "DINAS SOSIAL - 1.06.0.00.0.00.01.0000",
@@ -372,7 +396,8 @@
     "SerahTerima_Paket": 30,
     "SerahTerima_Pagu": 240954942.0,
     "Belum_Paket": 73,
-    "Belum_Pagu": 710730559.0
+    "Belum_Pagu": 710730559.0,
+    "Progres_Persen": 29.8
   },
   {
     "Satuan Kerja": "DINAS TENAGA KERJA DAN TRANSMIGRASI - 2.07.3.32.0.00.01.0000",
@@ -387,7 +412,8 @@
     "SerahTerima_Paket": 2,
     "SerahTerima_Pagu": 9085661.0,
     "Belum_Paket": 72,
-    "Belum_Pagu": 333871256.0
+    "Belum_Pagu": 333871256.0,
+    "Progres_Persen": 7.7
   },
   {
     "Satuan Kerja": "INSPEKTORAT DAERAH - 6.01.0.00.0.00.01.0000",
@@ -402,7 +428,8 @@
     "SerahTerima_Paket": 1,
     "SerahTerima_Pagu": 11908080.0,
     "Belum_Paket": 49,
-    "Belum_Pagu": 689318212.0
+    "Belum_Pagu": 689318212.0,
+    "Progres_Persen": 5.8
   },
   {
     "Satuan Kerja": "INSTALASI FARMASI - 1.02.0.00.0.00.01.0022",
@@ -417,7 +444,8 @@
     "SerahTerima_Paket": 2,
     "SerahTerima_Pagu": 24526893.0,
     "Belum_Paket": 19,
-    "Belum_Pagu": 189861991.0
+    "Belum_Pagu": 189861991.0,
+    "Progres_Persen": 32.1
   },
   {
     "Satuan Kerja": "KECAMATAN ARUT SELATAN - 7.01.0.00.0.00.02.0000",
@@ -432,7 +460,8 @@
     "SerahTerima_Paket": 7,
     "SerahTerima_Pagu": 43117628.0,
     "Belum_Paket": 160,
-    "Belum_Pagu": 975797860.0
+    "Belum_Pagu": 975797860.0,
+    "Progres_Persen": 7.0
   },
   {
     "Satuan Kerja": "KECAMATAN ARUT UTARA - 7.01.0.00.0.00.04.0000",
@@ -447,7 +476,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 65,
-    "Belum_Pagu": 310252566.0
+    "Belum_Pagu": 310252566.0,
+    "Progres_Persen": 0.0
   },
   {
     "Satuan Kerja": "KECAMATAN KOTAWARINGIN LAMA - 7.01.0.00.0.00.03.0000",
@@ -462,7 +492,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 40,
-    "Belum_Pagu": 328457466.0
+    "Belum_Pagu": 328457466.0,
+    "Progres_Persen": 0.0
   },
   {
     "Satuan Kerja": "KECAMATAN KUMAI - 7.01.0.00.0.00.01.0000",
@@ -477,7 +508,8 @@
     "SerahTerima_Paket": 34,
     "SerahTerima_Pagu": 144219300.0,
     "Belum_Paket": 50,
-    "Belum_Pagu": 264144978.0
+    "Belum_Pagu": 264144978.0,
+    "Progres_Persen": 46.8
   },
   {
     "Satuan Kerja": "KECAMATAN PANGKALAN BANTENG - 7.01.0.00.0.00.06.0000",
@@ -492,7 +524,8 @@
     "SerahTerima_Paket": 1,
     "SerahTerima_Pagu": 4099000.0,
     "Belum_Paket": 55,
-    "Belum_Pagu": 157095572.0
+    "Belum_Pagu": 157095572.0,
+    "Progres_Persen": 1.8
   },
   {
     "Satuan Kerja": "KECAMATAN PANGKALAN LADA - 7.01.0.00.0.00.05.0000",
@@ -507,7 +540,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 30,
-    "Belum_Pagu": 169964775.0
+    "Belum_Pagu": 169964775.0,
+    "Progres_Persen": 9.1
   },
   {
     "Satuan Kerja": "LABORATORIUM KESEHATAN DAERAH - 1.02.0.00.0.00.01.0003",
@@ -522,7 +556,8 @@
     "SerahTerima_Paket": 6,
     "SerahTerima_Pagu": 88340200.0,
     "Belum_Paket": 8,
-    "Belum_Pagu": 52763500.0
+    "Belum_Pagu": 52763500.0,
+    "Progres_Persen": 50.0
   },
   {
     "Satuan Kerja": "PUSKESMAS ARUT SELATAN - 1.02.0.00.0.00.01.0004",
@@ -537,7 +572,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 48,
-    "Belum_Pagu": 496859005.0
+    "Belum_Pagu": 496859005.0,
+    "Progres_Persen": 0.0
   },
   {
     "Satuan Kerja": "PUSKESMAS ARUT UTARA - 1.02.0.00.0.00.01.0017",
@@ -552,7 +588,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 12,
-    "Belum_Pagu": 159566746.0
+    "Belum_Pagu": 159566746.0,
+    "Progres_Persen": 7.7
   },
   {
     "Satuan Kerja": "PUSKESMAS IPUH BANGUN JAYA - 1.02.0.00.0.00.01.0021",
@@ -567,7 +604,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 23,
-    "Belum_Pagu": 183754320.0
+    "Belum_Pagu": 183754320.0,
+    "Progres_Persen": 0.0
   },
   {
     "Satuan Kerja": "PUSKESMAS KARANG MULYA - 1.02.0.00.0.00.01.0016",
@@ -582,7 +620,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 18,
-    "Belum_Pagu": 240516376.0
+    "Belum_Pagu": 240516376.0,
+    "Progres_Persen": 0.0
   },
   {
     "Satuan Kerja": "PUSKESMAS KOTAWARINGIN LAMA - 1.02.0.00.0.00.01.0019",
@@ -597,7 +636,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 33,
-    "Belum_Pagu": 196969887.0
+    "Belum_Pagu": 196969887.0,
+    "Progres_Persen": 0.0
   },
   {
     "Satuan Kerja": "PUSKESMAS KUMAI - 1.02.0.00.0.00.01.0010",
@@ -612,7 +652,8 @@
     "SerahTerima_Paket": 2,
     "SerahTerima_Pagu": 6223000.0,
     "Belum_Paket": 21,
-    "Belum_Pagu": 201393780.0
+    "Belum_Pagu": 201393780.0,
+    "Progres_Persen": 16.0
   },
   {
     "Satuan Kerja": "PUSKESMAS KUMPAI BATU ATAS - 1.02.0.00.0.00.01.0008",
@@ -627,7 +668,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 41,
-    "Belum_Pagu": 319912312.0
+    "Belum_Pagu": 319912312.0,
+    "Progres_Persen": 0.0
   },
   {
     "Satuan Kerja": "PUSKESMAS MADUREJO - 1.02.0.00.0.00.01.0005",
@@ -642,7 +684,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 14,
-    "Belum_Pagu": 138079030.0
+    "Belum_Pagu": 138079030.0,
+    "Progres_Persen": 0.0
   },
   {
     "Satuan Kerja": "PUSKESMAS MENDAWAI - 1.02.0.00.0.00.01.0006",
@@ -657,7 +700,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 48,
-    "Belum_Pagu": 411198562.0
+    "Belum_Pagu": 411198562.0,
+    "Progres_Persen": 0.0
   },
   {
     "Satuan Kerja": "PUSKESMAS NATAI PELINGKAU - 1.02.0.00.0.00.01.0007",
@@ -672,7 +716,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 37,
-    "Belum_Pagu": 416594677.0
+    "Belum_Pagu": 416594677.0,
+    "Progres_Persen": 0.0
   },
   {
     "Satuan Kerja": "PUSKESMAS PANDU SANJAYA - 1.02.0.00.0.00.01.0014",
@@ -687,7 +732,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 22,
-    "Belum_Pagu": 289499767.0
+    "Belum_Pagu": 289499767.0,
+    "Progres_Persen": 0.0
   },
   {
     "Satuan Kerja": "PUSKESMAS PANGKALAN LADA - 1.02.0.00.0.00.01.0013",
@@ -702,7 +748,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 37,
-    "Belum_Pagu": 345788997.0
+    "Belum_Pagu": 345788997.0,
+    "Progres_Persen": 0.0
   },
   {
     "Satuan Kerja": "PUSKESMAS RIAM DURIAN - 1.02.0.00.0.00.01.0020",
@@ -717,7 +764,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 17,
-    "Belum_Pagu": 123636114.0
+    "Belum_Pagu": 123636114.0,
+    "Progres_Persen": 43.3
   },
   {
     "Satuan Kerja": "PUSKESMAS RUNTU - 1.02.0.00.0.00.01.0009",
@@ -732,7 +780,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 29,
-    "Belum_Pagu": 186180796.0
+    "Belum_Pagu": 186180796.0,
+    "Progres_Persen": 0.0
   },
   {
     "Satuan Kerja": "PUSKESMAS SAMBI - 1.02.0.00.0.00.01.0018",
@@ -747,7 +796,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 15,
-    "Belum_Pagu": 121367900.0
+    "Belum_Pagu": 121367900.0,
+    "Progres_Persen": 0.0
   },
   {
     "Satuan Kerja": "PUSKESMAS SEMANGGANG - 1.02.0.00.0.00.01.0015",
@@ -762,7 +812,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 36,
-    "Belum_Pagu": 325146447.0
+    "Belum_Pagu": 325146447.0,
+    "Progres_Persen": 0.0
   },
   {
     "Satuan Kerja": "PUSKESMAS SUNGAI RANGIT - 1.02.0.00.0.00.01.0012",
@@ -777,7 +828,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 23,
-    "Belum_Pagu": 316118537.0
+    "Belum_Pagu": 316118537.0,
+    "Progres_Persen": 0.0
   },
   {
     "Satuan Kerja": "PUSKESMAS TELUK BOGAM - 1.02.0.00.0.00.01.0011",
@@ -792,7 +844,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 29,
-    "Belum_Pagu": 159801692.0
+    "Belum_Pagu": 159801692.0,
+    "Progres_Persen": 17.1
   },
   {
     "Satuan Kerja": "RUMAH SAKIT KUTARINGIN - 1.02.0.00.0.00.01.0002",
@@ -807,7 +860,8 @@
     "SerahTerima_Paket": 2,
     "SerahTerima_Pagu": 26129400.0,
     "Belum_Paket": 39,
-    "Belum_Pagu": 295915382.0
+    "Belum_Pagu": 295915382.0,
+    "Progres_Persen": 4.9
   },
   {
     "Satuan Kerja": "RUMAH SAKIT UMUM DAERAH SULTAN IMANUDDIN - 1.02.0.00.0.00.01.0001",
@@ -822,7 +876,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 29,
-    "Belum_Pagu": 529283463.0
+    "Belum_Pagu": 529283463.0,
+    "Progres_Persen": 44.2
   },
   {
     "Satuan Kerja": "SATUAN POLISI PAMONG PRAJA - 1.05.0.00.0.00.01.0000",
@@ -837,7 +892,8 @@
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 45,
-    "Belum_Pagu": 238970700.0
+    "Belum_Pagu": 238970700.0,
+    "Progres_Persen": 10.0
   },
   {
     "Satuan Kerja": "SEKRETARIAT DAERAH - 4.01.0.00.0.00.01.0000",
@@ -852,7 +908,8 @@
     "SerahTerima_Paket": 4,
     "SerahTerima_Pagu": 6387500.0,
     "Belum_Paket": 116,
-    "Belum_Pagu": 1382364830.0
+    "Belum_Pagu": 1382364830.0,
+    "Progres_Persen": 22.1
   },
   {
     "Satuan Kerja": "SEKRETARIAT DPRD - 4.02.0.00.0.00.01.0000",
@@ -867,7 +924,8 @@
     "SerahTerima_Paket": 5,
     "SerahTerima_Pagu": 22532350.0,
     "Belum_Paket": 90,
-    "Belum_Pagu": 952101010.0
+    "Belum_Pagu": 952101010.0,
+    "Progres_Persen": 18.2
   },
   {
     "Satuan Kerja": "TOTAL KESELURUHAN",
@@ -882,6 +940,7 @@
     "SerahTerima_Paket": 432,
     "SerahTerima_Pagu": 5355386472.0,
     "Belum_Paket": 3221,
-    "Belum_Pagu": 25430436390.0
+    "Belum_Pagu": 25430436390.0,
+    "Progres_Persen": 20.8
   }
 ]

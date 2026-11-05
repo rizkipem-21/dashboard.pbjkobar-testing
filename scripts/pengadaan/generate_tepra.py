@@ -144,11 +144,21 @@ def get_data_rekap(df_source, min_pagu, max_pagu):
         if col != 'Satuan Kerja': 
             total_row[col] = df_rekap[col].sum()
             
-    return pd.concat([df_rekap, pd.DataFrame([total_row])], ignore_index=True)
+    df_out = pd.concat([df_rekap, pd.DataFrame([total_row])], ignore_index=True)
+    # Persentase dihitung SETELAH baris TOTAL dibuat, agar total = persentase tertimbang (bukan jumlah persen)
+    df_out['Progres_Persen'] = (df_out['Hasil_Paket'] / df_out['Data Laporan_Paket'].replace(0, float('nan')) * 100).round(1).fillna(0)
+    return df_out
 
 
 # =======================================================================================
-# FUNGSI STYLE EXCEL KHUSUS: 0 SD 50 JUTA (10 Kolom)
+# HELPER PERSENTASE PROGRES (Hasil Pemilihan PKT / Data Laporan PKT)
+# =======================================================================================
+def nilai_persen(row):
+    return row['Progres_Persen'] / 100 if row['Data Laporan_Paket'] else "-"
+
+
+# =======================================================================================
+# FUNGSI STYLE EXCEL KHUSUS: 0 SD 50 JUTA (11 Kolom)
 # =======================================================================================
 def style_excel_sheet_0_50(ws, df_rekap, title_text):
     font_normal = Font(name='Arial', size=9)
@@ -162,7 +172,7 @@ def style_excel_sheet_0_50(ws, df_rekap, title_text):
     border_thin = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'), bottom=Side(style='thin'))
 
     # Judul
-    ws.merge_cells('A1:J1'); ws.merge_cells('A2:J2')
+    ws.merge_cells('A1:K1'); ws.merge_cells('A2:K2')
     ws['A1'] = title_text
     bln = {1:'JANUARI', 2:'FEBRUARI', 3:'MARET', 4:'APRIL', 5:'MEI', 6:'JUNI', 7:'JULI', 8:'AGUSTUS', 9:'SEPTEMBER', 10:'OKTOBER', 11:'NOVEMBER', 12:'DESEMBER'}
     ws['A2'] = f"KABUPATEN KOTAWARINGIN BARAT S/D {datetime.now().day} {bln[datetime.now().month]} {datetime.now().year}"
@@ -176,6 +186,7 @@ def style_excel_sheet_0_50(ws, df_rekap, title_text):
     ws.merge_cells('E4:F5'); ws['E4'] = "DATA REALISASI (RUP)"
     ws.merge_cells('G4:H5'); ws['G4'] = "DATA REALISASI"
     ws.merge_cells('I4:J5'); ws['I4'] = "BELUM PENGADAAN"
+    ws.merge_cells('K4:K7'); ws['K4'] = "PROGRES\n(%)"
     
     ws.merge_cells('C6:C7'); ws['C6'] = "JUMLAH\nPAKET"
     ws.merge_cells('D6:D7'); ws['D6'] = "JUMLAH PAGU\n(Rp)"
@@ -187,11 +198,11 @@ def style_excel_sheet_0_50(ws, df_rekap, title_text):
     ws.merge_cells('J6:J7'); ws['J6'] = "JUMLAH PAGU\n(Rp)"
     ws.row_dimensions[6].height = 30
 
-    numbers = ['1','2','3','4','5','6','7','8','9','10']
+    numbers = ['1','2','3','4','5','6','7','8','9','10','11=7/3']
     for col_idx, val in enumerate(numbers, start=1): ws.cell(row=8, column=col_idx, value=val)
 
     for r in range(4, 9):
-        for c in range(1, 11):
+        for c in range(1, 12):
             cell = ws.cell(row=r, column=c)
             cell.font = header_font_italic if r == 8 else header_font
             cell.fill, cell.alignment, cell.border = header_fill, align_center, border_thin
@@ -207,7 +218,8 @@ def style_excel_sheet_0_50(ws, df_rekap, title_text):
             row['Data Laporan_Paket'] if row['Data Laporan_Paket'] else "-", row['Data Laporan_Pagu'] if row['Data Laporan_Pagu'] else "-",
             row['Pemilihan_Paket'] if row['Pemilihan_Paket'] else "-", row['Pemilihan_Pagu'] if row['Pemilihan_Pagu'] else "-",
             row['Hasil_Paket'] if row['Hasil_Paket'] else "-", row['Hasil_Pagu'] if row['Hasil_Pagu'] else "-",
-            row['Belum_Paket'] if row['Belum_Paket'] else "-", row['Belum_Pagu'] if row['Belum_Pagu'] else "-"
+            row['Belum_Paket'] if row['Belum_Paket'] else "-", row['Belum_Pagu'] if row['Belum_Pagu'] else "-",
+            nilai_persen(row)
         ]
         
         for col_idx, val in enumerate(data_row, start=1):
@@ -220,6 +232,8 @@ def style_excel_sheet_0_50(ws, df_rekap, title_text):
             
             cell.border = border_thin
             if col_idx == 2: cell.alignment = align_center if is_total else align_left
+            elif col_idx == 11 and isinstance(val, (int, float)):
+                cell.number_format, cell.alignment = '0.0%', align_center
             elif col_idx in [4, 6, 8, 10] and isinstance(val, (int, float)):
                 cell.number_format, cell.alignment = '#,##0', align_right
             else:
@@ -233,10 +247,11 @@ def style_excel_sheet_0_50(ws, df_rekap, title_text):
     ws.column_dimensions['B'].width = 35
     for col in ['C', 'E', 'G', 'I']: ws.column_dimensions[col].width = 8
     for col in ['D', 'F', 'H', 'J']: ws.column_dimensions[col].width = 16
+    ws.column_dimensions['K'].width = 10
 
 
 # =======================================================================================
-# FUNGSI STYLE EXCEL STANDAR: (14 Kolom)
+# FUNGSI STYLE EXCEL STANDAR: (15 Kolom)
 # =======================================================================================
 def style_excel_sheet(ws, df_rekap, title_text):
     font_normal = Font(name='Arial', size=9)
@@ -250,7 +265,7 @@ def style_excel_sheet(ws, df_rekap, title_text):
     border_thin = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'), bottom=Side(style='thin'))
 
     # Judul
-    ws.merge_cells('A1:N1'); ws.merge_cells('A2:N2')
+    ws.merge_cells('A1:O1'); ws.merge_cells('A2:O2')
     ws['A1'] = title_text
     bln = {1:'JANUARI', 2:'FEBRUARI', 3:'MARET', 4:'APRIL', 5:'MEI', 6:'JUNI', 7:'JULI', 8:'AGUSTUS', 9:'SEPTEMBER', 10:'OKTOBER', 11:'NOVEMBER', 12:'DESEMBER'}
     ws['A2'] = f"KABUPATEN KOTAWARINGIN BARAT S/D {datetime.now().day} {bln[datetime.now().month]} {datetime.now().year}"
@@ -263,6 +278,7 @@ def style_excel_sheet(ws, df_rekap, title_text):
     ws.merge_cells('C4:D4'); ws['C4'] = "DATA LAPORAN"
     ws.merge_cells('E4:L4'); ws['E4'] = "PROSES PENGADAAN"
     ws.merge_cells('M4:N4'); ws['M4'] = "BELUM PENGADAAN"
+    ws.merge_cells('O4:O7'); ws['O4'] = "PROGRES\n(%)"
     ws.merge_cells('C5:C7'); ws['C5'] = "JUMLAH\nPAKET"
     ws.merge_cells('D5:D7'); ws['D5'] = "JUMLAH PAGU\n(Rp)"
     ws.merge_cells('E5:L5'); ws['E5'] = "SUDAH PENGADAAN"
@@ -277,11 +293,11 @@ def style_excel_sheet(ws, df_rekap, title_text):
     headers_row7 = ['PAKET', 'Rp', 'PAKET', 'Rp', 'PAKET', 'Rp', 'PAKET', 'Rp']
     for col_idx, val in enumerate(headers_row7, start=5): ws.cell(row=7, column=col_idx, value=val)
 
-    numbers = ['1','2','3','4','5','6','7','8','9','10','11','12','13=3-5','14=4-6']
+    numbers = ['1','2','3','4','5','6','7','8','9','10','11','12','13=3-5','14=4-6','15=7/3']
     for col_idx, val in enumerate(numbers, start=1): ws.cell(row=8, column=col_idx, value=val)
 
     for r in range(4, 9):
-        for c in range(1, 15):
+        for c in range(1, 16):
             cell = ws.cell(row=r, column=c)
             cell.font = header_font_italic if r == 8 else header_font
             cell.fill, cell.alignment, cell.border = header_fill, align_center, border_thin
@@ -299,7 +315,8 @@ def style_excel_sheet(ws, df_rekap, title_text):
             row['Hasil_Paket'] if row['Hasil_Paket'] else "-", row['Hasil_Pagu'] if row['Hasil_Pagu'] else "-",
             row['Kontrak_Paket'] if row['Kontrak_Paket'] else "-", row['Kontrak_Pagu'] if row['Kontrak_Pagu'] else "-",
             row['SerahTerima_Paket'] if row['SerahTerima_Paket'] else "-", row['SerahTerima_Pagu'] if row['SerahTerima_Pagu'] else "-",
-            row['Belum_Paket'] if row['Belum_Paket'] else "-", row['Belum_Pagu'] if row['Belum_Pagu'] else "-"
+            row['Belum_Paket'] if row['Belum_Paket'] else "-", row['Belum_Pagu'] if row['Belum_Pagu'] else "-",
+            nilai_persen(row)
         ]
         
         for col_idx, val in enumerate(data_row, start=1):
@@ -312,6 +329,8 @@ def style_excel_sheet(ws, df_rekap, title_text):
             
             cell.border = border_thin
             if col_idx == 2: cell.alignment = align_center if is_total else align_left
+            elif col_idx == 15 and isinstance(val, (int, float)):
+                cell.number_format, cell.alignment = '0.0%', align_center
             elif col_idx in [4, 6, 8, 10, 12, 14] and isinstance(val, (int, float)):
                 cell.number_format, cell.alignment = '#,##0', align_right
             else:
@@ -325,6 +344,7 @@ def style_excel_sheet(ws, df_rekap, title_text):
     ws.column_dimensions['B'].width = 35
     for col in ['C', 'E', 'G', 'I', 'K', 'M']: ws.column_dimensions[col].width = 8
     for col in ['D', 'F', 'H', 'J', 'L', 'N']: ws.column_dimensions[col].width = 16
+    ws.column_dimensions['O'].width = 10
 
 
 # =======================================================================================
@@ -341,7 +361,7 @@ def process_tepra(tahun):
     if df.empty: return
     df['Nilai Pagu RUP'] = df['Nilai Pagu RUP'].apply(safe_float)
     df['Nilai Hasil Pemilihan'] = df['Nilai Hasil Pemilihan'].apply(safe_float)
-    df['Satuan Kerja'] = df['Satuan Kerja'].astype(str).str.replace(r'\s+', ' ', regex=True).str.strip().str.upper()    
+    df['Satuan Kerja'] = df['Satuan Kerja'].astype(str).str.replace(r'\s+', ' ', regex=True).str.strip().str.upper()
 
     # 1. TARIK DATA KATEGORI 0 (0 Juta - 50 Juta) --> Batas bawah -1 agar 0 terbawa
     df_k0 = get_data_rekap(df, -1, 50000000)
@@ -355,7 +375,7 @@ def process_tepra(tahun):
     # 4. TARIK DATA KATEGORI 3 (2,5 Miliar - 50 Miliar)
     df_k3 = get_data_rekap(df, 2500000000, 50000000000)
 
-    # 5. TOTAL SELURUH PAKET (gabungan 4 kategori)
+    # 5. TOTAL KESELURUHAN PAKET (gabungan 4 kategori)
     df_total = get_data_rekap(df, -1, 50000000000)
 
     # EXPORT JSON UNTUK WEB

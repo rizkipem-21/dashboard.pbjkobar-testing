@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <!--
 =====================================================================
  FILE    : Rekap Data TEPRA (Tim Evaluasi dan Pengawasan Realisasi Anggaran)
@@ -6,10 +7,10 @@
  TAB     : 0) Non Strategis 0-50 Jt          1) Non Strategis >50-200 Jt
            2) Strategis >200 Jt-2,5 M        3) Strategis >=2,5-50 M
            4) Total Keseluruhan Paket (gabungan 4 kategori)
+ KOLOM   : Progres (%) = PKT Hasil Pemilihan / PKT Data Laporan
+           (dihitung di generate_tepra.py, dibaca dari kolom Progres_Persen)
 =====================================================================
 -->
-
-<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -48,7 +49,7 @@
 
   /* ===== KONTROL BAR & FILTER ===== */
   .control-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin: 0 20px 12px; background: #fff; border-radius: 8px; padding: 8px 12px; box-shadow: 0 1px 6px rgba(26,58,107,0.07); }
-  .filter-group { display: flex; align-items: center; gap: 6px; }
+  .filter-group { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
   .filter-input { border: 1.5px solid #dde3ed; border-radius: 4px; padding: 4px 8px; font-size: 0.65rem; color: #1e293b; background: #f8fafc; outline: none; width: 180px; }
   .filter-select { border: 1.5px solid #dde3ed; border-radius: 4px; padding: 4px 8px; font-size: 0.65rem; color: #1e293b; background: #f8fafc; outline: none; cursor: pointer; }
   
@@ -87,6 +88,9 @@
   
   /* Kolom Satker dikunci dan teks diizinkan turun (wrap) ditambah padding kanan (jarak) */
   .td-left { text-align: left; width: 260px; min-width: 260px; max-width: 260px; white-space: normal; padding-right: 15px; line-height: 1.3; }
+
+  /* Kolom Progres (%) */
+  .td-persen { text-align: center; white-space: nowrap; font-weight: 700; min-width: 50px; }
 
   /* LOADING */
   #loadingOverlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.8); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 20; display: none; }
@@ -129,16 +133,10 @@
   <div class="filter-group">
     <input type="text" id="filterSatker" class="filter-input" placeholder="Cari Satuan Kerja..." oninput="applyFilters()">
     
-    <select id="sortData" class="filter-select" onchange="onSortChange('progres')">
-      <option value="">-- Urutkan PKT Berprogres --</option>
-      <option value="desc">Paling Banyak (Tertinggi)</option>
-      <option value="asc">Paling Sedikit (Terendah)</option>
-    </select>
-
-    <select id="sortBelum" class="filter-select" onchange="onSortChange('belum')">
-      <option value="">-- Urutkan Belum Pengadaan --</option>
-      <option value="desc">Paling Banyak (Tertinggi)</option>
-      <option value="asc">Paling Sedikit (Terendah)</option>
+    <select id="sortData" class="filter-select" onchange="applyFilters()">
+      <option value="">-- Urutkan Progres (%) --</option>
+      <option value="desc">Progres Tertinggi (%)</option>
+      <option value="asc">Progres Terendah (%)</option>
     </select>
     
     <button id="btnHasData" class="btn-filter-toggle" onclick="toggleHasData()">Tampilkan Yang Punya Data</button>
@@ -196,6 +194,12 @@ function formatPkt(angka) {
   return new Intl.NumberFormat('id-ID').format(angka);
 }
 
+// Progres (%) = PKT Hasil Pemilihan / PKT Data Laporan (dihitung di generate_tepra.py)
+function formatPersen(row) {
+  if (!row["Data Laporan_Paket"] || row["Progres_Persen"] === undefined) return "-";
+  return Number(row["Progres_Persen"]).toFixed(1).replace('.', ',') + "%";
+}
+
 async function loadLastUpdate(){
   try {
     const res  = await fetch("../data/last-update-pengadaan.txt");
@@ -220,6 +224,7 @@ function buildTableHeader() {
         <th colspan="2">DATA REALISASI (RUP)</th>
         <th colspan="2">DATA REALISASI</th>
         <th colspan="2">BELUM PENGADAAN</th>
+        <th rowspan="2">PROGRES (%)</th>
       </tr>
       <tr>
         <th>PKT</th><th>Rp</th>
@@ -236,6 +241,7 @@ function buildTableHeader() {
         <th colspan="2" rowspan="2">DATA LAPORAN</th>
         <th colspan="8">PROSES PENGADAAN (SUDAH PENGADAAN)</th>
         <th colspan="2" rowspan="2">BELUM PENGADAAN</th>
+        <th rowspan="3">PROGRES (%)</th>
       </tr>
       <tr>
         <th colspan="2">PEMILIHAN/PELAKS.</th>
@@ -293,19 +299,12 @@ function toggleHasData() {
 function resetFilters() {
   document.getElementById("filterSatker").value = "";
   document.getElementById("sortData").value = "";
-  document.getElementById("sortBelum").value = "";
   
   isFilterHasData = false;
   const btn = document.getElementById("btnHasData");
   btn.classList.remove("active");
   btn.innerText = "Tampilkan Yang Punya Data";
   
-  applyFilters();
-}
-
-function onSortChange(sumber) {
-  if (sumber === 'progres') document.getElementById("sortBelum").value = "";
-  else document.getElementById("sortData").value = "";
   applyFilters();
 }
 
@@ -325,28 +324,13 @@ function applyFilters() {
     return true;
   });
 
-  // 2. SORTING
-  const sortBelum = document.getElementById("sortBelum").value;
-  if (sortMode || sortBelum) {
+  // 2. SORTING berdasarkan Progres (%)
+  if (sortMode) {
     filteredData.sort((a, b) => {
       if (a["Satuan Kerja"] === "TOTAL KESELURUHAN") return 1;
       if (b["Satuan Kerja"] === "TOTAL KESELURUHAN") return -1;
-
-      // Urutkan berdasarkan kolom PKT "Belum Pengadaan" (selisih sama -> bandingkan Rp)
-      if (sortBelum) {
-        const d = (a["Belum_Paket"] || 0) - (b["Belum_Paket"] || 0) || (a["Belum_Pagu"] || 0) - (b["Belum_Pagu"] || 0);
-        return sortBelum === 'desc' ? -d : d;
-      }
-
-      let valA, valB;
-      if (activeTabIndex === 0) {
-        valA = a["Hasil_Paket"] || 0;
-        valB = b["Hasil_Paket"] || 0;
-      } else {
-        valA = (a["SerahTerima_Paket"] || 0) * 1000000 + (a["Kontrak_Paket"] || 0) * 1000 + (a["Hasil_Paket"] || 0);
-        valB = (b["SerahTerima_Paket"] || 0) * 1000000 + (b["Kontrak_Paket"] || 0) * 1000 + (b["Hasil_Paket"] || 0);
-      }
-      return sortMode === 'desc' ? valB - valA : valA - valB;
+      const d = (a["Progres_Persen"] || 0) - (b["Progres_Persen"] || 0);
+      return sortMode === 'desc' ? -d : d;
     });
   }
 
@@ -358,7 +342,7 @@ function renderTable() {
   tbody.innerHTML = "";
   
   if (filteredData.length === 0) {
-    const colSpan = activeTabIndex === 0 ? 10 : 14;
+    const colSpan = activeTabIndex === 0 ? 11 : 15;
     tbody.innerHTML = `<tr><td colspan="${colSpan}" class="td-center" style="padding:20px; color:#64748b;">Tidak ada data ditemukan.</td></tr>`;
     return;
   }
@@ -381,6 +365,7 @@ function renderTable() {
         <td class="td-right">${formatRp(row["Hasil_Pagu"])}</td>
         <td class="td-center">${formatPkt(row["Belum_Paket"])}</td>
         <td class="td-right">${formatRp(row["Belum_Pagu"])}</td>
+        <td class="td-persen">${formatPersen(row)}</td>
       `;
     } else {
       tr.innerHTML = `
@@ -398,6 +383,7 @@ function renderTable() {
         <td class="td-right">${formatRp(row["SerahTerima_Pagu"])}</td>
         <td class="td-center">${formatPkt(row["Belum_Paket"])}</td>
         <td class="td-right">${formatRp(row["Belum_Pagu"])}</td>
+        <td class="td-persen">${formatPersen(row)}</td>
       `;
     }
     tbody.appendChild(tr);
