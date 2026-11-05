@@ -40,6 +40,7 @@ tahun_n2     = tahun_n - 2
 daftar_tahun = [tahun_n, tahun_n1, tahun_n2] 
 
 daftar_error_api = [] # Variabel penampung daftar gagal
+daftar_data_kosong = []
 
 # MENGGUNAKAN LOG TUNGGAL
 LOG_FILE = os.path.join(BASE_DIR, 'tools', 'log_pengadaan.txt')
@@ -218,6 +219,7 @@ def download_data_pengadaan(tahun, is_n2, data_dir):
                 if len(all_data) == 0:
                     if os.path.exists(output_path):
                         log_print(f"  -> [Aman] Data API kosong (null), mempertahankan file {filename} lama yang utuh.")
+                        daftar_data_kosong.append(f"ℹ️ PENGADAAN V1 ({tahun}) - {base_name.replace('_',' ')}")
                     else:
                         with open(output_path, 'w', encoding='utf-8') as f: 
                             f.write("[]")
@@ -286,5 +288,7 @@ if __name__ == '__main__':
     path_error = os.path.join(BASE_DIR, 'scripts', 'pengadaan', 'error_api_pengadaan.json')
     with open(path_error, 'w', encoding='utf-8') as f:
         json.dump(daftar_error_api, f)
+    with open(os.path.join(BASE_DIR, 'scripts', 'pengadaan', 'kosong_api_pengadaan.json'), 'w', encoding='utf-8') as f:
+        json.dump(daftar_data_kosong, f, ensure_ascii=False)    
 
     log_print("\nPROSES DOWNLOAD SELESAI!")

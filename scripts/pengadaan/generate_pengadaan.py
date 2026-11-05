@@ -1661,6 +1661,14 @@ if __name__ == '__main__':
     # ---------------------------------------------
 
     # 2. KIRIM TELEGRAM
+    blok_kosong = ""
+    try:
+        with open(os.path.join(BASE_DIR, 'scripts', 'pengadaan', 'kosong_api_pengadaan.json'), 'r', encoding='utf-8') as f:
+            dk = json.load(f)
+        if dk: blok_kosong = "ℹ️ API KOSONG (file lama dipertahankan):\n" + "".join(f"{x}\n" for x in dk) + "\n"
+    except Exception: pass
+    blok_ringkasan = blok_kosong + blok_ringkasan
+
     if len(daftar_error_api) > 0 or not git_sukses:
         pesan_ringkasan = "🚨 LAPORAN UPDATE SISTEM (PENGADAAN) 🚨\n\n"
         if len(daftar_error_api) > 0:

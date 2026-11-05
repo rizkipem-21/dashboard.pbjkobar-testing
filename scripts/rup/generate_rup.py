@@ -407,6 +407,12 @@ if __name__ == "__main__":
             with open(temp_tg, 'r', encoding='utf-8') as f:
                 info_tambahan = f.read()
         except: pass
+
+    try:
+        with open(os.path.join(BASE_DIR, 'scripts', 'rup', 'kosong_api_rup.json'), 'r', encoding='utf-8') as f:
+            dk = json.load(f)
+        if dk: info_tambahan += "ℹ️ API KOSONG (file lama dipertahankan):\n" + "".join(f"{x}\n" for x in dk)
+    except Exception: pass
     # -------------------------------------------------
 
     if len(daftar_error_api) > 0 or not git_sukses:

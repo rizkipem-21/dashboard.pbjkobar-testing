@@ -34,6 +34,7 @@ HEADERS = {
 LOG_FILE = os.path.join(BASE_DIR, 'tools', 'log_rup.txt')
 os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
 daftar_error_api = []
+daftar_data_kosong = []
 
 def log_print(*args, **kwargs):
     msg = " ".join(str(a) for a in args)
@@ -220,6 +221,7 @@ def download_data_api_with_retry(tahun):
                 if len(all_data) == 0:
                     if os.path.exists(output_path):
                         log_print(f"  -> [Aman] Data API kosong (null), mempertahankan file {filename} lama yang utuh.")
+                        daftar_data_kosong.append(f"ℹ️ RUP V1 ({tahun}) - {base_name.replace('_',' ')}")
                     else:
                         with open(output_path, 'w', encoding='utf-8') as f: 
                             f.write("[]")
@@ -287,5 +289,7 @@ if __name__ == "__main__":
     os.makedirs(os.path.dirname(path_error), exist_ok=True)
     with open(path_error, 'w', encoding='utf-8') as f:
         json.dump(daftar_error_api, f)
+    with open(os.path.join(BASE_DIR, 'scripts', 'rup', 'kosong_api_rup.json'), 'w', encoding='utf-8') as f:
+        json.dump(daftar_data_kosong, f, ensure_ascii=False)
         
     log_print(f"\nPROSES DOWNLOAD SELESAI PADA {get_waktu_indonesia()}")
