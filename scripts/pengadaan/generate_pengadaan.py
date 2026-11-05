@@ -1230,6 +1230,7 @@ def process_tahun(tahun):
         tahun_dilewati.append((tahun, "tidak ada data sama sekali (Inaproc dan RUP kosong)"))
         return None
     final_df = final_df.map(bersihkan_teks)
+    final_df['Satuan Kerja'] = final_df['Satuan Kerja'].astype(str).str.replace(r'\s+', ' ', regex=True).str.strip().str.upper()
 
     def get_status_konsolidasi(rup_val):
         if pd.isna(rup_val) or not str(rup_val).strip(): return ""
