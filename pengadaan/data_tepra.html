@@ -141,11 +141,11 @@
 
 <!-- TABS -->
 <div class="tabs-container" id="tabsContainer">
-  <button class="tab-btn active" onclick="switchTab(0, this)">Non Strategis (0 s.d 50 Juta)</button>
+  <button class="tab-btn active" onclick="switchTab(4, this)">Total Keseluruhan Paket</button>
+  <button class="tab-btn" onclick="switchTab(0, this)">Non Strategis (0 s.d 50 Juta)</button>
   <button class="tab-btn" onclick="switchTab(1, this)">Non Strategis (>50 Juta - ≤200 Juta)</button>
   <button class="tab-btn" onclick="switchTab(2, this)">Strategis (>200 Juta s.d 2,5 Miliar)</button>
   <button class="tab-btn" onclick="switchTab(3, this)">Strategis (≥2,5 Miliar s.d 50 Miliar)</button>
-  <button class="tab-btn" onclick="switchTab(4, this)">Total Keseluruhan Paket</button>
 </div>
 
 <!-- KONTROL & FILTER -->
@@ -196,7 +196,7 @@
 
 <script>
 let currentYear = "2026";
-let activeTabIndex = 0;
+let activeTabIndex = 4;   // 4 = Total Keseluruhan Paket (tab pertama yang terbuka)
 let rawData = [];
 let filteredData = [];
 let isFilterHasData = false;
