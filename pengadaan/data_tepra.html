@@ -89,6 +89,26 @@
   /* Kolom Satker dikunci dan teks diizinkan turun (wrap) ditambah padding kanan (jarak) */
   .td-left { text-align: left; width: 260px; min-width: 260px; max-width: 260px; white-space: normal; padding-right: 15px; line-height: 1.3; }
 
+  /* ===== DROPDOWN SATKER (MULTI-PILIH + CARI) ===== */
+  .ms-wrap { position: relative; }
+  .ms-btn { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 230px; border: 1.5px solid #dde3ed; border-radius: 4px; padding: 4px 8px; font-size: 0.65rem; color: #1e293b; background: #f8fafc; cursor: pointer; text-align: left; }
+  .ms-btn .ms-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ms-btn .ms-arrow { font-size: 0.5rem; color: #64748b; flex-shrink: 0; }
+  .ms-btn.has-value { border-color: var(--lpse-biru); font-weight: 600; }
+  .ms-panel { display: none; position: absolute; top: calc(100% + 4px); left: 0; width: 360px; max-width: 90vw; background: #fff; border: 1.5px solid var(--lpse-biru); border-radius: 6px; box-shadow: 0 8px 24px rgba(26,58,107,0.18); z-index: 50; padding: 8px; }
+  .ms-panel.open { display: block; }
+  .ms-search { width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 4px; padding: 5px 8px; font-size: 0.7rem; outline: none; }
+  .ms-search:focus { border-color: var(--lpse-biru); }
+  .ms-actions { display: flex; justify-content: space-between; align-items: center; margin: 6px 2px 4px; font-size: 0.62rem; }
+  .ms-actions a { color: var(--lpse-biru); cursor: pointer; font-weight: 600; }
+  .ms-actions a:hover { text-decoration: underline; }
+  .ms-actions .ms-count { color: #64748b; }
+  .ms-list { max-height: 260px; overflow-y: auto; }
+  .ms-item { display: flex; align-items: flex-start; gap: 8px; padding: 6px; font-size: 0.68rem; color: #1e293b; cursor: pointer; border-radius: 4px; line-height: 1.3; }
+  .ms-item:hover { background: #eff6ff; }
+  .ms-item input { margin-top: 2px; flex-shrink: 0; cursor: pointer; }
+  .ms-empty { padding: 10px; font-size: 0.65rem; color: #64748b; text-align: center; }
+
   /* Kolom Progres (%) */
   .td-persen { text-align: center; white-space: nowrap; font-weight: 700; min-width: 50px; }
 
@@ -131,7 +151,20 @@
 <!-- KONTROL & FILTER -->
 <div class="control-bar">
   <div class="filter-group">
-    <input type="text" id="filterSatker" class="filter-input" placeholder="Cari Satuan Kerja..." oninput="applyFilters()">
+    <div class="ms-wrap" id="msWrap">
+      <button type="button" class="ms-btn" id="msBtn" onclick="toggleSatkerPanel(event)">
+        <span class="ms-label" id="msLabel">Pilih satuan kerja</span><span class="ms-arrow">▼</span>
+      </button>
+      <div class="ms-panel" id="msPanel">
+        <input type="text" id="msSearch" class="ms-search" placeholder="Cari satuan kerja..." oninput="renderSatkerOptions()">
+        <div class="ms-actions">
+          <a role="button" onclick="selectAllVisible()">Pilih semua</a>
+          <span class="ms-count" id="msCount"></span>
+          <a role="button" onclick="clearSatkerSelection()">Hapus pilihan</a>
+        </div>
+        <div class="ms-list" id="msList"></div>
+      </div>
+    </div>
     
     <select id="sortData" class="filter-select" onchange="applyFilters()">
       <option value="">-- Urutkan Progres (%) --</option>
@@ -262,6 +295,89 @@ function buildTableHeader() {
 }
 
 // ==========================================
+// DROPDOWN SATUAN KERJA (MULTI-PILIH + CARI)
+// ==========================================
+let selectedSatker = new Set();
+let satkerOptions = [];
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// Daftar satker diambil dari data JSON yang sedang aktif
+function buildSatkerOptions() {
+  const names = [...new Set(rawData.map(r => r["Satuan Kerja"]).filter(n => n && n !== "TOTAL KESELURUHAN"))]
+    .sort((a, b) => a.localeCompare(b, 'id'));
+  if (!names.length) return;
+  satkerOptions = names;
+  selectedSatker = new Set([...selectedSatker].filter(n => names.includes(n)));
+  renderSatkerOptions();
+  updateSatkerLabel();
+}
+
+function getVisibleSatker() {
+  const q = document.getElementById("msSearch").value.toLowerCase().trim();
+  return satkerOptions.filter(n => n.toLowerCase().includes(q));
+}
+
+function renderSatkerOptions() {
+  const list = document.getElementById("msList");
+  const vis = getVisibleSatker();
+  if (!vis.length) {
+    list.innerHTML = '<div class="ms-empty">Tidak ada satuan kerja ditemukan.</div>';
+  } else {
+    list.innerHTML = vis.map(n =>
+      `<label class="ms-item"><input type="checkbox" data-name="${escapeHtml(n)}" ${selectedSatker.has(n) ? 'checked' : ''} onchange="toggleSatker(this)"><span>${escapeHtml(n)}</span></label>`
+    ).join('');
+  }
+  updateSatkerLabel();
+}
+
+function updateSatkerLabel() {
+  const n = selectedSatker.size;
+  const label = document.getElementById("msLabel");
+  if (n === 0) label.textContent = "Pilih satuan kerja";
+  else if (n === 1) label.textContent = [...selectedSatker][0];
+  else label.textContent = n + " satuan kerja dipilih";
+  document.getElementById("msBtn").classList.toggle("has-value", n > 0);
+  document.getElementById("msCount").textContent = n > 0 ? n + " dipilih" : "";
+}
+
+function toggleSatker(cb) {
+  const name = cb.dataset.name;
+  if (cb.checked) selectedSatker.add(name); else selectedSatker.delete(name);
+  updateSatkerLabel();
+  applyFilters();
+}
+
+function selectAllVisible() {
+  getVisibleSatker().forEach(n => selectedSatker.add(n));
+  renderSatkerOptions();
+  applyFilters();
+}
+
+function clearSatkerSelection() {
+  selectedSatker.clear();
+  renderSatkerOptions();
+  applyFilters();
+}
+
+function toggleSatkerPanel(e) {
+  e.stopPropagation();
+  const panel = document.getElementById("msPanel");
+  panel.classList.toggle("open");
+  if (panel.classList.contains("open")) document.getElementById("msSearch").focus();
+}
+
+// Tutup panel saat klik di luar atau tekan Escape
+document.addEventListener("click", (e) => {
+  if (!document.getElementById("msWrap").contains(e.target)) document.getElementById("msPanel").classList.remove("open");
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") document.getElementById("msPanel").classList.remove("open");
+});
+
+// ==========================================
 // FETCH & FILTER DATA
 // ==========================================
 async function fetchTabData() {
@@ -279,6 +395,7 @@ async function fetchTabData() {
     rawData = [];
   }
   
+  buildSatkerOptions();
   applyFilters();
   document.getElementById("loadingOverlay").style.display = "none";
 }
@@ -296,30 +413,36 @@ function toggleHasData() {
   applyFilters();
 }
 
-function resetFilters() {
-  document.getElementById("filterSatker").value = "";
+// Mengosongkan semua filter tanpa menggambar ulang tabel
+function clearFilterState() {
+  selectedSatker.clear();
+  document.getElementById("msSearch").value = "";
+  renderSatkerOptions();
   document.getElementById("sortData").value = "";
   
   isFilterHasData = false;
   const btn = document.getElementById("btnHasData");
   btn.classList.remove("active");
   btn.innerText = "Tampilkan Yang Punya Data";
-  
+  document.getElementById("msPanel").classList.remove("open");
+}
+
+function resetFilters() {
+  clearFilterState();
   applyFilters();
 }
 
 function applyFilters() {
-  const textSearch = document.getElementById("filterSatker").value.toLowerCase();
+  const hasSel = selectedSatker.size > 0;
   const sortMode = document.getElementById("sortData").value;
   
-  // 1. FILTERING
+  // 1. FILTERING (baris TOTAL disembunyikan saat ada satker yang dipilih)
   filteredData = rawData.filter(row => {
-    if (row["Satuan Kerja"] === "TOTAL KESELURUHAN" && textSearch === "" && !isFilterHasData) return true;
-    if (textSearch && !row["Satuan Kerja"].toLowerCase().includes(textSearch)) return false;
-    
-    if (isFilterHasData && row["Satuan Kerja"] !== "TOTAL KESELURUHAN") {
-      let totalPaket = row["Data Laporan_Paket"];
-      if (!totalPaket || totalPaket === "-" || totalPaket === 0) return false;
+    if (row["Satuan Kerja"] === "TOTAL KESELURUHAN") return !hasSel;
+    if (hasSel && !selectedSatker.has(row["Satuan Kerja"])) return false;
+    if (isFilterHasData) {
+      const totalPaket = row["Data Laporan_Paket"];
+      if (!totalPaket || totalPaket === "-") return false;
     }
     return true;
   });
@@ -397,6 +520,7 @@ function switchTab(index, btnElement) {
   activeTabIndex = index;
   document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
   btnElement.classList.add("active");
+  clearFilterState();   // semua filter otomatis direset saat pindah tab
   fetchTabData();
 }
 
