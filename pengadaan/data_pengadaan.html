@@ -55,15 +55,25 @@
   .filter-advanced-panel.show { display: block; }
   .filter-card input[type=text], .filter-card select { border: 1.5px solid #dde3ed; border-radius: 4px; padding: 4px 6px; font-size: 0.7rem; color: #1e293b; background: #f8fafc; outline: none; width: 100%; }
 
-  /* ===== CHECKLIST DROPDOWN ===== */
-  .check-dropdown { position: relative; display: inline-block; width: 140px; }
-  .check-btn { border: 1.5px solid #dde3ed; border-radius: 4px; padding: 0 20px 0 6px; height: 24px; font-size: 0.6rem; color: #1e293b; background: #f8fafc; cursor: pointer; width: 100%; text-align: left; position: relative; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .check-btn::after { content: "▾"; position: absolute; right: 6px; top: 50%; transform: translateY(-50%); color: #64748b; }
-  .check-panel { display: none; position: fixed; background: #fff; border: 1.5px solid #dde3ed; border-radius: 6px; box-shadow: 0 4px 15px rgba(26,58,107,0.18); z-index: 9999; min-width: 150px; max-height: 250px; flex-direction: column; }
-  .check-panel.open { display: flex; }
-  .check-list-container { overflow-y: auto; flex-grow: 1; padding: 4px 0; }
-  .check-item { display: flex; align-items: center; gap: 6px; padding: 4px 10px; font-size: 0.7rem; cursor: pointer; }
-  .check-item:hover { background: #f0f5fb; }
+  /* ===== DROPDOWN CEKLIS (MULTI-PILIH + CARI) - GAYA SAMA DENGAN TEPRA ===== */
+  .ms-wrap { position: relative; }
+  .ms-btn { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; border: 1.5px solid #dde3ed; border-radius: 4px; padding: 4px 8px; font-size: 0.65rem; color: #1e293b; background: #f8fafc; cursor: pointer; text-align: left; }
+  .ms-btn .ms-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ms-btn .ms-arrow { font-size: 0.5rem; color: #64748b; flex-shrink: 0; }
+  .ms-btn.has-value { border-color: var(--lpse-biru); font-weight: 600; }
+  .ms-panel { display: none; position: absolute; top: calc(100% + 4px); left: 0; width: 360px; max-width: 90vw; background: #fff; border: 1.5px solid var(--lpse-biru); border-radius: 6px; box-shadow: 0 8px 24px rgba(26,58,107,0.18); z-index: 1001; padding: 8px; }
+  .ms-panel.open { display: block; }
+  .filter-card input[type=text].ms-search { width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 4px; padding: 5px 8px; font-size: 0.7rem; outline: none; background: #fff; }
+  .filter-card input[type=text].ms-search:focus { border-color: var(--lpse-biru); }
+  .ms-actions { display: flex; justify-content: space-between; align-items: center; margin: 6px 2px 4px; font-size: 0.62rem; }
+  .ms-actions a { color: var(--lpse-biru); cursor: pointer; font-weight: 600; }
+  .ms-actions a:hover { text-decoration: underline; }
+  .ms-actions .ms-count { color: #64748b; }
+  .ms-list { max-height: 260px; overflow-y: auto; }
+  .ms-item { display: flex; align-items: flex-start; gap: 8px; padding: 6px; font-size: 0.68rem; color: #1e293b; cursor: pointer; border-radius: 4px; line-height: 1.3; }
+  .ms-item:hover { background: #eff6ff; }
+  .ms-item input { margin-top: 2px; flex-shrink: 0; cursor: pointer; }
+  .ms-empty { padding: 10px; font-size: 0.65rem; color: #64748b; text-align: center; }
 
   /* ===== TOMBOL ===== */
   .btn-reset { background: #f1f5f9; color: #e63329; border: 1.5px solid #cbd5e1; border-radius: 4px; padding: 0 10px; height: 26px; font-size: 0.65rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; white-space: nowrap; }
@@ -160,77 +170,11 @@
 <div class="filter-main-card filter-card">
   
   <div class="filter-quick-row">
-    <div class="filter-group">
-      <label>Status</label>
-      <div class="check-dropdown">
-        <button class="check-btn" id="btn_status" onclick="toggleFilterPanel('status',event)"><span id="label_status">-- Semua --</span></button>
-        <div class="check-panel" id="panel_status">
-          <div class="check-list-container">
-            <div class="check-item"><input type="checkbox" id="all_status" checked onchange="toggleAllFilter('status',this)"><label for="all_status" style="font-weight:600; cursor:pointer;">Pilih Semua</label></div>
-            <div style="border-top:1px solid #eee; margin:4px 0;"></div>
-            <div id="list_status"></div>
-          </div>
-          <div style="display:flex; gap:8px; padding:10px; background:#f8fafc; border-top:1px solid #eee;">
-            <button style="height:20px; font-size:9px;" class="w-full bg-blue-900 text-white rounded font-bold font-bold" onclick="applyFilterPanel('status')">✓ OK</button>
-            <button style="height:20px; font-size:9px;" class="w-full border rounded font-bold font-bold" onclick="cancelFilterPanel('status')">✕ Batal</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="filter-group">
-      <label>Status Rinci</label>
-      <div class="check-dropdown">
-        <button class="check-btn" id="btn_status_rinci" onclick="toggleFilterPanel('status_rinci',event)"><span id="label_status_rinci">-- Semua --</span></button>
-        <div class="check-panel" id="panel_status_rinci">
-          <div class="check-list-container">
-            <div class="check-item"><input type="checkbox" id="all_status_rinci" checked onchange="toggleAllFilter('status_rinci',this)"><label for="all_status_rinci" style="font-weight:600; cursor:pointer;">Pilih Semua</label></div>
-            <div style="border-top:1px solid #eee; margin:4px 0;"></div>
-            <div id="list_status_rinci"></div>
-          </div>
-          <div style="display:flex; gap:8px; padding:6px; background:#f8fafc; border-top:1px solid #eee;">
-            <button style="height:20px; font-size:9px;" class="w-full bg-blue-900 text-white rounded font-bold" onclick="applyFilterPanel('status_rinci')">✓ OK</button>
-            <button style="height:20px; font-size:9px;" class="w-full border rounded font-bold" onclick="cancelFilterPanel('status_rinci')">✕ Batal</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="filter-group">
-      <label>Cara Pengadaan</label>
-      <div class="check-dropdown">
-        <button class="check-btn" id="btn_cara" onclick="toggleFilterPanel('cara',event)"><span id="label_cara">-- Semua --</span></button>
-        <div class="check-panel" id="panel_cara">
-          <div class="check-list-container">
-            <div class="check-item"><input type="checkbox" id="all_cara" checked onchange="toggleAllFilter('cara',this)"><label for="all_cara" style="font-weight:600; cursor:pointer;">Pilih Semua</label></div>
-            <div style="border-top:1px solid #eee; margin:4px 0;"></div>
-            <div id="list_cara"></div>
-          </div>
-          <div style="display:flex; gap:8px; padding:10px; background:#f8fafc; border-top:1px solid #eee;">
-            <button style="height:20px; font-size:9px;" class="w-full bg-blue-900 text-white rounded font-bold font-bold" onclick="applyFilterPanel('cara')">✓ OK</button>
-            <button style="height:20px; font-size:9px;" class="w-full border rounded font-bold font-bold" onclick="cancelFilterPanel('cara')">✕ Batal</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="filter-group">
-      <label>Status Realisasi</label>
-      <div class="check-dropdown">
-        <button class="check-btn" id="btn_realisasi" onclick="toggleFilterPanel('realisasi',event)"><span id="label_realisasi">-- Semua --</span></button>
-        <div class="check-panel" id="panel_realisasi">
-          <div class="check-list-container">
-            <div class="check-item"><input type="checkbox" id="all_realisasi" checked onchange="toggleAllFilter('realisasi',this)"><label for="all_realisasi" style="font-weight:600; cursor:pointer;">Pilih Semua</label></div>
-            <div style="border-top:1px solid #eee; margin:4px 0;"></div>
-            <div id="list_realisasi"></div>
-          </div>
-          <div style="display:flex; gap:8px; padding:10px; background:#f8fafc; border-top:1px solid #eee;">
-            <button style="height:20px; font-size:9px;" class="w-full bg-blue-900 text-white rounded font-bold" onclick="applyFilterPanel('realisasi')">✓ OK</button>
-            <button style="height:20px; font-size:9px;" class="w-full border rounded font-bold" onclick="cancelFilterPanel('realisasi')">✕ Batal</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="filter-group"><label>Satuan Kerja</label><div class="ms-wrap" id="ms_satker" style="width:230px;"></div></div>
+    <div class="filter-group"><label>Status</label><div class="ms-wrap" id="ms_status" style="width:160px;"></div></div>
+    <div class="filter-group"><label>Status Rinci</label><div class="ms-wrap" id="ms_status_rinci" style="width:160px;"></div></div>
+    <div class="filter-group"><label>Cara Pengadaan</label><div class="ms-wrap" id="ms_cara" style="width:160px;"></div></div>
+    <div class="filter-group"><label>Status Realisasi</label><div class="ms-wrap" id="ms_realisasi" style="width:160px;"></div></div>
     
     <button id="resetFilter" class="btn-reset">✕ Reset Semua Filter</button>
 
@@ -249,50 +193,18 @@
         <label>Kode RUP</label>
         <input id="filterKodeRUP" type="text" placeholder="Ketik kode RUP..."/>
       </div>
-      <div class="filter-group" style="flex:2; min-width:200px;">
-        <label>Satuan Kerja</label>
-        <input id="filterSatker" type="text" placeholder="Ketik instansi/satker..."/>
-      </div>
       <div class="filter-group" style="flex:1.5; min-width:180px;">
         <label>Nama Paket</label>
         <input id="filterPaket" type="text" placeholder="Ketik nama paket..."/>
       </div>
-
       <div class="filter-group" style="flex:1; min-width:130px;">
         <label>Jenis Pengadaan</label>
-        <div class="check-dropdown" style="width:100%;">
-          <button class="check-btn" id="btn_jenis" onclick="toggleFilterPanel('jenis',event)"><span id="label_jenis">-- Semua --</span></button>
-          <div class="check-panel" id="panel_jenis">
-            <div class="check-list-container">
-              <div class="check-item"><input type="checkbox" id="all_jenis" checked onchange="toggleAllFilter('jenis',this)"><label for="all_jenis" style="font-weight:600; cursor:pointer;">Pilih Semua</label></div>
-              <div style="border-top:1px solid #eee; margin:4px 0;"></div>
-              <div id="list_jenis"></div>
-            </div>
-            <div style="display:flex; gap:8px; padding:10px; background:#f8fafc; border-top:1px solid #eee;">
-              <button style="height:20px; font-size:9px;" class="w-full bg-blue-900 text-white rounded font-bold font-bold" onclick="applyFilterPanel('jenis')">✓ OK</button>
-              <button style="height:20px; font-size:9px;" class="w-full border rounded font-bold font-bold" onclick="cancelFilterPanel('jenis')">✕ Batal</button>
-            </div>
-          </div>
-        </div>
+        <div class="ms-wrap" id="ms_jenis" style="width:100%;"></div>
       </div>
       <div class="filter-group" style="flex:1; min-width:130px;">
         <label>Metode Pemilihan</label>
-        <div class="check-dropdown" style="width:100%;">
-          <button class="check-btn" id="btn_metode" onclick="toggleFilterPanel('metode',event)"><span id="label_metode">-- Semua --</span></button>
-          <div class="check-panel" id="panel_metode">
-            <div class="check-list-container">
-              <div class="check-item"><input type="checkbox" id="all_metode" checked onchange="toggleAllFilter('metode',this)"><label for="all_metode" style="font-weight:600; cursor:pointer;">Pilih Semua</label></div>
-              <div style="border-top:1px solid #eee; margin:4px 0;"></div>
-              <div id="list_metode"></div>
-            </div>
-            <div style="display:flex; gap:8px; padding:10px; background:#f8fafc; border-top:1px solid #eee;">
-              <button style="height:20px; font-size:9px;" class="w-full bg-blue-900 text-white rounded font-bold font-bold" onclick="applyFilterPanel('metode')">✓ OK</button>
-              <button style="height:20px; font-size:9px;" class="w-full border rounded font-bold font-bold" onclick="cancelFilterPanel('metode')">✕ Batal</button>
-            </div>
-          </div>
-        </div>
+        <div class="ms-wrap" id="ms_metode" style="width:100%;"></div>
       </div>
-
     </div>
   </div>
 
@@ -425,6 +337,7 @@ function toggleAdvancedFilter(){
 
 // === KONFIGURASI FILTER CHECKLIST ===
 const filterConfigs = {
+  "satker": { key: "Satuan Kerja", isStatic:false },
   "jenis":  { key: "Jenis Pengadaan", isStatic:false },
   "metode": { key: "Metode Pemilihan", isStatic:false },
   "cara":   { key: "Cara Pengadaan", isStatic:true, staticOptions: ["Tender","Non Tender","Pencatatan Non Tender","E-Purchasing V5","E-Purchasing V6","Swakelola"] },
@@ -432,7 +345,6 @@ const filterConfigs = {
   "realisasi": { key: "Status Realisasi", isStatic:true, staticOptions: ["Realisasi","Belum Realisasi"] },
   "status_rinci": { key: "Status", isStatic:false }
 };
-let filterSnapshots = {};
 
 function rupiah(n){
   if (n === null || n === undefined || n === "" || n === " ") return "";
@@ -503,128 +415,170 @@ async function loadDataByYear(year){
   document.getElementById("loadingOverlay").style.display = "none";
 }
 
-// === LOGIKA CHECKLIST ===
-function buildAllChecklists(){
-  for (let f in filterConfigs) {
-    let conf = filterConfigs[f];
-    let items = [];
-    if (conf.isStatic) {
-      items = conf.staticOptions;
-    } else {
-      items = [...new Set(allData.map(r => r[conf.key] ?? "").filter(v => v !== ""))].sort();
-    }
+// ========================================================
+// DROPDOWN CEKLIS (MULTI-PILIH + CARI) - GAYA SAMA DENGAN HALAMAN TEPRA
+// Tidak ada yang dicentang = tampilkan semua. Perubahan langsung diterapkan.
+// ========================================================
+const msState = {};
 
-    const listContainer = document.getElementById(`list_${f}`);
-    listContainer.innerHTML = "";
-    items.forEach(val => {
-      const id = `chk_${f}_${val.replace(/[^a-zA-Z0-9]/g,'_')}`;
-      const div = document.createElement("div");
-      div.className = "check-item";
-      div.innerHTML = `<input type="checkbox" id="${id}" value="${val}" checked onchange="updateCheckAll('${f}')">
-                       <label for="${id}" style="cursor:pointer; flex:1;">${val}</label>`;
-      listContainer.appendChild(div);
-    });
-    updateFilterLabel(f);
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function initMultiSelects() {
+  for (const t in filterConfigs) {
+    msState[t] = { options: [], selected: new Set(), available: null, availSig: null };
+    document.getElementById(`ms_${t}`).innerHTML = `
+      <button type="button" class="ms-btn" id="btn_${t}" onclick="msToggle('${t}',event)">
+        <span class="ms-label" id="label_${t}">-- Semua --</span><span class="ms-arrow">▼</span>
+      </button>
+      <div class="ms-panel" id="panel_${t}">
+        <input type="text" class="ms-search" id="search_${t}" placeholder="Cari..." oninput="msRender('${t}')" autocomplete="off">
+        <div class="ms-actions">
+          <a role="button" onclick="msSelectAll('${t}')">Pilih semua</a>
+          <span class="ms-count" id="count_${t}"></span>
+          <a role="button" onclick="msClear('${t}')">Hapus pilihan</a>
+        </div>
+        <div class="ms-list" id="list_${t}"></div>
+      </div>`;
   }
 }
 
-function toggleFilterPanel(type,e){
+// Opsi yang tampil: dibatasi ketersediaan (Status Rinci) dan kotak pencarian
+function msVisibleOptions(type) {
+  const st = msState[type];
+  let opts = st.available ? st.options.filter(o => st.available.has(o)) : st.options;
+  const q = document.getElementById(`search_${type}`).value.toLowerCase().trim();
+  if (q) opts = opts.filter(o => String(o).toLowerCase().includes(q));
+  return opts;
+}
+
+function msRender(type) {
+  const st = msState[type];
+  const list = document.getElementById(`list_${type}`);
+  const vis = msVisibleOptions(type);
+  const scroll = list.scrollTop;
+  list.innerHTML = vis.length
+    ? vis.map(n => `<label class="ms-item"><input type="checkbox" data-name="${escapeHtml(n)}" ${st.selected.has(n) ? 'checked' : ''} onchange="msToggleItem('${type}',this)"><span>${escapeHtml(n)}</span></label>`).join('')
+    : '<div class="ms-empty">Tidak ada data ditemukan.</div>';
+  list.scrollTop = scroll;
+  msUpdateLabel(type);
+}
+
+function msUpdateLabel(type) {
+  const st = msState[type];
+  const n = st.selected.size;
+  const label = document.getElementById(`label_${type}`);
+  if (n === 0) label.textContent = "-- Semua --";
+  else if (n === 1) label.textContent = [...st.selected][0];
+  else label.textContent = n + " dipilih";
+  document.getElementById(`btn_${type}`).classList.toggle("has-value", n > 0);
+  document.getElementById(`count_${type}`).textContent = n > 0 ? n + " dipilih" : "";
+}
+
+function msToggleItem(type, cb) {
+  const st = msState[type];
+  if (cb.checked) st.selected.add(cb.dataset.name); else st.selected.delete(cb.dataset.name);
+  msUpdateLabel(type);
+  applyFilter();
+}
+
+function msSelectAll(type) {
+  msVisibleOptions(type).forEach(n => msState[type].selected.add(n));
+  msRender(type);
+  applyFilter();
+}
+
+function msClear(type) {
+  msState[type].selected.clear();
+  msRender(type);
+  applyFilter();
+}
+
+function msCloseAll() {
+  for (const t in filterConfigs) document.getElementById(`panel_${t}`).classList.remove("open");
+}
+
+function msToggle(type, e) {
   e.stopPropagation();
   const panel = document.getElementById(`panel_${type}`);
-  const btn = document.getElementById(`btn_${type}`);
-  
-  for (let f in filterConfigs) {
-    if (f !== type) closeFilterPanel(f);
-  }
-
-  if (!panel.classList.contains("open")) {
-    const rect = btn.getBoundingClientRect();
-    panel.style.top = (rect.bottom + 4) + "px";
-    panel.style.left = rect.left + "px";
+  const opening = !panel.classList.contains("open");
+  msCloseAll();
+  if (opening) {
     panel.classList.add("open");
-    
-    filterSnapshots[type] = Array.from(document.querySelectorAll(`#list_${type} input[type=checkbox]`)).map(cb => cb.checked);
-  } else {
-    closeFilterPanel(type);
+    panel.style.left = "0"; panel.style.right = "auto";
+    // Geser ke kiri bila panel keluar dari tepi kanan layar
+    if (panel.getBoundingClientRect().right > window.innerWidth - 8) { panel.style.left = "auto"; panel.style.right = "0"; }
+    document.getElementById(`search_${type}`).focus();
   }
 }
 
-function closeFilterPanel(type){
-  document.getElementById(`panel_${type}`).classList.remove("open");
+// Status Rinci hanya menampilkan status yang tersedia pada hasil filter lain
+function msSetAvailable(type, set) {
+  const st = msState[type];
+  const sig = [...set].sort().join("|");
+  let pruned = false;
+  [...st.selected].forEach(v => { if (!set.has(v)) { st.selected.delete(v); pruned = true; } });
+  if (sig === st.availSig && !pruned) return;
+  st.available = set; st.availSig = sig;
+  msRender(type);
 }
 
-function toggleAllFilter(type,el){
-  document.querySelectorAll(`#list_${type} input[type=checkbox]`).forEach(cb => cb.checked = el.checked);
+// Tutup panel saat klik di luar atau tekan Escape
+document.addEventListener("click", (e) => {
+  for (const t in filterConfigs) {
+    if (!document.getElementById(`ms_${t}`).contains(e.target)) document.getElementById(`panel_${t}`).classList.remove("open");
+  }
+});
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") msCloseAll(); });
+
+function buildAllChecklists(){
+  for (const f in filterConfigs) {
+    const conf = filterConfigs[f], st = msState[f];
+    st.options = conf.isStatic
+      ? conf.staticOptions
+      : [...new Set(allData.map(r => r[conf.key] ?? "").filter(v => v !== ""))].sort((a, b) => String(a).localeCompare(String(b), 'id'));
+    st.selected = new Set([...st.selected].filter(v => st.options.includes(v)));
+    st.available = null; st.availSig = null;
+    document.getElementById(`search_${f}`).value = "";
+    msRender(f);
+  }
 }
 
-function updateCheckAll(type){
-  const all = document.querySelectorAll(`#list_${type} input[type=checkbox]`);
-  const chk = document.querySelectorAll(`#list_${type} input[type=checkbox]:checked`);
-  document.getElementById(`all_${type}`).checked = (all.length === chk.length);
-}
-
-function updateFilterLabel(type){
-  const all = document.querySelectorAll(`#list_${type} input[type=checkbox]`);
-  const chk = document.querySelectorAll(`#list_${type} input[type=checkbox]:checked`);
-  const lbl = document.getElementById(`label_${type}`);
-  if (chk.length === 0) lbl.innerText = "Tidak ada";
-  else if (chk.length === all.length) lbl.innerText = "-- Semua --";
-  else if (chk.length === 1) lbl.innerText = chk[0].value;
-  else lbl.innerText = `${chk.length} dipilih`;
-}
-
-function applyFilterPanel(type){
-  updateFilterLabel(type);
-  applyFilter();
-  closeFilterPanel(type);
-}
-
-function cancelFilterPanel(type){
-  const cbs = document.querySelectorAll(`#list_${type} input[type=checkbox]`);
-  cbs.forEach((cb,i) => cb.checked = filterSnapshots[type][i] ?? true);
-  updateCheckAll(type);
-  closeFilterPanel(type);
-}
-
+// null = tidak difilter (tidak ada yang dicentang); selain itu daftar nilai terpilih
 function getCheckedValues(type){
-  const all = document.querySelectorAll(`#list_${type} input[type=checkbox]`);
-  const chk = Array.from(document.querySelectorAll(`#list_${type} input[type=checkbox]:checked`)).map(cb => cb.value);
-  if (chk.length === 0) return []; 
-  if (chk.length === all.length) return null;
-  return chk;
+  const st = msState[type];
+  return st.selected.size ? [...st.selected] : null;
 }
 
 // === LOGIKA FILTER & TABEL ===
 function resetFilterInputs(){
   document.getElementById("filterKodePaket").value = "";
   document.getElementById("filterKodeRUP").value = "";
-  document.getElementById("filterSatker").value = "";
   document.getElementById("filterPaket").value = "";
-  for (let f in filterConfigs) {
-    document.querySelectorAll(`#list_${f} input[type=checkbox]`).forEach(cb => cb.checked = true);
-    const allCb = document.getElementById(`all_${f}`);
-    if (allCb) allCb.checked = true;
-    updateFilterLabel(f);
+  for (const f in filterConfigs) {
+    msState[f].selected.clear();
+    document.getElementById(`search_${f}`).value = "";
+    msRender(f);
   }
 }
 
 function applyFilter() {
   const kodePaket = document.getElementById("filterKodePaket").value.trim().toLowerCase();
   const kodeRUP   = document.getElementById("filterKodeRUP").value.trim().toLowerCase();
-  const satker = document.getElementById("filterSatker").value.trim().toLowerCase();
+  const checkedSatker = getCheckedValues("satker");
   const paket  = document.getElementById("filterPaket").value.trim().toLowerCase();
   const checkedRealisasi = getCheckedValues("realisasi");
   const checkedJenis  = getCheckedValues("jenis");
   const checkedMetode = getCheckedValues("metode");
   const checkedCara   = getCheckedValues("cara");
   const checkedStatus = getCheckedValues("status");
-  const checkedStatusRinci = getCheckedValues("status_rinci");
 
   let tempFiltered = allData.filter(row => {
     // 1. Text Search
     if (kodePaket && !(String(row["Kode Paket"] ?? "")).toLowerCase().includes(kodePaket)) return false;
     if (kodeRUP && !(String(row["Kode RUP"] ?? "")).toLowerCase().includes(kodeRUP)) return false;
-    if (satker && !(row["Satuan Kerja"] ?? "").toLowerCase().includes(satker)) return false;
+    if (checkedSatker !== null && !checkedSatker.includes(row["Satuan Kerja"])) return false;
     if (paket  && !(row["Nama Paket"]   ?? "").toLowerCase().includes(paket)) return false;
     
     // 2. Filter Checklist
@@ -657,11 +611,9 @@ function applyFilter() {
     return true;
   });
 
-  // Update tampilan opsi di dropdown Status Rinci
-  const statusTersedia = new Set(tempFiltered.map(r => r["Status"] ?? "").filter(v => v !== ""));
-  document.querySelectorAll("#list_status_rinci .check-item").forEach(item => {
-    item.style.display = statusTersedia.has(item.querySelector("input").value) ? "flex" : "none";
-  });
+  // Status Rinci hanya menampilkan status yang tersedia pada hasil filter lain
+  msSetAvailable("status_rinci", new Set(tempFiltered.map(r => r["Status"] ?? "").filter(v => v !== "")));
+  const checkedStatusRinci = getCheckedValues("status_rinci");
 
   // Terapkan filter Status Rinci ke data tabel
   filtered = tempFiltered.filter(row => {
@@ -813,7 +765,7 @@ document.getElementById("perPage").addEventListener("change", (e) => {
   })
 );
 
-["filterKodePaket","filterKodeRUP","filterSatker","filterPaket"].forEach(id => 
+["filterKodePaket","filterKodeRUP","filterPaket"].forEach(id => 
   document.getElementById(id).addEventListener("keydown", (e) => {
     if (e.key === "Enter") applyFilter();
   })
@@ -822,17 +774,6 @@ document.getElementById("perPage").addEventListener("change", (e) => {
 document.getElementById("resetFilter").addEventListener("click", () => {
   resetFilterInputs();
   applyFilter();
-});
-
-// Menutup dropdown jika user klik di luar elemen filter
-document.addEventListener("click", (e) => {
-  for (let f in filterConfigs) {
-    const panel = document.getElementById(`panel_${f}`);
-    const btn = document.getElementById(`btn_${f}`);
-    if (panel.classList.contains("open") && !panel.contains(e.target) && !btn.contains(e.target)) {
-      cancelFilterPanel(f);
-    }
-  }
 });
 
 // LOGIKA DOWNLOAD EXCEL HARIAN MULTI-SHEET
@@ -1093,6 +1034,7 @@ window.addEventListener("scroll", () => {
 });
 
 // === INITIALIZATION ===
+initMultiSelects();
 loadLastUpdate();
 loadDataByYear(currentYear);
 
