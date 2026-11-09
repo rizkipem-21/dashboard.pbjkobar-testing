@@ -1,3 +1,5 @@
+<!-- ### ===== ini file data_tepra.html ===== ### -->
+
 <!DOCTYPE html>
 <!--
 =====================================================================
@@ -9,6 +11,9 @@
            4) Total Keseluruhan Paket (gabungan 4 kategori)
  KOLOM   : Progres (%) = PKT Hasil Pemilihan / PKT Data Laporan
            (dihitung di generate_tepra.py, dibaca dari kolom Progres_Persen)
+ TEMA    : Mode terang/gelap (tombol di header). Pilihan tersimpan di
+           localStorage ("tepraTheme"); jika belum memilih, mengikuti
+           pengaturan tema perangkat.
 =====================================================================
 -->
 <html lang="id">
@@ -17,6 +22,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rekap Data TEPRA</title>
 <script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+  // Urutan: pilihan tersimpan user > pengaturan tema perangkat (OS/browser) > terang
+  try {
+    var t = localStorage.getItem("tepraTheme");
+    var sistemGelap = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (t === "dark" || (!t && sistemGelap)) document.documentElement.classList.add("dark");
+  } catch (e) {}
+</script>
 
 <style>
   :root {
@@ -39,6 +53,10 @@
   .year-selector-wrap label { color: #fff; font-size: 0.75rem; font-weight: 600; }
   .year-select { padding: 4px 10px; border-radius: 5px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff; font-weight: 600; outline: none; cursor: pointer; }
   .year-select option { color: #1e293b; background: #fff; }
+
+  /* ===== TOMBOL MODE GELAP ===== */
+  .btn-theme { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.3); border-radius: 5px; padding: 4px 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+  .btn-theme:hover { background: rgba(255,255,255,0.22); }
 
   /* ===== TABS NAVIGATION ===== */
   .tabs-container { display: flex; gap: 6px; padding: 0 20px; margin-bottom: 12px; overflow-x: auto; scrollbar-width: none; }
@@ -116,6 +134,51 @@
   #loadingOverlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.8); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 20; display: none; }
   .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--lpse-biru); border-radius: 50%; width: 25px; height: 25px; animation: spin 1s linear infinite; margin-bottom: 8px; }
   @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+  /* ===== MODE GELAP ===== */
+  html.dark { color-scheme: dark; }
+  html.dark body { background: #0b1220; }
+  html.dark .page-header { background: linear-gradient(135deg, #0f2347 0%, #15366a 100%); box-shadow: 0 3px 12px rgba(0,0,0,0.5); }
+
+  /* Tab */
+  html.dark .tab-btn { background: #162033; color: #93c5fd; border-color: #334155; box-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+  html.dark .tab-btn:hover { background: #1e293b; border-color: #3b82f6; }
+  html.dark .tab-btn.active { background: #2563b0; color: #fff; border-color: #3b82f6; box-shadow: 0 4px 8px rgba(0,0,0,0.4); }
+
+  /* Kontrol & filter */
+  html.dark .control-bar { background: #162033; box-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+  html.dark .filter-input, html.dark .filter-select { background: #0f172a; border-color: #334155; color: #e2e8f0; }
+  html.dark .btn-filter-toggle { background: #0f172a; color: #93c5fd; border-color: #334155; }
+  html.dark .btn-filter-toggle.active { background: #2563b0; color: #fff; border-color: #3b82f6; }
+  html.dark .btn-reset { background: #0f172a; color: #f87171; border-color: #334155; }
+  html.dark .btn-reset:hover { background: #1e293b; }
+
+  /* Dropdown satker */
+  html.dark .ms-btn { background: #0f172a; border-color: #334155; color: #e2e8f0; }
+  html.dark .ms-btn.has-value { border-color: #60a5fa; }
+  html.dark .ms-panel { background: #162033; border-color: #3b82f6; box-shadow: 0 8px 24px rgba(0,0,0,0.6); }
+  html.dark .ms-search { background: #0f172a; border-color: #334155; color: #e2e8f0; }
+  html.dark .ms-search:focus { border-color: #60a5fa; }
+  html.dark .ms-actions a { color: #60a5fa; }
+  html.dark .ms-actions .ms-count { color: #94a3b8; }
+  html.dark .ms-item { color: #e2e8f0; }
+  html.dark .ms-item:hover { background: #1e3a5f; }
+  html.dark .ms-empty { color: #94a3b8; }
+
+  /* Tabel */
+  html.dark .table-wrap { background: #162033; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+  html.dark thead th { background: #1e3a6b; border-color: rgba(255,255,255,0.15); }
+  html.dark tbody td { color: #e2e8f0; border-color: #263449; }
+  html.dark tbody tr:nth-child(even) { background: #1a263b; }
+  html.dark tbody tr:hover { background: #1e3a5f; }
+  html.dark tbody tr.total-row td { background: #1e3a6b; color: #fff; border-color: rgba(255,255,255,0.15); }
+  html.dark tbody tr.total-row:hover td { background: #2563b0; }
+  html.dark tbody td[style*="#64748b"] { color: #94a3b8 !important; }
+
+  /* Loading */
+  html.dark #loadingOverlay { background: rgba(11,18,32,0.85); }
+  html.dark #loadingOverlay span { color: #e2e8f0 !important; }
+  html.dark .loader { border-color: #334155; border-top-color: #60a5fa; }
 </style>
 </head>
 <body>
@@ -135,6 +198,7 @@
         <option value="2025">2025</option>
         <option value="2024">2024</option>
       </select>
+      <button id="btnTheme" class="btn-theme" onclick="toggleTheme()" title="Ganti mode terang/gelap">🌙 Mode Gelap</button>
     </div>
   </div>
 </div>
@@ -208,6 +272,27 @@ try {
     document.getElementById("selectYear").value = currentYear;
   }
 } catch(e) {}
+
+// ==========================================
+// MODE GELAP
+// ==========================================
+function updateThemeButton() {
+  const dark = document.documentElement.classList.contains("dark");
+  document.getElementById("btnTheme").innerText = dark ? "☀️ Mode Terang" : "🌙 Mode Gelap";
+}
+function toggleTheme() {
+  const dark = document.documentElement.classList.toggle("dark");
+  try { localStorage.setItem("tepraTheme", dark ? "dark" : "light"); } catch (e) {}
+  updateThemeButton();
+}
+// Ikuti perubahan tema perangkat selama user belum memilih manual
+try {
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    if (localStorage.getItem("tepraTheme")) return;
+    document.documentElement.classList.toggle("dark", e.matches);
+    updateThemeButton();
+  });
+} catch (e) {}
 
 const tabConfigs = [
   { id: 0, filePrefix: "rekap_tepra_0_50m" },
@@ -558,6 +643,7 @@ function downloadExcelHarian() {
 }
 
 // INISIALISASI
+updateThemeButton();
 loadLastUpdate();
 fetchTabData();
 

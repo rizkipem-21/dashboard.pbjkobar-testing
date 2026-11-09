@@ -1,3 +1,5 @@
+<!-- ### ===== ini file data_pengadaan.html ===== ### -->
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -8,6 +10,15 @@
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 <script src="../js/config.js"></script>
 <script src="../js/status_logic.js"></script>
+
+<script>
+  // Urutan: pilihan tersimpan user > pengaturan tema perangkat (OS/browser) > terang
+  try {
+    var t = localStorage.getItem("pengadaanTheme");
+    var sistemGelap = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (t === "dark" || (!t && sistemGelap)) document.documentElement.classList.add("dark");
+  } catch (e) {}
+</script>
 
 <style>
   :root {
@@ -31,6 +42,10 @@
   .year-selector-wrap label { color: #fff; font-size: 0.75rem; font-weight: 600; }
   .year-select { padding: 4px 10px; border-radius: 5px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff; font-weight: 600; outline: none; cursor: pointer; }
   .year-select option { color: #1e293b; background: #fff; }
+
+  /* ===== TOMBOL MODE GELAP ===== */
+  .btn-theme { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.3); border-radius: 5px; padding: 4px 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+  .btn-theme:hover { background: rgba(255,255,255,0.22); }
 
   /* ===== STRIP & STAT CARDS ===== */
   .color-strip { display: flex; height: 4px; border-radius: 2px; overflow: hidden; margin-bottom: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
@@ -113,6 +128,69 @@
   #loadingOverlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.8); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 20; display: none; }
   .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--lpse-biru); border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin-bottom: 8px; }
   @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+  /* ===== MODE GELAP ===== */
+  html.dark { color-scheme: dark; }
+  html.dark body { background: #0b1220; }
+  html.dark .page-header { background: linear-gradient(135deg, #0f2347 0%, #15366a 100%); box-shadow: 0 3px 12px rgba(0,0,0,0.5); }
+
+  /* Filter */
+  html.dark .filter-main-card { background: #162033; border-top-color: #3b82f6; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+  html.dark .filter-group label { color: #94a3b8; }
+  html.dark .filter-more-btn { background: #0f172a; border-color: #334155; color: #93c5fd; }
+  html.dark .filter-more-btn:hover { background: #1e293b; }
+  html.dark .filter-advanced-panel { border-top-color: #334155; }
+  html.dark .filter-card input[type=text], html.dark .filter-card select { background: #0f172a; border-color: #334155; color: #e2e8f0; }
+  html.dark .ms-btn { background: #0f172a; border-color: #334155; color: #e2e8f0; }
+  html.dark .ms-btn.has-value { border-color: #60a5fa; }
+  html.dark .ms-panel { background: #162033; border-color: #3b82f6; box-shadow: 0 8px 24px rgba(0,0,0,0.6); }
+  html.dark .filter-card input[type=text].ms-search { background: #0f172a; border-color: #334155; color: #e2e8f0; }
+  html.dark .ms-actions a { color: #60a5fa; }
+  html.dark .ms-actions .ms-count { color: #94a3b8; }
+  html.dark .ms-item { color: #e2e8f0; }
+  html.dark .ms-item:hover { background: #1e3a5f; }
+  html.dark .ms-empty { color: #94a3b8; }
+
+  /* Tombol & kontrol */
+  html.dark .btn-reset { background: #0f172a; border-color: #334155; color: #f87171; }
+  html.dark .control-bar { background: #162033; box-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+  html.dark .control-bar label { color: #cbd5e1; }
+  html.dark .control-bar select { background: #0f172a; border-color: #334155; color: #e2e8f0; }
+  html.dark .control-bar span { color: #94a3b8; }
+  html.dark .btn-page { background: #162033; border-color: #334155; color: #93c5fd; }
+  html.dark .btn-page:hover:not(:disabled) { background: #1e3a6b; color: #fff; border-color: #3b82f6; }
+  html.dark .page-info { color: #cbd5e1; }
+  html.dark .total-info { color: #94a3b8; }
+
+  /* Tabel */
+  html.dark .table-wrap { background: #162033; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+  html.dark thead tr { background: #1e3a6b; }
+  html.dark #stickyHeader { background: #1e3a6b; }
+  html.dark tbody tr:nth-child(even) { background: #1a263b; }
+  html.dark tbody tr:hover { background: #1e3a5f !important; }
+  html.dark tbody td { color: #e2e8f0; border-color: #263449; }
+  /* Teks biru tua & abu-abu pada isi sel (inline style) dibuat terbaca di latar gelap */
+  html.dark tbody td [style*="#1a3a6b"], html.dark tbody td[style*="#1a3a6b"] { color: #93c5fd !important; }
+  html.dark tbody td [style*="#64748b"] { color: #94a3b8 !important; }
+  html.dark tbody td [style*="#e63329"] { color: #f87171 !important; }
+  html.dark .td-efisiensi { color: #4ade80; }
+  html.dark .badge-selesai { background: #14532d; color: #bbf7d0; }
+  html.dark .badge-proses  { background: #713f12; color: #fde68a; }
+  html.dark .badge-belum   { background: #7f1d1d; color: #fecaca; }
+
+  /* Loading */
+  html.dark #loadingOverlay { background: rgba(11,18,32,0.85); }
+  html.dark #loadingOverlay span { color: #e2e8f0 !important; }
+  html.dark .loader { border-color: #334155; border-top-color: #60a5fa; }
+
+  /* Modal password & alert */
+  html.dark #modalPassword > div, html.dark #modalAlert > div { background: #162033; }
+  html.dark #modalPassword h3, html.dark #modalAlert h3 { color: #f1f5f9; }
+  html.dark #modalPassword p, html.dark #modalAlert p { color: #94a3b8; }
+  html.dark #inputPassword { background: #0f172a; border-color: #334155; color: #e2e8f0; }
+  html.dark #inputPassword:focus { border-color: #60a5fa; }
+  html.dark #modalPassword .bg-gray-100 { background: #334155; color: #e2e8f0; }
+  html.dark #modalPassword .bg-gray-100:hover { background: #475569; }
 </style>
 </head>
 <body>
@@ -131,6 +209,7 @@
         <option value="2025">2025</option>
         <option value="2024">2024</option>
       </select>
+      <button id="btnTheme" class="btn-theme" onclick="toggleTheme()" title="Ganti mode terang/gelap">🌙 Mode Gelap</button>
     </div>
   </div>
 </div>
@@ -321,6 +400,25 @@ let filtered    = [];
 let currentPage = 1;
 let perPage     = 10;
 let currentYear = "2026";
+
+// === MODE GELAP ===
+function updateThemeButton() {
+  const dark = document.documentElement.classList.contains("dark");
+  document.getElementById("btnTheme").innerText = dark ? "☀️ Mode Terang" : "🌙 Mode Gelap";
+}
+function toggleTheme() {
+  const dark = document.documentElement.classList.toggle("dark");
+  try { localStorage.setItem("pengadaanTheme", dark ? "dark" : "light"); } catch (e) {}
+  updateThemeButton();
+}
+// Ikuti perubahan tema perangkat selama user belum memilih manual
+try {
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    if (localStorage.getItem("pengadaanTheme")) return;
+    document.documentElement.classList.toggle("dark", e.matches);
+    updateThemeButton();
+  });
+} catch (e) {}
 
 // === FUNGSI TOGGLE FILTER LANJUTAN ===
 function toggleAdvancedFilter(){
@@ -1035,6 +1133,7 @@ window.addEventListener("scroll", () => {
 
 // === INITIALIZATION ===
 initMultiSelects();
+updateThemeButton();
 loadLastUpdate();
 loadDataByYear(currentYear);
 

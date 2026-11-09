@@ -1,3 +1,5 @@
+<!-- ### ===== ini file kbli.html ===== ### -->
+ 
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -5,6 +7,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kategori KBLI Inaproc</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script>
+  // Urutan: pilihan tersimpan user > pengaturan tema perangkat (OS/browser) > terang
+  try {
+    var t = localStorage.getItem("kbliTheme");
+    var sistemGelap = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (t === "dark" || (!t && sistemGelap)) document.documentElement.classList.add("dark");
+  } catch (e) {}
+</script>
 <style>
   :root {
     --lpse-biru  : #1a3a6b;
@@ -21,9 +31,13 @@
   }
 
   /* ===== HEADER ===== */
-  .page-header { background: linear-gradient(135deg, var(--lpse-biru) 0%, var(--lpse-biru2) 100%); border-bottom: 3px solid var(--lpse-kuning); padding: 14px 20px 10px; margin-bottom: 16px; border-radius: 0 0 10px 10px; box-shadow: 0 3px 12px rgba(26,58,107,0.15); }
+  .page-header { background: linear-gradient(135deg, var(--lpse-biru) 0%, var(--lpse-biru2) 100%); border-bottom: 3px solid var(--lpse-kuning); padding: 14px 20px 10px; margin-bottom: 16px; border-radius: 0 0 10px 10px; box-shadow: 0 3px 12px rgba(26,58,107,0.15); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
   .page-header h1 { color: #fff; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.2px; margin: 0 0 2px 0; }
   .page-header .subtitle { color: rgba(255,255,255,0.72); font-size: 0.65rem; }
+
+  /* ===== TOMBOL MODE GELAP ===== */
+  .btn-theme { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.3); border-radius: 5px; padding: 4px 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+  .btn-theme:hover { background: rgba(255,255,255,0.22); }
 
   /* ===== COLOR STRIP ===== */
   .color-strip { display: flex; height: 4px; border-radius: 2px; overflow: hidden; margin-bottom: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
@@ -62,6 +76,51 @@
   #loadingOverlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.85); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10000; display: none; }
   .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--lpse-biru); border-radius: 50%; width: 25px; height: 25px; animation: spin 1s linear infinite; }
   @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+  /* ===== MODE GELAP ===== */
+  html.dark { color-scheme: dark; }
+  html.dark body { background: #0b1220; color: #e2e8f0; }
+  html.dark .page-header { background: linear-gradient(135deg, #0f2347 0%, #15366a 100%); box-shadow: 0 3px 12px rgba(0,0,0,0.5); }
+
+  /* Teks abu-abu inline (#64748b) dibuat lebih terang agar terbaca */
+  html.dark [style*="#64748b"] { color: #94a3b8 !important; }
+
+  /* Filter */
+  html.dark .filter-card { background: #162033; border-top-color: #3b82f6; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+  html.dark .filter-card label { color: #94a3b8; }
+  html.dark .filter-card input, html.dark .filter-card select { background: #0f172a; border-color: #334155; color: #e2e8f0; }
+  html.dark .filter-card input:focus, html.dark .filter-card select:focus { border-color: #60a5fa; }
+  html.dark .filter-card select:disabled { background-color: #1e293b; color: #64748b; border-color: #263449; }
+  html.dark #selJumlahData { background: #0f172a !important; color: #e2e8f0 !important; border-color: #334155 !important; }
+
+  /* Tombol */
+  html.dark .btn-search { background: #2563b0; box-shadow: 0 2px 4px rgba(0,0,0,0.4); }
+  html.dark .btn-search:hover { background: #3b82f6; }
+  html.dark .btn-reset { background: #0f172a; color: #cbd5e1; border-color: #334155; }
+  html.dark .btn-reset:hover { background: #1e293b; }
+  html.dark .btn-page { background: #162033; border-color: #334155; color: #93c5fd; }
+  html.dark .btn-page:hover:not(:disabled) { background: #1e3a6b; border-color: #3b82f6; color: #fff; }
+  html.dark .btn-page:disabled { background: #0f172a; color: #475569; border-color: #263449; }
+
+  /* Tabel */
+  html.dark .table-wrap { background: #162033; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+  html.dark thead tr { background: #1e3a6b; }
+  html.dark tbody tr:nth-child(even) { background: #1a263b; }
+  html.dark tbody tr:hover { background: #1e3a5f !important; }
+  html.dark tbody td { color: #e2e8f0; border-color: #263449; }
+  html.dark tbody td[style*="--lpse-biru"] { color: #93c5fd !important; }
+  html.dark tbody td[style*="#1e293b"] { color: #f1f5f9 !important; }
+  html.dark tbody td[style*="--lpse-hijau"] { color: #4ade80 !important; }
+
+  /* Loading */
+  html.dark #loadingOverlay { background: rgba(11,18,32,0.88); }
+  html.dark #loadingOverlay p { color: #e2e8f0 !important; }
+  html.dark .loader { border-color: #334155; border-top-color: #60a5fa; }
+
+  /* Modal alert */
+  html.dark #modalAlert > div { background: #162033; }
+  html.dark #modalAlert h3 { color: #f1f5f9; }
+  html.dark #modalAlert p { color: #94a3b8; }
 </style>
 </head>
 <body>
@@ -69,8 +128,11 @@
 <div id="loadingOverlay"><div class="loader"></div><p class="mt-2 text-sm font-semibold text-blue-900">Memproses Data...</p></div>
 
 <div class="page-header">
-  <h1>📖 Kategori & KBLI Inaproc</h1>
-  <p class="subtitle">Database panduan referensi Kategori Produk dan Izin Bidang Usaha (KBLI 2020 & 2025)</p>
+  <div>
+    <h1>📖 Kategori & KBLI Inaproc</h1>
+    <p class="subtitle">Database panduan referensi Kategori Produk dan Izin Bidang Usaha (KBLI 2020 & 2025)</p>
+  </div>
+  <button id="btnTheme" class="btn-theme" onclick="toggleTheme()" title="Ganti mode terang/gelap">🌙 Mode Gelap</button>
 </div>
 
 <div style="padding: 0 20px;">
@@ -175,6 +237,26 @@
 </div>
 
 <script>
+// === MODE GELAP ===
+function updateThemeButton() {
+  const dark = document.documentElement.classList.contains("dark");
+  document.getElementById("btnTheme").innerText = dark ? "☀️ Mode Terang" : "🌙 Mode Gelap";
+}
+function toggleTheme() {
+  const dark = document.documentElement.classList.toggle("dark");
+  try { localStorage.setItem("kbliTheme", dark ? "dark" : "light"); } catch (e) {}
+  updateThemeButton();
+}
+// Ikuti perubahan tema perangkat selama user belum memilih manual
+try {
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    if (localStorage.getItem("kbliTheme")) return;
+    document.documentElement.classList.toggle("dark", e.matches);
+    updateThemeButton();
+  });
+} catch (e) {}
+updateThemeButton();
+
 function tampilkanAlert(pesan, ikon = '⚠️', judul = 'Perhatian') {
   document.getElementById("alertIcon").innerText = ikon;
   document.getElementById("alertTitle").innerText = judul;

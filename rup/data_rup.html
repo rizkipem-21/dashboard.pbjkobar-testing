@@ -9,6 +9,14 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<script>
+  // Urutan: pilihan tersimpan user > pengaturan tema perangkat (OS/browser) > terang
+  try {
+    var t = localStorage.getItem("rupTheme");
+    var sistemGelap = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (t === "dark" || (!t && sistemGelap)) document.documentElement.classList.add("dark");
+  } catch (e) {}
+</script>
 <style>
   :root {
     --lpse-biru  : #1a3a6b;
@@ -18,10 +26,7 @@
     --lpse-hijau : #2d9e47;
   }
 
-  body {
-    background: #f0f4f8;
-    font-family: 'Segoe UI', sans-serif;
-  }
+  body { background: #f0f4f8; font-family: 'Segoe UI', sans-serif; }
 
   /* ===== HEADER ===== */
   .page-header { background: linear-gradient(135deg, var(--lpse-biru) 0%, var(--lpse-biru2) 100%); border-bottom: 3px solid var(--lpse-kuning); padding: 14px 20px 10px; margin-bottom: 16px; border-radius: 0 0 10px 10px; box-shadow: 0 3px 12px rgba(26,58,107,0.15); }
@@ -50,25 +55,36 @@
   .stat-card:nth-child(4) { background: linear-gradient(135deg, #005f73, #0a9396); }
   .stat-card:nth-child(5) { background: linear-gradient(135deg, #d4a000, #f5c800); }
   .stat-card:nth-child(6) { background: linear-gradient(135deg, #1e7e34, #2d9e47); }
-  
-  /* ===== FILTER CARD ===== */
-  .filter-card { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(26,58,107,0.09); padding: 10px 12px; margin-bottom: 12px; border-top: 3px solid var(--lpse-biru); }
-  .filter-card label { font-size: 0.6rem; font-weight: 600; color: #64748b; text-transform: uppercase; margin-bottom: 2px; display: block; }
-  .filter-card input { border: 1.5px solid #dde3ed; border-radius: 4px; padding: 4px 6px; font-size: 0.7rem; background: #f8fafc; outline: none; }
 
-  /* ===== CHECKLIST DROPDOWN ===== */
-  .check-dropdown { position: relative; display: inline-block; }
-  .check-btn { border: 1.5px solid #dde3ed; border-radius: 4px; padding: 4px 20px 4px 6px; font-size: 0.7rem; color: #1e293b; background: #f8fafc; cursor: pointer; width: 110px; text-align: left; position: relative; }
-  .check-btn::after { content: "▾"; position: absolute; right: 6px; top: 50%; transform: translateY(-50%); color: #64748b; }
-  .check-panel { display: none; position: fixed; background: #fff; border: 1.5px solid #dde3ed; border-radius: 6px; box-shadow: 0 4px 15px rgba(26,58,107,0.18); z-index: 9999; min-width: 150px; max-height: 250px; flex-direction: column; }
-  .check-panel.open { display: flex; }
-  .check-list-container { overflow-y: auto; flex-grow: 1; padding: 4px 0; }
-  .check-item { display: flex; align-items: center; gap: 6px; padding: 4px 10px; font-size: 0.7rem; cursor: pointer; }
-  .check-item:hover { background: #f0f5fb; }
+  /* ===== FILTER AREA (GAYA SAMA DENGAN HALAMAN PENGADAAN) ===== */
+  .filter-main-card { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(26,58,107,0.09); padding: 10px 12px; margin-bottom: 12px; border-top: 3px solid var(--lpse-biru); }
+  .filter-quick-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px; }
+  .filter-group { display: flex; flex-direction: column; gap: 2px; }
+  .filter-group label { font-size: 0.6rem; font-weight: 600; color: #64748b; text-transform: uppercase; }
+
+  /* ===== DROPDOWN CEKLIS (MULTI-PILIH + CARI) ===== */
+  .ms-wrap { position: relative; }
+  .ms-btn { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; border: 1.5px solid #dde3ed; border-radius: 4px; padding: 4px 8px; font-size: 0.65rem; color: #1e293b; background: #f8fafc; cursor: pointer; text-align: left; }
+  .ms-btn .ms-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ms-btn .ms-arrow { font-size: 0.5rem; color: #64748b; flex-shrink: 0; }
+  .ms-btn.has-value { border-color: var(--lpse-biru); font-weight: 600; }
+  .ms-panel { display: none; position: absolute; top: calc(100% + 4px); left: 0; width: 360px; max-width: 90vw; background: #fff; border: 1.5px solid var(--lpse-biru); border-radius: 6px; box-shadow: 0 8px 24px rgba(26,58,107,0.18); z-index: 1001; padding: 8px; }
+  .ms-panel.open { display: block; }
+  .filter-main-card input[type=text].ms-search { width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 4px; padding: 5px 8px; font-size: 0.7rem; outline: none; background: #fff; color: #1e293b; }
+  .filter-main-card input[type=text].ms-search:focus { border-color: var(--lpse-biru); }
+  .ms-actions { display: flex; justify-content: space-between; align-items: center; margin: 6px 2px 4px; font-size: 0.62rem; }
+  .ms-actions a { color: var(--lpse-biru); cursor: pointer; font-weight: 600; }
+  .ms-actions a:hover { text-decoration: underline; }
+  .ms-actions .ms-count { color: #64748b; }
+  .ms-list { max-height: 260px; overflow-y: auto; }
+  .ms-item { display: flex; align-items: flex-start; gap: 8px; padding: 6px; font-size: 0.68rem; color: #1e293b; cursor: pointer; border-radius: 4px; line-height: 1.3; }
+  .ms-item:hover { background: #eff6ff; }
+  .ms-item input { margin-top: 2px; flex-shrink: 0; cursor: pointer; }
+  .ms-empty { padding: 10px; font-size: 0.65rem; color: #64748b; text-align: center; }
 
   /* ===== BUTTONS ===== */
-  .btn-reset { background: #f1f5f9; color: #475569; border: 1.5px solid #cbd5e1; border-radius: 4px; padding: 4px 10px; font-size: 0.7rem; font-weight: 600; cursor: pointer; }
-  .btn-excel { background: var(--lpse-hijau); color: #fff; border: none; border-radius: 4px; padding: 5px 12px; font-size: 0.7rem; font-weight: 600; cursor: pointer; box-shadow: 0 2px 4px rgba(45,158,71,0.25); margin-left: auto; }
+  .btn-reset { background: #f1f5f9; color: #e63329; border: 1.5px solid #cbd5e1; border-radius: 4px; padding: 0 10px; height: 26px; font-size: 0.65rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; white-space: nowrap; }
+  .btn-excel { background: var(--lpse-hijau); color: #fff; border: none; border-radius: 4px; padding: 0 12px; height: 26px; font-size: 0.65rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.15); margin-left: auto; }
   .btn-excel:hover { background: #258a3d; }
 
   /* ===== TABEL ===== */
@@ -76,7 +92,7 @@
   table { width: 100%; border-collapse: collapse; font-size: 0.65rem; }
   thead tr { background: var(--lpse-biru); color: #fff; }
   thead th { padding: 6px 4px; text-align: center; font-weight: 600; font-size: 0.65rem; border-right: 1px solid rgba(255,255,255,0.12); white-space: nowrap; }
-  
+
   #stickyHeader { display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 999; background: var(--lpse-biru); box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
   #stickyHeader table { width: 100%; border-collapse: collapse; }
   #stickyHeader th { padding: 6px 4px; text-align: left; font-weight: 600; font-size: 0.65rem; color: #fff; border-right: 1px solid rgba(255,255,255,0.12); }
@@ -99,6 +115,41 @@
     border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite;
   }
   @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+  /* ===== TOMBOL MODE GELAP ===== */
+  .btn-theme { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.3); border-radius: 5px; padding: 4px 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+  .btn-theme:hover { background: rgba(255,255,255,0.22); }
+
+  /* ===== MODE GELAP ===== */
+  html.dark { color-scheme: dark; }
+  html.dark body { background: #0b1220; }
+  html.dark .page-header { background: linear-gradient(135deg, #0f2347 0%, #15366a 100%); box-shadow: 0 3px 12px rgba(0,0,0,0.5); }
+  html.dark .filter-main-card { background: #162033; border-top-color: #3b82f6; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+  html.dark .filter-group label { color: #94a3b8; }
+  html.dark .ms-btn { background: #0f172a; border-color: #334155; color: #e2e8f0; }
+  html.dark .ms-btn.has-value { border-color: #60a5fa; }
+  html.dark .ms-panel { background: #162033; border-color: #3b82f6; box-shadow: 0 8px 24px rgba(0,0,0,0.6); }
+  html.dark .filter-main-card input[type=text].ms-search { background: #0f172a; border-color: #334155; color: #e2e8f0; }
+  html.dark .ms-actions a { color: #60a5fa; }
+  html.dark .ms-actions .ms-count { color: #94a3b8; }
+  html.dark .ms-item { color: #e2e8f0; }
+  html.dark .ms-item:hover { background: #1e3a5f; }
+  html.dark .ms-empty { color: #94a3b8; }
+  html.dark .btn-reset { background: #0f172a; border-color: #334155; color: #f87171; }
+  html.dark .table-wrap { background: #162033; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+  html.dark thead tr { background: #1e3a6b; }
+  html.dark #stickyHeader { background: #1e3a6b; }
+  html.dark tbody tr:nth-child(even) { background: #1a263b; }
+  html.dark tbody tr:hover { background: #1e3a5f !important; }
+  html.dark tbody td { color: #e2e8f0 !important; border-color: #263449; }
+  html.dark tbody td.td-persen { color: #93c5fd !important; }
+  html.dark #totalInfo { color: #94a3b8 !important; }
+  html.dark #loadingOverlay { background: rgba(11,18,32,0.85); }
+  html.dark #loadingOverlay p { color: #e2e8f0; }
+  html.dark .loader { border-color: #334155; border-top-color: #60a5fa; }
+  html.dark #modalAlert > div { background: #162033; }
+  html.dark #modalAlert h3 { color: #f1f5f9; }
+  html.dark #modalAlert p { color: #94a3b8; }
 </style>
 </head>
 <body>
@@ -118,6 +169,7 @@
       <option value="2025">2025</option>
       <option value="2024">2024</option>
     </select>
+    <button id="btnTheme" class="btn-theme" onclick="toggleTheme()" title="Ganti mode terang/gelap">🌙 Mode Gelap</button>
   </div>
 </div>
 
@@ -160,38 +212,14 @@
     </div>
   </div>
 
-  <div class="filter-card">
-    <div style="display:flex; flex-wrap:nowrap; gap:12px; align-items:flex-end;">
-      <div style="display:flex; flex-direction:column; gap:4px;">
-        <label>Satuan Kerja</label>
-        <input id="filterSatker" type="text" placeholder="Cari satuan kerja..." style="width:160px;" />
-      </div>
-      
-      <div style="display:flex; flex-direction:column; gap:4px;">
-        <label>Filter Persentase</label>
-        <div class="check-dropdown">
-          <button class="check-btn" id="persenBtn" onclick="togglePersenPanel(event)">
-            <span id="persenBtnLabel">-- Semua --</span>
-          </button>
-          <div class="check-panel" id="persenPanel">
-            <div class="check-list-container">
-              <div class="check-item">
-                <input type="checkbox" id="checkAll" checked onchange="toggleAllPersen(this)">
-                <label for="checkAll" style="cursor:pointer;font-weight:600;">Pilih Semua</label>
-              </div>
-              <div class="check-divider" style="border-top:1px solid #eee; margin:4px 0;"></div>
-              <div id="persenList"></div>
-            </div>
-            <div style="display:flex; gap:4px; padding:6px; background:#f8fafc; border-top:1px solid #eee;">
-              <button class="w-full bg-blue-900 text-white py-0.5 rounded text-[0.55rem] font-bold" onclick="applyPersenFilter()">✓ OK</button>
-              <button class="w-full border py-0.5 rounded text-[0.55rem] font-bold" onclick="closePersenPanel()">✕ Batal</button>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- ===== FILTER (DROPDOWN CEKLIS SEPERTI HALAMAN PENGADAAN) ===== -->
+  <div class="filter-main-card">
+    <div class="filter-quick-row">
+      <div class="filter-group"><label>Satuan Kerja</label><div class="ms-wrap" id="ms_satker" style="width:260px;"></div></div>
+      <div class="filter-group"><label>Persentase</label><div class="ms-wrap" id="ms_persen" style="width:160px;"></div></div>
 
-      <button id="resetFilter" class="btn-reset">✕ Reset Filter</button>
-      
+      <button id="resetFilter" class="btn-reset">✕ Reset Semua Filter</button>
+
       <button onclick="downloadExcelFormatted()" class="btn-excel">⬇ Download Excel</button>
     </div>
   </div>
@@ -273,6 +301,10 @@ function rupiah(n) {
   return prefix + Math.abs(num).toLocaleString("id-ID");
 }
 
+function persenText(row) {
+  return Number(row["Persentase"] || 0).toFixed(2) + "%";
+}
+
 async function loadLastUpdate() {
   try {
     const res = await fetch("../data/last-update-rup.txt");
@@ -281,46 +313,179 @@ async function loadLastUpdate() {
   } catch { document.getElementById("lastUpdate").innerText = ""; }
 }
 
+// ========================================================
+// DROPDOWN CEKLIS (MULTI-PILIH + CARI) - GAYA SAMA DENGAN HALAMAN PENGADAAN
+// Tidak ada yang dicentang = tampilkan semua. Perubahan langsung diterapkan.
+// ========================================================
+const filterConfigs = {
+  "satker": { getVal: r => r["Satuan Kerja"] ?? "", sort: (a, b) => String(a).localeCompare(String(b), 'id') },
+  "persen": { getVal: r => persenText(r),           sort: (a, b) => parseFloat(a) - parseFloat(b) }
+};
+const msState = {};
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function initMultiSelects() {
+  for (const t in filterConfigs) {
+    msState[t] = { options: [], selected: new Set() };
+    document.getElementById(`ms_${t}`).innerHTML = `
+      <button type="button" class="ms-btn" id="btn_${t}" onclick="msToggle('${t}',event)">
+        <span class="ms-label" id="label_${t}">-- Semua --</span><span class="ms-arrow">▼</span>
+      </button>
+      <div class="ms-panel" id="panel_${t}">
+        <input type="text" class="ms-search" id="search_${t}" placeholder="Cari..." oninput="msRender('${t}')" autocomplete="off">
+        <div class="ms-actions">
+          <a role="button" onclick="msSelectAll('${t}')">Pilih semua</a>
+          <span class="ms-count" id="count_${t}"></span>
+          <a role="button" onclick="msClear('${t}')">Hapus pilihan</a>
+        </div>
+        <div class="ms-list" id="list_${t}"></div>
+      </div>`;
+  }
+}
+
+function msVisibleOptions(type) {
+  let opts = msState[type].options;
+  const q = document.getElementById(`search_${type}`).value.toLowerCase().trim();
+  if (q) opts = opts.filter(o => String(o).toLowerCase().includes(q));
+  return opts;
+}
+
+function msRender(type) {
+  const st = msState[type];
+  const list = document.getElementById(`list_${type}`);
+  const vis = msVisibleOptions(type);
+  const scroll = list.scrollTop;
+  list.innerHTML = vis.length
+    ? vis.map(n => `<label class="ms-item"><input type="checkbox" data-name="${escapeHtml(n)}" ${st.selected.has(n) ? 'checked' : ''} onchange="msToggleItem('${type}',this)"><span>${escapeHtml(n)}</span></label>`).join('')
+    : '<div class="ms-empty">Tidak ada data ditemukan.</div>';
+  list.scrollTop = scroll;
+  msUpdateLabel(type);
+}
+
+function msUpdateLabel(type) {
+  const st = msState[type];
+  const n = st.selected.size;
+  const label = document.getElementById(`label_${type}`);
+  if (n === 0) label.textContent = "-- Semua --";
+  else if (n === 1) label.textContent = [...st.selected][0];
+  else label.textContent = n + " dipilih";
+  document.getElementById(`btn_${type}`).classList.toggle("has-value", n > 0);
+  document.getElementById(`count_${type}`).textContent = n > 0 ? n + " dipilih" : "";
+}
+
+function msToggleItem(type, cb) {
+  const st = msState[type];
+  if (cb.checked) st.selected.add(cb.dataset.name); else st.selected.delete(cb.dataset.name);
+  msUpdateLabel(type);
+  applyFilter();
+}
+
+function msSelectAll(type) {
+  msVisibleOptions(type).forEach(n => msState[type].selected.add(n));
+  msRender(type);
+  applyFilter();
+}
+
+function msClear(type) {
+  msState[type].selected.clear();
+  msRender(type);
+  applyFilter();
+}
+
+function msCloseAll() {
+  for (const t in filterConfigs) document.getElementById(`panel_${t}`).classList.remove("open");
+}
+
+function msToggle(type, e) {
+  e.stopPropagation();
+  const panel = document.getElementById(`panel_${type}`);
+  const opening = !panel.classList.contains("open");
+  msCloseAll();
+  if (opening) {
+    panel.classList.add("open");
+    panel.style.left = "0"; panel.style.right = "auto";
+    // Geser ke kiri bila panel keluar dari tepi kanan layar
+    if (panel.getBoundingClientRect().right > window.innerWidth - 8) { panel.style.left = "auto"; panel.style.right = "0"; }
+    document.getElementById(`search_${type}`).focus();
+  }
+}
+
+document.addEventListener("click", (e) => {
+  for (const t in filterConfigs) {
+    if (!document.getElementById(`ms_${t}`).contains(e.target)) document.getElementById(`panel_${t}`).classList.remove("open");
+  }
+});
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") msCloseAll(); });
+
+function buildAllChecklists() {
+  for (const f in filterConfigs) {
+    const conf = filterConfigs[f], st = msState[f];
+    st.options = [...new Set(rawData.map(conf.getVal).filter(v => v !== ""))].sort(conf.sort);
+    st.selected = new Set([...st.selected].filter(v => st.options.includes(v)));
+    document.getElementById(`search_${f}`).value = "";
+    msRender(f);
+  }
+}
+
+// null = tidak difilter (tidak ada yang dicentang); selain itu daftar nilai terpilih
+function getCheckedValues(type) {
+  const st = msState[type];
+  return st.selected.size ? [...st.selected] : null;
+}
+
+function resetFilterInputs() {
+  for (const f in filterConfigs) {
+    msState[f].selected.clear();
+    document.getElementById(`search_${f}`).value = "";
+    msRender(f);
+  }
+}
+
+// ========================================================
+// LOAD DATA
+// ========================================================
 async function loadDataByYear(year) {
   currentYear = year;
   document.getElementById("loadingOverlay").style.display = "flex";
   document.getElementById("pageTitle").innerText = `📊 Rekapitulasi RUP Kabupaten Kotawaringin Barat Tahun ${year}`;
-  
+
+  resetFilterInputs();
+
   try {
     const res = await fetch(`../data/${year}/rekap_rup_${year}.json`);
     if(!res.ok) throw new Error("File tidak ditemukan");
     rawData = await res.json();
-    
+
     // Filter data 0-0-0 agar tabel tidak penuh sampah
     rawData = rawData.filter(row =>
       !(Number(row["Pagu Program"] || 0) === 0 &&
         Number(row["Pagu Pengadaan"] || 0) === 0 &&
         Number(row["Total RUP Terumumkan"] || 0) === 0)
     );
-    
+
     filteredData = [...rawData];
-    buildPersenList();
-    applyFilter();
   } catch (err) {
     console.error(err);
     tampilkanAlert(`Data RUP Tahun ${year} belum tersedia.`);
     rawData = [];
     filteredData = [];
-    renderTable();
   }
+
+  buildAllChecklists();
+  applyFilter();
   document.getElementById("loadingOverlay").style.display = "none";
 }
 
 function applyFilter() {
-  const satker = document.getElementById("filterSatker").value.trim().toLowerCase();
-  const checked = getCheckedPersen();
+  const checkedSatker = getCheckedValues("satker");
+  const checkedPersen = getCheckedValues("persen");
 
   filteredData = rawData.filter(row => {
-    if (satker && !(row["Satuan Kerja"] ?? "").toLowerCase().includes(satker)) return false;
-    if (checked !== null) {
-      const p = Number(row["Persentase"] || 0).toFixed(2) + "%";
-      if (!checked.includes(p)) return false;
-    }
+    if (checkedSatker !== null && !checkedSatker.includes(row["Satuan Kerja"] ?? "")) return false;
+    if (checkedPersen !== null && !checkedPersen.includes(persenText(row))) return false;
     return true;
   });
   renderTable();
@@ -330,9 +495,10 @@ function applyFilter() {
 function renderTable() {
   const body = document.getElementById("body");
   body.innerHTML = "";
-  
+
   if (filteredData.length === 0) {
-    body.innerHTML = `<tr><td colspan="9" class="td-center" style="padding:20px; color:#94a3b8;">Tidak ada data ditemukan.</td></tr>`;
+    body.innerHTML = `<tr><td colspan="12" class="td-center" style="padding:20px; color:#94a3b8;">Tidak ada data ditemukan.</td></tr>`;
+    document.getElementById("totalInfo").innerText = `(Menampilkan 0 dari ${rawData.length.toLocaleString("id-ID")} Satuan Kerja)`;
     return;
   }
 
@@ -345,10 +511,10 @@ function renderTable() {
     const pktTotal = Number(row["Total Paket Terumumkan"] || 0);
     const rupTerumumkan = Number(row["Total RUP Terumumkan"] || 0);
     const selisih = rupTerumumkan - paguPengadaan;
-    const persen = Number(row["Persentase"] || 0).toFixed(2) + "%";
+    const persen = persenText(row);
 
     const tr = document.createElement("tr");
-    
+
     // Tentukan warna merah tebal jika selisih tidak sama dengan 0
     const warnaTeks = selisih !== 0 ? "color: #e63329 !important;" : "";
 
@@ -379,14 +545,14 @@ function renderSummary() {
     tPengadaan += Number(d["Pagu Pengadaan"] || 0);
     tRup += Number(d["Total RUP Terumumkan"] || 0);
     tPkt += Number(d["Total Paket Terumumkan"] || 0);
-        tPenyedia += Number(d["RUP Penyedia"] || 0);
+    tPenyedia += Number(d["RUP Penyedia"] || 0);
     tPktPenyedia += Number(d["Paket Penyedia"] || 0);
-        tSwakelola += Number(d["RUP Swakelola"] || 0);
+    tSwakelola += Number(d["RUP Swakelola"] || 0);
     tPktSwakelola += Number(d["Paket Swakelola"] || 0);
   });
-  
+
   const persenTotal = tPengadaan === 0 ? 0 : (tRup / tPengadaan) * 100;
-  
+
   document.getElementById("statPaguProgram").innerText = rupiah(tProgram);
   document.getElementById("statPaguPengadaan").innerText = rupiah(tPengadaan);
   document.getElementById("statRupPenyedia").innerText = rupiah(tPenyedia);
@@ -396,14 +562,10 @@ function renderSummary() {
   document.getElementById("statRup").innerText = rupiah(tRup);
   document.getElementById("statTotalPkt").innerText = tPkt.toLocaleString("id-ID") + " Paket";
   const elPersen = document.getElementById("statPersen");
-  elPersen.innerText = persenTotal.toFixed(3) + "%"; // Menggunakan 3 desimal (100.000%)
-  
-  // Jika Total RUP tidak sama persis dengan Pagu Pengadaan (berarti bukan 100%), ubah teks jadi merah
-  if (tRup !== tPengadaan) {
-    elPersen.style.color = "#ff4d4d"; // Merah terang agar terbaca di background hijau
-  } else {
-    elPersen.style.color = "#ffffff"; // Putih normal jika pas 100%
-  }
+  elPersen.innerText = persenTotal.toFixed(3) + "%";
+
+  // Jika Total RUP tidak sama persis dengan Pagu Pengadaan, ubah teks jadi merah
+  elPersen.style.color = (tRup !== tPengadaan) ? "#ff4d4d" : "#ffffff";
 }
 
 // === EXCEL DOWNLOAD BERWARNA + RUMUS TOTAL ===
@@ -460,7 +622,7 @@ async function downloadExcelFormatted() {
     dataRow.eachCell((cell, colNum) => {
       cell.border = { top: {style:'thin', color: {argb: 'FFE8EDF5'}}, left: {style:'thin', color: {argb: 'FFE8EDF5'}}, bottom: {style:'thin', color: {argb: 'FFE8EDF5'}}, right: {style:'thin', color: {argb: 'FFE8EDF5'}} };
       if ((index + 1) % 2 === 0) cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF0F5FB' } };
-      
+
       // Rupiah: Kolom C(3), D(4), F(6), H(8), J(10), K(11)
       if ([3, 4, 6, 8, 10, 11].includes(colNum)) {
         cell.numFmt = '"Rp" #,##0';
@@ -483,7 +645,7 @@ async function downloadExcelFormatted() {
   const lastDataRow = filteredData.length + 1;
   const tRowIdx = lastDataRow + 1;
   const totalRow = worksheet.addRow([]);
-  
+
   totalRow.getCell(2).value = 'TOTAL';
   ['C','D','E','F','G','H','I','J'].forEach((col, idx) => {
     totalRow.getCell(idx + 3).value = { formula: `SUM(${col}2:${col}${lastDataRow})` };
@@ -496,7 +658,7 @@ async function downloadExcelFormatted() {
     cell.font = { bold: true, color: { argb: 'FF1A3A6B' } };
     cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF5C800' } };
     cell.border = { top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
-    
+
     if ([3, 4, 6, 8, 10, 11].includes(colNum)) { cell.numFmt = '"Rp" #,##0'; cell.alignment = { horizontal: 'right', vertical: 'middle' }; }
     if ([5, 7, 9].includes(colNum)) { cell.numFmt = '#,##0'; cell.alignment = { horizontal: 'center', vertical: 'middle' }; }
     if (colNum === 12) { cell.numFmt = '0.00%'; cell.alignment = { horizontal: 'right', vertical: 'middle' }; }
@@ -506,60 +668,9 @@ async function downloadExcelFormatted() {
   saveAs(new Blob([buffer]), `Rekap_RUP_Kobar_${currentYear}.xlsx`);
 }
 
-// === LOGIKA DROPDOWN PERSEN ===
-function buildPersenList() {
-  const unik = [...new Set(rawData.map(r => (Number(r["Persentase"] || 0).toFixed(2) + "%")))].sort((a, b) => parseFloat(a) - parseFloat(b));
-  const list = document.getElementById("persenList");
-  list.innerHTML = "";
-  unik.forEach(val => {
-    const id = "pct_" + val.replace(".", "_").replace("%", "");
-    const div = document.createElement("div");
-    div.className = "check-item";
-    div.innerHTML = `<input type="checkbox" id="${id}" value="${val}" checked onchange="onPersenChange()"><label for="${id}" style="flex:1;">${val}</label>`;
-    list.appendChild(div);
-  });
-}
-function togglePersenPanel(e) {
-  e.stopPropagation();
-  const panel = document.getElementById("persenPanel");
-  const btn = document.getElementById("persenBtn");
-  if (!panel.classList.contains("open")) {
-    const rect = btn.getBoundingClientRect();
-    panel.style.top = (rect.bottom + 4) + "px";
-    panel.style.left = rect.left + "px";
-    panel.classList.add("open");
-  } else { closePersenPanel(); }
-}
-function closePersenPanel() { document.getElementById("persenPanel").classList.remove("open"); }
-function toggleAllPersen(el) { document.querySelectorAll("#persenList input[type=checkbox]").forEach(cb => cb.checked = el.checked); }
-function onPersenChange() {
-  const all = document.querySelectorAll("#persenList input[type=checkbox]");
-  const chk = document.querySelectorAll("#persenList input[type=checkbox]:checked");
-  document.getElementById("checkAll").checked = all.length === chk.length;
-}
-function applyPersenFilter() {
-  const all = document.querySelectorAll("#persenList input[type=checkbox]");
-  const chk = document.querySelectorAll("#persenList input[type=checkbox]:checked");
-  const lbl = document.getElementById("persenBtnLabel");
-  if (chk.length === 0) lbl.innerText = "Tidak ada";
-  else if (chk.length === all.length) lbl.innerText = "-- Semua --";
-  else lbl.innerText = chk.length + " dipilih";
-  applyFilter();
-  closePersenPanel();
-}
-function getCheckedPersen() {
-  const all = document.querySelectorAll("#persenList input[type=checkbox]");
-  const chk = [...document.querySelectorAll("#persenList input[type=checkbox]:checked")].map(cb => cb.value);
-  return chk.length === all.length ? null : chk;
-}
-
 // === EVENT LISTENERS ===
-document.getElementById("filterSatker").addEventListener("input", applyFilter);
 document.getElementById("resetFilter").addEventListener("click", () => {
-  document.getElementById("filterSatker").value = "";
-  document.querySelectorAll("#persenList input[type=checkbox]").forEach(cb => cb.checked = true);
-  document.getElementById("checkAll").checked = true;
-  document.getElementById("persenBtnLabel").innerText = "-- Semua --";
+  resetFilterInputs();
   applyFilter();
 });
 
@@ -576,7 +687,29 @@ window.addEventListener("scroll", () => {
   } else { sticky.style.display = "none"; }
 });
 
+// === MODE GELAP ===
+function updateThemeButton() {
+  const dark = document.documentElement.classList.contains("dark");
+  document.getElementById("btnTheme").innerText = dark ? "☀️ Mode Terang" : "🌙 Mode Gelap";
+}
+function toggleTheme() {
+  const dark = document.documentElement.classList.toggle("dark");
+  try { localStorage.setItem("rupTheme", dark ? "dark" : "light"); } catch (e) {}
+  updateThemeButton();
+}
+
+// Ikuti perubahan tema perangkat selama user belum memilih manual
+try {
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    if (localStorage.getItem("rupTheme")) return;
+    document.documentElement.classList.toggle("dark", e.matches);
+    updateThemeButton();
+  });
+} catch (e) {}
+
 // INIT
+initMultiSelects();
+updateThemeButton();
 loadLastUpdate();
 loadDataByYear(currentYear);
 </script>

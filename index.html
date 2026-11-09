@@ -13,6 +13,14 @@
       theme: { extend: { colors: { lpse: { biru: '#1a3a6b', biru2: '#1e4d8c', merah: '#e63329', kuning: '#f5c800', hijau: '#2d9e47' } } } }
     }
   </script>
+  <script>
+    // Tema awal: pilihan tersimpan user > pengaturan tema perangkat (OS/browser) > terang
+    try {
+      var t = localStorage.getItem("dashboardTheme");
+      var sistemGelap = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (t === "dark" || (!t && sistemGelap)) document.documentElement.classList.add("dark");
+    } catch (e) {}
+  </script>
   <style>
     :root { --lpse-biru : #1a3a6b; --lpse-biru2 : #1e4d8c; --lpse-merah : #e63329; --lpse-kuning: #f5c800; --lpse-hijau : #2d9e47; }
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -60,6 +68,36 @@
     #loadingOverlayDashboard { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.85); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10000; display: none; }
     .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--lpse-biru); border-radius: 50%; width: 35px; height: 35px; animation: spin 1s linear infinite; }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    /* ===== MODE GELAP ===== */
+    html.dark { color-scheme: dark; }
+    html.dark ::-webkit-scrollbar-thumb { background: #334155; }
+    html.dark ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    html.dark body { background-color: #0b1220 !important; color: #e2e8f0; }
+    html.dark main, html.dark .view-panel { background-color: #0b1220 !important; }
+
+    /* Sidebar */
+    html.dark aside { background-color: #111a2b !important; border-color: #263449 !important; box-shadow: 2px 0 8px -4px rgba(0,0,0,0.6); }
+    html.dark aside .border-gray-100 { border-color: #263449 !important; }
+    html.dark aside .bg-gray-50 { background-color: #0d1524 !important; }
+    html.dark aside .text-lpse-biru { color: #93c5fd !important; }
+    html.dark aside .text-gray-500 { color: #94a3b8 !important; }
+    html.dark .menu-item.text-gray-600 { color: #cbd5e1 !important; }
+    html.dark .menu-item.text-gray-600:hover { background-color: #1e293b !important; color: #93c5fd !important; }
+    html.dark #btnTheme { background-color: #0f172a !important; border-color: #334155 !important; color: #93c5fd !important; }
+    html.dark #btnTheme:hover { background-color: #1e293b !important; }
+
+    /* Beranda */
+    html.dark .page-header { background: linear-gradient(135deg, #0f2347 0%, #15366a 100%); box-shadow: 0 3px 12px rgba(0,0,0,0.5); }
+    html.dark .dashboard-section { background: #162033; box-shadow: 0 3px 12px rgba(0,0,0,0.45); }
+    html.dark .section-title-wrap { border-bottom-color: #263449; }
+    html.dark .section-title { color: #93c5fd; }
+    html.dark .section-update { color: #94a3b8; }
+    html.dark .btn-detail { background: #0f172a; color: #93c5fd; }
+    html.dark .btn-detail:hover { background: var(--lpse-biru2); color: #fff; }
+    html.dark #loadingOverlayDashboard { background: rgba(11,18,32,0.88); }
+    html.dark #loadingOverlayDashboard p { color: #e2e8f0 !important; }
+    html.dark .loader { border-color: #334155; border-top-color: #60a5fa; }
   </style>
 </head>
 <body class="flex h-screen overflow-hidden bg-[#f0f4f8] text-gray-800">
@@ -111,6 +149,7 @@
     </div>
 
     <div class="py-2 px-3 border-t border-gray-100 bg-gray-50 text-center flex-shrink-0">
+      <button id="btnTheme" onclick="toggleTheme()" title="Ganti mode terang/gelap" class="w-full mb-2 px-2 py-1 rounded-md border border-gray-200 bg-white hover:bg-gray-100 text-[0.65rem] font-semibold text-lpse-biru transition-colors">🌙 Mode Gelap</button>
       <p class="text-[0.6rem] font-medium text-gray-500">&copy; Tim LPSE Kab. Kobar 2025</p>
       <p id="teks-versi" class="text-[0.6rem] font-bold text-lpse-biru mt-1">dashboard.pbjkobar ...</p>
     </div>
@@ -201,6 +240,84 @@
   </main>
 
   <script>
+    // ==========================================================
+    // MODE GELAP (tombol di sidebar) - otomatis diteruskan ke semua halaman iframe
+    // Kunci localStorage tiap halaman: rupTheme, pengadaanTheme, tepraTheme
+    // ==========================================================
+    const THEME_KEYS = ["rupTheme", "pengadaanTheme", "tepraTheme"];
+
+    function isDark() { return document.documentElement.classList.contains("dark"); }
+
+    function updateThemeButton() {
+      document.getElementById("btnTheme").innerText = isDark() ? "☀️ Mode Terang" : "🌙 Mode Gelap";
+    }
+
+    // Terapkan tema ke satu iframe (hanya bisa bila satu origin/domain)
+    function syncOneIframe(iframe, dark) {
+      try {
+        const doc = iframe.contentDocument;
+        if (!doc || !doc.documentElement) return;
+        doc.documentElement.classList.toggle("dark", dark);
+        if (iframe.contentWindow && typeof iframe.contentWindow.updateThemeButton === "function") {
+          iframe.contentWindow.updateThemeButton();
+        }
+      } catch (err) {}
+    }
+
+    function syncIframes(dark) {
+      document.querySelectorAll("iframe").forEach(f => syncOneIframe(f, dark));
+    }
+
+    function applyTheme(dark, persist) {
+      document.documentElement.classList.toggle("dark", dark);
+      updateThemeButton();
+      syncIframes(dark);
+      if (persist) {
+        try {
+          const v = dark ? "dark" : "light";
+          localStorage.setItem("dashboardTheme", v);
+          THEME_KEYS.forEach(k => localStorage.setItem(k, v));
+        } catch (err) {}
+      }
+    }
+
+    function toggleTheme() { applyTheme(!isDark(), true); }
+
+    // Bila user pernah memilih, pastikan semua halaman memakai pilihan yang sama
+    try {
+      const saved = localStorage.getItem("dashboardTheme");
+      if (saved) THEME_KEYS.forEach(k => localStorage.setItem(k, saved));
+    } catch (err) {}
+
+    // Setiap iframe selesai dimuat: samakan temanya dengan beranda
+    document.querySelectorAll("iframe").forEach(f => {
+      f.addEventListener("load", () => syncOneIframe(f, isDark()));
+    });
+
+    // Bila tombol tema di dalam salah satu halaman ditekan, beranda & halaman lain ikut berubah
+    window.addEventListener("storage", (e) => {
+      if (!THEME_KEYS.includes(e.key) || !e.newValue) return;
+      const dark = e.newValue === "dark";
+      document.documentElement.classList.toggle("dark", dark);
+      updateThemeButton();
+      syncIframes(dark);
+      try {
+        localStorage.setItem("dashboardTheme", e.newValue);
+        THEME_KEYS.forEach(k => { if (k !== e.key) localStorage.setItem(k, e.newValue); });
+      } catch (err) {}
+    });
+
+    // Ikuti perubahan tema perangkat selama user belum memilih manual
+    try {
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+        if (localStorage.getItem("dashboardTheme")) return;
+        applyTheme(e.matches, false);
+      });
+    } catch (err) {}
+
+    // ==========================================================
+    // NAVIGASI & DATA
+    // ==========================================================
     function switchTab(panelId, element, hashName) {
       document.querySelectorAll('.view-panel').forEach(panel => panel.classList.add('hidden'));
       document.getElementById(panelId).classList.remove('hidden');
@@ -249,6 +366,7 @@
     }
 
     window.onload = () => {
+      updateThemeButton();
       checkUrlHash();
       fetchVersiApp();
     };

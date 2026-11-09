@@ -1,3 +1,5 @@
+<!-- ### ===== ini file arsip.html ===== ### -->
+ 
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -6,6 +8,14 @@
   <title>Arsip Data PBJ</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="../js/config.js"></script>
+  <script>
+    // Urutan: pilihan tersimpan user > pengaturan tema perangkat (OS/browser) > terang
+    try {
+      var t = localStorage.getItem("arsipTheme");
+      var sistemGelap = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (t === "dark" || (!t && sistemGelap)) document.documentElement.classList.add("dark");
+    } catch (e) {}
+  </script>
   <style>
     :root {
       --lpse-biru  : #1a3a6b;
@@ -16,25 +26,60 @@
     }
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; margin: 0; padding: 0; }
     
-    .page-header { background: linear-gradient(135deg, var(--lpse-biru) 0%, var(--lpse-biru2) 100%); padding: 14px 20px 10px; border-radius: 0 0 10px 10px; box-shadow: 0 3px 12px rgba(26,58,107,0.15); margin-bottom: 16px; }
+    .page-header { background: linear-gradient(135deg, var(--lpse-biru) 0%, var(--lpse-biru2) 100%); padding: 14px 20px 10px; border-radius: 0 0 10px 10px; box-shadow: 0 3px 12px rgba(26,58,107,0.15); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
     .page-header h1 { color: #fff; font-size: 1.15rem; font-weight: 700; margin: 0; }
+
+    /* ===== TOMBOL MODE GELAP ===== */
+    .btn-theme { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.3); border-radius: 5px; padding: 4px 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .btn-theme:hover { background: rgba(255,255,255,0.22); }
     
     .dashboard-section { background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 2px 10px rgba(26,58,107,0.09); position: relative; overflow: hidden; margin-top: 12px;}
     .color-strip { position: absolute; top: 0; left: 0; right: 0; display: flex; height: 4px; }
     .color-strip span { flex: 1; }
     .section-title { font-size: 1rem; font-weight: 700; color: var(--lpse-biru); margin: 0 0 12px 0; }
+
+    .arsip-toolbar { margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 14px; }
+    .arsip-thead { background-color: #f1f5f9; border-bottom: 2px solid #cbd5e1; }
+    .arsip-thead th { color: #1e293b; }
+    .arsip-row { border-bottom: 1px solid #e2e8f0; }
+    .arsip-file { color: #334155; }
     
     .btn-action { color: white; display: inline-flex; align-items: center; padding: 0 12px; height: 26px; border-radius: 4px; font-weight: 600; font-size: 0.65rem; cursor: pointer; border: none; transition: opacity 0.2s; }
     .btn-action:hover { opacity: 0.9; }
 
     .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--lpse-biru); border-radius: 50%; width: 25px; height: 25px; animation: spin 1s linear infinite; }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    /* ===== MODE GELAP ===== */
+    html.dark { color-scheme: dark; }
+    html.dark body { background-color: #0b1220; color: #e2e8f0; }
+    html.dark .page-header { background: linear-gradient(135deg, #0f2347 0%, #15366a 100%); box-shadow: 0 3px 12px rgba(0,0,0,0.5); }
+    html.dark .dashboard-section { background: #162033; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+    html.dark .section-title { color: #93c5fd; }
+    html.dark .arsip-toolbar { border-bottom-color: #263449; }
+    html.dark #selectYearArsip { background: #0f172a; color: #e2e8f0 !important; }
+    html.dark .arsip-thead { background-color: #0f172a; border-bottom-color: #334155; }
+    html.dark .arsip-thead th { color: #e2e8f0; }
+    html.dark .arsip-row { border-bottom-color: #263449; }
+    html.dark .arsip-file { color: #e2e8f0; }
+    html.dark #tabel-arsip td[style*="#64748b"] { color: #94a3b8 !important; }
+    html.dark .loader { border-color: #334155; border-top-color: #60a5fa; }
+
+    /* Modal password & alert */
+    html.dark #modalPassword > div, html.dark #modalAlert > div { background: #162033; }
+    html.dark #modalPassword h3, html.dark #modalAlert h3 { color: #f1f5f9; }
+    html.dark #modalPassword p, html.dark #modalAlert p { color: #94a3b8; }
+    html.dark #inputPassword { background: #0f172a; border-color: #334155; color: #e2e8f0; }
+    html.dark #inputPassword:focus { border-color: #60a5fa; }
+    html.dark #modalPassword .bg-gray-100 { background: #334155; color: #e2e8f0; }
+    html.dark #modalPassword .bg-gray-100:hover { background: #475569; }
   </style>
 </head>
 <body>
 
   <div class="page-header">
     <h1>📁 Arsip Data PBJ</h1>
+    <button id="btnTheme" class="btn-theme" onclick="toggleTheme()" title="Ganti mode terang/gelap">🌙 Mode Gelap</button>
   </div>
 
   <div style="padding: 0 20px 20px 20px; max-width: 1400px; margin: 0 auto;">
@@ -46,7 +91,7 @@
       
       <h2 class="section-title">Pilih Direktori Arsip</h2>
 
-      <div style="margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 14px;">
+      <div class="arsip-toolbar">
         <div style="background: var(--lpse-biru); padding: 0 12px; height: 26px; border-radius: 4px; display: inline-flex; align-items: center; gap: 8px;">
           <label style="color: white; font-size: 0.65rem; font-weight: bold;">Tahun Arsip:</label>
           <select id="selectYearArsip" style="padding: 0 6px; height: 20px; font-size: 0.65rem; border-radius: 3px; border: none; outline: none; font-weight: bold; cursor: pointer; color: #1e293b;">
@@ -65,10 +110,10 @@
 
       <div class="overflow-x-auto">
         <table style="width: 100%; border-collapse: collapse; text-align: left;">
-          <thead style="background-color: #f1f5f9; border-bottom: 2px solid #cbd5e1;">
+          <thead class="arsip-thead">
             <tr>
-              <th style="padding: 8px 12px; font-size: 0.7rem; color: #1e293b; font-weight: 700;">Nama File Arsip Excel</th>
-              <th style="padding: 8px 12px; width: 120px; font-size: 0.7rem; text-align: center; color: #1e293b; font-weight: 700;">Aksi</th>
+              <th style="padding: 8px 12px; font-size: 0.7rem; font-weight: 700;">Nama File Arsip Excel</th>
+              <th style="padding: 8px 12px; width: 120px; font-size: 0.7rem; text-align: center; font-weight: 700;">Aksi</th>
             </tr>
           </thead>
           <tbody id="tabel-arsip">
@@ -113,6 +158,27 @@
 
   <script>
     let pendingDownloadUrl = "";
+
+    // === MODE GELAP ===
+    function updateThemeButton() {
+      const dark = document.documentElement.classList.contains("dark");
+      document.getElementById("btnTheme").innerText = dark ? "☀️ Mode Terang" : "🌙 Mode Gelap";
+    }
+    function toggleTheme() {
+      const dark = document.documentElement.classList.toggle("dark");
+      try { localStorage.setItem("arsipTheme", dark ? "dark" : "light"); } catch (e) {}
+      updateThemeButton();
+    }
+    // Ikuti perubahan tema perangkat selama user belum memilih manual
+    try {
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+        if (localStorage.getItem("arsipTheme")) return;
+        document.documentElement.classList.toggle("dark", e.matches);
+        updateThemeButton();
+      });
+    } catch (e) {}
+    updateThemeButton();
+
     function tampilkanAlert(pesan, ikon = '⚠️', judul = 'Perhatian') {
       document.getElementById("alertIcon").innerText = ikon;
       document.getElementById("alertTitle").innerText = judul;
@@ -151,9 +217,9 @@
           dataFiles.sort((a, b) => b.nama_file.localeCompare(a.nama_file)).forEach(item => {
             const fileName = item.nama_file;
             const row = document.createElement('tr');
-            row.style.borderBottom = '1px solid #e2e8f0';
+            row.className = 'arsip-row';
             row.innerHTML = `
-              <td style="padding: 8px 12px; color: #334155; font-size: 0.65rem; font-weight: 600;">📄 ${fileName}</td>
+              <td class="arsip-file" style="padding: 8px 12px; font-size: 0.65rem; font-weight: 600;">📄 ${fileName}</td>
               <td style="padding: 8px 12px; text-align: center;">
                 <button onclick="mintaPasswordUnduh('${urlFolder}${encodeURIComponent(fileName)}')" style="display: inline-flex; align-items: center; justify-content: center; height: 26px; padding: 0 12px; background: var(--lpse-kuning); color: #1a1a1a; text-decoration: none; border-radius: 4px; font-size: 0.65rem; font-weight: 700; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border:none; cursor:pointer;">
                   ⬇ Unduh
