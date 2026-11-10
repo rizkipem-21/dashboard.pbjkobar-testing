@@ -14,19 +14,18 @@
     }
   </script>
   <script>
-    // Mode tampilan: otomatis tampilan HP hanya di HP asli (layar sempit + layar sentuh).
-    // Di komputer, tampilan HP hanya aktif bila user menekan tombol "Tampilan HP".
-    (function () {
-      try {
-        var forced = localStorage.getItem("viewMode") === "phone";
-        var real = window.innerWidth < 768 && window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
-        var h = document.documentElement;
-        if (real) h.classList.add("real-mobile");
-        if (forced || real) h.classList.add("is-mobile");
-        if (forced && !real) h.classList.add("phone-preview");
-      } catch (e) {}
-    })();
-  </script>
+  (function () {
+    try {
+      var mode = localStorage.getItem("viewMode");
+      var forced = mode === "phone";
+      var real = window.innerWidth < 768 && window.matchMedia && window.matchMedia("(pointer: coarse)").matches && mode !== "desktop";
+      var h = document.documentElement;
+      if (real) h.classList.add("real-mobile");
+      if (forced || real) h.classList.add("is-mobile");
+      if (forced && !real) h.classList.add("phone-preview");
+    } catch (e) {}
+  })();
+</script>
   <script>
     // Tema awal: pilihan tersimpan user > pengaturan tema perangkat (OS/browser) > terang
     try {
@@ -153,7 +152,6 @@
     /* Pratinjau tampilan HP di komputer: halaman dibatasi selebar HP dan diletakkan di tengah */
     html.phone-preview { background: #1e293b; }
     html.phone-preview body { max-width: 430px; margin: 0 auto; transform: translate(0, 0); box-shadow: 0 0 0 1px #334155, 0 12px 48px rgba(0,0,0,0.55); }
-    html.real-mobile #btnViewMode { display: none !important; }
   </style>
 </head>
 <body class="flex h-screen overflow-hidden bg-[#f0f4f8] text-gray-800">
@@ -390,12 +388,15 @@
     function isForcedPhone() { try { return localStorage.getItem("viewMode") === "phone"; } catch (e) { return false; } }
 
     function updateViewModeButton() {
-      document.getElementById("btnViewMode").innerText = isForcedPhone() ? "🖥️ Tampilan Komputer" : "📱 Tampilan HP";
+      const mobile = document.documentElement.classList.contains("is-mobile");
+      document.getElementById("btnViewMode").innerText = mobile ? "🖥️ Tampilan Komputer" : "📱 Tampilan HP";
     }
 
     function applyViewMode() {
-      const h = document.documentElement, forced = isForcedPhone();
-      const real = window.innerWidth < 768 && window.matchMedia("(pointer: coarse)").matches;
+      const h = document.documentElement;
+      let mode = null; try { mode = localStorage.getItem("viewMode"); } catch (e) {}
+      const forced = mode === "phone";
+      const real = window.innerWidth < 768 && window.matchMedia("(pointer: coarse)").matches && mode !== "desktop";
       h.classList.toggle("real-mobile", real);
       h.classList.toggle("is-mobile", forced || real);
       h.classList.toggle("phone-preview", forced && !real);
@@ -404,7 +405,8 @@
     }
 
     function toggleViewMode() {
-      try { localStorage.setItem("viewMode", isForcedPhone() ? "desktop" : "phone"); } catch (e) {}
+      const mobileNow = document.documentElement.classList.contains("is-mobile");
+      try { localStorage.setItem("viewMode", mobileNow ? "desktop" : "phone"); } catch (e) {}
       applyViewMode();
     }
     window.addEventListener("resize", applyViewMode);
