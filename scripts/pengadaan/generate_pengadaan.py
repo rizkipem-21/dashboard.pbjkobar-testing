@@ -1584,6 +1584,14 @@ if __name__ == '__main__':
             with open(path_error, 'r', encoding='utf-8') as f: daftar_error_api = json.load(f)
             os.remove(path_error)
         except: pass
+    
+    daftar_data_kosong = []
+    path_kosong = os.path.join(BASE_DIR, 'scripts', 'pengadaan', 'kosong_api_pengadaan.json')
+    if os.path.exists(path_kosong):
+        try:
+            with open(path_kosong, 'r', encoding='utf-8') as f: daftar_data_kosong = json.load(f)
+            os.remove(path_kosong)
+        except: pass
 
     # 2. CEK TOTAL URL (Disesuaikan dengan tahun yang tidak di-skip)
     total_target = 0
@@ -1662,12 +1670,9 @@ if __name__ == '__main__':
     # ---------------------------------------------
 
     # 2. KIRIM TELEGRAM
-    blok_kosong = ""
-    try:
-        with open(os.path.join(BASE_DIR, 'scripts', 'pengadaan', 'kosong_api_pengadaan.json'), 'r', encoding='utf-8') as f:
-            dk = json.load(f)
-        if dk: blok_kosong = "ℹ️ API KOSONG (file lama dipertahankan):\n" + "".join(f"{x}\n" for x in dk) + "\n"
-    except Exception: pass
+        blok_kosong = ""
+    if daftar_data_kosong:
+        blok_kosong = "ℹ️ API KOSONG (file lama dipertahankan):\n" + "".join(f"{x}\n" for x in daftar_data_kosong) + "\n"
     blok_ringkasan = blok_kosong + blok_ringkasan
 
     if len(daftar_error_api) > 0 or not git_sukses:
