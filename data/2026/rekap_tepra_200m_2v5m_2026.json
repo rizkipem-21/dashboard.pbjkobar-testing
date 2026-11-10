@@ -161,8 +161,8 @@
   },
   {
     "Satuan Kerja": "DINAS LINGKUNGAN HIDUP - 2.11.3.28.0.00.01.0000",
-    "Data Laporan_Paket": 10,
-    "Data Laporan_Pagu": 8587552650.0,
+    "Data Laporan_Paket": 7,
+    "Data Laporan_Pagu": 6548615450.0,
     "Pemilihan_Paket": 4,
     "Pemilihan_Pagu": 3459514800.0,
     "Hasil_Paket": 4,
@@ -171,9 +171,9 @@
     "Kontrak_Pagu": 3459514800.0,
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
-    "Belum_Paket": 6,
-    "Belum_Pagu": 5128037850.0,
-    "Progres_Persen": 40.0
+    "Belum_Paket": 3,
+    "Belum_Pagu": 3089100650.0,
+    "Progres_Persen": 57.1
   },
   {
     "Satuan Kerja": "DINAS PARIWISATA - 3.26.0.00.0.00.01.0000",
@@ -193,19 +193,19 @@
   },
   {
     "Satuan Kerja": "DINAS PEKERJAAN UMUM DAN PENATAAN RUANG - 1.03.0.00.0.00.01.0000",
-    "Data Laporan_Paket": 54,
-    "Data Laporan_Pagu": 38852001407.0,
-    "Pemilihan_Paket": 47,
-    "Pemilihan_Pagu": 35481464195.0,
-    "Hasil_Paket": 47,
-    "Hasil_Pagu": 34989564970.0,
-    "Kontrak_Paket": 42,
-    "Kontrak_Pagu": 33656020970.0,
+    "Data Laporan_Paket": 55,
+    "Data Laporan_Pagu": 39284774763.0,
+    "Pemilihan_Paket": 48,
+    "Pemilihan_Pagu": 35914237551.0,
+    "Hasil_Paket": 48,
+    "Hasil_Pagu": 35420444058.0,
+    "Kontrak_Paket": 41,
+    "Kontrak_Pagu": 33457009958.0,
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 7,
     "Belum_Pagu": 3370537212.0,
-    "Progres_Persen": 87.0
+    "Progres_Persen": 87.3
   },
   {
     "Satuan Kerja": "DINAS PEMADAM KEBAKARAN DAN PENYELAMATAN - 1.05.0.00.0.00.03.0000",
@@ -441,8 +441,8 @@
     "Hasil_Pagu": 493249349.0,
     "Kontrak_Paket": 18,
     "Kontrak_Pagu": 493249349.0,
-    "SerahTerima_Paket": 3,
-    "SerahTerima_Pagu": 80675605.0,
+    "SerahTerima_Paket": 5,
+    "SerahTerima_Pagu": 247518595.0,
     "Belum_Paket": 0,
     "Belum_Pagu": 0.0,
     "Progres_Persen": 100.0
@@ -483,17 +483,17 @@
     "Satuan Kerja": "KECAMATAN KOTAWARINGIN LAMA - 7.01.0.00.0.00.03.0000",
     "Data Laporan_Paket": 1,
     "Data Laporan_Pagu": 294557160.0,
-    "Pemilihan_Paket": 0,
-    "Pemilihan_Pagu": 0.0,
-    "Hasil_Paket": 0,
-    "Hasil_Pagu": 0.0,
-    "Kontrak_Paket": 0,
-    "Kontrak_Pagu": 0.0,
+    "Pemilihan_Paket": 1,
+    "Pemilihan_Pagu": 294557160.0,
+    "Hasil_Paket": 1,
+    "Hasil_Pagu": 240412220.0,
+    "Kontrak_Paket": 1,
+    "Kontrak_Pagu": 240412220.0,
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
-    "Belum_Paket": 1,
-    "Belum_Pagu": 294557160.0,
-    "Progres_Persen": 0.0
+    "Belum_Paket": 0,
+    "Belum_Pagu": 0.0,
+    "Progres_Persen": 100.0
   },
   {
     "Satuan Kerja": "KECAMATAN KUMAI - 7.01.0.00.0.00.01.0000",
@@ -641,8 +641,8 @@
   },
   {
     "Satuan Kerja": "PUSKESMAS KUMAI - 1.02.0.00.0.00.01.0010",
-    "Data Laporan_Paket": 0,
-    "Data Laporan_Pagu": 0.0,
+    "Data Laporan_Paket": 1,
+    "Data Laporan_Pagu": 217650000.0,
     "Pemilihan_Paket": 0,
     "Pemilihan_Pagu": 0.0,
     "Hasil_Paket": 0,
@@ -651,8 +651,8 @@
     "Kontrak_Pagu": 0.0,
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
-    "Belum_Paket": 0,
-    "Belum_Pagu": 0.0,
+    "Belum_Paket": 1,
+    "Belum_Pagu": 217650000.0,
     "Progres_Persen": 0.0
   },
   {
@@ -929,18 +929,18 @@
   },
   {
     "Satuan Kerja": "TOTAL KESELURUHAN",
-    "Data Laporan_Paket": 239,
-    "Data Laporan_Pagu": 183481947587.0,
-    "Pemilihan_Paket": 165,
-    "Pemilihan_Pagu": 148894574365.0,
-    "Hasil_Paket": 165,
-    "Hasil_Pagu": 71614986855.0,
+    "Data Laporan_Paket": 238,
+    "Data Laporan_Pagu": 182093433743.0,
+    "Pemilihan_Paket": 167,
+    "Pemilihan_Pagu": 149621904881.0,
+    "Hasil_Paket": 167,
+    "Hasil_Pagu": 72286278163.0,
     "Kontrak_Paket": 158,
-    "Kontrak_Pagu": 69548942855.0,
-    "SerahTerima_Paket": 47,
-    "SerahTerima_Pagu": 8241485749.0,
-    "Belum_Paket": 74,
-    "Belum_Pagu": 34587373222.0,
-    "Progres_Persen": 69.0
+    "Kontrak_Pagu": 69590344063.0,
+    "SerahTerima_Paket": 49,
+    "SerahTerima_Pagu": 8408328739.0,
+    "Belum_Paket": 71,
+    "Belum_Pagu": 32471528862.0,
+    "Progres_Persen": 70.2
   }
 ]

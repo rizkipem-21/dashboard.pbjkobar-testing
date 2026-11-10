@@ -400,6 +400,9 @@ let filtered    = [];
 let currentPage = 1;
 let perPage     = 10;
 let currentYear = "2026";
+let baselineCount = 0;      // pembanding "dari ... data" (total semua, atau total satker terpilih)
+let baselineScope = "";     // keterangan pembanding
+let activeFilterCount = 0;  // jumlah filter yang sedang aktif
 
 // === MODE GELAP ===
 function updateThemeButton() {
@@ -719,6 +722,19 @@ function applyFilter() {
     return true;
   });
 
+  // Pembanding "dari ... data": total semua data, atau total milik satker yang dipilih
+  if (checkedSatker !== null) {
+    baselineCount = allData.filter(r => checkedSatker.includes(r["Satuan Kerja"])).length;
+    baselineScope = checkedSatker.length === 1 ? " pada satker ini" : " pada satker terpilih";
+  } else {
+    baselineCount = allData.length;
+    baselineScope = "";
+  }
+
+  // Hitung jumlah filter aktif (ceklis + kolom teks)
+  activeFilterCount = Object.keys(filterConfigs).filter(f => getCheckedValues(f) !== null).length
+    + [kodePaket, kodeRUP, paket].filter(v => v).length;
+
   currentPage = 1;
   updateStatCards();
   renderTable();
@@ -827,8 +843,9 @@ function renderTable() {
   const infoText = `Halaman ${currentPage} / ${Math.max(totalPage, 1)}`;
   document.getElementById("pageInfo").innerText  = infoText;
   document.getElementById("pageInfo2").innerText = infoText;
-  document.getElementById("totalInfo").innerText = 
-    `(Menampilkan ${filtered.length.toLocaleString("id-ID")} dari ${allData.length.toLocaleString("id-ID")} data)`;
+  document.getElementById("totalInfo").innerText =
+    `(Menampilkan ${filtered.length.toLocaleString("id-ID")} dari ${baselineCount.toLocaleString("id-ID")} data${baselineScope}` +
+    (activeFilterCount > 0 ? ` · ${activeFilterCount} filter aktif` : "") + `)`;
 
   const atFirst = currentPage <= 1;
   const atLast  = currentPage >= totalPage;
