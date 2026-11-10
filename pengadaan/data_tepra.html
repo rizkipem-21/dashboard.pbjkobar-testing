@@ -179,6 +179,61 @@
   html.dark #loadingOverlay { background: rgba(11,18,32,0.85); }
   html.dark #loadingOverlay span { color: #e2e8f0 !important; }
   html.dark .loader { border-color: #334155; border-top-color: #60a5fa; }
+
+  /* ===== MOBILE: tabel menjadi kartu ===== */
+  @media (max-width: 767px) {
+    .page-header { padding: 12px 14px 10px; margin-bottom: 12px; }
+    .page-header-top { flex-wrap: wrap; gap: 10px; }
+    .page-header h1 { font-size: 0.95rem; }
+    .year-selector-wrap { flex-wrap: wrap; }
+
+    /* Tab tetap bisa digeser ke samping */
+    .tabs-container { padding: 0 10px; }
+    .tab-btn { padding: 8px 12px; }
+
+    /* Kontrol & filter ditumpuk */
+    .control-bar { margin: 0 10px 12px; padding: 10px; flex-direction: column; align-items: stretch; }
+    .control-bar > div { width: 100%; }
+    .filter-group { flex-direction: column; align-items: stretch; }
+    .filter-group .ms-wrap { width: 100%; }
+    .ms-btn { width: 100%; padding: 9px 10px; font-size: 0.75rem; box-sizing: border-box; }
+    .ms-panel { width: 100%; max-width: none; }
+    .ms-item { padding: 9px 6px; font-size: 0.78rem; }
+    .ms-search { font-size: 16px; padding: 8px; }
+    .filter-select { height: 36px; font-size: 0.75rem; }
+    .btn-filter-toggle, .btn-reset, .btn-excel { height: 36px; justify-content: center; font-size: 0.75rem; width: 100%; }
+
+    /* Tabel -> kartu */
+    .table-wrap { background: transparent !important; box-shadow: none !important; margin: 0 10px 20px; overflow: visible; height: auto; min-height: 80px; }
+    #mainTable, #mainTable tbody { display: block; width: 100%; }
+    #mainThead { display: none; }
+    tbody tr:not(.row-card) { display: block; }
+    tbody tr:not(.row-card) td { display: block; width: 100%; box-sizing: border-box; }
+
+    tbody tr.row-card, tbody tr.row-card:hover { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; background: #fff !important; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; box-shadow: 0 1px 6px rgba(26,58,107,0.08); }
+    tbody tr.row-card td { display: block; border: none !important; padding: 0 !important; width: auto !important; min-width: 0 !important; max-width: none !important; text-align: left !important; white-space: normal !important; word-break: break-word; font-size: 0.78rem; position: static !important; background: transparent !important; }
+
+    /* Baris 1: No (kiri) & Progres (kanan) | Baris 2: Satuan Kerja | selanjutnya pasangan PKT & Rp */
+    .row-card td:nth-child(1) { grid-column: 1; grid-row: 1; font-weight: 700; font-size: 0.72rem; align-self: center; }
+    .row-card td:nth-child(1)::before { content: "No. "; }
+    .row-card td:nth-child(1):empty { display: none; }
+    .row-card td:last-child { grid-column: 2; grid-row: 1; justify-self: end; align-self: center; font-size: 0.85rem; }
+    .row-card td:last-child::before { display: inline; margin-right: 4px; }
+    .row-card td:nth-child(2) { grid-column: 1 / -1; grid-row: 2; font-weight: 600; font-size: 0.84rem; line-height: 1.3; }
+    .row-card td:nth-child(n+3):not(:last-child)::before { content: attr(data-label); display: block; font-size: 0.58rem; font-weight: 600; color: #64748b; text-transform: uppercase; margin-bottom: 2px; }
+    .row-card td:last-child::before { content: attr(data-label); font-size: 0.58rem; font-weight: 600; color: #64748b; text-transform: uppercase; }
+    .row-card td:nth-child(n+3):not(:last-child) { text-align: left !important; }
+
+    /* Baris TOTAL KESELURUHAN */
+    tbody tr.row-card.total-row, tbody tr.row-card.total-row:hover { background: var(--lpse-biru) !important; border-color: var(--lpse-biru); }
+    tbody tr.row-card.total-row td { color: #fff; }
+    tbody tr.row-card.total-row td::before { color: rgba(255,255,255,0.7) !important; }
+
+    html.dark tbody tr.row-card, html.dark tbody tr.row-card:hover { background: #162033 !important; border-color: #263449; box-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+    html.dark .row-card td::before { color: #94a3b8; }
+    html.dark tbody tr.row-card.total-row, html.dark tbody tr.row-card.total-row:hover { background: #1e3a6b !important; border-color: #3b82f6; }
+    html.dark tbody tr.row-card.total-row td { background: transparent !important; color: #fff; }
+  }
 </style>
 </head>
 <body>
@@ -559,39 +614,40 @@ function renderTable() {
   filteredData.forEach((row) => {
     const isTotal = row["Satuan Kerja"] === "TOTAL KESELURUHAN";
     const tr = document.createElement("tr");
-    if (isTotal) tr.className = "total-row";
+    // row-card: di HP baris ini tampil sebagai kartu
+    tr.className = isTotal ? "row-card total-row" : "row-card";
 
     if (activeTabIndex === 0) {
       tr.innerHTML = `
-        <td class="td-no">${isTotal ? "" : nomor++}</td>
-        <td class="td-left" style="font-weight:${isTotal?'700':'500'}">${row["Satuan Kerja"]}</td>
-        <td class="td-center">${formatPkt(row["Data Laporan_Paket"])}</td>
-        <td class="td-right">${formatRp(row["Data Laporan_Pagu"])}</td>
-        <td class="td-center">${formatPkt(row["Pemilihan_Paket"])}</td>
-        <td class="td-right">${formatRp(row["Pemilihan_Pagu"])}</td>
-        <td class="td-center">${formatPkt(row["Hasil_Paket"])}</td>
-        <td class="td-right">${formatRp(row["Hasil_Pagu"])}</td>
-        <td class="td-center">${formatPkt(row["Belum_Paket"])}</td>
-        <td class="td-right">${formatRp(row["Belum_Pagu"])}</td>
-        <td class="td-persen">${formatPersen(row)}</td>
+        <td class="td-no" data-label="No">${isTotal ? "" : nomor++}</td>
+        <td class="td-left" data-label="Satuan Kerja" style="font-weight:${isTotal?'700':'500'}">${row["Satuan Kerja"]}</td>
+        <td class="td-center" data-label="Data Laporan · PKT">${formatPkt(row["Data Laporan_Paket"])}</td>
+        <td class="td-right" data-label="Data Laporan · Rp">${formatRp(row["Data Laporan_Pagu"])}</td>
+        <td class="td-center" data-label="Realisasi (RUP) · PKT">${formatPkt(row["Pemilihan_Paket"])}</td>
+        <td class="td-right" data-label="Realisasi (RUP) · Rp">${formatRp(row["Pemilihan_Pagu"])}</td>
+        <td class="td-center" data-label="Realisasi · PKT">${formatPkt(row["Hasil_Paket"])}</td>
+        <td class="td-right" data-label="Realisasi · Rp">${formatRp(row["Hasil_Pagu"])}</td>
+        <td class="td-center" data-label="Belum Pengadaan · PKT">${formatPkt(row["Belum_Paket"])}</td>
+        <td class="td-right" data-label="Belum Pengadaan · Rp">${formatRp(row["Belum_Pagu"])}</td>
+        <td class="td-persen" data-label="Progres">${formatPersen(row)}</td>
       `;
     } else {
       tr.innerHTML = `
-        <td class="td-no">${isTotal ? "" : nomor++}</td>
-        <td class="td-left" style="font-weight:${isTotal?'700':'500'}">${row["Satuan Kerja"]}</td>
-        <td class="td-center">${formatPkt(row["Data Laporan_Paket"])}</td>
-        <td class="td-right">${formatRp(row["Data Laporan_Pagu"])}</td>
-        <td class="td-center">${formatPkt(row["Pemilihan_Paket"])}</td>
-        <td class="td-right">${formatRp(row["Pemilihan_Pagu"])}</td>
-        <td class="td-center">${formatPkt(row["Hasil_Paket"])}</td>
-        <td class="td-right">${formatRp(row["Hasil_Pagu"])}</td>
-        <td class="td-center">${formatPkt(row["Kontrak_Paket"])}</td>
-        <td class="td-right">${formatRp(row["Kontrak_Pagu"])}</td>
-        <td class="td-center">${formatPkt(row["SerahTerima_Paket"])}</td>
-        <td class="td-right">${formatRp(row["SerahTerima_Pagu"])}</td>
-        <td class="td-center">${formatPkt(row["Belum_Paket"])}</td>
-        <td class="td-right">${formatRp(row["Belum_Pagu"])}</td>
-        <td class="td-persen">${formatPersen(row)}</td>
+        <td class="td-no" data-label="No">${isTotal ? "" : nomor++}</td>
+        <td class="td-left" data-label="Satuan Kerja" style="font-weight:${isTotal?'700':'500'}">${row["Satuan Kerja"]}</td>
+        <td class="td-center" data-label="Data Laporan · PKT">${formatPkt(row["Data Laporan_Paket"])}</td>
+        <td class="td-right" data-label="Data Laporan · Rp">${formatRp(row["Data Laporan_Pagu"])}</td>
+        <td class="td-center" data-label="Pemilihan/Pelaks. · PKT">${formatPkt(row["Pemilihan_Paket"])}</td>
+        <td class="td-right" data-label="Pemilihan/Pelaks. · Rp">${formatRp(row["Pemilihan_Pagu"])}</td>
+        <td class="td-center" data-label="Hasil Pemilihan · PKT">${formatPkt(row["Hasil_Paket"])}</td>
+        <td class="td-right" data-label="Hasil Pemilihan · Rp">${formatRp(row["Hasil_Pagu"])}</td>
+        <td class="td-center" data-label="Kontrak · PKT">${formatPkt(row["Kontrak_Paket"])}</td>
+        <td class="td-right" data-label="Kontrak · Rp">${formatRp(row["Kontrak_Pagu"])}</td>
+        <td class="td-center" data-label="Serah Terima · PKT">${formatPkt(row["SerahTerima_Paket"])}</td>
+        <td class="td-right" data-label="Serah Terima · Rp">${formatRp(row["SerahTerima_Pagu"])}</td>
+        <td class="td-center" data-label="Belum Pengadaan · PKT">${formatPkt(row["Belum_Paket"])}</td>
+        <td class="td-right" data-label="Belum Pengadaan · Rp">${formatRp(row["Belum_Pagu"])}</td>
+        <td class="td-persen" data-label="Progres">${formatPersen(row)}</td>
       `;
     }
     tbody.appendChild(tr);

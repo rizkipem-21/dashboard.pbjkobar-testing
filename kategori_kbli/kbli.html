@@ -121,6 +121,53 @@
   html.dark #modalAlert > div { background: #162033; }
   html.dark #modalAlert h3 { color: #f1f5f9; }
   html.dark #modalAlert p { color: #94a3b8; }
+
+  /* ===== MOBILE: tabel menjadi kartu ===== */
+  @media (max-width: 767px) {
+    .page-pad { padding: 0 10px !important; }
+    .page-header { padding: 12px 14px 10px; margin-bottom: 12px; flex-wrap: wrap; }
+    .page-header h1 { font-size: 0.95rem; }
+
+    /* Filter: satu kolom, mudah disentuh */
+    .filter-grid { grid-template-columns: 1fr; }
+    .filter-card label { font-size: 0.62rem; }
+    .filter-card input, .filter-card select { height: 36px; font-size: 16px; padding: 6px 10px; }
+    .filter-actions { justify-content: stretch !important; }
+    .filter-actions .btn-search, .filter-actions .btn-reset { flex: 1; height: 36px; justify-content: center; font-size: 0.75rem; }
+
+    /* Kontrol jumlah data & halaman */
+    .ctrl-top { flex-direction: column; align-items: stretch !important; }
+    .ctrl-top #selJumlahData { height: 34px !important; font-size: 0.75rem !important; }
+    .ctrl-page { justify-content: space-between; flex-wrap: wrap; }
+    .ctrl-page > div { flex: 1; }
+    .ctrl-page > div .btn-page { flex: 1; justify-content: center; }
+    .pager-bottom, .pager-bottom > div { width: 100%; }
+    .pager-bottom > div { flex-wrap: wrap; justify-content: space-between; }
+    .pager-bottom > div > div { flex: 1; }
+    .pager-bottom .btn-page { flex: 1; justify-content: center; }
+    .btn-page { height: 36px; padding: 0 16px; font-size: 0.75rem; }
+
+    /* Tabel -> kartu */
+    .table-wrap { background: transparent !important; box-shadow: none !important; overflow: visible; min-height: 60px; }
+    .table-wrap table, .table-wrap tbody { display: block; width: 100%; }
+    .table-wrap thead { display: none; }
+    tbody tr:not(.row-card) { display: block; }
+    tbody tr:not(.row-card) td { display: block; width: 100%; box-sizing: border-box; }
+    tbody tr.row-card, tbody tr.row-card:hover { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 10px; background: #fff !important; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; box-shadow: 0 1px 6px rgba(26,58,107,0.08); }
+    tbody tr.row-card td { display: block; border: none !important; padding: 0 !important; min-width: 0; text-align: left !important; white-space: normal !important; word-break: break-word; font-size: 0.78rem; line-height: 1.35; }
+    tbody tr.row-card td::before { content: attr(data-label); display: block; font-size: 0.58rem; font-weight: 600; color: #64748b; text-transform: uppercase; margin-bottom: 2px; }
+
+    .row-card td:nth-child(1) { grid-column: 1 / -1; font-size: 0.84rem; }
+    .row-card td:nth-child(2) { grid-column: 1 / -1; }
+    .row-card td:nth-child(3) { grid-column: 1 / -1; }
+    .row-card td:nth-child(4) { grid-column: 1; }
+    .row-card td:nth-child(6) { grid-column: 2; }
+    .row-card td:nth-child(5) { grid-column: 1 / -1; }
+    .row-card td:nth-child(7) { grid-column: 1 / -1; }
+
+    html.dark tbody tr.row-card, html.dark tbody tr.row-card:hover { background: #162033 !important; border-color: #263449; box-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+    html.dark .row-card td::before { color: #94a3b8; }
+  }
 </style>
 </head>
 <body>
@@ -135,7 +182,7 @@
   <button id="btnTheme" class="btn-theme" onclick="toggleTheme()" title="Ganti mode terang/gelap">🌙 Mode Gelap</button>
 </div>
 
-<div style="padding: 0 20px;">
+<div class="page-pad" style="padding: 0 20px;">
   <div class="color-strip">
     <span style="background:var(--lpse-biru)"></span>
     <span style="background:var(--lpse-merah)"></span>
@@ -166,13 +213,13 @@
         <input id="inputCariKbli" type="text" placeholder="Kode / Deskripsi..." />
       </div>
     </div>
-    <div style="display:flex; gap:12px; justify-content:flex-end;">
+    <div class="filter-actions" style="display:flex; gap:12px; justify-content:flex-end;">
       <button id="btnSearch" class="btn-search">🔍 Terapkan Filter</button>
       <button id="btnReset" class="btn-reset">✕ Reset</button>
     </div>
   </div>
 
-  <div style="margin-bottom:10px; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 8px;">
+  <div class="ctrl-top" style="margin-bottom:10px; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 8px;">
     <div style="display:flex; align-items:center; gap:6px; font-size:0.7rem; color:#64748b; font-weight:600;">
       <span>Tampilkan</span>
       <select id="selJumlahData" style="padding:0 8px; height:24px; font-size:0.65rem; border:1.5px solid #dde3ed; border-radius:4px; background:#fff; color:#1e293b; outline:none; cursor:pointer;">
@@ -186,7 +233,7 @@
       <span id="totalInfo" style="margin-left: 6px; font-size:0.6rem; color:#64748b; font-weight: 600;"></span>
     </div>
     
-    <div style="display:flex; align-items:center; gap:8px;">
+    <div class="ctrl-page" style="display:flex; align-items:center; gap:8px;">
       <span id="pageInfoTop" style="font-size:0.65rem; color:#64748b; font-weight: 600;"></span>
       <div style="display:flex; gap:4px;">
         <button id="btnPrevTop" class="btn-page" onclick="changePage(-1)">&#8592; Sebelumnya</button>
@@ -216,7 +263,7 @@
     </table>
   </div>
 
-  <div style="margin-bottom:24px; display:flex; justify-content:flex-end; align-items:center;">
+  <div class="pager-bottom" style="margin-bottom:24px; display:flex; justify-content:flex-end; align-items:center;">
     <div style="display:flex; align-items:center; gap:12px;">
       <span id="pageInfoBottom" style="font-size:0.65rem; color:#64748b; font-weight: 600;"></span>
       <div style="display:flex; gap:6px;">
@@ -436,18 +483,18 @@ function renderTable() {
     dataYangDicetak = filteredData.slice(startIndex, endIndex);
   }
 
-  // Cetak Baris HTML
+  // Cetak Baris HTML (class row-card & data-label dipakai tampilan HP)
   let barisHTML = "";
   dataYangDicetak.forEach((row) => {
     barisHTML += `
-      <tr>
-        <td style="font-weight:600; color:var(--lpse-biru);">${row["Kategori_Tingkat_I"] || '-'}</td>
-        <td>${row["Kategori_Tingkat_II"] || '-'}</td>
-        <td>${row["Kategori_Tingkat_III"] || '-'}</td>
-        <td class="td-center" style="font-weight:bold; color:#1e293b;">${row["KBLI_2020_Kode"] || '-'}</td>
-        <td>${row["KBLI_2020_Deskripsi"] || '-'}</td>
-        <td class="td-center" style="font-weight:bold; color:var(--lpse-hijau);">${row["KBLI_2025_Kode"] || '-'}</td>
-        <td>${row["KBLI_2025_Deskripsi"] || '-'}</td>
+      <tr class="row-card">
+        <td data-label="Kategori Tingkat I" style="font-weight:600; color:var(--lpse-biru);">${row["Kategori_Tingkat_I"] || '-'}</td>
+        <td data-label="Kategori Tingkat II">${row["Kategori_Tingkat_II"] || '-'}</td>
+        <td data-label="Kategori Tingkat III">${row["Kategori_Tingkat_III"] || '-'}</td>
+        <td data-label="Kode KBLI 2020" class="td-center" style="font-weight:bold; color:#1e293b;">${row["KBLI_2020_Kode"] || '-'}</td>
+        <td data-label="Deskripsi KBLI 2020">${row["KBLI_2020_Deskripsi"] || '-'}</td>
+        <td data-label="Kode KBLI 2025" class="td-center" style="font-weight:bold; color:var(--lpse-hijau);">${row["KBLI_2025_Kode"] || '-'}</td>
+        <td data-label="Deskripsi KBLI 2025">${row["KBLI_2025_Deskripsi"] || '-'}</td>
       </tr>
     `;
   });

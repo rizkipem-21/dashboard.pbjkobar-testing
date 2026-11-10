@@ -73,6 +73,34 @@
     html.dark #inputPassword:focus { border-color: #60a5fa; }
     html.dark #modalPassword .bg-gray-100 { background: #334155; color: #e2e8f0; }
     html.dark #modalPassword .bg-gray-100:hover { background: #475569; }
+
+    /* ===== MOBILE: tabel menjadi kartu ===== */
+    @media (max-width: 767px) {
+      .page-pad { padding: 0 10px 16px 10px !important; }
+      .page-header { padding: 12px 14px 10px; margin-bottom: 12px; flex-wrap: wrap; gap: 10px; }
+      .page-header h1 { font-size: 0.95rem; }
+      .dashboard-section { padding: 12px; }
+
+      /* Toolbar: ditumpuk selebar layar */
+      .arsip-toolbar { flex-direction: column; align-items: stretch; }
+      .arsip-toolbar .year-box { height: 36px !important; justify-content: space-between; padding: 0 12px !important; }
+      .arsip-toolbar .year-box label { font-size: 0.75rem !important; }
+      .arsip-toolbar .year-box select { height: 28px !important; font-size: 0.75rem !important; min-width: 90px; }
+      .arsip-toolbar .btn-action { height: 36px; justify-content: center; font-size: 0.75rem; width: 100%; }
+
+      /* Tabel -> kartu */
+      .arsip-table, .arsip-table tbody { display: block; width: 100%; }
+      .arsip-table thead { display: none; }
+      .arsip-table tbody tr:not(.arsip-row) { display: block; }
+      .arsip-table tbody tr:not(.arsip-row) td { display: block; width: 100%; box-sizing: border-box; }
+      .arsip-table tbody tr.arsip-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; box-shadow: 0 1px 6px rgba(26,58,107,0.08); }
+      .arsip-table tbody tr.arsip-row td { display: block; border: none !important; padding: 0 !important; width: auto !important; min-width: 0; }
+      .arsip-table tbody tr.arsip-row td:first-child { flex: 1; font-size: 0.78rem !important; line-height: 1.3; word-break: break-word; }
+      .arsip-table tbody tr.arsip-row td:last-child { flex-shrink: 0; }
+      .arsip-table tbody tr.arsip-row td:last-child button { height: 34px !important; padding: 0 14px !important; font-size: 0.75rem !important; }
+
+      html.dark .arsip-table tbody tr.arsip-row { background: #1a263b; border-color: #263449; box-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+    }
   </style>
 </head>
 <body>
@@ -82,7 +110,7 @@
     <button id="btnTheme" class="btn-theme" onclick="toggleTheme()" title="Ganti mode terang/gelap">🌙 Mode Gelap</button>
   </div>
 
-  <div style="padding: 0 20px 20px 20px; max-width: 1400px; margin: 0 auto;">
+  <div class="page-pad" style="padding: 0 20px 20px 20px; max-width: 1400px; margin: 0 auto;">
     <div class="dashboard-section">
       <div class="color-strip">
         <span style="background:var(--lpse-biru)"></span><span style="background:var(--lpse-merah)"></span>
@@ -92,7 +120,7 @@
       <h2 class="section-title">Pilih Direktori Arsip</h2>
 
       <div class="arsip-toolbar">
-        <div style="background: var(--lpse-biru); padding: 0 12px; height: 26px; border-radius: 4px; display: inline-flex; align-items: center; gap: 8px;">
+        <div class="year-box" style="background: var(--lpse-biru); padding: 0 12px; height: 26px; border-radius: 4px; display: inline-flex; align-items: center; gap: 8px;">
           <label style="color: white; font-size: 0.65rem; font-weight: bold;">Tahun Arsip:</label>
           <select id="selectYearArsip" style="padding: 0 6px; height: 20px; font-size: 0.65rem; border-radius: 3px; border: none; outline: none; font-weight: bold; cursor: pointer; color: #1e293b;">
             <option value="0" selected disabled hidden>Pilih</option>
@@ -109,7 +137,7 @@
       </div>
 
       <div class="overflow-x-auto">
-        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+        <table class="arsip-table" style="width: 100%; border-collapse: collapse; text-align: left;">
           <thead class="arsip-thead">
             <tr>
               <th style="padding: 8px 12px; font-size: 0.7rem; font-weight: 700;">Nama File Arsip Excel</th>
