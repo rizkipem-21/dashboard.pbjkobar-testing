@@ -14,6 +14,20 @@
     }
   </script>
   <script>
+    // Mode tampilan: otomatis tampilan HP hanya di HP asli (layar sempit + layar sentuh).
+    // Di komputer, tampilan HP hanya aktif bila user menekan tombol "Tampilan HP".
+    (function () {
+      try {
+        var forced = localStorage.getItem("viewMode") === "phone";
+        var real = window.innerWidth < 768 && window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+        var h = document.documentElement;
+        if (real) h.classList.add("real-mobile");
+        if (forced || real) h.classList.add("is-mobile");
+        if (forced && !real) h.classList.add("phone-preview");
+      } catch (e) {}
+    })();
+  </script>
+  <script>
     // Tema awal: pilihan tersimpan user > pengaturan tema perangkat (OS/browser) > terang
     try {
       var t = localStorage.getItem("dashboardTheme");
@@ -84,8 +98,8 @@
     html.dark aside .text-gray-500 { color: #94a3b8 !important; }
     html.dark .menu-item.text-gray-600 { color: #cbd5e1 !important; }
     html.dark .menu-item.text-gray-600:hover { background-color: #1e293b !important; color: #93c5fd !important; }
-    html.dark #btnTheme { background-color: #0f172a !important; border-color: #334155 !important; color: #93c5fd !important; }
-    html.dark #btnTheme:hover { background-color: #1e293b !important; }
+    html.dark #btnTheme, html.dark #btnViewMode { background-color: #0f172a !important; border-color: #334155 !important; color: #93c5fd !important; }
+    html.dark #btnTheme:hover, html.dark #btnViewMode:hover { background-color: #1e293b !important; }
 
     /* Beranda */
     html.dark .page-header { background: linear-gradient(135deg, #0f2347 0%, #15366a 100%); box-shadow: 0 3px 12px rgba(0,0,0,0.5); }
@@ -98,14 +112,59 @@
     html.dark #loadingOverlayDashboard { background: rgba(11,18,32,0.88); }
     html.dark #loadingOverlayDashboard p { color: #e2e8f0 !important; }
     html.dark .loader { border-color: #334155; border-top-color: #60a5fa; }
+    html.dark .mobile-topbar { background: #111a2b; border-bottom-color: #263449; color: #e2e8f0; }
+    html.dark .mobile-topbar button { color: #e2e8f0; }
+    html.dark .mobile-topbar button:active { background: #1e293b; }
+
+    /* ===== MOBILE: sidebar menjadi drawer, ditampilkan lewat tombol hamburger ===== */
+    .mobile-topbar { display: none; }
+    .menu-backdrop { display: none; }
+
+    /* Mode tampilan HP: aktif otomatis di HP asli, atau di komputer lewat tombol "Tampilan HP" */
+    html.is-mobile body { height: 100dvh !important; }
+    html.is-mobile aside { position: fixed !important; top: 0; bottom: 0; left: 0; width: 230px !important; z-index: 60 !important; transform: translateX(-100%); transition: transform .25s ease; box-shadow: 4px 0 18px rgba(0,0,0,0.25) !important; }
+    html.is-mobile body.menu-open aside { transform: translateX(0); }
+    html.is-mobile .menu-backdrop { display: block; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 55; opacity: 0; pointer-events: none; transition: opacity .25s ease; }
+    html.is-mobile body.menu-open .menu-backdrop { opacity: 1; pointer-events: auto; }
+    html.is-mobile aside .menu-item { padding-top: 10px !important; padding-bottom: 10px !important; font-size: 0.8rem !important; }
+    html.is-mobile .mobile-topbar { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: #fff; border-bottom: 1px solid #e5e7eb; flex-shrink: 0; }
+    html.is-mobile .mobile-topbar button { width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 8px; font-size: 1.3rem; line-height: 1; color: var(--lpse-biru); cursor: pointer; }
+    html.is-mobile .mobile-topbar button:active { background: #f1f5f9; }
+    html.is-mobile .mobile-topbar img { width: 26px; height: 26px; object-fit: contain; }
+    html.is-mobile .mobile-topbar span { font-size: 0.78rem; font-weight: 700; color: var(--lpse-biru); line-height: 1.2; }
+    html.is-mobile.dark .mobile-topbar span { color: #93c5fd; }
+    html.is-mobile.dark .mobile-topbar { background: #111a2b; border-bottom-color: #263449; color: #e2e8f0; }
+    html.is-mobile.dark .mobile-topbar button { color: #e2e8f0; }
+    html.is-mobile.dark .mobile-topbar button:active { background: #1e293b; }
+    html.is-mobile main { min-width: 0; min-height: 0; overflow: hidden; }
+    html.is-mobile .view-panel { min-height: 0; }
+    html.is-mobile #view-dashboard { flex: 1 1 0; height: auto !important; min-height: 0; }
+    html.is-mobile .page-header { flex-direction: column; align-items: flex-start !important; gap: 8px; padding: 12px 14px 10px; margin-bottom: 12px; }
+    html.is-mobile .page-header h1 { font-size: 0.95rem; }
+    html.is-mobile .year-selector-wrap { margin-top: 0 !important; }
+    html.is-mobile .dash-container { padding: 0 12px !important; }
+    html.is-mobile .dashboard-section { padding: 12px; margin-bottom: 12px; }
+    html.is-mobile .section-title-wrap { flex-direction: column; align-items: flex-start; gap: 8px; }
+    html.is-mobile .section-title { font-size: 0.9rem; }
+    html.is-mobile .btn-detail { width: 100%; text-align: center; padding: 9px; }
+    html.is-mobile .stat-card { flex: 1 1 calc(50% - 10px); min-width: 0; }
+    html.is-mobile .stat-card .stat-value { font-size: 0.82rem; }
+
+    /* Pratinjau tampilan HP di komputer: halaman dibatasi selebar HP dan diletakkan di tengah */
+    html.phone-preview { background: #1e293b; }
+    html.phone-preview body { max-width: 430px; margin: 0 auto; transform: translate(0, 0); box-shadow: 0 0 0 1px #334155, 0 12px 48px rgba(0,0,0,0.55); }
+    html.real-mobile #btnViewMode { display: none !important; }
   </style>
 </head>
 <body class="flex h-screen overflow-hidden bg-[#f0f4f8] text-gray-800">
 
+  <!-- Latar gelap penutup saat menu (drawer) terbuka di HP -->
+  <div id="menuBackdrop" class="menu-backdrop" onclick="closeMobileMenu()"></div>
+
   <aside class="w-48 border-r border-gray-200 flex flex-col flex-shrink-0 z-10 bg-white shadow-[2px_0_8px_-4px_rgba(0,0,0,0.1)]">
     <div class="flex flex-col items-center py-4 px-3 border-b border-gray-100">
       <img src="Images/logo-kobar.png" alt="Logo" class="w-10 h-10 mb-2 object-contain">
-      <h1 class="text-[11.5px] font-bold text-center text-lpse-biru leading-snug">Panel<br>Informasi<br>Pengadaan<br>Kotawaringin<br>Barat</h1>
+      <h1 class="text-[11.5px] font-bold text-center text-lpse-biru leading-snug">Panel<br>Informasi<br>Pengadaan<br>Kobar</h1>
     </div>
 
     <div class="flex-1 overflow-y-auto py-3 px-2">
@@ -149,6 +208,7 @@
     </div>
 
     <div class="py-2 px-3 border-t border-gray-100 bg-gray-50 text-center flex-shrink-0">
+      <button id="btnViewMode" onclick="toggleViewMode()" title="Pratinjau tampilan HP di komputer" class="w-full mb-2 px-2 py-1 rounded-md border border-gray-200 bg-white hover:bg-gray-100 text-[0.65rem] font-semibold text-lpse-biru transition-colors">📱 Tampilan HP</button>
       <button id="btnTheme" onclick="toggleTheme()" title="Ganti mode terang/gelap" class="w-full mb-2 px-2 py-1 rounded-md border border-gray-200 bg-white hover:bg-gray-100 text-[0.65rem] font-semibold text-lpse-biru transition-colors">🌙 Mode Gelap</button>
       <p class="text-[0.6rem] font-medium text-gray-500">&copy; Tim LPSE Kab. Kobar 2025</p>
       <p id="teks-versi" class="text-[0.6rem] font-bold text-lpse-biru mt-1">dashboard.pbjkobar ...</p>
@@ -156,6 +216,12 @@
   </aside>
 
   <main class="flex-1 relative bg-[#f0f4f8] flex flex-col">
+    <!-- Top bar khusus HP (hamburger) -->
+    <div class="mobile-topbar">
+      <button type="button" onclick="toggleMobileMenu()" aria-label="Buka menu">☰</button>
+      <img src="Images/logo-kobar.png" alt="Logo">
+      <span>Panel Informasi Pengadaan Kobar</span>
+    </div>
     <div class="flex h-1.5 w-full flex-shrink-0">
       <div class="flex-1 bg-lpse-biru"></div>
       <div class="flex-1 bg-lpse-merah"></div>
@@ -180,7 +246,7 @@
         </div>
       </div>
 
-      <div style="padding: 0 20px; max-width: 1400px; margin: 0 auto;">
+      <div class="dash-container" style="padding: 0 20px; max-width: 1400px; margin: 0 auto;">
         <div class="dashboard-section">
           <div class="color-strip"><span style="background:var(--lpse-biru)"></span><span style="background:var(--lpse-merah)"></span><span style="background:var(--lpse-kuning)"></span><span style="background:var(--lpse-hijau)"></span></div>
           <div class="section-title-wrap">
@@ -318,6 +384,35 @@
     // ==========================================================
     // NAVIGASI & DATA
     // ==========================================================
+    // ==========================================================
+    // MENU MOBILE (drawer)
+    // ==========================================================
+    function isForcedPhone() { try { return localStorage.getItem("viewMode") === "phone"; } catch (e) { return false; } }
+
+    function updateViewModeButton() {
+      document.getElementById("btnViewMode").innerText = isForcedPhone() ? "🖥️ Tampilan Komputer" : "📱 Tampilan HP";
+    }
+
+    function applyViewMode() {
+      const h = document.documentElement, forced = isForcedPhone();
+      const real = window.innerWidth < 768 && window.matchMedia("(pointer: coarse)").matches;
+      h.classList.toggle("real-mobile", real);
+      h.classList.toggle("is-mobile", forced || real);
+      h.classList.toggle("phone-preview", forced && !real);
+      closeMobileMenu();
+      updateViewModeButton();
+    }
+
+    function toggleViewMode() {
+      try { localStorage.setItem("viewMode", isForcedPhone() ? "desktop" : "phone"); } catch (e) {}
+      applyViewMode();
+    }
+    window.addEventListener("resize", applyViewMode);
+
+    function toggleMobileMenu() { document.body.classList.toggle("menu-open"); }
+    function closeMobileMenu()  { document.body.classList.remove("menu-open"); }
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMobileMenu(); });
+
     function switchTab(panelId, element, hashName) {
       document.querySelectorAll('.view-panel').forEach(panel => panel.classList.add('hidden'));
       document.getElementById(panelId).classList.remove('hidden');
@@ -341,6 +436,8 @@
 
       if (hashName) history.replaceState(null, null, '#' + hashName);
       else history.replaceState(null, null, ' ');
+
+      closeMobileMenu();   // di HP: tutup drawer setelah memilih menu
     }
 
     function checkUrlHash() {
@@ -367,6 +464,7 @@
 
     window.onload = () => {
       updateThemeButton();
+      updateViewModeButton();
       checkUrlHash();
       fetchVersiApp();
     };
