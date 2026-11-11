@@ -1,27 +1,28 @@
 @echo off
-:: Otomatis mendeteksi lokasi file .bat, lalu naik 1 tingkat (..) ke folder utama project
 cd /d "%~dp0.."
+set ERR=0
 
 echo ==================================================
-echo MEMULAI PROSES UPDATE RUP...
+echo MEMULAI PROSES UPDATE RUP...  [%date% %time%]
 echo ==================================================
 
-:: Menghapus file lock Git jika sebelumnya sempat macet
 del /f /q .git\index.lock >nul 2>&1
 
-:: 1. Memanggil Python untuk mengunduh data API Utama
-python scripts\rup\download_rup.py
+:: Download hanya bila dijalankan sendiri (dari induk: parameter nodownload)
+if /i not "%~1"=="nodownload" python scripts\download_json\download_json.py
 
-:: 2. Memanggil Python untuk mengolah Excel Detail RUP
 python scripts\rup\detail_rup.py
+if errorlevel 1 set ERR=1
 
-:: 3. Memanggil Python untuk mengolah Excel Konsolidasi RUP (Scraping Anak)
 python scripts\rup\konsolidasi_rup.py
+if errorlevel 1 set ERR=1
 
-:: 4. Memanggil Python untuk mengolah Rekap, Git Push, dan kirim Telegram (FINAL)
 python scripts\rup\generate_rup.py
+if errorlevel 1 set ERR=1
 
 echo.
-echo PROSES SELESAI!
-:: Menampilkan Pop-Up sukses di layar Windows selama 5 detik
-mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""Proses RUP Selesai!"", 5, ""Update Selesai"", 4160)(window.close)")
+echo RUP SELESAI, kode: %ERR%
+if /i not "%~1"=="nodownload" (
+  mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""Proses RUP Selesai!"", 5, ""Update Selesai"", 4160)(window.close)")
+)
+exit /b %ERR%

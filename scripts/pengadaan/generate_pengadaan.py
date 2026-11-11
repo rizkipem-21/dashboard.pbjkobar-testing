@@ -1572,48 +1572,11 @@ def kirim_telegram_aman(pesan):
 
 
 if __name__ == '__main__':
+    waktu_mulai = time.time()   # durasi dihitung di sini, tidak lagi dari file start_time
+
     log_print("\n" + "="*55)
     log_print(f"START GENERATE PENGADAAN {get_waktu_indonesia()}")
     log_print("="*55)
-
-    # 1. BACA ERROR DI AWAL
-    daftar_error_api = []
-    path_error = os.path.join(BASE_DIR, 'scripts', 'pengadaan', 'error_api_pengadaan.json')
-    if os.path.exists(path_error):
-        try:
-            with open(path_error, 'r', encoding='utf-8') as f: daftar_error_api = json.load(f)
-            os.remove(path_error)
-        except: pass
-    
-    daftar_data_kosong = []
-    path_kosong = os.path.join(BASE_DIR, 'scripts', 'pengadaan', 'kosong_api_pengadaan.json')
-    if os.path.exists(path_kosong):
-        try:
-            with open(path_kosong, 'r', encoding='utf-8') as f: daftar_data_kosong = json.load(f)
-            os.remove(path_kosong)
-        except: pass
-
-    # 2. CEK TOTAL URL (Disesuaikan dengan tahun yang tidak di-skip)
-    total_target = 0
-    path_url = os.path.join(BASE_DIR, 'scripts', 'pengadaan', 'url_pengadaan.txt')
-    if os.path.exists(path_url):
-        with open(path_url, 'r', encoding='utf-8') as f:
-            jumlah_url = len([line for line in f if line.strip()])
-
-        tahun_diproses = 0
-        for t in daftar_tahun:
-            if t == tahun_n2 and os.path.exists(os.path.join(BASE_DIR, 'data', str(t), f'rekap_pengadaan_{t}.json')):
-                continue
-            tahun_diproses += 1
-
-        total_target = jumlah_url * tahun_diproses
-
-    # 3. LOGIKA BERHENTI JIKA GAGAL TOTAL
-    if total_target > 0 and len(daftar_error_api) >= total_target:
-        pesan_gagal = f"🚨 LAPORAN UPDATE (PENGADAAN) 🚨\n\n⚠️ GAGAL TOTAL DOWNLOAD API!\nTidak ada data baru. Proses dihentikan.\n\n📊 STATUS EKSEKUSI:\n🔹 Generate Pengadaan: Batal (API Error)\n🔹 Generate TEPRA: Batal (API Error)\n\n📅 Waktu: {get_waktu_indonesia()}"
-        kirim_telegram_aman(pesan_gagal)
-        log_print("GAGAL TOTAL. Skrip berhenti.")
-        sys.exit(0)
 
     for t in daftar_tahun: process_tahun(t)
 
@@ -1630,7 +1593,7 @@ if __name__ == '__main__':
     teks_status = "Seluruh data berhasil diolah."
     if tahun_dilewati:
         baris = "".join([f"• Tahun {t}: {alasan}\n" for t, alasan in tahun_dilewati])
-        blok_peringatan = f"⚠️ PERINGATAN - TAHUN DILEWATI:\n{baris}Hasil lama dipertahankan. Cek log & unduhan Inaproc.\n\n"
+        blok_peringatan = f"⚠️ PERINGATAN - TAHUN DILEWATI:\n{baris}Hasil lama dipertahankan. Cek log_download.txt & log_pengadaan.txt.\n\n"
         teks_status = "Sebagian data diolah (ada tahun yang dilewati)."
 
     with open(os.path.join(BASE_DIR, "data", "last-update-pengadaan.txt"), "w", encoding='utf-8') as f:
@@ -1640,6 +1603,7 @@ if __name__ == '__main__':
     log_print("\n" + "="*50)
     log_print("START GENERATE TEPRA")
     status_tepra = "✅ Data TEPRA berhasil dibuat."
+    tepra_gagal = False
     try:
         path_tepra = os.path.join(BASE_DIR, 'scripts', 'pengadaan', 'generate_tepra.py')
         res_tepra = subprocess.run([sys.executable, path_tepra], capture_output=True, text=True)
@@ -1648,44 +1612,26 @@ if __name__ == '__main__':
         else:
             log_print(f"GAGAL PROSES TEPRA:\n{res_tepra.stderr}")
             status_tepra = "⚠️ Gagal membuat data TEPRA (Cek Log)."
+            tepra_gagal = True
     except Exception as e:
         log_print(f"ERROR TEPRA: {str(e)}")
         status_tepra = "⚠️ Error sistem saat eksekusi TEPRA."
+        tepra_gagal = True
     # ----------------------
 
-    # 1. PUSH KE GITHUB
+    # PUSH KE GITHUB
     git_sukses, pesan_git = sync_to_github()
 
-    # --- MENGHITUNG DURASI TOTAL & AUTO DELETE ---
-    durasi_str = "Tidak diketahui"
-    file_start = os.path.join(BASE_DIR, 'tools', 'start_time_pengadaan.txt')
-    if os.path.exists(file_start):
-        try:
-            with open(file_start, 'r') as f:
-                waktu_mulai = float(f.read().strip())
-            durasi_detik = int(time.time() - waktu_mulai)
-            durasi_str = str(timedelta(seconds=durasi_detik))
-            os.remove(file_start) # Auto-delete file sementara
-        except: pass
-    # ---------------------------------------------
+    # DURASI TOTAL
+    durasi_str = str(timedelta(seconds=int(time.time() - waktu_mulai)))
 
-    # 2. KIRIM TELEGRAM
-        blok_kosong = ""
-    if daftar_data_kosong:
-        blok_kosong = "ℹ️ API KOSONG (file lama dipertahankan):\n" + "".join(f"{x}\n" for x in daftar_data_kosong) + "\n"
-    blok_ringkasan = blok_kosong + blok_ringkasan
-
-    if len(daftar_error_api) > 0 or not git_sukses:
-        pesan_ringkasan = "🚨 LAPORAN UPDATE SISTEM (PENGADAAN) 🚨\n\n"
-        if len(daftar_error_api) > 0:
-            teks_error = "⚠️ GAGAL DOWNLOAD API:\n" + "".join([f"{err.replace('_', ' ')}\n" for err in daftar_error_api])
-            if len(teks_error) > 3500: teks_error = teks_error[:3500] + "\n... [DAFTAR ERROR DIPOTONG] ...\n"
-            pesan_ringkasan += teks_error + "\n"
-        pesan_ringkasan += blok_peringatan + blok_ringkasan
-        pesan_ringkasan += f"📊 STATUS TEPRA: {status_tepra}\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
-        kirim_telegram_aman(pesan_ringkasan)
+    # KIRIM TELEGRAM (laporan error API ada di laporan download_json.py, bukan di sini)
+    if tahun_dilewati or tepra_gagal or not git_sukses:
+        pesan = "🚨 LAPORAN UPDATE SISTEM (PENGADAAN) 🚨\n\n"
+        pesan += blok_peringatan + blok_ringkasan
+        pesan += f"📊 STATUS TEPRA: {status_tepra}\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
     else:
-        pesan_sukses = f"✅ UPDATE PENGADAAN BERHASIL ✅\n\n{teks_status}\n{blok_peringatan}{blok_ringkasan}📊 STATUS TEPRA: {status_tepra}\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
-        kirim_telegram_aman(pesan_sukses)
+        pesan = f"✅ UPDATE PENGADAAN BERHASIL ✅\n\n{teks_status}\n{blok_ringkasan}📊 STATUS TEPRA: {status_tepra}\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
+    kirim_telegram_aman(pesan)
 
     log_print(f"\nPROSES SELESAI SELURUHNYA PADA {get_waktu_indonesia()}")
