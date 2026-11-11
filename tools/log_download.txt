@@ -961,3 +961,1791 @@ RINGKASAN: Berhasil 67 | Kosong 1 | Gagal 2 | Dilewati 41 | Durasi 0:08:18
 =======================================================
 
 PROSES DOWNLOAD SELESAI PADA 11 November 2026 | 10.48 WIB
+
+=======================================================
+START DOWNLOAD JSON (RUP + PENGADAAN) 11 November 2026 | 12.06 WIB
+=======================================================
+ℹ️ 37 endpoint unik digabung dari url_rup.txt + url_pengadaan.txt
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2026
+=======================================================
+
+DOWNLOAD [LEGACY] [RUP+PENGADAAN]: https://data.inaproc.id/api/legacy/rup/kegiatan-master?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_kegiatan-master_2026.json (Total: 663 baris)
+
+DOWNLOAD [LEGACY] [RUP]: https://data.inaproc.id/api/legacy/rup/paket-penyedia-lokasi?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_paket-penyedia-lokasi_2026.json (Total: 13590 baris)
+
+DOWNLOAD [LEGACY] [RUP]: https://data.inaproc.id/api/legacy/rup/paket-swakelola-lokasi?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_paket-swakelola-lokasi_2026.json (Total: 364 baris)
+
+DOWNLOAD [LEGACY] [RUP]: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_struktur-anggaran-pd_2026.json (Total: 58 baris)
+
+DOWNLOAD [LEGACY] [RUP+PENGADAAN]: https://data.inaproc.id/api/legacy/rup/sub-kegiatan-master?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_sub-kegiatan-master_2026.json (Total: 2232 baris)
+
+DOWNLOAD [V1] [RUP]: https://data.inaproc.id/api/v1/rup/master-satker?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_master-satker_2026.json (Total: 126 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/program-master?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_program-master_2026.json (Total: 277 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-penyedia-terumumkan_2026.json (Total: 5018 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-anggaran-penyedia?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  Request ke-9 (Coba 1/5)... SUKSES
+  Request ke-10 (Coba 1/5)... SUKSES
+  Request ke-11 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-penyedia_2026.json (Total: 10722 baris)
+
+[BACKUP] v1_rup_paket-penyedia_2026.json di-copy ke arsip 2026-11-09/2026
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-penyedia?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 5 detik...
+  Request ke-1 (Coba 2/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 10 detik...
+  Request ke-1 (Coba 3/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 15 detik...
+  Request ke-1 (Coba 4/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 20 detik...
+  Request ke-1 (Coba 5/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+  GAGAL TOTAL pada request ini. Berhenti ditarik.
+  -> [Aman] Proses terputus, mempertahankan file v1_rup_paket-penyedia_2026.json lama yang utuh.
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola-terumumkan_2026.json (Total: 54 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-anggaran-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-swakelola_2026.json (Total: 755 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola_2026.json (Total: 61 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/dashboard/realisasi/table?tahun=2026&jenis=4&instansi=D228&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_dashboard_realisasi_table_2026.json (Total: 1630 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog/paket-e-purchasing?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog_paket-e-purchasing_2026.json (Total: 637 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog-archive/instansi-satker?kode_klpd=D228&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog-archive_instansi-satker_2026.json (Total: 122 baris)
+
+[BACKUP] v1_ekatalog-archive_paket-e-purchasing_2026.json di-copy ke arsip 2026-08-10/2026
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog-archive/paket-e-purchasing?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> [Aman] Data API kosong (null), mempertahankan file v1_ekatalog-archive_paket-e-purchasing_2026.json lama yang utuh.
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/history-kaji-ulang?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_history-kaji-ulang_2026.json (Total: 6492 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-bapbast?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-bapbast_2026.json (Total: 6 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-spmkspp_2026.json (Total: 132 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-sppbj?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-sppbj_2026.json (Total: 445 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-ekontrak-kontrak?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-ekontrak-kontrak_2026.json (Total: 366 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-pengumuman?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-pengumuman_2026.json (Total: 637 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-selesai?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-selesai_2026.json (Total: 579 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender_2026.json (Total: 532 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender-realisasi?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender-realisasi_2026.json (Total: 833 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola_2026.json (Total: 6 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola-realisasi?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola-realisasi_2026.json (Total: 5 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-bapbast?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-bapbast_2026.json (Total: 2 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-spmkspp_2026.json (Total: 12 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-sppbj?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-sppbj_2026.json (Total: 14 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pengumuman?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pengumuman_2026.json (Total: 67 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-ekontrak-kontrak?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-ekontrak-kontrak_2026.json (Total: 68 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-selesai?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-selesai_2026.json (Total: 63 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-selesai-nilai?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-selesai-nilai_2026.json (Total: 61 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-non-tender?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-non-tender_2026.json (Total: 104 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-tender?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-tender_2026.json (Total: 12 baris)
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2025
+=======================================================
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/rup/kegiatan-master?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_kegiatan-master_2025.json (Total: 712 baris)
+[SKIP] Legacy_rup_paket-penyedia-lokasi_2025.json (sudah final)
+[SKIP] Legacy_rup_paket-swakelola-lokasi_2025.json (sudah final)
+[SKIP] Legacy_rup_struktur-anggaran-pd_2025.json (sudah final)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/rup/sub-kegiatan-master?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_sub-kegiatan-master_2025.json (Total: 2455 baris)
+[SKIP] v1_rup_master-satker_2025.json (sudah final)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/program-master?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_program-master_2025.json (Total: 280 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  Request ke-9 (Coba 1/5)... SUKSES
+  Request ke-10 (Coba 1/5)... SUKSES
+  Request ke-11 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-penyedia-terumumkan_2025.json (Total: 10088 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-anggaran-penyedia?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  Request ke-9 (Coba 1/5)... SUKSES
+  Request ke-10 (Coba 1/5)... SUKSES
+  Request ke-11 (Coba 1/5)... SUKSES
+  Request ke-12 (Coba 1/5)... SUKSES
+  Request ke-13 (Coba 1/5)... SUKSES
+  Request ke-14 (Coba 1/5)... SUKSES
+  Request ke-15 (Coba 1/5)... SUKSES
+  Request ke-16 (Coba 1/5)... SUKSES
+  Request ke-17 (Coba 1/5)... SUKSES
+  Request ke-18 (Coba 1/5)... SUKSES
+  Request ke-19 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-penyedia_2025.json (Total: 18594 baris)
+
+[BACKUP] v1_rup_paket-penyedia_2025.json di-copy ke arsip 2026-11-09/2025
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-penyedia?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 5 detik...
+  Request ke-1 (Coba 2/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 10 detik...
+  Request ke-1 (Coba 3/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 15 detik...
+  Request ke-1 (Coba 4/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 20 detik...
+  Request ke-1 (Coba 5/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+  GAGAL TOTAL pada request ini. Berhenti ditarik.
+  -> [Aman] Proses terputus, mempertahankan file v1_rup_paket-penyedia_2025.json lama yang utuh.
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola-terumumkan_2025.json (Total: 163 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-anggaran-swakelola?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-swakelola_2025.json (Total: 350 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-swakelola?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola_2025.json (Total: 184 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/dashboard/realisasi/table?tahun=2025&jenis=4&instansi=D228&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_dashboard_realisasi_table_2025.json (Total: 5274 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog/paket-e-purchasing?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog_paket-e-purchasing_2025.json (Total: 724 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog-archive/instansi-satker?kode_klpd=D228&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog-archive_instansi-satker_2025.json (Total: 122 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog-archive/paket-e-purchasing?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog-archive_paket-e-purchasing_2025.json (Total: 344 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/history-kaji-ulang?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  Request ke-9 (Coba 1/5)... SUKSES
+  Request ke-10 (Coba 1/5)... SUKSES
+  Request ke-11 (Coba 1/5)... SUKSES
+  Request ke-12 (Coba 1/5)... SUKSES
+  Request ke-13 (Coba 1/5)... SUKSES
+  Request ke-14 (Coba 1/5)... SUKSES
+  Request ke-15 (Coba 1/5)... SUKSES
+  Request ke-16 (Coba 1/5)... SUKSES
+  Request ke-17 (Coba 1/5)... SUKSES
+  Request ke-18 (Coba 1/5)... SUKSES
+  Request ke-19 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_history-kaji-ulang_2025.json (Total: 18750 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-bapbast?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-bapbast_2025.json (Total: 699 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-spmkspp_2025.json (Total: 1043 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-sppbj?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-sppbj_2025.json (Total: 1376 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-ekontrak-kontrak?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-ekontrak-kontrak_2025.json (Total: 1103 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-pengumuman?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-pengumuman_2025.json (Total: 1802 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-selesai?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-selesai_2025.json (Total: 1627 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender_2025.json (Total: 2583 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender-realisasi?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender-realisasi_2025.json (Total: 7113 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola_2025.json (Total: 62 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola-realisasi?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola-realisasi_2025.json (Total: 65 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-bapbast?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-bapbast_2025.json (Total: 45 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-spmkspp_2025.json (Total: 91 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-sppbj?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-sppbj_2025.json (Total: 93 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pengumuman?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pengumuman_2025.json (Total: 182 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-ekontrak-kontrak?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-ekontrak-kontrak_2025.json (Total: 183 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-selesai?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-selesai_2025.json (Total: 172 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-selesai-nilai?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-selesai-nilai_2025.json (Total: 170 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-non-tender?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-non-tender_2025.json (Total: 1423 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-tender?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-tender_2025.json (Total: 64 baris)
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2024
+=======================================================
+[SKIP] Legacy_rup_kegiatan-master_2024.json (sudah final)
+[SKIP] Legacy_rup_paket-penyedia-lokasi_2024.json (sudah final)
+[SKIP] Legacy_rup_paket-swakelola-lokasi_2024.json (sudah final)
+[SKIP] Legacy_rup_struktur-anggaran-pd_2024.json (sudah final)
+[SKIP] Legacy_rup_sub-kegiatan-master_2024.json (sudah final)
+[SKIP] v1_rup_master-satker_2024.json (sudah final)
+[SKIP] v1_rup_program-master_2024.json (sudah final)
+[SKIP] v1_rup_paket-penyedia-terumumkan_2024.json (sudah final)
+[SKIP] v1_rup_paket-anggaran-penyedia_2024.json (sudah final)
+[SKIP] v1_rup_paket-penyedia_2024.json (sudah final)
+[SKIP] v1_rup_paket-swakelola-terumumkan_2024.json (sudah final)
+[SKIP] v1_rup_paket-anggaran-swakelola_2024.json (sudah final)
+[SKIP] v1_rup_paket-swakelola_2024.json (sudah final)
+[SKIP] v1_dashboard_realisasi_table_2024.json (sudah final)
+[SKIP] v1_ekatalog_paket-e-purchasing_2024.json (sudah final)
+[SKIP] v1_ekatalog-archive_instansi-satker_2024.json (sudah final)
+[SKIP] v1_ekatalog-archive_paket-e-purchasing_2024.json (sudah final)
+[SKIP] v1_rup_history-kaji-ulang_2024.json (sudah final)
+[SKIP] Legacy_tender_non-tender-ekontrak-bapbast_2024.json (sudah final)
+[SKIP] Legacy_tender_non-tender-ekontrak-spmkspp_2024.json (sudah final)
+[SKIP] Legacy_tender_non-tender-ekontrak-sppbj_2024.json (sudah final)
+[SKIP] v1_tender_non-tender-ekontrak-kontrak_2024.json (sudah final)
+[SKIP] v1_tender_non-tender-pengumuman_2024.json (sudah final)
+[SKIP] v1_tender_non-tender-selesai_2024.json (sudah final)
+[SKIP] v1_tender_pencatatan-non-tender_2024.json (sudah final)
+[SKIP] v1_tender_pencatatan-non-tender-realisasi_2024.json (sudah final)
+[SKIP] v1_tender_pencatatan-swakelola_2024.json (sudah final)
+[SKIP] v1_tender_pencatatan-swakelola-realisasi_2024.json (sudah final)
+[SKIP] Legacy_tender_tender-ekontrak-bapbast_2024.json (sudah final)
+[SKIP] Legacy_tender_tender-ekontrak-spmkspp_2024.json (sudah final)
+[SKIP] Legacy_tender_tender-ekontrak-sppbj_2024.json (sudah final)
+[SKIP] v1_tender_pengumuman_2024.json (sudah final)
+[SKIP] v1_tender_tender-ekontrak-kontrak_2024.json (sudah final)
+[SKIP] v1_tender_tender-selesai_2024.json (sudah final)
+[SKIP] v1_tender_tender-selesai-nilai_2024.json (sudah final)
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-non-tender_2024.json (sudah final)
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-tender_2024.json (sudah final)
+
+=======================================================
+RINGKASAN: Berhasil 67 | Kosong 1 | Gagal 2 | Dilewati 41 | Durasi 0:06:57
+=======================================================
+
+PROSES DOWNLOAD SELESAI PADA 11 November 2026 | 12.13 WIB
+
+=======================================================
+START DOWNLOAD JSON (RUP + PENGADAAN) 11 November 2026 | 12.15 WIB
+=======================================================
+ℹ️ 37 endpoint unik digabung dari url_rup.txt + url_pengadaan.txt
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2026
+=======================================================
+
+DOWNLOAD [LEGACY] [RUP+PENGADAAN]: https://data.inaproc.id/api/legacy/rup/kegiatan-master?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_kegiatan-master_2026.json (Total: 663 baris)
+
+DOWNLOAD [LEGACY] [RUP]: https://data.inaproc.id/api/legacy/rup/paket-penyedia-lokasi?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_paket-penyedia-lokasi_2026.json (Total: 13590 baris)
+
+DOWNLOAD [LEGACY] [RUP]: https://data.inaproc.id/api/legacy/rup/paket-swakelola-lokasi?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_paket-swakelola-lokasi_2026.json (Total: 364 baris)
+
+DOWNLOAD [LEGACY] [RUP]: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_struktur-anggaran-pd_2026.json (Total: 58 baris)
+
+DOWNLOAD [LEGACY] [RUP+PENGADAAN]: https://data.inaproc.id/api/legacy/rup/sub-kegiatan-master?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_sub-kegiatan-master_2026.json (Total: 2232 baris)
+
+DOWNLOAD [V1] [RUP]: https://data.inaproc.id/api/v1/rup/master-satker?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_master-satker_2026.json (Total: 126 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/program-master?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_program-master_2026.json (Total: 277 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-penyedia-terumumkan_2026.json (Total: 5018 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-anggaran-penyedia?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  Request ke-9 (Coba 1/5)... SUKSES
+  Request ke-10 (Coba 1/5)... SUKSES
+  Request ke-11 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-penyedia_2026.json (Total: 10722 baris)
+
+[BACKUP] v1_rup_paket-penyedia_2026.json di-copy ke arsip 2026-11-09/2026
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-penyedia?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 5 detik...
+  Request ke-1 (Coba 2/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 10 detik...
+  Request ke-1 (Coba 3/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 15 detik...
+  Request ke-1 (Coba 4/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 20 detik...
+  Request ke-1 (Coba 5/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+  GAGAL TOTAL pada request ini. Berhenti ditarik.
+  -> [Aman] Proses terputus, mempertahankan file v1_rup_paket-penyedia_2026.json lama yang utuh.
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola-terumumkan_2026.json (Total: 54 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-anggaran-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-swakelola_2026.json (Total: 755 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola_2026.json (Total: 61 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/dashboard/realisasi/table?tahun=2026&jenis=4&instansi=D228&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_dashboard_realisasi_table_2026.json (Total: 1630 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog/paket-e-purchasing?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog_paket-e-purchasing_2026.json (Total: 637 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog-archive/instansi-satker?kode_klpd=D228&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog-archive_instansi-satker_2026.json (Total: 122 baris)
+
+[BACKUP] v1_ekatalog-archive_paket-e-purchasing_2026.json di-copy ke arsip 2026-08-10/2026
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog-archive/paket-e-purchasing?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> [Aman] Data API kosong (null), mempertahankan file v1_ekatalog-archive_paket-e-purchasing_2026.json lama yang utuh.
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/history-kaji-ulang?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_history-kaji-ulang_2026.json (Total: 6492 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-bapbast?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-bapbast_2026.json (Total: 6 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-spmkspp_2026.json (Total: 132 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-sppbj?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-sppbj_2026.json (Total: 445 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-ekontrak-kontrak?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-ekontrak-kontrak_2026.json (Total: 366 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-pengumuman?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-pengumuman_2026.json (Total: 637 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-selesai?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-selesai_2026.json (Total: 579 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender_2026.json (Total: 532 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender-realisasi?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender-realisasi_2026.json (Total: 833 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola_2026.json (Total: 6 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola-realisasi?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola-realisasi_2026.json (Total: 5 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-bapbast?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-bapbast_2026.json (Total: 2 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-spmkspp_2026.json (Total: 12 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-sppbj?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-sppbj_2026.json (Total: 14 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pengumuman?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pengumuman_2026.json (Total: 67 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-ekontrak-kontrak?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-ekontrak-kontrak_2026.json (Total: 68 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-selesai?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-selesai_2026.json (Total: 63 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-selesai-nilai?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-selesai-nilai_2026.json (Total: 61 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-non-tender?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-non-tender_2026.json (Total: 104 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-tender?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-tender_2026.json (Total: 12 baris)
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2025
+=======================================================
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/rup/kegiatan-master?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_kegiatan-master_2025.json (Total: 712 baris)
+[SKIP] Legacy_rup_paket-penyedia-lokasi_2025.json (sudah final)
+[SKIP] Legacy_rup_paket-swakelola-lokasi_2025.json (sudah final)
+[SKIP] Legacy_rup_struktur-anggaran-pd_2025.json (sudah final)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/rup/sub-kegiatan-master?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_sub-kegiatan-master_2025.json (Total: 2455 baris)
+[SKIP] v1_rup_master-satker_2025.json (sudah final)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/program-master?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_program-master_2025.json (Total: 280 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  Request ke-9 (Coba 1/5)... SUKSES
+  Request ke-10 (Coba 1/5)... SUKSES
+  Request ke-11 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-penyedia-terumumkan_2025.json (Total: 10088 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-anggaran-penyedia?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  Request ke-9 (Coba 1/5)... SUKSES
+  Request ke-10 (Coba 1/5)... SUKSES
+  Request ke-11 (Coba 1/5)... SUKSES
+  Request ke-12 (Coba 1/5)... SUKSES
+  Request ke-13 (Coba 1/5)... SUKSES
+  Request ke-14 (Coba 1/5)... SUKSES
+  Request ke-15 (Coba 1/5)... SUKSES
+  Request ke-16 (Coba 1/5)... SUKSES
+  Request ke-17 (Coba 1/5)... SUKSES
+  Request ke-18 (Coba 1/5)... SUKSES
+  Request ke-19 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-penyedia_2025.json (Total: 18594 baris)
+
+[BACKUP] v1_rup_paket-penyedia_2025.json di-copy ke arsip 2026-11-09/2025
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-penyedia?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 5 detik...
+  Request ke-1 (Coba 2/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 10 detik...
+  Request ke-1 (Coba 3/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 15 detik...
+  Request ke-1 (Coba 4/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 20 detik...
+  Request ke-1 (Coba 5/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+  GAGAL TOTAL pada request ini. Berhenti ditarik.
+  -> [Aman] Proses terputus, mempertahankan file v1_rup_paket-penyedia_2025.json lama yang utuh.
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola-terumumkan_2025.json (Total: 163 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-anggaran-swakelola?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-swakelola_2025.json (Total: 350 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-swakelola?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola_2025.json (Total: 184 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/dashboard/realisasi/table?tahun=2025&jenis=4&instansi=D228&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_dashboard_realisasi_table_2025.json (Total: 5274 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog/paket-e-purchasing?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog_paket-e-purchasing_2025.json (Total: 724 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog-archive/instansi-satker?kode_klpd=D228&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog-archive_instansi-satker_2025.json (Total: 122 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog-archive/paket-e-purchasing?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog-archive_paket-e-purchasing_2025.json (Total: 344 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/history-kaji-ulang?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  Request ke-9 (Coba 1/5)... SUKSES
+  Request ke-10 (Coba 1/5)... SUKSES
+  Request ke-11 (Coba 1/5)... SUKSES
+  Request ke-12 (Coba 1/5)... SUKSES
+  Request ke-13 (Coba 1/5)... SUKSES
+  Request ke-14 (Coba 1/5)... SUKSES
+  Request ke-15 (Coba 1/5)... SUKSES
+  Request ke-16 (Coba 1/5)... SUKSES
+  Request ke-17 (Coba 1/5)... SUKSES
+  Request ke-18 (Coba 1/5)... SUKSES
+  Request ke-19 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_history-kaji-ulang_2025.json (Total: 18750 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-bapbast?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-bapbast_2025.json (Total: 699 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-spmkspp_2025.json (Total: 1043 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-sppbj?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-sppbj_2025.json (Total: 1376 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-ekontrak-kontrak?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-ekontrak-kontrak_2025.json (Total: 1103 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-pengumuman?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-pengumuman_2025.json (Total: 1802 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-selesai?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-selesai_2025.json (Total: 1627 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender_2025.json (Total: 2583 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender-realisasi?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender-realisasi_2025.json (Total: 7113 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola_2025.json (Total: 62 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola-realisasi?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola-realisasi_2025.json (Total: 65 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-bapbast?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-bapbast_2025.json (Total: 45 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-spmkspp_2025.json (Total: 91 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-sppbj?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-sppbj_2025.json (Total: 93 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pengumuman?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pengumuman_2025.json (Total: 182 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-ekontrak-kontrak?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-ekontrak-kontrak_2025.json (Total: 183 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-selesai?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-selesai_2025.json (Total: 172 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-selesai-nilai?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-selesai-nilai_2025.json (Total: 170 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-non-tender?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-non-tender_2025.json (Total: 1423 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-tender?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-tender_2025.json (Total: 64 baris)
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2024
+=======================================================
+[SKIP] Legacy_rup_kegiatan-master_2024.json (sudah final)
+[SKIP] Legacy_rup_paket-penyedia-lokasi_2024.json (sudah final)
+[SKIP] Legacy_rup_paket-swakelola-lokasi_2024.json (sudah final)
+[SKIP] Legacy_rup_struktur-anggaran-pd_2024.json (sudah final)
+[SKIP] Legacy_rup_sub-kegiatan-master_2024.json (sudah final)
+[SKIP] v1_rup_master-satker_2024.json (sudah final)
+[SKIP] v1_rup_program-master_2024.json (sudah final)
+[SKIP] v1_rup_paket-penyedia-terumumkan_2024.json (sudah final)
+[SKIP] v1_rup_paket-anggaran-penyedia_2024.json (sudah final)
+[SKIP] v1_rup_paket-penyedia_2024.json (sudah final)
+[SKIP] v1_rup_paket-swakelola-terumumkan_2024.json (sudah final)
+[SKIP] v1_rup_paket-anggaran-swakelola_2024.json (sudah final)
+[SKIP] v1_rup_paket-swakelola_2024.json (sudah final)
+[SKIP] v1_dashboard_realisasi_table_2024.json (sudah final)
+[SKIP] v1_ekatalog_paket-e-purchasing_2024.json (sudah final)
+[SKIP] v1_ekatalog-archive_instansi-satker_2024.json (sudah final)
+[SKIP] v1_ekatalog-archive_paket-e-purchasing_2024.json (sudah final)
+[SKIP] v1_rup_history-kaji-ulang_2024.json (sudah final)
+[SKIP] Legacy_tender_non-tender-ekontrak-bapbast_2024.json (sudah final)
+[SKIP] Legacy_tender_non-tender-ekontrak-spmkspp_2024.json (sudah final)
+[SKIP] Legacy_tender_non-tender-ekontrak-sppbj_2024.json (sudah final)
+[SKIP] v1_tender_non-tender-ekontrak-kontrak_2024.json (sudah final)
+[SKIP] v1_tender_non-tender-pengumuman_2024.json (sudah final)
+[SKIP] v1_tender_non-tender-selesai_2024.json (sudah final)
+[SKIP] v1_tender_pencatatan-non-tender_2024.json (sudah final)
+[SKIP] v1_tender_pencatatan-non-tender-realisasi_2024.json (sudah final)
+[SKIP] v1_tender_pencatatan-swakelola_2024.json (sudah final)
+[SKIP] v1_tender_pencatatan-swakelola-realisasi_2024.json (sudah final)
+[SKIP] Legacy_tender_tender-ekontrak-bapbast_2024.json (sudah final)
+[SKIP] Legacy_tender_tender-ekontrak-spmkspp_2024.json (sudah final)
+[SKIP] Legacy_tender_tender-ekontrak-sppbj_2024.json (sudah final)
+[SKIP] v1_tender_pengumuman_2024.json (sudah final)
+[SKIP] v1_tender_tender-ekontrak-kontrak_2024.json (sudah final)
+[SKIP] v1_tender_tender-selesai_2024.json (sudah final)
+[SKIP] v1_tender_tender-selesai-nilai_2024.json (sudah final)
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-non-tender_2024.json (sudah final)
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-tender_2024.json (sudah final)
+
+=======================================================
+RINGKASAN: Berhasil 67 | Kosong 1 | Gagal 2 | Dilewati 41 | Durasi 0:07:00
+=======================================================
+
+PROSES DOWNLOAD SELESAI PADA 11 November 2026 | 12.22 WIB
+
+=======================================================
+START DOWNLOAD JSON (RUP + PENGADAAN) 11 November 2026 | 12.26 WIB
+=======================================================
+ℹ️ 37 endpoint unik digabung dari url_rup.txt + url_pengadaan.txt
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2026
+=======================================================
+
+DOWNLOAD [LEGACY] [RUP+PENGADAAN]: https://data.inaproc.id/api/legacy/rup/kegiatan-master?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_kegiatan-master_2026.json (Total: 663 baris)
+
+DOWNLOAD [LEGACY] [RUP]: https://data.inaproc.id/api/legacy/rup/paket-penyedia-lokasi?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_paket-penyedia-lokasi_2026.json (Total: 13590 baris)
+
+DOWNLOAD [LEGACY] [RUP]: https://data.inaproc.id/api/legacy/rup/paket-swakelola-lokasi?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_paket-swakelola-lokasi_2026.json (Total: 364 baris)
+
+DOWNLOAD [LEGACY] [RUP]: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_struktur-anggaran-pd_2026.json (Total: 58 baris)
+
+DOWNLOAD [LEGACY] [RUP+PENGADAAN]: https://data.inaproc.id/api/legacy/rup/sub-kegiatan-master?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_sub-kegiatan-master_2026.json (Total: 2232 baris)
+
+DOWNLOAD [V1] [RUP]: https://data.inaproc.id/api/v1/rup/master-satker?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_master-satker_2026.json (Total: 126 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/program-master?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_program-master_2026.json (Total: 277 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-penyedia-terumumkan_2026.json (Total: 5018 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-anggaran-penyedia?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  Request ke-9 (Coba 1/5)... SUKSES
+  Request ke-10 (Coba 1/5)... SUKSES
+  Request ke-11 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-penyedia_2026.json (Total: 10722 baris)
+
+[BACKUP] v1_rup_paket-penyedia_2026.json di-copy ke arsip 2026-11-09/2026
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-penyedia?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 5 detik...
+  Request ke-1 (Coba 2/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 10 detik...
+  Request ke-1 (Coba 3/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 15 detik...
+  Request ke-1 (Coba 4/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 20 detik...
+  Request ke-1 (Coba 5/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+  GAGAL TOTAL pada request ini. Berhenti ditarik.
+  -> [Aman] Proses terputus, mempertahankan file v1_rup_paket-penyedia_2026.json lama yang utuh.
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola-terumumkan_2026.json (Total: 54 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-anggaran-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-swakelola_2026.json (Total: 755 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola_2026.json (Total: 61 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/dashboard/realisasi/table?tahun=2026&jenis=4&instansi=D228&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_dashboard_realisasi_table_2026.json (Total: 1630 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog/paket-e-purchasing?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog_paket-e-purchasing_2026.json (Total: 637 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog-archive/instansi-satker?kode_klpd=D228&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog-archive_instansi-satker_2026.json (Total: 122 baris)
+
+[BACKUP] v1_ekatalog-archive_paket-e-purchasing_2026.json di-copy ke arsip 2026-08-10/2026
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog-archive/paket-e-purchasing?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> [Aman] Data API kosong (null), mempertahankan file v1_ekatalog-archive_paket-e-purchasing_2026.json lama yang utuh.
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/history-kaji-ulang?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_history-kaji-ulang_2026.json (Total: 6492 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-bapbast?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-bapbast_2026.json (Total: 6 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-spmkspp_2026.json (Total: 132 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-sppbj?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-sppbj_2026.json (Total: 445 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-ekontrak-kontrak?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-ekontrak-kontrak_2026.json (Total: 366 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-pengumuman?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-pengumuman_2026.json (Total: 637 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-selesai?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-selesai_2026.json (Total: 579 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender_2026.json (Total: 532 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender-realisasi?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender-realisasi_2026.json (Total: 833 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola_2026.json (Total: 6 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola-realisasi?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola-realisasi_2026.json (Total: 5 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-bapbast?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-bapbast_2026.json (Total: 2 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-spmkspp_2026.json (Total: 12 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-sppbj?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-sppbj_2026.json (Total: 14 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pengumuman?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pengumuman_2026.json (Total: 67 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-ekontrak-kontrak?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-ekontrak-kontrak_2026.json (Total: 68 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-selesai?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-selesai_2026.json (Total: 63 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-selesai-nilai?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-selesai-nilai_2026.json (Total: 61 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-non-tender?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-non-tender_2026.json (Total: 104 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-tender?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-tender_2026.json (Total: 12 baris)
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2025
+=======================================================
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/rup/kegiatan-master?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_kegiatan-master_2025.json (Total: 712 baris)
+[SKIP] Legacy_rup_paket-penyedia-lokasi_2025.json (sudah final)
+[SKIP] Legacy_rup_paket-swakelola-lokasi_2025.json (sudah final)
+[SKIP] Legacy_rup_struktur-anggaran-pd_2025.json (sudah final)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/rup/sub-kegiatan-master?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_sub-kegiatan-master_2025.json (Total: 2455 baris)
+[SKIP] v1_rup_master-satker_2025.json (sudah final)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/program-master?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_program-master_2025.json (Total: 280 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  Request ke-9 (Coba 1/5)... SUKSES
+  Request ke-10 (Coba 1/5)... SUKSES
+  Request ke-11 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-penyedia-terumumkan_2025.json (Total: 10088 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-anggaran-penyedia?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  Request ke-9 (Coba 1/5)... SUKSES
+  Request ke-10 (Coba 1/5)... SUKSES
+  Request ke-11 (Coba 1/5)... SUKSES
+  Request ke-12 (Coba 1/5)... SUKSES
+  Request ke-13 (Coba 1/5)... SUKSES
+  Request ke-14 (Coba 1/5)... SUKSES
+  Request ke-15 (Coba 1/5)... SUKSES
+  Request ke-16 (Coba 1/5)... SUKSES
+  Request ke-17 (Coba 1/5)... SUKSES
+  Request ke-18 (Coba 1/5)... SUKSES
+  Request ke-19 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-penyedia_2025.json (Total: 18594 baris)
+
+[BACKUP] v1_rup_paket-penyedia_2025.json di-copy ke arsip 2026-11-09/2025
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-penyedia?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 5 detik...
+  Request ke-1 (Coba 2/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 10 detik...
+  Request ke-1 (Coba 3/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 15 detik...
+  Request ke-1 (Coba 4/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+    -> [!] Menunggu 20 detik...
+  Request ke-1 (Coba 5/5)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+  GAGAL TOTAL pada request ini. Berhenti ditarik.
+  -> [Aman] Proses terputus, mempertahankan file v1_rup_paket-penyedia_2025.json lama yang utuh.
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola-terumumkan_2025.json (Total: 163 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-anggaran-swakelola?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-swakelola_2025.json (Total: 350 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-swakelola?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola_2025.json (Total: 184 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/dashboard/realisasi/table?tahun=2025&jenis=4&instansi=D228&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_dashboard_realisasi_table_2025.json (Total: 5274 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog/paket-e-purchasing?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog_paket-e-purchasing_2025.json (Total: 724 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog-archive/instansi-satker?kode_klpd=D228&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog-archive_instansi-satker_2025.json (Total: 122 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog-archive/paket-e-purchasing?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog-archive_paket-e-purchasing_2025.json (Total: 344 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/history-kaji-ulang?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  Request ke-9 (Coba 1/5)... SUKSES
+  Request ke-10 (Coba 1/5)... SUKSES
+  Request ke-11 (Coba 1/5)... SUKSES
+  Request ke-12 (Coba 1/5)... SUKSES
+  Request ke-13 (Coba 1/5)... SUKSES
+  Request ke-14 (Coba 1/5)... SUKSES
+  Request ke-15 (Coba 1/5)... SUKSES
+  Request ke-16 (Coba 1/5)... SUKSES
+  Request ke-17 (Coba 1/5)... SUKSES
+  Request ke-18 (Coba 1/5)... SUKSES
+  Request ke-19 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_history-kaji-ulang_2025.json (Total: 18750 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-bapbast?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-bapbast_2025.json (Total: 699 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-spmkspp_2025.json (Total: 1043 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-sppbj?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-sppbj_2025.json (Total: 1376 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-ekontrak-kontrak?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-ekontrak-kontrak_2025.json (Total: 1103 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-pengumuman?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-pengumuman_2025.json (Total: 1802 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-selesai?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-selesai_2025.json (Total: 1627 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender_2025.json (Total: 2583 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender-realisasi?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender-realisasi_2025.json (Total: 7113 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola_2025.json (Total: 62 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola-realisasi?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola-realisasi_2025.json (Total: 65 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-bapbast?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-bapbast_2025.json (Total: 45 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-spmkspp_2025.json (Total: 91 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-sppbj?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-sppbj_2025.json (Total: 93 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pengumuman?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pengumuman_2025.json (Total: 182 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-ekontrak-kontrak?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-ekontrak-kontrak_2025.json (Total: 183 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-selesai?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-selesai_2025.json (Total: 172 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-selesai-nilai?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-selesai-nilai_2025.json (Total: 170 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-non-tender?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-non-tender_2025.json (Total: 1423 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-tender?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-tender_2025.json (Total: 64 baris)
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2024
+=======================================================
+[SKIP] Legacy_rup_kegiatan-master_2024.json (sudah final)
+[SKIP] Legacy_rup_paket-penyedia-lokasi_2024.json (sudah final)
+[SKIP] Legacy_rup_paket-swakelola-lokasi_2024.json (sudah final)
+[SKIP] Legacy_rup_struktur-anggaran-pd_2024.json (sudah final)
+[SKIP] Legacy_rup_sub-kegiatan-master_2024.json (sudah final)
+[SKIP] v1_rup_master-satker_2024.json (sudah final)
+[SKIP] v1_rup_program-master_2024.json (sudah final)
+[SKIP] v1_rup_paket-penyedia-terumumkan_2024.json (sudah final)
+[SKIP] v1_rup_paket-anggaran-penyedia_2024.json (sudah final)
+[SKIP] v1_rup_paket-penyedia_2024.json (sudah final)
+[SKIP] v1_rup_paket-swakelola-terumumkan_2024.json (sudah final)
+[SKIP] v1_rup_paket-anggaran-swakelola_2024.json (sudah final)
+[SKIP] v1_rup_paket-swakelola_2024.json (sudah final)
+[SKIP] v1_dashboard_realisasi_table_2024.json (sudah final)
+[SKIP] v1_ekatalog_paket-e-purchasing_2024.json (sudah final)
+[SKIP] v1_ekatalog-archive_instansi-satker_2024.json (sudah final)
+[SKIP] v1_ekatalog-archive_paket-e-purchasing_2024.json (sudah final)
+[SKIP] v1_rup_history-kaji-ulang_2024.json (sudah final)
+[SKIP] Legacy_tender_non-tender-ekontrak-bapbast_2024.json (sudah final)
+[SKIP] Legacy_tender_non-tender-ekontrak-spmkspp_2024.json (sudah final)
+[SKIP] Legacy_tender_non-tender-ekontrak-sppbj_2024.json (sudah final)
+[SKIP] v1_tender_non-tender-ekontrak-kontrak_2024.json (sudah final)
+[SKIP] v1_tender_non-tender-pengumuman_2024.json (sudah final)
+[SKIP] v1_tender_non-tender-selesai_2024.json (sudah final)
+[SKIP] v1_tender_pencatatan-non-tender_2024.json (sudah final)
+[SKIP] v1_tender_pencatatan-non-tender-realisasi_2024.json (sudah final)
+[SKIP] v1_tender_pencatatan-swakelola_2024.json (sudah final)
+[SKIP] v1_tender_pencatatan-swakelola-realisasi_2024.json (sudah final)
+[SKIP] Legacy_tender_tender-ekontrak-bapbast_2024.json (sudah final)
+[SKIP] Legacy_tender_tender-ekontrak-spmkspp_2024.json (sudah final)
+[SKIP] Legacy_tender_tender-ekontrak-sppbj_2024.json (sudah final)
+[SKIP] v1_tender_pengumuman_2024.json (sudah final)
+[SKIP] v1_tender_tender-ekontrak-kontrak_2024.json (sudah final)
+[SKIP] v1_tender_tender-selesai_2024.json (sudah final)
+[SKIP] v1_tender_tender-selesai-nilai_2024.json (sudah final)
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-non-tender_2024.json (sudah final)
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-tender_2024.json (sudah final)
+
+=======================================================
+RINGKASAN: Berhasil 67 | Kosong 1 | Gagal 2 | Dilewati 41 | Durasi 0:06:15
+=======================================================
+
+PROSES DOWNLOAD SELESAI PADA 11 November 2026 | 12.32 WIB
+
+=======================================================
+START DOWNLOAD JSON (RUP + PENGADAAN) 11 November 2026 | 12.40 WIB
+=======================================================
+ℹ️ 37 endpoint unik digabung dari url_rup.txt + url_pengadaan.txt
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2026
+=======================================================
+
+DOWNLOAD [LEGACY] [RUP+PENGADAAN]: https://data.inaproc.id/api/legacy/rup/kegiatan-master?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_kegiatan-master_2026.json (Total: 663 baris)
+
+DOWNLOAD [LEGACY] [RUP]: https://data.inaproc.id/api/legacy/rup/paket-penyedia-lokasi?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_paket-penyedia-lokasi_2026.json (Total: 13590 baris)
+
+DOWNLOAD [LEGACY] [RUP]: https://data.inaproc.id/api/legacy/rup/paket-swakelola-lokasi?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_paket-swakelola-lokasi_2026.json (Total: 364 baris)
+
+DOWNLOAD [LEGACY] [RUP]: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_struktur-anggaran-pd_2026.json (Total: 58 baris)
+
+DOWNLOAD [LEGACY] [RUP+PENGADAAN]: https://data.inaproc.id/api/legacy/rup/sub-kegiatan-master?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_sub-kegiatan-master_2026.json (Total: 2232 baris)
+
+DOWNLOAD [V1] [RUP]: https://data.inaproc.id/api/v1/rup/master-satker?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_master-satker_2026.json (Total: 126 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/program-master?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_program-master_2026.json (Total: 277 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-penyedia-terumumkan_2026.json (Total: 5018 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-anggaran-penyedia?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  Request ke-9 (Coba 1/5)... SUKSES
+  Request ke-10 (Coba 1/5)... SUKSES
+  Request ke-11 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-penyedia_2026.json (Total: 10722 baris)
+
+[BACKUP] v1_rup_paket-penyedia_2026.json di-copy ke arsip 2026-11-09/2026
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-penyedia?kode_klpd=D228&tahun=2026&limit=1000 (dicoba 1x: gagal beruntun 3 kali)
+  Request ke-1 (Coba 1/1)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+  GAGAL TOTAL pada request ini. Berhenti ditarik.
+  -> [Aman] Proses terputus, mempertahankan file v1_rup_paket-penyedia_2026.json lama yang utuh.
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola-terumumkan_2026.json (Total: 54 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-anggaran-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-swakelola_2026.json (Total: 755 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola_2026.json (Total: 61 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/dashboard/realisasi/table?tahun=2026&jenis=4&instansi=D228&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_dashboard_realisasi_table_2026.json (Total: 1630 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog/paket-e-purchasing?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog_paket-e-purchasing_2026.json (Total: 637 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog-archive/instansi-satker?kode_klpd=D228&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog-archive_instansi-satker_2026.json (Total: 122 baris)
+
+[BACKUP] v1_ekatalog-archive_paket-e-purchasing_2026.json di-copy ke arsip 2026-08-10/2026
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog-archive/paket-e-purchasing?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> [Aman] Data API kosong (null), mempertahankan file v1_ekatalog-archive_paket-e-purchasing_2026.json lama yang utuh.
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/history-kaji-ulang?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_history-kaji-ulang_2026.json (Total: 6492 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-bapbast?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-bapbast_2026.json (Total: 6 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-spmkspp_2026.json (Total: 132 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-sppbj?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-sppbj_2026.json (Total: 445 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-ekontrak-kontrak?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-ekontrak-kontrak_2026.json (Total: 366 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-pengumuman?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-pengumuman_2026.json (Total: 637 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-selesai?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-selesai_2026.json (Total: 579 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender_2026.json (Total: 532 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender-realisasi?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender-realisasi_2026.json (Total: 833 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola_2026.json (Total: 6 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola-realisasi?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola-realisasi_2026.json (Total: 5 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-bapbast?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-bapbast_2026.json (Total: 2 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-spmkspp_2026.json (Total: 12 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-sppbj?kode_klpd=D228&tahun=2026
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-sppbj_2026.json (Total: 14 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pengumuman?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pengumuman_2026.json (Total: 67 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-ekontrak-kontrak?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-ekontrak-kontrak_2026.json (Total: 68 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-selesai?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-selesai_2026.json (Total: 63 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-selesai-nilai?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-selesai-nilai_2026.json (Total: 61 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-non-tender?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-non-tender_2026.json (Total: 104 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-tender?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-tender_2026.json (Total: 12 baris)
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2025
+=======================================================
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/rup/kegiatan-master?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_kegiatan-master_2025.json (Total: 712 baris)
+[SKIP] Legacy_rup_paket-penyedia-lokasi_2025.json (sudah final)
+[SKIP] Legacy_rup_paket-swakelola-lokasi_2025.json (sudah final)
+[SKIP] Legacy_rup_struktur-anggaran-pd_2025.json (sudah final)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/rup/sub-kegiatan-master?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_rup_sub-kegiatan-master_2025.json (Total: 2455 baris)
+[SKIP] v1_rup_master-satker_2025.json (sudah final)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/program-master?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_program-master_2025.json (Total: 280 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  Request ke-9 (Coba 1/5)... SUKSES
+  Request ke-10 (Coba 1/5)... SUKSES
+  Request ke-11 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-penyedia-terumumkan_2025.json (Total: 10088 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-anggaran-penyedia?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  Request ke-9 (Coba 1/5)... SUKSES
+  Request ke-10 (Coba 1/5)... SUKSES
+  Request ke-11 (Coba 1/5)... SUKSES
+  Request ke-12 (Coba 1/5)... SUKSES
+  Request ke-13 (Coba 1/5)... SUKSES
+  Request ke-14 (Coba 1/5)... SUKSES
+  Request ke-15 (Coba 1/5)... SUKSES
+  Request ke-16 (Coba 1/5)... SUKSES
+  Request ke-17 (Coba 1/5)... SUKSES
+  Request ke-18 (Coba 1/5)... SUKSES
+  Request ke-19 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-penyedia_2025.json (Total: 18594 baris)
+
+[BACKUP] v1_rup_paket-penyedia_2025.json di-copy ke arsip 2026-11-09/2025
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-penyedia?kode_klpd=D228&tahun=2025&limit=1000 (dicoba 1x: gagal beruntun 3 kali)
+  Request ke-1 (Coba 1/1)... GAGAL (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)
+  GAGAL TOTAL pada request ini. Berhenti ditarik.
+  -> [Aman] Proses terputus, mempertahankan file v1_rup_paket-penyedia_2025.json lama yang utuh.
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola-terumumkan_2025.json (Total: 163 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-anggaran-swakelola?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-swakelola_2025.json (Total: 350 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-swakelola?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola_2025.json (Total: 184 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/dashboard/realisasi/table?tahun=2025&jenis=4&instansi=D228&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_dashboard_realisasi_table_2025.json (Total: 5274 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog/paket-e-purchasing?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog_paket-e-purchasing_2025.json (Total: 724 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog-archive/instansi-satker?kode_klpd=D228&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog-archive_instansi-satker_2025.json (Total: 122 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/ekatalog-archive/paket-e-purchasing?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_ekatalog-archive_paket-e-purchasing_2025.json (Total: 344 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/rup/history-kaji-ulang?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  Request ke-9 (Coba 1/5)... SUKSES
+  Request ke-10 (Coba 1/5)... SUKSES
+  Request ke-11 (Coba 1/5)... SUKSES
+  Request ke-12 (Coba 1/5)... SUKSES
+  Request ke-13 (Coba 1/5)... SUKSES
+  Request ke-14 (Coba 1/5)... SUKSES
+  Request ke-15 (Coba 1/5)... SUKSES
+  Request ke-16 (Coba 1/5)... SUKSES
+  Request ke-17 (Coba 1/5)... SUKSES
+  Request ke-18 (Coba 1/5)... SUKSES
+  Request ke-19 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_rup_history-kaji-ulang_2025.json (Total: 18750 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-bapbast?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-bapbast_2025.json (Total: 699 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-spmkspp_2025.json (Total: 1043 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/non-tender-ekontrak-sppbj?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_non-tender-ekontrak-sppbj_2025.json (Total: 1376 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-ekontrak-kontrak?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-ekontrak-kontrak_2025.json (Total: 1103 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-pengumuman?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-pengumuman_2025.json (Total: 1802 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/non-tender-selesai?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_non-tender-selesai_2025.json (Total: 1627 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender_2025.json (Total: 2583 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender-realisasi?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  Request ke-3 (Coba 1/5)... SUKSES
+  Request ke-4 (Coba 1/5)... SUKSES
+  Request ke-5 (Coba 1/5)... SUKSES
+  Request ke-6 (Coba 1/5)... SUKSES
+  Request ke-7 (Coba 1/5)... SUKSES
+  Request ke-8 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender-realisasi_2025.json (Total: 7113 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola_2025.json (Total: 62 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola-realisasi?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola-realisasi_2025.json (Total: 65 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-bapbast?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-bapbast_2025.json (Total: 45 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-spmkspp?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-spmkspp_2025.json (Total: 91 baris)
+
+DOWNLOAD [LEGACY] [PENGADAAN]: https://data.inaproc.id/api/legacy/tender/tender-ekontrak-sppbj?kode_klpd=D228&tahun=2025
+  Percobaan (Coba 1/5)... SUKSES
+  -> Disimpan ke Legacy_tender_tender-ekontrak-sppbj_2025.json (Total: 93 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/pengumuman?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_pengumuman_2025.json (Total: 182 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-ekontrak-kontrak?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-ekontrak-kontrak_2025.json (Total: 183 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-selesai?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-selesai_2025.json (Total: 172 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/tender/tender-selesai-nilai?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_tender_tender-selesai-nilai_2025.json (Total: 170 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-non-tender?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  Request ke-2 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-non-tender_2025.json (Total: 1423 baris)
+
+DOWNLOAD [V1] [PENGADAAN]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-tender?kode_klpd=D228&tahun=2025&limit=1000
+  Request ke-1 (Coba 1/5)... SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-tender_2025.json (Total: 64 baris)
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2024
+=======================================================
+[SKIP] Legacy_rup_kegiatan-master_2024.json (sudah final)
+[SKIP] Legacy_rup_paket-penyedia-lokasi_2024.json (sudah final)
+[SKIP] Legacy_rup_paket-swakelola-lokasi_2024.json (sudah final)
+[SKIP] Legacy_rup_struktur-anggaran-pd_2024.json (sudah final)
+[SKIP] Legacy_rup_sub-kegiatan-master_2024.json (sudah final)
+[SKIP] v1_rup_master-satker_2024.json (sudah final)
+[SKIP] v1_rup_program-master_2024.json (sudah final)
+[SKIP] v1_rup_paket-penyedia-terumumkan_2024.json (sudah final)
+[SKIP] v1_rup_paket-anggaran-penyedia_2024.json (sudah final)
+[SKIP] v1_rup_paket-penyedia_2024.json (sudah final)
+[SKIP] v1_rup_paket-swakelola-terumumkan_2024.json (sudah final)
+[SKIP] v1_rup_paket-anggaran-swakelola_2024.json (sudah final)
+[SKIP] v1_rup_paket-swakelola_2024.json (sudah final)
+[SKIP] v1_dashboard_realisasi_table_2024.json (sudah final)
+[SKIP] v1_ekatalog_paket-e-purchasing_2024.json (sudah final)
+[SKIP] v1_ekatalog-archive_instansi-satker_2024.json (sudah final)
+[SKIP] v1_ekatalog-archive_paket-e-purchasing_2024.json (sudah final)
+[SKIP] v1_rup_history-kaji-ulang_2024.json (sudah final)
+[SKIP] Legacy_tender_non-tender-ekontrak-bapbast_2024.json (sudah final)
+[SKIP] Legacy_tender_non-tender-ekontrak-spmkspp_2024.json (sudah final)
+[SKIP] Legacy_tender_non-tender-ekontrak-sppbj_2024.json (sudah final)
+[SKIP] v1_tender_non-tender-ekontrak-kontrak_2024.json (sudah final)
+[SKIP] v1_tender_non-tender-pengumuman_2024.json (sudah final)
+[SKIP] v1_tender_non-tender-selesai_2024.json (sudah final)
+[SKIP] v1_tender_pencatatan-non-tender_2024.json (sudah final)
+[SKIP] v1_tender_pencatatan-non-tender-realisasi_2024.json (sudah final)
+[SKIP] v1_tender_pencatatan-swakelola_2024.json (sudah final)
+[SKIP] v1_tender_pencatatan-swakelola-realisasi_2024.json (sudah final)
+[SKIP] Legacy_tender_tender-ekontrak-bapbast_2024.json (sudah final)
+[SKIP] Legacy_tender_tender-ekontrak-spmkspp_2024.json (sudah final)
+[SKIP] Legacy_tender_tender-ekontrak-sppbj_2024.json (sudah final)
+[SKIP] v1_tender_pengumuman_2024.json (sudah final)
+[SKIP] v1_tender_tender-ekontrak-kontrak_2024.json (sudah final)
+[SKIP] v1_tender_tender-selesai_2024.json (sudah final)
+[SKIP] v1_tender_tender-selesai-nilai_2024.json (sudah final)
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-non-tender_2024.json (sudah final)
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-tender_2024.json (sudah final)
+
+=======================================================
+RINGKASAN: Berhasil 67 | Kosong 1 | Gagal 2 | Dilewati 41 | Durasi 0:04:17
+=======================================================
+
+PROSES DOWNLOAD SELESAI PADA 11 November 2026 | 12.44 WIB

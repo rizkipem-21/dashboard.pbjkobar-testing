@@ -79,6 +79,22 @@ daftar_error    = []   # unduhan gagal
 daftar_kosong   = []   # API membalas kosong, file lama dipertahankan
 daftar_peringatan = [] # backup gagal, URL bermasalah, dll
 stats = {'ok': 0, 'gagal': 0, 'kosong': 0, 'skip': 0}
+STATUS_SKIP = {400, 403, 404, 405, 410, 422}   # permanen: tidak dicoba ulang
+MAKS_COBA, MAKS_COBA_RINGAN, BATAS_BERUNTUN = 5, 1, 3
+STREAK_FILE = os.path.join(BASE_DIR, 'tools', 'gagal_beruntun.json')
+streak = {}
+TOKEN_BERMASALAH = False
+
+def muat_streak():
+    global streak
+    try:
+        with open(STREAK_FILE, 'r', encoding='utf-8') as f: streak = json.load(f)
+    except Exception: streak = {}
+
+def simpan_streak():
+    try:
+        with open(STREAK_FILE, 'w', encoding='utf-8') as f: json.dump(streak, f, ensure_ascii=False, indent=1)
+    except OSError: pass
 
 # ======================================================
 # LOG (ke layar + file sendiri). Baris sebagian (end=" ") digabung dulu agar log utuh
@@ -279,80 +295,74 @@ def sumber_yang_butuh(e, tahun, output_path):
 # ======================================================
 # UNDUH
 # ======================================================
-def unduh_v1(target_url):
-    """Return (ok, all_data, last_error). Gagal di halaman mana pun = gagal total (data sebagian dibuang)."""
-    all_data, cursor, req_count, last_error = [], None, 1, "Unknown Error"
-    while True:
-        url_cursor = target_url
-        if cursor:
-            url_cursor = f"{target_url}{'&' if '?' in target_url else '?'}cursor={cursor}"
-        resp_data, sukses = None, False
-        for i in range(1, 6):
-            try:
-                log_print(f"  Request ke-{req_count} (Coba {i})...", end=" ")
-                resp = requests.get(url_cursor, headers=HEADERS, timeout=150)
-                if resp.status_code == 200:
-                    resp_data = resp.json()
-                    log_print("SUKSES")
-                    sukses = True
-                    break
-                last_error = alasan_http(resp)
-                log_print(f"GAGAL ({last_error})")
-            except Exception as e:
-                last_error = alasan_error(e)
-                log_print(f"ERROR: {last_error}")
-            if i < 5:
-                tunggu = i * 5
-                log_print(f"    -> [!] Menunggu {tunggu} detik agar server Inaproc stabil...")
-                time.sleep(tunggu)
-        if not sukses:
-            log_print("  GAGAL TOTAL pada request ini. Berhenti ditarik.")
-            return False, [], last_error
+def get_dengan_ulang(url, label, maks):
+    """Return (ok, data, err). Error permanen -> langsung berhenti; sementara -> coba ulang."""
+    global TOKEN_BERMASALAH
+    err = "Unknown Error"
+    for i in range(1, maks + 1):
+        tunggu = i * 5
+        try:
+            log_print(f"  {label} (Coba {i}/{maks})...", end=" ")
+            resp = requests.get(url, headers=HEADERS, timeout=150)
+            if resp.status_code == 200:
+                data = resp.json()
+                log_print("SUKSES")
+                return True, data, ""
+            err = alasan_http(resp)
+            log_print(f"GAGAL ({err})")
+            if resp.status_code == 401:
+                TOKEN_BERMASALAH = True
+                return False, None, err
+            if resp.status_code in STATUS_SKIP:
+                log_print("    -> Error permanen, tidak dicoba ulang.")
+                return False, None, err
+            if resp.status_code == 429:
+                try: tunggu = min(int(resp.headers.get('Retry-After', 30 * i)), 120)
+                except ValueError: tunggu = 30 * i
+        except Exception as e:
+            err = alasan_error(e)
+            log_print(f"ERROR: {err}")
+        if i < maks:
+            log_print(f"    -> [!] Menunggu {tunggu} detik...")
+            time.sleep(tunggu)
+    return False, None, err
 
+def unduh_v1(target_url, maks):
+    all_data, cursor, req_count = [], None, 1
+    while True:
+        url_cursor = target_url if not cursor else f"{target_url}{'&' if '?' in target_url else '?'}cursor={cursor}"
+        ok, resp_data, err = get_dengan_ulang(url_cursor, f"Request ke-{req_count}", maks)
+        if not ok:
+            log_print("  GAGAL TOTAL pada request ini. Berhenti ditarik.")
+            return False, [], err
         if isinstance(resp_data, dict) and 'data' in resp_data:
             if resp_data['data'] is not None: all_data.extend(resp_data['data'])
         elif isinstance(resp_data, list):
             all_data.extend(resp_data)
-
         if isinstance(resp_data, dict) and isinstance(resp_data.get('meta'), dict) and resp_data['meta'].get('has_more'):
             cursor = resp_data['meta'].get('cursor')
             req_count += 1
             time.sleep(1)
         else:
-            return True, all_data, last_error
+            return True, all_data, ""
 
-def unduh_legacy(target_url):
-    """Return (ok, data, last_error)"""
-    last_error = "Unknown Error"
-    for i in range(1, 6):
-        try:
-            log_print(f"  Percobaan ke-{i}...", end=" ")
-            resp = requests.get(target_url, headers=HEADERS, timeout=150)
-            if resp.status_code == 200:
-                data = resp.json()
-                log_print(f"SUKSES (Total: {hitung_baris(data)} baris)")
-                return True, data, last_error
-            last_error = alasan_http(resp)
-            log_print(f"GAGAL ({last_error})")
-        except Exception as e:
-            last_error = alasan_error(e)
-            log_print(f"ERROR: {last_error}")
-        if i < 5:
-            tunggu = i * 5
-            log_print(f"    -> [!] Menunggu {tunggu} detik agar server Inaproc stabil...")
-            time.sleep(tunggu)
-    return False, None, last_error
+def unduh_legacy(target_url, maks):
+    ok, data, err = get_dengan_ulang(target_url, "Percobaan", maks)
+    return ok, data, err
 
 def proses_url(e, tahun, perlu, output_path, filename):
     target_url = e['url'].replace('{tahun}', str(tahun))
     label = "+".join(s.upper() for s in ('rup', 'pengadaan') if s in perlu)
     tag = f"{label} {e['tipe'].upper()} ({tahun}) - {e['base']}"
+    n_gagal = streak.get(filename, 0)
+    maks = MAKS_COBA_RINGAN if n_gagal >= BATAS_BERUNTUN else MAKS_COBA
 
     log_print("")
     backup_harian(output_path, filename)
-    log_print(f"DOWNLOAD [{e['tipe'].upper()}] [{label}]: {target_url}")
+    info = f" (dicoba {maks}x: gagal beruntun {n_gagal} kali)" if maks < MAKS_COBA else ""
+    log_print(f"DOWNLOAD [{e['tipe'].upper()}] [{label}]: {target_url}{info}")
 
-    ok, data, err = unduh_v1(target_url) if e['is_v1'] else unduh_legacy(target_url)
+    ok, data, err = unduh_v1(target_url, maks) if e['is_v1'] else unduh_legacy(target_url, maks)
     ada_lama = os.path.exists(output_path)
 
     if not ok:
@@ -361,9 +371,13 @@ def proses_url(e, tahun, perlu, output_path, filename):
             log_print(f"  -> File {filename} belum ada, dibuat kosong [].")
         else:
             log_print(f"  -> [Aman] Proses terputus, mempertahankan file {filename} lama yang utuh.")
-        daftar_error.append(f"❌ {tag} ({err})")
+        streak[filename] = n_gagal + 1
+        catatan = f" [gagal beruntun {n_gagal + 1}x]" if n_gagal + 1 >= 2 else ""
+        daftar_error.append(f"❌ {tag} ({err}){catatan}")
         stats['gagal'] += 1
         return
+
+    streak.pop(filename, None)   # berhasil -> hitungan beruntun direset
 
     if e['is_v1'] and len(data) == 0:
         if ada_lama:
@@ -400,6 +414,7 @@ def main():
         kirim_telegram("🚨 DOWNLOAD JSON GAGAL 🚨\n\nTidak ada URL yang terbaca dari url_rup.txt / url_pengadaan.txt.\n\n" + "\n".join(daftar_peringatan) + f"\n\n📅 {get_waktu_indonesia()}")
         return 1
     log_print(f"ℹ️ {len(entries)} endpoint unik digabung dari url_rup.txt + url_pengadaan.txt")
+    muat_streak()
 
     for t in daftar_tahun:
         data_dir = os.path.join(BASE_DIR, 'data', str(t))
@@ -414,9 +429,14 @@ def main():
                 log_print(f"[SKIP] {filename} (sudah final)")
                 continue
             proses_url(e, t, perlu, output_path, filename)
+            if TOKEN_BERMASALAH: break
+        if TOKEN_BERMASALAH: break
 
     durasi = str(timedelta(seconds=int(time.time() - waktu_mulai)))
-    total_gagal_semua = (stats['gagal'] > 0 and stats['ok'] + stats['kosong'] == 0)
+    total_gagal_semua = (stats['gagal'] > 0 and stats['ok'] + stats['kosong'] == 0) or TOKEN_BERMASALAH
+    if TOKEN_BERMASALAH:
+        daftar_peringatan.append("🔑 Token tidak valid/kedaluwarsa (401). Unduhan dihentikan, perbarui token.txt.")
+    simpan_streak()
     log_print("\n" + "=" * 55)
     log_print(f"RINGKASAN: Berhasil {stats['ok']} | Kosong {stats['kosong']} | Gagal {stats['gagal']} | Dilewati {stats['skip']} | Durasi {durasi}")
     log_print("=" * 55)
