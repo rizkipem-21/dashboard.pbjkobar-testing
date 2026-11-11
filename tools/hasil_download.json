@@ -1,6 +1,6 @@
 {
-  "waktu": "11 November 2026 | 09.29 WIB",
-  "durasi": "0:09:15",
+  "waktu": "11 November 2026 | 10.48 WIB",
+  "durasi": "0:08:18",
   "ringkasan": {
     "ok": 67,
     "gagal": 2,
@@ -9,8 +9,8 @@
   },
   "gagal_total": false,
   "error": [
-    "❌ RUP+PENGADAAN V1 (2026) - rup_paket-penyedia (Status 500 - Error internal di server Inaproc | Pesan server: *, *::before, *::after { box-sizing: border-box; } * { margin: 0; } body { line-height: 1.5; -webkit-font-smoothing: ant)",
-    "❌ PENGADAAN V1 (2025) - rup_paket-penyedia (Status 500 - Error internal di server Inaproc | Pesan server: *, *::before, *::after { box-sizing: border-box; } * { margin: 0; } body { line-height: 1.5; -webkit-font-smoothing: ant)"
+    "❌ RUP+PENGADAAN V1 (2026) - rup_paket-penyedia (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)",
+    "❌ PENGADAAN V1 (2025) - rup_paket-penyedia (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv)"
   ],
   "kosong": [
     "ℹ️ PENGADAAN V1 (2026) - ekatalog-archive paket-e-purchasing"

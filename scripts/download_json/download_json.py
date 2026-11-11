@@ -31,7 +31,7 @@ warnings.filterwarnings('ignore')
 # ======================================================
 # KONFIGURASI
 # ======================================================
-KIRIM_RINGKASAN_SUKSES = False   # True = kirim Telegram juga saat semua lancar
+KIRIM_RINGKASAN_SUKSES = True   # True = kirim Telegram juga saat semua lancar
 
 def cari_base_dir():
     """Naik dari lokasi skrip sampai menemukan token.txt (skrip boleh diletakkan di folder mana pun)"""
