@@ -324,82 +324,35 @@ def process_tahun(tahun):
     return len(df_final)
 
 if __name__ == "__main__":
+    waktu_mulai = float(os.environ.get('RUP_START', time.time()))
+
     log_print("\n==================================================")
     log_print(f"START GENERATE RUP {get_waktu_indonesia()}")
     log_print("==================================================")
 
-    # 1. BACA ERROR DI AWAL
-    daftar_error_api = []
-    path_error = os.path.join(BASE_DIR, 'scripts', 'rup', 'error_api_rup.json')
-    if os.path.exists(path_error):
-        try:
-            with open(path_error, 'r', encoding='utf-8') as f: daftar_error_api = json.load(f)
-            os.remove(path_error)
-        except: pass
-
-    # 2. CEK TOTAL URL (Disesuaikan dengan tahun yang tidak di-skip)
-    total_target = 0
-    path_url = os.path.join(BASE_DIR, 'scripts', 'rup', 'url_rup.txt')
-    if os.path.exists(path_url):
-        with open(path_url, 'r', encoding='utf-8') as f:
-            jumlah_url = len([line for line in f if line.strip()])
-            
-        tahun_diproses = 0
-        for t in daftar_tahun:
-            output_json_cek = os.path.join(BASE_DIR, 'data', str(t), f'rekap_rup_{t}.json')
-            if t != tahun_n and os.path.exists(output_json_cek):
-                continue
-            tahun_diproses += 1
-            
-        total_target = jumlah_url * tahun_diproses
-
-    # 3. LOGIKA BERHENTI JIKA GAGAL TOTAL
-    if total_target > 0 and len(daftar_error_api) >= total_target:
-        temp_tg = os.path.join(BASE_DIR, 'tools', 'temp_tg_rup.txt')
-        info_tambahan = ""
-        if os.path.exists(temp_tg):
-            try:
-                with open(temp_tg, 'r', encoding='utf-8') as f: info_tambahan = f.read()
-                os.remove(temp_tg)
-            except: pass
-            
-        pesan_gagal = f"🚨 LAPORAN UPDATE (RUP) 🚨\n\n⚠️ GAGAL TOTAL DOWNLOAD API!\nTidak ada data baru. Proses dihentikan.\n\n📊 STATUS EKSEKUSI:\n{info_tambahan}🔹 Generate RUP: Batal (API Error)\n\n📅 Waktu: {get_waktu_indonesia()}"
-        kirim_telegram_aman(pesan_gagal)
-        log_print("GAGAL TOTAL. Skrip berhenti.")
-        sys.exit(0)
-
-    # ... (lanjutkan ke kode for t in daftar_tahun: dst) ...
-    total_all = 0
+    # Proses tiap tahun (tahun final n-1 & n-2 dilewati bila rekap sudah ada)
+    peringatan = []
     for t in daftar_tahun:
         output_json_cek = os.path.join(BASE_DIR, 'data', str(t), f'rekap_rup_{t}.json')
         if t != tahun_n and os.path.exists(output_json_cek):
             log_print(f"\n[SKIP] Tahun {t} sudah ada (final).")
             continue
-        total_all += process_tahun(t)
-    
+        hasil = process_tahun(t)
+        if hasil == 0:
+            peringatan.append(f"• Tahun {t}: data master kosong, tahun dilewati (hasil lama dipertahankan)")
+
     with open(os.path.join(BASE_DIR, "data", "last-update-rup.txt"), "w", encoding='utf-8') as f:
         f.write(get_waktu_indonesia())
 
     git_sukses, pesan_git = sync_to_github()
 
+    durasi_str = str(timedelta(seconds=int(time.time() - waktu_mulai)))
+
     log_print("\n" + "="*50)
     log_print(f"PROSES SELESAI SELURUHNYA PADA {get_waktu_indonesia()}")
     log_print("==================================================")
 
-    # --- MENGHITUNG DURASI TOTAL & AUTO DELETE ---
-    durasi_str = "Tidak diketahui"
-    file_start = os.path.join(BASE_DIR, 'tools', 'start_time_rup.txt')
-    if os.path.exists(file_start):
-        try:
-            with open(file_start, 'r') as f:
-                waktu_mulai = float(f.read().strip())
-            durasi_detik = int(time.time() - waktu_mulai)
-            durasi_str = str(timedelta(seconds=durasi_detik))
-            os.remove(file_start) # Auto-delete file sementara
-        except: pass
-    # ---------------------------------------------
-
-    # --- BACA CATATAN DARI SKRIP-SKRIP SEBELUMNYA ---
+    # Catatan dari skrip sebelumnya (detail_rup.py & konsolidasi_rup.py)
     temp_tg = os.path.join(BASE_DIR, 'tools', 'temp_tg_rup.txt')
     info_tambahan = ""
     if os.path.exists(temp_tg):
@@ -408,33 +361,18 @@ if __name__ == "__main__":
                 info_tambahan = f.read()
         except: pass
 
-    try:
-        with open(os.path.join(BASE_DIR, 'scripts', 'rup', 'kosong_api_rup.json'), 'r', encoding='utf-8') as f:
-            dk = json.load(f)
-        if dk: info_tambahan += "ℹ️ API KOSONG (file lama dipertahankan):\n" + "".join(f"{x}\n" for x in dk)
-    except Exception: pass
-    # -------------------------------------------------
+    blok_peringatan = ("⚠️ PERINGATAN:\n" + "\n".join(peringatan) + "\n\n") if peringatan else ""
 
-    if len(daftar_error_api) > 0 or not git_sukses:
-        pesan_ringkasan = "🚨 LAPORAN UPDATE SISTEM (RUP) 🚨\n\n"
-        if len(daftar_error_api) > 0:
-            teks_error = "⚠️ GAGAL DOWNLOAD API:\n"
-            for err in daftar_error_api:
-                teks_error += f"{err.replace('_', ' ')}\n" 
-            if len(teks_error) > 3500:
-                teks_error = teks_error[:3500] + "\n... [DAFTAR ERROR DIPOTONG] ...\n"
-            pesan_ringkasan += teks_error + "\n"
-            
-        pesan_ringkasan += f"📊 RINGKASAN EKSEKUSI:\n{info_tambahan}🔹 Generate RUP: Selesai\n\n"
-        pesan_ringkasan += f"🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
-        kirim_telegram_aman(pesan_ringkasan)
+    # Laporan error API ada di laporan download_json.py, bukan di sini
+    if peringatan or not git_sukses:
+        pesan = "🚨 LAPORAN UPDATE SISTEM (RUP) 🚨\n\n" + blok_peringatan
+        pesan += f"📊 RINGKASAN EKSEKUSI:\n{info_tambahan}🔹 Generate RUP: Selesai\n\n"
     else:
-        pesan_sukses = f"✅ UPDATE RUP HARIAN SELESAI ✅\n\nSeluruh proses ekstraksi dan sinkronisasi data berhasil.\n\n📊 RINGKASAN EKSEKUSI:\n{info_tambahan}🔹 Generate RUP: Selesai\n\n🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
-        kirim_telegram_aman(pesan_sukses)
+        pesan = f"✅ UPDATE RUP HARIAN SELESAI ✅\n\nSeluruh proses ekstraksi dan sinkronisasi data berhasil.\n\n📊 RINGKASAN EKSEKUSI:\n{info_tambahan}🔹 Generate RUP: Selesai\n\n"
+    pesan += f"🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
+    kirim_telegram_aman(pesan)
 
-    # --- BERSIHKAN FILE SEMENTARA SETELAH LAPORAN TERKIRIM ---
+    # Bersihkan file sementara setelah laporan terkirim
     if os.path.exists(temp_tg):
-        try:
-            os.remove(temp_tg)
+        try: os.remove(temp_tg)
         except: pass
-    # --------------------------------------------------------

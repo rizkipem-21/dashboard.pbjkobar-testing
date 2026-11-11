@@ -449,3 +449,64 @@ RINGKASAN: Berhasil 67 | Kosong 1 | Gagal 2 | Dilewati 41 | Durasi 0:09:15
 =======================================================
 
 PROSES DOWNLOAD SELESAI PADA 11 November 2026 | 09.29 WIB
+
+=======================================================
+START DOWNLOAD JSON (RUP + PENGADAAN) 11 November 2026 | 10.10 WIB
+=======================================================
+ℹ️ 37 endpoint unik digabung dari url_rup.txt + url_pengadaan.txt
+
+=======================================================
+   DOWNLOAD DATA TAHUN 2026
+=======================================================
+
+DOWNLOAD [LEGACY] [RUP+PENGADAAN]: https://data.inaproc.id/api/legacy/rup/kegiatan-master?kode_klpd=D228&tahun=2026
+  Percobaan ke-1... SUKSES (Total: 663 baris)
+  -> Disimpan ke Legacy_rup_kegiatan-master_2026.json (Total: 663 baris)
+
+DOWNLOAD [LEGACY] [RUP]: https://data.inaproc.id/api/legacy/rup/paket-penyedia-lokasi?kode_klpd=D228&tahun=2026
+  Percobaan ke-1... SUKSES (Total: 13590 baris)
+  -> Disimpan ke Legacy_rup_paket-penyedia-lokasi_2026.json (Total: 13590 baris)
+
+DOWNLOAD [LEGACY] [RUP]: https://data.inaproc.id/api/legacy/rup/paket-swakelola-lokasi?kode_klpd=D228&tahun=2026
+  Percobaan ke-1... SUKSES (Total: 364 baris)
+  -> Disimpan ke Legacy_rup_paket-swakelola-lokasi_2026.json (Total: 364 baris)
+
+DOWNLOAD [LEGACY] [RUP]: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+  Percobaan ke-1... SUKSES (Total: 58 baris)
+  -> Disimpan ke Legacy_rup_struktur-anggaran-pd_2026.json (Total: 58 baris)
+
+DOWNLOAD [LEGACY] [RUP+PENGADAAN]: https://data.inaproc.id/api/legacy/rup/sub-kegiatan-master?kode_klpd=D228&tahun=2026
+  Percobaan ke-1... SUKSES (Total: 2232 baris)
+  -> Disimpan ke Legacy_rup_sub-kegiatan-master_2026.json (Total: 2232 baris)
+
+DOWNLOAD [V1] [RUP]: https://data.inaproc.id/api/v1/rup/master-satker?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1)... SUKSES
+  -> Disimpan ke v1_rup_master-satker_2026.json (Total: 126 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/program-master?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1)... SUKSES
+  -> Disimpan ke v1_rup_program-master_2026.json (Total: 277 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1)... SUKSES
+  Request ke-2 (Coba 1)... SUKSES
+  Request ke-3 (Coba 1)... SUKSES
+  Request ke-4 (Coba 1)... SUKSES
+  Request ke-5 (Coba 1)... SUKSES
+  Request ke-6 (Coba 1)... SUKSES
+  -> Disimpan ke v1_rup_paket-penyedia-terumumkan_2026.json (Total: 5018 baris)
+
+DOWNLOAD [V1] [RUP+PENGADAAN]: https://data.inaproc.id/api/v1/rup/paket-anggaran-penyedia?kode_klpd=D228&tahun=2026&limit=1000
+  Request ke-1 (Coba 1)... SUKSES
+  Request ke-2 (Coba 1)... SUKSES
+  Request ke-3 (Coba 1)... SUKSES
+  Request ke-4 (Coba 1)... SUKSES
+  Request ke-5 (Coba 1)... SUKSES
+  Request ke-6 (Coba 1)... SUKSES
+  Request ke-7 (Coba 1)... SUKSES
+  Request ke-8 (Coba 1)... SUKSES
+  Request ke-9 (Coba 1)... SUKSES
+  Request ke-10 (Coba 1)... SUKSES
+  Request ke-11 (Coba 1)... SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-penyedia_2026.json (Total: 10722 baris)
+

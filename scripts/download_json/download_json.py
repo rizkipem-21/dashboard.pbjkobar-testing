@@ -125,7 +125,8 @@ def alasan_http(resp):
     alasan = peta.get(resp.status_code, resp.reason or "Tidak diketahui")
     cuplikan = ""
     try:
-        teks = re.sub(r"<[^>]+>", " ", resp.text or "")
+        teks = re.sub(r"<(style|script)[^>]*>.*?</\1>", " ", resp.text or "", flags=re.S | re.I)
+        teks = re.sub(r"<[^>]+>", " ", teks)
         teks = re.sub(r"\s+", " ", teks).strip()[:120]
         if teks: cuplikan = f" | Pesan server: {teks}"
     except Exception:

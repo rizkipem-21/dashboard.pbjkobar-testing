@@ -2,6 +2,8 @@
 cd /d "%~dp0.."
 set ERR=0
 
+for /f %%i in ('powershell -NoProfile -Command "[DateTimeOffset]::Now.ToUnixTimeSeconds()"') do set RUP_START=%%i
+
 echo ==================================================
 echo MEMULAI PROSES UPDATE RUP...  [%date% %time%]
 echo ==================================================
