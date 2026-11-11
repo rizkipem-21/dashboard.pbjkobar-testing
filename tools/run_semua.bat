@@ -3,6 +3,8 @@ cd /d "%~dp0.."
 set LOCK=running.lock
 set DL=scripts\download_json\download_json.py
 
+set DARI_INDUK=1
+
 :: Kunci anti-ganda (dianggap basi setelah 2 jam)
 if exist "%LOCK%" (
   powershell -NoProfile -Command "if (((Get-Date) - (Get-Item '%LOCK%').LastWriteTime).TotalHours -lt 2) { exit 1 } else { exit 0 }"

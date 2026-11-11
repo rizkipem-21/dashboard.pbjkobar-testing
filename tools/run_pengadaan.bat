@@ -17,7 +17,5 @@ if errorlevel 1 set ERR=1
 
 echo.
 echo PENGADAAN SELESAI, kode: %ERR%  [%date% %time%]
-if /i not "%~1"=="nodownload" (
-  mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""Proses Pengadaan Selesai!"", 5, ""Update Selesai"", 4160)(window.close)")
-)
+if not defined DARI_INDUK mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""Proses Pengadaan Selesai!"", 5, ""Update Selesai"", 4160)(window.close)")
 exit /b %ERR%

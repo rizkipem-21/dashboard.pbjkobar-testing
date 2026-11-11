@@ -1,2 +1,2 @@
-🔹 Detail RUP: 5072 Baris (Durasi: 0:01:53)
-🔹 Konsolidasi RUP: 784 Baris (Durasi: 0:02:41)
+🔹 Detail RUP: 5072 Baris (Durasi: 0:00:53)
+🔹 Konsolidasi RUP: 784 Baris (Durasi: 0:02:12)
