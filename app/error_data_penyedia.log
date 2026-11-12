@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "D:\dashboard.pbjkobar-testing\app\data_penyedia.py", line 1108, in <module>
+    app = AppPenyedia()
+  File "D:\dashboard.pbjkobar-testing\app\data_penyedia.py", line 288, in __init__
+    self.create_layout()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "D:\dashboard.pbjkobar-testing\app\data_penyedia.py", line 460, in create_layout
+    self.buat_tab_ringkasan()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\dashboard.pbjkobar-testing\app\data_penyedia.py", line 484, in buat_tab_ringkasan
+    self.txt_ringkas = tk.Text(
+                       ~~~~~~~^
+        self.t_ringkas, wrap="word", font=(FONT, 10), bg=C["card"], fg=C["teks"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        selectforeground=C["teks"], spacing1=3, spacing3=3,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PBJ Rizki\AppData\Local\Programs\Python\Python314\Lib\tkinter\__init__.py", line 3803, in __init__
+    Widget.__init__(self, master, 'text', cnf, kw)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PBJ Rizki\AppData\Local\Programs\Python\Python314\Lib\tkinter\__init__.py", line 2805, in __init__
+    self.tk.call(
+    ~~~~~~~~~~~~^
+        (widgetName, self._w) + extra + self._options(cnf))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_tkinter.TclError: unknown option "-lmargin1"

@@ -51,6 +51,11 @@ KOLOM_NPWP16_SPPBJ = ('npwp_penyedia_16', 'npwp16_penyedia')
 # Untuk mencoba ulang: hapus kamus_sikap_gagal.json
 GAGAL_PERMANEN = ('404', 'data kosong', 'npwp tidak cocok')
 
+# Penyedia e-katalog yang HANYA punya NPWP 15 digit: coba juga ke Sikap sebagai '0' + 15 digit?
+# (sesuai aturan NPWP 16 = '0' + NPWP 15 yang sudah dipakai di kunci_gabung). Default mati
+# supaya jumlah request tidak membengkak; aktifkan bila ingin data lebih lengkap lagi.
+COBA_NPWP15_JADI_16 = False
+
 
 def baca_token():
     path = os.path.join(BASE_DIR, 'token.txt')
@@ -291,6 +296,35 @@ def sama(a, b):
     return a == b
 
 
+# Penanda jenis badan usaha (PT, CV, UD, dst.) di dalam nama
+RE_BADAN = re.compile(
+    r'(^|[\s,(])(PT|CV|UD|PD|PO|FA|FIRMA|KOPERASI|KOP|YAYASAN|PERUM|PERSERO|BUMDES)(?=[\s.,)]|$)',
+    re.I
+)
+URUTAN_TAMPIL = ('v1', 'v6', 'v5')   # v1 (Sikap) biasanya penulisan paling rapi
+
+
+def pilih_nama_tampil(recs):
+    """Pilih nama yang memuat PT/CV/dll; kalau tidak ada, pakai nama pertama yang terisi."""
+    kandidat = []
+    for suf in URUTAN_TAMPIL:
+        nama = ' '.join(str(recs.get(suf, {}).get('nama_penyedia') or '').split())
+        if nama and nama != '-' and nama not in kandidat:
+            kandidat.append(nama)
+    for n in kandidat:
+        if RE_BADAN.search(n):
+            return n
+    return kandidat[0] if kandidat else None
+
+
+def pilih_npwp_tampil(recs, field):
+    for suf in URUTAN_TAMPIL:
+        v = recs.get(suf, {}).get(field)
+        if v:
+            return v
+    return None
+
+
 def gabung_bucket(b):
     hasil, recs = {}, {}
     for sumber, suf in URUTAN_SUMBER:
@@ -318,6 +352,9 @@ def gabung_bucket(b):
         else:
             for suf, v in terisi.items():
                 hasil[f'{f}_{suf}'] = v
+    hasil['nama_tampil'] = pilih_nama_tampil(recs)
+    hasil['npwp_16_tampil'] = pilih_npwp_tampil(recs, 'npwp_16')
+    hasil['npwp_15_tampil'] = pilih_npwp_tampil(recs, 'npwp_15')
     return hasil
 
 
@@ -353,34 +390,61 @@ def gabungkan(raw_list):
         else:
             buckets.append({sumber: (kode, rec)})
 
-    # ---- Pass 2: Sikap-saja dicocokkan ke e-katalog lewat nama (NPWP beda format, mis. NIK vs NPWP lama)
+    # ---- Pass 2: bucket Sikap-saja dicocokkan ke bucket e-katalog.
+    #      (1) lewat NPWP yang sama persis (16 atau 15 digit) -> paling andal, karena Sikap
+    #          kini di-fetch memakai NPWP 16 dari e-katalog itu sendiri.
+    #      (2) kalau tidak ketemu/ambigu, lewat nama (NPWP beda format, mis. NIK vs NPWP lama).
     semua = [b for bl in groups.values() for b in bl]
     sikap_saja = [b for b in semua if set(b) == {'V1'}]
     lainnya = [b for b in semua if 'V1' not in b]
-    idx = {}
+
+    idx_nama, idx_npwp = {}, {}
     for b in lainnya:
         for n in nama_bucket(b):
-            idx.setdefault(n, []).append(b)
+            idx_nama.setdefault(n, []).append(b)
+        s16, s15 = npwp_bucket(b)
+        for n in s16:
+            idx_npwp.setdefault(('16', n), []).append(b)
+        for n in s15:
+            idx_npwp.setdefault(('15', n), []).append(b)
 
     dihapus, review_nama = set(), []
     for sb in sikap_saja:
-        kandidat = {}
-        for n in nama_bucket(sb):
-            for y in idx.get(n, []):
-                if 'V1' not in y and not npwp_bentrok(sb, y):
+        kandidat, cara = {}, None
+
+        s16, s15 = npwp_bucket(sb)
+        for n in s16:
+            for y in idx_npwp.get(('16', n), []):
+                if 'V1' not in y:
+                    kandidat[id(y)] = y
+        for n in s15:
+            for y in idx_npwp.get(('15', n), []):
+                if 'V1' not in y:
                     kandidat[id(y)] = y
         if len(kandidat) == 1:
+            cara = 'npwp'
+        else:
+            kandidat = {}
+            for n in nama_bucket(sb):
+                for y in idx_nama.get(n, []):
+                    if 'V1' not in y and not npwp_bentrok(sb, y):
+                        kandidat[id(y)] = y
+            if len(kandidat) == 1:
+                cara = 'nama (npwp beda format)'
+
+        if cara:
             y = next(iter(kandidat.values()))
             y['V1'] = sb['V1']
             dihapus.add(id(sb))
-            review_nama.append({
-                'cocok_lewat': 'nama (npwp beda format)',
-                'nama': sb['V1'][1].get('nama_penyedia'),
-                'kode': {s: y[s][0] for s in y},
-                'npwp_sikap': [sb['V1'][1].get('npwp_16'), sb['V1'][1].get('npwp_15')],
-                'npwp_katalog': [r.get('npwp_16') or r.get('npwp_15') or r.get('npwp_penyedia')
-                                 for s, (_, r) in y.items() if s != 'V1'],
-            })
+            if cara != 'npwp':   # gabungan via NPWP andal; yang via nama dicatat untuk dicek manual
+                review_nama.append({
+                    'cocok_lewat': cara,
+                    'nama': sb['V1'][1].get('nama_penyedia'),
+                    'kode': {s: y[s][0] for s in y},
+                    'npwp_sikap': [sb['V1'][1].get('npwp_16'), sb['V1'][1].get('npwp_15')],
+                    'npwp_katalog': [r.get('npwp_16') or r.get('npwp_15') or r.get('npwp_penyedia')
+                                     for s, (_, r) in y.items() if s != 'V1'],
+                })
 
     hasil, review = [], list(review_nama)
     for k, buckets in groups.items():
@@ -403,9 +467,21 @@ def buat_kamus_gabungan(kamus_raw, sikap_raw):
     n_v1 = sum(1 for h in hasil if 'kd_penyedia_v1' in h)
     n_v1_saja = sum(1 for h in hasil if 'kd_penyedia_v1' in h
                     and 'epur_v6' not in h and 'epur_v5' not in h)
+    # e-katalog ber-NPWP 16 yang masih belum punya data Sikap (404 / data kosong / tidak cocok)
+    n_katalog_tanpa_sikap = sum(1 for h in hasil
+                                if ('epur_v6' in h or 'epur_v5' in h)
+                                and 'kd_penyedia_v1' not in h
+                                and _ada_npwp16(h))
     print(f"[GABUNG] {len(kamus_raw)} mentah S6/S7 + {len(sikap_raw)} mentah Sikap -> {len(hasil)} penyedia "
           f"({n_dua} gabungan v6+v5, {n_v1} punya data Sikap, {n_v1_saja} hanya dari Sikap, "
           f"{len(review)} digabung via nama -> cek {os.path.basename(REVIEW_FILE)})")
+    print(f"[GABUNG] {n_katalog_tanpa_sikap} penyedia e-katalog ber-NPWP 16 belum punya data Sikap "
+          f"(lihat {os.path.basename(GAGAL_SIKAP_FILE)} untuk alasannya)")
+
+
+def _ada_npwp16(h):
+    return bool(h.get('npwp_16_tampil') or h.get('npwp_16')
+                or any(k.startswith('npwp_16_') and h[k] for k in h))
 
 
 # ======================================================
@@ -642,11 +718,34 @@ def kumpulkan_npwp16():
     return valid
 
 
-def hitung_missing_sikap(sikap_list, gagal_sikap):
+def kumpulkan_npwp16_katalog(kamus_list):
+    """NPWP 16 digit unik dari data mentah e-katalog (S6 + S7).
+    Penyedia e-katalog ber-NPWP 16 seharusnya terdaftar di Sikap, jadi dijadikan target fetch."""
+    hasil = set()
+    for rec in kamus_list:
+        n16, n15 = pisah_npwp(rec)
+        if n16:
+            hasil.add(n16)
+        elif n15 and COBA_NPWP15_JADI_16:
+            hasil.add('0' + n15)
+    return hasil
+
+
+def hitung_missing_sikap(sikap_list, gagal_sikap, kamus_list):
     sudah = {s.get('npwp_16') for s in sikap_list if s.get('npwp_16')}
     permanen = {k for k, v in gagal_sikap.items()
                 if str(v.get('alasan', '')).startswith(GAGAL_PERMANEN)}
-    return sorted(n for n in kumpulkan_npwp16() if n not in sudah and n not in permanen)
+
+    dari_sppbj = kumpulkan_npwp16()
+    dari_katalog = kumpulkan_npwp16_katalog(kamus_list)
+    target = dari_sppbj | dari_katalog
+
+    # e-katalog didahulukan, baru yang hanya dari SPPBJ
+    missing = sorted((n for n in target if n not in sudah and n not in permanen),
+                     key=lambda n: (n not in dari_katalog, n))
+    print(f"[*] Target Sikap: {len(dari_sppbj)} NPWP dari SPPBJ + {len(dari_katalog)} dari e-katalog "
+          f"-> {len(target)} unik | perlu fetch: {len(missing)}")
+    return missing
 
 
 def main():
@@ -664,14 +763,17 @@ def main():
     print(f"[*] Kamus S6/S7 termuat: {len(kamus_list)} | Sikap termuat: {len(sikap_list)}")
 
     missing_s6, missing_s7 = hitung_missing_kamus(kamus_list)
-    missing_sikap = hitung_missing_sikap(sikap_list, gagal_sikap)
-    print(f"[*] Perlu fetch: S6 {len(missing_s6)} | S7 {len(missing_s7)} | Sikap {len(missing_sikap)}")
+    print(f"[*] Perlu fetch: S6 {len(missing_s6)} | S7 {len(missing_s7)}")
 
     stat = {'baru': 0, 'gagal': 0, 'sikap_baru': 0, 'sikap_gagal': 0}
 
     try:
         proses_batch(session, missing_s6, 'S6', False, kamus_list, gagal, stat)
         proses_batch(session, missing_s7, 'S7', True,  kamus_list, gagal, stat)
+
+        # Dihitung SETELAH S6/S7 selesai, supaya NPWP 16 penyedia e-katalog yang baru
+        # saja diambil ikut masuk target Sikap pada run yang sama.
+        missing_sikap = hitung_missing_sikap(sikap_list, gagal_sikap, kamus_list)
         proses_sikap(session, missing_sikap, sikap_list, gagal_sikap, stat)
     except TokenInvalid as e:
         print(f"\n[FATAL] Token expired / IP diblokir ({e}). Perbarui token.txt.")
@@ -679,9 +781,9 @@ def main():
         print("\n[!] Dihentikan manual. Menyimpan data yang sudah didapat...")
     finally:
         simpan_json_atomik(KAMUS_FILE, kamus_list)
-        simpan_gagal(GAGAL_FILE, gagal)                  # <-- diganti
+        simpan_gagal(GAGAL_FILE, gagal)
         simpan_json_atomik(SIKAP_FILE, sikap_list)
-        simpan_gagal(GAGAL_SIKAP_FILE, gagal_sikap)      # <-- diganti
+        simpan_gagal(GAGAL_SIKAP_FILE, gagal_sikap)
 
     buat_kamus_gabungan(kamus_list, sikap_list)
 
