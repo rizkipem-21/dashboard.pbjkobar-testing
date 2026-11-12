@@ -51,8 +51,9 @@ echo SELESAI  download=%ERR_DL%  rup=%ERR_RUP%  pengadaan=%ERR_PENG%  [%date% %t
 if "%ERR_DL%"=="0" if "%ERR_RUP%"=="0" if "%ERR_PENG%"=="0" goto SUKSES
 
 mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""Update SELESAI DENGAN ERROR. Cek log di folder tools."", 120, ""Update Gagal"", 4112)(window.close)")
-exit /b 1
+exit 1
 
 :SUKSES
 mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""Update Selesai!"", 5, ""Update Selesai"", 4160)(window.close)")
-exit /b 0
+taskkill /f /im mshta.exe >nul 2>&1
+exit 0

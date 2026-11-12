@@ -223,10 +223,10 @@
     <div style="display:flex; align-items:center; gap:6px; font-size:0.7rem; color:#64748b; font-weight:600;">
       <span>Tampilkan</span>
       <select id="selJumlahData" style="padding:0 8px; height:24px; font-size:0.65rem; border:1.5px solid #dde3ed; border-radius:4px; background:#fff; color:#1e293b; outline:none; cursor:pointer;">
-        <option value="10">10</option>
-        <option value="25"selected>25</option>
+        <option value="25" selected>25</option>
         <option value="50">50</option>
         <option value="100">100</option>
+        <option value="250">250</option>
         <option value="semua">Semua</option>
       </select>
       <span>data</span>
@@ -564,7 +564,7 @@ document.getElementById("btnReset").addEventListener("click", () => {
   document.getElementById("selTingkat3").value = "";
   document.getElementById("inputCariKategori").value = "";
   document.getElementById("inputCariKbli").value = "";
-  document.getElementById("selJumlahData").value = "10"; 
+  document.getElementById("selJumlahData").value = "25"; 
   eksekusiPencarian(false);
 });
 
