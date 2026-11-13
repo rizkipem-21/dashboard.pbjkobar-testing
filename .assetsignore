@@ -21,3 +21,6 @@ Dockerfile
 wrangler.toml
 requirements.txt
 .wrangler/
+worker.js
+functions/
+package.json
