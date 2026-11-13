@@ -9,6 +9,12 @@ const routes = {
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    if (url.pathname === "/api/cek") {
+      return Response.json({
+        ada_token: Boolean(env.INAPROC_TOKEN),
+        variabel_terbaca: Object.keys(env),
+      });
+    }
     const mod = routes[url.pathname];
 
     if (mod) {
