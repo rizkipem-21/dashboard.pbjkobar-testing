@@ -15,7 +15,7 @@
   </script>
   <script>
     // Mode tampilan: otomatis tampilan HP hanya di HP asli (layar sempit + layar sentuh).
-    // Di komputer, tampilan HP hanya aktif bila user menekan tombol "Tampilan HP".
+    // Di komputer, tampilan Mobile hanya aktif bila user menekan tombol "Mobile".
     (function () {
       try {
         var forced = localStorage.getItem("viewMode") === "phone";
@@ -199,6 +199,13 @@
         </button>
       </div>
 
+      <div class="mb-3">
+        <p class="text-[10px] font-semibold text-gray-400 mb-1 px-2">Katalog Produk</p>
+        <button id="btn-produk" onclick="switchTab('view-produk', this, 'produk')" class="menu-item w-full flex items-center px-3 py-1.5 text-gray-600 hover:bg-gray-100 hover:text-lpse-biru rounded-md text-xs transition-colors text-left">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-2 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg> Detail Produk
+        </button>
+      </div>
+
       <div>
         <p class="text-[10px] font-semibold text-gray-400 mb-1 px-2">Server Backup</p>
         <button id="btn-arsip" onclick="switchTab('view-arsip', this, 'arsip')" class="menu-item w-full flex items-center px-3 py-1.5 text-gray-600 hover:bg-gray-100 hover:text-lpse-biru rounded-md text-xs transition-colors text-left">
@@ -208,7 +215,7 @@
     </div>
 
     <div class="py-2 px-3 border-t border-gray-100 bg-gray-50 text-center flex-shrink-0">
-      <button id="btnViewMode" onclick="toggleViewMode()" title="Pratinjau tampilan HP di komputer" class="w-full mb-2 px-2 py-1 rounded-md border border-gray-200 bg-white hover:bg-gray-100 text-[0.65rem] font-semibold text-lpse-biru transition-colors">📱 Tampilan HP</button>
+      <button id="btnViewMode" onclick="toggleViewMode()" title="Pratinjau tampilan Mobile di Desktop" class="w-full mb-2 px-2 py-1 rounded-md border border-gray-200 bg-white hover:bg-gray-100 text-[0.65rem] font-semibold text-lpse-biru transition-colors">📱 Mobile</button>
       <button id="btnTheme" onclick="toggleTheme()" title="Ganti mode terang/gelap" class="w-full mb-2 px-2 py-1 rounded-md border border-gray-200 bg-white hover:bg-gray-100 text-[0.65rem] font-semibold text-lpse-biru transition-colors">🌙 Mode Gelap</button>
       <p class="text-[0.6rem] font-medium text-gray-500">&copy; Tim LPSE Kab. Kobar 2025</p>
       <p id="teks-versi" class="text-[0.6rem] font-bold text-lpse-biru mt-1">dashboard.pbjkobar ...</p>
@@ -297,7 +304,9 @@
     <div id="view-kbli" class="view-panel hidden flex-1 relative bg-[#f0f4f8]">
       <iframe src="kategori_kbli/kbli.html" class="w-full h-full border-none absolute inset-0 bg-transparent"></iframe>
     </div>
-    
+    <div id="view-produk" class="view-panel hidden flex-1 relative bg-[#f0f4f8]">
+      <iframe src="produk/produk_detail.html" class="w-full h-full border-none absolute inset-0 bg-transparent"></iframe>
+    </div>
     <!-- IFRAME UNTUK ARSIP -->
     <div id="view-arsip" class="view-panel hidden flex-1 relative bg-[#f0f4f8]">
       <iframe src="arsip/arsip.html" class="w-full h-full border-none absolute inset-0 bg-transparent"></iframe>
@@ -310,7 +319,7 @@
     // MODE GELAP (tombol di sidebar) - otomatis diteruskan ke semua halaman iframe
     // Kunci localStorage tiap halaman: rupTheme, pengadaanTheme, tepraTheme
     // ==========================================================
-    const THEME_KEYS = ["rupTheme", "pengadaanTheme", "tepraTheme"];
+    const THEME_KEYS = ["rupTheme", "pengadaanTheme", "tepraTheme", "produkTheme"];
 
     function isDark() { return document.documentElement.classList.contains("dark"); }
 
@@ -390,7 +399,7 @@
     function isForcedPhone() { try { return localStorage.getItem("viewMode") === "phone"; } catch (e) { return false; } }
 
     function updateViewModeButton() {
-      document.getElementById("btnViewMode").innerText = isForcedPhone() ? "🖥️ Tampilan Komputer" : "📱 Tampilan HP";
+      document.getElementById("btnViewMode").innerText = isForcedPhone() ? "🖥️ Desktop" : "📱 Mobile";
     }
 
     function applyViewMode() {
@@ -447,6 +456,7 @@
       else if (hash === 'tepra') switchTab('view-tepra', document.getElementById('btn-tepra'), 'tepra');
       else if (hash === 'arsip') switchTab('view-arsip', document.getElementById('btn-arsip'), 'arsip');
       else if (hash === 'kbli') switchTab('view-kbli', document.getElementById('btn-kbli'), 'kbli');
+      else if (hash === 'produk') switchTab('view-produk', document.getElementById('btn-produk'), 'produk');
       else switchTab('view-dashboard', document.getElementById('btn-dashboard'), '');
       
       loadAllData(document.getElementById("selectYearGlobal").value);

@@ -1,0 +1,469 @@
+<!-- ### ===== ini file produk_detail.html ===== ### -->
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detail Produk E-Katalog Inaproc</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  try {
+    var t = localStorage.getItem("produkTheme");
+    var sistemGelap = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (t === "dark" || (!t && sistemGelap)) document.documentElement.classList.add("dark");
+  } catch (e) {}
+</script>
+<style>
+  :root { --lpse-biru:#1a3a6b; --lpse-biru2:#1e4d8c; --lpse-merah:#e63329; --lpse-kuning:#f5c800; --lpse-hijau:#2d9e47; }
+  body { background:#f0f4f8; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; margin:0; padding:0; overflow-x:hidden; }
+
+  .page-header { background:linear-gradient(135deg,var(--lpse-biru) 0%,var(--lpse-biru2) 100%); border-bottom:3px solid var(--lpse-kuning); padding:14px 20px 10px; margin-bottom:16px; border-radius:0 0 10px 10px; box-shadow:0 3px 12px rgba(26,58,107,0.15); display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .page-header h1 { color:#fff; font-size:1.15rem; font-weight:700; margin:0 0 2px 0; }
+  .page-header .subtitle { color:rgba(255,255,255,0.72); font-size:0.65rem; }
+  .btn-theme { background:rgba(255,255,255,0.12); color:#fff; border:1px solid rgba(255,255,255,0.3); border-radius:5px; padding:4px 10px; font-size:0.75rem; font-weight:600; cursor:pointer; white-space:nowrap; flex-shrink:0; }
+  .btn-theme:hover { background:rgba(255,255,255,0.22); }
+
+  .color-strip { display:flex; height:4px; border-radius:2px; overflow:hidden; margin-bottom:14px; box-shadow:0 2px 6px rgba(0,0,0,0.12); }
+  .color-strip span { flex:1; }
+
+  .filter-card { background:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(26,58,107,0.09); padding:12px; margin-bottom:12px; border-top:3px solid var(--lpse-biru); }
+  .filter-card label { font-size:0.6rem; font-weight:600; color:#64748b; text-transform:uppercase; margin-bottom:4px; display:block; }
+  .filter-card input { border:1.5px solid #dde3ed; border-radius:4px; padding:4px 8px; height:30px; font-size:0.7rem; background:#f8fafc; outline:none; width:100%; transition:border-color 0.2s; }
+  .filter-card input:focus { border-color:var(--lpse-biru); }
+  .filter-actions { display:flex; gap:12px; justify-content:flex-end; margin-top:10px; }
+  .hint { font-size:0.6rem; color:#64748b; margin-top:6px; }
+
+  .btn-search { background:var(--lpse-biru); color:#fff; border:none; border-radius:4px; padding:0 12px; height:26px; font-size:0.65rem; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; box-shadow:0 2px 4px rgba(26,58,107,0.25); }
+  .btn-search:hover { background:var(--lpse-biru2); }
+  .btn-search:disabled { opacity:.6; cursor:wait; }
+  .btn-reset { background:#f1f5f9; color:#475569; border:1.5px solid #cbd5e1; border-radius:4px; padding:0 10px; height:26px; font-size:0.65rem; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; }
+  .btn-reset:hover { background:#e2e8f0; }
+
+  /* ===== HASIL ===== */
+  .result-bar { display:none; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:10px; font-size:0.7rem; color:#64748b; font-weight:600; }
+  .result-bar code { background:#e2e8f0; color:#1e293b; padding:2px 6px; border-radius:4px; font-size:0.65rem; word-break:break-all; }
+  .result-card { background:#fff; border-radius:8px; box-shadow:0 2px 10px rgba(26,58,107,0.09); padding:6px 14px; margin-bottom:24px; display:none; }
+
+  .kv { display:grid; grid-template-columns:minmax(120px,22%) 1fr; gap:10px; padding:7px 0; border-bottom:1px solid #e8edf5; font-size:0.72rem; align-items:start; }
+  .kv:last-child { border-bottom:none; }
+  .kv .k { font-weight:600; color:var(--lpse-biru); text-transform:capitalize; }
+  .kv .v { color:#1e293b; word-break:break-word; white-space:pre-wrap; }
+  .kv .v a { color:var(--lpse-biru2); text-decoration:underline; }
+  .kv .v.kosong { color:#94a3b8; }
+  .kv .v.daftar { white-space:normal; }
+  .daftar .baris, .daftar .kbli-row { padding:3px 0 3px 10px; margin-bottom:4px; border-left:2px solid #dde3ed; }
+  .daftar .baris b { font-weight:600; }
+  .daftar .kbli-row { display:flex; gap:8px; }
+  .daftar .kbli-kode { flex:0 0 auto; min-width:46px; font-weight:600; }
+
+  details.lipat { border-bottom:1px solid #e8edf5; }
+  details.lipat:last-child { border-bottom:none; }
+  details.lipat > summary { cursor:pointer; list-style:none; display:flex; align-items:center; gap:8px; padding:8px 0; font-size:0.72rem; font-weight:600; color:var(--lpse-biru); text-transform:capitalize; }
+  details.lipat > summary::-webkit-details-marker { display:none; }
+  details.lipat > summary::before { content:"\25B8"; display:inline-block; width:10px; transition:transform .15s; }
+  details.lipat[open] > summary::before { transform:rotate(90deg); }
+  details.lipat > summary .badge { font-size:0.58rem; font-weight:600; color:#475569; background:#e8edf5; border-radius:10px; padding:1px 8px; text-transform:none; }
+  details.lipat > .isi { margin-left:5px; padding-left:14px; border-left:2px solid #dde3ed; }
+  details.lipat > summary:focus-visible, .btn-search:focus-visible, .btn-reset:focus-visible, .btn-theme:focus-visible { outline:2px solid var(--lpse-kuning); outline-offset:2px; }
+
+  #loadingOverlay { position:fixed; inset:0; background:rgba(255,255,255,0.85); display:none; flex-direction:column; align-items:center; justify-content:center; z-index:10000; }
+  .loader { border:4px solid #f3f3f3; border-top:4px solid var(--lpse-biru); border-radius:50%; width:25px; height:25px; animation:spin 1s linear infinite; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .loader { animation-duration:3s; } details.lipat > summary::before { transition:none; } }
+
+  /* ===== MODE GELAP ===== */
+  html.dark { color-scheme:dark; }
+  html.dark body { background:#0b1220; color:#e2e8f0; }
+  html.dark .page-header { background:linear-gradient(135deg,#0f2347 0%,#15366a 100%); box-shadow:0 3px 12px rgba(0,0,0,0.5); }
+  html.dark [style*="#64748b"], html.dark .hint, html.dark .result-bar { color:#94a3b8 !important; }
+  html.dark .filter-card { background:#162033; border-top-color:#3b82f6; box-shadow:0 2px 8px rgba(0,0,0,0.4); }
+  html.dark .filter-card label { color:#94a3b8; }
+  html.dark .filter-card input { background:#0f172a; border-color:#334155; color:#e2e8f0; }
+  html.dark .filter-card input:focus { border-color:#60a5fa; }
+  html.dark .btn-search { background:#2563b0; }
+  html.dark .btn-search:hover { background:#3b82f6; }
+  html.dark .btn-reset { background:#0f172a; color:#cbd5e1; border-color:#334155; }
+  html.dark .btn-reset:hover { background:#1e293b; }
+  html.dark .result-bar code { background:#0f172a; color:#e2e8f0; }
+  html.dark .result-card { background:#162033; box-shadow:0 2px 10px rgba(0,0,0,0.5); }
+  html.dark .kv, html.dark details.lipat { border-color:#263449; }
+  html.dark .kv .k, html.dark details.lipat > summary { color:#93c5fd; }
+  html.dark .kv .v { color:#f1f5f9; }
+  html.dark .kv .v a { color:#7dd3fc; }
+  html.dark .kv .v.kosong { color:#64748b; }
+  html.dark .daftar .baris, html.dark .daftar .kbli-row { border-left-color:#334155; }
+  html.dark details.lipat > summary .badge { background:#0f172a; color:#94a3b8; }
+  html.dark details.lipat > .isi { border-left-color:#334155; }
+  html.dark #loadingOverlay { background:rgba(11,18,32,0.88); }
+  html.dark #loadingOverlay p { color:#e2e8f0 !important; }
+  html.dark .loader { border-color:#334155; border-top-color:#60a5fa; }
+  html.dark #modalAlert > div { background:#162033; }
+  html.dark #modalAlert h3 { color:#f1f5f9; }
+  html.dark #modalAlert p { color:#94a3b8; }
+
+  @media (max-width:767px) {
+    .page-pad { padding:0 10px !important; }
+    .page-header { padding:12px 14px 10px; flex-wrap:wrap; }
+    .page-header h1 { font-size:0.95rem; }
+    .filter-card input { height:36px; font-size:16px; }
+    .filter-actions .btn-search, .filter-actions .btn-reset { flex:1; height:36px; justify-content:center; font-size:0.75rem; }
+    .kv { grid-template-columns:1fr; gap:2px; }
+    .kv .k { font-size:0.62rem; text-transform:uppercase; color:#64748b; }
+    html.dark .kv .k { color:#94a3b8; }
+  }
+</style>
+</head>
+<body>
+
+<div id="loadingOverlay"><div class="loader"></div><p id="loadingText" class="mt-2 text-sm font-semibold text-blue-900">Memproses Data...</p></div>
+
+<div class="page-header">
+  <div>
+    <h1>🛒 Detail Produk E-Katalog</h1>
+    <p class="subtitle">Tempel link produk dari katalog.inaproc.id untuk melihat seluruh data detailnya</p>
+  </div>
+  <button id="btnTheme" class="btn-theme" onclick="toggleTheme()" title="Ganti mode terang/gelap">🌙 Mode Gelap</button>
+</div>
+
+<div class="page-pad" style="padding:0 20px;">
+  <div class="color-strip">
+    <span style="background:var(--lpse-biru)"></span><span style="background:var(--lpse-merah)"></span><span style="background:var(--lpse-kuning)"></span><span style="background:var(--lpse-hijau)"></span>
+  </div>
+
+  <div class="filter-card">
+    <label for="inputLink">Link produk atau kode produk</label>
+    <input id="inputLink" type="text" placeholder="https://katalog.inaproc.id/nama-penyedia/nama-produk" autocomplete="off" />
+    <p class="hint">Bisa juga langsung menempelkan kode produk (contoh: 77c62ad9-7003-4371-9217-127e500eec75).</p>
+    <div class="filter-actions">
+      <button id="btnCari" class="btn-search">🔍 Tampilkan Detail</button>
+      <button id="btnReset" class="btn-reset">✕ Reset</button>
+    </div>
+  </div>
+
+  <div id="resultBar" class="result-bar">
+    <span>Kode produk: <code id="kodeProduk"></code></span>
+    <span style="display:flex; gap:6px;">
+      <button class="btn-reset" onclick="lipatSemua(true)">Buka semua</button>
+      <button class="btn-reset" onclick="lipatSemua(false)">Tutup semua</button>
+    </span>
+  </div>
+  <div id="resultCard" class="result-card"></div>
+</div>
+
+<div id="modalAlert" class="fixed inset-0 bg-black/50 z-[10000] hidden items-center justify-center backdrop-blur-sm">
+  <div class="bg-white p-4 rounded-lg shadow-2xl w-72 text-center mx-3">
+    <div class="text-3xl mb-2" id="alertIcon">⚠️</div>
+    <h3 class="text-[0.85rem] font-bold text-gray-800 mb-1" id="alertTitle">Perhatian</h3>
+    <p class="text-[0.65rem] text-gray-600 mb-4 leading-relaxed" id="alertMessage"></p>
+    <button onclick="tutupAlert()" class="px-4 py-1.5 text-white rounded font-semibold text-[0.65rem] w-full" style="background-color:var(--lpse-biru);">OK, Mengerti</button>
+  </div>
+</div>
+
+<script>
+// =====================================================
+// PENGATURAN ENDPOINT
+// =====================================================
+// Endpoint data produk (sesuai yang Bapak/Ibu sebutkan)
+const URL_API_PRODUK = "https://data.inaproc.id/api/v1/ekatalog/produk-detail?kode_produk=";
+
+// Browser tidak boleh membaca halaman katalog.inaproc.id langsung (diblokir CORS),
+// jadi pengambilan "view-source" lewat perantara di server sendiri.
+// Isi dengan alamat skrip perantara, hasilnya harus berupa HTML mentah halaman tersebut.
+// Contoh: "/proxy/halaman.php?url="   (kosongkan bila belum ada)
+const URL_PROXY_HALAMAN = "/api/halaman?url=";
+const URL_PROXY_API     = "/api/produk?kode_produk=";
+
+// =====================================================
+// UTIL
+// =====================================================
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+// Parameter yang tidak ditampilkan: product_url, success/error/meta (info teknis API), dan semua yang berawalan kd_ (kode)
+const SEMBUNYI = ["product_url", "success", "error", "meta"];
+
+// Nama tampilan: awalan "is_" dibuang, tanda _ jadi spasi
+// Kamus nama parameter berbahasa Inggris -> Indonesia (kunci ditulis huruf kecil)
+const KAMUS = {
+  "width": "Lebar",
+  "height": "Tinggi",
+  "length": "Panjang",
+  "weight": "Berat",
+  "weight_unit": "Satuan Berat",
+  "dimension_unit": "Satuan Dimensi",
+  "stock": "Stok",
+  "unit_sold": "Unit Terjual",
+  "brand": "Merek",
+  "shipping_option": "Opsi Pengiriman",
+  "product_spec_information": "Informasi Spesifikasi Produk",
+  "field_name": "Nama Isian",
+  "form_section": "Bagian Formulir",
+  "mandatory": "Wajib Diisi",
+  "user_submitted_value": "Nilai yang Diisi Penyedia"
+};
+
+// Nama tampilan: "Indonesia / English". Awalan "is_" dibuang, tanda _ jadi spasi.
+// Singkatan yang selalu ditulis kapital pada nama parameter
+const SINGKATAN = /\b(kbki|kbli|bmp|tkdn|sni|pdn|id)\b/gi;
+
+function namaTampil(k) {
+  const asli = String(k).replace(/^is_/i, "").replace(/_/g, " ");
+  const id = KAMUS[String(k).toLowerCase()];
+  const nama = id ? id + " / " + asli : asli;
+  return nama.replace(SINGKATAN, m => m.toUpperCase());
+}
+
+function kunci(o) {
+  return Object.keys(o)
+    .filter(k => !SEMBUNYI.includes(k.toLowerCase()) && !/^kd_/i.test(k))
+    .sort((a, b) => namaTampil(a).localeCompare(namaTampil(b), "id"));
+}
+
+function updateThemeButton() {
+  const dark = document.documentElement.classList.contains("dark");
+  document.getElementById("btnTheme").innerText = dark ? "☀️ Mode Terang" : "🌙 Mode Gelap";
+}
+function toggleTheme() {
+  const dark = document.documentElement.classList.toggle("dark");
+  try { localStorage.setItem("produkTheme", dark ? "dark" : "light"); } catch (e) {}
+  updateThemeButton();
+}
+try {
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    if (localStorage.getItem("produkTheme")) return;
+    document.documentElement.classList.toggle("dark", e.matches);
+    updateThemeButton();
+  });
+} catch (e) {}
+updateThemeButton();
+
+function tampilkanAlert(pesan, ikon = "⚠️", judul = "Perhatian") {
+  document.getElementById("alertIcon").innerText = ikon;
+  document.getElementById("alertTitle").innerText = judul;
+  document.getElementById("alertMessage").innerText = pesan;
+  document.getElementById("modalAlert").classList.replace("hidden", "flex");
+}
+function tutupAlert() { document.getElementById("modalAlert").classList.replace("flex", "hidden"); }
+
+function loading(on, teks) {
+  document.getElementById("loadingOverlay").style.display = on ? "flex" : "none";
+  if (teks) document.getElementById("loadingText").innerText = teks;
+  document.getElementById("btnCari").disabled = on;
+}
+
+function esc(s) {
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+// Nama parameter: tanda _ diganti spasi
+function label(k) { return esc(namaTampil(k)); }
+
+// =====================================================
+// LANGKAH 1: ambil kode produk dari link
+// =====================================================
+async function ambilKodeProduk(input) {
+  const teks = input.trim();
+  if (UUID_RE.test(teks)) return teks;
+
+  let url;
+  try { url = new URL(teks); } catch (e) { throw new Error("Isi dengan link produk yang lengkap (diawali https://) atau kode produk."); }
+  if (!/(^|\.)inaproc\.id$/i.test(url.hostname)) throw new Error("Link harus berasal dari katalog.inaproc.id.");
+  if (!URL_PROXY_HALAMAN) throw new Error("Perantara pengambil halaman belum diatur. Tempel kode produk langsung (nilai data-product-id dari view page source), atau isi URL_PROXY_HALAMAN pada skrip.");
+
+  const res = await fetch(URL_PROXY_HALAMAN + encodeURIComponent(url.href));
+  if (!res.ok) throw new Error("Halaman produk tidak dapat diambil (status " + res.status + ").");
+  const html = await res.text();
+  const m = html.match(/data-product-id\s*=\s*["']([0-9a-f-]{36})["']/i);
+  if (!m) throw new Error("Kode produk (data-product-id) tidak ditemukan pada halaman tersebut.");
+  return m[1];
+}
+
+// =====================================================
+// LANGKAH 2: tembak endpoint
+// =====================================================
+// Ambil pesan penyebab dari respons API ( error.code / message / details )
+function pesanError(d) {
+  if (!d) return "";
+  const e = d.error;
+  if (typeof e === "string") return e;
+  if (e && typeof e === "object") return [e.code, e.message, e.details].filter(Boolean).join(" - ");
+  return "";
+}
+
+async function ambilDetail(kode) {
+  const target = URL_PROXY_API ? URL_PROXY_API + encodeURIComponent(kode) : URL_API_PRODUK + encodeURIComponent(kode);
+  const res = await fetch(target, { headers: { "Accept": "application/json" } });
+  let data = null;
+  try { data = await res.json(); } catch (e) {}
+  if (!res.ok) {
+    const p = pesanError(data);
+    throw new Error("Endpoint mengembalikan status " + res.status + (p ? ": " + p : "."));
+  }
+  if (data && data.success === false) throw new Error(pesanError(data) || "Endpoint menjawab gagal (success: false).");
+  if (data && Array.isArray(data.data) && data.data.length === 0) throw new Error("Produk tidak ditemukan untuk kode tersebut.");
+  return data;
+}
+
+// =====================================================
+// LANGKAH 3: tampilkan JSON (objek/array berlipat)
+// =====================================================
+const BULAN = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+const KEY_RUPIAH = ["harga"];
+const KEY_ANGKA  = ["stock", "unit_sold"];
+const KEY_DIMENSI = ["width", "height", "length"];
+const KEY_BERAT   = ["weight"];
+const KEY_KECIL  = ["weight_unit", "dimension_unit"];
+
+// Teks banyak baris: "Judul: isi" per baris, judul ditebalkan
+function blokBaris(s) {
+  const baris = s.split("\n").map(x => x.trim()).filter(Boolean).map(l => {
+    const m = l.match(/^([^:]{1,80}):\s*(.*)$/);
+    return m ? '<div class="baris"><b>' + esc(m[1]) + "</b>: " + esc(m[2]) + "</div>" : '<div class="baris">' + esc(l) + "</div>";
+  });
+  return '<div class="v daftar">' + baris.join("") + "</div>";
+}
+
+function nilaiSederhana(v, k, induk) {
+  if (v === null || v === undefined || v === "") return '<div class="v kosong">-</div>';
+  if (typeof v === "boolean") return '<div class="v">' + (v ? "Ya" : "Tidak") + "</div>";
+  const s = String(v);
+  const kk = String(k || "").toLowerCase();
+    // Huruf kecil semua
+  if (KEY_KECIL.includes(kk)) return '<div class="v">' + esc(s.toLowerCase()) + "</div>";
+
+  // Harga: Rp dan titik ribuan
+  if (KEY_RUPIAH.includes(kk) && s.trim() !== "" && !isNaN(Number(s)))
+    return '<div class="v">Rp ' + Number(s).toLocaleString("id-ID") + "</div>";
+
+  // Ukuran dan berat: titik ribuan + satuan dari dimension_unit / weight_unit
+  const jenisSatuan = KEY_DIMENSI.includes(kk) ? "dimension_unit" : KEY_BERAT.includes(kk) ? "weight_unit" : null;
+  if (jenisSatuan && s.trim() !== "" && !isNaN(Number(s))) {
+    const satuan = induk && typeof induk[jenisSatuan] === "string" ? " " + induk[jenisSatuan].toLowerCase() : "";
+    return '<div class="v">' + Number(s).toLocaleString("id-ID") + esc(satuan) + "</div>";
+  }
+
+  // Angka: titik ribuan
+  if (KEY_ANGKA.includes(kk) && s.trim() !== "" && !isNaN(Number(s)))
+    return '<div class="v">' + Number(s).toLocaleString("id-ID") + "</div>";
+
+  // Tanggal: 11 September 2025 (2025-09-11T01:54:43.508307Z)
+  if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/.test(s)) {
+    const d = new Date(s.replace(/\.\d+/, ""));
+    if (!isNaN(d)) {
+      const w = new Date(d.getTime() + 7 * 3600 * 1000);   // UTC -> WIB
+      const tgl = w.getUTCDate() + " " + BULAN[w.getUTCMonth()] + " " + w.getUTCFullYear();
+      // Jam hanya ditampilkan bila datanya memang memuat jam (bukan tepat 00:00:00 UTC)
+      const adaJam = d.getUTCHours() || d.getUTCMinutes() || d.getUTCSeconds();
+      const jam = adaJam ? " " + String(w.getUTCHours()).padStart(2, "0") + ":" + String(w.getUTCMinutes()).padStart(2, "0") + " WIB" : "";
+      return '<div class="v">' + tgl + jam + " (" + esc(s) + ")</div>";
+    }
+  }
+
+  // Teks banyak baris (misalnya Spesifikasi Produk): tiap baris jadi blok sendiri
+  if (s.includes("\n")) return blokBaris(s);
+
+  if (/^https?:\/\/\S+$/i.test(s)) return '<div class="v"><a href="' + esc(s) + '" target="_blank" rel="noopener noreferrer">' + esc(s) + "</a></div>";
+  return '<div class="v">' + esc(s) + "</div>";
+}
+
+function adaIsi(v) { return v !== null && typeof v === "object"; }
+
+function judulItem(item, i) {
+  if (adaIsi(item)) {
+    for (const k of ["nama", "nama_produk", "nama_penyedia", "judul", "title", "name", "field_name"]) {
+      if (typeof item[k] === "string" && item[k]) return "Data " + (i + 1) + " : " + item[k];
+    }
+  }
+  return "Data " + (i + 1);
+}
+
+// Gabungkan kbli_id dan nama_kbli menjadi satu baris: "kode - nama" per baris.
+// Dipakai hanya jika jumlah kode sama dengan jumlah nama (nama dipisah 2 spasi atau lebih).
+function gabungKbli(o) {
+  const kosong = { skip: [], html: "" };
+  const ks = Object.keys(o);
+  const nk = ks.find(k => k.toLowerCase() === "nama_kbli" && typeof o[k] === "string");
+  if (!nk) return kosong;
+  const names = o[nk].split(/\s{2,}/).map(s => s.trim()).filter(Boolean);
+  const ik = ks.find(k => {
+    if (k.toLowerCase() !== "kbli_id" || typeof o[k] !== "string") return false;
+    const c = o[k].trim().split(/\s+/);
+    return c.length === names.length && c.every(x => /^\d+$/.test(x));
+  });
+  if (!ik || names.length === 0) return kosong;
+  const codes = o[ik].trim().split(/\s+/);
+  const baris = codes.map((c, i) => '<div class="kbli-row"><span class="kbli-kode">' + esc(c) + "</span><span>" + esc(names[i]) + "</span></div>").join("");
+  return { skip: [nk, ik], html: '<div class="kv"><div class="k">KBLI</div><div class="v daftar">' + baris + "</div></div>" };
+}
+
+// Daftar baris untuk satu objek (sudah disaring, digabung, dan diurutkan A-Z)
+function isiObjek(v) {
+  const g = gabungKbli(v);
+  const daftar = kunci(v).filter(k => !g.skip.includes(k)).map(k => ({ n: namaTampil(k), h: render(k, v[k], v) }));
+  if (g.html) daftar.push({ n: "kbli", h: g.html });
+  return daftar.sort((a, b) => a.n.localeCompare(b.n, "id"));
+}
+
+function render(k, v, induk) {
+  if (!adaIsi(v)) return '<div class="kv"><div class="k">' + label(k) + "</div>" + nilaiSederhana(v, k, induk) + "</div>";
+
+  const isArr = Array.isArray(v);
+  const daftar = isArr ? v.map((it, i) => render(judulItem(it, i), it)) : isiObjek(v).map(x => x.h);
+  const jumlah = daftar.length;
+  const badge = isArr ? jumlah + " data" : jumlah + " parameter";
+  if (jumlah === 0) return '<div class="kv"><div class="k">' + label(k) + '</div><div class="v kosong">-</div></div>';
+
+  return '<details class="lipat"><summary>' + label(k) + ' <span class="badge">' + badge + '</span></summary><div class="isi">' + daftar.join("") + "</div></details>";
+}
+
+function tampilkanHasil(kode, data) {
+ 
+  let html = "";
+  if (adaIsi(data) && !Array.isArray(data)) {
+    kunci(data).forEach(k => { html += render(k, data[k]); });
+  } else {
+    html = render("Data", data);
+  }
+  document.getElementById("kodeProduk").innerText = kode;
+  document.getElementById("resultCard").innerHTML = html;
+  document.getElementById("resultBar").style.display = "flex";
+  document.getElementById("resultCard").style.display = "block";
+}
+
+function lipatSemua(buka) {
+  document.querySelectorAll("#resultCard details").forEach(d => d.open = buka);
+}
+
+function sembunyikanHasil() {
+  document.getElementById("resultBar").style.display = "none";
+  document.getElementById("resultCard").style.display = "none";
+  document.getElementById("resultCard").innerHTML = "";
+}
+
+// =====================================================
+// EVENT
+// =====================================================
+async function jalankan() {
+  const input = document.getElementById("inputLink").value;
+  if (!input.trim()) { tampilkanAlert("Tempel link produk atau kode produk terlebih dahulu.", "ℹ️", "Belum ada isian"); return; }
+  sembunyikanHasil();
+  try {
+    loading(true, "Mengambil kode produk...");
+    const kode = await ambilKodeProduk(input);
+    loading(true, "Mengambil detail produk...");
+    const data = await ambilDetail(kode);
+    tampilkanHasil(kode, data);
+  } catch (err) {
+    console.error(err);
+    const cors = err instanceof TypeError;
+    tampilkanAlert(cors ? "Permintaan diblokir browser (kemungkinan CORS) atau jaringan terputus. Gunakan skrip perantara di server, lalu isi URL_PROXY_HALAMAN / URL_PROXY_API." : err.message, "⚠️", "Gagal memuat");
+  } finally {
+    loading(false);
+  }
+}
+
+document.getElementById("btnCari").addEventListener("click", jalankan);
+document.getElementById("inputLink").addEventListener("keypress", (e) => { if (e.key === "Enter") { e.preventDefault(); jalankan(); } });
+document.getElementById("btnReset").addEventListener("click", () => { document.getElementById("inputLink").value = ""; sembunyikanHasil(); });
+</script>
+</body>
+</html>

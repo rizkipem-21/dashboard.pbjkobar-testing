@@ -1,0 +1,7 @@
+{
+  "name": "dashboard-pbjkobar",
+  "private": true,
+  "scripts": {
+    "dev": "node -e \"require('fs').writeFileSync('.dev.vars','INAPROC_TOKEN='+require('fs').readFileSync('token.txt','utf8').trim())\" && npx wrangler pages dev ."
+  }
+}

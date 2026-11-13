@@ -27,3 +27,5 @@ config_rahasia.py
 IP_pengajuan_Token.txt
 token.txt
 url_gagal.txt
+.dev.vars
+.wrangler/
