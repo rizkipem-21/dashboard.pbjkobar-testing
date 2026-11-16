@@ -1,6 +1,6 @@
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const INAPROC = "https://data.inaproc.id/api/v1/ekatalog/produk-detail?kode_produk=";
-const PESAN_MATI = "Layanan Detail Produk sedang tidak aktif (komputer kantor belum menyala). Coba lagi nanti.";
+const PESAN_MATI = "Layanan Detail Produk sedang tidak aktif (server mati). Coba lagi nanti.";
 
 const json = (obj, status = 200) =>
   new Response(JSON.stringify(obj), {
