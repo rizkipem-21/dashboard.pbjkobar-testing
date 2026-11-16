@@ -31,7 +31,7 @@ token.txt
 url_gagal.txt
 .dev.vars
 .wrangler/
-*.bak
+*.bak*
 logs/
 running.lock
 scripts/induk/hasil_download.json
