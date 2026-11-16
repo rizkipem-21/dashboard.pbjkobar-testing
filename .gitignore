@@ -29,3 +29,4 @@ token.txt
 url_gagal.txt
 .dev.vars
 .wrangler/
+*.bak

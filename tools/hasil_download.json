@@ -1,16 +1,26 @@
 {
-  "waktu": "11 November 2026 | 12.44 WIB",
-  "durasi": "0:04:17",
+  "waktu": "16 November 2026 | 11.09 WIB",
+  "durasi": "0:05:48",
   "ringkasan": {
-    "ok": 67,
-    "gagal": 2,
+    "ok": 57,
+    "gagal": 12,
     "kosong": 1,
     "skip": 41
   },
   "gagal_total": false,
   "error": [
-    "❌ RUP+PENGADAAN V1 (2026) - rup_paket-penyedia (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv) [gagal beruntun 4x]",
-    "❌ PENGADAAN V1 (2025) - rup_paket-penyedia (Status 500 - Error internal di server Inaproc | Pesan server: Ups! Ada yang Tidak Beres di Pihak Kami Mohon maaf yang sebesar-besarnya, ada kesalahan tak terduga yang terjadi di serv) [gagal beruntun 4x]"
+    "❌ PENGADAAN LEGACY (2026) - tender_non-tender-ekontrak-bapbast (Status 404 - Endpoint/data tidak ditemukan (cek URL) | Pesan server: 404 page not found)",
+    "❌ PENGADAAN LEGACY (2026) - tender_non-tender-ekontrak-spmkspp (Status 404 - Endpoint/data tidak ditemukan (cek URL) | Pesan server: 404 page not found)",
+    "❌ PENGADAAN LEGACY (2026) - tender_non-tender-ekontrak-sppbj (Status 404 - Endpoint/data tidak ditemukan (cek URL) | Pesan server: 404 page not found)",
+    "❌ PENGADAAN LEGACY (2026) - tender_tender-ekontrak-bapbast (Status 404 - Endpoint/data tidak ditemukan (cek URL) | Pesan server: 404 page not found)",
+    "❌ PENGADAAN LEGACY (2026) - tender_tender-ekontrak-spmkspp (Status 404 - Endpoint/data tidak ditemukan (cek URL) | Pesan server: 404 page not found)",
+    "❌ PENGADAAN LEGACY (2026) - tender_tender-ekontrak-sppbj (Status 404 - Endpoint/data tidak ditemukan (cek URL) | Pesan server: 404 page not found)",
+    "❌ PENGADAAN LEGACY (2025) - tender_non-tender-ekontrak-bapbast (Status 404 - Endpoint/data tidak ditemukan (cek URL) | Pesan server: 404 page not found)",
+    "❌ PENGADAAN LEGACY (2025) - tender_non-tender-ekontrak-spmkspp (Status 404 - Endpoint/data tidak ditemukan (cek URL) | Pesan server: 404 page not found)",
+    "❌ PENGADAAN LEGACY (2025) - tender_non-tender-ekontrak-sppbj (Status 404 - Endpoint/data tidak ditemukan (cek URL) | Pesan server: 404 page not found)",
+    "❌ PENGADAAN LEGACY (2025) - tender_tender-ekontrak-bapbast (Status 404 - Endpoint/data tidak ditemukan (cek URL) | Pesan server: 404 page not found)",
+    "❌ PENGADAAN LEGACY (2025) - tender_tender-ekontrak-spmkspp (Status 404 - Endpoint/data tidak ditemukan (cek URL) | Pesan server: 404 page not found)",
+    "❌ PENGADAAN LEGACY (2025) - tender_tender-ekontrak-sppbj (Status 404 - Endpoint/data tidak ditemukan (cek URL) | Pesan server: 404 page not found)"
   ],
   "kosong": [
     "ℹ️ PENGADAAN V1 (2026) - ekatalog-archive paket-e-purchasing"

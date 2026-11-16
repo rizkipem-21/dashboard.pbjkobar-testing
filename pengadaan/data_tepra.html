@@ -22,6 +22,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rekap Data TEPRA</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
 <script>
   // Urutan: pilihan tersimpan user > pengaturan tema perangkat (OS/browser) > terang
@@ -672,30 +673,97 @@ document.getElementById("selectYear").addEventListener("change", (e) => {
   fetchTabData();
 });
 
-function downloadExcelHarian() {
+// ==========================================
+// DOWNLOAD EXCEL (dibuat di browser dari 5 JSON, satu sheet per tab)
+// ==========================================
+const TAB_EXCEL = [
+  { file: "rekap_tepra_0_50m",     sheet: "Non strategis 0 sd 50 jt",    lengkap: false },
+  { file: "rekap_tepra_50_200m",   sheet: "Non strategis 50jt sd 200jt", lengkap: true },
+  { file: "rekap_tepra_200m_2v5m", sheet: "Strategis > 200jt sd 2,5m",   lengkap: true },
+  { file: "rekap_tepra_2v5m_50m",  sheet: "Strategis > 2,5m sd 50m",     lengkap: true },
+  { file: "rekap_tepra_total",     sheet: "Total Keseluruhan Paket",     lengkap: true }
+];
+
+function kolomExcel(lengkap) {
+  const k = [
+    ["DATA LAPORAN", "Data Laporan_Paket", "Data Laporan_Pagu"],
+    [lengkap ? "PEMILIHAN/PELAKSANAAN" : "DATA REALISASI (RUP)", "Pemilihan_Paket", "Pemilihan_Pagu"],
+    [lengkap ? "HASIL PEMILIHAN" : "DATA REALISASI", "Hasil_Paket", "Hasil_Pagu"]
+  ];
+  if (lengkap) {
+    k.push(["KONTRAK", "Kontrak_Paket", "Kontrak_Pagu"]);
+    k.push(["SERAH TERIMA", "SerahTerima_Paket", "SerahTerima_Pagu"]);
+  }
+  k.push(["BELUM PENGADAAN", "Belum_Paket", "Belum_Pagu"]);
+  return k;
+}
+
+function buatSheetExcel(data, lengkap) {
+  const kol = kolomExcel(lengkap);
+  const header = ["NO", "SATUAN KERJA"];
+  kol.forEach(k => { header.push(k[0] + " - PAKET"); header.push(k[0] + " - Rp"); });
+  header.push("PROGRES (%)");
+
+  const aoa = [header];
+  let nomor = 1;
+  data.forEach(row => {
+    const isTotal = row["Satuan Kerja"] === "TOTAL KESELURUHAN";
+    const baris = [isTotal ? "" : nomor++, row["Satuan Kerja"]];
+    kol.forEach(k => { baris.push(Number(row[k[1]]) || 0); baris.push(Number(row[k[2]]) || 0); });
+    baris.push(row["Data Laporan_Paket"] ? Number(row["Progres_Persen"] || 0) / 100 : "-");
+    aoa.push(baris);
+  });
+
+  const ws = XLSX.utils.aoa_to_sheet(aoa);
+  const lastCol = header.length - 1;
+  for (let r = 1; r < aoa.length; r++) {
+    for (let c = 2; c <= lastCol; c++) {
+      const cell = ws[XLSX.utils.encode_cell({ r: r, c: c })];
+      if (cell && cell.t === "n") cell.z = (c === lastCol) ? "0.0%" : "#,##0";
+    }
+  }
+  ws["!cols"] = header.map((h, i) => ({ wch: i === 0 ? 5 : (i === 1 ? 38 : (i === lastCol ? 12 : 16)) }));
+  return ws;
+}
+
+async function downloadExcelHarian() {
   const btn = document.querySelector(".btn-excel");
   const originalText = btn.innerText;
-  
-  btn.innerText = "⏳ Mengunduh...";
+  btn.innerText = "⏳ Menyiapkan...";
   btn.style.opacity = "0.7";
   btn.style.pointerEvents = "none";
-  
-  const today = new Date();
-  const yyyy = today.getFullYear();
-  const mm = String(today.getMonth() + 1).padStart(2, '0');
-  const dd = String(today.getDate()).padStart(2, '0');
-  const dateStr = `${yyyy}-${mm}-${dd}`;
-  
-  const fileName = `Tepra Kobar_Progres PBJ tahun ${currentYear} (${dateStr}).xlsx`;
-  const fileUrl = `../output/tepra/${currentYear}/${fileName}`;
-  
-  window.location.href = fileUrl;
-  
-  setTimeout(() => {
+
+  try {
+    if (typeof XLSX === "undefined") throw new Error("Pustaka Excel (SheetJS) gagal dimuat. Periksa koneksi internet lalu muat ulang halaman.");
+
+    const hasil = await Promise.all(TAB_EXCEL.map(async (t) => {
+      try {
+        const res = await fetch(`../data/${currentYear}/${t.file}_${currentYear}.json?t=${Date.now()}`);
+        if (!res.ok) return null;
+        const data = await res.json();
+        return (Array.isArray(data) && data.length) ? data : null;
+      } catch (e) { return null; }
+    }));
+
+    const wb = XLSX.utils.book_new();
+    let jumlah = 0;
+    TAB_EXCEL.forEach((t, i) => {
+      if (!hasil[i]) return;
+      XLSX.utils.book_append_sheet(wb, buatSheetExcel(hasil[i], t.lengkap), t.sheet);
+      jumlah++;
+    });
+    if (!jumlah) throw new Error("Data Tepra tahun " + currentYear + " belum tersedia.");
+
+    const today = new Date();
+    const tgl = today.getFullYear() + "-" + String(today.getMonth() + 1).padStart(2, "0") + "-" + String(today.getDate()).padStart(2, "0");
+    XLSX.writeFile(wb, `Tepra Kobar_Progres PBJ tahun ${currentYear} (${tgl}).xlsx`);
+  } catch (e) {
+    alert(e.message || "Gagal membuat file Excel.");
+  } finally {
     btn.innerText = originalText;
     btn.style.opacity = "1";
     btn.style.pointerEvents = "auto";
-  }, 1500);
+  }
 }
 
 // INISIALISASI

@@ -7,7 +7,6 @@
 #     PENGADAAN : hanya tahun n-2 yang dilewati jika rekap_pengadaan_{tahun}.json / file JSON-nya sudah ada
 #     URL dipakai kedua sumber -> tetap diunduh selama salah satu sumber masih membutuhkannya
 # - File ditulis lewat file sementara (.tmp) lalu diganti -> tidak pernah setengah jadi
-# - Backup harian ke arsip_json dengan percobaan ulang; gagal backup TIDAK menghentikan proses
 # - Log sendiri (tools/log_download.txt) & notifikasi Telegram sendiri (CHAT_ID_DOWNLOAD)
 # - Kode keluar: 0 = normal (boleh ada file gagal, file lama dipertahankan)
 #                2 = SEMUA unduhan gagal (induk .bat sebaiknya melewati generate)
@@ -19,7 +18,6 @@ import re
 import sys
 import json
 import time
-import shutil
 import traceback
 import warnings
 import requests
@@ -191,35 +189,8 @@ def kirim_telegram(pesan):
                 log_print(f"🚨 GAGAL KONEKSI KE TELEGRAM: {str(e)}")
 
 # ======================================================
-# FILE: BACKUP HARIAN & TULIS AMAN
+# FILE: TULIS AMAN
 # ======================================================
-def backup_harian(output_path, filename):
-    """Salin file lama ke arsip_json bila berasal dari hari sebelumnya. Gagal -> peringatan saja, proses lanjut."""
-    if not os.path.exists(output_path): return
-    tgl_file = datetime.fromtimestamp(os.path.getmtime(output_path)).date()
-    if tgl_file >= datetime.now().date(): return
-
-    m = re.search(r'(20\d{2})', filename)
-    base_arsip = os.path.join(BASE_DIR, 'arsip_json', str(tgl_file.year), f"{tgl_file.month:02d}", f"{tgl_file.day:02d}")
-    if m:
-        f_arsip, folder_log = os.path.join(base_arsip, m.group(1)), f"{tgl_file}/{m.group(1)}"
-    else:
-        f_arsip, folder_log = base_arsip, f"{tgl_file}"
-
-    err = ""
-    for i in range(1, 6):
-        try:
-            os.makedirs(f_arsip, exist_ok=True)
-            shutil.copy2(output_path, os.path.join(f_arsip, filename))
-            log_print(f"[BACKUP] {filename} di-copy ke arsip {folder_log}")
-            return
-        except OSError as e:
-            err = f"{type(e).__name__}: {str(e)[:80]}"
-            log_print(f"[BACKUP] Gagal salin {filename} (percobaan {i}/5): {err}")
-            time.sleep(2 * i)
-    daftar_peringatan.append(f"⚠️ Backup {filename} GAGAL ({err}) - file lama tertimpa tanpa arsip")
-    log_print(f"[BACKUP] {filename} dilewati setelah 5 percobaan, proses tetap dilanjutkan.")
-
 def tulis_json_aman(output_path, data):
     """Tulis ke .tmp lalu os.replace -> file tujuan tidak pernah setengah jadi. Return (berhasil, pesan_error)"""
     tmp = output_path + ".tmp"
@@ -358,7 +329,6 @@ def proses_url(e, tahun, perlu, output_path, filename):
     maks = MAKS_COBA_RINGAN if n_gagal >= BATAS_BERUNTUN else MAKS_COBA
 
     log_print("")
-    backup_harian(output_path, filename)
     info = f" (dicoba {maks}x: gagal beruntun {n_gagal} kali)" if maks < MAKS_COBA else ""
     log_print(f"DOWNLOAD [{e['tipe'].upper()}] [{label}]: {target_url}{info}")
 
@@ -379,7 +349,7 @@ def proses_url(e, tahun, perlu, output_path, filename):
 
     streak.pop(filename, None)   # berhasil -> hitungan beruntun direset
 
-    if e['is_v1'] and len(data) == 0:
+    if hitung_baris(data) == 0:
         if ada_lama:
             log_print(f"  -> [Aman] Data API kosong (null), mempertahankan file {filename} lama yang utuh.")
             daftar_kosong.append(f"ℹ️ {tag.replace('_', ' ')}")

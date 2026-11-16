@@ -1,4 +1,14 @@
 {
- "v1_rup_paket-penyedia_2026.json": 4,
- "v1_rup_paket-penyedia_2025.json": 4
+ "Legacy_tender_non-tender-ekontrak-bapbast_2026.json": 1,
+ "Legacy_tender_non-tender-ekontrak-spmkspp_2026.json": 1,
+ "Legacy_tender_non-tender-ekontrak-sppbj_2026.json": 1,
+ "Legacy_tender_tender-ekontrak-bapbast_2026.json": 1,
+ "Legacy_tender_tender-ekontrak-spmkspp_2026.json": 1,
+ "Legacy_tender_tender-ekontrak-sppbj_2026.json": 1,
+ "Legacy_tender_non-tender-ekontrak-bapbast_2025.json": 1,
+ "Legacy_tender_non-tender-ekontrak-spmkspp_2025.json": 1,
+ "Legacy_tender_non-tender-ekontrak-sppbj_2025.json": 1,
+ "Legacy_tender_tender-ekontrak-bapbast_2025.json": 1,
+ "Legacy_tender_tender-ekontrak-spmkspp_2025.json": 1,
+ "Legacy_tender_tender-ekontrak-sppbj_2025.json": 1
 }

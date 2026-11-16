@@ -865,19 +865,19 @@
   },
   {
     "Satuan Kerja": "RUMAH SAKIT UMUM DAERAH SULTAN IMANUDDIN - 1.02.0.00.0.00.01.0001",
-    "Data Laporan_Paket": 34,
-    "Data Laporan_Pagu": 209087364038.0,
-    "Pemilihan_Paket": 26,
-    "Pemilihan_Pagu": 138750184000.0,
-    "Hasil_Paket": 26,
-    "Hasil_Pagu": 9429544417.0,
-    "Kontrak_Paket": 26,
-    "Kontrak_Pagu": 9429544417.0,
+    "Data Laporan_Paket": 36,
+    "Data Laporan_Pagu": 222983683038.0,
+    "Pemilihan_Paket": 28,
+    "Pemilihan_Pagu": 152646503000.0,
+    "Hasil_Paket": 28,
+    "Hasil_Pagu": 9658671400.0,
+    "Kontrak_Paket": 28,
+    "Kontrak_Pagu": 9658671400.0,
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 8,
     "Belum_Pagu": 70337180038.0,
-    "Progres_Persen": 76.5
+    "Progres_Persen": 77.8
   },
   {
     "Satuan Kerja": "SATUAN POLISI PAMONG PRAJA - 1.05.0.00.0.00.01.0000",
@@ -929,18 +929,18 @@
   },
   {
     "Satuan Kerja": "TOTAL KESELURUHAN",
-    "Data Laporan_Paket": 54,
-    "Data Laporan_Pagu": 289073949553.0,
-    "Pemilihan_Paket": 40,
-    "Pemilihan_Pagu": 199817554800.0,
-    "Hasil_Paket": 40,
-    "Hasil_Pagu": 69681622152.0,
-    "Kontrak_Paket": 40,
-    "Kontrak_Pagu": 69681622152.0,
+    "Data Laporan_Paket": 56,
+    "Data Laporan_Pagu": 302970268553.0,
+    "Pemilihan_Paket": 42,
+    "Pemilihan_Pagu": 213713873800.0,
+    "Hasil_Paket": 42,
+    "Hasil_Pagu": 69910749135.0,
+    "Kontrak_Paket": 42,
+    "Kontrak_Pagu": 69910749135.0,
     "SerahTerima_Paket": 0,
     "SerahTerima_Pagu": 0.0,
     "Belum_Paket": 14,
     "Belum_Pagu": 89256394753.0,
-    "Progres_Persen": 74.1
+    "Progres_Persen": 75.0
   }
 ]

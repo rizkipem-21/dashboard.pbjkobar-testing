@@ -581,7 +581,10 @@ async function loadDataByYear(year){
     const masterLink = document.getElementById("downloadMaster");
     masterLink.dataset.fileurl = `../data/${year}/master_pengadaan_${year}.xlsx`;
     masterLink.href = "#";
-    masterLink.classList.remove("disabled");
+    try {
+      const h = await fetch(masterLink.dataset.fileurl, { method: "HEAD" });
+      masterLink.classList.toggle("disabled", !h.ok);
+    } catch { masterLink.classList.add("disabled"); }
   } catch (error) {
     console.error(error);
     allData = [];
