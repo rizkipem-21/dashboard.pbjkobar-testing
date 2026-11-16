@@ -6,17 +6,11 @@
 import pandas as pd
 import json
 import os
-import sys
-import subprocess
-import shutil
 from datetime import datetime, timedelta, timezone
 import warnings
 from openpyxl import load_workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 
-# Memastikan bisa import config_rahasia dari root folder
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
-import config_rahasia
 
 warnings.filterwarnings("ignore")
 
@@ -25,15 +19,33 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 tahun_n  = datetime.now().year       
 daftar_tahun = [tahun_n, tahun_n - 1, tahun_n - 2]
 
-LOG_FILE = os.path.join(BASE_DIR, 'tools', 'log_detail_rup.txt')
-os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
+LOG_DIR = os.path.join(BASE_DIR, 'logs', 'rup')
+os.makedirs(LOG_DIR, exist_ok=True)
+LOG_FILE = os.path.join(LOG_DIR, f"log_rup_{datetime.now().strftime('%Y-%m-%d')}.txt")
+# Simpan log 30 hari terakhir saja, yang lebih tua dihapus
+import time as _t
+for _f in os.listdir(LOG_DIR):
+    if _f.startswith('log_rup_') and _f.endswith('.txt'):
+        try:
+            if os.path.getmtime(os.path.join(LOG_DIR, _f)) < _t.time() - 30 * 86400:
+                os.remove(os.path.join(LOG_DIR, _f))
+        except OSError: pass
+
+_baris_tertunda = ""
 
 def log_print(*args, **kwargs):
+    global _baris_tertunda
     msg = " ".join(str(a) for a in args)
-    print(msg, **kwargs) 
-    if 'end' in kwargs and kwargs['end'] == " ": return
-    with open(LOG_FILE, 'a', encoding='utf-8') as f:
-        f.write(msg + '\n')
+    print(msg, **kwargs)
+    if kwargs.get('end') == " ":
+        _baris_tertunda += msg + " "
+        return
+    try:
+        with open(LOG_FILE, 'a', encoding='utf-8') as f:
+            f.write(_baris_tertunda + msg + '\n')
+    except OSError:
+        pass
+    _baris_tertunda = ""
 
 def get_waktu_indonesia():
     tz_wib = timezone(timedelta(hours=7))
@@ -64,49 +76,6 @@ def cek_aspek(val):
     val_str = str(val).lower()
     return "Ya" if val_str == 'true' else "Tidak"
 
-def sync_to_github():
-    log_print("\n" + "="*50)
-    log_print("MENGIRIM EXCEL DETAIL RUP KE GITHUB...")
-    log_print("==================================================")
-    waktu_sekarang = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-
-    try:
-        subprocess.run(["git", "config", "user.name", "rizkipem-21"], cwd=BASE_DIR)
-        subprocess.run(["git", "config", "user.email", "rizki.pem@gmail.com"], cwd=BASE_DIR)
-        subprocess.run(["git", "add", "."], capture_output=True, text=True, cwd=BASE_DIR)
-        
-        commit_msg = f"Auto update Detail RUP {waktu_sekarang}"
-        subprocess.run(["git", "commit", "-m", commit_msg], capture_output=True, text=True, cwd=BASE_DIR)
-        res_push = subprocess.run(["git", "push"], capture_output=True, text=True, cwd=BASE_DIR)
-        
-        if res_push.returncode == 0:
-            log_print("✅ PUSH GITHUB SUKSES!")
-            return True, "✅ Push ke GitHub BERHASIL"
-        else:
-            log_print("⚠️ PUSH GAGAL / TIDAK ADA PERUBAHAN.")
-            return False, "⚠️ Push gagal atau tidak ada perubahan."
-    except Exception as e:
-        log_print(f"ERROR GIT: {str(e)}")
-        return False, f"❌ Error Git:\n`{str(e)}`"
-
-def kirim_telegram_aman(pesan):
-    if len(pesan) > 4000: pesan = pesan[:4000] + "\n...[TERPOTONG]"
-    import requests
-    import time
-    url = f"https://api.telegram.org/bot{config_rahasia.BOT_TOKEN}/sendMessage"
-    
-    for percobaan in range(1, 4):
-        try:
-            res = requests.post(url, data={"chat_id": config_rahasia.CHAT_ID, "text": pesan}, timeout=30)
-            if res.status_code != 200:
-                log_print(f"🚨 GAGAL KIRIM TELEGRAM (STATUS {res.status_code}): {res.text}")
-            break
-        except Exception as e:
-            if percobaan < 3:
-                log_print(f"⚠️ Koneksi Telegram lambat. Mencoba ulang ({percobaan}/3)...")
-                time.sleep(5)
-            else:
-                log_print(f"🚨 GAGAL KONEKSI KE TELEGRAM (JARINGAN PUTUS): {str(e)}")
 
 def load_json_local(path):
     if not os.path.exists(path): return []
@@ -124,62 +93,6 @@ def get_file_path(data_dir, base_name, tahun):
     v1_path = os.path.join(data_dir, f"v1_{base_name}_{tahun}.json")
     legacy_path = os.path.join(data_dir, f"Legacy_{base_name}_{tahun}.json")
     return v1_path if os.path.exists(v1_path) else legacy_path
-
-def kelola_arsip_detail(folder_path, tahun):
-    if not os.path.exists(folder_path): return
-    folder_arsip = os.path.join(BASE_DIR, 'arsip_lokal', 'rup', str(tahun))
-    os.makedirs(folder_arsip, exist_ok=True)
-    file_excel = [f for f in os.listdir(folder_path) if f.startswith('Detail_RUP') and f.endswith('.xlsx') and not f.startswith('~$')]
-    
-    arsip_harian = {}
-    for f in file_excel:
-        import re
-        match = re.search(r"\((.*?)\)", f)
-        if match:
-            tgl = match.group(1)
-            if tgl not in arsip_harian: arsip_harian[tgl] = []
-            arsip_harian[tgl].append(f)
-            
-    list_tgl = sorted(arsip_harian.keys())
-    for tgl in list_tgl[:-1]:
-        for nama_file in arsip_harian[tgl]:
-            path_sumber = os.path.join(folder_path, nama_file)
-            path_tujuan = os.path.join(folder_arsip, nama_file)
-            
-            berhasil_pindah = False
-            while not berhasil_pindah:
-                try: 
-                    shutil.move(path_sumber, path_tujuan)
-                    berhasil_pindah = True
-                except PermissionError:
-                    import time
-                    log_print(f"⚠️ Akses Ditolak: File arsip {nama_file} sedang terbuka.")
-                    tutup_sukses = False
-                    try:
-                        import win32com.client
-                        excel_app = win32com.client.GetActiveObject("Excel.Application")
-                        for wb_app in excel_app.Workbooks:
-                            if wb_app.Name == nama_file:
-                                wb_app.Close(SaveChanges=False)
-                                tutup_sukses = True
-                                break
-                    except Exception: pass
-                    
-                    if not tutup_sukses:
-                        os.system(f'mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""File {nama_file} sedang terbuka. Tutup di Excel agar bisa diarsipkan!"", 5, ""Peringatan Excel"", 48)(window.close)")')
-                    time.sleep(3)
-                except Exception: 
-                    berhasil_pindah = True
-
-def update_arsip_detail_json(folder_path):
-    if not os.path.exists(folder_path): return
-    file_excel = [f for f in os.listdir(folder_path) if f.startswith('Detail_RUP') and f.endswith('.xlsx') and not f.startswith('~$')]
-    file_excel.sort(reverse=True) 
-    arsip_list = [{"nama_file": f} for f in file_excel]
-    try:
-        with open(os.path.join(folder_path, 'arsip_detail_rup.json'), 'w', encoding='utf-8') as f:
-            json.dump(arsip_list, f, indent=4)
-    except: pass
 
 def get_dict_anggaran(filepath):
     data = load_json_local(filepath)
@@ -230,7 +143,7 @@ def get_dict_lokasi(filepath):
 
 def process_tahun(tahun):
     log_print(f"\n--- MEMPROSES DETAIL TAHUN {tahun} ---")
-    output_dir = os.path.join(BASE_DIR, "output", "rup", str(tahun))
+    output_dir = os.path.join(BASE_DIR, "arsip_lokal", "rup", str(tahun))
     
     # ---------------------------------------------------------
     # LOGIKA SKIP: Melewati tahun n-1 & n-2 jika file Excel sudah ada
@@ -412,7 +325,7 @@ def process_tahun(tahun):
     df_gabungan['tanggal buat'] = pd.to_datetime(df_gabungan['tanggal buat'], errors='coerce', dayfirst=True)
     df_gabungan['tanggal pengumuman'] = pd.to_datetime(df_gabungan['tanggal pengumuman'], errors='coerce', dayfirst=True)
 
-    output_dir = os.path.join(BASE_DIR, "output", "rup", str(tahun))
+    output_dir = os.path.join(BASE_DIR, "arsip_lokal", "rup", str(tahun))
     os.makedirs(output_dir, exist_ok=True)
     tgl_cetak = datetime.now().strftime('%Y-%m-%d')
     nama_excel = f"Detail_RUP Tahun {tahun} ({tgl_cetak}).xlsx"
@@ -490,9 +403,6 @@ def process_tahun(tahun):
             time.sleep(3) 
             log_print("Mencoba menyimpan ulang data...")
 
-    kelola_arsip_detail(output_dir, tahun)
-    update_arsip_detail_json(output_dir) # Memanggil pembuatan arsip JSON
-    
     log_print(f"✅ EXCEL: {path_excel} ({len(df_gabungan)} baris)")
     return len(df_gabungan)
 
@@ -515,7 +425,7 @@ if __name__ == "__main__":
     log_print("==================================================")
 
     # Catatan untuk laporan Telegram (dikirim oleh generate_rup.py)
-    temp_tg = os.path.join(BASE_DIR, 'tools', 'temp_tg_rup.txt')
+    temp_tg = os.path.join(BASE_DIR, 'logs', 'rup', 'temp_tg_rup.txt')
     try:
         with open(temp_tg, 'a', encoding='utf-8') as f:
             f.write(f"🔹 Detail RUP: {total_baris} Baris (Durasi: {durasi})\n")

@@ -1,4 +1,4 @@
-## ini file run_pengadaan.bat   ###
+:: ini file run_pengadaan.bat   ::
 
 @echo off
 cd /d "%~dp0..\.."

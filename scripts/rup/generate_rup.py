@@ -8,8 +8,6 @@ import json
 import os
 import re
 import sys
-import subprocess
-import shutil
 import time
 from datetime import datetime, timedelta, timezone
 import warnings
@@ -28,15 +26,33 @@ tahun_n1 = tahun_n - 1
 tahun_n2 = tahun_n - 2               
 daftar_tahun = [tahun_n, tahun_n1, tahun_n2]
 
-LOG_FILE = os.path.join(BASE_DIR, 'tools', 'log_rup.txt')
-os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
+LOG_DIR = os.path.join(BASE_DIR, 'logs', 'rup')
+os.makedirs(LOG_DIR, exist_ok=True)
+LOG_FILE = os.path.join(LOG_DIR, f"log_rup_{datetime.now().strftime('%Y-%m-%d')}.txt")
+# Simpan log 30 hari terakhir saja, yang lebih tua dihapus
+import time as _t
+for _f in os.listdir(LOG_DIR):
+    if _f.startswith('log_rup_') and _f.endswith('.txt'):
+        try:
+            if os.path.getmtime(os.path.join(LOG_DIR, _f)) < _t.time() - 30 * 86400:
+                os.remove(os.path.join(LOG_DIR, _f))
+        except OSError: pass
+
+_baris_tertunda = ""
 
 def log_print(*args, **kwargs):
+    global _baris_tertunda
     msg = " ".join(str(a) for a in args)
-    print(msg, **kwargs) 
-    if 'end' in kwargs and kwargs['end'] == " ": return
-    with open(LOG_FILE, 'a', encoding='utf-8') as f:
-        f.write(msg + '\n')
+    print(msg, **kwargs)
+    if kwargs.get('end') == " ":
+        _baris_tertunda += msg + " "
+        return
+    try:
+        with open(LOG_FILE, 'a', encoding='utf-8') as f:
+            f.write(_baris_tertunda + msg + '\n')
+    except OSError:
+        pass
+    _baris_tertunda = ""
 
 def get_waktu_indonesia():
     tz_wib = timezone(timedelta(hours=7))
@@ -44,60 +60,6 @@ def get_waktu_indonesia():
     bulan_indo = {1: 'Januari', 2: 'Februari', 3: 'Maret', 4: 'April', 5: 'Mei', 6: 'Juni', 7: 'Juli', 8: 'Agustus', 9: 'September', 10: 'Oktober', 11: 'November', 12: 'Desember'}
     return f"{sekarang.day} {bulan_indo[sekarang.month]} {sekarang.year} | {sekarang.strftime('%H.%M')} WIB"
 
-def sync_to_github():
-    log_path = LOG_FILE
-    log_print("\n==================================================")
-    log_print("MENGIRIM DATA RUP KE GITHUB DARI PYTHON...")
-    log_print("==================================================")
-    
-    def tulis_log_git(teks):
-        try:
-            with open(log_path, "a", encoding='utf-8') as f:
-                f.write(teks + "\n")
-        except: pass
-
-    waktu_sekarang = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    
-    tulis_log_git("")
-    tulis_log_git("==================================================")
-    tulis_log_git(" PROSES SELESAI SELURUHNYA!")
-    tulis_log_git("==================================================")
-
-    try:
-        subprocess.run(["git", "config", "user.name", "rizkipem-21"], cwd=BASE_DIR)
-        subprocess.run(["git", "config", "user.email", "rizki.pem@gmail.com"], cwd=BASE_DIR)
-
-        res_status = subprocess.run(["git", "status"], capture_output=True, text=True, cwd=BASE_DIR)
-        tulis_log_git(res_status.stdout)
-
-        res_add = subprocess.run(["git", "add", "."], capture_output=True, text=True, cwd=BASE_DIR)
-        tulis_log_git(res_add.stdout)
-
-        commit_msg = f"Auto update RUP {waktu_sekarang}"
-        res_commit = subprocess.run(["git", "commit", "-m", commit_msg], capture_output=True, text=True, cwd=BASE_DIR)
-        tulis_log_git(res_commit.stdout)
-
-        res_push = subprocess.run(["git", "push"], capture_output=True, text=True, cwd=BASE_DIR)
-        tulis_log_git(res_push.stdout)
-        if res_push.stderr: tulis_log_git(res_push.stderr)
-
-        status_code = res_push.returncode
-        tulis_log_git(f"PUSH STATUS: {status_code}  ")
-        tulis_log_git(f"SELESAI {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}  ")
-
-        if status_code == 0:
-            log_print("PUSH GITHUB SUKSES!")
-            return True, "✅ Push ke GitHub BERHASIL"
-        else:
-            raise subprocess.CalledProcessError(status_code, "git push", output=res_push.stdout, stderr=res_push.stderr)
-
-    except subprocess.CalledProcessError as e:
-        error_msg = e.stderr if e.stderr else (e.stdout if e.stdout else "Terjadi kesalahan koneksi Git.")
-        log_print(f"GAGAL PUSH GITHUB: {error_msg}")
-        return False, f"❌ Push ke GitHub GAGAL:\n`{error_msg.strip()}`"
-    except Exception as e:
-        log_print(f"ERROR SISTEM: {str(e)}")
-        return False, f"❌ Terjadi kesalahan pada eksekusi Git:\n`{str(e)}`"
 
 def kirim_telegram_aman(pesan):
     if len(pesan) > 4000: pesan = pesan[:4000] + "\n...[TERPOTONG]"
@@ -128,61 +90,6 @@ def load_json_local(path):
             return []
     except:
         return []
-
-def kelola_arsip_bulanan(folder_path, tahun):
-    if not os.path.exists(folder_path): return
-    folder_arsip_lokal = os.path.join(BASE_DIR, 'arsip_lokal', 'rup', str(tahun))
-    os.makedirs(folder_arsip_lokal, exist_ok=True)
-    
-    file_excel = [f for f in os.listdir(folder_path) if f.startswith('Rekap') and f.endswith('.xlsx') and not f.startswith('~$')]
-    arsip_bulanan = {}
-    for f in file_excel:
-        match = re.search(r"\((\d{4}-\d{2}-\d{2})\)", f)
-        if match:
-            bulan = match.group(1)[:7]
-            if bulan not in arsip_bulanan: arsip_bulanan[bulan] = []
-            arsip_bulanan[bulan].append((match.group(1), f))
-            
-    for bulan, list_file in arsip_bulanan.items():
-        list_file.sort(key=lambda x: x[0])
-        for tgl, nama_file in list_file[:-1]:
-            path_sumber = os.path.join(folder_path, nama_file)
-            path_tujuan = os.path.join(folder_arsip_lokal, nama_file)
-            
-            berhasil_pindah = False
-            while not berhasil_pindah:
-                try: 
-                    shutil.move(path_sumber, path_tujuan)
-                    berhasil_pindah = True
-                except PermissionError:
-                    import time
-                    log_print(f"⚠️ Akses Ditolak: File arsip {nama_file} sedang terbuka.")
-                    tutup_sukses = False
-                    try:
-                        import win32com.client
-                        excel_app = win32com.client.GetActiveObject("Excel.Application")
-                        for wb_app in excel_app.Workbooks:
-                            if wb_app.Name == nama_file:
-                                wb_app.Close(SaveChanges=False)
-                                tutup_sukses = True
-                                break
-                    except Exception: pass
-                    
-                    if not tutup_sukses:
-                        os.system(f'mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""File {nama_file} sedang terbuka. Tutup di Excel agar bisa diarsipkan!"", 5, ""Peringatan Excel"", 48)(window.close)")')
-                    time.sleep(3)
-                except Exception: 
-                    berhasil_pindah = True
-
-def update_daftar_arsip_json(folder_path):
-    if not os.path.exists(folder_path): return
-    file_excel = [f for f in os.listdir(folder_path) if f.startswith('Rekap') and f.endswith('.xlsx') and not f.startswith('~$')]
-    file_excel.sort(reverse=True) 
-    arsip_list = [{"nama_file": f} for f in file_excel]
-    try:
-        with open(os.path.join(folder_path, 'daftar_arsip.json'), 'w', encoding='utf-8') as f:
-            json.dump(arsip_list, f, indent=4)
-    except: pass
 
 def get_file_path(data_dir, base_name, tahun):
     v1_path = os.path.join(data_dir, f"v1_{base_name}_{tahun}.json")
@@ -287,7 +194,7 @@ def process_tahun(tahun):
 
     tgl = datetime.now().strftime('%Y-%m-%d')
     nama_file_history = f"Rekap RUP Tahun {tahun} ({tgl}).xlsx"
-    output_history_dir = os.path.join(BASE_DIR, "output", "rup", str(tahun))
+    output_history_dir = os.path.join(BASE_DIR, "arsip_lokal", "rup", str(tahun))
     os.makedirs(output_history_dir, exist_ok=True)
     path_history = os.path.join(output_history_dir, nama_file_history)
 
@@ -316,8 +223,6 @@ def process_tahun(tahun):
                 cell.number_format = '0.00"%"'
 
     wb.save(path_history)
-    kelola_arsip_bulanan(output_history_dir, tahun)
-    update_daftar_arsip_json(output_history_dir)
 
     log_print(f"DONE -> JSON: rekap_rup_{tahun}.json")
     log_print(f"DONE -> EXCEL: {path_history}")
@@ -344,8 +249,6 @@ if __name__ == "__main__":
     with open(os.path.join(BASE_DIR, "data", "last-update-rup.txt"), "w", encoding='utf-8') as f:
         f.write(get_waktu_indonesia())
 
-    git_sukses, pesan_git = sync_to_github()
-
     durasi_str = str(timedelta(seconds=int(time.time() - waktu_mulai)))
 
     log_print("\n" + "="*50)
@@ -353,7 +256,7 @@ if __name__ == "__main__":
     log_print("==================================================")
 
     # Catatan dari skrip sebelumnya (detail_rup.py & konsolidasi_rup.py)
-    temp_tg = os.path.join(BASE_DIR, 'tools', 'temp_tg_rup.txt')
+    temp_tg = os.path.join(BASE_DIR, 'logs', 'rup', 'temp_tg_rup.txt')
     info_tambahan = ""
     if os.path.exists(temp_tg):
         try:
@@ -364,12 +267,12 @@ if __name__ == "__main__":
     blok_peringatan = ("⚠️ PERINGATAN:\n" + "\n".join(peringatan) + "\n\n") if peringatan else ""
 
     # Laporan error API ada di laporan download_json.py, bukan di sini
-    if peringatan or not git_sukses:
+    if peringatan:
         pesan = "🚨 LAPORAN UPDATE SISTEM (RUP) 🚨\n\n" + blok_peringatan
         pesan += f"📊 RINGKASAN EKSEKUSI:\n{info_tambahan}🔹 Generate RUP: Selesai\n\n"
     else:
-        pesan = f"✅ UPDATE RUP HARIAN SELESAI ✅\n\nSeluruh proses ekstraksi dan sinkronisasi data berhasil.\n\n📊 RINGKASAN EKSEKUSI:\n{info_tambahan}🔹 Generate RUP: Selesai\n\n"
-    pesan += f"🌐 STATUS GITHUB:\n{pesan_git}\n\n⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
+        pesan = f"✅ UPDATE RUP HARIAN SELESAI ✅\n\nSeluruh proses ekstraksi dan generate data berhasil.\n\n📊 RINGKASAN EKSEKUSI:\n{info_tambahan}🔹 Generate RUP: Selesai\n\n"
+    pesan += f"⏱ Durasi Total: {durasi_str}\n📅 Waktu: {get_waktu_indonesia()}"
     kirim_telegram_aman(pesan)
 
     # Bersihkan file sementara setelah laporan terkirim
