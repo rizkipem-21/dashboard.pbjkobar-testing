@@ -29,7 +29,16 @@ tahun_n2     = tahun_n - 2
 daftar_tahun = [tahun_n, tahun_n1, tahun_n2]
 
 # MENGGUNAKAN LOG TUNGGAL (Sama dengan script download)
-LOG_FILE = os.path.join(BASE_DIR, 'tools', 'log_pengadaan.txt')
+LOG_DIR = os.path.join(BASE_DIR, 'logs', 'pengadaan')
+os.makedirs(LOG_DIR, exist_ok=True)
+LOG_FILE = os.path.join(LOG_DIR, f"log_pengadaan_{datetime.now().strftime('%Y-%m-%d')}.txt")
+# Simpan log 30 hari terakhir saja, yang lebih tua dihapus
+for _f in os.listdir(LOG_DIR):
+    if _f.startswith('log_pengadaan_') and _f.endswith('.txt'):
+        try:
+            if os.path.getmtime(os.path.join(LOG_DIR, _f)) < time.time() - 30 * 86400:
+                os.remove(os.path.join(LOG_DIR, _f))
+        except OSError: pass
 os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
 
 TEKS_TIDAK_COCOK = "Tidak Cocok"
@@ -1477,7 +1486,7 @@ if __name__ == '__main__':
     teks_status = "Seluruh data berhasil diolah."
     if tahun_dilewati:
         baris = "".join([f"• Tahun {t}: {alasan}\n" for t, alasan in tahun_dilewati])
-        blok_peringatan = f"⚠️ PERINGATAN - TAHUN DILEWATI:\n{baris}Hasil lama dipertahankan. Cek log_download.txt & log_pengadaan.txt.\n\n"
+        blok_peringatan = f"⚠️ PERINGATAN - TAHUN DILEWATI:\n{baris}Hasil lama dipertahankan. Cek folder logs.\n\n"
         teks_status = "Sebagian data diolah (ada tahun yang dilewati)."
 
     with open(os.path.join(BASE_DIR, "data", "last-update-pengadaan.txt"), "w", encoding='utf-8') as f:

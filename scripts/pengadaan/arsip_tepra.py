@@ -1,7 +1,7 @@
 # ======================================================
-# arsip_tepra.py  (LOKAL SAJA, masukkan ke .gitignore)
+# arsip_tepra.py
 # Membaca 5 JSON Tepra yang sudah jadi, lalu membuat Excel berformat
-# di arsip_lokal/tepra/{tahun}/ (satu file terbaru per bulan).
+# di arsip_lokal/tepra/{tahun}/ (satu file per hari, tidak dipangkas).
 # ======================================================
 
 import os
@@ -17,6 +17,26 @@ if not os.path.exists(BASE_DIR) or os.path.basename(BASE_DIR) != 'dashboard.pbjk
     BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 tahun = datetime.now().year
+
+# --- Log harian: logs/tepra/, simpan 30 hari. Semua print() ikut ditulis ke file ---
+_LOG_DIR = os.path.join(BASE_DIR, 'logs', 'tepra')
+os.makedirs(_LOG_DIR, exist_ok=True)
+_LOG_FILE = os.path.join(_LOG_DIR, f"log_tepra_{datetime.now().strftime('%Y-%m-%d')}.txt")
+import time as _t
+for _f in os.listdir(_LOG_DIR):
+    if _f.startswith('log_tepra_') and _f.endswith('.txt'):
+        try:
+            if os.path.getmtime(os.path.join(_LOG_DIR, _f)) < _t.time() - 30 * 86400:
+                os.remove(os.path.join(_LOG_DIR, _f))
+        except OSError: pass
+_print_asli = print
+def print(*args, **kwargs):
+    _print_asli(*args, **kwargs)
+    try:
+        with open(_LOG_FILE, 'a', encoding='utf-8') as _fh:
+            _fh.write(" ".join(str(a) for a in args) + '\n')
+    except OSError: pass
+print(f"\n=== {os.path.basename(__file__)} mulai {datetime.now().strftime('%H:%M:%S')} ===")
 
 
 # =======================================================================================
@@ -252,12 +272,6 @@ def buat_arsip():
     except PermissionError:
         print(f"[!] File {nama_file} sedang terbuka di Excel. Tutup lalu jalankan ulang.")
         return False
-
-    # Sisakan satu file terbaru per bulan
-    for f in os.listdir(folder):
-        if f.endswith('.xlsx') and not f.startswith('~$') and f"({tgl[:7]}-" in f and f != nama_file:
-            try: os.remove(os.path.join(folder, f))
-            except Exception: pass
 
     print(f"Arsip Tepra tersimpan: {nama_file}")
     return True

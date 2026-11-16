@@ -1,3 +1,4 @@
+## ini file .gitignore ###
 # Mengabaikan Python Virtual Environment & Cache (INI YANG PALING PENTING)
 venv/
 .venv/
@@ -22,6 +23,7 @@ data_master/kamus_penyedia_gagal.json
 data_master/kamus_sikap_gagal.json
 data_master/kamus_penyedia_review_gabung.json
 scripts/pengadaan/url_pengadaan.txt
+scripts/pengadaan/log_pengadaan.txt
 scripts/rup/url_rup.txt
 config_rahasia.py
 IP_pengajuan_Token.txt
@@ -30,3 +32,7 @@ url_gagal.txt
 .dev.vars
 .wrangler/
 *.bak
+logs/
+running.lock
+scripts/induk/hasil_download.json
+scripts/induk/gagal_beruntun.json

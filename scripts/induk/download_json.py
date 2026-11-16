@@ -7,7 +7,7 @@
 #     PENGADAAN : hanya tahun n-2 yang dilewati jika rekap_pengadaan_{tahun}.json / file JSON-nya sudah ada
 #     URL dipakai kedua sumber -> tetap diunduh selama salah satu sumber masih membutuhkannya
 # - File ditulis lewat file sementara (.tmp) lalu diganti -> tidak pernah setengah jadi
-# - Log sendiri (tools/log_download.txt) & notifikasi Telegram sendiri (CHAT_ID_DOWNLOAD)
+# - Log sendiri (logs/induk/log_download_TANGGAL.txt) & notifikasi Telegram sendiri (CHAT_ID_DOWNLOAD)
 # - Kode keluar: 0 = normal (boleh ada file gagal, file lama dipertahankan)
 #                2 = SEMUA unduhan gagal (induk .bat sebaiknya melewati generate)
 #                1 = skrip crash / konfigurasi salah
@@ -48,8 +48,18 @@ except ImportError:
 
 URL_RUP       = os.path.join(BASE_DIR, 'scripts', 'rup', 'url_rup.txt')
 URL_PENGADAAN = os.path.join(BASE_DIR, 'scripts', 'pengadaan', 'url_pengadaan.txt')
-LOG_FILE      = os.path.join(BASE_DIR, 'tools', 'log_download.txt')
-HASIL_FILE    = os.path.join(BASE_DIR, 'tools', 'hasil_download.json')
+LOG_DIR = os.path.join(BASE_DIR, 'logs', 'induk')
+os.makedirs(LOG_DIR, exist_ok=True)
+os.makedirs(os.path.join(BASE_DIR, 'scripts', 'induk'), exist_ok=True)
+LOG_FILE = os.path.join(LOG_DIR, f"log_download_{datetime.now().strftime('%Y-%m-%d')}.txt")
+# Simpan log 30 hari terakhir saja, yang lebih tua dihapus
+for _f in os.listdir(LOG_DIR):
+    if _f.startswith('log_download_') and _f.endswith('.txt'):
+        try:
+            if os.path.getmtime(os.path.join(LOG_DIR, _f)) < time.time() - 30 * 86400:
+                os.remove(os.path.join(LOG_DIR, _f))
+        except OSError: pass
+HASIL_FILE    = os.path.join(BASE_DIR, 'scripts', 'induk', 'hasil_download.json')
 os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
 
 tahun_n  = datetime.now().year
@@ -79,7 +89,7 @@ daftar_peringatan = [] # backup gagal, URL bermasalah, dll
 stats = {'ok': 0, 'gagal': 0, 'kosong': 0, 'skip': 0}
 STATUS_SKIP = {400, 403, 404, 405, 410, 422}   # permanen: tidak dicoba ulang
 MAKS_COBA, MAKS_COBA_RINGAN, BATAS_BERUNTUN = 5, 1, 3
-STREAK_FILE = os.path.join(BASE_DIR, 'tools', 'gagal_beruntun.json')
+STREAK_FILE = os.path.join(BASE_DIR, 'scripts', 'induk', 'gagal_beruntun.json')
 streak = {}
 TOKEN_BERMASALAH = False
 
@@ -426,7 +436,7 @@ def main():
             pesan += "⛔ SEMUA UNDUHAN GAGAL. Generate sebaiknya tidak dijalankan.\n\n"
         if daftar_error:
             teks = "⚠️ GAGAL DOWNLOAD:\n" + "".join(f"{x.replace('_', ' ')}\n" for x in daftar_error)
-            pesan += (teks[:2500] + "\n... [DIPOTONG, lihat log_download.txt]\n" if len(teks) > 2500 else teks) + "\n"
+            pesan += (teks[:2500] + "\n... [DIPOTONG, lihat folder logs]\n" if len(teks) > 2500 else teks) + "\n"
         if daftar_kosong:
             teks = "ℹ️ API KOSONG (file lama dipertahankan):\n" + "".join(f"{x}\n" for x in daftar_kosong)
             pesan += (teks[:800] + "...\n" if len(teks) > 800 else teks) + "\n"

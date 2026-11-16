@@ -18,6 +18,26 @@ sys.path.append(BASE_DIR)
 
 tahun_n  = datetime.now().year
 
+# --- Log harian: logs/tepra/, simpan 30 hari. Semua print() ikut ditulis ke file ---
+_LOG_DIR = os.path.join(BASE_DIR, 'logs', 'tepra')
+os.makedirs(_LOG_DIR, exist_ok=True)
+_LOG_FILE = os.path.join(_LOG_DIR, f"log_tepra_{datetime.now().strftime('%Y-%m-%d')}.txt")
+import time as _t
+for _f in os.listdir(_LOG_DIR):
+    if _f.startswith('log_tepra_') and _f.endswith('.txt'):
+        try:
+            if os.path.getmtime(os.path.join(_LOG_DIR, _f)) < _t.time() - 30 * 86400:
+                os.remove(os.path.join(_LOG_DIR, _f))
+        except OSError: pass
+_print_asli = print
+def print(*args, **kwargs):
+    _print_asli(*args, **kwargs)
+    try:
+        with open(_LOG_FILE, 'a', encoding='utf-8') as _fh:
+            _fh.write(" ".join(str(a) for a in args) + '\n')
+    except OSError: pass
+print(f"\n=== {os.path.basename(__file__)} mulai {datetime.now().strftime('%H:%M:%S')} ===")
+
 SET_PEMILIHAN = {'bapbast', 'berlangsung', 'completed', 'kontrak', 'non tender selesai', 'on process', 'paket sedang berjalan', 'paket selesai', 'payment outside system', 'spmkspp', 'sppbj'}
 SET_KONTRAK = {'bapbast', 'completed', 'kontrak', 'on process', 'paket sedang berjalan', 'paket selesai', 'payment outside system', 'spmkspp'}
 SET_SERAH_TERIMA = {'bapbast', 'completed', 'paket selesai', 'payment outside system'}
@@ -149,5 +169,5 @@ if __name__ == '__main__':
     except Exception as e:
         print(f"[!] Tepra error: {e}")
         sukses = False
-    kirim_telegram(f"TEPRA {tahun_n}: " + ("sukses, 5 JSON diperbarui" if sukses else "GAGAL, cek log"))
+    kirim_telegram(f"TEPRA {tahun_n}: " + ("sukses, 5 JSON diperbarui" if sukses else "GAGAL, cek folder logs/tepra"))
     sys.exit(0 if sukses else 1)

@@ -1,3 +1,5 @@
+## ini file run_pengadaan.bat   ###
+
 @echo off
 cd /d "%~dp0..\.."
 set ERR=0

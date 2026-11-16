@@ -49,9 +49,10 @@ git config user.name "rizkipem-21"
 git config user.email "rizki.pem@gmail.com"
 git add .
 git commit -m "Auto update %date% %time%" >nul 2>&1
-git push > tools\log_git.txt 2>&1
+if not exist "logs\induk" mkdir "logs\induk"
+git push > logs\induk\log_git.txt 2>&1
 set ERR_GIT=%ERRORLEVEL%
-if not "%ERR_GIT%"=="0" python -c "import config_rahasia as c,requests;e=open('tools/log_git.txt',encoding='utf-8',errors='ignore').read()[-800:];requests.post('https://api.telegram.org/bot'+c.BOT_TOKEN+'/sendMessage',data={'chat_id':c.CHAT_ID,'text':'PUSH GITHUB GAGAL\n\n'+e},timeout=30)"
+if not "%ERR_GIT%"=="0" python -c "import config_rahasia as c,requests;e=open('logs/induk/log_git.txt',encoding='utf-8',errors='ignore').read()[-800:];requests.post('https://api.telegram.org/bot'+c.BOT_TOKEN+'/sendMessage',data={'chat_id':c.CHAT_ID,'text':'PUSH GITHUB GAGAL\n\n'+e},timeout=30)"
 
 :AKHIR
 del /f /q "%LOCK%" >nul 2>&1
@@ -60,7 +61,7 @@ echo SELESAI  download=%ERR_DL%  rup=%ERR_RUP%  pengadaan=%ERR_PENG%  git=%ERR_G
 
 if "%ERR_DL%"=="0" if "%ERR_RUP%"=="0" if "%ERR_PENG%"=="0" if "%ERR_GIT%"=="0" goto SUKSES
 
-mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""Update SELESAI DENGAN ERROR. Cek log di folder tools."", 120, ""Update Gagal"", 4112)(window.close)")
+mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""Update SELESAI DENGAN ERROR. Cek log di folder logs."", 120, ""Update Gagal"", 4112)(window.close)")
 exit 1
 
 :SUKSES
