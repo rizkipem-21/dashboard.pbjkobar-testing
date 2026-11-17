@@ -43,8 +43,8 @@ URL_SIKAP = 'https://data.inaproc.id/api/v1/sikap/detail-pelaku-usaha'
 
 POLA_S6 = 'ekatalog_paket-e-purchasing'
 POLA_S7 = 'ekatalog-archive_paket-e-purchasing'
-POLA_SPPBJ_T  = 'tender_tender-ekontrak-sppbj'
-POLA_SPPBJ_NT = 'tender_non-tender-ekontrak-sppbj'
+POLA_SPPBJ_T  = 'tender_tender-ekontrak'
+POLA_SPPBJ_NT = 'tender_non-tender-ekontrak'
 KOLOM_NPWP16_SPPBJ = ('npwp_penyedia_16', 'npwp16_penyedia')
 
 # Alasan gagal yang dianggap permanen (tidak ditembak ulang tiap run).

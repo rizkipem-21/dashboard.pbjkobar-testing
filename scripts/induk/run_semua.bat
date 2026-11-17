@@ -1,4 +1,5 @@
 @echo off
+setlocal
 cd /d "%~dp0..\.."
 set LOCK=running.lock
 set DL=scripts\induk\download_json.py
@@ -62,9 +63,9 @@ echo SELESAI  download=%ERR_DL%  rup=%ERR_RUP%  pengadaan=%ERR_PENG%  git=%ERR_G
 if "%ERR_DL%"=="0" if "%ERR_RUP%"=="0" if "%ERR_PENG%"=="0" if "%ERR_GIT%"=="0" goto SUKSES
 
 mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""Update SELESAI DENGAN ERROR. Cek log di folder logs."", 120, ""Update Gagal"", 4112)(window.close)")
-exit 1
+exit /b 1
 
 :SUKSES
 mshta vbscript:Execute("CreateObject(""WScript.Shell"").Popup(""Update Selesai!"", 5, ""Update Selesai"", 4160)(window.close)")
 taskkill /f /im mshta.exe >nul 2>&1
-exit 0
+exit /b 0

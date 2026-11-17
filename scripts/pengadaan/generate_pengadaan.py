@@ -220,7 +220,31 @@ def process_tahun(tahun):
         m = df[ada].apply(lambda s: s.map(lambda v: norm_kd(v) not in ('', '-'))).any(axis=1)
         return df[m]
 
-    df2_x   = load_json(p('tender_non-tender-ekontrak'))
+    KOLOM_TAHAP = ['no_sppbj', 'tgl_sppbj', 'no_kontrak', 'tgl_kontrak', 'no_spmk_spp', 'tgl_spmk_spp',
+                   'no_bast', 'tgl_bast', 'no_bap', 'tgl_bap']
+
+    def _satu_baris(df, kolom_kode):
+        """Satu baris per kode paket. Versi addendum tertinggi menang; kalau versi sama, yang tahapnya
+        paling lengkap. tgl_sppbj diambil dari versi terendah (addendum menimpanya dengan cap waktu sistem)."""
+        if df.empty or kolom_kode not in df.columns: return df
+        d = df.copy()
+        d['_kode'] = d[kolom_kode].map(norm_kd)
+        if not d['_kode'].duplicated().any():
+            return d.drop(columns=['_kode'])
+        ada = [c for c in KOLOM_TAHAP if c in d.columns]
+        d['_ver'] = pd.to_numeric(d['versi_addendum'], errors='coerce').fillna(0) if 'versi_addendum' in d.columns else 0
+        d['_lengkap'] = d[ada].apply(lambda s: s.map(lambda v: norm_kd(v) not in ('', '-'))).sum(axis=1)
+        d['_urut'] = range(len(d))
+        d = d.sort_values(['_kode', '_ver', '_lengkap', '_urut'])
+        if 'tgl_sppbj' in d.columns:
+            isi = d[d['tgl_sppbj'].map(lambda v: norm_kd(v) not in ('', '-'))]
+            asli = isi.groupby('_kode')['tgl_sppbj'].first()
+        hasil = d.groupby('_kode', sort=False).tail(1).copy()
+        if 'tgl_sppbj' in d.columns:
+            hasil['tgl_sppbj'] = hasil['_kode'].map(asli).fillna(hasil['tgl_sppbj'])
+        return hasil.drop(columns=['_kode', '_ver', '_lengkap', '_urut']).reset_index(drop=True)
+
+    df2_x   = _satu_baris(load_json(p('tender_non-tender-ekontrak')), 'kd_nontender')
     df2_2   = _tahap(df2_x, ['no_sppbj', 'tgl_sppbj'])
     df2_3   = _tahap(df2_x, ['no_kontrak', 'tgl_kontrak'])
     df2_4   = _tahap(df2_x, ['no_spmk_spp', 'tgl_spmk_spp'])
@@ -232,7 +256,7 @@ def process_tahun(tahun):
     df5     = load_json(p('tender_pengumuman'))
     df5_1   = load_json(p('tender_tender-selesai'))
     df5_1_1 = load_json(p('tender_tender-selesai-nilai'))
-    df5_x   = load_json(p('tender_tender-ekontrak'))
+    df5_x   = _satu_baris(load_json(p('tender_tender-ekontrak')), 'kd_tender')
     df5_2   = _tahap(df5_x, ['no_sppbj', 'tgl_sppbj'])
     df5_3   = _tahap(df5_x, ['no_kontrak', 'tgl_kontrak'])
     df5_4   = _tahap(df5_x, ['no_spmk_spp', 'tgl_spmk_spp'])
