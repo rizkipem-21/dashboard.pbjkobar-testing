@@ -29,14 +29,14 @@
     "Satuan Kerja": "Badan Keuangan dan Aset Daerah - 5.02.0.00.0.00.01.0000",
     "Pagu Program": 21951521820.0,
     "Pagu Pengadaan": 2904513320.0,
-    "Paket Penyedia": 102.0,
-    "RUP Penyedia": 1571332001.0,
+    "Paket Penyedia": 97.0,
+    "RUP Penyedia": 1555082001.0,
     "Paket Swakelola": 0.0,
     "RUP Swakelola": 0.0,
-    "Total Paket Terumumkan": 102.0,
-    "Total RUP Terumumkan": 1571332001.0,
-    "Selisih RUP Terumumkan": -1333181319.0,
-    "Persentase": 54.099665860716385
+    "Total Paket Terumumkan": 97.0,
+    "Total RUP Terumumkan": 1555082001.0,
+    "Selisih RUP Terumumkan": -1349431319.0,
+    "Persentase": 53.540191752331154
   },
   {
     "Satuan Kerja": "Badan Penanggulangan Bencana Daerah - 1.05.0.00.0.00.02.0000",
@@ -887,14 +887,14 @@
     "Satuan Kerja": "Puskesmas Mendawai - 1.02.0.00.0.00.01.0006",
     "Pagu Program": 2273064911.0,
     "Pagu Pengadaan": 2155417785.0,
-    "Paket Penyedia": 41.0,
-    "RUP Penyedia": 469050528.0,
+    "Paket Penyedia": 44.0,
+    "RUP Penyedia": 475837253.0,
     "Paket Swakelola": 2.0,
     "RUP Swakelola": 86300000.0,
-    "Total Paket Terumumkan": 43.0,
-    "Total RUP Terumumkan": 555350528.0,
-    "Selisih RUP Terumumkan": -1600067257.0,
-    "Persentase": 25.765331058544643
+    "Total Paket Terumumkan": 46.0,
+    "Total RUP Terumumkan": 562137253.0,
+    "Selisih RUP Terumumkan": -1593280532.0,
+    "Persentase": 26.08019925009573
   },
   {
     "Satuan Kerja": "Puskesmas Natai Pelingkau - 1.02.0.00.0.00.01.0007",

@@ -213,10 +213,18 @@ def process_tahun(tahun):
 
     df2     = load_json(p('tender_non-tender-pengumuman'))
     df2_1   = load_json(p('tender_non-tender-selesai'))
-    df2_2   = load_json(p('tender_non-tender-ekontrak-sppbj'))
-    df2_3   = load_json(p('tender_non-tender-ekontrak-kontrak'))
-    df2_4   = load_json(p('tender_non-tender-ekontrak-spmkspp'))
-    df2_5   = load_json(p('tender_non-tender-ekontrak-bapbast'))
+    def _tahap(df, kolom):
+        """Baris yang salah satu kolom tahapnya terisi (bukan null / '' / '-')"""
+        ada = [c for c in kolom if not df.empty and c in df.columns]
+        if not ada: return pd.DataFrame()
+        m = df[ada].apply(lambda s: s.map(lambda v: norm_kd(v) not in ('', '-'))).any(axis=1)
+        return df[m]
+
+    df2_x   = load_json(p('tender_non-tender-ekontrak'))
+    df2_2   = _tahap(df2_x, ['no_sppbj', 'tgl_sppbj'])
+    df2_3   = _tahap(df2_x, ['no_kontrak', 'tgl_kontrak'])
+    df2_4   = _tahap(df2_x, ['no_spmk_spp', 'tgl_spmk_spp'])
+    df2_5   = _tahap(df2_x, ['no_bast', 'tgl_bast', 'no_bap', 'tgl_bap'])
     df3     = load_json(p('tender_pencatatan-non-tender'))
     df3_1   = load_json(p('tender_pencatatan-non-tender-realisasi'))
     df4     = load_json(p('tender_pencatatan-swakelola'))
@@ -224,10 +232,11 @@ def process_tahun(tahun):
     df5     = load_json(p('tender_pengumuman'))
     df5_1   = load_json(p('tender_tender-selesai'))
     df5_1_1 = load_json(p('tender_tender-selesai-nilai'))
-    df5_2   = load_json(p('tender_tender-ekontrak-sppbj'))
-    df5_3   = load_json(p('tender_tender-ekontrak-kontrak'))
-    df5_4   = load_json(p('tender_tender-ekontrak-spmkspp'))
-    df5_5   = load_json(p('tender_tender-ekontrak-bapbast'))
+    df5_x   = load_json(p('tender_tender-ekontrak'))
+    df5_2   = _tahap(df5_x, ['no_sppbj', 'tgl_sppbj'])
+    df5_3   = _tahap(df5_x, ['no_kontrak', 'tgl_kontrak'])
+    df5_4   = _tahap(df5_x, ['no_spmk_spp', 'tgl_spmk_spp'])
+    df5_5   = _tahap(df5_x, ['no_bast', 'tgl_bast', 'no_bap', 'tgl_bap'])
     df_sikap_nt = load_json(p('sikap_penilaian-kinerja-penyedia-non-tender'))
     df_sikap_t  = load_json(p('sikap_penilaian-kinerja-penyedia-tender'))
     df6     = load_json(p('ekatalog_paket-e-purchasing'))
