@@ -28,15 +28,15 @@
   {
     "Satuan Kerja": "Badan Keuangan dan Aset Daerah - 5.02.0.00.0.00.01.0000",
     "Pagu Program": 21951521820.0,
-    "Pagu Pengadaan": 2904513320.0,
-    "Paket Penyedia": 97.0,
-    "RUP Penyedia": 1555082001.0,
+    "Pagu Pengadaan": 1599040172.0,
+    "Paket Penyedia": 93.0,
+    "RUP Penyedia": 1599040172.0,
     "Paket Swakelola": 0.0,
     "RUP Swakelola": 0.0,
-    "Total Paket Terumumkan": 97.0,
-    "Total RUP Terumumkan": 1555082001.0,
-    "Selisih RUP Terumumkan": -1349431319.0,
-    "Persentase": 53.540191752331154
+    "Total Paket Terumumkan": 93.0,
+    "Total RUP Terumumkan": 1599040172.0,
+    "Selisih RUP Terumumkan": 0.0,
+    "Persentase": 100.0
   },
   {
     "Satuan Kerja": "Badan Penanggulangan Bencana Daerah - 1.05.0.00.0.00.02.0000",
@@ -302,14 +302,14 @@
     "Satuan Kerja": "Dinas Pendidikan dan Kebudayaan - 1.01.2.22.0.00.01.0000",
     "Pagu Program": 65656802754.0,
     "Pagu Pengadaan": 30934229421.0,
-    "Paket Penyedia": 310.0,
-    "RUP Penyedia": 10131126582.0,
+    "Paket Penyedia": 311.0,
+    "RUP Penyedia": 10126646582.0,
     "Paket Swakelola": 22.0,
     "RUP Swakelola": 9657550195.0,
-    "Total Paket Terumumkan": 332.0,
-    "Total RUP Terumumkan": 19788676777.0,
-    "Selisih RUP Terumumkan": -11145552644.0,
-    "Persentase": 63.9701623327532
+    "Total Paket Terumumkan": 333.0,
+    "Total RUP Terumumkan": 19784196777.0,
+    "Selisih RUP Terumumkan": -11150032644.0,
+    "Persentase": 63.955679993661995
   },
   {
     "Satuan Kerja": "Dinas Perhubungan - 2.15.0.00.0.00.01.0000",
@@ -509,15 +509,15 @@
   {
     "Satuan Kerja": "Kecamatan Pangkalan Banteng - 7.01.0.00.0.00.06.0000",
     "Pagu Program": 443118878.0,
-    "Pagu Pengadaan": 443118878.0,
-    "Paket Penyedia": 58.0,
-    "RUP Penyedia": 303260878.0,
+    "Pagu Pengadaan": 290960878.0,
+    "Paket Penyedia": 54.0,
+    "RUP Penyedia": 290960878.0,
     "Paket Swakelola": 0.0,
     "RUP Swakelola": 0.0,
-    "Total Paket Terumumkan": 58.0,
-    "Total RUP Terumumkan": 303260878.0,
-    "Selisih RUP Terumumkan": -139858000.0,
-    "Persentase": 68.43781500999377
+    "Total Paket Terumumkan": 54.0,
+    "Total RUP Terumumkan": 290960878.0,
+    "Selisih RUP Terumumkan": 0.0,
+    "Persentase": 100.0
   },
   {
     "Satuan Kerja": "Kecamatan Pangkalan Lada - 7.01.0.00.0.00.05.0000",
@@ -977,15 +977,15 @@
   {
     "Satuan Kerja": "Puskesmas Semanggang - 1.02.0.00.0.00.01.0015",
     "Pagu Program": 2520255100.0,
-    "Pagu Pengadaan": 2519809639.0,
+    "Pagu Pengadaan": 630952250.0,
     "Paket Penyedia": 41.0,
     "RUP Penyedia": 650599250.0,
     "Paket Swakelola": 0.0,
     "RUP Swakelola": 0.0,
     "Total Paket Terumumkan": 41.0,
     "Total RUP Terumumkan": 650599250.0,
-    "Selisih RUP Terumumkan": -1869210389.0,
-    "Persentase": 25.81938095364195
+    "Selisih RUP Terumumkan": 19647000.0,
+    "Persentase": 103.11386479721722
   },
   {
     "Satuan Kerja": "Puskesmas Sungai Rangit - 1.02.0.00.0.00.01.0012",

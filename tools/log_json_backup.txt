@@ -894,3 +894,2941 @@ SUKSES
 ==================================================
 PROSES BACKUP JSON SELESAI | Durasi: 0:01:22
 ==================================================
+
+==================================================
+START BACKUP JSON API PADA 19/11/2026 | 08.16 WIB
+==================================================
+
+==================================================
+MEMPROSES TAHUN 2026
+==================================================
+
+DOWNLOAD [LEGACY]: ﻿===== dashboard =====
+ERROR: Terputus / Failed to parse: ﻿===== dashboard =====
+ERROR: Terputus / Failed to parse: ﻿===== dashboard =====
+ERROR: Terputus / Failed to parse: ﻿===== dashboard =====
+
+==================================================
+START BACKUP JSON API PADA 19/11/2026 | 08.21 WIB
+==================================================
+
+==================================================
+MEMPROSES TAHUN 2026
+==================================================
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/dashboard/realisasi/table?tahun=2026&instansi=D228&limit=1000
+SUKSES
+SUKSES
+  -> Disimpan ke v1_dashboard_realisasi_table_2026.json (Total: 1709 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/ekatalog-archive/instansi-satker?kode_klpd=D228&limit=1000
+SUKSES
+  -> Disimpan ke v1_ekatalog-archive_instansi-satker_2026.json (Total: 122 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/ekatalog-archive/paket-e-purchasing?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> File dibuat dengan daftar kosong [] (Total: 0 baris)
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/rup/kegiatan-master?kode_klpd=D228&tahun=2026
+SUKSES
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/rup/paket-penyedia-lokasi?kode_klpd=D228&tahun=2026
+SUKSES
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/rup/paket-swakelola-lokasi?kode_klpd=D228&tahun=2026
+SUKSES
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/rup/sub-kegiatan-master?kode_klpd=D228&tahun=2026
+SUKSES
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/history-kaji-ulang?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_rup_history-kaji-ulang_2026.json (Total: 6700 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/master-satker?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_rup_master-satker_2026.json (Total: 126 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/program-master?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_rup_program-master_2026.json (Total: 279 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_rup_paket-penyedia-terumumkan_2026.json (Total: 4999 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-anggaran-penyedia?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-penyedia_2026.json (Total: 10689 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-penyedia?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_rup_paket-penyedia_2026.json (Total: 14811 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola-terumumkan_2026.json (Total: 58 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-anggaran-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-swakelola_2026.json (Total: 759 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola_2026.json (Total: 65 baris)
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/sikap/penilaian-kinerja-penyedia-non-tender?kode_klpd=D228&tahun=2026
+GAGAL (Status 404)
+GAGAL (Status 404)
+GAGAL (Status 404)
+GAGAL (Status 404)
+GAGAL (Status 404)
+  GAGAL TOTAL -> buat file kosong
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/sikap/penilaian-kinerja-penyedia-tender?kode_klpd=D228&tahun=2026
+GAGAL (Status 404)
+GAGAL (Status 404)
+GAGAL (Status 404)
+GAGAL (Status 404)
+GAGAL (Status 404)
+  GAGAL TOTAL -> buat file kosong
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/jadwal-tahapan-non-tender?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_tender_jadwal-tahapan-non-tender_2026.json (Total: 3234 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/non-tender-pengumuman?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_non-tender-pengumuman_2026.json (Total: 644 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/non-tender-selesai?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_non-tender-selesai_2026.json (Total: 586 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/non-tender-ekontrak?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_non-tender-ekontrak_2026.json (Total: 370 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender_2026.json (Total: 597 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender-realisasi?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender-realisasi_2026.json (Total: 953 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola_2026.json (Total: 6 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola-realisasi?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola-realisasi_2026.json (Total: 5 baris)
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/tender-selesai?kode_klpd=D228&tahun=2026
+SUKSES
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pengumuman?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_pengumuman_2026.json (Total: 67 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/peserta-tender?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_peserta-tender_2026.json (Total: 594 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/tender-selesai-nilai?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_tender-selesai-nilai_2026.json (Total: 61 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/jadwal-tahapan-tender?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+SUKSES
+  -> Disimpan ke v1_tender_jadwal-tahapan-tender_2026.json (Total: 1029 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/tender-ekontrak?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_tender-ekontrak_2026.json (Total: 68 baris)
+
+==================================================
+MEMPROSES TAHUN 2025
+==================================================
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/dashboard/realisasi/table?tahun=2025&instansi=D228&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_dashboard_realisasi_table_2025.json (Total: 5274 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/ekatalog-archive/instansi-satker?kode_klpd=D228&limit=1000
+SUKSES
+  -> Disimpan ke v1_ekatalog-archive_instansi-satker_2025.json (Total: 122 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/ekatalog-archive/paket-e-purchasing?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+  -> Disimpan ke v1_ekatalog-archive_paket-e-purchasing_2025.json (Total: 344 baris)
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/rup/kegiatan-master?kode_klpd=D228&tahun=2025
+SUKSES
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/rup/paket-penyedia-lokasi?kode_klpd=D228&tahun=2025
+SUKSES
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/rup/paket-swakelola-lokasi?kode_klpd=D228&tahun=2025
+SUKSES
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2025
+SUKSES
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/rup/sub-kegiatan-master?kode_klpd=D228&tahun=2025
+SUKSES
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/history-kaji-ulang?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_rup_history-kaji-ulang_2025.json (Total: 18750 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/master-satker?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+  -> Disimpan ke v1_rup_master-satker_2025.json (Total: 126 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/program-master?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+  -> Disimpan ke v1_rup_program-master_2025.json (Total: 280 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_rup_paket-penyedia-terumumkan_2025.json (Total: 10088 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-anggaran-penyedia?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-penyedia_2025.json (Total: 18594 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-penyedia?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_rup_paket-penyedia_2025.json (Total: 34089 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola-terumumkan_2025.json (Total: 163 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-anggaran-swakelola?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+  -> Disimpan ke v1_rup_paket-anggaran-swakelola_2025.json (Total: 350 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/rup/paket-swakelola?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+  -> Disimpan ke v1_rup_paket-swakelola_2025.json (Total: 184 baris)
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/sikap/penilaian-kinerja-penyedia-non-tender?kode_klpd=D228&tahun=2025
+GAGAL (Status 404)
+GAGAL (Status 404)
+GAGAL (Status 404)
+GAGAL (Status 404)
+GAGAL (Status 404)
+  GAGAL TOTAL -> buat file kosong
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/sikap/penilaian-kinerja-penyedia-tender?kode_klpd=D228&tahun=2025
+GAGAL (Status 404)
+GAGAL (Status 404)
+GAGAL (Status 404)
+GAGAL (Status 404)
+GAGAL (Status 404)
+  GAGAL TOTAL -> buat file kosong
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/jadwal-tahapan-non-tender?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_tender_jadwal-tahapan-non-tender_2025.json (Total: 9024 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/non-tender-pengumuman?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+  -> Disimpan ke v1_tender_non-tender-pengumuman_2025.json (Total: 1802 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/non-tender-selesai?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+  -> Disimpan ke v1_tender_non-tender-selesai_2025.json (Total: 1627 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/non-tender-ekontrak?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+  -> Disimpan ke v1_tender_non-tender-ekontrak_2025.json (Total: 1103 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender_2025.json (Total: 2583 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pencatatan-non-tender-realisasi?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_tender_pencatatan-non-tender-realisasi_2025.json (Total: 7113 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola_2025.json (Total: 62 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pencatatan-swakelola-realisasi?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_pencatatan-swakelola-realisasi_2025.json (Total: 65 baris)
+
+DOWNLOAD [LEGACY]: https://data.inaproc.id/api/legacy/tender/tender-selesai?kode_klpd=D228&tahun=2025
+SUKSES
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/pengumuman?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_pengumuman_2025.json (Total: 182 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/peserta-tender?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+  -> Disimpan ke v1_tender_peserta-tender_2025.json (Total: 1698 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/tender-selesai-nilai?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_tender-selesai-nilai_2025.json (Total: 170 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/jadwal-tahapan-tender?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_tender_jadwal-tahapan-tender_2025.json (Total: 2625 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/tender-ekontrak?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_tender-ekontrak_2025.json (Total: 183 baris)
+
+==================================================
+PROSES BACKUP JSON SELESAI | Durasi: 0:10:23
+==================================================
+
+==================================================
+START BACKUP JSON API PADA 19/11/2026 | 08.39 WIB
+==================================================
+[INFO] 2 URL endpoint lama diabaikan (sudah tidak dipakai).
+
+==================================================
+MEMPROSES TAHUN 2026
+==================================================
+
+[SKIP] v1_dashboard_realisasi_table_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/ekatalog/e-purchasing-by-produk?tahun=2026&kode_klpd=D228&limit=1000
+SUKSES
+  -> Disimpan ke v1_ekatalog_e-purchasing-by-produk_2026.json (Total: 2 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/ekatalog/paket-e-purchasing?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_ekatalog_paket-e-purchasing_2026.json (Total: 642 baris)
+
+[SKIP] v1_ekatalog-archive_instansi-satker_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog-archive_paket-e-purchasing_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/master/program?tahun=2026&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_master_program_2026.json (Total: 200816 baris)
+
+[SKIP] Legacy_rup_kegiatan-master_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_paket-penyedia-lokasi_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_paket-swakelola-lokasi_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_struktur-anggaran-pd_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_sub-kegiatan-master_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_history-kaji-ulang_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_master-satker_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_program-master_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-anggaran-penyedia_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-penyedia_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-penyedia-terumumkan_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-anggaran-swakelola_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-swakelola_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-swakelola-terumumkan_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-non-tender?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-non-tender_2026.json (Total: 104 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-tender?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-tender_2026.json (Total: 12 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/sikap/skp-penyedia?limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_sikap_skp-penyedia_2026.json (Total: 446312 baris)
+
+[SKIP] v1_tender_jadwal-tahapan-non-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-ekontrak_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-pengumuman_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-selesai_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-non-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-non-tender-realisasi_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-swakelola_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-swakelola-realisasi_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_jadwal-tahapan-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pengumuman_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_peserta-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_tender-ekontrak_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/tender-selesai?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_tender-selesai_2026.json (Total: 63 baris)
+
+[SKIP] v1_tender_tender-selesai-nilai_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+==================================================
+MEMPROSES TAHUN 2025
+==================================================
+
+[SKIP] v1_dashboard_realisasi_table_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/ekatalog/e-purchasing-by-produk?tahun=2025&kode_klpd=D228&limit=1000
+SUKSES
+  -> File dibuat dengan daftar kosong [] (Total: 0 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/ekatalog/paket-e-purchasing?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+  -> Disimpan ke v1_ekatalog_paket-e-purchasing_2025.json (Total: 724 baris)
+
+[SKIP] v1_ekatalog-archive_instansi-satker_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog-archive_paket-e-purchasing_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/master/program?tahun=2025&limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_master_program_2025.json (Total: 229558 baris)
+
+[SKIP] Legacy_rup_kegiatan-master_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_paket-penyedia-lokasi_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_paket-swakelola-lokasi_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_struktur-anggaran-pd_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_sub-kegiatan-master_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_history-kaji-ulang_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_master-satker_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_program-master_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-anggaran-penyedia_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-penyedia_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-penyedia-terumumkan_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-anggaran-swakelola_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-swakelola_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-swakelola-terumumkan_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-non-tender?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-non-tender_2025.json (Total: 1423 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/sikap/penilaian-kinerja-penyedia-tender?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+  -> Disimpan ke v1_sikap_penilaian-kinerja-penyedia-tender_2025.json (Total: 64 baris)
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/sikap/skp-penyedia?limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_sikap_skp-penyedia_2025.json (Total: 446312 baris)
+
+[SKIP] v1_tender_jadwal-tahapan-non-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-ekontrak_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-pengumuman_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-selesai_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-non-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-non-tender-realisasi_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-swakelola_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-swakelola-realisasi_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_jadwal-tahapan-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pengumuman_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_peserta-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_tender-ekontrak_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/tender-selesai?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_tender-selesai_2025.json (Total: 172 baris)
+
+[SKIP] v1_tender_tender-selesai-nilai_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+==================================================
+PROSES BACKUP JSON SELESAI | Durasi: 0:41:51
+==================================================
+
+==================================================
+START BACKUP JSON API PADA 19/11/2026 | 10.34 WIB
+==================================================
+
+==================================================
+MEMPROSES TAHUN 2026
+==================================================
+
+DOWNLOAD [LEGACY]: ﻿##### ini file url_backup.txt #####
+ERROR: Terputus / Failed to parse: ﻿##### ini file url_backup.txt #####
+ERROR: Terputus / Failed to parse: ﻿##### ini file url_backup.txt #####
+ERROR: Terputus / Failed to parse: ﻿##### ini file url_backup.txt #####
+ERROR: Terputus / Failed to parse: ﻿##### ini file url_backup.txt #####
+ERROR: Terputus / Failed to parse: ﻿##### ini file url_backup.txt #####
+  GAGAL TOTAL -> buat file kosong
+
+[SKIP] v1_dashboard_realisasi_table_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog_e-purchasing-by-produk_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog_paket-e-purchasing_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog-archive_instansi-satker_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog-archive_paket-e-purchasing_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_master_program_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_kegiatan-master_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_paket-penyedia-lokasi_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_paket-swakelola-lokasi_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_struktur-anggaran-pd_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_sub-kegiatan-master_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_history-kaji-ulang_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_master-satker_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_program-master_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-anggaran-penyedia_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-penyedia_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-penyedia-terumumkan_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-anggaran-swakelola_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-swakelola_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-swakelola-terumumkan_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-non-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_sikap_skp-penyedia_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_jadwal-tahapan-non-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-ekontrak_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/non-tender-ekontrak-kontrak?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_non-tender-ekontrak-kontrak_2026.json (Total: 370 baris)
+
+[SKIP] v1_tender_non-tender-pengumuman_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-selesai_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-non-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-non-tender-realisasi_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-swakelola_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-swakelola-realisasi_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_jadwal-tahapan-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pengumuman_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_peserta-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_tender-ekontrak_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/tender-ekontrak-kontrak?kode_klpd=D228&tahun=2026&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_tender-ekontrak-kontrak_2026.json (Total: 68 baris)
+
+[SKIP] v1_tender_tender-selesai_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_tender-selesai-nilai_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+==================================================
+MEMPROSES TAHUN 2025
+==================================================
+
+DOWNLOAD [LEGACY]: ﻿##### ini file url_backup.txt #####
+ERROR: Terputus / Failed to parse: ﻿##### ini file url_backup.txt #####
+ERROR: Terputus / Failed to parse: ﻿##### ini file url_backup.txt #####
+ERROR: Terputus / Failed to parse: ﻿##### ini file url_backup.txt #####
+ERROR: Terputus / Failed to parse: ﻿##### ini file url_backup.txt #####
+ERROR: Terputus / Failed to parse: ﻿##### ini file url_backup.txt #####
+  GAGAL TOTAL -> buat file kosong
+
+[SKIP] v1_dashboard_realisasi_table_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog_e-purchasing-by-produk_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog_paket-e-purchasing_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog-archive_instansi-satker_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog-archive_paket-e-purchasing_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_master_program_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_kegiatan-master_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_paket-penyedia-lokasi_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_paket-swakelola-lokasi_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_struktur-anggaran-pd_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_sub-kegiatan-master_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_history-kaji-ulang_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_master-satker_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_program-master_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-anggaran-penyedia_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-penyedia_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-penyedia-terumumkan_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-anggaran-swakelola_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-swakelola_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-swakelola-terumumkan_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-non-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_sikap_skp-penyedia_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_jadwal-tahapan-non-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-ekontrak_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/non-tender-ekontrak-kontrak?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+
+==================================================
+START BACKUP JSON API PADA 19/11/2026 | 10.37 WIB
+==================================================
+
+==================================================
+MEMPROSES TAHUN 2026
+==================================================
+
+[SKIP] v1_dashboard_realisasi_table_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog_e-purchasing-by-produk_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog_paket-e-purchasing_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog-archive_instansi-satker_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog-archive_paket-e-purchasing_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_master_program_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_kegiatan-master_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_paket-penyedia-lokasi_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_paket-swakelola-lokasi_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_struktur-anggaran-pd_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_sub-kegiatan-master_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_history-kaji-ulang_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_master-satker_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_program-master_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-anggaran-penyedia_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-penyedia_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-penyedia-terumumkan_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-anggaran-swakelola_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-swakelola_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-swakelola-terumumkan_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-non-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_sikap_skp-penyedia_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_jadwal-tahapan-non-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-ekontrak_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-ekontrak-kontrak_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-pengumuman_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-selesai_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-non-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-non-tender-realisasi_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-swakelola_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-swakelola-realisasi_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_jadwal-tahapan-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pengumuman_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_peserta-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_tender-ekontrak_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_tender-ekontrak-kontrak_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_tender-selesai_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_tender-selesai-nilai_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+==================================================
+MEMPROSES TAHUN 2025
+==================================================
+
+[SKIP] v1_dashboard_realisasi_table_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog_e-purchasing-by-produk_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog_paket-e-purchasing_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog-archive_instansi-satker_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog-archive_paket-e-purchasing_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_master_program_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_kegiatan-master_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_paket-penyedia-lokasi_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_paket-swakelola-lokasi_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_struktur-anggaran-pd_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_sub-kegiatan-master_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_history-kaji-ulang_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_master-satker_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_program-master_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-anggaran-penyedia_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-penyedia_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-penyedia-terumumkan_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-anggaran-swakelola_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-swakelola_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-swakelola-terumumkan_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-non-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_sikap_skp-penyedia_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_jadwal-tahapan-non-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-ekontrak_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-ekontrak-kontrak_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-pengumuman_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-selesai_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-non-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-non-tender-realisasi_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-swakelola_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-swakelola-realisasi_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_jadwal-tahapan-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pengumuman_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_peserta-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_tender-ekontrak_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/tender-ekontrak-kontrak?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+  -> Disimpan ke v1_tender_tender-ekontrak-kontrak_2025.json (Total: 183 baris)
+
+[SKIP] v1_tender_tender-selesai_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_tender-selesai-nilai_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+
+Waktu per tahun:
+🕒 2026: 0:00:00
+🕒 2025: 0:00:01
+Terlama:
+🐢 v1_tender_tender-ekontrak-kontrak_2025.json: 0:00:00
+
+
+==================================================
+PROSES BACKUP JSON SELESAI | Durasi: 0:00:01
+==================================================
+
+==================================================
+START BACKUP JSON API PADA 19/11/2026 | 10.39 WIB
+==================================================
+
+==================================================
+MEMPROSES TAHUN 2026
+==================================================
+
+[SKIP] v1_dashboard_realisasi_table_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog_e-purchasing-by-produk_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog_paket-e-purchasing_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog-archive_instansi-satker_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog-archive_paket-e-purchasing_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_master_program_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_kegiatan-master_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_paket-penyedia-lokasi_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_paket-swakelola-lokasi_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_struktur-anggaran-pd_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_sub-kegiatan-master_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_history-kaji-ulang_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_master-satker_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_program-master_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-anggaran-penyedia_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-penyedia_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-penyedia-terumumkan_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-anggaran-swakelola_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-swakelola_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-swakelola-terumumkan_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-non-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/sikap/skp-penyedia?limit=1000
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+SUKSES
+  -> Disimpan ke v1_sikap_skp-penyedia_2026.json (Total: 446312 baris)
+
+[SKIP] v1_tender_jadwal-tahapan-non-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-ekontrak_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-ekontrak-kontrak_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-pengumuman_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-selesai_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-non-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-non-tender-realisasi_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-swakelola_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-swakelola-realisasi_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_jadwal-tahapan-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pengumuman_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_peserta-tender_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_tender-ekontrak_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_tender-ekontrak-kontrak_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_tender-selesai_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_tender-selesai-nilai_2026.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+==================================================
+MEMPROSES TAHUN 2025
+==================================================
+
+[SKIP] v1_dashboard_realisasi_table_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog_e-purchasing-by-produk_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog_paket-e-purchasing_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog-archive_instansi-satker_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_ekatalog-archive_paket-e-purchasing_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_master_program_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_kegiatan-master_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_paket-penyedia-lokasi_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_paket-swakelola-lokasi_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_struktur-anggaran-pd_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] Legacy_rup_sub-kegiatan-master_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_history-kaji-ulang_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_master-satker_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_program-master_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-anggaran-penyedia_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-penyedia_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-penyedia-terumumkan_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-anggaran-swakelola_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-swakelola_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_rup_paket-swakelola-terumumkan_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-non-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_sikap_penilaian-kinerja-penyedia-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[COPY] v1_sikap_skp-penyedia_2025.json URL tanpa tahun -> di-copy dari v1_sikap_skp-penyedia_2026.json.
+
+[SKIP] v1_tender_jadwal-tahapan-non-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-ekontrak_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+DOWNLOAD [V1]: https://data.inaproc.id/api/v1/tender/non-tender-ekontrak-kontrak?kode_klpd=D228&tahun=2025&limit=1000
+SUKSES
+SUKSES
+  -> Disimpan ke v1_tender_non-tender-ekontrak-kontrak_2025.json (Total: 1103 baris)
+
+[SKIP] v1_tender_non-tender-pengumuman_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_non-tender-selesai_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-non-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-non-tender-realisasi_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-swakelola_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pencatatan-swakelola-realisasi_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_jadwal-tahapan-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_pengumuman_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_peserta-tender_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_tender-ekontrak_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_tender-ekontrak-kontrak_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_tender-selesai_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+[SKIP] v1_tender_tender-selesai-nilai_2025.json sudah ada di arsip hari ini. -> Kuota API dihemat.
+
+
+Waktu per tahun:
+🕒 2026: 0:14:14
+🕒 2025: 0:00:11
+Terlama:
+🐢 v1_sikap_skp-penyedia_2026.json: 0:14:14
+🐢 v1_tender_non-tender-ekontrak-kontrak_2025.json: 0:00:03
+
+
+==================================================
+PROSES BACKUP JSON SELESAI | Durasi: 0:14:26
+==================================================

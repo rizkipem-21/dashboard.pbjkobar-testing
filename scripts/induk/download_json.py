@@ -18,6 +18,7 @@ import re
 import sys
 import json
 import time
+import shutil
 import traceback
 import warnings
 import requests
@@ -226,7 +227,7 @@ def tulis_json_aman(output_path, data):
 # ======================================================
 def baca_url(path):
     if not os.path.exists(path): return None
-    with open(path, 'r', encoding='utf-8') as f:
+    with open(path, 'r', encoding='utf-8-sig') as f:
         return [l.strip() for l in f if l.strip() and not l.strip().startswith(('#', '='))]
 
 def kueri(u):
@@ -408,6 +409,14 @@ def main():
                 stats['skip'] += 1
                 log_print(f"[SKIP] {filename} (sudah final)")
                 continue
+            # URL tanpa {tahun}: isinya sama untuk semua tahun. Tahun n diunduh, tahun lain cukup di-copy dan diganti namanya.
+            if '{tahun}' not in e['url'] and t != tahun_n:
+                file_n = os.path.join(BASE_DIR, 'data', str(tahun_n), f"{e['tipe']}_{e['base']}_{tahun_n}.json")
+                if os.path.exists(file_n) and os.path.getsize(file_n) > 2:
+                    shutil.copy2(file_n, output_path)
+                    stats['skip'] += 1
+                    log_print(f"[COPY] {filename} URL tanpa tahun -> di-copy dari {os.path.basename(file_n)}")
+                    continue
             proses_url(e, t, perlu, output_path, filename)
             if TOKEN_BERMASALAH: break
         if TOKEN_BERMASALAH: break

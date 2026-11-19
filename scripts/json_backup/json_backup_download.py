@@ -1,3 +1,5 @@
+##### ini file json_backup_download.py #####
+
 # ======================================================
 # DOWNLOAD JSON UNTUK BACKUP (HANYA TAHUN BERJALAN)
 # ======================================================
@@ -71,12 +73,15 @@ if __name__ == "__main__":
         log_print(f"ERROR: File sumber URL tidak ditemukan di {txt_path}")
         sys.exit(1)
 
-    with open(txt_path, 'r', encoding='utf-8') as f:
+    with open(txt_path, 'r', encoding='utf-8-sig') as f:
         urls = [line.strip() for line in f if line.strip() and not line.strip().startswith(('#', '='))]
 
     stat_copy = 0
     stat_dl = 0
     stat_gagal = 0
+    waktu_file = []      # [(nama_file, detik)], hanya file yang diunduh
+    waktu_tahun = {}     # {tahun: detik}
+    mulai_tahun = time.time()
 
     # Gabungkan target Tahun N dan Tahun N-1 menjadi antrean tugas
     daftar_tahun = [tahun_n, tahun_n - 1]
@@ -85,6 +90,9 @@ if __name__ == "__main__":
     tahun_aktif = None
     for tahun, raw_url in tasks:
         if tahun != tahun_aktif:
+            if tahun_aktif is not None:
+                waktu_tahun[tahun_aktif] = time.time() - mulai_tahun
+            mulai_tahun = time.time()
             log_print("\n" + "="*50)
             log_print(f"MEMPROSES TAHUN {tahun}")
             log_print("="*50)
@@ -126,6 +134,16 @@ if __name__ == "__main__":
             stat_copy += 1
             continue
 
+        # URL tanpa {tahun}: isinya sama untuk semua tahun. Tahun n diunduh, tahun lain cukup di-copy dan diganti namanya.
+        if '{tahun}' not in raw_url and tahun != tahun_n:
+            file_tahun_n = os.path.join(ARSIP_DIR, str(tahun_n), f"{tipe}_{base_name}_{tahun_n}.json")
+            if os.path.exists(file_tahun_n) and os.path.getsize(file_tahun_n) > 2:
+                shutil.copy2(file_tahun_n, output_path)
+                log_print(f"\n[COPY] {filename} URL tanpa tahun -> di-copy dari {os.path.basename(file_tahun_n)}.")
+                stat_copy += 1
+                continue
+
+        mulai_file = time.time()
         log_print(f"\nDOWNLOAD [{tipe.upper()}]: {target_url}")
 
         if is_v1:
@@ -221,7 +239,19 @@ if __name__ == "__main__":
             else:
                 stat_dl += 1
 
+        waktu_file.append((filename, time.time() - mulai_file))
+
+    if tahun_aktif is not None:
+        waktu_tahun[tahun_aktif] = time.time() - mulai_tahun
+
     durasi = str(datetime.now(tz_wib) - waktu_mulai).split('.')[0]
+
+    def _fmt(d): return str(timedelta(seconds=int(d)))
+    teks_waktu = "\n<b>Waktu per tahun:</b>\n" + "".join(f"🕒 {t}: {_fmt(d)}\n" for t, d in waktu_tahun.items())
+    terlama = sorted(waktu_file, key=lambda x: x[1], reverse=True)[:3]
+    if terlama:
+        teks_waktu += "<b>Terlama:</b>\n" + "".join(f"🐢 {n}: {_fmt(d)}\n" for n, d in terlama)
+    log_print("\n" + teks_waktu.replace("<b>", "").replace("</b>", ""))
     log_print("\n" + "="*50)
     log_print(f"PROSES BACKUP JSON SELESAI | Durasi: {durasi}")
     log_print("="*50)
@@ -234,6 +264,7 @@ if __name__ == "__main__":
         f"<b>Statistik:</b>\n"
         f"🔄 Copy Lokal (Skip API): {stat_copy} file\n"
         f"⬇️ Sukses Download: {stat_dl} file\n"
-        f"❌ Gagal/Error: {stat_gagal} file"
+        f"❌ Gagal/Error: {stat_gagal} file\n"
+        f"{teks_waktu}"
     )
     kirim_telegram_aman(pesan_tg)
