@@ -46,7 +46,7 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 }
 
-LOG_FILE = os.path.join(BASE_DIR, 'tools', 'log_json_backup.txt')
+LOG_FILE = os.path.join(BASE_DIR, 'logs', 'json_backup', 'log_json_backup.txt')
 os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
 
 def log_print(*args, **kwargs):

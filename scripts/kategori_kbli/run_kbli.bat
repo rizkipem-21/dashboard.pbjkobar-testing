@@ -1,6 +1,6 @@
 @echo off
 :: Otomatis mendeteksi lokasi file .bat, lalu naik 1 tingkat (..) ke folder utama project
-cd /d "%~dp0.."
+cd /d "%~dp0..\.."
 
 echo ==================================================
 echo MEMULAI PROSES UPDATE DATA KBLI INAPROC...

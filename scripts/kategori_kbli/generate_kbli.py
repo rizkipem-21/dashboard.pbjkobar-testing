@@ -25,7 +25,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(os.path.dirname(SCRIPT_DIR))
 
 # --- SISTEM LOGGING ---
-LOG_FILE = os.path.join(BASE_DIR, 'tools', 'log_kbli.txt')
+LOG_FILE = os.path.join(BASE_DIR, 'logs', 'json_backup', 'log_kbli.txt')
 os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
 
 _original_print = print
