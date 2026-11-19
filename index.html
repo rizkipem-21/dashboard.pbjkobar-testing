@@ -206,12 +206,14 @@
         </button>
       </div>
 
+      <!-- NONAKTIF SEMENTARA: menu Arsip File (aktifkan lagi dengan menghapus tanda komentar ini)
       <div>
         <p class="text-[10px] font-semibold text-gray-400 mb-1 px-2">Server Backup</p>
         <button id="btn-arsip" onclick="switchTab('view-arsip', this, 'arsip')" class="menu-item w-full flex items-center px-3 py-1.5 text-gray-600 hover:bg-gray-100 hover:text-lpse-biru rounded-md text-xs transition-colors text-left">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-2 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" /></svg> Arsip File
         </button>
       </div>
+      -->
     </div>
 
     <div class="py-2 px-3 border-t border-gray-100 bg-gray-50 text-center flex-shrink-0">
@@ -307,10 +309,11 @@
     <div id="view-produk" class="view-panel hidden flex-1 relative bg-[#f0f4f8]">
       <iframe src="produk/produk_detail.html" class="w-full h-full border-none absolute inset-0 bg-transparent"></iframe>
     </div>
-    <!-- IFRAME UNTUK ARSIP -->
+    <!-- NONAKTIF SEMENTARA: IFRAME UNTUK ARSIP (arsip.html tidak dimuat selama menu dimatikan)
     <div id="view-arsip" class="view-panel hidden flex-1 relative bg-[#f0f4f8]">
       <iframe src="arsip/arsip.html" class="w-full h-full border-none absolute inset-0 bg-transparent"></iframe>
     </div>
+    -->
 
   </main>
 
@@ -454,7 +457,8 @@
       if (hash === 'rup') switchTab('view-rup', document.getElementById('btn-rup'), 'rup');
       else if (hash === 'pengadaan') switchTab('view-pengadaan', document.getElementById('btn-pengadaan'), 'pengadaan');
       else if (hash === 'tepra') switchTab('view-tepra', document.getElementById('btn-tepra'), 'tepra');
-      else if (hash === 'arsip') switchTab('view-arsip', document.getElementById('btn-arsip'), 'arsip');
+      // NONAKTIF SEMENTARA: menu Arsip dimatikan (tombol btn-arsip tidak ada, akan error bila dipanggil)
+      // else if (hash === 'arsip') switchTab('view-arsip', document.getElementById('btn-arsip'), 'arsip');
       else if (hash === 'kbli') switchTab('view-kbli', document.getElementById('btn-kbli'), 'kbli');
       else if (hash === 'produk') switchTab('view-produk', document.getElementById('btn-produk'), 'produk');
       else switchTab('view-dashboard', document.getElementById('btn-dashboard'), '');
